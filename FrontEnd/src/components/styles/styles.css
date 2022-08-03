@@ -1,0 +1,646 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
+    width:100%;
+}
+
+.boton
+.tituloListado{
+    background-color: aqua;
+    text-align: center;  
+}
+
+.btn{
+    text-align: center;
+    color:white;
+    text-decoration: none;
+    border: 1px solid white;
+    height: 29px;
+    font-size: 14px;
+    margin-top:4px;   
+   
+}
+
+.tituloItem{
+    color:#3C4657;    
+    font-size:calc(1px + 1rem) ;
+    text-align: center;
+    height:1rem;
+}
+
+
+.grupoBoton{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top:20px;
+}
+
+.GrupoBtn{
+    display:flex;
+    flex-direction:column;
+}
+
+
+.Btn {
+    height:35px;
+    background-color:wheat;
+    border-radius:5px;
+    font-size:16px;
+    margin-top:30px;
+}
+
+h1{
+    font-size: 25px;
+    text-align: center;
+    color:black;
+}
+
+
+.renglonBtn{  
+    color: black;
+    text-align: center;  
+}
+
+
+.lineAllClient{
+    display: flex;
+    padding-top:50px;
+    margin-left:10px;
+    width:70%;  
+}
+
+
+.modifBtn{  
+    color: white;
+    text-align: center;  
+    border-radius: 5px; 
+}
+
+.eliminaBtn{  
+    text-align: center;  
+    border-radius: 5px; 
+}
+
+
+h5{
+    margin-left:500px;
+}
+
+.modifH5{
+    margin-left:390px;
+}
+
+.modifInput{
+    margin-left:260px;
+}
+
+.botonNuevo{
+    margin-left: 25%;
+}
+
+.castillo{
+   display: flex;
+   margin: auto;
+   width: 34%;
+   height: 24%;
+}
+
+.bienvenidos{
+   color:whitesmoke;
+   font-size: 340%;
+   margin: auto;
+}
+
+.imagen-fluid, .nav-link{
+   margin-left: 50px;
+   margin-right:1px;
+}
+
+.logout{
+    color:whitesmoke;
+    background-color:transparent;
+    font-size: 20px;
+    margin-right: 30px;
+    width: 7%; 
+    height: auto;
+}
+
+.login {
+    color:whitesmoke;
+    background-color:transparent;
+    font-size: 20px;
+    width: 7%;
+    height: auto;  
+    
+}
+
+.margenEnd{
+    margin-left: 40%;
+    
+}
+.foto{
+    width: 40%;
+    margin-left:25%;
+   
+}
+
+.eneable{
+    opacity:1;
+}
+
+.disable{
+    opacity:0;
+}
+
+.centrar{
+    margin:auto;
+}
+
+.displayFlex{
+    display: flex;
+}
+
+.box-carrito{
+    margin-top:45px;
+}
+
+.google{
+    margin-left: 75%;
+}
+
+.btn-redes{
+    color:#7d8289;
+    font-weight: 200;
+    height: 40px;
+    font-size: 85%;
+    background-color:white;
+    border:none  ;
+    box-shadow: 0.1px 1px 1px 0.2px rgb(181, 181, 181);
+    padding:9px;
+    margin-top: 16px;
+}
+
+.capitalize{
+    text-transform: capitalize !important;
+  }
+
+.cardPlaceOrder{   
+    height: auto;
+    width: auto;
+    margin-left: 3rem;
+  }
+
+  .img-cart{
+    width:30%;
+    height: 30%;
+  }
+
+  .cart-titulo{
+    text-align: left;
+    margin-left:33%
+  }
+
+  .cart-total-button{
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .displayFlex{
+    display:Flex;
+}
+
+.responsive{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.itemResponsive{
+    flex: 150px  1   ;
+}
+
+.text{
+    margin:auto;
+    color:black;
+    margin-top:-1%;
+}
+
+.textTitulo{
+    color:black;
+    margin-left:3rem;
+}
+
+.btnNvo{
+    margin-left:53rem;
+    margin-top:-3.5%;
+}
+
+.divBtnDesplegable{
+    display:inline-block;
+    text-align:center;
+    height:5rem;
+}
+
+.pBtnDesplegable{
+    margin-bottom:-1rem;
+    margin-left: 20px;
+}
+
+.selectBtnDesplegable{
+    background-color:whitesmoke;
+    color:black;
+    width:35rem;
+    height:34px;
+}
+
+.lineAll{
+    margin:auto;
+    width:90%;  
+}
+
+.productDescrip{
+    width:max-content;
+}
+
+.justify{
+    text-justify: baseline;
+}
+
+.lineAllCategory{
+    margin:auto;
+    width:50%;  
+}
+
+.medio{
+    margin-left: 20%;
+}
+
+.ancho{
+    min-width: 300px;
+}
+
+.btnBuscaxPeli{
+    display:inline-block;
+    text-align:center;
+    margin:auto;
+    height:5rem; 
+}
+
+.colorWhitesmoke{
+    color:whitesmoke;
+}
+
+.bgWhitesmoke{
+    background-color:whitesmoke;
+}
+
+.containerAllMovie{
+    display:inline-block;
+    margin:auto;
+}
+
+.h1AllMovie{
+    color:whitesmoke;
+}
+
+.btnNvoAllMovie{
+    margin-left:4rem;
+}
+
+.marginAutoWidthAuto{
+    margin:auto;
+    width:auto;
+}
+
+.margen{
+    margin-left: 1.3%;
+    margin-right: 1.3%;
+}
+
+.containerEditChar{
+    width:59rem;
+    margin:auto;
+    background-color:whitesmoke;
+    box-shadow:3px 0px 5px 3px grey; 
+}
+
+.containerEditGender{
+    width:32rem;
+    height:auto;
+    margin:auto;
+    background-color:whitesmoke;
+    box-shadow:3px 0px 5px 3px grey; 
+}
+
+.divEditChar{
+    margin-left:3rem;
+    margin-bottom:0.5rem;
+}
+
+.list-group-flush{
+    margin:auto;
+    width:20rem;
+    display:flex; 
+}
+
+.list-group-flush-char{
+    margin:auto;
+    display:flex; 
+}
+
+.list-group-char{
+    margin:1rem;
+    width:29rem;
+    display:block; 
+}
+
+.list-group-movie{
+    margin:1rem;
+    width:59rem;
+    display:block; 
+}
+
+.div-input-edit-char{
+    display:block;
+    margin-left:4.5rem;
+    padding:0.5rem; 
+    text-align: center;
+}
+
+.input-edit-char{
+    text-align: center;
+}
+
+.colorBlack{
+    color:black;
+}
+
+.card-text-edit-gender{
+    margin:auto;
+    height:auto;
+}
+
+.containerEditMovie{
+    width:54rem;
+    margin:auto;
+    box-shadow:3px 0px 5px 3px grey; 
+}
+
+.fotoEditMovie{
+    margin-left:7rem;
+    height:8rem;
+    width: 6rem;
+    margin:auto;
+}
+
+.list-group-editMovie{
+    margin:auto;
+    width:24rem;
+    display:flex; 
+}
+
+.renglon{  
+    width:19rem ;   
+}
+
+.renglonNro{
+    text-align: center;
+    width:5% ; 
+}
+
+.renglonMovie{  
+    width:75rem ;   
+}
+
+.inputMovie{  
+    width:13rem ;   
+}
+
+.inputMovie-artistas{  
+    width:46rem ;   
+}
+
+.fotoEdit{
+    display:flex;
+    margin-left:5rem;
+    width:5rem;
+    height:6rem;
+    box-shadow:1px 0px 5px 2px grey;
+}
+
+.pEdit{
+    font-size: 110%;
+    color:dimgray
+}
+
+.botonPagar{
+    margin:10px;
+    color:green;
+    font-size: 20px;
+    padding: 10px;
+    border-color: white;
+    box-shadow:3px 0px 5px 3px grey; 
+}
+
+.botonQuitarLimpiar{
+    margin:10px;
+    color:red;
+    font-size: 20px;
+    padding: 10px;
+    border-color: white;
+    box-shadow:3px 0px 5px 3px grey; 
+}
+
+
+.botonResiduos{
+    font-size:25px;
+    color:red;
+    border-color:white;
+    margin-left: 1rem;
+    margin-left:45px;
+    align-items: center;
+    text-align: center;
+
+}
+
+.thead-carrito{
+    text-align: center;
+}
+
+.botonAgregar{
+    font-size:10px; 
+    color:green;
+    border:none;
+    box-shadow:3px 0px 5px 3px grey;
+}
+
+
+.marginCarrito{
+    padding:25px;
+    margin-left:45px;
+    text-align: justify;
+}
+
+
+.centrar{
+ text-align: center;
+}
+
+.colorBlanco{
+    color:white;
+}
+
+.colorNegro{
+    color:black;
+}
+
+.card{
+    height:25rem;
+    width:18rem;
+    box-shadow:3px 0px 5px 3px grey;
+    display:inline-flex;
+    margin: auto;
+    margin-left:1%;
+    margin-bottom:0.5%;
+}
+
+.centrar{
+    text-align: center;
+    justify-content: center;
+}
+
+.imagenChar{
+    display:flex;
+    margin:auto;
+    height:100px; 
+}
+
+.boton{
+    margin-left: 10%;
+}
+
+.imagenGender{
+    display:flex;
+    margin:auto;
+    height:6rem;
+    width: 19rem; 
+}
+
+
+.renglonLine{ 
+    margin-right:1rem;
+    margin-left:1rem; 
+}
+
+.box-card{
+    height: auto;
+    min-height: 380px;
+}
+
+.display{
+    display: block;
+}
+
+.alinear{
+    margin-left:-10px;
+}
+
+.tablaPedidos{
+ margin:auto;
+ width: 90%;
+}
+
+.tablaPedidosProductos{
+ width: 50%;
+}
+
+.tablaMisPedidos{
+border:1px solid white;
+}
+
+.myOrderButton{
+    margin-right: 4rem;
+}
+
+.containerFijo{
+    margin-top: 2.7%;
+  }
+  
+  .card-list{
+     margin-left: 1rem;
+     margin-right: 1rem; 
+  }
+  
+  .card-dimentions{
+      width: 23rem;
+      height: auto;
+      font: 0.1rem sans-serif;
+      display:inline-flex;
+      margin-right: 1rem;
+  }
+  
+  .cardOne{
+      margin-top: 3.7%
+  }
+  
+  .nombreTitulo{
+      width: auto;
+  }
+  .listMovie{
+      margin-left: -20%;
+      margin-top: 3.7%;
+  }
+  
+  .list-dimentions{
+      width: auto;
+      height: auto;
+  }
+  
+  .displayBlock{
+      display: block;
+  }
+  
+  .movies-list{
+      background-color: whitesmoke;
+      width: 100%;
+      box-shadow:3px 0px 5px 3px grey; 
+  }
+  
+  .centrar-thead{
+      text-align: center;
+      border:1px solid grey;
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+  
+  .centra-dato{
+      font-size: medium;
+      text-align: center;
+      border:1px solid grey;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: auto;
+  }
+  
+  .imagenTabla{
+      width: 90%;
+  }
+  
+  .ancho{
+      width: 10%;
+  }
+  
+  .h2{
+      color:black;
+      font-size: 140%;
+      background-color:whitesmoke;
+      text-align: center;
+      width: 100%;
+      height:auto;
+      box-shadow:3px 0px 5px 3px grey; 
+  }
+  
+  .textWhite{
+      color:white;
+  }

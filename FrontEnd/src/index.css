@@ -1,0 +1,97 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(247, 244, 244);
+}
+
+main {
+  flex:1;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  /* border: 1px #404040 solid; */
+  margin: 1rem;
+  text-align: center;
+  height: 26rem;
+}
+
+.product img {
+  width: 85%;
+  max-width: 400px;
+  height:15rem;
+}
+
+.product-info {
+  padding: 1rem;
+}
+
+.product-img {
+  padding: 3rem;
+}
+
+.btn-primary{
+  border-radius: 5px 5px 5px 5px;
+  border: 1px #404040 solid;
+  margin-left: 35%; 
+  background-color: #f0c040;
+  color:#000000;
+
+}
+
+.letraNegro{
+  color:#000000
+}
+
+.letraBlanca{
+  color:white
+}
+
+.site-container{
+  min-height: 100vh;
+}
+
+
+.rating span {
+ color:#cac035
+}
+
+.img-large{
+  max-width: 70%;
+}
+
+.cardOneProduct{
+  height: 27%;
+  width: 80%;
+  box-shadow: none;
+  margin-top: 16%;
+}
+
+.oneProductStatus{
+  margin-top: 25%;
+}
+
+.footer{
+  background-color:#0e0d0d;
+  color:white;
+  font-size: small;
+  text-align: center;
+}
+
+.img-thumbnail{
+  height: 80px;
+}
+
+.btn-derecha{
+ margin-left: 70%;
+}
+
