@@ -197,6 +197,11 @@ h5{
     height: 30%;
   }
 
+  .img-search-news{
+    width:70%;
+    height: 70%;
+  }
+
   .cart-titulo{
     text-align: left;
     margin-left:33%
@@ -274,6 +279,11 @@ h5{
 
 .medio{
     margin-left: 20%;
+}
+
+.search-align{
+    text-align: left;
+    margin: 0;
 }
 
 .ancho{
@@ -484,7 +494,7 @@ h5{
 
 
 .centrar{
- text-align: center;
+    text-align: center;
 }
 
 .colorBlanco{
@@ -643,4 +653,17 @@ border:1px solid white;
   
   .textWhite{
       color:white;
+  }
+
+  .homeBgImage {
+    width: 92.3%;
+    margin-left: 6%;
+  }
+
+  .manosLogo{
+    width: 8%;
+  }
+
+  .borderRounded{
+    border-radius: 6px;
   }

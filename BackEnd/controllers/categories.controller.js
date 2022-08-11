@@ -1,7 +1,8 @@
 const ModelCategories= require('../models').Categories;
 const ModelNews=require('../models').News;
 const ModelHelper=require('../helpers/modelHelper');
-const baseController = require("./base.controller")
+const baseController = require("./base.controller");
+const { uploadToBucket } = require('../services/s3');
 
 const getAllCategories= async (req, res) => {
   try{
@@ -25,17 +26,32 @@ const getOneCategory= async (req, res) => {
 };
 
 const createCategory= async (req,res)=> { 
-  const inputVars={name:req.body.name,
-                   description:req.body.description,
-                   image:req.body.image}
-  return baseController.createModel(res, ModelCategories, inputVars) 
+  let img = req.files.image;
+  let regularImglocation;
+  try{
+    regularImglocation = await uploadToBucket(img);
+    const inputVars={name:req.body.name,
+                    description:req.body.description,
+                    image:regularImglocation}
+    return baseController.createModel(res, ModelCategories, inputVars) 
+  } catch (error) {        
+    res.status(500).send(error);
+  }
 };
 
 const updateCategory=async (req,res)=>{
-  const inputVars={name:req.body.name,
-                   description:req.body.description,
-                   image:req.body.image} 
-  return baseController.updateModel(req, res, ModelCategories, inputVars )
+  let img = req.files.image;
+  let regularImglocation;
+  try{
+    regularImglocation = await uploadToBucket(img);
+
+    const inputVars={name:req.body.name,
+                     description:req.body.description,
+                     image:regularImglocation} 
+    return baseController.updateModel(req, res, ModelCategories, inputVars )
+} catch (error) {        
+  res.status(500).send(error);
+}
 };
 
 const deleteCategory=async (req,res)=>{

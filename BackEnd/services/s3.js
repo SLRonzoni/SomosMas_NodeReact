@@ -5,7 +5,6 @@ const config = require('../config/config')
 const storage = new S3({
     accessKeyId:config.aws.accessKeyId,
     secretAccessKey: config.aws.secretAccessKey,
-   
 })
 
 const getBucket = ()=>{

@@ -1,10 +1,10 @@
 import React from "react";
 import "./styles/styles.css"
 import Swal from "sweetalert2";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink} from "react-router-dom";
 import { Navbar,Container,Nav,NavDropdown, NavbarBrand } from "react-bootstrap";
 import Searcher from "./Searcher";
-
+import imagen from "./images/manos_logo.jpg";
 
 export default function Header () {
   
@@ -12,33 +12,42 @@ export default function Header () {
  
     const logout = ()=>{
       Swal.fire({
-        icon: "success",
-        title: `Sesión finalizada`,
-        text: "Usuario desconectado con éxito" ,
-        showConfirmButton:false
+        icon: "info",
+        title: `Cerrá tu navegador para finalizar la sesión`,
+        showConfirmButton:false,
+        timer:2000
       })
       
-        
-      setTimeout( function() { window.location.href = "/"; }, 1000 );
+      setTimeout( function() { window.location.href = "/"; }, 2000 );
       }   
      
   return(
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
-          <NavbarBrand >Somos Más ong 🙌
+          <NavbarBrand >Somos Más Ong <img className="manosLogo borderRounded" src={imagen} alt="manosNiños"></img>
             <Link to="/"className="nav-link" ></Link>
-          </NavbarBrand>    
+          </NavbarBrand>  
            
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-
+            <Nav className="ms-auto">
               <NavbarBrand >
-              {userInfo && userInfo.roleId!==1 && (
+              {!userInfo && (
+                  <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
+                    <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
+                    <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
+                    <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
+                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
+                    <NavDropdown.Divider /> 
+                    <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
+                    <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
+                    <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item> 
+                    <NavDropdown.Item href="/Contact">Contacto</NavDropdown.Item> 
+                  </NavDropdown>
+              )}
 
-                   userInfo ?
-                  (
-                   <NavDropdown title={userInfo.firstName } id="basic-nav-dropdown">
+              {userInfo && userInfo.roleId!==1 && (
+                   <NavDropdown title={`Secciones para ${userInfo.firstName}` } id="basic-nav-dropdown">
                     <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
@@ -50,26 +59,13 @@ export default function Header () {
                     <NavDropdown.Item href="/Contact">Contacto</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
                     <NavLink to={`/users/update/${userInfo.id}`} className="renglonBtn nav p-3 col-1">Mi Perfil</NavLink>
-                  </NavDropdown> ) 
-                   : 
-                  ( 
-                    <NavDropdown title="Cliente" id="basic-nav-dropdown">  
-                    <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
-                    <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                    <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
-                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
-                    <NavDropdown.Divider /> 
-                    <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
-                    <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
-                    <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item> 
-                    <NavDropdown.Item href="/Contact">Contacto</NavDropdown.Item> 
-                  </NavDropdown>)
+                  </NavDropdown> 
                 )} 
               </NavbarBrand>
               
               {userInfo && userInfo.roleId===1 && ( 
               <NavbarBrand>
-                  <NavDropdown title="Administrador" id="basic-nav-dropdown">   
+                  <NavDropdown title="Secciones para Administrador" id="basic-nav-dropdown">   
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
@@ -86,9 +82,9 @@ export default function Header () {
                )} 
             </Nav>
             
-            <Nav>
-            <NavbarBrand > 
-                  <Searcher></Searcher>
+            <Nav className="">
+              <NavbarBrand > 
+                 <Searcher className=""/>
               </NavbarBrand>
               <NavbarBrand > 
                   <Link to="/auth/register" className="login  nav-link  p-1 col-1 " >Registro</Link>

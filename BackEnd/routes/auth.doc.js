@@ -14,8 +14,8 @@
  *        - email
  *        - password
  *      example:
- *        email: admin@test.com
- *        password: 1234test
+ *        email: admin@gmail.com
+ *        password: '1234'
  *        
  */
 

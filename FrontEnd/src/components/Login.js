@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import "./styles/styles.css";
 import axiosClient from "../configuration/axiosClient";
-import { Link} from "react-router-dom"; 
+import { Link,Redirect} from "react-router-dom"; 
 import Swal from "sweetalert2";
 import LoginGoogle from './LoginGoogle';// boton login con google
 
@@ -16,11 +16,11 @@ const Login =()=>{
     Swal.fire({
       icon: "info",
       title: "Ya te encuentras logueado !",
-      showConfirmButton: false
+      showConfirmButton: false,
+      timer:1000
     })
-    setTimeout( function() { window.location.href = `/`; },1000 ); 
+    return( <Redirect to="/" />)
   } else {
-
     const loginOK = (usuario)=>{
       Swal.fire({
           icon: "success",
@@ -28,7 +28,7 @@ const Login =()=>{
           showConfirmButton:false,
           timer:1000
       })    
-    }
+    };
 
     const loginError = (response)=>{
       Swal.fire({
@@ -38,9 +38,9 @@ const Login =()=>{
          showConfirmButton:false,
          timer:1000
        })
-   }
+   };
     
-    //peticion a API e inicio sesion
+    //INICIO DE SESION
      const beginSession = async (e) => { 
       e.preventDefault();  
       
@@ -51,22 +51,19 @@ const Login =()=>{
       .then(response=>{
         if(response.status===204 ||response.status===200 ){
           let name=response.data.user.firstName;
-
           
            sessionStorage.setItem('userInfo',JSON.stringify(response.data.user))
            sessionStorage.setItem('token',JSON.stringify(response.data.token))
            sessionStorage.setItem('loginData',true)
 
-          //MENSAJE DE BIENVENIDA
           loginOK(name);
-          setTimeout( function() { window.location.href = "/"; }, 1000 );
-        
+          setTimeout( function() { window.location.href = "/" }, 1000 );
+          
         } else {
           loginError(response);
           console.log(response)            
         }
       }) 
-      
       .catch(error=>{
         console.log(error)
         Swal.fire({
@@ -75,7 +72,7 @@ const Login =()=>{
          text: error
        });
       });
-     }  
+     };  
      
     
     return (
@@ -145,7 +142,7 @@ const Login =()=>{
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default Login;

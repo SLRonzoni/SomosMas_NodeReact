@@ -51,7 +51,7 @@ const FormCategory = (props) => {
   
   const saveCategory = async () => {
     await axiosClient
-      .post("/categories/update/",categories.id)
+      .post(`/categories/update/${categories.id}`)
       .then(respuesta => {
         if (respuesta) {
         Swal.fire({

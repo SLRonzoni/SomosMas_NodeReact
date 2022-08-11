@@ -13,7 +13,7 @@
  *              description : the category description
  *          image:
  *              type: string
- *              description : the category image url
+ *              description : the category image
  *          updatedAt: 
  *              type: date
  *              description: the category updated date
@@ -22,6 +22,8 @@
  *              description: the category created date
  *       required:
  *          - name
+ *          - image
+ *          - content
  *       example:
  *          name: Category demo 5
  *          description: demo natus nisi omnis corporis facere molestiae rerum in
@@ -78,7 +80,7 @@
 
 /**
  * @swagger
- * /api/categories :
+ * /api/categories/create :
  *   post:
  *     security:
  *        - bearerAuth: []
@@ -87,20 +89,34 @@
  *     requestBody: 
  *          required: true
  *          content:
- *            application/json :
+ *            multipart/form-data:
  *               schema:
  *                 type: object
- *                 $ref: '#/components/schemas/Categories'
+ *                 properties:
+ *                          name:
+ *                              type: String
+ *                             
+ *                          image:
+ *                              type: string
+ *                              format: binary
+ *                               
+ *                          description:
+ *                              type: string
+ *                  
  *     responses:
  *       '201':
  *         description: return category
+ *         content:
+ *             application/json:
+ *                 schema:
+ *                  $ref: '#/components/schemas/Categories'
  *       '500':
  *         descripcion: server error
  */
 
 /**
  * @swagger
- * /api/categories/{id} :
+ * /api/categories/update/{id} :
  *   put:
  *     security:
  *        - bearerAuth: []
@@ -110,19 +126,31 @@
  *        - in: path
  *          name: id
  *          schema:
- *              type: integer
- *          required: true
+ *              type: object
  *          description: id of the category to be updated
  *     requestBody: 
- *          required: true
  *          content:
- *            application/json :
- *               schema:
- *                 type: object
- *                 $ref: '#/components/schemas/Categories'
+ *               multipart/form-data:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          name:
+ *                              type: String
+ *                              
+ *                          image:
+ *                              type: string
+ *                              format: binary
+ *                               
+ *                          description:
+ *                              type: string,  
+ *            
  *     responses:
  *       '200':
  *         description: return updated category
+ *         content:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Categories'
  *       '404':
  *         descripcion: the category does not exists
  *       '500':
@@ -131,7 +159,7 @@
 
 /**
  * @swagger
- * /api/categories/{id} :
+ * /api/categories/del/{id} :
  *   delete:
  *     security:
  *        - bearerAuth: []

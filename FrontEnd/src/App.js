@@ -8,8 +8,8 @@ import LoginGoogle from './components/LoginGoogle';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-
 import Home from './components/Home';
+import SearchResults from "./components/SearchResults";
 
 import CategoriesAll from './components/CategoriesAll';
 import CategoriesOne from './components/CategoriesOne';
@@ -25,7 +25,7 @@ function App() {
     <div className="d-flex flex-column site-container">
       
       <header>
-        <Header/>
+        <Header />
       </header>
 
       <main className="mt-3">
@@ -36,12 +36,12 @@ function App() {
         <Route exact path="/auth/login" component={Login}/>
         <Route exact path="/LoginGoogle" component={LoginGoogle}/>
         <Route exact path="/redes" component={LoginGoogle}/>
+        <Route exact path='/searchResults'component={SearchResults}/>
 
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
               
         {/* ADMIN */}
-       
         <Route exact path='/CategoriesAll' component={CategoriesAll}/>
         <Route exact path='/categories/:id' component={CategoriesOne}/>
         <Route exact path='/CategoriesCreate' component={CategoriesCreate}/>

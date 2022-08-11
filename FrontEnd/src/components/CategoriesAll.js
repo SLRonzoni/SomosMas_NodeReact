@@ -63,7 +63,7 @@ const CategoriesAll = (props) => {
 
   useEffect(() => {
     getCategories()
-  });
+  },[]);
 
 
   //Obtener datos FILTRADOS x ID

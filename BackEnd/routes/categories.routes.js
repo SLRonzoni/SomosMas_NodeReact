@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {verifyIsAdmin, idExists}=require('../middlewares');
+const {verifyIsAdmin, idExists, optionsFileUpload  }=require('../middlewares');
 
 const { validateCategories }=require('../validators')
 
@@ -15,11 +15,11 @@ router.use(verifyIsAdmin)
 
 router.get("/",  getAllCategories);
 
-router.post("/create", validateCategories, createCategory);
+router.post("/create", optionsFileUpload ,validateCategories, createCategory);
 
 router.get("/:id", idExists, getOneCategory);
 
-router.put("/update/:id", idExists, validateCategories, updateCategory);
+router.put("/update/:id", idExists, optionsFileUpload ,validateCategories, updateCategory);
 
 router.delete("/del/:id", deleteCategory);
 

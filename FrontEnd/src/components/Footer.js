@@ -2,8 +2,8 @@ import "./styles/styles.css" ;
 
 function Footer () {
     return (
-     <footer>
-        <nav>
+     <footer >
+        <nav >
             <p> 👉 Email : somos.mas.97@gmail.com 
                 <span className="colorBlack"> ......... </span>
                 👉 Teléfono : 011-6011-2988

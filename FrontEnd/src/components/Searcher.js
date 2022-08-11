@@ -1,6 +1,10 @@
+import {useHistory} from 'react-router-dom';
 import Swal from "sweetalert2";
+import "./styles/styles.css";
 
 function Searcher() {
+
+  const history=useHistory()
 
   const submitHandler= e =>{
     e.preventDefault();
@@ -13,16 +17,19 @@ function Searcher() {
         timer:1000,
         showConfirmButton:false
       })
+    } else {
+      e.currentTarget.keyword.value='';
+      history.push(`/searchResults?keyword=${keyword}`);
     }
   }
 
   return (
   <form className="d-flex align-items-center" onSubmit={submitHandler}>
-    <label className="form-label mb-0  mx-2">
-      <input className="form-control" type="text" name="keyword" placeholder="palabra a buscar...">
+    <label className=" form-label mx-2 mb-0 ">
+      <input className="borderRounded" type="text" name="keyword" placeholder="  palabra a buscar...">
       </input>
     </label>
-    <button className="btn btn-sucess" type="submit">Buscar</button>
+    <button className="btn btn-sucess mx-1 mb-1" type="submit"> Noticias</button>
   </form>
   )
 }

@@ -1,6 +1,9 @@
 const newsModel = require('../models').News;
 const commentModel = require('../models').Comment;
 
+
+const { query } = require('express');
+const { Sequelize } = require('../models');
 const { 
     getAllModels, 
     createModel,
@@ -11,7 +14,25 @@ const {
 
 
 const getAllNews = async (req, res) =>{
-    await getAllModels(req, res, newsModel);
+    const keyword=req.query.name
+    const Op = Sequelize.Op
+    if(keyword!=='undefined'){
+        try {
+            const news = await newsModel.findAll({ 
+                where: {name:{[Op.like]:`%${keyword}%`}}, 
+                include: [{
+                    model: commentModel, as: "comments"
+                }]
+            })
+            res.status(200).json(news);
+        } catch(error) {
+            console.log(error)
+            res.status(500).json(error.message);
+        }
+    } else {
+        await getAllModels(req, res, newsModel);
+    }
+    
 }
 
 const createNews = async (req,res) =>{
@@ -51,5 +72,5 @@ module.exports = {
     detailNews,
     updateNews,
     deleteNews,
-    getAllCommentsOfNews,
+    getAllCommentsOfNews
 }

@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             unique:true},
 
     description: { type: DataTypes.STRING, 
-                   allowNull: true
+                   allowNull: false
                   },
 
     image: { type: DataTypes.STRING, 

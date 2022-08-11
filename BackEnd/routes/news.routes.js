@@ -7,20 +7,19 @@ const {
     createNews,
     updateNews,
     deleteNews,
-    getAllCommentsOfNews,
+    getAllCommentsOfNews
 } = require('../controllers/news.controller');
 
 const { verifyIsAdmin, idExists } = require('../middlewares');
 const { validateNews } = require('../validators');
 
-router.use( verifyIsAdmin )
-
 router.get('/', getAllNews);
-router.get('/:id', detailNews);
 
-router.post('/' , validateNews, createNews);
-router.put('/:id' , idExists ,validateNews, updateNews);
-router.delete('/:id', idExists ,deleteNews);
+router.get('/:id', detailNews);
+router.post('/' , validateNews, verifyIsAdmin,createNews);
+router.put('/:id' , idExists ,verifyIsAdmin,validateNews, updateNews);
+router.delete('/:id', idExists ,verifyIsAdmin,deleteNews);
 router.get('/:id/comments', idExists ,getAllCommentsOfNews);
+
 
 module.exports = router;

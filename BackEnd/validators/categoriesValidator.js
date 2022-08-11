@@ -25,12 +25,7 @@ const validateCategories = [
             }),
     check('description')
         .isString()
-        .withMessage('invalid data type'),
-    check('image')
-        .isString()
-        .withMessage('invalid data type')
-        .isURL()
-        .withMessage('image must be url'),             
+        .withMessage('invalid data type'),        
     (req, res, next) => {
         validateResult(req, res, next)
     }

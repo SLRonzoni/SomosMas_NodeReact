@@ -8,18 +8,30 @@ import "./styles/styles.css";
 function CategoriesCreate(props) {
   
   const [categories, setCategories] = useState({
-    id: "",
     name: "",
-    image:"",
     description:""
+  });
+
+  const [files, setFiles] = useState({
+    image:""
   });
 
   const changes = (e) => {
     setCategories({
       ...categories,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
+
+  const changesFiles = (e) => {
+    setFiles({...files,
+      [e.target.name]: e.target.files[0]
+    });
+  };
+
+  const data=categories
+  data.files=files
+  console.log(data)
 
   const send = (e) => {
     e.preventDefault();
@@ -28,14 +40,14 @@ function CategoriesCreate(props) {
 
   const saveCategories = async () => {
     await axiosClient
-      .post("/categories/create", categories)
+      .post("/categories/create", data)
       .then((response) => {
-        if (response) {
-          
+        if(response) {
+          console.log(response)
           Swal.fire({
             icon: "success",
             title: "Categoria Agregada!",
-            text: response.data.msg,
+            text: response,
           });
           props.history.push("/CategoriesAll");
         }
@@ -44,7 +56,7 @@ function CategoriesCreate(props) {
         Swal.fire({
         icon:"error",
         title: "Error",
-        text: error.response.data.msg,
+        text: error.response,
         });
       });
   };
@@ -64,19 +76,19 @@ function CategoriesCreate(props) {
             className="form-control"
             name="name"
             placeholder="Ingresar nombre"
-            defaultValue={categories.name}
             required
             onChange={changes}
           />
           <br></br>
           <label htmlFor="name">Imágen: </label>
           <input
-            type="text"
+            type="file"
             className="form-control"
+            encType="multipart/form-data"
             name="image"
-            placeholder="Ingresar url de imágen"
-            defaultValue={categories.image}
-            onChange={changes}
+            placeholder="Seleccione la imágen"
+            required
+            onChange={changesFiles}
           />
           <br></br>
           <label htmlFor="name">Descripción: </label>
@@ -85,7 +97,6 @@ function CategoriesCreate(props) {
             className="form-control"
             name="description"
             placeholder="Ingresar la descripción"
-            defaultValue={categories.description}
             onChange={changes}
           />
         </div>

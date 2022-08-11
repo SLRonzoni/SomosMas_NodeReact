@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
 
-const CategoriesUpdate = (props) => {
+const CategoriesOne = (props) => {
 
   const { id } = props.match.params;
 
@@ -90,4 +90,4 @@ const CategoriesUpdate = (props) => {
   );
 };
 
-export default CategoriesUpdate;
+export default CategoriesOne;

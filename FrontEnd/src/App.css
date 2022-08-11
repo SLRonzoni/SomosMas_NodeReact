@@ -27,7 +27,7 @@
 }
 
 .App-header {
-  background-color: #3c4657;
+  background-color: #3c4057;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -71,8 +71,9 @@ p {
   }
 }
 
-.footer-p{
-  font-size: small;
+.footer{
+  font-size:7px;
+  height: 80px;
 }
 
 .stripe{
