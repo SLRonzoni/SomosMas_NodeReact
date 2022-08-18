@@ -667,3 +667,19 @@ border:1px solid white;
   .borderRounded{
     border-radius: 6px;
   }
+
+  .buttonBlue{
+    background-color:#1E90FF;
+    color:#fff;
+    width:20%;
+    height:32px;
+    font-weight: bold;
+    line-height:30px;
+    cursor:pointer;
+    padding: 1px;
+  }
+
+  .buttonBlue:hover {
+    color:#fff;
+    background-color:rgb(2, 117, 216);
+}

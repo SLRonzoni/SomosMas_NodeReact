@@ -44,14 +44,13 @@ const updateCategory=async (req,res)=>{
   let regularImglocation;
   try{
     regularImglocation = await uploadToBucket(img);
-
     const inputVars={name:req.body.name,
                      description:req.body.description,
                      image:regularImglocation} 
     return baseController.updateModel(req, res, ModelCategories, inputVars )
-} catch (error) {        
-  res.status(500).send(error);
-}
+  } catch (error) {        
+    res.status(500).send(error);
+  }
 };
 
 const deleteCategory=async (req,res)=>{

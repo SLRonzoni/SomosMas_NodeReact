@@ -18,7 +18,7 @@ const CategoriesOne = (props) => {
  
   useEffect(() => {
     const getCategories = async () => {
-      await axiosClient.get(`/categories/${id}`)
+      await axiosClient.get(`/categories/update/${id}`)
       .then((respuesta) => {
           setCategories(respuesta.data);
           
@@ -28,7 +28,19 @@ const CategoriesOne = (props) => {
       }));
     };
     getCategories();
-  }, [id]);
+  }, []);
+
+   //FORMAT DATE
+   function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+  function formatDate(date) {
+    return [
+      padTo2Digits(date.getDate()),
+      padTo2Digits(date.getMonth() + 1),
+      date.getFullYear(),
+    ].join('/');
+  }
 
 
   return (
@@ -42,7 +54,7 @@ const CategoriesOne = (props) => {
            <h5 className="text colorBlack" >Categoría </h5>   
            </Card.Text>
            
-           <Card.Img className='foto 'src={'http://localhost:3000/public/assets/'+categories.image}   alt="categoria"></Card.Img>
+           <Card.Img className='foto 'src={categories.image}   alt="categoria"></Card.Img>
             <div className="list-group-char">
                 <div className="list-group-char" >
                   Categoría :
@@ -53,11 +65,13 @@ const CategoriesOne = (props) => {
                     defaultValue={categories.name}
                     />
                     <br></br>
-                  Imágen : ( nombre archivo)
+                  Imágen :
                   <input
-                    type="text"
+                    type="file"
                     className="form-control"
+                    encType="multipart/form-data"
                     name="image"
+                    //placeholder="Seleccione la imágen"
                     defaultValue={categories.image}
                     />
                   <br></br>

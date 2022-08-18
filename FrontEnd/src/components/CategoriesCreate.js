@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import "./styles/styles.css";
 
-
 function CategoriesCreate(props) {
   
   const [categories, setCategories] = useState({
@@ -29,45 +28,43 @@ function CategoriesCreate(props) {
     });
   };
 
-  const data=categories
-  data.files=files
-  console.log(data)
-
   const send = (e) => {
     e.preventDefault();
-    saveCategories();
-  };
 
-  const saveCategories = async () => {
-    await axiosClient
-      .post("/categories/create", data)
-      .then((response) => {
-        if(response) {
-          console.log(response)
+    const body = new FormData(e.currentTarget)
+    body.append('image',e.target.value);
+
+    const saveCategories = async () => {
+      await axiosClient
+        .post("/categories/create",body)     
+        .then((response) => {
+          if(response) {
+            Swal.fire({
+              icon: "success",
+              title: "Categoria Agregada!",
+              text: response,
+            });
+            props.history.push("/CategoriesAll");
+          }
+        })
+        .catch(function (error) {
           Swal.fire({
-            icon: "success",
-            title: "Categoria Agregada!",
-            text: response,
+          icon:"error",
+          title: "Error",
+          text: error,
           });
-          props.history.push("/CategoriesAll");
-        }
-      })
-      .catch(function (error) {
-        Swal.fire({
-        icon:"error",
-        title: "Error",
-        text: error.response,
         });
-      });
+    };
+  
+    saveCategories();
   };
 
   return (
     <div>
       <br></br>
       <br></br>
-      <form onSubmit={send} className="container-sm col-6 col-md-4 bg-light">
+      <form onSubmit={send} className="container-sm col-6 col-md-4 bg-light" >
         <br></br>
-        
         <h3>Ingrese nueva Categoría...</h3>
         <div className="form-group ">
           <label htmlFor="name">Nombre: </label>
