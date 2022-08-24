@@ -1,14 +1,16 @@
-import {regularExpresions} from '../components/elements/RegExp';
 
-const validationCategories = (categories, files) => {
+import {categoryName,categoryDescription} from '../components/helpers/RegExp';
+
+
+const validationCategories = (inputValidation, files) => {
 
   let errors={};
  
-  if(!categories.name){
+  if(!inputValidation.categoryName){
     errors.name="El nombre es obligatorio"
   };
 
-  if(!regularExpresions.name.test(categories.name)){
+  if(!categoryName.test(inputValidation.name.trim())){
     errors.name="El nombre puede contener hasta 50 dígitos entre letras, espacios y acentos"
   };
 
@@ -16,12 +18,11 @@ const validationCategories = (categories, files) => {
     errors.image="La imágen es obligatoria"
   }; 
 
-  if(!regularExpresions.description.test(categories.description)){
+  if(!categoryDescription.test(inputValidation.description.trim())){
     errors.description="La descripción puede contener hasta 200 dígitos entre letras, números, espacios y acentos"
   };
-
   
-  return  errors;
+  return errors ;
 }
 
 export default validationCategories;

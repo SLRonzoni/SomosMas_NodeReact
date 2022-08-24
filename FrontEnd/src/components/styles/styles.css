@@ -158,9 +158,15 @@ h5{
     margin:auto;
 }
 
+/* repetida */
 .displayFlex{
     display: flex;
 }
+
+.displayInLineFlex{
+    display:inline-flex;
+}
+
 
 .box-carrito{
     margin-top:45px;
@@ -548,6 +554,7 @@ h5{
     min-height: 380px;
 }
 
+/* repetida */
 .display{
     display: block;
 }
@@ -607,7 +614,8 @@ border:1px solid white;
       height: auto;
   }
   
-  .displayBlock{
+  /* repetida */
+  .displayBlock{ 
       display: block;
   }
   
@@ -683,3 +691,5 @@ border:1px solid white;
     color:#fff;
     background-color:rgb(2, 117, 216);
 }
+
+

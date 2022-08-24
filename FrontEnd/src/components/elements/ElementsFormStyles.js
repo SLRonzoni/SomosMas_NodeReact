@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Colors ={
     border:'#0075FF',
@@ -27,13 +26,13 @@ const Label = styled.label`
 `;
 
 const InputGroup = styled.div`
-    position:relative;
-    z-index:90;
+    display:flexinline
+    background:green;
 `;
 
 
 const Input = styled.input`
-    width:100%;
+    width:160%;
     height:45px;
     background:#fff;
     border-radius:3px;
@@ -48,29 +47,20 @@ const Input = styled.input`
     }
 `;
 
-const ValidationIconGreen = styled(FontAwesomeIcon)`
-    position:absolute;
-    z-index:100;
-    right:10px;
-    bottom:14px;
-    font-size:22px;
-    color:green;
+const Icon=styled.p`  
+    width:10%;
+    height:45px;
+    line-height:45px;  
+    font-size:20px;
+    margin:45px 0px 0 150px;
+    top:20px
 `;
 
-const ValidationIconRed = styled(FontAwesomeIcon)`
-    position:absolute;
-    z-index:100;
-    right:10px;
-    bottom:14px;
-    font-size:22px;
-    color:red;
-`;
 
 const ErrorText = styled.p`
     font-size:16px;
-    margin-botton:0px;
+    margin:0px;
     color:${Colors.error};
-    
 ;`
 
 const SendButton = styled.button`
@@ -98,7 +88,7 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-export {Form, Label, Colors , Input, ValidationIconGreen, ValidationIconRed, InputGroup, ErrorText, SendButton, MsjWrong};
+export {Form, Label, Colors , Input, Icon,InputGroup, ErrorText, SendButton, MsjWrong};
 
 
   

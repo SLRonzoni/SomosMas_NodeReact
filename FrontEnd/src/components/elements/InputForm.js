@@ -1,8 +1,7 @@
 import React from "react";
 import { Input,InputGroup,Label} from "./ElementsFormStyles";
 
-const InputForm = ({type,label,name,placeholder,defaultValue,onChange,required,id,encType,minlength,maxlength,onKeyPress,icon}) => {
-    
+const InputForm = ({type,label,name,encType,value,onBlur,onChange}) => {
   
 
   return (
@@ -11,23 +10,15 @@ const InputForm = ({type,label,name,placeholder,defaultValue,onChange,required,i
       <InputGroup>
         <Input
           className="form-control"
-          id={id}
           type={type}
           encType={encType}
           name={name}
-          label={label}
-          required={required}
-          minlength={minlength}
-          maxlength={maxlength}
-          placeholder={placeholder}          
-          defaultValue={defaultValue}
+          label={label} 
+          value={value}
           onChange={onChange}
-          onKeyPress={onKeyPress}
-          icon={icon}
-        />
-        
-      </InputGroup>
-
+          onBlur={onBlur} 
+        />         
+      </InputGroup>       
       <br></br>
     </div>
   )
