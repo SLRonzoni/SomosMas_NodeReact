@@ -30,14 +30,14 @@ body{
 }
 
 
-.grupoBoton{
+/* .grupoBoton{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top:20px;
-}
+} */
 
-.GrupoBtn{
+/* .GrupoBtn{
     display:flex;
     flex-direction:column;
 }
@@ -49,7 +49,7 @@ body{
     border-radius:5px;
     font-size:16px;
     margin-top:30px;
-}
+} */
 
 h1{
     font-size: 25px;
@@ -64,27 +64,27 @@ h1{
 }
 
 
-.lineAllClient{
+/* .lineAllClient{
     display: flex;
     padding-top:50px;
     margin-left:10px;
     width:70%;  
-}
+} */
 
 
-.modifBtn{  
+/* .modifBtn{  
     color: white;
     text-align: center;  
     border-radius: 5px; 
-}
+} */
 
-.eliminaBtn{  
+/* .eliminaBtn{  
     text-align: center;  
     border-radius: 5px; 
-}
+} */
 
 
-h5{
+/* h5{
     margin-left:500px;
 }
 
@@ -94,26 +94,26 @@ h5{
 
 .modifInput{
     margin-left:260px;
-}
+} */
 
-.botonNuevo{
+/* .botonNuevo{
     margin-left: 25%;
-}
+} */
 
-.castillo{
+/* .castillo{
    display: flex;
    margin: auto;
    width: 34%;
    height: 24%;
-}
+} */
 
-.bienvenidos{
+/* .bienvenidos{
    color:whitesmoke;
    font-size: 340%;
    margin: auto;
-}
+} */
 
-.imagen-fluid, .nav-link{
+/* .imagen-fluid, .nav-link{
    margin-left: 50px;
    margin-right:1px;
 }
@@ -125,58 +125,48 @@ h5{
     margin-right: 30px;
     width: 7%; 
     height: auto;
-}
+} */
 
 .login {
     color:whitesmoke;
     background-color:transparent;
     font-size: 20px;
     width: 7%;
-    height: auto;  
-    
+    height: auto; 
 }
 
-.margenEnd{
+/* .margenEnd{
     margin-left: 40%;
     
-}
+}*/
+
 .foto{
     width: 40%;
-    margin-left:25%;
-   
+    margin-left:25%;  
 }
 
-.eneable{
+/* .eneable{
     opacity:1;
 }
 
 .disable{
     opacity:0;
-}
-
-.centrar{
-    margin:auto;
-}
-
-/* repetida */
-.displayFlex{
-    display: flex;
-}
+}  */
 
 .displayInLineFlex{
     display:inline-flex;
 }
 
 
-.box-carrito{
+/* .box-carrito{
     margin-top:45px;
-}
+} */
 
 .google{
     margin-left: 75%;
 }
 
-.btn-redes{
+/* .btn-redes{
     color:#7d8289;
     font-weight: 200;
     height: 40px;
@@ -196,19 +186,19 @@ h5{
     height: auto;
     width: auto;
     margin-left: 3rem;
-  }
+  } */
 
-  .img-cart{
+  /* .img-cart{
     width:30%;
     height: 30%;
-  }
+  }*/
 
   .img-search-news{
     width:70%;
     height: 70%;
   }
 
-  .cart-titulo{
+  /* .cart-titulo{
     text-align: left;
     margin-left:33%
   }
@@ -216,20 +206,20 @@ h5{
   .cart-total-button{
     display: inline-flex;
     align-items: center;
-  }
+  } */ 
 
   .displayFlex{
     display:Flex;
 }
 
-.responsive{
+/* .responsive{
     display:flex;
     flex-wrap: wrap;
 }
 
 .itemResponsive{
     flex: 150px  1   ;
-}
+}*/
 
 .text{
     margin:auto;
@@ -237,12 +227,12 @@ h5{
     margin-top:-1%;
 }
 
-.textTitulo{
+/* .textTitulo{
     color:black;
     margin-left:3rem;
-}
+}  */
 
-.btnNvo{
+/* .btnNvo{
     margin-left:53rem;
     margin-top:-3.5%;
 }
@@ -251,7 +241,7 @@ h5{
     display:inline-block;
     text-align:center;
     height:5rem;
-}
+} */
 
 .pBtnDesplegable{
     margin-bottom:-1rem;
@@ -265,16 +255,17 @@ h5{
     height:34px;
 }
 
-.lineAll{
+/* .lineAll{
     margin:auto;
     width:90%;  
-}
+}*/
+
 
 .productDescrip{
     width:max-content;
 }
 
-.justify{
+/* .justify{
     text-justify: baseline;
 }
 
@@ -285,18 +276,18 @@ h5{
 
 .medio{
     margin-left: 20%;
-}
+} */ 
 
 .search-align{
     text-align: left;
     margin: 0;
 }
 
-.ancho{
+/* .ancho{
     min-width: 300px;
-}
+} */
 
-.btnBuscaxPeli{
+/* .btnBuscaxPeli{
     display:inline-block;
     text-align:center;
     margin:auto;
@@ -309,9 +300,9 @@ h5{
 
 .bgWhitesmoke{
     background-color:whitesmoke;
-}
+} */
 
-.containerAllMovie{
+/* .containerAllMovie{
     display:inline-block;
     margin:auto;
 }
@@ -327,9 +318,9 @@ h5{
 .marginAutoWidthAuto{
     margin:auto;
     width:auto;
-}
+} */
 
-.margen{
+/* .margen{
     margin-left: 1.3%;
     margin-right: 1.3%;
 }
@@ -339,7 +330,7 @@ h5{
     margin:auto;
     background-color:whitesmoke;
     box-shadow:3px 0px 5px 3px grey; 
-}
+}*/
 
 .containerEditGender{
     width:32rem;
@@ -348,7 +339,7 @@ h5{
     background-color:whitesmoke;
     box-shadow:3px 0px 5px 3px grey; 
 }
-
+/*
 .divEditChar{
     margin-left:3rem;
     margin-bottom:0.5rem;
@@ -358,12 +349,12 @@ h5{
     margin:auto;
     width:20rem;
     display:flex; 
-}
+} */
 
-.list-group-flush-char{
+/* .list-group-flush-char{
     margin:auto;
     display:flex; 
-}
+} */
 
 .list-group-char{
     margin:1rem;
@@ -371,7 +362,7 @@ h5{
     display:block; 
 }
 
-.list-group-movie{
+/* .list-group-movie{
     margin:1rem;
     width:59rem;
     display:block; 
@@ -386,7 +377,7 @@ h5{
 
 .input-edit-char{
     text-align: center;
-}
+} */
 
 .colorBlack{
     color:black;
@@ -397,7 +388,7 @@ h5{
     height:auto;
 }
 
-.containerEditMovie{
+/* .containerEditMovie{
     width:54rem;
     margin:auto;
     box-shadow:3px 0px 5px 3px grey; 
@@ -414,7 +405,7 @@ h5{
     margin:auto;
     width:24rem;
     display:flex; 
-}
+} */
 
 .renglon{  
     width:19rem ;   
@@ -425,15 +416,15 @@ h5{
     width:5% ; 
 }
 
-.renglonMovie{  
+/* .renglonMovie{  
     width:75rem ;   
 }
 
 .inputMovie{  
     width:13rem ;   
-}
+} */
 
-.inputMovie-artistas{  
+/* .inputMovie-artistas{  
     width:46rem ;   
 }
 
@@ -448,9 +439,9 @@ h5{
 .pEdit{
     font-size: 110%;
     color:dimgray
-}
+} */
 
-.botonPagar{
+/* .botonPagar{
     margin:10px;
     color:green;
     font-size: 20px;
@@ -466,10 +457,10 @@ h5{
     padding: 10px;
     border-color: white;
     box-shadow:3px 0px 5px 3px grey; 
-}
+} */
 
 
-.botonResiduos{
+/* .botonResiduos{
     font-size:25px;
     color:red;
     border-color:white;
@@ -482,9 +473,9 @@ h5{
 
 .thead-carrito{
     text-align: center;
-}
+} */
 
-.botonAgregar{
+/* .botonAgregar{
     font-size:10px; 
     color:green;
     border:none;
@@ -496,11 +487,19 @@ h5{
     padding:25px;
     margin-left:45px;
     text-align: justify;
-}
-
+} */
 
 .centrar{
+    margin:auto;
+}
+
+/* .centrar{
     text-align: center;
+} */
+
+.centrarTexto{
+    text-align: center;
+    justify-content: center;
 }
 
 .colorBlanco{
@@ -511,7 +510,7 @@ h5{
     color:black;
 }
 
-.card{
+/* .card{
     height:25rem;
     width:18rem;
     box-shadow:3px 0px 5px 3px grey;
@@ -519,12 +518,8 @@ h5{
     margin: auto;
     margin-left:1%;
     margin-bottom:0.5%;
-}
+} */
 
-.centrar{
-    text-align: center;
-    justify-content: center;
-}
 
 .imagenChar{
     display:flex;
@@ -532,7 +527,7 @@ h5{
     height:100px; 
 }
 
-.boton{
+/* .boton{
     margin-left: 10%;
 }
 
@@ -541,10 +536,10 @@ h5{
     margin:auto;
     height:6rem;
     width: 19rem; 
-}
+} */
 
 
-.renglonLine{ 
+/* .renglonLine{ 
     margin-right:1rem;
     margin-left:1rem; 
 }
@@ -552,12 +547,12 @@ h5{
 .box-card{
     height: auto;
     min-height: 380px;
-}
+} */
 
 /* repetida */
-.display{
+/* .display{
     display: block;
-}
+} */
 
 .alinear{
     margin-left:-10px;
@@ -568,15 +563,15 @@ h5{
  width: 90%;
 }
 
-.tablaPedidosProductos{
+/* .tablaPedidosProductos{
  width: 50%;
 }
 
 .tablaMisPedidos{
 border:1px solid white;
-}
+} */
 
-.myOrderButton{
+/* .myOrderButton{
     margin-right: 4rem;
 }
 
@@ -595,9 +590,9 @@ border:1px solid white;
       font: 0.1rem sans-serif;
       display:inline-flex;
       margin-right: 1rem;
-  }
+  } */
   
-  .cardOne{
+  /* .cardOne{
       margin-top: 3.7%
   }
   
@@ -612,14 +607,14 @@ border:1px solid white;
   .list-dimentions{
       width: auto;
       height: auto;
-  }
+  } */
   
   /* repetida */
   .displayBlock{ 
       display: block;
   }
   
-  .movies-list{
+  /* .movies-list{
       background-color: whitesmoke;
       width: 100%;
       box-shadow:3px 0px 5px 3px grey; 
@@ -630,9 +625,9 @@ border:1px solid white;
       border:1px solid grey;
       margin-left: 10px;
       margin-right: 10px;
-  }
+  } */
   
-  .centra-dato{
+  /* .centra-dato{
       font-size: medium;
       text-align: center;
       border:1px solid grey;
@@ -648,8 +643,8 @@ border:1px solid white;
   .ancho{
       width: 10%;
   }
-  
-  .h2{
+   */
+  /* .h2{
       color:black;
       font-size: 140%;
       background-color:whitesmoke;
@@ -661,7 +656,7 @@ border:1px solid white;
   
   .textWhite{
       color:white;
-  }
+  } */
 
   .homeBgImage {
     width: 92.3%;
@@ -673,7 +668,7 @@ border:1px solid white;
   }
 
   .borderRounded{
-    border-radius: 6px;
+    border-radius:3px;
   }
 
   .buttonBlue{
@@ -689,7 +684,29 @@ border:1px solid white;
 
   .buttonBlue:hover {
     color:#fff;
-    background-color:rgb(2, 117, 216);
+    background-color:rgb(2, 117, 216); 
 }
 
+.footer{
+    background-color:#0e0d0d;
+    color:white;
+    font-size: small;
+    text-align: center;
+}
 
+.btn-derecha{
+    margin-left: 70%;
+   }
+
+.stripe{
+    width: 30%;
+    border:1px solid #687ea3;
+    padding:15px;
+    border-radius: 10px;
+  }
+
+  .footerP {
+    font-size: calc(4px + 1rem);
+    margin-left: 1%;
+    margin-top: 2.3%;
+  }

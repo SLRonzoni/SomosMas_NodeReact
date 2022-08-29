@@ -1,12 +1,12 @@
 import React from "react";
 import { Input,InputGroup,Label} from "./ElementsFormStyles";
 
-const InputForm = ({type,label,name,encType,value,onBlur,onChange}) => {
+const InputForm = ({type,label,name,encType,value,onBlur,onChange,defaultValue,placeholder}) => {
   
 
   return (
     <div>
-      <Label htmlFor={name}>{label} </Label>
+      <Label htmlFor={name}>{label} {defaultValue} </Label>
       <InputGroup>
         <Input
           className="form-control"
@@ -14,6 +14,7 @@ const InputForm = ({type,label,name,encType,value,onBlur,onChange}) => {
           encType={encType}
           name={name}
           label={label} 
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={onBlur} 

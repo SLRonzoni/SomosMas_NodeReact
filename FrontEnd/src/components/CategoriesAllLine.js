@@ -1,21 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
+import {formatDate} from './helpers/FormatDate'
 
 const CategoriesAllLine = ({id, name, image, description, create,update,remove}) =>{
   
-    //FORMAT DATE
-    function padTo2Digits(num) {
-        return num.toString().padStart(2, '0');
-      }
-      function formatDate(date) {
-        return [
-          padTo2Digits(date.getDate()),
-          padTo2Digits(date.getMonth() + 1),
-          date.getFullYear(),
-        ].join('/');
-      }
-
     return (
         <tr   >
             <td className="renglonNro">{id}</td>

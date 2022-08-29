@@ -1,4 +1,15 @@
-Modificaciones al proyecto original :
+Modificaciones al proyecto original ( back end ):
+
+* SERVICES S3.JS
+  //HABILITAR CUANDO HAYA UNA CUENTA AMAZON DONDE SUBIR LAS IMAGENES  
+    const upload= await storage.upload(params).promise()
+    return  upload.Location  
+
+* CATEGORIES CONTROLLER, UPDATE
+  //MODIFICAR CUANDO HAYA UNA CUENTA AMAZON DONDE SUBIR LAS IMAGENES  
+   try{
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
 
 * NEWS ROUTES, GET , se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
 
@@ -12,7 +23,11 @@ Modificaciones al proyecto original :
 * CATEGORIES DOCUMENTATION, se adaptó create y update para que puedan recibir archivos de imagen y se cambió nombre 
                             de rutas en CREATE,UPDATE y DELETE
 * CATEGORIES CONTROLLER, GET ALL se eliminó atributo de paginación "name"
+* CATEGORIES CONTROLLER, se sgregó el servicio GETONECATEGORYBYNAME
 * CATEGORIES ROUTES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se cambió nombre de 
                             rutas en CREATE,UPDATE y DELETE
 * CATEGORIES MODEL, se modificó image allowNull:false
+* CATEGORIES ROUTES, se agregó una ruta get by name
+
+* CATEGORIES SEEDERS, se cambiaron numeros por letras, en los nombres
 

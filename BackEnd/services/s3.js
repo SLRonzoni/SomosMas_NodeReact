@@ -22,9 +22,12 @@ const uploadToBucket = async (file)=>{
     ACL: 'public-read',
     ContentType: file.mimetype
    }
-   const upload= await storage.upload(params).promise()
-   return  upload.Location  
+
+//HABILITAR CUANDO HAYA UNA CUENTA DONDE SUBIR LAS IMAGENES  
+//const upload= await storage.upload(params).promise()
+//return  upload.Location  
 }
+
 
 module.exports= {
     uploadToBucket,

@@ -8,7 +8,7 @@ const getAllCategories= async (req, res) => {
   try{
      const paginated=new ModelHelper(ModelCategories)
      const {page}=req.query
-     const pageLimit=10 
+     const pageLimit=100
      //const attributes=['name']
 
      const categoriesPaginated= await paginated.findAndPaginate(page,pageLimit)
@@ -23,6 +23,20 @@ const getAllCategories= async (req, res) => {
 
 const getOneCategory= async (req, res) => {                          
   return baseController.getModelById(req, res, ModelCategories)
+};
+
+const getOneCategoryByName= async (req, res) => {    
+  const paramsName = req.params.name;
+  try{
+    const category= await ModelCategories.findOne({where:{name:paramsName}})
+    if(!category){
+      return res.status(404).json('name not found')
+    } else{
+      res.status(200).json({category:category.dataValues})
+    }
+  } catch(error) {
+    res.status(500).json(error)
+  }     
 };
 
 const createCategory= async (req,res)=> { 
@@ -43,7 +57,9 @@ const updateCategory=async (req,res)=>{
   let img = req.files.image;
   let regularImglocation;
   try{
-    regularImglocation = await uploadToBucket(img);
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
+   
     const inputVars={name:req.body.name,
                      description:req.body.description,
                      image:regularImglocation} 
@@ -75,6 +91,7 @@ const deleteCategory=async (req,res)=>{
 
 module.exports = {getAllCategories,
                   getOneCategory,
+                  getOneCategoryByName,
                   createCategory,
                   updateCategory,
                   deleteCategory};

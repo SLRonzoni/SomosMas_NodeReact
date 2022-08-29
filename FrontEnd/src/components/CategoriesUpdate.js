@@ -6,14 +6,14 @@ import { Formik } from 'formik';
 import { Link } from "react-router-dom";
 import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
 import  InputForm  from './elements/InputForm';
-import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription} from './helpers/validationMessages';
+import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
 
 
 const FormCategory = ({match,history}) => {
 
-const id  = match.params.id;
+  const id  = match.params.id;
 
   const [categories, setCategories] = useState({ 
           id:"", 
@@ -21,38 +21,10 @@ const id  = match.params.id;
           image:"",
           description:""          
         });
+    
+  const [duplicated,setDuplicated]=useState('')
 
-  let formOk='';
-  
-
-  const send = (values) => {
-    let body=values
-console.log('body',values)    
-    //UPDATE  
-    const updateCategory = async () => {
-      await axiosClient
-        .put(`/categories/update/${id}`,body)
-        .then(respuesta => {
-          if (respuesta.status===201) {
-            setCategories(respuesta.data);
-            Swal.fire({
-              icon: "success",
-              title: "Actualización de categoría exitosa !",
-              timer:1000,
-              showConfirmButton: false
-          });
-          history.push("/CategoriesAll");
-          }
-        })
-        .catch(function (error) {
-          console.log(error)
-        });
-    };
-    updateCategory();
-  };  
-  
- 
- //
+  //DEFAULT VALUES
   useEffect(() => {
     const getCategory = async () => {
       await axiosClient.get(`/categories/${id}`)
@@ -64,63 +36,134 @@ console.log('body',values)
       }));
     };
     getCategory();
-  }, [id]);
+  },[]);
+
+
+  //SEND
+  const sendForm = (values) => {   
+    //UPDATE     
+    let body = new FormData()
+    body.append("name",values.name);
+    body.append("description",values.description);
+    body.append("image",values.image);
   
-
-  //FORMIK INITIAL VALUES
-  let initialValues={name:categories.name,
-                     description:categories.description}
-  
-
-  //FORMIK VALIDATIONS
- let validations=(values) =>{
- let errors = {name: '', image:'',description:'',  
-               icoNname:'', icoNimage:'', icoNdescription:''};  
-
-  if (!values.name) {
-    errors.name=msgRequired
+    const updateCategory = async () => {
+      await axiosClient
+        .put(`/categories/update/${id}`,body)
+        .then(respuesta => {
+          if (respuesta.status===201) {
+            setCategories(respuesta.data);
+            Swal.fire({
+              icon: "success",
+              title: "Actualización de categoría exitosa !",
+              timer:1000,
+              showConfirmButton: false
+            });
+          history.push("/CategoriesAll");
+          }
+        })
+        .catch(function (error) {
+          console.log(error)
+        });
+    };
+    updateCategory();
   };
-  if (!regexCategoryName.test(values.name)) {
-      errors.name=msgValidationCategoryName
-      errors.icoNname= '❌'
-  } else {
-      errors.icoNname= '✔️'
-      formOk='v'
+ 
+ 
+
+ 
+  //Repet Values
+  const repeat= (searchName,errors)=>{
+    if (errors.formOk !=='v'){
+      getCategoryByName(searchName)
+    }
+  };
+
+  const getCategoryByName = async (searchName) => {
+    await axiosClient.get(`/categories/byName/${searchName}`)
+    .then((respuesta) => {
+      if(respuesta.status===404){
+        setDuplicated(' ')
+      } else {
+        setDuplicated(respuesta.data.category.name)
+      }
+    })
+    .catch((error=>{
+      console.log(error);
+    }));
   }; 
 
-  if (!regexCategoryDescription.test(values.description)) {
-    errors.description=msgValidationCategoryDescription
-    errors.icoNdescription= '❌'
-  } else {
-    errors.icoNdescription= '✔️'
-    formOk='v'
-  };
 
-  if(!values.image) {
-    errors.image=msgRequired
-    errors.icoNimage= '❌'
-  } else {
-    errors.icoNimage= '✔️'
-    formOk='v'
+  
+  //FORMIK INITIAL VALUES
+  console.log(categories.name)
+  let initialValues={name:categories.name,
+                     description:categories.description}
+
+  //FORMIK VALIDATIONS 
+  let validateInputs=(values) =>{   
+  
+    let errors = {name: '', image:'',description:'',  
+                icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
+                
+    if (!values.name) {
+      errors.name=msgRequired
+      errors.icoNname= '❌'
+    } else {
+      let searchName=values.name
+      repeat(searchName, errors)
+      if(duplicated===searchName){
+        errors.name=msgValidationDuplicated
+        errors.icoNname= '❌'
+      } else {
+          if (!regexCategoryName.test(values.name)) {
+            errors.name=msgValidationCategoryName
+            errors.icoNname= '❌'
+          } else {
+            errors.icoNname= '✔️'
+          }
+      }
+    }
+
+    if (!values.description) {
+      values.description=categories.description
+    };
+
+    if (!regexCategoryDescription.test(values.description)) {
+      errors.description=msgValidationCategoryDescription
+      errors.icoNdescription= '❌'
+    } else {
+      errors.icoNdescription= '✔️'
+    };
+
+    if(!values.image) {
+      errors.image=msgRequired
+      errors.icoNimage= '❌'
+    } else {
+      errors.icoNimage= '✔️'
+    };
+
+    if(errors.name || errors.description || errors.image){
+      errors.formOk='f'
+    } else {
+      errors.formOk='v'
+    };
+                                                  console.log(errors)
+    return errors
   }
-  return errors
-}
-
 
   //FORM
   return (
     <>
     <Formik
-        initialValues={initialValues}           
-        validate={validations}
-        onSubmit={(values)=>{         
-        send(values)
-        }}
+         initialValues={initialValues}           
+         validate={validateInputs}
+         onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form onSubmit={handleSubmit} className="container-sm col-6 col-md-4 bg-light">
+         <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
             <br></br>
-            <h3 className="centrar">Ingrese nuevos valores ...</h3>
+            <h3 className="centrarTexto">Ingrese nuevos valores ...</h3>
             <br></br>
             <div >
 
@@ -129,16 +172,18 @@ console.log('body',values)
                   <InputForm
                     type="text"
                     name="name"
-                    label="Nombre :"
+                    label="Nombre actual : " 
+                    defaultValue={categories.name}
+                    placeholder="Ingrese nuevo nombre"
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
                   {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
                 </div>
-                {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText>}
+                {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
               </div>
-
+              <br></br>
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -153,12 +198,15 @@ console.log('body',values)
                 </div>
                 {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
               </div>
+              <br></br>
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
                     type="text"
                     name="description"
-                    label="Descripción :"
+                    label="Descripción actual : "
+                    defaultValue={categories.description}
+                    placeholder="Ingrese nueva descripción"
                     value={values.description}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -167,8 +215,8 @@ console.log('body',values)
                 </div>
                 {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
               </div>
-
-              <div className="centrar displayFlex">
+              <br></br>
+              <div className="centrarTexto displayFlex">
                 <div>
                   <Label htmlFor="name">Creada  :</Label>
                   <span className="" >{formatDate(new Date(categories.createdAt))}</span>
@@ -179,19 +227,18 @@ console.log('body',values)
                 </div>
               </div>
             </div>
-
-            { formOk !== "v" && formOk!=='' && 
+            { errors.formOk === "f" && 
               <MsjWrong> 
-              <p className="centrar">
+              <span className="centrarTexto">
                 <br /> Algun dato es incorrecto. 
                 <br/> Por favor complete el formulario correctamente
-              </p>        
+              </span>        
               </MsjWrong>
-              }
-            
+            }
+           
             <div>
               <br></br>
-              <div className="centrar">
+              <div className="centrarTexto">
                   <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                   <Link 
                     to={"/CategoriesAll"}
@@ -201,6 +248,7 @@ console.log('body',values)
                   </Link>
               </div> 
             </div>
+            
           </form>
       )}
     </Formik>

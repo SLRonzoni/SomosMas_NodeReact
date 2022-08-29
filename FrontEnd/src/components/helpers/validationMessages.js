@@ -2,6 +2,8 @@
 
 const msgRequired="El dato no puede estar vacío"
 
+const msgValidationDuplicated= "Ya existe un dato con el mismo nombre"
+
 const msgValidationUserName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
 
 const msgValidationUserEmail="Puede contener entre 4 y 12 dígitos"
@@ -19,6 +21,7 @@ const msgValidationCategoryImage="Debe ser un archivo de imágen"
 
 
 export { msgRequired,
+    msgValidationDuplicated,
          msgValidationUserName,
          msgValidationUserEmail,
          msgValidationUserPassword,

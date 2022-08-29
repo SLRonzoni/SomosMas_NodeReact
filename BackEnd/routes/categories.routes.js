@@ -7,6 +7,7 @@ const { validateCategories }=require('../validators')
 
 const {getAllCategories,
        getOneCategory,
+       getOneCategoryByName,
        createCategory,
        updateCategory,
        deleteCategory}=(require('../controllers/categories.controller'))
@@ -18,6 +19,8 @@ router.get("/",  getAllCategories);
 router.post("/create", optionsFileUpload ,validateCategories, createCategory);
 
 router.get("/:id", idExists, getOneCategory);
+
+router.get("/byName/:name", getOneCategoryByName);
 
 router.put("/update/:id", idExists, optionsFileUpload ,validateCategories, updateCategory);
 

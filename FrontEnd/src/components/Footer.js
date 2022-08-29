@@ -1,10 +1,11 @@
-import "./styles/styles.css" ;
+import "./styles/styles.css";
 
 function Footer () {
     return (
-     <footer >
-        <nav >
-            <p> 👉 Email : somos.mas.97@gmail.com 
+     <footer>
+        <nav>
+            <p className="footerP"> 
+                👉 Email : somos.mas.97@gmail.com 
                 <span className="colorBlack"> ......... </span>
                 👉 Teléfono : 011-6011-2988
                 <span className="colorBlack"> ......... </span>

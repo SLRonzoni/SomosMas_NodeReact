@@ -79,7 +79,7 @@ const Login =()=>{
       <div className="container-sm col-6 col-md-4 bg-light" >  
  
         <div className="displayFlex" >  
-          <div className="center">
+          <div className="centrar">
            <LoginGoogle> </LoginGoogle>
           </div>
           <br/>

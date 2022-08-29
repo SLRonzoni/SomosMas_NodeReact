@@ -5,11 +5,11 @@
   padding: 0px;
   font-family: "UnifrakturMaguntia", cursiva;
 }
-
+/* 
 .contenedorApp {
   height: 640px;
-}
-
+} */
+/* 
 .App-logo {
   border: transparent;
   height: 3.7%;
@@ -24,17 +24,17 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #3c4057;
   width: 100%;
   display: flex;
   flex-direction: row;
   text-align: center;
   color: #ffd6ae;
-}
-
+} */
+/* 
 .tituloHeader,
 .subtituloHeader {
   width: 100%;
@@ -42,14 +42,9 @@
   margin-left: 225%;
   margin-top: -30px;
   justify-content: center;
-}
-
-p {
-  font-size: calc(4px + 1rem);
-  margin-left: 1%;
-  margin-top: 2.3%;
-}
-
+  font-size: 25px;
+} */
+/* 
 @keyframes App-logo-spin {
   from {
     transform: rotate(180deg);
@@ -57,28 +52,14 @@ p {
   to {
     transform: rotate(360deg);
   }
-}
-
+} */
+/* 
 @media only screen and (max-width: 1366px) {
   .App-logo {
     margin-top: 13px;
   }
+  
+} */
 
-  .tituloHeader,
-  .subtituloHeader {
-    font-size: 25px;
-    margin-left: 205%;
-  }
-}
 
-.footer{
-  font-size:7px;
-  height: 80px;
-}
 
-.stripe{
-  width: 30%;
-  border:1px solid #687ea3;
-  padding:15px;
-  border-radius: 10px;
-}
