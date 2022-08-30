@@ -68,11 +68,8 @@ const FormCategory = ({match,history}) => {
     };
     updateCategory();
   };
- 
- 
-
- 
-  //Repet Values
+  
+  //DUPLICATED NAME
   const repeat= (searchName,errors)=>{
     if (errors.formOk !=='v'){
       getCategoryByName(searchName)
@@ -96,7 +93,6 @@ const FormCategory = ({match,history}) => {
 
   
   //FORMIK INITIAL VALUES
-  console.log(categories.name)
   let initialValues={name:categories.name,
                      description:categories.description}
 
@@ -109,29 +105,37 @@ const FormCategory = ({match,history}) => {
     if (!values.name) {
       errors.name=msgRequired
       errors.icoNname= '❌'
+      return errors
+    };
+
+    if (!regexCategoryName.test(values.name)) {
+      errors.name=msgValidationCategoryName
+      errors.icoNname= '❌'
+      return errors
     } else {
-      let searchName=values.name
-      repeat(searchName, errors)
-      if(duplicated===searchName){
-        errors.name=msgValidationDuplicated
-        errors.icoNname= '❌'
-      } else {
-          if (!regexCategoryName.test(values.name)) {
-            errors.name=msgValidationCategoryName
-            errors.icoNname= '❌'
-          } else {
-            errors.icoNname= '✔️'
-          }
-      }
-    }
+      errors.icoNname= '✔️'
+    };
+   
+    
+    let searchName=values.name
+    repeat(searchName, errors)
+    if(duplicated===searchName){
+      errors.name=msgValidationDuplicated
+      errors.icoNname= '❌'         
+      return errors
+    } else {
+      errors.icoNname= '✔️'
+    };
+  
 
     if (!values.description) {
       values.description=categories.description
-    };
+    }; 
 
     if (!regexCategoryDescription.test(values.description)) {
       errors.description=msgValidationCategoryDescription
       errors.icoNdescription= '❌'
+       return errors
     } else {
       errors.icoNdescription= '✔️'
     };
@@ -139,6 +143,7 @@ const FormCategory = ({match,history}) => {
     if(!values.image) {
       errors.image=msgRequired
       errors.icoNimage= '❌'
+       return errors
     } else {
       errors.icoNimage= '✔️'
     };
@@ -148,8 +153,7 @@ const FormCategory = ({match,history}) => {
     } else {
       errors.formOk='v'
     };
-                                                  console.log(errors)
-    return errors
+                      
   }
 
   //FORM
