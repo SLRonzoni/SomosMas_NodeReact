@@ -1,6 +1,8 @@
 
 //REGULAR EXPRESSIONS
-const regexUserName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+const regexUserfirstName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+
+const regexUserLastName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
 
 const regexUserEmail=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 
@@ -46,6 +48,6 @@ const charactersOk = {
 
 }
 
-export { regexUserName,regexUserPassword,regexUserEmail,regexUserPhone,
+export { regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
 	     regexCategoryName,regexCategoryDescription,
 	     charactersOk };

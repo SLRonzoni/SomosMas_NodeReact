@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import {BrowserRouter,Switch,Route} from 'react-router-dom';
 
-import Register from './components/Register';
+
 import Login from './components/Login';
 import LoginGoogle from './components/LoginGoogle';
 import Header from './components/Header';
@@ -15,6 +15,11 @@ import CategoriesAll from './components/CategoriesAll';
 import CategoriesOne from './components/CategoriesOne';
 import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
+
+import UsersAll from './components/UsersAll';
+// import UsersOne from './components/UsersOne';
+import Register from './components/Register';
+import UsersUpdate from './components/UsersUpdate';
 
 
 function App() {
@@ -47,6 +52,12 @@ function App() {
         <Route exact path='/CategoriesCreate' component={CategoriesCreate}/>
         <Route exact path='/categories/update/:id' component={CategoriesUpdate}/>
         <Route exact path='/categories/del/:id' component={CategoriesAll}/>
+
+        <Route exact path='/UsersAll' component={UsersAll}/>
+        {/* <Route exact path='/users/:id' component={UsersOne}/> */}
+        <Route exact path='/Register' component={Register}/>
+        <Route exact path='/users/update/:id' component={UsersUpdate}/>
+       
 
          
       </main>

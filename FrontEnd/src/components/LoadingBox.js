@@ -4,8 +4,8 @@ import './styles/styles.css';
 export default function LoadingBox(){
 
     return (
-        <Spinner animation="border" role="status" >
-            <span className="=visually-hidden centrar">Cargando...</span>
+        <Spinner className="loadingBox" animation="border" role="status" >
+            <h4 className="=visually-hidden  ">Cargando...</h4>
         </Spinner>
     );
 }

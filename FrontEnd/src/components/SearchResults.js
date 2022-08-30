@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import axiosClient from '../configuration/axiosClient';
+import {formatDate} from './helpers/FormatDate';
 
 function WordSearchResults () {
 
@@ -61,18 +62,7 @@ function WordSearchResults () {
     findUserName();
     findCategoryName();
 
-    //FORMAT DATE
-    function padTo2Digits(num) {
-      return num.toString().padStart(2, '0');
-    }
-    function formatDate(date) {
-      return [
-        padTo2Digits(date.getDate()),
-        padTo2Digits(date.getMonth() + 1),
-        date.getFullYear(),
-      ].join('/');
-    }
-
+  
     return(
        <>
        <div className='container centrar'>
@@ -104,9 +94,9 @@ function WordSearchResults () {
                       <table className="table table-striped table-responsive  ">
                         <thead>
                           <tr>
-                            <th className="tituloItem "> Usuario  </th>
-                            <th className="tituloItem "> Comentario </th>
-                            <th className="tituloItem "> Creado</th>
+                            <th className="titleItem "> Usuario  </th>
+                            <th className="titleItem "> Comentario </th>
+                            <th className="titleItem "> Creado</th>
                           </tr>
                         </thead> 
 

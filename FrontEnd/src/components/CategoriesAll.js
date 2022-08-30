@@ -5,6 +5,7 @@ import CategoriesAllLine from './CategoriesAllLine';
 import Swal from "sweetalert2";
 import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
+import { Container } from "react-bootstrap";
 
 const CategoriesAll = (props) => { 
 
@@ -12,20 +13,23 @@ const CategoriesAll = (props) => {
   
   const getCategories = async () => {     
      await axiosClient.get(`/categories`)
-      .then( respuesta => {
-        if(respuesta.status!==200){
+      .then( response => {
+        if(response.status!==200){
           Swal.fire({
             icon: 'error', 
             title:"Error !",
-              text: respuesta.message || respuesta.error.message
+              text: response.message || response.error.message
           });
         props.history.push('/');
         } 
-        setCategories(respuesta.data.categories);   
+        setCategories(response.data.categories);   
       }) 
+      .catch(function (error) {
+        console.log(error)
+      });
   };
 
-  //Eliminar producto 👍
+  //DELETE
   const confirmRemove = (id) => {
     Swal.fire({
       title: "Está seguro de eliminar esta categoría ? ",
@@ -45,10 +49,12 @@ const CategoriesAll = (props) => {
   const removing = async (id) => {
     await axiosClient
       .delete(`/categories/del/${id}`)
-      .then((respuesta) => {
+      .then((response) => {
         Swal.fire({
           icon: "success",
           title: "Categoría Eliminada !",
+          timer:1000,
+          showConfirmButton: false
         });
         getCategories();
       })
@@ -66,19 +72,19 @@ const CategoriesAll = (props) => {
   },[]);
 
 
-  //Obtener datos FILTRADOS x ID
+  //FILTER BY ID
   let filterBy;
   const getFilterCategoryId = async () => {
       await axiosClient
       .get(`/categories/`+filterBy)
-      .then((respuesta) => {
-        setCategories(respuesta.data)
+      .then((response) => {
+        setCategories(response.data)
       })
       .catch(function (error) {
         console.log(error)
       });
   };
-  //evento de seleccion de filtro  
+  
     const changesId=(e)=>{
         filterBy=e.target.value;
         if(filterBy === 'todos'){
@@ -91,7 +97,7 @@ const CategoriesAll = (props) => {
  
   const showCategories = (props) => {
     return (
-      <tbody>
+      <tbody >
         {categories.map((oneCategory) => (
           <CategoriesAllLine 
             key={oneCategory.id}
@@ -112,6 +118,7 @@ const CategoriesAll = (props) => {
 
   return (
     <Fragment>
+      <Container>
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -122,19 +129,19 @@ const CategoriesAll = (props) => {
       {categories && 
       <>
       <div>
-        <h1 className="tituloTabla">Listado de Categorías</h1>
+        <h1 >Listado de Categorías</h1>
         <p>{}</p>
       </div>
       <br></br>      
-        <div className="containerBtnDesplegable displayFlex " >
+        <div className="" >
           
-          <div className="btnBuscaxNombre" >
+          <div >
             <p className="pBtnDesplegable " >Buscar por nombre de categoría</p>
               <select
                 type="text"
                 name="categoryId"
                 onChange={changesId}
-                className="m-3 mr-md-1  selectBtnDesplegable form-select "
+                className="m-3 selectBtnDesplegable form-select "
               >  
                 {categories.map(oneCategory => (
                   <option key={oneCategory.name} value={oneCategory.name}>
@@ -146,18 +153,18 @@ const CategoriesAll = (props) => {
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered ">
+      <table className="table table-striped table-responsive table-bordered">
         <thead>
           <tr>
-            <th className="tituloItem "> Id </th>
+            <th className="tituloItem centerText "> Id </th>
             <th className="tituloItem "> Categoría </th>
-            <th className="tituloItem "> Imágen </th>
+            <th className="tituloItem centerText"> Imágen </th>
             <th className="tituloItem "> Descripción </th>
-            <th className="tituloItem "> Creado</th>
-            <th className="tituloItem "> Actualizado </th>
+            <th className="tituloItem centerText"> Creado</th>
+            <th className="tituloItem centerText"> Actualizado </th>
 
-            <th><Link to={'/CategoriesCreate'} className=" m-3 mr-md-2 btn btn-success "
-                  role="button" aria-pressed="true"  > Nueva categoría </Link> 
+            <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
+                  role="button" > Agregar </Link> 
             </th>
           </tr>
         </thead>
@@ -165,6 +172,7 @@ const CategoriesAll = (props) => {
       </table>
       </>
       } 
+      </Container>
     </Fragment>
   );
 };

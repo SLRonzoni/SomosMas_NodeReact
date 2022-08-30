@@ -19,8 +19,8 @@ const CategoriesOne = (props) => {
   useEffect(() => {
     const getCategories = async () => {
       await axiosClient.get(`/categories/update/${id}`)
-      .then((respuesta) => {
-          setCategories(respuesta.data);
+      .then((response) => {
+          setCategories(response.data);
           
       })
       .catch((error=>{
@@ -38,12 +38,12 @@ const CategoriesOne = (props) => {
       <br></br> 
         <div >
         <div className="containerEditGender">         
-           <Card.Text className="card-text-edit-gender centrar"> 
+           <Card.Text className="card-text-edit-gender center"> 
            <br></br>
            <h5 className="text colorBlack" >Categoría </h5>   
            </Card.Text>
            
-           <Card.Img className='foto 'src={categories.image}   alt="categoria"></Card.Img>
+           <Card.Img className='photo 'src={categories.image}   alt="categoria"></Card.Img>
             <div className="list-group-char">
                 <div className="list-group-char" >
                   Categoría :

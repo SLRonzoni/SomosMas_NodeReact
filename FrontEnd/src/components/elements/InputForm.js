@@ -6,7 +6,8 @@ const InputForm = ({type,label,name,encType,value,onBlur,onChange,defaultValue,p
 
   return (
     <div>
-      <Label htmlFor={name}>{label} {defaultValue} </Label>
+      <Label htmlFor={name}>{label}  </Label>
+      <p className="pUpdateCateg"><em>{defaultValue} </em> </p>
       <InputGroup>
         <Input
           className="form-control"

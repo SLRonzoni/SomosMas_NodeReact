@@ -87,7 +87,7 @@ function RespuestaGoogle() {
   return (
     <div>
         <GoogleLogin
-          className='m-3 mr-md-2 btn-redes centrar '
+          className='m-3 mr-md-2 btn-redes center '
           clientId='637816611326-evem7ob7602jrgevh5ji7bltrug97tn7.apps.googleusercontent.com'
           onSuccess={onSuccess}
           onFailure={onFailure}

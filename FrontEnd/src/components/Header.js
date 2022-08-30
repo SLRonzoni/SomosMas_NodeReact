@@ -24,7 +24,7 @@ export default function Header () {
   return(
       <Navbar expand="lg" bg="dark" variant="dark">
         <Container>
-          <NavbarBrand >Somos Más Ong <img className="manosLogo borderRounded" src={imagen} alt="manosNiños"></img>
+          <NavbarBrand >Somos Más Ong <img className="handsLogo borderRounded" src={imagen} alt="manosNiños"></img>
             <Link to="/"className="nav-link" ></Link>
           </NavbarBrand>  
            

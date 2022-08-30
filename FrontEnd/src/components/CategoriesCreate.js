@@ -2,37 +2,32 @@ import React, { useState } from "react";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Formik } from 'formik';
+import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
+import  InputForm  from './elements/InputForm';
+import { formatDate } from "./helpers/FormatDate";
+import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
+import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import "./styles/styles.css";
 
 function CategoriesCreate(props) {
   
   const [categories, setCategories] = useState({
     name: "",
-    description:""
+    description:"",
+    image:"",
+    description:""          
   });
 
-  const [files, setFiles] = useState({
-    image:""
-  });
+  const [duplicated,setDuplicated]=useState('')
 
-  const changes = (e) => {
-    setCategories({
-      ...categories,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const changesFiles = (e) => {
-    setFiles({...files,
-      [e.target.name]: e.target.files[0]
-    });
-  };
-
-  const send = (e) => {
-    e.preventDefault();
-
-    const body = new FormData(e.currentTarget)
-    body.append('image',e.target.value);
+  //SEND
+  const sendForm = (values) => {
+   
+    let body = new FormData()
+    body.append("name",values.name);
+    body.append("description",values.description);
+    body.append("image",values.image);
 
     const saveCategories = async () => {
       await axiosClient
@@ -41,8 +36,9 @@ function CategoriesCreate(props) {
           if(response) {
             Swal.fire({
               icon: "success",
-              title: "Categoria Agregada!",
-              text: response,
+              title: "Categoría Agregada!",
+              timer:1000,
+              showConfirmButton: false
             });
             props.history.push("/CategoriesAll");
           }
@@ -55,65 +51,189 @@ function CategoriesCreate(props) {
           });
         });
     };
-  
     saveCategories();
   };
 
-  return (
-    <div>
-      <br></br>
-      <br></br>
-      <form onSubmit={send} className="container-sm col-6 col-md-4 bg-light" >
-        <br></br>
-        <h3>Ingrese nueva Categoría...</h3>
-        <div className="form-group ">
-          <label htmlFor="name">Nombre: </label>
-          <input
-            type="text"
-            className="form-control"
-            name="name"
-            placeholder="Ingresar nombre"
-            required
-            onChange={changes}
-          />
-          <br></br>
-          <label htmlFor="name">Imágen: </label>
-          <input
-            type="file"
-            className="form-control"
-            encType="multipart/form-data"
-            name="image"
-            placeholder="Seleccione la imágen"
-            required
-            onChange={changesFiles}
-          />
-          <br></br>
-          <label htmlFor="name">Descripción: </label>
-          <input
-            type="text"
-            className="form-control"
-            name="description"
-            placeholder="Ingresar la descripción"
-            onChange={changes}
-          />
-        </div>
+//DUPLICATED NAME
+const repeat= (searchName,errors)=>{
+  if (errors.formOk !=='v'){
+    getCategoryByName(searchName)
+  }
+};
 
-        <div className="centrar">
-          <button type="submit" className="m-3 btn btn-primary">
-            Guardar
-          </button>
-          <Link
-              to={"/CategoriesAll"}
-              className="m-3 mr-md-2 btn btn-primary"
-              role="button"
-              aria-pressed="true"
-            >
-              {" "}
-              Volver{" "}
-            </Link>
-        </div>
-    </form>
-    </div>
-  );
+const getCategoryByName = async (searchName) => {
+  await axiosClient.get(`/categories/byName/${searchName}`)
+  .then((response) => {
+    if(response.status===404){
+      setDuplicated(' ')
+    } else {
+      setDuplicated(response.data.category.name)
+    }
+  })
+  .catch((error=>{
+    console.log(error);
+  }));
+}; 
+
+
+//FORMIK INITIAL VALUES
+let initialValues={name:categories.name,
+  description:categories.description}
+
+//FORMIK VALIDATIONS 
+let validateInputs=(values) =>{   
+
+  let errors = {name: '', image:'',description:'',  
+                icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
+
+  if (!values.name) {
+    errors.name=msgRequired
+    errors.icoNname= '❌'
+    return errors
+  };
+
+  if (!regexCategoryName.test(values.name)) {
+    errors.name=msgValidationCategoryName
+    errors.icoNname= '❌'
+    return errors
+  } else {
+    errors.icoNname= '✔️'
+  };
+
+
+  let searchName=values.name
+  repeat(searchName, errors)
+  if(duplicated===searchName){
+    errors.name=msgValidationDuplicated
+    errors.icoNname= '❌'         
+    return errors
+  } else {
+    errors.icoNname= '✔️'
+  };
+
+
+  if (!values.description) {
+    values.description=categories.description
+  }; 
+
+  if (!regexCategoryDescription.test(values.description)) {
+    errors.description=msgValidationCategoryDescription
+    errors.icoNdescription= '❌'
+    return errors
+  } else {
+    errors.icoNdescription= '✔️'
+  };
+
+  if(!values.image) {
+    errors.image=msgRequired
+    errors.icoNimage= '❌'
+    return errors
+  } else {
+    errors.icoNimage= '✔️'
+  };
+
+  if(errors.name || errors.description || errors.image){
+    errors.formOk='f'
+  } else {
+    errors.formOk='v'
+  };
+   
+}
+
+//FORM
+return (
+  <>
+  <Formik
+       initialValues={initialValues}           
+       validate={validateInputs}
+       onSubmit={(values)=>{ sendForm(values)}}
+  >
+  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
+       <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
+          <br></br>
+          <h3 className="centerText">Nueva categoría ...</h3>
+          <br></br>
+          <div >
+
+            <div>
+              <div className="displayInLineFlex">
+                <InputForm
+                  type="text"
+                  name="name"
+                  label="Nombre : " 
+                  defaultValue=""
+                  placeholder="Ingrese nombre"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
+              </div>
+              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
+            </div>
+            <br></br>
+            <div>
+              <div className="displayInLineFlex">
+                <InputForm
+                  type="file"
+                  name="image"
+                  label="Imágen :"
+                  encType="multipart/form-data"
+                  defaultValue=""
+                  onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                  onBlur={handleBlur}
+                />
+                {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
+              </div>
+              {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
+            </div>
+            <br></br>
+            <div>
+              <div className="displayInLineFlex">
+                <InputForm
+                  type="text"
+                  name="description"
+                  label="Descripción : "
+                  defaultValue=""
+                  placeholder="Ingrese descripción"
+                  value={values.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.description && errors.icoNdescription && <Icon>{errors.icoNdescription}</Icon>}
+              </div>
+              {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
+            </div>
+            <br></br>
+            
+          </div>
+          { errors.formOk === "f" && 
+            <MsjWrong> 
+            <span className="centerText">
+              <br /> Algun dato es incorrecto. 
+              <br/> Por favor complete el formulario correctamente
+            </span>        
+            </MsjWrong>
+          }
+         
+          <div>
+            <br></br>
+            <div className="centerText">
+                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
+                <Link 
+                  to={"/CategoriesAll"}
+                  className="m-3 mr-md-2 btn buttonBlue"
+                  role="button"
+                > Volver
+                </Link>
+            </div> 
+          </div>
+          
+        </form>
+    )}
+  </Formik>
+</>
+);
+
 }
 export default CategoriesCreate;

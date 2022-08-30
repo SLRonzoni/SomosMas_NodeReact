@@ -10,7 +10,6 @@ import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription,
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
 
-
 const FormCategory = ({match,history}) => {
 
   const id  = match.params.id;
@@ -28,8 +27,8 @@ const FormCategory = ({match,history}) => {
   useEffect(() => {
     const getCategory = async () => {
       await axiosClient.get(`/categories/${id}`)
-      .then((respuesta) => {
-        setCategories(respuesta.data);
+      .then((response) => {
+        setCategories(response.data);
       })
       .catch((error=>{
         console.log(error);
@@ -50,9 +49,9 @@ const FormCategory = ({match,history}) => {
     const updateCategory = async () => {
       await axiosClient
         .put(`/categories/update/${id}`,body)
-        .then(respuesta => {
-          if (respuesta.status===201) {
-            setCategories(respuesta.data);
+        .then(response => {
+          if (response.status===201) {
+            setCategories(response.data);
             Swal.fire({
               icon: "success",
               title: "Actualización de categoría exitosa !",
@@ -63,8 +62,11 @@ const FormCategory = ({match,history}) => {
           }
         })
         .catch(function (error) {
-          console.log(error)
-        });
+          Swal.fire({
+            icon:"error",
+            title: "Error"
+            });
+          });
     };
     updateCategory();
   };
@@ -78,18 +80,17 @@ const FormCategory = ({match,history}) => {
 
   const getCategoryByName = async (searchName) => {
     await axiosClient.get(`/categories/byName/${searchName}`)
-    .then((respuesta) => {
-      if(respuesta.status===404){
+    .then((response) => {
+      if(response.status===404){
         setDuplicated(' ')
       } else {
-        setDuplicated(respuesta.data.category.name)
+        setDuplicated(response.data.category.name)
       }
     })
     .catch((error=>{
       console.log(error);
     }));
   }; 
-
 
   
   //FORMIK INITIAL VALUES
@@ -167,9 +168,9 @@ const FormCategory = ({match,history}) => {
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
          <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
             <br></br>
-            <h3 className="centrarTexto">Ingrese nuevos valores ...</h3>
+            <h3 className="centerText">Ingrese nuevos valores ...</h3>
             <br></br>
-            <div >
+            <div>
 
               <div>
                 <div className="displayInLineFlex">
@@ -195,6 +196,7 @@ const FormCategory = ({match,history}) => {
                     name="image"
                     label="Imágen :"
                     encType="multipart/form-data"
+                    defaultValue={<img className="imageSmall" src={categories.image}  alt="categoryImage"/>}
                     onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
                     onBlur={handleBlur}
                   />
@@ -220,20 +222,20 @@ const FormCategory = ({match,history}) => {
                 {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
               </div>
               <br></br>
-              <div className="centrarTexto displayFlex">
+              <div className="centerText displayFlex">
                 <div>
                   <Label htmlFor="name">Creada  :</Label>
-                  <span className="" >{formatDate(new Date(categories.createdAt))}</span>
+                  <span className="center" >{formatDate(new Date(categories.createdAt))}</span>
                 </div>
                 <div>   
                   <Label htmlFor="name">Última modificación  :</Label>
-                  <span className="" >{formatDate(new Date(categories.updatedAt))}</span>
+                  <span className="center" >{formatDate(new Date(categories.updatedAt))}</span>
                 </div>
               </div>
             </div>
             { errors.formOk === "f" && 
               <MsjWrong> 
-              <span className="centrarTexto">
+              <span className="centerText">
                 <br /> Algun dato es incorrecto. 
                 <br/> Por favor complete el formulario correctamente
               </span>        
@@ -242,7 +244,7 @@ const FormCategory = ({match,history}) => {
            
             <div>
               <br></br>
-              <div className="centrarTexto">
+              <div className="centerText">
                   <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                   <Link 
                     to={"/CategoriesAll"}

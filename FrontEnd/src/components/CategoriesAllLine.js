@@ -6,17 +6,17 @@ import {formatDate} from './helpers/FormatDate'
 const CategoriesAllLine = ({id, name, image, description, create,update,remove}) =>{
   
     return (
-        <tr   >
+        <tr>
             <td className="renglonNro">{id}</td>
             <td className="renglon" >{name}</td>
-            <td className="imagenChar centrar" ><img src={image}  alt="categoryImage"></img> </td>
-            <td className="renglon productDescrip" >{description}</td>
-            <td className="renglon centrar" >{formatDate(new Date(create))}</td>
-            <td className="renglon centrar" >{formatDate(new Date(update))}</td>
+            <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
+            <td className="renglon " >{description}</td>
+            <td className="renglon centerText " >{formatDate(new Date(create))}</td>
+            <td className="renglon centerText" >{formatDate(new Date(update))}</td>
             
-            <td className='centrar '>   
+            <td className="renglon centerText">   
                 <Link to={`/categories/update/${id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
-                <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >.Eliminar.  </button>          
+                <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
             </td>      
         </tr>
     );

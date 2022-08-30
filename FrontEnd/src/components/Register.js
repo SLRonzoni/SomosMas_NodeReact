@@ -8,7 +8,6 @@ const Register=()=> {
   const [form, setForm] = useState({
     firstName:"",
     lastName:"",   
-    photo:"",
     roleId:"",  
     email:"",
     password:"",
@@ -16,7 +15,6 @@ const Register=()=> {
     });
 
    
-
    //capturar datos que el usuario ingresa
     const handleChange = async e => {
       e.preventDefault()
@@ -41,14 +39,14 @@ const Register=()=> {
       // };
 
 
-      await axiosClient.post('/auth/register',{"firstName":form.firstName,"lastName":form.lastName,"photo":form.photo,
+      await axiosClient.post('/auth/register',{"firstName":form.firstName,"lastName":form.lastName,
                                                 "email":form.email,"password":form.password},{withCredentials:true})
       
-      .then(respuesta=>{
-          if(respuesta.status===200  ){            
+      .then(response=>{
+          if(response.status===200  ){            
               Swal.fire({
                   icon: "success",
-                  title: `Te has registrado correctamente !`,
+                  title: `Te registraste correctamente !`,
                   showConfirmButton:false
                   })
                  
@@ -57,7 +55,7 @@ const Register=()=> {
                Swal.fire({
                   icon: "error",
                   title: "Error !",
-                  text: respuesta.message,
+                  text: response.message,
                   showConfirmButton:true
                 })
                
@@ -88,13 +86,7 @@ const Register=()=> {
                     <label className="formLabel">Apellido</label>
                     <input type="text" className="form-control" name="lastName" id="lastName"  onChange={handleChange}  required />
                 </div> 
-
-              <div className="form-group" >    
-                    <label className="formLabel">Mi fotografia</label>
-                    <input type="text" className="form-control" name="photo" id="photo"  onChange={handleChange}  required />
-                </div> 
-              </div>
-
+                </div>
               <br></br>              
 
               <div className="form-control">

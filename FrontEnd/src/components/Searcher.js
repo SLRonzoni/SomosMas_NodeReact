@@ -13,7 +13,7 @@ function Searcher() {
     if(keyword.length < 4){
       Swal.fire({
         icon: "warning",
-        title: "Tienes que escribir una palabra de más de 3 letras",
+        title: "Tenés que escribir una palabra de más de 3 letras",
         timer:1000,
         showConfirmButton:false
       })

@@ -31,3 +31,7 @@ Modificaciones al proyecto original ( back end ):
 
 * CATEGORIES SEEDERS, se cambiaron numeros por letras, en los nombres
 
+*USERS ROUTES, se agregó /del a la ruta
+
+*HELPERS, MODELHELPER, se cambió el limite de paginas de 10 a 100
+

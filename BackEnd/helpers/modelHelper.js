@@ -12,7 +12,7 @@ class ModelHelper {
      * @param {[string]} attributes 
      * @returns rows
      */
-    findAndPaginate = async (pageIndex = 1, pageLimit = 10, attributes=null) => {
+    findAndPaginate = async (pageIndex = 1, pageLimit = 100, attributes=null) => {
         try {
 
             pageLimit = parseInt(pageLimit, 10);

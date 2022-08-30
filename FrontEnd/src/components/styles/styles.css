@@ -22,11 +22,26 @@ body{
    
 }
 
-.tituloItem{
+.btnShowPassword{
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: transparent;
+    color:aliceblue;
+    height: 1.5rem;
+   
+    padding:10px;
+    font-size: 12px;
+    margin-top:10px; 
+    background-color: #2892fd;
+
+}
+
+.titleItem{
     color:#3C4657;    
     font-size:calc(1px + 1rem) ;
     text-align: center;
-    height:1rem;
+    height:0.3rem;
 }
 
 
@@ -135,14 +150,18 @@ h1{
     height: auto; 
 }
 
-/* .margenEnd{
+.margenEnd{
     margin-left: 40%;
-    
-}*/
+    font-size: 16px;
+}
 
-.foto{
+.photo{
     width: 40%;
     margin-left:25%;  
+}
+
+.marginTop-30{
+    margin-top:-30px;
 }
 
 /* .eneable{
@@ -157,6 +176,11 @@ h1{
     display:inline-flex;
 }
 
+.pUpdateCateg{
+    margin-left: 14px;
+    
+}
+
 
 /* .box-carrito{
     margin-top:45px;
@@ -164,6 +188,15 @@ h1{
 
 .google{
     margin-left: 75%;
+}
+
+.loadingBox{
+    margin-left: 35rem;
+    margin-top: 12rem;
+}
+
+.widthDate{
+    width:10rem ;
 }
 
 /* .btn-redes{
@@ -208,7 +241,7 @@ h1{
     align-items: center;
   } */ 
 
-  .displayFlex{
+.displayFlex{
     display:Flex;
 }
 
@@ -408,7 +441,7 @@ h1{
 } */
 
 .renglon{  
-    width:19rem ;   
+    width:19rem ; 
 }
 
 .renglonNro{
@@ -489,7 +522,7 @@ h1{
     text-align: justify;
 } */
 
-.centrar{
+.center{
     margin:auto;
 }
 
@@ -497,7 +530,7 @@ h1{
     text-align: center;
 } */
 
-.centrarTexto{
+.centerText{
     text-align: center;
     justify-content: center;
 }
@@ -506,6 +539,7 @@ h1{
     color:white;
 }
 
+/* repetido */
 .colorNegro{
     color:black;
 }
@@ -521,7 +555,7 @@ h1{
 } */
 
 
-.imagenChar{
+.imageChar{
     display:flex;
     margin:auto;
     height:100px; 
@@ -635,15 +669,17 @@ border:1px solid white;
       margin-right: 10px;
       width: auto;
   }
-  
-  .imagenTabla{
-      width: 90%;
-  }
-  
+    
   .ancho{
       width: 10%;
   }
    */
+    
+    .imageSmall{
+        width:10%;
+    }
+
+
   /* .h2{
       color:black;
       font-size: 140%;
@@ -663,7 +699,7 @@ border:1px solid white;
     margin-left: 6%;
   }
 
-  .manosLogo{
+  .handsLogo{
     width: 8%;
   }
 
