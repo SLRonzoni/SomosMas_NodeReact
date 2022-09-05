@@ -6,7 +6,7 @@ const regexUserLastName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guio
 
 const regexUserEmail=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
 
-const regexUserPassword=	/^.{4,12}$/ // entre 4 y 12 digitos.
+const regexUserPassword=/^.{4,12}$/ // entre 4 y 12 digitos.
 
 const regexUserPhone=/^\d{7,14}$/ // entre 7 y 14 numeros.
 

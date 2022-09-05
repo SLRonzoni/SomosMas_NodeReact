@@ -3,15 +3,16 @@ import axiosClient from '../configuration/axiosClient';
 import './styles/styles.css';
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { msgRequired,msgValidationUserFirstName,msgValidationUserLastName, msgValidationUserPassword,msgValidationUserEmail} from './helpers/validationMessages';
+import { msgRequired,msgValidationUserFirstName,msgValidationUserLastName, msgValidationUserPassword} from './helpers/validationMessages';
 import { regexUserfirstName, regexUserLastName, regexUserPassword } from "./helpers/RegExp";
 import {formatDate} from './helpers/FormatDate';
-import { SendButton, MsjWrong, ErrorText,Icon, Label, Input, InputGroup} from './elements/ElementsFormStyles';
+import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 import Swal from "sweetalert2";
+
 
 const EditUsers = ({match, history}) =>{
       
-  const  {id}=match.params;
+  const  id= match.params.id;
 
   const [user, setUser] = useState({
       id:'',
@@ -42,7 +43,7 @@ const EditUsers = ({match, history}) =>{
       }));
     };
     getUser();
-  },[]); 
+  },[id]); 
 
 
   //SEND
@@ -52,95 +53,92 @@ const EditUsers = ({match, history}) =>{
     body.append("firstName",values.firstName);
     body.append("lastName",values.lastName);
     body.append("password",values.password);
-    body.append("photo",values.photo);
+    body.append("photo",values.photo);  
+     console.log('body front',body.get("firstName"),body.get("lastName"),body.get("password"),body.get("photo"))
 
-  const updateUser = async () => {
-    await axiosClient
-      .put(`/users/update/${id}`,body)
-      .then(response => {
-        if (response.status===201) {
-          setUser(response.data.data)
+    const updateUser = async () => {
+      await axiosClient
+        .put(`/users/update/${id}`,body)
+        .then(response => {
+          
+        console.log(response)
+          if (response.status===201) {
+            setUser(response.data)
+            Swal.fire({
+              icon: "success",
+              title: "Actualización de perfil exitosa !",
+              timer:1000,
+              showConfirmButton: false
+            });
+          history.push("/");
+          }
+        })
+        .catch(function (error) {
           Swal.fire({
-            icon: "success",
-            title: "Actualización de perfil exitosa !",
-            timer:1000,
-            showConfirmButton: false
+            icon:"error",
+            title: "Error"
+            });
           });
-        history.push("/");
-        }
-      })
-      .catch(function (error) {
-        Swal.fire({
-          icon:"error",
-          title: "Error"
-          });
-        });
-  };
-  updateUser();
-};
-
-//FORMIK INITIAL VALUES
-let initialValues={firstName:user.firstName, 
-                   lastName:user.lastName,
-                   photo:user.photo,
-                   email:user.email,
-                   password:user.password}
-
-//FORMIK VALIDATIONS 
-let validateInputs=(values) =>{   
-
-  let errors = {firstName: '',lastName:'', photo:'', password:'',  
-  icoNfirstName:'',icoNlastName:'', icoNphoto:'', icoNpassword:'',formOk:''};  
-
-  if (!values.firstName) {
-    values.firstName=user.firstName
+    }   
+    updateUser();
   };
 
-  if (!regexUserfirstName.test(values.firstName)) {
-    errors.firstName=msgValidationUserFirstName
-    errors.icoNfirstName= '❌'
-    return errors
-  } else {
-    errors.icoNfirstName= '✔️'
-  };
+  //FORMIK INITIAL VALUES
+  let initialValues={firstName:user.firstName, 
+                    lastName:user.lastName,
+                    photo:user.photo,
+                    password:user.password}
 
-  if (!values.lastName) {
-    values.lastName=user.lastName
-  };
+  //FORMIK VALIDATIONS 
+  let validateInputs=(values) =>{   
 
-  if (!regexUserLastName.test(values.lastName)) {
-    errors.lastName=msgValidationUserLastName
-    errors.icoNlastName= '❌'
-    return errors
-  } else {
-    errors.icoNlastName= '✔️'
-  };
+    let errors = {firstName: '',lastName:'', photo:'', password:'',  
+    icoNfirstName:'',icoNlastName:'', icoNphoto:'', icoNpassword:'',formOk:''};  
 
-  if(!values.photo) {
-    values.photo=user.photo
-  };
+    if (!values.firstName) {
+      values.firstName=user.firstName
+    };
 
-  if (!values.password) {
-    errors.password=msgRequired
-    errors.icoNpassword= '❌'
-    return errors
-  };
+    if (!regexUserfirstName.test(values.firstName)) {
+      errors.firstName=msgValidationUserFirstName
+      errors.icoNfirstName= '❌'
+      return errors
+    } else {
+      errors.icoNfirstName= '✔️'
+    };
 
-  if (!regexUserPassword.test(values.password)) {
-    errors.password=msgValidationUserPassword
-    errors.icoNpassword= '❌'
-    return errors
-  } else {
-    errors.icoNpassword= '✔️'
-  };
+    if (!values.lastName) {
+      values.lastName=user.lastName
+    };
 
-  if(errors.firstName || errors.lastName || errors.photo || errors.password){
-  errors.formOk='f'
-  } else {
-  errors.formOk='v'
-  };
-     
-}
+    if (!regexUserLastName.test(values.lastName)) {
+      errors.lastName=msgValidationUserLastName
+      errors.icoNlastName= '❌'
+      return errors
+    } else {
+      errors.icoNlastName= '✔️'
+    };
+
+    if (!values.password) {
+      errors.password=msgRequired
+      errors.icoNpassword= '❌'
+      return errors
+    };
+
+    if (!regexUserPassword.test(values.password)) {
+      errors.password=msgValidationUserPassword
+      errors.icoNpassword= '❌'
+      return errors
+    } else {
+      errors.icoNpassword= '✔️'
+    };
+
+    if(errors.firstName || errors.lastName || errors.photo || errors.password){
+    errors.formOk='f'
+    } else {
+    errors.formOk='v'
+    };  
+  }
 
   //FORM
   return (
@@ -155,47 +153,45 @@ let validateInputs=(values) =>{
             <h4>Mi Perfil  
               <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>
-              
             <div className='marginTop'>
 
               <div>
                 <div >   
-                    <Label htmlFor="photo"> </Label>
-                    <p className="pUpdateCateg"><img  src={user.photo}  alt="userPhoto"/></p>
-                    <InputGroup>
-                      <Input className="form-control"
-                            type="file" 
-                            name="photo" 
-                            id="photo"  
-                            encType="multipart/form-data"
-                           
-                            onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
-                            onBlur={handleBlur}
-                      />
-                     </InputGroup>  
-                   
-                {touched.photo && errors.icoNphoto && <Icon>{errors.icoNphoto}</Icon>}    
+                  <Label htmlFor="photo"> </Label>
+                  <p className="pUpdateCateg"><img  src={user.photo}  alt="userPhoto"/></p>
+                  <InputGroup  >
+                    <InputUser className="form-control"
+                          type="file" 
+                          name="photo" 
+                          id="photo"  
+                          encType="multipart/form-data"
+                          // value={values.photo}
+                          onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
+                          onBlur={handleBlur}
+                    />
+                  </InputGroup>  
+                  {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
                 </div> 
                 {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
               </div>
               <br></br>
                 
               <div>
-                <div >
-                <Label htmlFor="firstName">Nombre actual :<span className="pUpdateCateg" ><em>{user.firstName}</em></span></Label>
-                    <InputGroup>
-                      <Input  className="form-control"
-                              type="text" 
-                              name="firstName" 
-                              id="firstName"  
-                              value={values.firstName}
-                              onChange={handleChange} 
-                              onBlur={handleBlur}
-                              autoFocus
-                      />
-                     </InputGroup> 
-                {touched.firstName && errors.icoNfirstName && <Icon>{errors.icoNfirstName}</Icon>}    
-                </div> 
+                <div>
+                  <Label htmlFor="firstName">Nombre actual :<span className="pUpdateCateg" ><em>{user.firstName}</em></span></Label>
+                    <InputGroup >
+                      <InputUser
+                        type="text" 
+                        name="firstName" 
+                        id="firstName"  
+                        value={values.firstName}
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
+                        autoFocus
+                      />              
+                      {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
+                    </InputGroup> 
+                </div>
                 {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
               </div>
               <br></br>
@@ -203,19 +199,17 @@ let validateInputs=(values) =>{
               <div>
                 <div>
                 <Label htmlFor="lastName">Apellido actual : <span className="spanUpdateCateg"><em>{user.lastName}</em></span></Label>
-                    
                     <InputGroup>
-                      <Input  className="form-control"
-                              type="text" 
-                              name="lastName" 
-                              id="lastName"  
-                              value={values.lastName}
-                              onChange={handleChange} 
-                              onBlur={handleBlur}
+                      <InputUser
+                        type="text" 
+                        name="lastName" 
+                        id="lastName"  
+                        value={values.lastName}
+                        onChange={handleChange} 
+                        onBlur={handleBlur}
                       />
-                     </InputGroup>
-                   
-                {touched.lastName && errors.icoNlastName && <Icon>{errors.icoNlastName}</Icon>}    
+                      {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
+                    </InputGroup>
                 </div> 
                 {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
               </div>
@@ -231,21 +225,28 @@ let validateInputs=(values) =>{
               
               <div>
                 <div>
-                    <Label htmlFor="password"> Password : <button className='btn buttonBlue' onClick={switchShown}> {shown ? 'Ocultar' : 'Mostrar'}</button> </Label>                   
+                    <Label htmlFor="password"> Password : 
+                      <button type="button" 
+                              className='btn buttonBlue' 
+                              onClick={switchShown}> {shown ? 'Ocultar' : 'Mostrar'}
+                      </button> 
+                    </Label>  
+
                     <InputGroup>
-                      <Input  className="form-control"
-                              name="password" 
-                              id="password"  
-                              value={values.password}
-                              onChange={handleChange}
-                              type={shown ? "text" : "password" }
-                              onBlur={handleBlur}
+                      <InputUser
+                        type={shown ? "text" : "current-password" }
+                        name="password" 
+                        id="password"  
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                       />
+                    {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
                     </InputGroup>
-                {touched.password && errors.icoNpassword && <Icon>{errors.icoNpassword}</Icon>}    
                 </div> 
                 {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
               </div>
+
               { errors.formOk === "f" && 
               <MsjWrong> 
               <span className="centerText">
@@ -253,12 +254,13 @@ let validateInputs=(values) =>{
                 <br/> Por favor complete el formulario correctamente
               </span>        
               </MsjWrong>
-            }
+              }
+
               <br></br>
               <div className="centerText">
                   <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                   <Link 
-                    to={"/UsersAll"}
+                    to={"/"}
                     className="m-3 mr-md-2 btn buttonBlue"
                     role="button"
                   > Volver

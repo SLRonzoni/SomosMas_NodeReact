@@ -17,6 +17,7 @@ const login = async (req, res) => {
         const token = tokenGenerator(user)
         const userData={firstName:user.firstName,
                     lastName:user.lastName,
+                    id:user.id,
                     email:user.email,
                     roleId:user.roleId
         }    

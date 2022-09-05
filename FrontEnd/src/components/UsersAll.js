@@ -3,7 +3,7 @@ import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import UsersAllLine from "./UsersAllLine";
 import Swal from "sweetalert2";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 
@@ -68,18 +68,27 @@ const UsersAll = (props) => {
     getUsers();
   }, []);
 
+
   //FILTER BY ID
   let filterBy;
-  const getFilterUserId = async () => {
-    await axiosClient
-      .get(`/users/` + filterBy)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  let onlyUser=[];
+
+  function searchUser (users){
+    if(users.lastName===filterBy){
+      return users
+    } 
+  }
+ 
+  const getFilterUserId = () => {
+    let filterUser= users.map(element=>searchUser(element) )
+    for (let i=0;i< filterUser.length;i++){
+      if(filterUser[i]!==undefined){
+        onlyUser.push(filterUser[i])
+      }
+    }
+    setUsers(onlyUser)    
   };
+ 
 
   const changesId = (e) => {
     filterBy = e.target.value;
@@ -111,6 +120,7 @@ const UsersAll = (props) => {
     );
   };
 
+  
   let token = JSON.parse(sessionStorage.getItem("token")); //para proteger ruta
 
   return (
@@ -142,10 +152,10 @@ const UsersAll = (props) => {
                 >
                   {users.map((oneUser) => (
                     <option key={oneUser.id} value={oneUser.lastName}>
-                    ( {oneUser.lastName} {oneUser.firstName})
+                    {oneUser.lastName}
                     </option>
                   ))}
-                  <option value={"todas"}>Mostrar todos los usuarios</option>
+                  <option value={"todos"}>Mostrar todos los usuarios</option>
                 </select>
               </div>
             </div>

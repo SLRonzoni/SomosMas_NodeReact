@@ -695,8 +695,7 @@ border:1px solid white;
   } */
 
   .homeBgImage {
-    width: 92.3%;
-    margin-left: 6%;
+    width: 79%;
   }
 
   .handsLogo{
@@ -744,5 +743,75 @@ border:1px solid white;
   .footerP {
     font-size: calc(4px + 1rem);
     margin-left: 1%;
-    margin-top: 2.3%;
+    margin-top: 1%;
   }
+
+  
+/* .rating span {
+ color:#cac035
+} */
+
+/* .img-large{
+  max-width: 70%;
+} */
+
+/* .cardOneProduct{
+  height: 27%;
+  width: 80%;
+  box-shadow: none;
+  margin-top: 16%;
+}
+
+.oneProductStatus{
+  margin-top: 25%;
+} */
+
+
+/* .img-thumbnail{
+  height: 80px;
+} */
+
+
+ /* .products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+/* .product {
+  border: 1px #404040 solid;
+  margin: 1rem;
+  text-align: center;
+  height: 26rem;
+} */
+
+/* .product img {
+  width: 85%;
+  max-width: 400px;
+  height:15rem;
+}  */
+
+/* .product-info {
+  padding: 1rem;
+} */
+
+/* .product-img {
+  padding: 3rem;
+} */
+
+/* .btn-primary{
+  border-radius: 5px 5px 5px 5px;
+  border: 1px #404040 solid;
+  margin-left: 35%; 
+  background-color: #f0c040;
+  color:#000000;
+
+} */
+
+/* .letraNegro{
+  color:#000000
+} */
+
+/* .letraBlanca{
+  color:white
+} */

@@ -19,7 +19,7 @@ import CategoriesUpdate from './components/CategoriesUpdate';
 import UsersAll from './components/UsersAll';
 // import UsersOne from './components/UsersOne';
 import Register from './components/Register';
-import UsersUpdate from './components/UsersUpdate';
+import EditUsers from './components/UsersUpdate';
 
 
 function App() {
@@ -56,7 +56,7 @@ function App() {
         <Route exact path='/UsersAll' component={UsersAll}/>
         {/* <Route exact path='/users/:id' component={UsersOne}/> */}
         <Route exact path='/Register' component={Register}/>
-        <Route exact path='/users/update/:id' component={UsersUpdate}/>
+        <Route exact path='/users/update/:id' component={EditUsers}/>
        
 
          

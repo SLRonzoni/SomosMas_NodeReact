@@ -13,7 +13,7 @@ Modificaciones al proyecto original ( back end ):
 
 * NEWS ROUTES, GET , se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
 
-* AUTH CONTROLLER, LOGIN , linea 26 se agregó la devolucion de los datos del user
+* AUTH CONTROLLER, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id
   AUTH DOCUMENTATION, LOGIN, se cambió datos para admin
 
 * VIEWS emailContact e emailWelcome , se agregó nueva imagen de logo y se corrigió texto del email
@@ -31,7 +31,16 @@ Modificaciones al proyecto original ( back end ):
 
 * CATEGORIES SEEDERS, se cambiaron numeros por letras, en los nombres
 
-*USERS ROUTES, se agregó /del a la ruta
+* USERS ROUTES, se agregó /del a la ruta
 
-*HELPERS, MODELHELPER, se cambió el limite de paginas de 10 a 100
+* USERS ROUTES, se eliminó VerifyIsAdmin de las rutas update y get one
+
+* USERS CONTROLLER, se modificó el servicio update para que tomara imagenes y hasheara password
+
+* USERS CONTROLLER, se incorporó USER_REGULAR_ROLE_ID como variable de entorno en create y update
+
+* BASE CONTROLLER, SETNOTFOUND se modificó message de error
+
+* HELPERS, MODELHELPER, se cambió el limite de paginas de 10 a 100
+
 

@@ -5,9 +5,9 @@ import image from "./images/manos_fondo.jpg";
 const Home = () => {
  
   return (
-    <div>
-      <img className="homeBgImage" src={image} alt="manosNiños"></img>
-    </div>
+    <h1>
+      <img className="homeBgImage" src={image} alt="manos" ></img>
+    </h1>
   );
   
   };

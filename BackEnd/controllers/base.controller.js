@@ -1,4 +1,5 @@
 const ModelHelper = require('../helpers/modelHelper')
+
 //Create a model
 const createModel = async (res, model, inputVars) => {
     try {        
@@ -10,12 +11,12 @@ const createModel = async (res, model, inputVars) => {
 }
 
 //Get models
-const getAllModels = async (req, res, model) => {    
+const getAllModels = async (req, res, model) => {   
     try {
         const modelHelper = new ModelHelper(model)
         const page = req.query.page || 1
         const models = await modelHelper.findAndPaginate(page)
-        return res.status(200).send(models);
+           return res.status(200).send(models);
     } catch (error) {
         res.status(500).send(error);
     }
@@ -67,7 +68,7 @@ const deleteModel = async (req, res, model) => {
             return sendNotFound(res, id);
         }else{
             await model.destroy({ where: { id } });
-            return res.status(200).send({message: `id ${id} deleted!`});
+            return res.status(200).send({message: `id ${id} deleted !`});
         }
     } catch (error) {
         res.status(500).send(error);
@@ -75,7 +76,7 @@ const deleteModel = async (req, res, model) => {
 }
 
 const sendNotFound = (res, id) => res.status(404).send({
-	message : `id ${id} not found!`
+	message : `id or user : ${id} , not found !`
 })
 
 module.exports = {

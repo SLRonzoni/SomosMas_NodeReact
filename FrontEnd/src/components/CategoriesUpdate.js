@@ -35,7 +35,7 @@ const FormCategory = ({match,history}) => {
       }));
     };
     getCategory();
-  },[]);
+  },[id]);
 
 
   //SEND

@@ -3,11 +3,14 @@ const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
 const { welcomeEmail } = require("../services/welcomeEmail");
 const { tokenGenerator } = require("../helpers/tokenGenerator");
+const { uploadToBucket } = require('../services/s3');
 const BaseController = require("./base.controller");
+const {USER_REGULAR_ROLE_ID}= require ('../sharedConstants')
 
 const getAllUsers = async (req, res) => {
   return BaseController.getAllModels(req, res, ModeloUser);
 };
+
 
 const createUser = async (req, res) => {
   try {
@@ -26,7 +29,7 @@ const createUser = async (req, res) => {
       email: email,
       photo: photo,
       password: pass,
-      roleId: roleId ? roleId : 2,
+      roleId: roleId ? roleId : USER_REGULAR_ROLE_ID,
     });
 
     const token = tokenGenerator(user);
@@ -39,16 +42,35 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  let inputVars = req.body;
-  return BaseController.updateModel(req, res, ModeloUser, inputVars);
+  let img = req.body;
+  console.log('body back',img)
+
+  let regularImglocation;
+  try{
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
+    const pass = bcrypt.hashSync(password, parseInt(process.env.SALT));
+   
+    const inputVars={firstName:req.body.firstName,
+                     lastName:req.body.lastName,
+                     roleId: roleId ? roleId : USER_REGULAR_ROLE_ID,
+                     password:pass,
+                     photo:regularImglocation} 
+                                                            console.log('body inputVars',inputVars)
+    return BaseController.updateModel(req, res, ModeloUser, inputVars )
+  } catch (error) {        
+    res.status(500).send(error);
+  }
 };
+
+
 
 const deleteUser = async (req, res) => {
   return BaseController.deleteModel(req, res, ModeloUser);
 };
 
 const findMe = async (req, res) => {
-  return res.status(200).json(req.user);
+  return res.status(200).json(req.user.id);
 };
 
 const getUserId = async (req, res) => {

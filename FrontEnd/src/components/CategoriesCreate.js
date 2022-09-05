@@ -3,9 +3,8 @@ import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
+import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
 import  InputForm  from './elements/InputForm';
-import { formatDate } from "./helpers/FormatDate";
 import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import "./styles/styles.css";
@@ -15,8 +14,7 @@ function CategoriesCreate(props) {
   const [categories, setCategories] = useState({
     name: "",
     description:"",
-    image:"",
-    description:""          
+    image:""        
   });
 
   const [duplicated,setDuplicated]=useState('')
@@ -34,6 +32,7 @@ function CategoriesCreate(props) {
         .post("/categories/create",body)     
         .then((response) => {
           if(response) {
+            setCategories(response.data)
             Swal.fire({
               icon: "success",
               title: "Categoría Agregada!",
