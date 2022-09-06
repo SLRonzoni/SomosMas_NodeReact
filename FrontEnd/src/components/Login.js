@@ -69,7 +69,7 @@ const Login =()=>{
         Swal.fire({
          icon: 'error',
          title: 'Error',
-         text: error
+         text: ' Usuario o contraseña incorrectos'
        });
       });
      };  

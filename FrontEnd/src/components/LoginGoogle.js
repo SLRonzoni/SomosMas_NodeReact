@@ -10,7 +10,7 @@ function RespuestaGoogle() {
  useEffect(() => {
   function start() {
     gapi.client.init({
-      clientId:"637816611326-evem7ob7602jrgevh5ji7bltrug97tn7.apps.googleusercontent.com",
+      clientId:process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID,
         scope: "email",
     });
   }
@@ -41,9 +41,9 @@ function RespuestaGoogle() {
                }
     }
    
-    localStorage.setItem('userInfo',JSON.stringify(googleData.profileObj)) 
-    localStorage.setItem('loginData',true)
-
+    sessionStorage.setItem('userInfo',JSON.stringify(googleData.profileObj))
+    //sessionStorage.setItem('token',JSON.stringify(response.data.token))
+    sessionStorage.setItem('loginData',true)
 
 
     const getUserData = async () => {
@@ -88,7 +88,7 @@ function RespuestaGoogle() {
     <div>
         <GoogleLogin
           className='m-3 mr-md-2 btn-redes center '
-          clientId='637816611326-evem7ob7602jrgevh5ji7bltrug97tn7.apps.googleusercontent.com'
+          clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
           onSuccess={onSuccess}
           onFailure={onFailure}
           buttonText=' Iniciar sesion con Google'

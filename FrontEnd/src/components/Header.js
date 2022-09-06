@@ -13,11 +13,11 @@ export default function Header () {
     const logout = ()=>{
       Swal.fire({
         icon: "info",
-        title: `Cerrá tu navegador para finalizar la sesión`,
+        title: `Sesión finalizada, gracias por visitarnos !`,
         showConfirmButton:false,
         timer:2000
       })
-      
+      sessionStorage.clear();
       setTimeout( function() { window.location.href = "/"; }, 2000 );
       }   
      
@@ -42,7 +42,7 @@ export default function Header () {
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item> 
-                    <NavDropdown.Item href="/Contact">Contacto</NavDropdown.Item> 
+                    <NavDropdown.Item href="/Contacts">Contacto</NavDropdown.Item> 
                   </NavDropdown>
               )}
 
@@ -56,7 +56,7 @@ export default function Header () {
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
-                    <NavDropdown.Item href="/Contact">Contacto</NavDropdown.Item> 
+                    <NavDropdown.Item href="/Contacts">Contacto</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
                     <NavLink to={`/users/update/${userInfo.id}`} className="renglonBtn nav p-3 col-1">Mi Perfil</NavLink>
                   </NavDropdown> 
@@ -86,15 +86,21 @@ export default function Header () {
               <NavbarBrand > 
                  <Searcher className=""/>
               </NavbarBrand>
-              <NavbarBrand > 
-                  <Link to="/auth/register" className="login  nav-link  p-1 col-1 " >Registro</Link>
-              </NavbarBrand>
-              <NavbarBrand>
-                  <Link to="/auth/login" className="login  nav-link  p-1 col-1 " >Login</Link>
-              </NavbarBrand>
-              <NavbarBrand>
-                 <Link  to="/auth/logout" onClick={logout} className="login  nav-link  p-1 col-1 " >Logout</Link>
-              </NavbarBrand>
+              {!userInfo && ( 
+                <NavbarBrand > 
+                    <Link to="/auth/register" className="login  nav-link  p-1 col-1 " >Registro</Link>
+                </NavbarBrand>
+               )}
+              {!userInfo && ( 
+                <NavbarBrand>
+                    <Link to="/auth/login" className="login  nav-link  p-1 col-1 " >Login</Link>
+                </NavbarBrand>
+              )}
+              {userInfo && ( 
+                <NavbarBrand>
+                  <Link  to="/auth/logout" onClick={logout} className="login  nav-link  p-1 col-1 " >Logout</Link>
+                </NavbarBrand>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

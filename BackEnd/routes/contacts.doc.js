@@ -5,9 +5,6 @@
  *      Contacts:
  *          type: object
  *          properties:
- *              id:
- *                  type: integer
- *                  description: the contact id
  *              name:
  *                  type: string
  *                  description: the contact name
@@ -20,23 +17,15 @@
  *              message: 
  *                  type: string
  *                  description: the contact message
- *              updatedAt: 
- *                  type: date
- *                  description: the contact updated date
- *              createdAt: 
- *                  type: date
- *                  description: the contact created date
  *          required:
  *              - name
  *              - email
+ *              - message
  *          example:
- *              id: 1
  *              name: Juan
  *              phone: 9999999999
  *              email: juan@email.com
  *              message: Este es un mensaje de Juan
- *              updatedAt: 2022-07-05T03:02:09.285Z
- *              createdAt: 2022-07-05T03:02:09.285Z
  * 
  */
 

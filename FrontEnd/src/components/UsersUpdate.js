@@ -54,14 +54,11 @@ const EditUsers = ({match, history}) =>{
     body.append("lastName",values.lastName);
     body.append("password",values.password);
     body.append("photo",values.photo);  
-     console.log('body front',body.get("firstName"),body.get("lastName"),body.get("password"),body.get("photo"))
 
     const updateUser = async () => {
       await axiosClient
         .put(`/users/update/${id}`,body)
         .then(response => {
-          
-        console.log(response)
           if (response.status===201) {
             setUser(response.data)
             Swal.fire({
@@ -72,6 +69,14 @@ const EditUsers = ({match, history}) =>{
             });
           history.push("/");
           }
+          else {             
+            Swal.fire({
+              icon: "error",
+              title: "Error !",
+              text: response.message,
+              showConfirmButton:true
+            })
+          };  
         })
         .catch(function (error) {
           Swal.fire({
@@ -92,8 +97,8 @@ const EditUsers = ({match, history}) =>{
   //FORMIK VALIDATIONS 
   let validateInputs=(values) =>{   
 
-    let errors = {firstName: '',lastName:'', photo:'', password:'',  
-    icoNfirstName:'',icoNlastName:'', icoNphoto:'', icoNpassword:'',formOk:''};  
+    let errors = {firstName: '',lastName:'', photo:'', password:'', 
+                  icoNfirstName:'',icoNlastName:'', icoNphoto:'', icoNpassword:'',formOk:''};  
 
     if (!values.firstName) {
       values.firstName=user.firstName
@@ -187,7 +192,6 @@ const EditUsers = ({match, history}) =>{
                         value={values.firstName}
                         onChange={handleChange} 
                         onBlur={handleBlur}
-                        autoFocus
                       />              
                       {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
                     </InputGroup> 
@@ -234,7 +238,7 @@ const EditUsers = ({match, history}) =>{
 
                     <InputGroup>
                       <InputUser
-                        type={shown ? "text" : "current-password" }
+                        type={shown ? "text" : "password" }
                         name="password" 
                         id="password"  
                         value={values.password}

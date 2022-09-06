@@ -1,14 +1,14 @@
 
 //REGULAR EXPRESSIONS
-const regexUserfirstName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+const regexUserfirstName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
 
-const regexUserLastName=/^[a-zA-Z0-9_-]{4,16}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+const regexUserLastName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
 
-const regexUserEmail=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-
+//const regexUserEmail=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+const regexUserEmail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 const regexUserPassword=/^.{4,12}$/ // entre 4 y 12 digitos.
 
-const regexUserPhone=/^\d{7,14}$/ // entre 7 y 14 numeros.
+const regexUserPhone=/^[0-9_-]{7,14}$/ // entre 7 y 14 numeros.
 
 const regexCategoryName=/^[a-zA-ZÀ-ÿ\s]{4,50}$/ // Letras y espacios, pueden llevar acentos, hasta 50 digitos
 

@@ -33,9 +33,15 @@ Modificaciones al proyecto original ( back end ):
 
 * USERS ROUTES, se agregó /del a la ruta
 
+* AUTH ROUTES, se agregó moddleware optionsFileUpload 
+
+* USERS ROUTES, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
+
 * USERS ROUTES, se eliminó VerifyIsAdmin de las rutas update y get one
 
 * USERS CONTROLLER, se modificó el servicio update para que tomara imagenes y hasheara password
+
+* USERS CONTROLLER, se modificó el servicio create para que tomara imagenes
 
 * USERS CONTROLLER, se incorporó USER_REGULAR_ROLE_ID como variable de entorno en create y update
 
@@ -43,4 +49,11 @@ Modificaciones al proyecto original ( back end ):
 
 * HELPERS, MODELHELPER, se cambió el limite de paginas de 10 a 100
 
+* CONTACT CONTROLLER, se cambió nombre de la variable que guarda el modelo de contacts
+
+* CONTACT DOC, POST se eliminó id y se colocó campo message como required
+
+* AUTH ROUTES, se creo ruta para login con google
+
+* AUTH CONTROLLER, se creo servicio para login con google
 

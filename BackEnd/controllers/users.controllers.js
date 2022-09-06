@@ -5,7 +5,6 @@ const { welcomeEmail } = require("../services/welcomeEmail");
 const { tokenGenerator } = require("../helpers/tokenGenerator");
 const { uploadToBucket } = require('../services/s3');
 const BaseController = require("./base.controller");
-const {USER_REGULAR_ROLE_ID}= require ('../sharedConstants')
 
 const getAllUsers = async (req, res) => {
   return BaseController.getAllModels(req, res, ModeloUser);
@@ -13,7 +12,11 @@ const getAllUsers = async (req, res) => {
 
 
 const createUser = async (req, res) => {
+  let img = req.files;
+  let regularImglocation;
   try {
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1044.jpg`;
     const { firstName, lastName, email, password, photo, roleId } = req.body;
 
     const errors = validationResult(req);
@@ -22,14 +25,13 @@ const createUser = async (req, res) => {
       return res.status(422).json({ errors: errors.array() });
     }
     const pass = bcrypt.hashSync(password, parseInt(process.env.SALT));
-
     const user = await ModeloUser.create({
       firstName: firstName,
       lastName: lastName,
       email: email,
-      photo: photo,
+      photo: regularImglocation,
       password: pass,
-      roleId: roleId ? roleId : USER_REGULAR_ROLE_ID,
+      roleId: roleId ? roleId : ROLE_REGULAR_USER,
     });
 
     const token = tokenGenerator(user);
@@ -42,21 +44,18 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  let img = req.body;
-  console.log('body back',img)
-
+  let img = req.files;
   let regularImglocation;
   try{
     //regularImglocation = await uploadToBucket(img);
-    regularImglocation=`https://via.placeholder.com/600/51aa97`
-    const pass = bcrypt.hashSync(password, parseInt(process.env.SALT));
-   
+    regularImglocation=`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1044.jpg`;
+    const pass = bcrypt.hashSync(req.body.password, parseInt(process.env.SALT));
     const inputVars={firstName:req.body.firstName,
                      lastName:req.body.lastName,
-                     roleId: roleId ? roleId : USER_REGULAR_ROLE_ID,
+                     roleId:  USER_REGULAR_ROLE_ID,
                      password:pass,
                      photo:regularImglocation} 
-                                                            console.log('body inputVars',inputVars)
+                                                            
     return BaseController.updateModel(req, res, ModeloUser, inputVars )
   } catch (error) {        
     res.status(500).send(error);

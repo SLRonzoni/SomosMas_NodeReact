@@ -19,7 +19,7 @@ const contactsValidators = [
                 if (contact) {
                     throw new Error('Email already registered')
                 }
-            }
+             }
         }
     }),
 

@@ -1,132 +1,303 @@
-import React,{useState} from "react";
+import React from "react";
 import "./styles/styles.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import {Link} from 'react-router-dom';
+import { Formik } from "formik";
+import { msgRequired,msgValidationUserFirstName,msgValidationUserLastName, msgValidationUserEmail, msgValidationUserPassword, msgValidationUserConfirmPassword} from './helpers/validationMessages';
+import { regexUserfirstName, regexUserLastName, regexUserPassword, regexUserEmail } from "./helpers/RegExp";
+import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 
-const Register=()=> {
-  const [form, setForm] = useState({
-    firstName:"",
-    lastName:"",   
-    roleId:"",  
-    email:"",
-    password:"",
-    confirmpassword:""
-    });
+const Register=({history})=> {
+    //SHOW PASSWORD
+    const [shown, setShown] = React.useState(false);
+    const switchShown = () => setShown(!shown);
 
-   
-   //capturar datos que el usuario ingresa
-    const handleChange = async e => {
-      e.preventDefault()
-      await setForm({
-        ...form,
-        [e.target.name]: e.target.value
-       
-      });
+    //SEND
+    const sendForm = async (values) => {
+        //CREATE    
+        let body = new FormData()
+        body.append("firstName",values.firstName);
+        body.append("lastName",values.lastName);
+        body.append("email",values.email);
+        body.append("roleId",process.env.REACT_APP_ROLE_REGULAR_USER);
+        body.append("password",values.password);
+        body.append("photo",values.photo);  
+
+        const createUser = async () => {
+            await axiosClient
+            .post('/auth/register',body)
+            .then(response=>{
+                if(response.status===200 ){     
+                    Swal.fire({
+                        icon: "success",
+                        title: `Te registraste correctamente !`,
+                        timer:1000,
+                        showConfirmButton:false
+                    });
+                history.push("/auth/login");
+                } else {             
+                    Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    showConfirmButton:true
+                    })
+                };          
+            })     
+            .catch(error=>{
+                console.log(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Error"
+                });
+            });
+        }
+        createUser();
     };
 
-    //peticion a API y salvado de los datos
-     const send = async () => {
+    //FORMIK INITIAL VALUES
+    let initialValues={firstName:'', 
+        lastName:'',
+        photo:'',
+        email:'',
+        password:'',
+        confirmPassword:''}
 
-      // if(form.password !== form.confirmpassword){
-      //       Swal.fire({
-      //         icon: "warning",
-      //         title: "Las contraseñas no coinciden !",
-      //         time:3000,
-      //         showConfirmButton:true
-      //       })
-      //       return;
-      // };
+    //FORMIK VALIDATIONS 
+    let validateInputs=(values) =>{   
 
+        let errors = {firstName: '',lastName:'', photo:'', email:'',password:'', 
+        icoNfirstName:'',icoNlastName:'', icoNphoto:'',iconNemail:'', icoNpassword:'',formOk:''};  
 
-      await axiosClient.post('/auth/register',{"firstName":form.firstName,"lastName":form.lastName,
-                                                "email":form.email,"password":form.password},{withCredentials:true})
-      
-      .then(response=>{
-          if(response.status===200  ){            
-              Swal.fire({
-                  icon: "success",
-                  title: `Te registraste correctamente !`,
-                  showConfirmButton:false
-                  })
-                 
-                 window.location.href="/auth/login"
-          } else {             
-               Swal.fire({
-                  icon: "error",
-                  title: "Error !",
-                  text: response.message,
-                  showConfirmButton:true
-                })
-               
-             };          
-      })     
-      .catch(error=>{
-         console.log(error)
-         Swal.fire({
-          icon: "error",
-          title: "Error",
-          text: error
-        });
-      });
-    }
-    
-   
-       return (
-          <div className="container-sm col-6 col-md-4 bg-light" > 
-            
-            <h3>Formulario de Registro</h3>
-              <div className="form-control">
-                <div className="form-group">    
-                    <label className="formLabel">Nombre</label>
-                    <input type="text" className="form-control" name="firstName" id="name"  onChange={handleChange} required  autoFocus/>
-                </div> 
+        if (!values.firstName) {
+            errors.firstName=msgRequired
+            errors.icoNfirstName= '❌'
+            return errors
+        };
 
-                <div className="form-group" >    
-                    <label className="formLabel">Apellido</label>
-                    <input type="text" className="form-control" name="lastName" id="lastName"  onChange={handleChange}  required />
-                </div> 
-                </div>
-              <br></br>              
+        if (!regexUserfirstName.test(values.firstName)) {
+            errors.firstName=msgValidationUserFirstName
+            errors.icoNfirstName= '❌'
+            return errors
+        } else {
+            errors.icoNfirstName= '✔️'
+        };
 
-              <div className="form-control">
-                <div className="form-group" >    
-                    <label className="formLabel">Email</label>
-                    <input type="email" className="form-control" name="email" id="email"  onChange={handleChange}  required  />
-                </div> 
+        if (!values.lastName) {
+            errors.lastName=msgRequired
+            errors.icoNlastName= '❌'
+            return errors
+        };
 
-                <div className="form-group" >    
-                    <label className="formLabel">Contraseña</label>
-                    <input type="password" className="form-control" name="password" id="password"  onChange={handleChange}  required />
-                </div> 
+        if (!regexUserLastName.test(values.lastName)) {
+            errors.lastName=msgValidationUserLastName
+            errors.icoNlastName= '❌'
+            return errors
+        } else {
+            errors.icoNlastName= '✔️'
+        };
 
-                <div className="form-group" >    
-                    <label className="formLabel">Confirmar contraseña</label>
-                    <input type="password" className="form-control" name="confirmpassword" id="confirmpassword"    required />
-                </div> 
-              </div>
-              <div >
-              <div className="d-grid gap-4 d-md-flex justify-content-md-center">
-                <button
-                  className="m-2 btn btn-primary"
-                  onClick={()=>send()} 
-                >
-                  Enviar
-                </button>
-                <Link
-                  to={"/"}
-                  className="m-2 btn btn-primary"
-                  role="button"
-                  aria-pressed="true"
-                >
-                  {" "}
-                  Volver{" "}
-                </Link>
-              </div>
-            </div>      
+        if (!values.email) {
+            errors.email=msgRequired
+            errors.icoNemail= '❌'
+            return errors
+        };
+
+        if (!regexUserEmail.test(values.email)) {
+            errors.email=msgValidationUserEmail
+            errors.icoNemail= '❌'
+            return errors
+        } else {
+            errors.icoNemail= '✔️'
+        };
+
+        if (!values.password) {
+            errors.password=msgRequired
+            errors.icoNpassword= '❌'
+            return errors
+        };
+
+        if (!regexUserPassword.test(values.password)) {
+            errors.password=msgValidationUserPassword
+            errors.icoNpassword= '❌'
+            return errors
+        } else {
+            errors.icoNpassword= '✔️'
+        };
+
+        if (values.password!==values.confirmPassword){
+            errors.password=msgValidationUserConfirmPassword
+            errors.icoNpassword= '❌'
+            return errors
+        } else {
+            errors.icoNpassword= '✔️'
+        };
+
+        if(errors.firstName || errors.lastName || errors.email || errors.photo || errors.password){
+        errors.formOk='f'
+        } else {
+        errors.formOk='v'
+        };  
+    }   
+
+    //FORM
+    return (
+    <>
+    <Formik  
+            initialValues={initialValues}           
+            validate={validateInputs}
+            onSubmit={(values)=>{ sendForm(values)}}
+    >
+    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
+        <form className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>  
+        <h4>Formulario de Registro</h4>
+            <div className="marginTop">
+            <div>
+            <div >   
+                <Label htmlFor="photo"> </Label>
+                <p className="pUpdateCateg">
+                    { values.photo ? <img  src={values.photo}  alt="userPhoto"/> : ''}
+                </p>
+                <InputGroup  >
+                <InputUser className="form-control"
+                        type="file" 
+                        name="photo" 
+                        id="photo"  
+                        encType="multipart/form-data"
+                        onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
+                        onBlur={handleBlur}
+                />
+                </InputGroup>  
+                {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
+            </div> 
+            {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
             </div>
-   
-        );
-  }
+            <br></br>
+            
+            <div>
+            <div>
+                <Label htmlFor="firstName">Nombre :</Label>
+                <InputGroup >
+                    <InputUser
+                    type="text" 
+                    name="firstName" 
+                    id="firstName"  
+                    value={values.firstName}
+                    onChange={handleChange} 
+                    onBlur={handleBlur}
+                    />              
+                    {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
+                </InputGroup> 
+            </div>
+            {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
+            </div>
+            <br></br>
 
+            <div>
+            <div>
+            <Label htmlFor="lastName">Apellido : </Label>
+                <InputGroup>
+                    <InputUser
+                    type="text" 
+                    name="lastName" 
+                    id="lastName"  
+                    value={values.lastName}
+                    onChange={handleChange} 
+                    onBlur={handleBlur}
+                    />
+                    {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
+                </InputGroup>
+            </div> 
+            {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
+            </div>
+            <br></br>
+
+            <div>
+            <div>
+                <Label htmlFor="lastName">Email : </Label>
+                <InputGroup>
+                    <InputUser
+                    type="text" 
+                    name="email" 
+                    id="email"  
+                    value={values.email}
+                    onChange={handleChange} 
+                    onBlur={handleBlur}
+                    />
+                    {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
+                </InputGroup>
+            </div> 
+            {touched.email && errors.email && <ErrorText>{errors.email} </ErrorText> }
+            </div>
+            <br></br>
+            
+            <div>
+            <div>
+                <Label htmlFor="password"> Password : 
+                    <span className="colorBlanco">.........</span>
+                    <button type="button" 
+                            className='btn buttonBlue' 
+                            onClick={switchShown}> {shown ? 'Ocultar' : 'Ver'}
+                    </button> 
+                </Label>  
+
+                <InputGroup>
+                    <InputUser
+                    type={shown ? "text" : "password" }
+                    name="password" 
+                    id="password"  
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    />
+                {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
+                </InputGroup>
+            </div> 
+            {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+            </div>
+
+            <div>
+                <Label htmlFor="confirmPassword"> Repetir Password : </Label>  
+
+                <InputGroup>
+                    <InputUser
+                    type={shown ? "text" : "password" }
+                    name="confirmPassword" 
+                    id="password"  
+                    value={values.confirmPassword}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    />
+                {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
+                </InputGroup>
+            </div> 
+            {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+            </div>
+
+            { errors.formOk === "f" && 
+            <MsjWrong> 
+            <span className="centerText">
+            <br /> Algun dato es incorrecto. 
+            <br/> Por favor complete el formulario correctamente
+            </span>        
+            </MsjWrong>
+            }
+
+            <br></br>
+            <div className="centerText">
+                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
+                <Link 
+                to={"/"}
+                className="m-3 mr-md-2 btn buttonBlue"
+                role="button"
+                > Volver
+                </Link>
+            </div>  
+        
+        </form>
+      )}
+   </Formik>
+  </>
+  );
+};
 export default Register;

@@ -16,10 +16,12 @@ import CategoriesOne from './components/CategoriesOne';
 import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
 
+import Contact from './components/Contact';
 import UsersAll from './components/UsersAll';
 // import UsersOne from './components/UsersOne';
 import Register from './components/Register';
 import EditUsers from './components/UsersUpdate';
+
 
 
 function App() {
@@ -45,6 +47,7 @@ function App() {
 
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
+        <Route exact path="/contacts" component={Contact}/>
               
         {/* ADMIN */}
         <Route exact path='/CategoriesAll' component={CategoriesAll}/>
@@ -55,7 +58,6 @@ function App() {
 
         <Route exact path='/UsersAll' component={UsersAll}/>
         {/* <Route exact path='/users/:id' component={UsersOne}/> */}
-        <Route exact path='/Register' component={Register}/>
         <Route exact path='/users/update/:id' component={EditUsers}/>
        
 

@@ -14,6 +14,8 @@ const msgValidationUserEmail="Puede contener entre 4 y 12 dígitos"
 
 const msgValidationUserPassword="Puede contener entre 4 y 12 dígitos"
 
+const msgValidationUserConfirmPassword="La contraseñas ingresadas no son iguales"
+
 const msgValidationUserPhone= "Puede contener entre 7 y 14 números"
 
 const msgValidationCategoryName= "Puede contener entre 4 y 50 dígitos ( letras, letras acentuadas y espacios )"
@@ -30,6 +32,7 @@ export { msgRequired,
          msgValidationUserLastName,
          msgValidationUserEmail,
          msgValidationUserPassword,
+         msgValidationUserConfirmPassword,
          msgValidationUserPhone,
          msgValidationCategoryName,
          msgValidationCategoryDescription,
