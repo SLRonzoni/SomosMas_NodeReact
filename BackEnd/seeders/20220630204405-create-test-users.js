@@ -1,5 +1,6 @@
 'use strict';
 const bcrypt = require("bcrypt");
+const Op= require ('Sequelize');
 const password = bcrypt.hashSync('1234test', parseInt(process.env.SALT));
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -26,6 +27,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-     await queryInterface.bulkDelete('Users', {email: {[Op.in]: ['regular@test.com', 'admin@test.com']}}, {});
+     await queryInterface.bulkDelete('Users', null, {});
   }
 };

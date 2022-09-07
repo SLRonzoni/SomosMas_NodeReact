@@ -14,7 +14,7 @@ module.exports = {
       email: 'commentsadmin@somosmas.com',      
       password: pass,
       roleId: 3,
-      photo: 'https://loremflickr.com/640/480/abstract',
+      photo: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/40.jpg',
       createdAt: new Date,
       updatedAt: new Date
     }], {});

@@ -33,7 +33,6 @@ const createUser = async (req, res) => {
       password: pass,
       roleId: roleId ? roleId : ROLE_REGULAR_USER,
     });
-
     const token = tokenGenerator(user);
 
     const emailSent = await welcomeEmail(user);

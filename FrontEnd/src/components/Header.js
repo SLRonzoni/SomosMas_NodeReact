@@ -71,6 +71,7 @@ export default function Header () {
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
                     <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
                     <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
+                    <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>

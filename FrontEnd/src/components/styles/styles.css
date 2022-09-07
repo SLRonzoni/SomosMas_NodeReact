@@ -284,8 +284,13 @@ h1{
 .selectBtnDesplegable{
     background-color:whitesmoke;
     color:black;
-    width:35rem;
+    width:20rem;
     height:34px;
+    margin-left: -10px;
+}
+
+.marginCero{
+    margin-left:0;
 }
 
 /* .lineAll{
@@ -306,6 +311,8 @@ h1{
     margin:auto;
     width:50%;  
 }
+
+
 
 .medio{
     margin-left: 20%;

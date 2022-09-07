@@ -1,18 +1,19 @@
 import React, { Fragment, useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
-import ContactsAllLine from "./ContactsAllLine";
+import MessagesAllLine from "./MessagesLineAll";
 import Swal from "sweetalert2";
 import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import { formatDate } from "./helpers/FormatDate";
 
-const ContactsAll = (props) => { 
+const MessagesAll = (props) => { 
 
-  const [contacts, setContacts] = useState([]); 
+  const [messages, setMessages] = useState([]); 
   
-  const getContacts = async () => {     
-     await axiosClient.get(`/contacts`)
+  const getMessages = async () => {     
+     await axiosClient.get(`/messages`)
       .then( response => {
         if(response.status!==200){
           Swal.fire({
@@ -22,7 +23,7 @@ const ContactsAll = (props) => {
           });
         props.history.push('/');
         } 
-        setContacts(response.data.contacts);   
+        setMessages(response.data.messages);   
       }) 
       .catch(function (error) {
         console.log(error)
@@ -32,7 +33,7 @@ const ContactsAll = (props) => {
   //DELETE
   const confirmRemove = (id) => {
     Swal.fire({
-      title: "Está seguro de eliminar este contacto ? ",
+      title: "Está seguro de eliminar este mensaje ? ",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -48,15 +49,15 @@ const ContactsAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/contacts/del/${id}`)
+      .delete(`/messages/del/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Contacto Eliminado !",
+          title: "Mensaje Eliminado !",
           timer:1000,
           showConfirmButton: false
         });
-        getContacts();
+        getMessages();
       })
       .catch(function (error) {
         Swal.fire({
@@ -68,44 +69,52 @@ const ContactsAll = (props) => {
   };
 
   useEffect(() => {
-    getContacts()
+    getMessages()
   },[]);
 
 
-  //FILTER BY ID
+  //FILTER BY EMAIL AND CREATED DATE
   let filterBy;
-  const getFilterContactId = async () => {
-      await axiosClient
-      .get(`/contacts/`+filterBy)
-      .then((response) => {
-        setContacts(response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
+  let route;
+  const getFilterMessage = async () => {
+
+    if(filterBy.includes('@')===true){
+        route='/messages/byEmail/'
+      } else{
+        route='/messages/byDate/'
+      };
+
+    await axiosClient
+    .get(route+filterBy)
+    .then((response) => {
+      setMessages(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
   };
   
     const changesId=(e)=>{
         filterBy=e.target.value;
         if(filterBy === 'todos'){
-            getContacts() 
+            getMessages() 
         } else {
-          getFilterContactId()   
+          getFilterMessage()   
     };
   } 
 
  
-  const showContacts = (props) => {
+  const showMessages = (props) => {
     return (
       <tbody >
-        {contacts.map((oneContact) => (
-          <ContactsAllLine 
-            key={oneContact.id}
-            id={oneContact.id}
-            name={oneContact.name}
-            phone={oneContact.phone}
-            email={oneContact.email}
-            create={oneContact.createdAt}
+        {messages.map((oneMessage) => (
+          <MessagesAllLine 
+            key={oneMessage.id}
+            id={oneMessage.id}
+            name={oneMessage.name}
+            email={oneMessage.email}
+            message={oneMessage.message}
+            create={oneMessage.createdAt}
             remove={confirmRemove}
             />
         ))}
@@ -121,33 +130,50 @@ const ContactsAll = (props) => {
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando contactos*/}
-      {!contacts &&  <LoadingBox/> }
+      {/* si aun está cargando mensajes*/}
+      {!messages &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay contactos*/}
-      {contacts && 
+       {/* solo renderiza si hay mensajes*/}
+      {messages && 
       <>
       <div>
-        <h1 >Listado de Contactos</h1>
+        <h1 >Listado de Mensajes</h1>
         <p>{}</p>
       </div>
       <br></br>      
-        <div className="" >
+        <div className="displayFlex " >
+          
+          <div>
+            <p className="pBtnDesplegable" >Buscar mensajes por email</p>
+              <select 
+                className="m-3 selectBtnDesplegable form-select "
+                type="text"
+                name="name"
+                onChange={changesId}
+              >  
+                {messages.map(oneMessage => (
+                  <option key={oneMessage.id} value={oneMessage.email}>
+                    {oneMessage.email}
+                  </option>
+                ))}
+                <option value={"todos"}>Mostrar todos los mensajes</option>
+              </select>
+          </div> 
           
           <div >
-            <p className="pBtnDesplegable " >Buscar por nombre del contacto</p>
+            <p className="pBtnDesplegable " >Buscar mensajes por fecha</p>
               <select
                 type="text"
                 name="name"
                 onChange={changesId}
                 className="m-3 selectBtnDesplegable form-select "
               >  
-                {contacts.map(oneContact => (
-                  <option key={oneContact.name} value={oneContact.name}>
-                    {oneContact.id}  -  {oneContact.name}
+                {messages.map(oneMessage => (
+                  <option key={oneMessage.id} value={oneMessage.createdAt}>
+                    {formatDate(new Date(oneMessage.createdAt))}
                   </option>
                 ))}
-                <option value={"todos"}>Mostrar todos los contactos</option>
+                <option value={"todos"}>Mostrar todos los mensajes</option>
               </select>
           </div> 
         </div> 
@@ -157,12 +183,12 @@ const ContactsAll = (props) => {
           <tr>
             <th className="tituloItem centerText "> Id </th>
             <th className="tituloItem "> Contacto </th>
-            <th className="tituloItem "> Teléfono </th>
             <th className="tituloItem "> Email </th>
-            <th className="tituloItem centerText"> Creado</th>
+            <th className="tituloItem "> Mensaje </th>
+            <th className="tituloItem centerText"> Recibido</th>
           </tr>
         </thead>
-        {showContacts()}
+        {showMessages()}
       </table>
       </>
       } 
@@ -171,5 +197,5 @@ const ContactsAll = (props) => {
   );
 };
 
-export default ContactsAll;
+export default MessagesAll;
 

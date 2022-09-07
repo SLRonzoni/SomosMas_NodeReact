@@ -15,6 +15,7 @@ const activitiesRouter = require('./activities.routes');
 const slidesRouter = require('./slides.routes');
 const contactRoutes = require('./contacts.routes');
 const commentRouter = require('./comments.routes');
+const messagesRouter = require('./messages.routes');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -33,6 +34,7 @@ router.use('/activities', activitiesRouter);
 router.use('/slides', slidesRouter);
 router.use('/contacts', contactRoutes);
 router.use('/comments', commentRouter);
+router.use('/messages', messagesRouter);
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 module.exports = router;

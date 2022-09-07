@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate'
 
-const CategoriesAllLine = ({id, name, image, description, create,update,remove}) =>{
+const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
   
     return (
         <tr>
             <td className="renglonNro">{id}</td>
             <td className="renglon" >{name}</td>
-            <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
-            <td className="renglon" >{description}</td>
+            <td className="imageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
+            <td className="renglon" >{content}</td>
             <td className="renglon centerText" >{formatDate(new Date(create))}</td>
             <td className="renglon centerText" >{formatDate(new Date(update))}</td>
             
@@ -21,4 +21,4 @@ const CategoriesAllLine = ({id, name, image, description, create,update,remove})
         </tr>
     );
 };
-export default CategoriesAllLine;
+export default ActivitiesAllLine;
