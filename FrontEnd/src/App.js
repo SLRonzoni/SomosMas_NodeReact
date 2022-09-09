@@ -12,13 +12,24 @@ import Home from './components/Home';
 import SearchResults from "./components/SearchResults";
 
 import ActivitiesAll from './components/ActivitiesAll';
+import ActivitiesCreate from './components/ActivitiesCreate';
+import ActivitiesUpdate from './components/ActivitiesUpdate';
+
 import CategoriesAll from './components/CategoriesAll';
 import CategoriesOne from './components/CategoriesOne';
 import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
 
+import CommentsAll from './components/CommentsAll';
+
 import ContactsAll from './components/ContactsAll';
+
 import MessagesAll from './components/MessagesAll';
+
+import MembersAll from './components/MembersAll';
+import MembersCreate from './components/MembersCreate';
+import MembersOne from './components/MembersOne';
+import MembersUpdate from './components/MembersUpdate';
 
 import Contact from './components/Contact';
 import UsersAll from './components/UsersAll';
@@ -55,13 +66,28 @@ function App() {
               
         {/* ADMIN */}
         <Route exact path='/ActivitiesAll' component={ActivitiesAll}/>
+        <Route exact path='/ActivitiesCreate' component={ActivitiesCreate}/>
+        <Route exact path='/activities/update/:id' component={ActivitiesUpdate}/>
+
         <Route exact path='/CategoriesAll' component={CategoriesAll}/>
         <Route exact path='/categories/:id' component={CategoriesOne}/>
         <Route exact path='/CategoriesCreate' component={CategoriesCreate}/>
         <Route exact path='/categories/update/:id' component={CategoriesUpdate}/>
         <Route exact path='/categories/del/:id' component={CategoriesAll}/>
+
+        <Route exact path='/CommentsAll' component={CommentsAll}/>
+        <Route exact path='/comments/byUser/:user_id' component={CommentsAll}/>
+
         <Route exact path='/ContactsAll' component={ContactsAll}/>
+
+        <Route exact path='/MembersAll' component={MembersAll}/>
+        <Route exact path='/MembersCreate' component={MembersCreate}/>
+        <Route exact path='/MembersOne' component={MembersOne}/>
+        <Route exact path='/MembersUpdate' component={MembersUpdate}/>
+
         <Route exact path='/MessagesAll' component={MessagesAll}/>
+
+
         <Route exact path='/UsersAll' component={UsersAll}/>
         {/* <Route exact path='/users/:id' component={UsersOne}/> */}
         <Route exact path='/users/update/:id' component={EditUsers}/>

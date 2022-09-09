@@ -36,7 +36,6 @@ export default function Header () {
                   <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
                     <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                    <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
@@ -50,7 +49,6 @@ export default function Header () {
                    <NavDropdown title={`Secciones para ${userInfo.firstName}` } id="basic-nav-dropdown">
                     <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                    <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
@@ -70,7 +68,6 @@ export default function Header () {
                     <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
                     <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
-                    <NavDropdown.Item href="/SlidesAll">Imágenes</NavDropdown.Item>
                     <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>

@@ -16,6 +16,20 @@ const getAllComments = async (req, res) =>
 const getCommentById = async (req, res) => 
     await getModelById(req, res, CommentModel);    
 
+const getCommentsByUser= async (req, res) => {    
+    const paramsUser = req.params.user_id;
+    try{
+        const comments= await CommentModel.findAll({where:{user_id:paramsUser}})
+        if(!comments){
+        return res.status(404).json('user not found')
+        } else{
+        res.status(200).json(comments)
+        }
+    } catch(error) {
+        res.status(500).json(error)
+    }     
+};
+
 const updatedComment = async (req, res) =>
     await updateModel(req, res, CommentModel, req.body);
 
@@ -26,6 +40,7 @@ module.exports = {
     createComment,
     getAllComments,
     getCommentById,
+    getCommentsByUser,
     updatedComment,
     deleteComment
 }

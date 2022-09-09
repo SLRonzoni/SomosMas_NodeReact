@@ -4,6 +4,7 @@ const {
     createComment,
     getAllComments,
     getCommentById,
+    getCommentsByUser,
     updatedComment,
     deleteComment
 } = require('../controllers/comment.controller');
@@ -15,6 +16,7 @@ router.use(authenticatedUser)
 router.post('', verifyIsCommentsAdmin, validateComments, createComment)
 router.get('', getAllComments)
 router.get('/:id', idExists, getCommentById)
+router.get('/byUser/:user_id', verifyIsCommentsAdmin, getCommentsByUser)
 router.put('/:id', verifyIsCommentsAdmin, idExists, validateComments, updatedComment)
 router.delete('/:id', verifyIsCommentsAdmin, idExists, deleteComment)
 

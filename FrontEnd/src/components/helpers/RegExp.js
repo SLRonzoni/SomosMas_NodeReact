@@ -1,5 +1,7 @@
 
 //REGULAR EXPRESSIONS
+const regexActivitiesName=/^[a-zA-Z0-9_-\s]{6,50}$/ // Letras, numeros, guion y guion_bajo, entre 6 y 16 digitos
+
 const regexUserfirstName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
 
 const regexUserLastName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
@@ -48,6 +50,7 @@ const charactersOk = {
 
 }
 
-export { regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
+export { regexActivitiesName,
+	     regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
 	     regexCategoryName,regexCategoryDescription,
 	     charactersOk };

@@ -19,7 +19,6 @@ body{
     height: 29px;
     font-size: 14px;
     margin-top:4px;   
-   
 }
 
 .btnShowPassword{
@@ -29,7 +28,6 @@ body{
     border: transparent;
     color:aliceblue;
     height: 1.5rem;
-   
     padding:10px;
     font-size: 12px;
     margin-top:10px; 
@@ -43,7 +41,6 @@ body{
     text-align: center;
     height:0.3rem;
 }
-
 
 /* .grupoBoton{
     display: flex;
@@ -298,6 +295,13 @@ h1{
     width:90%;  
 }*/
 
+.visible{
+    display: block;
+}
+
+.invisible{
+    display: none;
+}
 
 .productDescrip{
     width:max-content;
@@ -613,6 +617,10 @@ h1{
  width: 90%;
 }
 
+.backgroundDark{
+    background-color: rgb(37, 38, 38);
+}
+
 /* .tablaPedidosProductos{
  width: 50%;
 }
@@ -824,10 +832,39 @@ border:1px solid white;
 
 } */
 
-/* .letraNegro{
-  color:#000000
-} */
+.card{
+    color:#fff;
+    background-color: #0e0d0d;
+    height:auto;
+    width:22rem;
+    box-shadow:3px 0px 5px 3px grey;
+    font-size: 16px;
+    display:inline-flex;
+    margin: auto;
+    margin-left:2%;
+    margin-bottom:2%;
+}
 
-/* .letraBlanca{
-  color:white
-} */
+.fixedSizeCard{
+    height:8rem;
+}
+
+.imagenCharCard{
+    display:flex;
+    margin:auto;
+    height:160px; 
+}
+
+.textBtnDesplegableCenter{
+    margin-top:1.2rem;
+}
+
+.marginLeft10px{
+    margin-left: 10px;
+}
+
+.centerHorizontally{
+    display:flex;
+    justify-content:center;
+}
+

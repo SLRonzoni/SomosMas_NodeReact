@@ -12,11 +12,6 @@ const validateActivity = [
         .exists().withMessage('is required')
         .not().isEmpty().withMessage('should not be empty')
         .isString().withMessage('should be a string'),
-    check("image")
-        .exists().withMessage('is required')
-        .not().isEmpty().withMessage('should not be empty')
-        .trim()
-        .isURL().withMessage('should be an url'),
     (req, res, next) => {
         validateResult(req, res, next)
     }

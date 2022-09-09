@@ -3,7 +3,7 @@ import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import ActivitiesAllLine from "./ActivitiesAllLine";
 import Swal from "sweetalert2";
-import { Redirect} from "react-router-dom";
+import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
@@ -131,10 +131,10 @@ const ActivitiesAll = (props) => {
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando mensajes*/}
+      {/* si aun está cargando actividades*/}
       {!activities &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay mensajes*/}
+       {/* solo renderiza si hay actividades*/}
       {activities && 
       <>
       <div>
@@ -188,6 +188,10 @@ const ActivitiesAll = (props) => {
             <th className="tituloItem "> Descripción </th>
             <th className="tituloItem centerText"> Creada</th>
             <th className="tituloItem centerText"> Actualizada</th>
+
+            <th className="centerText" ><Link to={'/ActivitiesCreate'} className="m-1 mr-md-2 btn btn-success"
+                  role="button" > Agregar </Link> 
+            </th>
           </tr>
         </thead>
         {showActivities()}

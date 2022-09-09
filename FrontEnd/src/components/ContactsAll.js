@@ -78,7 +78,7 @@ const ContactsAll = (props) => {
       await axiosClient
       .get(`/contacts/`+filterBy)
       .then((response) => {
-        setContacts(response.data)
+        setContacts([response.data])
       })
       .catch(function (error) {
         console.log(error)
@@ -88,14 +88,14 @@ const ContactsAll = (props) => {
     const changesId=(e)=>{
         filterBy=e.target.value;
         if(filterBy === 'todos'){
-            getContacts() 
+          getContacts() 
         } else {
           getFilterContactId()   
     };
   } 
 
  
-  const showContacts = (props) => {
+  const showContacts = () => {
     return (
       <tbody >
         {contacts.map((oneContact) => (
@@ -143,7 +143,7 @@ const ContactsAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {contacts.map(oneContact => (
-                  <option key={oneContact.name} value={oneContact.name}>
+                  <option key={oneContact.id} value={oneContact.id}>
                     {oneContact.id}  -  {oneContact.name}
                   </option>
                 ))}

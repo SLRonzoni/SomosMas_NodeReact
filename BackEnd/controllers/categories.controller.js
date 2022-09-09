@@ -2,7 +2,7 @@ const ModelCategories= require('../models').Categories;
 const ModelNews=require('../models').News;
 const ModelHelper=require('../helpers/modelHelper');
 const baseController = require("./base.controller");
-const { uploadToBucket } = require('../services/s3');
+//const { uploadToBucket } = require('../services/s3');
 
 const getAllCategories= async (req, res) => {
   try{
@@ -40,10 +40,11 @@ const getOneCategoryByName= async (req, res) => {
 };
 
 const createCategory= async (req,res)=> { 
-  let img = req.files.image;
+  //let img = req.files.image;
   let regularImglocation;
   try{
-    regularImglocation = await uploadToBucket(img);
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
     const inputVars={name:req.body.name,
                     description:req.body.description,
                     image:regularImglocation}

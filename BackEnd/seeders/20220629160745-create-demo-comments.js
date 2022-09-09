@@ -2,17 +2,17 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Contacts', [{
-      name: 'John Connor',
-      phone: '375501966',
-      email: 'jhon@example.com',
+    await queryInterface.bulkInsert('Comments', [{
+      body: 'demo comentario uno',
+      user_id: 10,
+      news_id: 4,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'Sandra Bermudez',
-      phone: '18650155',
-      email: 'sandra@example.com',
+      body: 'demo comentario dos',
+      user_id: 23,
+      news_id: 5,
       createdAt: new Date(),
       updatedAt: new Date()
     }
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Contacts', null, {});
+    await queryInterface.bulkDelete('Comments', null, {});
      
   }
 };

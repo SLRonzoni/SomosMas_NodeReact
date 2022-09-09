@@ -1,24 +1,29 @@
-const {
-	getAllModels,
-    getModelById,
-	createModel,
-    updateModel,
-    deleteModel
-} = require('../controllers/base.controller');
-
+const baseController= require('./base.controller');
 const ActivityModel = require("../models").Activity;
+//const { uploadToBucket } = require('../services/s3');
 
 const createActivity = async (req, res) => { 
-	const { name, content, image } = req.body;
-	await createModel(res, ActivityModel, { name, content, image });
-}
+	//let img = req.files.image;
+	let regularImglocation;
+	try{
+	  //regularImglocation = await uploadToBucket(img);
+	  regularImglocation=`https://via.placeholder.com/600/51aa97`
+	  const inputVars={name:req.body.name,
+					  content:req.body.content,
+					  image:regularImglocation}
+	  return baseController.createModel(res, ActivityModel, inputVars);
+    } catch(error) {
+	  res.status(500).json(error)
+    }
+};
 
-const getAllActivities = async (req, res) => 
-	await getAllModels(req, res, ActivityModel);
+const getAllActivities = async (req, res) => {
+	return baseController.getAllModels(req, res, ActivityModel);
+};
 
-const getActivityById = async (req, res) => 
-	await getModelById(req, res, ActivityModel);
-
+const getActivityById = async (req, res) => {
+	return baseController.getModelById(req, res, ActivityModel);
+};
 
 const getActivitiesByName= async (req, res) => {    
 	const paramsName = req.params.name;
@@ -34,7 +39,7 @@ const getActivitiesByName= async (req, res) => {
 	}     
 };
 	  
-	const getActivitiesByDate= async (req, res) => {    
+const getActivitiesByDate= async (req, res) => {    
 	const paramsDate = req.params.date;
 	try{
 		const activities= await ActivityModel.findAll({where:{updatedAt:paramsDate}})
@@ -51,12 +56,13 @@ const getActivitiesByName= async (req, res) => {
 
 const updateActivity = async (req, res) => {
 	const { name, content, image } = req.body;
-	await updateModel(req, res, ActivityModel, { name, content, image });
+	return baseController.updateModel(req, res, ActivityModel, { name, content, image });
 }
 	
 
-const deleteActivity = async (req, res) => 
-	await deleteModel(req, res, ActivityModel);
+const deleteActivity = async (req, res) => {
+	return baseController.deleteModel(req, res, ActivityModel);
+};
 
 module.exports = {
 	getAllActivities,
@@ -65,5 +71,5 @@ module.exports = {
 	getActivitiesByDate,
 	createActivity,
 	updateActivity,
-	deleteActivity,
+	deleteActivity
 };

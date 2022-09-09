@@ -23,22 +23,25 @@ Modificaciones al proyecto original ( back end ):
   * AUTH CONTROLLER, se creo servicio para login con google
   * CONTACT CONTROLLER, se eliminó campo message 
   * ACTIVITIES CONTROLLER, se crearon  servicios  getByName y getByDate
-  * ACTIVITIES CONTROLLER, se crearon  servicios  getByName y getByDate
+  * ACTIVITIES CONTROLLER, se modificaron servicios create y update, para el manejo de imagenes
   * AUTH CONTROLLER, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id
   * MESSAGES CONTROLLER , se crearon servicios
 
 ** ROUTES **
   * NEWS ROUTES, GET , se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
-  * CATEGORIES ROUTES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se cambió nombre de 
-                            rutas en CREATE,UPDATE y DELETE
+  * CATEGORIES ROUTES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se agregó al nombre de la
+                            ruta CREATE,UPDATE y DEL
   * CATEGORIES ROUTES, se agregó una ruta get by name
   * USERS ROUTES, se agregó /del a la ruta
   * AUTH ROUTES, se agregó moddleware optionsFileUpload 
   * USERS ROUTES, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
   * USERS ROUTES, se eliminó VerifyIsAdmin de las rutas update y get one
-  * ACTIVITIES ROUTES, se crearon rutas para getByName y getByDate
+  * ACTIVITIES ROUTES, se crearon rutas para getByName y getByDate y se agregaron middlewares
+  * ACTIVITIES ROUTES, se modificaron rutas create, getAll, update, del
   * AUTH ROUTES, se creo ruta para login con google
   * MESSAGES ROUTES , se crearon rutas
+  * MEMBERS, se agregó al nombre de la ruta CREATE,UPDATE y DEL y se agregó middleware idExists
+  * MEMBERS, se quitó la verificacion de administrador, para que los miembros los pueda ver cualquier usuario
 
   
 ** VIEWS **
@@ -46,8 +49,8 @@ Modificaciones al proyecto original ( back end ):
 
 
 ** VALIDATORS **
-  * CATEGORIES VALIDATOR, se eliminó validaciones para imagen
-
+  * CATEGORIES VALIDATOR, se eliminó validacion para imagen
+  * ACTIVITIES VALIDATOR, se eliminó validacion para imagen
 
 ** DOCUMENTATION ** 
   * CATEGORIES DOCUMENTATION, se adaptó create y update para que puedan recibir archivos de imagen y se cambió nombre 
@@ -69,6 +72,9 @@ Modificaciones al proyecto original ( back end ):
   * USER CREATE DEMO USER, se agregaron usuario regular y usuario admin
   * SEEDER, se standarizaron todos los nombres de los archivos
   * MESSAGES SEEDER , se creó seeder
+  * MEMBERS SEEDER, se creó seeder
+  * USERS SEEDER, se modificaron los seeders para que hashee la password
+  * MEMBERS SEEDER, se creó seeder
 
 
 ** MODELS ** 

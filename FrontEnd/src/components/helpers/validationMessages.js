@@ -6,6 +6,8 @@ const msgValidationDuplicated= "Ya existe un dato con el mismo nombre"
 
 const msgValidationImage="Debe ser un archivo de imágen"
 
+const msgValidationActivitiesName= "Puede contener entre 6 y 16 digitos ( letras, números, guión y guión bajo )"
+
 const msgValidationUserFirstName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
 
 const msgValidationUserLastName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
@@ -27,7 +29,8 @@ const msgValidationCategoryDescription= "Puede contener hasta 200 dígitos ( let
 
 
 export { msgRequired,
-    msgValidationDuplicated,
+         msgValidationDuplicated,
+         msgValidationActivitiesName,
          msgValidationUserFirstName,
          msgValidationUserLastName,
          msgValidationUserEmail,
