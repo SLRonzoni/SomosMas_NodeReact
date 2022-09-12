@@ -26,6 +26,7 @@ Modificaciones al proyecto original ( back end ):
   * ACTIVITIES CONTROLLER, se modificaron servicios create y update, para el manejo de imagenes
   * AUTH CONTROLLER, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id
   * MESSAGES CONTROLLER , se crearon servicios
+  * MEMBERS, se cambio nombre de inputs , de data a inputVars, y se adaptó servicio para manejar imagenes ,en create y update
 
 ** ROUTES **
   * NEWS ROUTES, GET , se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
@@ -42,6 +43,7 @@ Modificaciones al proyecto original ( back end ):
   * MESSAGES ROUTES , se crearon rutas
   * MEMBERS, se agregó al nombre de la ruta CREATE,UPDATE y DEL y se agregó middleware idExists
   * MEMBERS, se quitó la verificacion de administrador, para que los miembros los pueda ver cualquier usuario
+  * MEMBERS, se agregó middleware de manejo de imagenes en create y update
 
   
 ** VIEWS **

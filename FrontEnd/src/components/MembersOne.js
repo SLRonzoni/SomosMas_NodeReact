@@ -62,7 +62,6 @@ const MembersOne = (props) => {
                     className="form-control"
                     encType="multipart/form-data"
                     name="image"
-                    //placeholder="Seleccione la imágen"
                     defaultValue={members.image}
                     />
                   <br></br>

@@ -1,5 +1,6 @@
 const ModelMember = require('../models').Member;
 const baseController = require("./base.controller")
+//const { uploadToBucket } = require('../services/s3');
 
 const getAllMember = async (req, res) => {
     return baseController.getAllModels(req, res, ModelMember)
@@ -10,16 +11,32 @@ const getMemberById = async (req, res) => {
 }
 
 const createMember = async (req, res) =>{
-    const {name, facebookUrl, instagramUrl, linkedinUrl, image, description} = req.body;
-    const data = {name, facebookUrl, instagramUrl, linkedinUrl, image, description}
-    return baseController.createModel(res, ModelMember, data)
+    const {name, facebookUrl, instagramUrl, linkedinUrl, description} = req.body;
+    //let img = req.files.image;
+    let regularImglocation;
+    try{
+        //regularImglocation = await uploadToBucket(img);
+        regularImglocation=`https://via.placeholder.com/600/51aa97`
+        const inputVars = {name, facebookUrl, instagramUrl, linkedinUrl, image:regularImglocation, description}
+        return baseController.createModel(res, ModelMember, inputVars)
+    } catch (error) {        
+    res.status(500).send(error);
+  }
 
 }
 
 const updateMember = async (req, res) =>{
-    const {name, facebookUrl, instagramUrl, linkedinUrl, image, description} = req.body;
-    const data = {name, facebookUrl, instagramUrl, linkedinUrl, image, description}
-    return baseController.updateModel(req, res, ModelMember, data)
+    const {name, facebookUrl, instagramUrl, linkedinUrl, description} = req.body;
+    //let img = req.files.image;
+    let regularImglocation;
+    try{
+        //regularImglocation = await uploadToBucket(img);
+        regularImglocation=`https://via.placeholder.com/600/61a65`
+        const inputVars = {name, facebookUrl, instagramUrl, linkedinUrl, image:regularImglocation, description}
+        return baseController.updateModel(req, res, ModelMember, inputVars)
+    } catch (error) {        
+        res.status(500).send(error);
+  }
 }
 
 const deleteMember = async (req, res) =>{

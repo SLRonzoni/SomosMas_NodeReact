@@ -83,7 +83,7 @@ function App() {
         <Route exact path='/MembersAll' component={MembersAll}/>
         <Route exact path='/MembersCreate' component={MembersCreate}/>
         <Route exact path='/MembersOne' component={MembersOne}/>
-        <Route exact path='/MembersUpdate' component={MembersUpdate}/>
+        <Route exact path='/members/update/:id' component={MembersUpdate}/>
 
         <Route exact path='/MessagesAll' component={MessagesAll}/>
 
