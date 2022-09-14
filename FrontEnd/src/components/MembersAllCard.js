@@ -22,6 +22,7 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
 
 
   return (
+    <>
     <Fragment >
         <Card  className="card ">
           <Card.Body className="" >
@@ -29,19 +30,16 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
             <Card.Text className="imagenCharCard centerText"> <img src={image}  alt="miembro" ></img></Card.Text>
             <br></br>
             <Card.Text className="fixedSizeCard"><b> Detalle :</b> {description}</Card.Text>
-            <Card.Text className="displayFlex centerText">
-                <Card.Text ><img className="icono"src={facebook}></img> {facebookUrl}</Card.Text> 
-                <Card.Text ><img className="icono"src={instagram}></img> {instagramUrl}</Card.Text>
-            </Card.Text>
-            <Card.Text className="displayFlex centerText">
-                <Card.Text ><img className="iconoLinkedin"src={linkedin}></img> {linkedinUrl}</Card.Text>
-            </Card.Text>
+            <Card.Text ><img className="iconoSocialNetworks"src={facebook}></img> {facebookUrl}</Card.Text> 
+            <Card.Text ><img className="iconoSocialNetworks"src={instagram}></img> {instagramUrl}</Card.Text>
+            <Card.Text ><img className="iconoSocialNetworks"src={linkedin}></img> {linkedinUrl}</Card.Text>
+            <br></br>
             <Card.Text >
                 <div className={getRoleView()}>
                   <div className="displayFlex centerText">
-                      <p className=""><b> Ingreso :</b> {formatDate(new Date(created))}</p>
-                      <p className='colorBlack'>.....</p>
-                      <p className=""><b> Actualizado : </b>{formatDate(new Date(updated))}</p>
+                    <span className=""><b> Ingreso :</b> {formatDate(new Date(created))}</span>
+                    <span className='colorBlack'>.....</span>
+                    <span className=""><b> Actualizado : </b>{formatDate(new Date(updated))}</span>
                   </div>
                 </div>
             </Card.Text>
@@ -57,6 +55,7 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
           </Card.Body>
         </Card>    
       </Fragment>
+      </>
   );
 };
 export default MembersCard;

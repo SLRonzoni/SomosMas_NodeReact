@@ -16,6 +16,7 @@ const regexCategoryName=/^[a-zA-ZÀ-ÿ\s]{4,50}$/ // Letras y espacios, pueden l
 
 const regexCategoryDescription=/^[a-zA-Z0-9À-ÿ\s+]{0,200}$/ // Letras, numeros y espacios, pueden llevar acentos, hasta 200 digitos
 
+const regexUrl=/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,40}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
 
 
 
@@ -52,5 +53,5 @@ const charactersOk = {
 
 export { regexActivitiesName,
 	     regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
-	     regexCategoryName,regexCategoryDescription,
+	     regexCategoryName,regexCategoryDescription, regexUrl,
 	     charactersOk };

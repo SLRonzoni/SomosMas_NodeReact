@@ -16,8 +16,8 @@ const {
 const getAllNews = async (req, res) =>{
     const keyword=req.query.name
     const Op = Sequelize.Op
-    if(keyword!=='undefined'){
-        try {
+    if(!keyword==='undefined'){
+        try{
             const news = await newsModel.findAll({ 
                 where: {name:{[Op.like]:`%${keyword}%`}}, 
                 include: [{
@@ -29,27 +29,69 @@ const getAllNews = async (req, res) =>{
             console.log(error)
             res.status(500).json(error.message);
         }
-    } else {
+    } else {  
         await getAllModels(req, res, newsModel);
     }
-    
-}
+};
+
+const getByName= async (req, res) => {    
+	const paramsName = req.params.name;
+	try{
+		const news= await newsModel.findAll({where:{name:paramsName}})
+		if(!news){
+		return res.status(404).json('name not found')
+		} else{
+		res.status(200).json(news)
+		}
+	} catch(error) {
+		res.status(500).json(error)
+	}     
+};
+	  
+const getByDate= async (req, res) => {    
+	const paramsDate = req.params.date;
+    console.log(paramsDate)
+	try{
+		const news= await newsModel.findAll({where:{updatedAt:paramsDate}})
+		if(!news){
+		return res.status(404).json('date not found')
+		} else{
+		res.status(200).json(news)
+		}
+	} catch(error) {
+		res.status(500).json(error)
+	}     
+};
+
+const getByCategory= async (req, res) => {    
+	const paramsCategory = req.params.categoryId;
+	try{
+		const news= await newsModel.findAll({where:{categoryId:paramsCategory}})
+		if(!news){
+		return res.status(404).json('category not found')
+		} else{
+		res.status(200).json(news)
+		}
+	} catch(error) {
+		res.status(500).json(error)
+	}     
+};
 
 const createNews = async (req,res) =>{
     await createModel(res, newsModel, req.body);
-}
+};
 
 const updateNews = async (req, res) =>{
     await updateModel(req, res, newsModel, req.body);
-}
+};
 
 const detailNews = async (req,res) =>{
     await getModelById(req, res, newsModel);
-}
+};
 
 const deleteNews = async (req, res) =>{
     await deleteModel(req, res, newsModel);
-}
+};
 
 const getAllCommentsOfNews = async (req, res) => {
     try{
@@ -64,10 +106,13 @@ const getAllCommentsOfNews = async (req, res) => {
         console.log(e)
         res.status(500).send(e.message);
     }
-}
+};
 
 module.exports = {
     getAllNews,
+    getByName,
+    getByCategory,
+    getByDate,
     createNews,
     detailNews,
     updateNews,

@@ -97,7 +97,7 @@ const MembersAll = (props) => {
  
   const showMembers = () => {
     return (
-      <tbody >
+      <div >
         {members.map((oneMember) => (
           <MembersAllCard
             key={oneMember.id}
@@ -113,7 +113,7 @@ const MembersAll = (props) => {
             remove={confirmRemove}
             />
         ))}
-      </tbody>
+      </div>
     );
   };
 
@@ -130,6 +130,7 @@ const MembersAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
+    <>
     <Fragment >
       <Container  >
       {/* para proteger ruta , si no hay token, redirige a login*/}
@@ -165,14 +166,13 @@ const MembersAll = (props) => {
                 <Link to={'/MembersCreate'} className="m-3 btn btn-success "
                   role="button" > Agregar </Link>
               </p> 
-        </div>  
-        <div className="centerHorizontally">     
-          {showMembers()}
-        </div>  
+        </div>   
+        {showMembers()}
       </>
       } 
       </Container>
     </Fragment>
+    </>
   );
 };
 

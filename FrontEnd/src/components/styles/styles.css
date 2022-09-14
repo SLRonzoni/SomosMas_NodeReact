@@ -421,11 +421,7 @@ h1{
     padding:0.5rem; 
     text-align: center;
 }
-
-.input-edit-char{
-    text-align: center;
-} */
-
+*/
 .colorBlack{
     color:black;
 }
@@ -544,6 +540,11 @@ h1{
     margin-left: 50%;
 }
 
+.errorText-input-update{
+    margin:30px !important;
+    margin-top:0 !important;
+}
+
 .centerText{
     text-align: center;
     justify-content: center;
@@ -631,7 +632,7 @@ h1{
 
 .tablaMisPedidos{
     border:1px solid white;
-} */
+} 
 
 /*
 .containerFijo{
@@ -669,9 +670,9 @@ h1{
   } */
   
   /* repetida */
-  .displayBlock{ 
-      display: block;
-  }
+.displayBlock{ 
+    display: block;
+}
   
   /* .movies-list{
       background-color: whitesmoke;
@@ -700,9 +701,13 @@ h1{
   }
    */
     
-    .imageSmall{
-        width:10%;
-    }
+.imageSmall{
+    width:10%;
+ }
+
+.imageMyProfile{
+    width: 18%;
+}
 
 
   /* .h2{
@@ -719,19 +724,19 @@ h1{
       color:white;
   } */
 
-  .homeBgImage {
+.homeBgImage {
     width: 79%;
-  }
+}
 
-  .handsLogo{
+.handsLogo{
     width: 8%;
-  }
+}
 
-  .borderRounded{
+.borderRounded{
     border-radius:3px;
-  }
+}
 
-  .buttonBlue{
+.buttonBlue{
     background-color:#1E90FF;
     color:#fff;
     width:20%;
@@ -740,9 +745,9 @@ h1{
     line-height:30px;
     cursor:pointer;
     padding: 1px;
-  }
+}
 
-  .buttonBlue:hover {
+.buttonBlue:hover {
     color:#fff;
     background-color:rgb(2, 117, 216); 
 }
@@ -864,6 +869,10 @@ h1{
     margin-left: 25px;
 }
 
+.marginLeft10px{
+    margin-left: 10px;
+}
+
 .marginLeft40px{
     margin-left: 40px;
 }
@@ -877,7 +886,8 @@ h1{
     width: 14%;
 }
 
-.iconoLinkedin{
+.iconoSocialNetworks{
     width: 6%;
 }
+
 

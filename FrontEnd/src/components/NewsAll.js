@@ -1,12 +1,232 @@
-import React from 'react'
+import React, { Fragment, useState, useEffect} from "react";
+import axiosClient from "../configuration/axiosClient";
+import "./styles/styles.css";
+import NewsAllLine from "./NewsAllLine";
+import Swal from "sweetalert2";
+import { Link,Redirect} from "react-router-dom";
+import LoadingBox from "./LoadingBox";
+import { Container } from "react-bootstrap";
+import { formatDate } from "./helpers/FormatDate";
 
-const AllNews
- = () => {
+const NewsAll = (props) => { 
+
+  const [news, setNews] = useState([]); 
+  
+  const getNews = async () => {     
+     await axiosClient.get(`/news`)
+      .then( response => {
+        if(response.status!==200){
+          Swal.fire({
+            icon: 'error', 
+            title:"Error !",
+              text: response.message || response.error.message
+          });
+          
+        props.history.push('/');
+        }
+        setNews(response.data.data);   
+      }) 
+      .catch(function (error) {
+        console.log(error)
+      });
+  };
+
+  //DELETE
+  const confirmRemove = (id) => {
+    Swal.fire({
+      title: "Está seguro de eliminar esta noticia ? ",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, eliminar !",
+    })
+    .then((result) => {
+      if (result.value) {
+        removing(id);
+      }
+    });
+  };
+
+  const removing = async (id) => {
+    await axiosClient
+      .delete(`/news/del/${id}`)
+      .then((response) => {
+        Swal.fire({
+          icon: "success",
+          title: "Noticia Eliminada !",
+          timer:1000,
+          showConfirmButton: false
+        });
+        getNews();
+      })
+      .catch(function (error) {
+        Swal.fire({
+          icon: "error",
+          title: "Error : No se puede eliminar",
+          text: error
+        });
+     });
+  };
+
+  useEffect(() => {
+    getNews()
+  },[]);
+
+
+  //FILTER BY NAME,  UPDATED DATE AND CATEGORY
+  let filterBy;
+  let route;
+  const getFilterNews = async () => {
+
+    if(filterBy.includes(':')===true){
+        route='/news/byDate/'
+    } else {
+        if(typeof(parseInt(filterBy))==='number') {
+          route='/news/byCategory/'
+        } else {
+          route='/news/byName/'
+        }
+    };
+
+    await axiosClient
+    .get(route+filterBy)
+    .then((response) => {
+      setNews(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
+  };
+  
+    const changesId=(e)=>{
+        filterBy=e.target.value;
+        if(filterBy === 'todas'){
+            getNews() 
+        } else {
+          getFilterNews()   
+    };
+  } 
+
+ 
+  const showNews = (props) => {
+    return (
+      <tbody >
+        {news.map((oneNew) => (
+          <NewsAllLine 
+            key={oneNew.id}
+            id={oneNew.id}
+            name={oneNew.name}
+            image={oneNew.image}
+            content={oneNew.content}
+            categoryId={oneNew.categoryId}
+            create={oneNew.createdAt}
+            update={oneNew.updatedAt}
+            remove={confirmRemove}
+            />
+        ))}
+      </tbody>
+    );
+  };
+
+  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+
   return (
-    <div>AllNews
-        
-    </div>
-  )
-}
+    <Fragment>
+      <Container>
+      {/* para proteger ruta , si no hay token, redirige a login*/}
+      {!token && <Redirect to="/Login" />} 
 
-export default AllNews
+      {/* si aun está cargando las noticias*/}
+      {!news &&  <LoadingBox/> }
+
+       {/* solo renderiza si hay noticias*/}
+      {news && 
+      <>
+      <div>
+        <h1 >Noticias</h1>
+        <p>{}</p>
+      </div>
+      <br></br>      
+        <div className="displayFlex centerText" >
+          
+          <div>
+            <p className="pBtnDesplegable" >Buscar noticias por nombre</p>
+              <select 
+                className="m-3 selectBtnDesplegable form-select "
+                type="text"
+                name="name"
+                onChange={changesId}
+              >  
+                {news.map(oneNew => (
+                  <option key={oneNew.id} value={oneNew.name}>
+                    {oneNew.name}
+                  </option>
+                ))}
+                <option value={"todas"}>Mostrar todas las noticias</option>
+              </select>
+          </div> 
+          
+          <div >
+            <p className="pBtnDesplegable " >Buscar noticias por fecha de actualización</p>
+              <select
+                type="text"
+                name="name"
+                onChange={changesId}
+                className="m-3 selectBtnDesplegable form-select "
+              >  
+                {news.map(oneNew => (
+                  <option key={oneNew.id} value={oneNew.updatedAt}>
+                    {formatDate(new Date(oneNew.updatedAt))}
+                  </option>
+                ))}
+                <option value={"todas"}>Mostrar todas las noticias</option>
+              </select>
+          </div> 
+
+          <div>
+            <p className="pBtnDesplegable" >Buscar noticias por categoría</p>
+              <select 
+                className="m-3 selectBtnDesplegable form-select "
+                type="text"
+                name="categoryId"
+                onChange={changesId}
+              >  
+                {news.map(oneNew => (
+                  <option key={oneNew.id} value={oneNew.categoryId}>
+                    {oneNew.categoryId}
+                  </option>
+                ))}
+                <option value={"todas"}>Mostrar todas las noticias</option>
+              </select>
+          </div> 
+
+        </div> 
+
+      <table className="table table-striped table-responsive table-bordered">
+        <thead>
+          <tr>
+            <th className="tituloItem centerText "> Id </th>
+            <th className="tituloItem "> Noticia </th>
+            <th className="tituloItem "> Imágen </th>
+            <th className="tituloItem "> Categoría </th>
+            <th className="tituloItem "> Contenido </th>
+            <th className="tituloItem centerText"> Creada</th>
+            <th className="tituloItem centerText"> Actualizada</th>
+
+            <th className="centerText" ><Link to={'/NewsCreate'} className="m-1 mr-md-2 btn btn-success"
+                  role="button" > Agregar </Link> 
+            </th>
+          </tr>
+        </thead>
+        {showNews()}
+      </table>
+      </>
+      } 
+      </Container>
+    </Fragment>
+  );
+};
+
+export default NewsAll;
+

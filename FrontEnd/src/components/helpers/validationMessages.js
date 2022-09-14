@@ -24,7 +24,7 @@ const msgValidationCategoryName= "Puede contener entre 4 y 50 dígitos ( letras,
 
 const msgValidationCategoryDescription= "Puede contener hasta 200 dígitos ( letras, letras acentuadas, números y espacios"
 
-
+const msgValidationUrl="Debe ingresar una dirección URL, debe comenzar con http://www."
 
 
 
@@ -40,4 +40,5 @@ export { msgRequired,
          msgValidationCategoryName,
          msgValidationCategoryDescription,
          msgValidationImage,
+         msgValidationUrl
          };

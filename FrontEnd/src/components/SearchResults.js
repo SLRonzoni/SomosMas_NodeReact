@@ -20,6 +20,10 @@ function WordSearchResults () {
       );
     };
 
+    useEffect(() => {
+      findKeyword() 
+    },[keyword]); 
+
     //FIND CATEGORY NAME ( added name to news state)
     const findCategoryName=async () => { 
        for(let i=0;i<news.length;i++) {
@@ -55,9 +59,7 @@ function WordSearchResults () {
       }
     };
    
-    useEffect(() => {
-      findKeyword() 
-    },[keyword]); 
+    
 
     findUserName();
     findCategoryName();

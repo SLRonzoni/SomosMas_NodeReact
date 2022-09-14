@@ -155,15 +155,15 @@ const EditUsers = ({match, history}) =>{
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
         <form className="container-sm col-6 col-md-4 bg-light "onSubmit={handleSubmit} > 
-            <h4>Mi Perfil  
+            <h4 className='marginLeft40px'>Mi Perfil  
               <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>
-            <div className='marginTop'>
+            <div className='marginTop marginLeft40px '>
 
               <div>
                 <div >   
                   <Label htmlFor="photo"> </Label>
-                  <p className="pUpdateCateg"><img  src={user.photo}  alt="userPhoto"/></p>
+                  <p className="pUpdateCateg"><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
                   <InputGroup  >
                     <InputUser className="form-control"
                           type="file" 
@@ -231,7 +231,7 @@ const EditUsers = ({match, history}) =>{
                 <div>
                     <Label htmlFor="password"> Password : 
                       <button type="button" 
-                              className='btn buttonBlue' 
+                              className='btn buttonBlue marginLeft40px' 
                               onClick={switchShown}> {shown ? 'Ocultar' : 'Mostrar'}
                       </button> 
                     </Label>  

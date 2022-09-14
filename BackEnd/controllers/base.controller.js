@@ -11,12 +11,13 @@ const createModel = async (res, model, inputVars) => {
 }
 
 //Get models
-const getAllModels = async (req, res, model) => {   
+const getAllModels = async (req, res, model) => { 
     try {
         const modelHelper = new ModelHelper(model)
         const page = req.query.page || 1
         const models = await modelHelper.findAndPaginate(page)
-           return res.status(200).send(models);
+        
+        return res.status(200).send(models);
     } catch (error) {
         res.status(500).send(error);
     }

@@ -63,6 +63,21 @@ const InputUser = styled.input`
     }
 `;
 
+const InputUpdate = styled.input`
+    width:20rem;
+    height:45px;
+    background:#fff;
+    border-radius:3px;
+    line-height:45px;
+    border:3px solid transparent;
+
+    &:focus {
+        border:3px solid ${Colors.border};
+        outline:none;
+        box-shadow:3px 0px 30px rgba(163,163,163,0.4);
+    }
+`;
+
 const Icon=styled.p`  
     width:10%;
     height:45px;
@@ -70,6 +85,13 @@ const Icon=styled.p`
     font-size:20px;
     margin:45px 0px 0 150px;
     top:20px
+`;
+
+const IconUpdate=styled.p`  
+    line-height:45px;  
+    font-size:20px;
+    margin:45px 0px 0px 0px;
+    
 `;
 
 const IconUser=styled.p`  
@@ -113,7 +135,7 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-export {Form, Label, Colors , Input,InputUser, Icon,IconUser,InputGroup, ErrorText, SendButton, MsjWrong};
+export {Form, Label, Colors , Input, InputUser,InputUpdate, Icon, IconUser, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
 
 
   

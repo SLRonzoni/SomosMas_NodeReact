@@ -7,7 +7,10 @@ const {
     createNews,
     updateNews,
     deleteNews,
-    getAllCommentsOfNews
+    getAllCommentsOfNews,
+    getByDate,
+    getByName,
+    getByCategory
 } = require('../controllers/news.controller');
 
 const { verifyIsAdmin, idExists } = require('../middlewares');
@@ -15,11 +18,18 @@ const { validateNews } = require('../validators');
 
 router.get('/', getAllNews);
 
+router.get('/byDate/:date', getByDate);
+router.get('/byName/:name', getByName);
+router.get('/byCategory/:categoryId', getByCategory);
+
 router.get('/:id', detailNews);
-router.post('/' , validateNews, verifyIsAdmin,createNews);
-router.put('/:id' , idExists ,verifyIsAdmin,validateNews, updateNews);
-router.delete('/:id', idExists ,verifyIsAdmin,deleteNews);
+
 router.get('/:id/comments', idExists ,getAllCommentsOfNews);
+
+router.post('/create/' ,  verifyIsAdmin,validateNews,createNews);
+router.put('/update/:id' , idExists ,verifyIsAdmin,validateNews, updateNews);
+router.delete('/del/:id', idExists ,verifyIsAdmin,deleteNews);
+
 
 
 module.exports = router;

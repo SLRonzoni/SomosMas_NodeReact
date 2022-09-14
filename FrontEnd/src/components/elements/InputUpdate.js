@@ -1,16 +1,16 @@
 import React from "react";
-import { Input,InputGroup,Label} from "./ElementsFormStyles";
+import { InputUpdate,InputGroup,Label} from "./ElementsFormStyles";
 import  "../styles/styles.css"
 
-const InputUpdate = ({type,label,name,encType,value,onBlur,onChange,defaultValue,placeholder}) => {
+const InputUpdateForm = ({type,label,name,encType,value,onBlur,onChange,defaultValue,placeholder}) => {
   
 
   return (
     <div>
       <Label htmlFor={name}>{label} <span className="fontNotBold"> {defaultValue}</span> </Label>
       <InputGroup>
-        <Input
-          className="form-control inputUpdateWidth"
+        <InputUpdate
+          className="form-control "
           type={type}
           encType={encType}
           name={name}
@@ -26,4 +26,4 @@ const InputUpdate = ({type,label,name,encType,value,onBlur,onChange,defaultValue
   )
 }
 
-export default InputUpdate ;
+export default InputUpdateForm ;
