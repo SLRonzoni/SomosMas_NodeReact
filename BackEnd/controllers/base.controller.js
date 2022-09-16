@@ -4,6 +4,7 @@ const ModelHelper = require('../helpers/modelHelper')
 const createModel = async (res, model, inputVars) => {
     try {        
         const createdModel = await model.create(inputVars);
+        
         return res.status(201).send(createdModel);
     } catch (error) {        
         res.status(500).send(error);

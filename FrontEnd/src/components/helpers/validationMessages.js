@@ -6,6 +6,8 @@ const msgValidationDuplicated= "Ya existe un dato con el mismo nombre"
 
 const msgValidationImage="Debe ser un archivo de imágen"
 
+const msgValidationIsNumber="El dato debe ser numérico"
+
 const msgValidationActivitiesName= "Puede contener entre 6 y 16 digitos ( letras, números, guión y guión bajo )"
 
 const msgValidationUserFirstName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
@@ -30,6 +32,7 @@ const msgValidationUrl="Debe ingresar una dirección URL, debe comenzar con http
 
 export { msgRequired,
          msgValidationDuplicated,
+         msgValidationIsNumber,
          msgValidationActivitiesName,
          msgValidationUserFirstName,
          msgValidationUserLastName,

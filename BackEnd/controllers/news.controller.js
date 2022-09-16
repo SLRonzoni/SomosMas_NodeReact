@@ -1,6 +1,6 @@
 const newsModel = require('../models').News;
 const commentModel = require('../models').Comment;
-
+//const { uploadToBucket } = require('../services/s3');
 
 const { query } = require('express');
 const { Sequelize } = require('../models');
@@ -36,6 +36,7 @@ const getAllNews = async (req, res) =>{
 
 const getByName= async (req, res) => {    
 	const paramsName = req.params.name;
+    console.log(paramsName)
 	try{
 		const news= await newsModel.findAll({where:{name:paramsName}})
 		if(!news){
@@ -50,7 +51,6 @@ const getByName= async (req, res) => {
 	  
 const getByDate= async (req, res) => {    
 	const paramsDate = req.params.date;
-    console.log(paramsDate)
 	try{
 		const news= await newsModel.findAll({where:{updatedAt:paramsDate}})
 		if(!news){
@@ -78,11 +78,37 @@ const getByCategory= async (req, res) => {
 };
 
 const createNews = async (req,res) =>{
-    await createModel(res, newsModel, req.body);
+  //let img = req.files.image;
+  let regularImglocation;
+  try{
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
+    const inputVars={name:req.body.name,
+        content:req.body.content,
+        categoryId:req.body.categoryId,
+        type:req.body.type,
+        image:regularImglocation}
+    await createModel(res, newsModel, inputVars);
+  } catch (error) {        
+    res.status(500).send(error);
+  }
 };
 
 const updateNews = async (req, res) =>{
-    await updateModel(req, res, newsModel, req.body);
+  //let img = req.files.image;
+  let regularImglocation;
+  try{
+    //regularImglocation = await uploadToBucket(img);
+    regularImglocation=`https://via.placeholder.com/600/51aa97`
+    const inputVars={name:req.body.name,
+        content:req.body.content,
+        categoryId:req.body.categoryId,
+        type:req.body.type,
+        image:regularImglocation}
+    await updateModel(req, res, newsModel, inputVars);
+  } catch (error) {        
+    res.status(500).send(error);
+  }
 };
 
 const detailNews = async (req,res) =>{

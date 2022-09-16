@@ -49,8 +49,7 @@ const NewsAll = (props) => {
   };
 
   const removing = async (id) => {
-    await axiosClient
-      .delete(`/news/del/${id}`)
+    await axiosClient.delete(`/news/del/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -76,21 +75,20 @@ const NewsAll = (props) => {
 
   //FILTER BY NAME,  UPDATED DATE AND CATEGORY
   let filterBy;
+  let numbers=[1,2,3,4,5,6,7,8,9,0]
   let route;
   const getFilterNews = async () => {
 
     if(filterBy.includes(':')===true){
         route='/news/byDate/'
     } else {
-        if(typeof(parseInt(filterBy))==='number') {
+        if(numbers.some(e=>filterBy.includes(e))) {
           route='/news/byCategory/'
         } else {
           route='/news/byName/'
         }
     };
-
-    await axiosClient
-    .get(route+filterBy)
+    await axiosClient.get(route+filterBy)
     .then((response) => {
       setNews(response.data)
     })
@@ -102,7 +100,7 @@ const NewsAll = (props) => {
     const changesId=(e)=>{
         filterBy=e.target.value;
         if(filterBy === 'todas'){
-            getNews() 
+          getNews() 
         } else {
           getFilterNews()   
     };

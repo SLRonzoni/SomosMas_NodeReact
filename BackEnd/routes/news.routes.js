@@ -13,7 +13,7 @@ const {
     getByCategory
 } = require('../controllers/news.controller');
 
-const { verifyIsAdmin, idExists } = require('../middlewares');
+const { verifyIsAdmin, idExists , optionsFileUpload} = require('../middlewares');
 const { validateNews } = require('../validators');
 
 router.get('/', getAllNews);
@@ -26,8 +26,8 @@ router.get('/:id', detailNews);
 
 router.get('/:id/comments', idExists ,getAllCommentsOfNews);
 
-router.post('/create/' ,  verifyIsAdmin,validateNews,createNews);
-router.put('/update/:id' , idExists ,verifyIsAdmin,validateNews, updateNews);
+router.post('/create/' ,  verifyIsAdmin,optionsFileUpload,validateNews,  createNews);
+router.put('/update/:id' , idExists ,verifyIsAdmin,optionsFileUpload,validateNews, updateNews);
 router.delete('/del/:id', idExists ,verifyIsAdmin,deleteNews);
 
 

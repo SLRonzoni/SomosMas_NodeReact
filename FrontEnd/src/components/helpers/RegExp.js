@@ -6,7 +6,7 @@ const regexUserfirstName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y g
 
 const regexUserLastName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
 
-//const regexUserEmail=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+const regexCategoryId=/^[0-9]{1,5}$/
 const regexUserEmail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 const regexUserPassword=/^.{4,12}$/ // entre 4 y 12 digitos.
 
@@ -51,7 +51,7 @@ const charactersOk = {
 
 }
 
-export { regexActivitiesName,
+export { regexActivitiesName, regexCategoryId,
 	     regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
 	     regexCategoryName,regexCategoryDescription, regexUrl,
 	     charactersOk };

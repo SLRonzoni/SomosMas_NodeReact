@@ -29,6 +29,7 @@ Modificaciones al proyecto original ( back end ):
   * MEMBERS, se cambio nombre de inputs , de data a inputVars, y se adaptó servicio para manejar imagenes ,en create y update
   * NEWS, se modificó condicion en linea 19
   * NEWS, se crearon servicios  getByName, getByDate, getByCategory
+  * NEWS, se adaptaron servicios create y update, para el manejo de imagenes
 
 
 ** ROUTES **
@@ -50,6 +51,7 @@ Modificaciones al proyecto original ( back end ):
   * NEWS, se agregó middleware de manejo de imagenes en create y update
   * NEWS, se agregó al nombre de la ruta CREATE,UPDATE y DEL 
   * NEWS, se crearon rutas para getByName, getByDate y getByCategory
+  * NEWS, se anregó middleware para manejo de imagenes en create y update
   
 ** VIEWS **
   * VIEWS emailContact e emailWelcome , se agregó nueva imagen de logo y se corrigió texto del email
@@ -58,6 +60,7 @@ Modificaciones al proyecto original ( back end ):
 ** VALIDATORS **
   * CATEGORIES VALIDATOR, se eliminó validacion para imagen
   * ACTIVITIES VALIDATOR, se eliminó validacion para imagen
+  * NEWS, se eliminó la validacion para imagen y type, dado que puede aceptar null
 
 ** DOCUMENTATION ** 
   * CATEGORIES DOCUMENTATION, se adaptó create y update para que puedan recibir archivos de imagen y se cambió nombre 

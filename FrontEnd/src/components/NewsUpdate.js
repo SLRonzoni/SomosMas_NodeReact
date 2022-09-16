@@ -6,8 +6,8 @@ import { Formik } from 'formik';
 import { Link } from "react-router-dom";
 import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
 import  InputForm  from './elements/InputForm';
-import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated} from './helpers/validationMessages';
-import {regexActivitiesName } from "./helpers/RegExp";
+import { msgValidationCategoryName, msgValidationIsNumber} from './helpers/validationMessages';
+import {regexCategoryName , regexCategoryId} from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
 
 const FormNews = ({match,history}) => {
@@ -19,10 +19,10 @@ const FormNews = ({match,history}) => {
           name: "", 
           image:"",
           content:"" ,
-          categoryId:''         
+          categoryId:'',
+          type:""    
         });
     
-  const [duplicated,setDuplicated]=useState('')
 
   //DEFAULT VALUES
   useEffect(() => {
@@ -47,6 +47,7 @@ const FormNews = ({match,history}) => {
     body.append("content",values.content);
     body.append("image",values.image);
     body.append("categoryId",values.categoryId);
+    body.append("type",values.type);
     
   
     const updateNews = async () => {
@@ -73,80 +74,55 @@ const FormNews = ({match,history}) => {
     };
     updateNews();
   };
-  
-  //DUPLICATED NAME
-  const repeat= (searchName,errors)=>{
-    if (errors.formOk !=='v'){
-      getNewsByName(searchName)
-    }
-  };
-
-  const getNewsByName = async (searchName) => {
-    await axiosClient.get(`/news/byName/${searchName}`)
-    .then((response) => {
-      if(response.status===404){
-        setDuplicated(' ')
-      } else {
-        setDuplicated(response.data.name)
-      }
-    })
-    .catch((error=>{
-      console.log(error);
-    }));
-  }; 
 
   
   //FORMIK INITIAL VALUES
   let initialValues={name:news.name,categoryId:news.categoryId,
-                     content:news.content}
+                     type:news.type,content:news.content}
 
   //FORMIK VALIDATIONS 
 let validateInputs=(values) =>{   
 
-  let errors = {name: '', image:'',content:'', categoryId:'', 
-                icoNname:'', icoNimage:'', icoNcontent:'',formOk:''};  
+  let errors = {name: '', image:'',content:'', categoryId:'', type:'' ,
+                icoNname:'', icoNimage:'', icoNcontent:'',icoNtype:'',formOk:''};  
 
   if (!values.name) {
-    errors.name=msgRequired
-    errors.icoNname= '❌'
-    return errors
+    values.name=news.name
+    errors.icoNname= '✔️'
   };
 
-  if (!regexActivitiesName.test(values.name)) {
-    errors.name=msgValidationActivitiesName
+  if (!regexCategoryName.test(values.name)) {
+    errors.name=msgValidationCategoryName
     errors.icoNname= '❌'
     return errors
   } else {
     errors.icoNname= '✔️'
   };
 
-  let searchName=values.name
-    repeat(searchName, errors)
-    if(duplicated===searchName){
-      errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'         
-      return errors
-    } else {
-      errors.icoNname= '✔️'
-    };
-
   if(!values.image) {
-    errors.image=msgRequired
-    errors.icoNimage= '❌'
-    return errors
-  } else {
+    values.image=news.image
     errors.icoNimage= '✔️'
   };
 
   if (!values.content) {
-    errors.content=msgRequired
-    errors.icoNcontent= '❌'
-    return errors
-  } else {
+    values.content=news.content
     errors.icoNcontent= '✔️'
   };
 
-  if(errors.name || errors.image || errors.content || errors.categoryId){
+  if (!values.categoryId) {
+    values.categoryId=news.categoryId
+    errors.icoNcategoryId= '✔️'
+  } else {
+    if(!regexCategoryId.test(values.categoryId)){
+      errors.categoryId=msgValidationIsNumber
+      errors.icoNcategoryId= '❌'
+      return errors
+    } else {
+      errors.icoNcategoryId= '✔️'
+    };
+  }
+
+  if(errors.name || errors.image || errors.content || errors.categoryId || errors.type){
     errors.formOk='f'
   } else {
     errors.formOk='v'
@@ -162,12 +138,10 @@ let validateInputs=(values) =>{
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
-            <br></br>
+         <form  className="container-sm col-5 col-md-4 bg-light" onSubmit={handleSubmit}>
             <h3 className="centerText">Ingrese nuevos valores ...</h3>
-            <br></br>
+            
             <div>
-
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -184,7 +158,7 @@ let validateInputs=(values) =>{
                 </div>
                 {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
               </div>
-              <br></br>
+             
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -200,7 +174,7 @@ let validateInputs=(values) =>{
                 </div>
                 {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
               </div>
-              <br></br>
+             
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -209,7 +183,7 @@ let validateInputs=(values) =>{
                     label="Descripción actual : "
                     defaultValue={news.content}
                     placeholder="Ingrese nueva descripción"
-                    value={values.description}
+                    value={values.content}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
@@ -217,7 +191,7 @@ let validateInputs=(values) =>{
                 </div>
                 {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
               </div>
-              <br></br>
+             
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -234,13 +208,30 @@ let validateInputs=(values) =>{
                 </div>
                 {touched.categoryId && errors.categoryId  && <ErrorText> {errors.categoryId} </ErrorText>}
               </div>
-              <br></br>
+              
+              <div>
+                <div className="displayInLineFlex">
+                  <InputForm
+                    type="text"
+                    name="type"
+                    label="Tipo : "
+                    defaultValue={news.type}
+                    placeholder="Ingrese nueva tipo"
+                    value={values.type}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.type && errors.icoNtype && <Icon>{errors.icoNtype}</Icon>}
+                </div>
+                {touched.type && errors.type  && <ErrorText> {errors.type} </ErrorText>}
+              </div>
+              
               <div className="centerText displayFlex">
-                <div>
+                <div className="displayFlex">
                   <Label htmlFor="name">Creada  :</Label>
                   <span className="center" >{formatDate(new Date(news.createdAt))}</span>
                 </div>
-                <div>   
+                <div className="displayFlex" >   
                   <Label htmlFor="name">Última modificación  :</Label>
                   <span className="center" >{formatDate(new Date(news.updatedAt))}</span>
                 </div>
@@ -256,7 +247,7 @@ let validateInputs=(values) =>{
             }
            
             <div>
-              <br></br>
+             
               <div className="centerText">
                   <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                   <Link 

@@ -3,27 +3,20 @@ const { validateResult } = require('../helpers/validate');
 
 const validateNews = [
     check('name')
-        .notEmpty()
-        .withMessage('El campo no puede estar vacio'),
-
-    check('image')
-        .notEmpty()
-        .withMessage('El campo no puede estar vacio'),
-    
+       .not()
+       .isEmpty()
+       .withMessage('name missing'),
     check('content')
-        .notEmpty()
-        .withMessage('El campo no puede estar vacio'),
-    
-    check('type')
-        .notEmpty()
-        .withMessage('El campo no puede estar vacio'),
-
+        .not()
+        .isEmpty()
+        .withMessage('content missing'),
     check('categoryId')
-        .notEmpty()
-        .withMessage('El campo no puede estar vacio')
-        .bail()
-        .isInt()
-        .withMessage('Debe ser un numero'),
+       .not()
+       .isEmpty()
+       .withMessage('category missing')
+       .bail()
+       .isInt()
+       .withMessage('invalida data type'),
     (req, res, next) =>{
         validateResult(req, res, next)
     }

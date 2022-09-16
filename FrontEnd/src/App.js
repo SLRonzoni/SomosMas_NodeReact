@@ -35,6 +35,10 @@ import NewsAll from './components/NewsAll';
 import NewsCreate from "./components/NewsCreate";
 import NewsUpdate from "./components/NewsUpdate";
 
+import RolesAll from "./components/RolesAll";
+import RolesCreate from "./components/RolesCreate";
+import RolesUpdate from "./components/RolesUpdate";
+
 import Contact from './components/Contact';
 import UsersAll from './components/UsersAll';
 // import UsersOne from './components/UsersOne';
@@ -94,6 +98,10 @@ function App() {
         <Route exact path='/NewsAll' component={NewsAll}/>
         <Route exact path='/NewsCreate' component={NewsCreate}/>
         <Route exact path='/news/update/:id' component={NewsUpdate}/>
+
+        <Route exact path='/RolesAll' component={RolesAll}/>
+        <Route exact path='/roles/create' component={RolesCreate}/>
+        <Route exact path='/roles/update/:id' component={RolesUpdate}/>
 
 
         <Route exact path='/UsersAll' component={UsersAll}/>
