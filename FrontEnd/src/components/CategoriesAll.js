@@ -92,7 +92,7 @@ const CategoriesAll = (props) => {
         } else {
           getFilterCategoryId()   
     };
-  } 
+  };
 
  
   const showCategories = (props) => {

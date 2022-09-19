@@ -289,7 +289,7 @@ return (
                 <InputUpdateForm
                 type="text"
                 name="linkedinUrl"
-                label="Linkedin actual :"
+                label="LinkedIn actual :"
                 defaultValue={members.linkedinUrl}
                 placeholder="Ingrese nuevo linkedin"
                 value={values.linkedinUrl}

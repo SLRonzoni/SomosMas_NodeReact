@@ -3,6 +3,8 @@ const router = express.Router();
 const {
   getAllTestimonials,
   getTestimonialsById,
+  getTestimonialsByDate,
+  getTestimonialsByName,
   createTestimonial,
   updateTestimonial,
   deleteTestimonial
@@ -16,13 +18,18 @@ router.use(authenticatedUser, verifyIsAdmin);
 
 router.get('/', getAllTestimonials);
 
-/* GET testimonial by Id*/
+
+
 router.get('/:id', idExists, getTestimonialsById)
-/* POST testimonial. */ 
+
+router.get('/byName/:name', getTestimonialsByName)
+
+router.get('/byDate/:date', getTestimonialsByDate)
+
 router.post('/', optionsFileUpload, validateTestimonial, createTestimonial);
-/* PUT testimonial. */  
+
 router.put('/:id', idExists, optionsFileUpload, validateUpdateTestimonial, updateTestimonial);
-/* DELETE testimonial. */ 
+
 router.delete('/:id', idExists, deleteTestimonial);
 
 module.exports = router;

@@ -101,7 +101,7 @@ const CommentsAll = (props) => {
       await axiosClient
       .get(`/comments/byUser/`+filterBy)
       .then((response) => {
-        setCommentsWithName(response)
+        setCommentsWithName(response.data)
       })
       .catch(function (error) {
         console.log(error)

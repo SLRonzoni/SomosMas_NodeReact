@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 
 const MembersAll = (props) => { 
 
@@ -52,7 +53,7 @@ const MembersAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Colaborador Eliminado !",
+          title: "Colaborador eliminado !",
           timer:1000,
           showConfirmButton: false
         });
@@ -117,16 +118,7 @@ const MembersAll = (props) => {
     );
   };
 
-  //hacer visibles opciones para administrador
-  const getRoleView =()=> { 
-    let isAdmin=JSON.parse( sessionStorage.getItem('userInfo'))   
-    if(isAdmin.roleId === 1) { 
-      return 'visible'
-    } else {
-      return 'invisible'
-    };
-  };
-
+  
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
@@ -162,7 +154,7 @@ const MembersAll = (props) => {
                 <option value={"todos"}>Mostrar todos los colaboradores</option>
               </select>
               
-              <p className={getRoleView()} >  
+              <p className={ViewAdministratorOptions()} >  
                 <Link to={'/MembersCreate'} className="m-3 btn btn-success "
                   role="button" > Agregar </Link>
               </p> 

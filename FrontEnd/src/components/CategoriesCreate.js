@@ -31,7 +31,7 @@ function CategoriesCreate(props) {
       await axiosClient
         .post("/categories/create",body)     
         .then((response) => {
-          if(response) {
+          if(response.status===201) {
             setCategories(response.data)
             Swal.fire({
               icon: "success",

@@ -36,7 +36,6 @@ const getAllNews = async (req, res) =>{
 
 const getByName= async (req, res) => {    
 	const paramsName = req.params.name;
-    console.log(paramsName)
 	try{
 		const news= await newsModel.findAll({where:{name:paramsName}})
 		if(!news){

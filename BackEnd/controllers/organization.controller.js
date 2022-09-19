@@ -11,13 +11,16 @@ const getOrganizations = async ( req, res ) => {
 //Create and save an organization
 const createOrganization = async (req, res) => {  
 
-    const { name, image, address, phone, email, welcomeText, aboutUsText } = req.body;
+    const { name, image, address, phone, email, facebookUrl, instagramUrl, linkedinUrl, welcomeText, aboutUsText } = req.body;
     const data = {
         name,
         image,
         address,
         phone,
         email,
+        facebookUrl, 
+        instagramUrl, 
+        linkedinUrl,
         welcomeText,
         aboutUsText
     }
@@ -53,7 +56,7 @@ const getOrganizationById = async(req, res) => {
 
 //Update organization
 const updateOrganization = async (req, res) => {  
-    const { name, image, address, phone, email, welcomeText, aboutUsText } = req.body;
+    const { name, image, address, phone, email, facebookUrl, instagramUrl, linkedinUrl,welcomeText, aboutUsText } = req.body;
 
     const data = {
         name,
@@ -61,6 +64,9 @@ const updateOrganization = async (req, res) => {
         address,
         phone,
         email,
+        facebookUrl, 
+        instagramUrl, 
+        linkedinUrl,
         welcomeText,
         aboutUsText
     }

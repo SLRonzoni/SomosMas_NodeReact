@@ -52,7 +52,7 @@ const RolesAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Role Eliminada !",
+          title: "Role Eliminado !",
           timer:1000,
           showConfirmButton: false
         });
@@ -86,7 +86,7 @@ const RolesAll = (props) => {
       {roles && 
       <>
       <div>
-        <h1 >Noticias</h1>
+        <h1 >Roles</h1>
         <p>{}</p>
       </div>
       <br></br>      
@@ -95,23 +95,24 @@ const RolesAll = (props) => {
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Name </th>
+            <th className="tituloItem "> Nombre </th>
             <th className="tituloItem "> Descripción </th>
             <th className="tituloItem centerText"> Creado</th>
             <th className="tituloItem centerText"> Actualizado</th>
+            <th className="centerText">
+              <Link to={'/roles/create'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
+            </th>
           </tr>
         </thead>
         <tbody>
-        {roles.map((oneRole) =>  (   
-          <tr>
+        {roles.map((oneRole) => ( 
+          <tr key={oneRole.id}>
             <td className="renglonNro">{oneRole.id}</td>
             <td className="renglon" >{oneRole.name}</td>
             <td className="renglon" >{oneRole.description}</td>
             <td className="renglon centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
             <td className="renglon centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
-            
             <td className=" displayFlex centerText">   
-                <Link to={'/roles/create'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link> 
                 <Link to={`/roles/update/${oneRole.id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          
             </td>  

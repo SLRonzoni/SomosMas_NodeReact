@@ -39,6 +39,10 @@ import RolesAll from "./components/RolesAll";
 import RolesCreate from "./components/RolesCreate";
 import RolesUpdate from "./components/RolesUpdate";
 
+import TestimonialsAll from "./components/TestimonialsAll";
+
+import OrganizationsAll from "./components/OrganizationsAll";
+
 import Contact from './components/Contact';
 import UsersAll from './components/UsersAll';
 // import UsersOne from './components/UsersOne';
@@ -67,6 +71,7 @@ function App() {
         <Route exact path="/LoginGoogle" component={LoginGoogle}/>
         <Route exact path="/redes" component={LoginGoogle}/>
         <Route exact path='/searchResults'component={SearchResults}/>
+        
 
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
@@ -103,6 +108,9 @@ function App() {
         <Route exact path='/roles/create' component={RolesCreate}/>
         <Route exact path='/roles/update/:id' component={RolesUpdate}/>
 
+        <Route exact path='/TestimonialsAll' component={TestimonialsAll}/>
+
+        <Route exact path="/OrganizationsAll" component={OrganizationsAll}/>
 
         <Route exact path='/UsersAll' component={UsersAll}/>
         {/* <Route exact path='/users/:id' component={UsersOne}/> */}

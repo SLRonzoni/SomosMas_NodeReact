@@ -89,7 +89,7 @@ const MembersOne = (props) => {
                     defaultValue={members.instagramUrl}
                   />
                   <br></br>
-                  Linkedin :
+                  LinkedIn :
                   <p
                     type="text"
                     className="form-control"

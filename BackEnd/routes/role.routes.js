@@ -6,6 +6,7 @@ const { authenticatedUser,verifyIsAdmin,idExists } = require('../middlewares');
 
 const { getAllRoles,
         getRoleById,
+        getRoleByName,
         createRole,
         updateRole,
         deleteRole } = require('../controllers/role.controller');
@@ -16,11 +17,13 @@ router.get('/', getAllRoles);
 
 router.get('/:id', idExists, getRoleById);
 
-router.post('/', validateRoles , createRole);
+router.get('/byName/:name', getRoleByName);
 
-router.put('/:id', idExists, validateRoles , updateRole);
+router.post('/create', validateRoles , createRole);
 
-router.delete('/:id', idExists, deleteRole);
+router.put('/update/:id', idExists, validateRoles , updateRole);
+
+router.delete('/del/:id', idExists, deleteRole);
 
 
 module.exports = router;

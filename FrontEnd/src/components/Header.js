@@ -34,7 +34,7 @@ export default function Header () {
               <NavbarBrand >
               {!userInfo && (
                   <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
-                    <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
+                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
@@ -47,7 +47,7 @@ export default function Header () {
 
               {userInfo && userInfo.roleId!==1 && (
                    <NavDropdown title={`Secciones para ${userInfo.firstName}` } id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
+                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
@@ -71,7 +71,7 @@ export default function Header () {
                     <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
-                    <NavDropdown.Item href="/OrganizationsAll">Organización</NavDropdown.Item>
+                    <NavDropdown.Item href="/OrganizationsAll">Organizaciones</NavDropdown.Item>
                     <NavDropdown.Item href="/RolesAll">Roles</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Item href="/UsersAll">Usuarios</NavDropdown.Item>             

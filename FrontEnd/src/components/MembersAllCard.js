@@ -6,36 +6,27 @@ import {formatDate} from './helpers/FormatDate';
 import facebook from './images/facebook.jpg';
 import instagram from './images/instagram.jpg';
 import linkedin from'./images/linkedin.png';
+import ViewAdministratorOptions from './helpers/ViewAdministratorOptions';
 
 
 const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, linkedinUrl, created, updated, remove}) =>{
 
-  //hacer visibles opciones para administrador
-  const getRoleView =()=> { 
-    let isAdmin=JSON.parse( sessionStorage.getItem('userInfo'))   
-    if(isAdmin.roleId === 1) { 
-      return 'visible'
-    } else {
-      return 'invisible'
-    };
-  };
-
-
+ 
   return (
     <>
     <Fragment >
-        <Card  className="card ">
+        <Card  className="cardMembers ">
           <Card.Body className="" >
             <Card.Title className="centerText"><b>{name}</b></Card.Title>
             <Card.Text className="imagenCharCard centerText"> <img src={image}  alt="miembro" ></img></Card.Text>
             <br></br>
-            <Card.Text className="fixedSizeCard"><b> Detalle :</b> {description}</Card.Text>
+            <Card.Text className="fixedSizeCardMembers"><b> Detalle :</b> {description}</Card.Text>
             <Card.Text ><img className="iconoSocialNetworks"src={facebook}></img> {facebookUrl}</Card.Text> 
             <Card.Text ><img className="iconoSocialNetworks"src={instagram}></img> {instagramUrl}</Card.Text>
             <Card.Text ><img className="iconoSocialNetworks"src={linkedin}></img> {linkedinUrl}</Card.Text>
             <br></br>
             <Card.Text >
-                <div className={getRoleView()}>
+                <div className={ViewAdministratorOptions()}>
                   <div className="displayFlex centerText">
                     <span className=""><b> Ingreso :</b> {formatDate(new Date(created))}</span>
                     <span className='colorBlack'>.....</span>
@@ -44,7 +35,7 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
                 </div>
             </Card.Text>
             <Card.Text >
-                <div className={getRoleView()}>    
+                <div className={ViewAdministratorOptions()}>    
                   <div className='centerText'>        
                     <Link to={`/members/update/${id}`} className="btn btn-primary btn-sm mr-1 me-md-2 "
                           role="button" aria-pressed="true"> Modificar </Link>            
