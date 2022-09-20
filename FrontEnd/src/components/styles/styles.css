@@ -3,6 +3,8 @@ body{
     padding: 0;
     font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
     width:100%;
+    background-color:rgb(26, 26, 26);
+    color:white;
 }
 
 .boton
@@ -66,12 +68,12 @@ body{
 h1{
     font-size: 25px;
     text-align: center;
-    color:black;
+    color:white;
 }
 
 
 .renglonBtn{  
-    color: black;
+    color: white;
     text-align: center;  
 }
 
@@ -256,7 +258,7 @@ h1{
 
 .text{
     margin:auto;
-    color:black;
+    color:white;
     margin-top:-1%;
 }
 
@@ -383,7 +385,7 @@ h1{
     width:32rem;
     height:auto;
     margin:auto;
-    background-color:whitesmoke;
+    background-color:rgb(26, 26, 26);
     box-shadow:3px 0px 5px 3px grey; 
 }
 /*
@@ -550,7 +552,7 @@ h1{
     justify-content: center;
 }
 
-.colorBlanco{
+.colorWhite{
     color:white;
 }
 
@@ -584,6 +586,19 @@ h1{
     margin:auto;
     height:100px; 
 }
+
+.imageAbout{
+    margin:15% 1% 2% 0%; 
+    width: 30rem;
+    border-radius: 15px;
+}
+
+.imageAddressMap{
+    height:2rem; 
+    width: 2rem;
+}
+
+
 
 /* .boton{
     margin-left: 10%;
@@ -759,6 +774,10 @@ h1{
     text-align: center;
 }
 
+.colorFooter {
+    color:#0e0d0d;
+}
+
 .btn-derecha{
     margin-left: 70%;
    }
@@ -840,7 +859,7 @@ h1{
 
 .cardMembers{
     color:#fff;
-    background-color: #0e0d0d;
+    background-color: #be6607;
     height:auto;
     width:23rem;
     box-shadow:3px 0px 5px 3px grey;
@@ -853,7 +872,7 @@ h1{
 
 .cardOrganization{
     color:#fff;
-    background-color: #20192e;
+    background-color: #be6607;
     height:auto;
     width:25rem;
     box-shadow:3px 0px 5px 3px grey;
@@ -862,6 +881,19 @@ h1{
     margin: auto;
     margin-left:2%;
     margin-bottom:2%;
+}
+
+.cardAbout{
+    color:#fff;
+    background-color: #be6607;
+    font-size: 19px !important;
+    height:auto;
+    width:35rem;
+    box-shadow:3px 0px 5px 3px grey;
+    font-size: 16px;
+    margin:1.5% 2% 1.5% 2%;
+    padding:2.5rem;
+    border-radius: 25px;
 }
 
 .fixedSizeCardMembers{
@@ -905,6 +937,11 @@ h1{
 
 .iconoSocialNetworks{
     width: 6%;
+}
+
+
+.iconoSocialNetworksFooter{
+    width: 1.5%;
 }
 
 

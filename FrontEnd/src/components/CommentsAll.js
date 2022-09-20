@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import { OrderNameAsc } from "./helpers/Order";
 
 const CommentsAll = (props) => { 
 
@@ -48,9 +49,6 @@ const CommentsAll = (props) => {
       }  
   };
   findUserName()
-  // useEffect(() => {
-  //   findUserName()
-  // });
 
 
   //DELETE
@@ -76,7 +74,7 @@ const CommentsAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Comentario Eliminada !",
+          title: "Comentario eliminado !",
           timer:1000,
           showConfirmButton: false
         });
@@ -101,7 +99,7 @@ const CommentsAll = (props) => {
       await axiosClient
       .get(`/comments/byUser/`+filterBy)
       .then((response) => {
-        setCommentsWithName(response.data)
+        setComments(response.data)
       })
       .catch(function (error) {
         console.log(error)
@@ -158,7 +156,7 @@ const CommentsAll = (props) => {
         <p>{}</p>
       </div>
       <br></br>      
-        <div className="" >
+        <div className="displayFlex" >
           
           <div >
             <p className="pBtnDesplegable " >Buscar comentarios por usuario</p>
@@ -170,10 +168,10 @@ const CommentsAll = (props) => {
               >  
                 {commentsWithName.map(oneComment => (
                   <option key={oneComment.user_id} value={oneComment.user_id}>
-                    {oneComment.user_id} - {oneComment.user_firstName} {oneComment.user_lastName}
+                    {oneComment.user_firstName} {oneComment.user_lastName}
                   </option>
-                ))}
-                <option value={"todas"}>Mostrar todos los comentarios</option>
+                )).sort(OrderNameAsc(commentsWithName))}
+                <option value={"todos"}>Mostrar todos los comentarios</option>
               </select>
           </div> 
         </div> 

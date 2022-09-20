@@ -6,7 +6,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import OrganizationsAllCard from "./OrganizationsAllCard";
-import OrderAsc from "./helpers/Order";
+import {OrderNameAsc} from "./helpers/Order";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 
 
@@ -121,16 +121,6 @@ const OrganizationsAll = (props) => {
     );
   };
 
-  // //hacer visibles opciones para administrador
-  // const getRoleView =()=> { 
-  //   let isAdmin=JSON.parse( sessionStorage.getItem('userInfo'))   
-  //   if(isAdmin.roleId === 1) { 
-  //     return 'visible'
-  //   } else {
-  //     return 'invisible'
-  //   };
-  // };
-
 
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
@@ -138,7 +128,7 @@ const OrganizationsAll = (props) => {
     <Fragment>
       <Container>
       {/* para proteger ruta , si no hay token, redirige a login*/}
-      {!token && <Redirect to="/Login" />} 
+      {/* {!token && <Redirect to="/Login" />}  */}
 
       {/* si aun está cargando las organizaciones*/}
       {!organizations &&  <LoadingBox/> }
@@ -163,7 +153,7 @@ const OrganizationsAll = (props) => {
                   <option key={oneOrganization.id} value={oneOrganization.id}>
                     {oneOrganization.name}
                   </option>
-                )).sort(OrderAsc(organizations))}
+                )).sort(OrderNameAsc(organizations))}
                 <option value={"todas"}>Mostrar todas las organizaciones</option>
               </select>
               

@@ -3,12 +3,11 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "UnifrakturMaguntia", cursiva;
+  color:white;
+  font-family: "UnifrakturMaguntia",cursiva;
+
 }
-/* 
-.contenedorApp {
-  height: 640px;
-} */
+
 /* 
 .App-logo {
   border: transparent;

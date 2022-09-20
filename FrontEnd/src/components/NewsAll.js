@@ -7,6 +7,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
+import { OrderNameAsc } from "./helpers/Order";
 
 const NewsAll = (props) => { 
 
@@ -80,7 +81,7 @@ const NewsAll = (props) => {
   const getFilterNews = async () => {
 
     if(filterBy.includes(':')===true){
-        route='/news/byDate/'
+        route='/news/byDate/'    
     } else {
         if(numbers.some(e=>filterBy.includes(e))) {
           route='/news/byCategory/'
@@ -160,7 +161,7 @@ const NewsAll = (props) => {
                   <option key={oneNew.id} value={oneNew.name}>
                     {oneNew.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(news))}
                 <option value={"todas"}>Mostrar todas las noticias</option>
               </select>
           </div> 

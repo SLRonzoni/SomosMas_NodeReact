@@ -32,29 +32,33 @@ export default function Header () {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <NavbarBrand >
-              {!userInfo && (
+              {!userInfo &&(
                   <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
-                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
+                    <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
-                    <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item> 
-                    <NavDropdown.Item href="/Contacts">Contacto</NavDropdown.Item> 
+                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan . . .</NavDropdown.Item>
+                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>                    
+                    <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item> 
+                    <NavDropdown.Divider /> 
+                    <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
                   </NavDropdown>
               )}
 
               {userInfo && userInfo.roleId!==1 && (
                    <NavDropdown title={`Secciones para ${userInfo.firstName}` } id="basic-nav-dropdown">
-                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
+                    <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
-                    <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
-                    <NavDropdown.Item href="/Contacts">Contacto</NavDropdown.Item> 
+                    <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
+                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
+                    <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
+                    <NavDropdown.Divider />               
+                    <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
                     <NavLink to={`/users/update/${userInfo.id}`} className="renglonBtn nav p-3 col-1">Mi Perfil</NavLink>
                   </NavDropdown> 
@@ -63,7 +67,8 @@ export default function Header () {
               
               {userInfo && userInfo.roleId===1 && ( 
               <NavbarBrand>
-                  <NavDropdown title="Secciones para Administrador" id="basic-nav-dropdown">   
+                  <NavDropdown title="Secciones para Administrador" id="basic-nav-dropdown">  
+                    <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>

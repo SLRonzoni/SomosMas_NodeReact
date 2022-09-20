@@ -14,22 +14,21 @@ const { authenticatedUser, verifyIsAdmin, idExists, optionsFileUpload } = requir
 
 const { validateTestimonial, validateUpdateTestimonial } = require('../validators');
 
-router.use(authenticatedUser, verifyIsAdmin);
 
-router.get('/', getAllTestimonials);
+router.get('/public', getAllTestimonials);
 
+router.get('/public/:id', idExists, getTestimonialsById);
 
+router.get('/byName/:name', getTestimonialsByName);
 
-router.get('/:id', idExists, getTestimonialsById)
+router.get('/byDate/:date', getTestimonialsByDate);
 
-router.get('/byName/:name', getTestimonialsByName)
+router.get('/',authenticatedUser, verifyIsAdmin, getAllTestimonials);
 
-router.get('/byDate/:date', getTestimonialsByDate)
+router.post('/',authenticatedUser, verifyIsAdmin, optionsFileUpload, validateTestimonial, createTestimonial);
 
-router.post('/', optionsFileUpload, validateTestimonial, createTestimonial);
+router.put('/:id',authenticatedUser, verifyIsAdmin, idExists, optionsFileUpload, validateUpdateTestimonial, updateTestimonial);
 
-router.put('/:id', idExists, optionsFileUpload, validateUpdateTestimonial, updateTestimonial);
-
-router.delete('/:id', idExists, deleteTestimonial);
+router.delete('/:id',authenticatedUser, verifyIsAdmin, idExists, deleteTestimonial);
 
 module.exports = router;

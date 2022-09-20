@@ -7,6 +7,7 @@ import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
+import { OrderNameAsc } from "./helpers/Order";
 
 const MembersAll = (props) => { 
 
@@ -126,7 +127,7 @@ const MembersAll = (props) => {
     <Fragment >
       <Container  >
       {/* para proteger ruta , si no hay token, redirige a login*/}
-      {!token && <Redirect to="/Login" />} 
+      {/* {!token && <Redirect to="/Login" />}  */}
 
       {/* si aun está cargando members*/}
       {!members &&  <LoadingBox/> }
@@ -150,7 +151,7 @@ const MembersAll = (props) => {
                   <option key={oneMember.id} value={oneMember.id}>
                     {oneMember.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(members))}
                 <option value={"todos"}>Mostrar todos los colaboradores</option>
               </select>
               

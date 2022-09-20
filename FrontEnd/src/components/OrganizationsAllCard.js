@@ -7,18 +7,10 @@ import facebookLogo from './images/facebook.jpg';
 import instagramLogo from './images/instagram.jpg';
 import linkedinLogo from'./images/linkedin.png';
 import emailLogo from './images/email.jpg';
+import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
-  //hacer visibles opciones para administrador
-  const getRoleView =()=> { 
-    let isAdmin=JSON.parse( sessionStorage.getItem('userInfo'))   
-    if(isAdmin.roleId === 1) { 
-      return 'visible'
-    } else {
-      return 'invisible'
-    };
-  };
 
   return (
     <>
@@ -39,7 +31,7 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
             <Card.Text className='fixedSizeCardOrganization'><b> Sobre nosotros :</b> {aboutUsText}</Card.Text>
             <br></br>
             <Card.Text >
-                <div className={getRoleView()}>
+                <div className={ViewAdministratorOptions()}>
                   <div className="displayFlex centerText">
                     <span ><b> Ingreso :</b> {formatDate(new Date(created))}</span>
                     <span className='colorBlack'>.....</span>
@@ -48,7 +40,7 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
                 </div>
             </Card.Text>
             <Card.Text >
-              <div className={getRoleView()}>    
+              <div className={ViewAdministratorOptions()}>    
                 <div className='centerText'>        
                   <Link to={`/organization/${id}`} className="btn btn-primary btn-sm mr-1 me-md-2 "
                         role="button" aria-pressed="true"> Modificar </Link>            

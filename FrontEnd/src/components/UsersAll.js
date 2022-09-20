@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Redirect } from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import { OrderLastNameAsc } from "./helpers/Order";
 
 
 const UsersAll = (props) => {
@@ -154,7 +155,7 @@ const UsersAll = (props) => {
                     <option key={oneUser.id} value={oneUser.lastName}>
                     {oneUser.lastName}
                     </option>
-                  ))}
+                  )).sort(OrderLastNameAsc(users))}
                   <option value={"todos"}>Mostrar todos los usuarios</option>
                 </select>
               </div>

@@ -8,7 +8,8 @@ import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFo
 import  InputForm  from './elements/InputForm';
 import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
-import { formatDate} from './helpers/FormatDate';
+import { formatDate } from "./helpers/FormatDate";
+import DuplicatedName from "./helpers/DuplicatedName";
 
 const FormCategory = ({match,history}) => {
 
@@ -18,10 +19,12 @@ const FormCategory = ({match,history}) => {
           id:"", 
           name: "", 
           image:"",
-          description:""          
-        });
+          description:"",
+          createdAt:"",
+          updatedAt:""          
+  });
     
-  const [duplicated,setDuplicated]=useState('')
+  const [duplicated,setDuplicated]=useState({});
 
   //DEFAULT VALUES
   useEffect(() => {
@@ -72,41 +75,35 @@ const FormCategory = ({match,history}) => {
   };
   
   //DUPLICATED NAME
-  const repeat= (searchName,errors)=>{
-    if (errors.formOk !=='v'){
-      getCategoryByName(searchName)
-    }
+  const repeat= async (searchName,errors)=>{
+    if (errors.formOk !=='v'){                                                              
+      setDuplicated(await DuplicatedName(searchName,'categories'))
+     
+    };
   };
-
-  const getCategoryByName = async (searchName) => {
-    await axiosClient.get(`/categories/byName/${searchName}`)
-    .then((response) => {
-      if(response.status===404){
-        setDuplicated(' ')
-      } else {
-        setDuplicated(response.data.category.name)
-      }
-    })
-    .catch((error=>{
-      console.log(error);
-    }));
-  }; 
-
   
   //FORMIK INITIAL VALUES
-  let initialValues={name:categories.name,
-                     description:categories.description}
+  let initialValues={name:categories.name, description:categories.description}
 
   //FORMIK VALIDATIONS 
   let validateInputs=(values) =>{   
   
-    let errors = {name: '', image:'',description:'',  
-                icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
+    let errors = {name: '', image:'',description:'', icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
                 
     if (!values.name) {
-      errors.name=msgRequired
-      errors.icoNname= '❌'
+      values.name=categories.name
+      errors.icoNname= '✔️'
+    };
+
+       
+    let searchName=values.name
+    repeat(searchName, errors)
+    if( (duplicated.respName===searchName) && !duplicated.respId  ) {  
+      errors.name=msgValidationDuplicated
+      errors.icoNname= '❌'         
       return errors
+    } else {
+      errors.icoNname= '✔️'
     };
 
     if (!regexCategoryName.test(values.name)) {
@@ -116,21 +113,11 @@ const FormCategory = ({match,history}) => {
     } else {
       errors.icoNname= '✔️'
     };
-   
-    
-    let searchName=values.name
-    repeat(searchName, errors)
-    if(duplicated===searchName){
-      errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'         
-      return errors
-    } else {
-      errors.icoNname= '✔️'
-    };
   
 
     if (!values.description) {
       values.description=categories.description
+      errors.icoNdescription= '✔️'
     }; 
 
     if (!regexCategoryDescription.test(values.description)) {
@@ -153,8 +140,7 @@ const FormCategory = ({match,history}) => {
       errors.formOk='f'
     } else {
       errors.formOk='v'
-    };
-                      
+    };               
   }
 
   //FORM

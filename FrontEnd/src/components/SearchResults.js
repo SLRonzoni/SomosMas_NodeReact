@@ -13,6 +13,7 @@ function WordSearchResults () {
     const findKeyword=async () => {
       await axiosClient.get(`/news?name=${keyword}`)
       .then ( findKeyword =>{
+        console.log(findKeyword.data)
         setNews(findKeyword.data)
       }) 
       .catch (

@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import { OrderNameAsc } from "./helpers/Order";
 
 const CategoriesAll = (props) => { 
 
@@ -72,30 +73,30 @@ const CategoriesAll = (props) => {
   },[]);
 
 
-  //FILTER BY ID
-  let filterBy;
-  const getFilterCategoryId = async () => {
-      await axiosClient
-      .get(`/categories/`+filterBy)
-      .then((response) => {
-        setCategories(response.data)
-      })
-      .catch(function (error) {
-        console.log(error)
-      });
-  };
+   //FILTER BY ID
+    let filterBy;
+    const getFilterCategoryByName = async () => {
+        await axiosClient
+        .get(`/categories/byName/`+filterBy)
+        .then((response) => {
+          setCategories([response.data])
+        })
+        .catch(function (error) {
+          console.log(error)
+        });
+    };
   
     const changesId=(e)=>{
         filterBy=e.target.value;
-        if(filterBy === 'todos'){
-            getCategories() 
+        if(filterBy === 'todas'){
+          getCategories() 
         } else {
-          getFilterCategoryId()   
+          getFilterCategoryByName()   
     };
   };
 
  
-  const showCategories = (props) => {
+  const showCategories = () => {
     return (
       <tbody >
         {categories.map((oneCategory) => (
@@ -122,10 +123,10 @@ const CategoriesAll = (props) => {
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando categories*/}
+      {/* si aun está cargando categorias*/}
       {!categories &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay categories*/}
+       {/* solo renderiza si hay categorias*/}
       {categories && 
       <>
       <div>
@@ -144,10 +145,10 @@ const CategoriesAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {categories.map(oneCategory => (
-                  <option key={oneCategory.name} value={oneCategory.name}>
-                    {oneCategory.id}  -  {oneCategory.name}
+                  <option key={oneCategory.id} value={oneCategory.name}>
+                    {oneCategory.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(categories))}
                 <option value={"todas"}>Mostrar todas las categorías</option>
               </select>
           </div> 

@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import Home from './components/Home';
+import About from './components/About';
 import SearchResults from "./components/SearchResults";
 
 import ActivitiesAll from './components/ActivitiesAll';
@@ -16,7 +17,6 @@ import ActivitiesCreate from './components/ActivitiesCreate';
 import ActivitiesUpdate from './components/ActivitiesUpdate';
 
 import CategoriesAll from './components/CategoriesAll';
-import CategoriesOne from './components/CategoriesOne';
 import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
 
@@ -43,9 +43,9 @@ import TestimonialsAll from "./components/TestimonialsAll";
 
 import OrganizationsAll from "./components/OrganizationsAll";
 
-import Contact from './components/Contact';
+import ContactForm from './components/ContactForm';
+
 import UsersAll from './components/UsersAll';
-// import UsersOne from './components/UsersOne';
 import Register from './components/Register';
 import EditUsers from './components/UsersUpdate';
 
@@ -71,11 +71,12 @@ function App() {
         <Route exact path="/LoginGoogle" component={LoginGoogle}/>
         <Route exact path="/redes" component={LoginGoogle}/>
         <Route exact path='/searchResults'component={SearchResults}/>
+        <Route exact path='/About'component={About}/>
         
 
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
-        <Route exact path="/contacts" component={Contact}/>
+        <Route exact path="/contactForm" component={ContactForm}/>
               
         {/* ADMIN */}
         <Route exact path='/ActivitiesAll' component={ActivitiesAll}/>
@@ -83,7 +84,6 @@ function App() {
         <Route exact path='/activities/update/:id' component={ActivitiesUpdate}/>
 
         <Route exact path='/CategoriesAll' component={CategoriesAll}/>
-        <Route exact path='/categories/:id' component={CategoriesOne}/>
         <Route exact path='/CategoriesCreate' component={CategoriesCreate}/>
         <Route exact path='/categories/update/:id' component={CategoriesUpdate}/>
         <Route exact path='/categories/del/:id' component={CategoriesAll}/>
@@ -113,7 +113,7 @@ function App() {
         <Route exact path="/OrganizationsAll" component={OrganizationsAll}/>
 
         <Route exact path='/UsersAll' component={UsersAll}/>
-        {/* <Route exact path='/users/:id' component={UsersOne}/> */}
+       
         <Route exact path='/users/update/:id' component={EditUsers}/>
        
 

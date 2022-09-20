@@ -7,6 +7,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
+import {OrderNameAsc} from "./helpers/Order";
 
 const ActivitiesAll = (props) => { 
 
@@ -53,7 +54,7 @@ const ActivitiesAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Actividad Eliminada !",
+          title: "Actividad eliminada !",
           timer:1000,
           showConfirmButton: false
         });
@@ -97,14 +98,14 @@ const ActivitiesAll = (props) => {
     const changesId=(e)=>{
         filterBy=e.target.value;
         if(filterBy === 'todas'){
-            getActivities() 
+          getActivities() 
         } else {
           getFilterActivities()   
     };
   } 
 
  
-  const showActivities = (props) => {
+  const showActivities = () => {
     return (
       <tbody >
         {activities.map((oneActivity) => (
@@ -153,16 +154,16 @@ const ActivitiesAll = (props) => {
                 onChange={changesId}
               >  
                 {activities.map(oneActivity => (
-                  <option key={oneActivity.id} value={oneActivity.name}>
+                  <option className="colorBlack"key={oneActivity.id} value={oneActivity.name}>
                     {oneActivity.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(activities))}
                 <option value={"todas"}>Mostrar todas las actividades</option>
               </select>
           </div> 
           
           <div >
-            <p className="pBtnDesplegable " >Buscar actividades por fecha de actualización</p>
+            <p className="pBtnDesplegable" >Buscar actividades por fecha de actualización</p>
               <select
                 type="text"
                 name="name"
@@ -170,7 +171,7 @@ const ActivitiesAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {activities.map(oneActivity => (
-                  <option key={oneActivity.id} value={oneActivity.updatedAt}>
+                  <option className="colorBlack" key={oneActivity.id} value={oneActivity.updatedAt}>
                     {formatDate(new Date(oneActivity.updatedAt))}
                   </option>
                 ))}
@@ -179,10 +180,10 @@ const ActivitiesAll = (props) => {
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table table-striped table-responsive table-bordered ">
         <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
+          <tr className="">
+            <th className="tituloItem centerText  "> Id </th>
             <th className="tituloItem "> Actividad </th>
             <th className="tituloItem "> Imágen </th>
             <th className="tituloItem "> Descripción </th>

@@ -6,6 +6,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
+import { OrderNameAsc } from "./helpers/Order";
 
 const RolesAll = (props) => { 
 
@@ -117,7 +118,7 @@ const RolesAll = (props) => {
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          
             </td>  
           </tr>
-           ))}
+           )).sort(OrderNameAsc(roles))}
         </tbody>
       </table>
       </>

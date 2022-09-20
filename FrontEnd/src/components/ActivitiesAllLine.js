@@ -7,7 +7,7 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
   
     return (
         <tr>
-            <td className="renglonNro">{id}</td>
+            <td className="renglonNro ">{id}</td>
             <td className="renglon" >{name}</td>
             <td className="imageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
             <td className="renglon" >{content}</td>

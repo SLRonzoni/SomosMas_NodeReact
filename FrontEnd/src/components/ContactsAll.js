@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
+import { OrderNameAsc } from "./helpers/Order";
 
 const ContactsAll = (props) => { 
 
@@ -144,9 +145,9 @@ const ContactsAll = (props) => {
               >  
                 {contacts.map(oneContact => (
                   <option key={oneContact.id} value={oneContact.id}>
-                    {oneContact.id}  -  {oneContact.name}
+                    {oneContact.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(contacts))}
                 <option value={"todos"}>Mostrar todos los contactos</option>
               </select>
           </div> 

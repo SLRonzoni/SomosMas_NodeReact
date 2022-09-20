@@ -3,10 +3,10 @@ import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import TestimonialsAllLine from "./TestimonialsAllLine";
 import Swal from "sweetalert2";
-import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
+import { OrderNameAsc } from "./helpers/Order";
 
 const TestimonialsAll = (props) => { 
 
@@ -53,7 +53,7 @@ const TestimonialsAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Testimonio Eliminado !",
+          title: "Testimonio eliminado !",
           timer:1000,
           showConfirmButton: false
         });
@@ -125,9 +125,6 @@ const TestimonialsAll = (props) => {
   return (
     <Fragment>
       <Container>
-      {/* para proteger ruta , si no hay token, redirige a login*/}
-      {!token && <Redirect to="/Login" />} 
-
       {/* si aun está cargando los testimonios*/}
       {!testimonials &&  <LoadingBox/> }
 
@@ -148,12 +145,12 @@ const TestimonialsAll = (props) => {
                 type="text"
                 name="name"
                 onChange={changesId}
-              >  
+              > 
                 {testimonials.map(oneTestimonial => (
                   <option key={oneTestimonial.id} value={oneTestimonial.name}>
                     {oneTestimonial.name}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(testimonials))}
                 <option value={"todos"}>Mostrar todos los testimonios</option>
               </select>
           </div> 

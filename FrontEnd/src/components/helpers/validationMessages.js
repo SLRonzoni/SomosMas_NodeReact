@@ -14,7 +14,7 @@ const msgValidationUserFirstName= "Puede contener entre 4 y 16 digitos ( letras,
 
 const msgValidationUserLastName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
 
-const msgValidationUserEmail="Puede contener entre 4 y 12 dígitos"
+const msgValidationUserEmail="Puede contener entre 4 y 12 dígitos. Formato correo@correo.xxx o .xxx.xx"
 
 const msgValidationUserPassword="Puede contener entre 4 y 12 dígitos"
 

@@ -36,7 +36,7 @@ Modificaciones al proyecto original ( back end ):
 ** ROUTES **
   * AUTH, se agregó moddleware optionsFileUpload 
   * AUTH, se creo 
-  * ACTIVITIES, se crearon rutas para getByName y getByDate y se agregaron middlewares
+  * ACTIVITIES, se crearon rutas para getByName, getByDate, get public y get public id y se agregaron middlewares
   * ACTIVITIES, se modificaron rutas create, getAll, update, del  ruta para login con google
   * CATEGORIES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se agregó al nombre de la
                             ruta CREATE,UPDATE y DEL
@@ -53,7 +53,8 @@ Modificaciones al proyecto original ( back end ):
   * ORGANIZATIONS, se cambió opciones de verificar administrador
   * ROLES, se agregó al nombre de la ruta CREATE,UPDATE y DEL. 
   * ROLES, se creó ruta para getByName
-  * TESTIMONIALS, se crearon rutas para getByName y  getByDate
+  * TESTIMONIALS, se crearon rutas para getByName y  getByDate, get public y get public id
+  * TESTIMONIALS, se cambió la distribución del middlewares de verificacion user y admin, para usar rutas public
   * USERS, se agregó /del a la ruta
   * USERS, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
   * USERS, se eliminó VerifyIsAdmin de las rutas update y get one

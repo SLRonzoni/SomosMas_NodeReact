@@ -15,8 +15,8 @@ module.exports = {
       updatedAt: new Date
     },
     {
-      firstName: 'admin',
-      lastName: 'admin',
+      firstName: 'Admin',
+      lastName: 'Admin',
       email: 'admin@gmail.com',
       password,
       roleId: 1,
@@ -25,8 +25,8 @@ module.exports = {
       updatedAt: new Date
     },
     {
-      firstName: 'regular',
-      lastName: 'regular',
+      firstName: 'Regular',
+      lastName: 'Regular',
       email: 'regular@gmail.com',
       password,
       roleId: 2,

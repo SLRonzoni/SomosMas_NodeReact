@@ -7,6 +7,7 @@ import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
+import { OrderNameAsc } from "./helpers/Order";
 
 const MessagesAll = (props) => { 
 
@@ -155,7 +156,7 @@ const MessagesAll = (props) => {
                   <option key={oneMessage.id} value={oneMessage.email}>
                     {oneMessage.email}
                   </option>
-                ))}
+                )).sort(OrderNameAsc(messages))}
                 <option value={"todos"}>Mostrar todos los mensajes</option>
               </select>
           </div> 

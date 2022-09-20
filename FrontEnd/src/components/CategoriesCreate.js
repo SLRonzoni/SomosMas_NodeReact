@@ -7,6 +7,7 @@ import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyl
 import  InputForm  from './elements/InputForm';
 import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
+import DuplicatedName from "./helpers/DuplicatedName";
 import "./styles/styles.css";
 
 function CategoriesCreate(props) {
@@ -17,7 +18,7 @@ function CategoriesCreate(props) {
     image:""        
   });
 
-  const [duplicated,setDuplicated]=useState('')
+  const [duplicated,setDuplicated]=useState({});
 
   //SEND
   const sendForm = (values) => {
@@ -54,42 +55,35 @@ function CategoriesCreate(props) {
   };
 
 //DUPLICATED NAME
-const repeat= (searchName,errors)=>{
-  if (errors.formOk !=='v'){
-    getCategoryByName(searchName)
-  }
-};
-
-const getCategoryByName = async (searchName) => {
-  await axiosClient.get(`/categories/byName/${searchName}`)
-  .then((response) => {
-    if(response.status===404){
-      setDuplicated(' ')
-    } else {
-      setDuplicated(response.data.category.name)
-    }
-  })
-  .catch((error=>{
-    console.log(error);
-  }));
-}; 
-
+const repeat= async (searchName,errors)=>{
+  if (errors.formOk !=='v'){                                                              
+    setDuplicated(await DuplicatedName(searchName,'categories'))
+  };
+}
 
 //FORMIK INITIAL VALUES
-let initialValues={name:categories.name,
-  description:categories.description}
+let initialValues={name:categories.name, description:categories.description}
 
 //FORMIK VALIDATIONS 
 let validateInputs=(values) =>{   
 
-  let errors = {name: '', image:'',description:'',  
-                icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
+  let errors = {name: '', image:'',description:'', icoNname:'', icoNimage:'', icoNdescription:'',formOk:''};  
 
   if (!values.name) {
     errors.name=msgRequired
     errors.icoNname= '❌'
     return errors
   };
+
+  let searchName=values.name
+    repeat(searchName, errors)
+    if( duplicated.respName===searchName ) {  
+      errors.name=msgValidationDuplicated
+      errors.icoNname= '❌'         
+      return errors
+    } else {
+      errors.icoNname= '✔️'
+    };
 
   if (!regexCategoryName.test(values.name)) {
     errors.name=msgValidationCategoryName
@@ -99,20 +93,10 @@ let validateInputs=(values) =>{
     errors.icoNname= '✔️'
   };
 
-
-  let searchName=values.name
-  repeat(searchName, errors)
-  if(duplicated===searchName){
-    errors.name=msgValidationDuplicated
-    errors.icoNname= '❌'         
-    return errors
-  } else {
-    errors.icoNname= '✔️'
-  };
-
-
   if (!values.description) {
-    values.description=categories.description
+    errors.description=msgRequired
+    errors.icoNdescription= '❌'
+    return errors
   }; 
 
   if (!regexCategoryDescription.test(values.description)) {
@@ -135,17 +119,16 @@ let validateInputs=(values) =>{
     errors.formOk='f'
   } else {
     errors.formOk='v'
-  };
-   
+  }; 
 }
 
 //FORM
 return (
   <>
   <Formik
-       initialValues={initialValues}           
-       validate={validateInputs}
-       onSubmit={(values)=>{ sendForm(values)}}
+       initialValues={initialValues}      
+       validate={ validateInputs }
+       onSubmit={ (values)=>{ sendForm(values) } }
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
        <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
