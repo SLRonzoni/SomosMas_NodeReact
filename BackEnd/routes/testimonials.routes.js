@@ -19,9 +19,9 @@ router.get('/public', getAllTestimonials);
 
 router.get('/public/:id', idExists, getTestimonialsById);
 
-router.get('/byName/:name', getTestimonialsByName);
+router.get('/public/byName/:name', getTestimonialsByName);
 
-router.get('/byDate/:date', getTestimonialsByDate);
+router.get('/public/byDate/:date', getTestimonialsByDate);
 
 router.get('/',authenticatedUser, verifyIsAdmin, getAllTestimonials);
 

@@ -8,12 +8,13 @@ import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
 
+
 const TestimonialsAll = (props) => { 
 
   const [testimonials, setTestimonials] = useState([]); 
   
   const getTestimonials = async () => {     
-     await axiosClient.get(`/testimonials`)
+     await axiosClient.get(`/testimonials/public`)
       .then( response => {
         if(response.status!==200){
           Swal.fire({
@@ -49,7 +50,7 @@ const TestimonialsAll = (props) => {
   };
 
   const removing = async (id) => {
-    await axiosClient.delete(`/testimonials/${id}`)
+    await axiosClient.delete(`/testimonials/public/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -78,13 +79,13 @@ const TestimonialsAll = (props) => {
   let route;
   const getFilterTestimonials = async () => {
     if(filterBy.includes(':')===true){
-      route='/testimonials/byDate/'
+      route='/testimonials/public/byDate/'
     } else {
-      route='/testimonials/byName/'
+      route='/testimonials/public/byName/'
     };
     await axiosClient.get(route+filterBy)
     .then((response) => {
-      setTestimonials(response.data)
+      setTestimonials([response.data[0]])
     })
     .catch(function (error) {
       console.log(error)
@@ -105,7 +106,7 @@ const TestimonialsAll = (props) => {
     return (
       <tbody >
         {testimonials.map((oneTestimonial) => (
-          <TestimonialsAllLine
+          <TestimonialsAllLine 
             key={oneTestimonial.id}
             id={oneTestimonial.id}
             name={oneTestimonial.name}
@@ -120,18 +121,16 @@ const TestimonialsAll = (props) => {
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
-
   return (
-    <Fragment>
-      <Container>
+    <Fragment >
+      <Container >
       {/* si aun está cargando los testimonios*/}
       {!testimonials &&  <LoadingBox/> }
 
        {/* solo renderiza si hay testimonios*/}
       {testimonials && 
       <>
-      <div>
+      <div >
         <h1 >Testimonios</h1>
         <p>{}</p>
       </div>
@@ -147,11 +146,11 @@ const TestimonialsAll = (props) => {
                 onChange={changesId}
               > 
                 {testimonials.map(oneTestimonial => (
-                  <option key={oneTestimonial.id} value={oneTestimonial.name}>
+                  <option className="colorBlack" key={oneTestimonial.id} value={oneTestimonial.name}>
                     {oneTestimonial.name}
                   </option>
                 )).sort(OrderNameAsc(testimonials))}
-                <option value={"todos"}>Mostrar todos los testimonios</option>
+                <option className="colorBlack" value={"todos"}>Mostrar todos los testimonios</option>
               </select>
           </div> 
           
@@ -164,18 +163,18 @@ const TestimonialsAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {testimonials.map(oneTestimonial => (
-                  <option key={oneTestimonial.id} value={oneTestimonial.createdAt}>
+                  <option className="colorBlack" key={oneTestimonial.id} value={oneTestimonial.createdAt}>
                     {formatDate(new Date(oneTestimonial.createdAt))}
                   </option>
                 ))}
-                <option value={"todos"}>Mostrar todos los testimonios</option>
+                <option className="colorBlack" value={"todos"}>Mostrar todos los testimonios</option>
               </select>
           </div>
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
-        <thead>
-          <tr>
+      <table className="table table-striped table-responsive table-bordered" >
+        <thead >
+          <tr >
             <th className="tituloItem centerText "> Id </th>
             <th className="tituloItem "> Testimonio </th>
             <th className="tituloItem "> Imágen </th>

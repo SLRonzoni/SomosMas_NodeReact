@@ -80,9 +80,9 @@ const ActivitiesAll = (props) => {
   const getFilterActivities = async () => {
 
     if(filterBy.includes(':')===true){
-        route='/activities/byDate/'
+        route='/activities/public/byDate/'
       } else{
-        route='/activities/byName/'
+        route='/activities/public/byName/'
       };
 
     await axiosClient

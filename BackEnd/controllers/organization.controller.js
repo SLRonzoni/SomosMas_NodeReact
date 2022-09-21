@@ -6,7 +6,7 @@ const baseController = require('./base.controller')
 //Get All Organizations
 const getOrganizations = async ( req, res ) => {
     return baseController.getAllModels( req, res, OrganizationModel )
-}
+};
 
 //Create and save an organization
 const createOrganization = async (req, res) => {  
@@ -27,22 +27,22 @@ const createOrganization = async (req, res) => {
 
     return baseController.createModel( res, OrganizationModel, data )
 
-}
+};
+
 // Get Organization
 const getOrganizationById = async(req, res) => {    
     try {
         const id = req.params.id
+        
         const organization = await OrganizationModel.findOne({
             where: { id },
-            attributes: ['name', 'image', 'phone', 'address', 'facebookUrl', 'instagramUrl', 'linkedinUrl']
+            attributes: ['name', 'image', 'address', 'phone','email', 'facebookUrl', 'instagramUrl', 'linkedinUrl','welcomeText', 'aboutUsText']
         });
 
         const slidesByOrg = await Slide.findAll({
-            where:{
-               organizationId: id
-           },
-           order:[['order','ASC']]
-        })
+            where:{ organizationId: id },
+            order:[['order','ASC']]
+        });
 
         res.status(200).send({
             organization,
@@ -52,7 +52,7 @@ const getOrganizationById = async(req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-}
+};
 
 //Update organization
 const updateOrganization = async (req, res) => {  
@@ -71,13 +71,12 @@ const updateOrganization = async (req, res) => {
         aboutUsText
     }
     return baseController.updateModel( req, res, OrganizationModel, data)
-}
+};
 
 //Delete Organization
 const deleteOrganization = async( req, res ) => {
-    return baseController.deleteModel( req, res, OrganizationModel )
-    
-}
+    return baseController.deleteModel( req, res, OrganizationModel )   
+};
 
 module.exports = {
     getOrganizationById,

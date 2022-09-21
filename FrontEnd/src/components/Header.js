@@ -37,7 +37,7 @@ export default function Header () {
                     <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
-                    <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
+                    <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan . . .</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>                    
@@ -52,7 +52,7 @@ export default function Header () {
                     <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
-                    <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
+                    <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>

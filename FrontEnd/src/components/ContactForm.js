@@ -129,24 +129,27 @@ const ContactForm = ({ history }) => {
           { values, handleBlur, handleSubmit, handleChange, touched, errors } // props con destrunturing {}
         ) => (
           <form
-            className='container-sm col-6 col-md-4 bg-light'
+            className='container-sm col-6 col-md-4 containerBorderWhiteBgOrange '
             onSubmit={handleSubmit}
           >
-            <h4 className="centerText">Formulario de Contacto</h4>
-            <div className='centerText '>
-              <div>
-                <div>
-                  <Label htmlFor='firstName'>Nombre y Apellido:</Label>
-                  <InputGroup>
-                    <InputUser
+            <br></br>
+            <h4 className="centerText ">Formulario de Contacto</h4>
+            <br></br>
+            <div className='centerText'>
+              <div  >
+                <div >
+                  <Label htmlFor='firstName'>Nombre y Apellido</Label>
+                  <InputGroup >
+                    <InputUser 
                       type='text'
                       name='name'
+                      placeholder="Ingresá tu nombre y apellido"
                       value={values.name}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
                     {touched.name && errors.icoNname && (
-                      <IconUser>{errors.icoNname}</IconUser>
+                      <IconUser className="contactFormName">{errors.icoNname}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -157,18 +160,19 @@ const ContactForm = ({ history }) => {
               <br></br>
 
               <div>
-                <div>
-                  <Label htmlFor='lastName'>Teléfono : </Label>
+                <div >
+                  <Label htmlFor='lastName'>Teléfono </Label>
                   <InputGroup>
-                    <InputUser
+                    <InputUser 
                       type='text'
                       name='phone'
+                      placeholder="Ingresá tu número de teléfono"
                       value={values.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
                     {touched.phone && errors.icoNphone && (
-                      <IconUser>{errors.icoNphone}</IconUser>
+                      <IconUser className="contactFormPhone">{errors.icoNphone}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -179,18 +183,19 @@ const ContactForm = ({ history }) => {
               <br></br>
 
               <div>
-                <div>
-                  <Label htmlFor='lastName'>Email : </Label>
+                <div >
+                  <Label htmlFor='lastName'>E-mail  </Label>
                   <InputGroup>
-                    <InputUser
+                    <InputUser 
                       type='text'
                       name='email'
+                      placeholder="Ingresá tu e-mail"
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
                     {touched.email && errors.icoNemail && (
-                      <IconUser>{errors.icoNemail}</IconUser>
+                      <IconUser className="contactFormEmail">{errors.icoNemail}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -202,13 +207,14 @@ const ContactForm = ({ history }) => {
 
               <div>
                 <div>
-                  <Label htmlFor='message'>Mensaje : </Label>
+                  <Label htmlFor='message'>Mensaje </Label>
                   <InputGroup>
-                    <textarea className="textArea form-control"
+                    <textarea className="textArea form-control borderRadius"
                       type='text'
-                      rows='10'
-                      cols='45'
+                      rows='8'
+                      cols='57'
                       name='message'
+                      placeholder="    Tu mensaje..."
                       value={values.message}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -233,8 +239,6 @@ const ContactForm = ({ history }) => {
                 </span>
               </MsjWrong>
             )}
-
-            <br></br>
             <div className='centerText'>
               <SendButton type='submit' className='m-2 btn btn-primary md-end '>
                 {" "}

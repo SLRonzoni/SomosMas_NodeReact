@@ -4,7 +4,8 @@ const Colors ={
     border:'#0075FF',
     error:'#bb2929',
     success:'#1ed12d',
-    fondoMsj:"ligthYellow"
+    fondoMsj:"ligthYellow",
+    fondoMsjError:"#EDBB99"
 }
 
 const Form =styled.form`
@@ -35,7 +36,7 @@ const Input = styled.input`
     width:160%;
     height:45px;
     background:#fff;
-    border-radius:3px;
+    border-radius:15px;
     line-height:45px;
     padding:0 40px 0 10px;
     border:3px solid transparent;
@@ -48,12 +49,15 @@ const Input = styled.input`
 `;
 
 const InputUser = styled.input`
-    width:105%;
+    width:30rem;
     height:45px;
     background:#fff;
-    border-radius:3px;
+    color:rgb(26, 26, 26);
+    border-radius:15px;
+    margin:auto;
     line-height:45px;
     padding:0 40px 0 10px;
+    position:relative;
     border:3px solid transparent;
 
     &:focus {
@@ -67,8 +71,9 @@ const InputUpdate = styled.input`
     width:20rem;
     height:45px;
     background:#fff;
-    border-radius:3px;
+    border-radius:15px;
     line-height:45px;
+    color:black;
     border:3px solid transparent;
 
     &:focus {
@@ -84,14 +89,16 @@ const Icon=styled.p`
     line-height:45px;  
     font-size:20px;
     margin:45px 0px 0 150px;
-    top:20px
+    top:20px;
+    position:absolute;
+
 `;
 
 const IconUpdate=styled.p`  
     line-height:45px;  
     font-size:20px;
     margin:45px 0px 0px 0px;
-    
+    position:absolute;
 `;
 
 const IconUser=styled.p`  
@@ -99,14 +106,18 @@ const IconUser=styled.p`
     height:0px;
     line-height:0px;  
     font-size:20px;
-    margin:25px 0px 0px 150px;
-    top:20px
+  
+    top:20px;
+    position:absolute;
 `;
 
 
 const ErrorText = styled.p`
-    font-size:16px;
-    margin:0px;
+    font-size:18px;
+    margin:auto;
+    border-radius:10px;
+    width:35rem;
+    background:${Colors.fondoMsjError};
     color:${Colors.error};
 ;`
 

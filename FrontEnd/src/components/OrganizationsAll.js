@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import Swal from "sweetalert2";
-import { Link,Redirect} from "react-router-dom";
+import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import OrganizationsAllCard from "./OrganizationsAllCard";
@@ -15,7 +15,7 @@ const OrganizationsAll = (props) => {
   const [organizations, setOrganizations] = useState([]); 
   
   const getOrganizations = async () => {     
-     await axiosClient.get(`/organization`)
+     await axiosClient.get(`/organization/public`)
       .then( response => {
         if(response.status!==200){
           Swal.fire({
@@ -76,24 +76,24 @@ const OrganizationsAll = (props) => {
    //FILTER BY ID
    let filterBy;
    const getFilterOrganizationsId = async () => {
-       await axiosClient
-       .get(`/organization/`+filterBy)
-       .then((response) => {
-         setOrganizations(response.data)
-       })
-       .catch(function (error) {
-         console.log(error)
-       });
+    await axiosClient
+    .get(`/organization/public/`+filterBy)
+    .then((response) => {
+      setOrganizations([response.data.organization])
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
    };
-   
-     const changesId=(e)=>{
-         filterBy=e.target.value;
-         if(filterBy === 'todas'){
-            getOrganizations() 
-         } else {
-           getFilterOrganizationsId()   
-     };
-   };
+
+    const changesId=(e)=>{
+    filterBy=e.target.value;
+    if(filterBy === 'todas'){
+    getOrganizations() 
+    } else {
+    getFilterOrganizationsId()   
+    };
+  };
 
    const showOrganizations = () => {
     return (
@@ -125,11 +125,9 @@ const OrganizationsAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
+    <>
     <Fragment>
       <Container>
-      {/* para proteger ruta , si no hay token, redirige a login*/}
-      {/* {!token && <Redirect to="/Login" />}  */}
-
       {/* si aun está cargando las organizaciones*/}
       {!organizations &&  <LoadingBox/> }
 
@@ -150,11 +148,11 @@ const OrganizationsAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {organizations.map(oneOrganization => (
-                  <option key={oneOrganization.id} value={oneOrganization.id}>
+                  <option className="colorBlack"  value={oneOrganization.id}>
                     {oneOrganization.name}
                   </option>
                 )).sort(OrderNameAsc(organizations))}
-                <option value={"todas"}>Mostrar todas las organizaciones</option>
+                <option className="colorBlack" value={"todas"}>Mostrar todas las organizaciones</option>
               </select>
               
               <p className={ViewAdministratorOptions()} >  
@@ -168,6 +166,7 @@ const OrganizationsAll = (props) => {
       } 
       </Container>
     </Fragment>
+  </>
   );
 };
 

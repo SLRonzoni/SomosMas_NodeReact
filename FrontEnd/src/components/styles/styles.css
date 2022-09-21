@@ -4,7 +4,7 @@ body{
     font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
     width:100%;
     background-color:rgb(26, 26, 26);
-    color:white;
+    color:#fff;
 }
 
 .boton
@@ -15,9 +15,9 @@ body{
 
 .btn{
     text-align: center;
-    color:white;
+    color:#fff;
     text-decoration: none;
-    border: 1px solid white;
+    border: 1px solid #fff;
     height: 29px;
     font-size: 14px;
     margin-top:4px;   
@@ -28,7 +28,7 @@ body{
     text-decoration: none;
     border-radius: 5px;
     border: transparent;
-    color:aliceblue;
+    color:#fff;
     height: 1.5rem;
     padding:10px;
     font-size: 12px;
@@ -38,7 +38,7 @@ body{
 }
 
 .titleItem{
-    color:#3C4657;    
+    color:#fff;    
     font-size:calc(1px + 1rem) ;
     text-align: center;
     height:0.3rem;
@@ -68,12 +68,12 @@ body{
 h1{
     font-size: 25px;
     text-align: center;
-    color:white;
+    color:#fff;
 }
 
 
 .renglonBtn{  
-    color: white;
+    color: #fff;
     text-align: center;  
 }
 
@@ -142,7 +142,7 @@ h1{
 } */
 
 .login {
-    color:whitesmoke;
+    color:#fff;
     background-color:transparent;
     font-size: 20px;
     width: 7%;
@@ -258,7 +258,7 @@ h1{
 
 .text{
     margin:auto;
-    color:white;
+    color:#fff;
     margin-top:-1%;
 }
 
@@ -284,7 +284,7 @@ h1{
 }
 
 .selectBtnDesplegable{
-    background-color:whitesmoke;
+    background-color:#fff;
     color:black;
     width:20rem;
     height:34px;
@@ -553,7 +553,7 @@ h1{
 }
 
 .colorWhite{
-    color:white;
+    color:#fff;
 }
 
 /* repetido */
@@ -573,7 +573,7 @@ h1{
 
 .textArea{
     border-radius: 3px;
-    border-color: white;
+    border-color: #fff;
     padding: 5px;
 }
 
@@ -645,8 +645,13 @@ h1{
     padding-left: 20px;
 }
 
-.tablaMisPedidos{
-    border:1px solid white;
+.containerBorderWhiteBgOrange{
+    border:1px solid #fff;
+    background-color: #be6607;
+    box-shadow:3px 0px 5px 3px grey;
+    font-size: 16px;
+    border-radius: 25px;
+    font-size: 17px !important;
 } 
 
 /*
@@ -748,7 +753,11 @@ h1{
 }
 
 .borderRounded{
-    border-radius:3px;
+    border-radius:15px;
+}
+
+.boxShadow{
+    box-shadow:0px 0px 0px 2px grey;
 }
 
 .buttonBlue{
@@ -769,7 +778,7 @@ h1{
 
 .footer{
     background-color:#0e0d0d;
-    color:white;
+    color:#fff;
     font-size: small;
     text-align: center;
 }
@@ -863,6 +872,7 @@ h1{
     height:auto;
     width:23rem;
     box-shadow:3px 0px 5px 3px grey;
+    border-radius: 15px;
     font-size: 16px;
     display:inline-flex;
     margin: auto;
@@ -874,12 +884,12 @@ h1{
     color:#fff;
     background-color: #be6607;
     height:auto;
-    width:25rem;
+    width:24rem;
     box-shadow:3px 0px 5px 3px grey;
+    border-radius: 15px;
     font-size: 16px;
     display:inline-flex;
-    margin: auto;
-    margin-left:2%;
+    margin-left:2.5%;
     margin-bottom:2%;
 }
 
@@ -901,13 +911,24 @@ h1{
 }
 
 .fixedSizeCardOrganization{
-    height:5.5rem;
+    height:3.5rem;
 }
 
 .imagenCharCard{
     display:flex;
     margin:auto;
     height:160px; 
+}
+
+.imagenCardOrganization{
+    display:flex;
+    margin:auto;
+    height:12rem; 
+
+}
+
+.bgWhite{
+    background-color: #fff;
 }
 
 .textBtnDesplegableCenter{
@@ -935,13 +956,30 @@ h1{
     width: 14%;
 }
 
-.iconoSocialNetworks{
-    width: 6%;
+.iconSocialNetworks{
+    width: 10%;
 }
 
 
-.iconoSocialNetworksFooter{
+.iconSocialNetworksOrganizations{
+    width: 6%;
+    margin-left: 19%;
+}
+
+.iconSocialNetworksFooter{
     width: 1.5%;
+}
+
+.contactFormName{
+    margin:230px 0px 0px 430px;
+}
+
+.contactFormPhone{
+    margin:345px 0px 0px 430px;
+}
+
+.contactFormEmail{
+    margin:460px 0px 0px 430px;
 }
 
 

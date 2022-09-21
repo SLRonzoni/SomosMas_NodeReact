@@ -28,6 +28,7 @@ Modificaciones al proyecto original ( back end ):
   * NEWS, se crearon servicios  getByName, getByDate, getByCategory
   * NEWS, se adaptaron servicios create y update, para el manejo de imagenes
   * ORGANIZATIONS, se agregaron a los servicios facebook, instagram y linkedin
+  * ORGANIZATIONS, se agregaron atributos a ruta getById
   * USERS, se modificó el servicio update para que tomara imagenes y hasheara password
   * USERS, se modificó el servicio create para que tomara imagenes
   * USERS, se incorporó USER_REGULAR_ROLE_ID como variable de entorno en create y update
@@ -50,10 +51,10 @@ Modificaciones al proyecto original ( back end ):
   * NEWS, se agregó al nombre de la ruta CREATE,UPDATE y DEL 
   * NEWS, se crearon rutas para getByName, getByDate y getByCategory
   * NEWS, se anregó middleware para manejo de imagenes en create y update
-  * ORGANIZATIONS, se cambió opciones de verificar administrador
+  * ORGANIZATIONS, se cambió opciones de verificar administrador, y se agregó /public a rutas get
   * ROLES, se agregó al nombre de la ruta CREATE,UPDATE y DEL. 
   * ROLES, se creó ruta para getByName
-  * TESTIMONIALS, se crearon rutas para getByName y  getByDate, get public y get public id
+  * TESTIMONIALS, se crearon rutas para public/getByName y  public/getByDate, get public y get public id
   * TESTIMONIALS, se cambió la distribución del middlewares de verificacion user y admin, para usar rutas public
   * USERS, se agregó /del a la ruta
   * USERS, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
@@ -82,6 +83,7 @@ Modificaciones al proyecto original ( back end ):
 
 ** SEEDERS **
   * SEEDERS, se standarizaron todos los nombres de los archivos
+  * ACTIVITIES, se aumentaron los registros
   * CATEGORIES, se cambiaron numeros por letras, en los nombres
   * CONTACT, se eliminó campo message 
   * MEMBERS, se creó seeder

@@ -126,13 +126,10 @@ const MembersAll = (props) => {
     <>
     <Fragment >
       <Container  >
-      {/* para proteger ruta , si no hay token, redirige a login*/}
-      {/* {!token && <Redirect to="/Login" />}  */}
-
-      {/* si aun está cargando members*/}
+      {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay members*/}
+       {/* solo renderiza si hay miembros*/}
       {members && 
       <>
       <div>
@@ -148,11 +145,11 @@ const MembersAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {members.map(oneMember => (
-                  <option key={oneMember.id} value={oneMember.id}>
+                  <option className="colorBlack" key={oneMember.id} value={oneMember.id}>
                     {oneMember.name}
                   </option>
                 )).sort(OrderNameAsc(members))}
-                <option value={"todos"}>Mostrar todos los colaboradores</option>
+                <option className="colorBlack" value={"todos"}>Mostrar todos los colaboradores</option>
               </select>
               
               <p className={ViewAdministratorOptions()} >  

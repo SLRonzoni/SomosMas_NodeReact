@@ -76,10 +76,10 @@ const Login =()=>{
      
     
     return (
-      <div className="container-sm col-6 col-md-4 bg-light" >  
+      <div className="container-sm col-6 col-md-4 bg-light " >  
  
-        <div className="displayFlex" >  
-          <div className="centrar">
+        <div className="displayFlex " >  
+          <div className="centerText">
            <LoginGoogle> </LoginGoogle>
           </div>
           <br/>
@@ -87,7 +87,7 @@ const Login =()=>{
         </div>
         <br/>
      
-        <h3>Inicio de sesión</h3>
+        <h3 className="colorBlack">Inicio de sesión</h3>
 
         <div className="form-group">
          <label className="formLabel">Email </label>
@@ -132,7 +132,7 @@ const Login =()=>{
         </div>
 
         <div>
-          <span>No tienes cuenta ? 
+          <span className="colorBlack">No tienes cuenta ? 
             <Link to={"/auth/register"}
             className="m-2 ">
             {" "}

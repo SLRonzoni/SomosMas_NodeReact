@@ -21,9 +21,9 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
             <Card.Text className="imagenCharCard centerText"> <img src={image}  alt="miembro" ></img></Card.Text>
             <br></br>
             <Card.Text className="fixedSizeCardMembers"><b> Detalle :</b> {description}</Card.Text>
-            <Card.Text ><img className="iconoSocialNetworks"src={facebook}></img> {facebookUrl}</Card.Text> 
-            <Card.Text ><img className="iconoSocialNetworks"src={instagram}></img> {instagramUrl}</Card.Text>
-            <Card.Text ><img className="iconoSocialNetworks"src={linkedin}></img> {linkedinUrl}</Card.Text>
+            <Card.Text ><img className="iconSocialNetworks"src={facebook}></img> {facebookUrl}</Card.Text> 
+            <Card.Text ><img className="iconSocialNetworks"src={instagram}></img> {instagramUrl}</Card.Text>
+            <Card.Text ><img className="iconSocialNetworks bgwhite"src={linkedin}></img> {linkedinUrl}</Card.Text>
             <br></br>
             <Card.Text >
                 <div className={ViewAdministratorOptions()}>

@@ -13,6 +13,7 @@ import About from './components/About';
 import SearchResults from "./components/SearchResults";
 
 import ActivitiesAll from './components/ActivitiesAll';
+import ActivitiesPublicAll from './components/ActivitiesPublicAll';
 import ActivitiesCreate from './components/ActivitiesCreate';
 import ActivitiesUpdate from './components/ActivitiesUpdate';
 
@@ -77,6 +78,7 @@ function App() {
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
         <Route exact path="/contactForm" component={ContactForm}/>
+        <Route exact path='/ActivitiesPublicAll' component={ActivitiesPublicAll}/>
               
         {/* ADMIN */}
         <Route exact path='/ActivitiesAll' component={ActivitiesAll}/>
@@ -116,7 +118,6 @@ function App() {
        
         <Route exact path='/users/update/:id' component={EditUsers}/>
        
-
          
       </main>
 
