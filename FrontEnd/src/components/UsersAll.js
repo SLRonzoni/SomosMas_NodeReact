@@ -152,22 +152,22 @@ const UsersAll = (props) => {
                   className='m-3 selectBtnDesplegable form-select '
                 >
                   {users.map((oneUser) => (
-                    <option key={oneUser.id} value={oneUser.lastName}>
+                    <option className='colorBlack'key={oneUser.id} value={oneUser.lastName}>
                     {oneUser.lastName}
                     </option>
                   )).sort(OrderLastNameAsc(users))}
-                  <option value={"todos"}>Mostrar todos los usuarios</option>
+                  <option className='colorBlack'value={"todos"}>Mostrar todos los usuarios</option>
                 </select>
               </div>
             </div>
 
-            <table className='table table-striped table-responsive table-bordered'>
+            <table className='table bgGrey table-responsive table-bordered'>
               <thead>
                 <tr>
                   <th className='tituloItem centerText'> Id </th>
                   <th className='tituloItem centerText'> Imágen</th>
-                  <th className='tituloItem '> Nombre </th>
                   <th className='tituloItem '> Apellido </th>
+                  <th className='tituloItem '> Nombre </th>
                   <th className='tituloItem '> Email </th>
                   <th className='tituloItem centerText'> Role</th>
                   <th className='tituloItem '> Registrado</th>

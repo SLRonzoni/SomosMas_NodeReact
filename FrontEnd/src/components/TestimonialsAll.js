@@ -172,7 +172,7 @@ const TestimonialsAll = (props) => {
           </div>
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered" >
+      <table className="table bgGrey table-responsive table-bordered" >
         <thead >
           <tr >
             <th className="tituloItem centerText "> Id </th>

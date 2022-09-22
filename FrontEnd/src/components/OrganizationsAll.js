@@ -86,12 +86,12 @@ const OrganizationsAll = (props) => {
     });
    };
 
-    const changesId=(e)=>{
+  const changesId=(e)=>{
     filterBy=e.target.value;
-    if(filterBy === 'todas'){
-    getOrganizations() 
+    if(filterBy === "todas"){
+      getOrganizations() 
     } else {
-    getFilterOrganizationsId()   
+      getFilterOrganizationsId()   
     };
   };
 
@@ -122,12 +122,11 @@ const OrganizationsAll = (props) => {
   };
 
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
-
   return (
     <>
     <Fragment>
       <Container>
+    
       {/* si aun está cargando las organizaciones*/}
       {!organizations &&  <LoadingBox/> }
 
@@ -135,33 +134,35 @@ const OrganizationsAll = (props) => {
       {organizations && 
       <>
       <div>
-        <h1 >Organizaciones que nos acompañan</h1>
-        <span>{}</span>
+        <h1 className="font2rem" >Organizaciones que nos acompañan</h1>
       </div>
-      <br></br>      
-      <div className=" displayFlex marginLeft10px" >
-            <p className="pBtnDesplegable textBtnDesplegableCenter"> Buscar por nombre</p>
+         
+      <div className="divBtnDesplegable" >
+            <span className="textBtnDesplegableCenter pBtnDesplegableMembers"> Buscar por nombre</span>
               <select
-                type="text"
-                name="name"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
+                  type="text"
+                  name="name"
+                  onChange={changesId}
+                  className="m-3 selectBtnDesplegable form-select "
               >  
-                {organizations.map(oneOrganization => (
-                  <option className="colorBlack"  value={oneOrganization.id}>
-                    {oneOrganization.name}
-                  </option>
-                )).sort(OrderNameAsc(organizations))}
-                <option className="colorBlack" value={"todas"}>Mostrar todas las organizaciones</option>
+                  {organizations.map(oneOrganization => (
+                    <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
+                      {oneOrganization.name}
+                    </option>
+                  )).sort(OrderNameAsc(organizations))}
+                    <option className="colorBlack"  value={"todas"}>
+                    Mostrar todas las organizaciones
+                    </option>
               </select>
               
-              <p className={ViewAdministratorOptions()} >  
+              <span className={ViewAdministratorOptions()} >  
                 <Link to={'/OrganizationsCreate'} className="m-3 btn btn-success "
                   role="button" > Agregar </Link>
-              </p> 
+              </span> 
         </div> 
-        {showOrganizations()}
-        
+        <Container className="containerMembersAllCard"> 
+          {showOrganizations()}
+        </Container>  
       </>
       } 
       </Container>

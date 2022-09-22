@@ -8,20 +8,20 @@ import { msgRequired, msgValidationUserFirstName, msgValidationUserEmail, msgVal
 import {regexUserfirstName,regexUserEmail,regexUserPhone} from "./helpers/RegExp";
 import {SendButton,MsjWrong,ErrorText,IconUser,Label,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
 
-const ContactForm = ({ history }) => {
+const ContactForm = (props) => {
   //SEND
-  const sendForm = async (values) => {
+  const sendForm =  (values) => {
     //CREATE
-    let body = new FormData();
-    body.append("name", values.name);
-    body.append("phone", values.phone);
-    body.append("email", values.email);
-    body.append("message", values.message);
+    let body = {"name": values.name,
+                "phone": values.phone,
+                "email": values.email,
+                "message": values.message};
 
     const sendMessage = async () => {
       await axiosClient
         .post("/contacts", body)
         .then((response) => {
+          console.log(response)
           if (response.status === 201) {
             Swal.fire({
               icon: "success",
@@ -29,7 +29,7 @@ const ContactForm = ({ history }) => {
               timer: 1000,
               showConfirmButton: false,
             });
-            history.push("/");
+            props.history.push("/");
           } else {
             Swal.fire({
               icon: "error",
@@ -121,23 +121,18 @@ const ContactForm = ({ history }) => {
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
-        onSubmit={(values) => {
-          sendForm(values);
-        }}
+        onSubmit={(values) => { sendForm(values) }}
       >
         {(
-          { values, handleBlur, handleSubmit, handleChange, touched, errors } // props con destrunturing {}
-        ) => (
+          { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
           <form
-            className='container-sm col-6 col-md-4 containerBorderWhiteBgOrange '
-            onSubmit={handleSubmit}
-          >
+            className='container-sm col-6 col-md-4 containerBorderWhiteBgOrange' onSubmit={handleSubmit}>
             <br></br>
             <h4 className="centerText ">Formulario de Contacto</h4>
             <br></br>
             <div className='centerText'>
-              <div  >
-                <div >
+              <div>
+                <div>
                   <Label htmlFor='firstName'>Nombre y Apellido</Label>
                   <InputGroup >
                     <InputUser 
@@ -209,7 +204,7 @@ const ContactForm = ({ history }) => {
                 <div>
                   <Label htmlFor='message'>Mensaje </Label>
                   <InputGroup>
-                    <textarea className="textArea form-control borderRadius"
+                    <textarea className="textArea form-control borderRounded"
                       type='text'
                       rows='8'
                       cols='57'
@@ -240,17 +235,12 @@ const ContactForm = ({ history }) => {
               </MsjWrong>
             )}
             <div className='centerText'>
-              <SendButton type='submit' className='m-2 btn btn-primary md-end '>
-                {" "}
-                Enviar{" "}
-              </SendButton>
+              <SendButton type='submit' className='m-2 btn btn-primary md-end '> {" "} Enviar{" "}</SendButton>
               <Link
                 to={"/"}
                 className='m-3 mr-md-2 btn buttonBlue'
                 role='button'
-              >
-                {" "}
-                Volver
+              > Volver
               </Link>
             </div>
           </form>

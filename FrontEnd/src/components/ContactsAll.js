@@ -144,16 +144,16 @@ const ContactsAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {contacts.map(oneContact => (
-                  <option key={oneContact.id} value={oneContact.id}>
+                  <option className="colorBlack" key={oneContact.id} value={oneContact.id}>
                     {oneContact.name}
                   </option>
                 )).sort(OrderNameAsc(contacts))}
-                <option value={"todos"}>Mostrar todos los contactos</option>
+                <option className="colorBlack" value={"todos"}>Mostrar todos los contactos</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>

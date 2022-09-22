@@ -6,8 +6,7 @@ import { Formik } from 'formik';
 import { Link } from "react-router-dom";
 import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
 import  InputForm  from './elements/InputForm';
-import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
-import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
+import { msgRequired, msgValidationDuplicated} from './helpers/validationMessages';
 import { formatDate} from './helpers/FormatDate';
 
 const RolesUpdate = ({match,history}) => {
@@ -142,7 +141,7 @@ const RolesUpdate = ({match,history}) => {
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
+         <form  className="container-sm col-6 col-md-4 bgGrey" onSubmit={handleSubmit}>
             <br></br>
             <h3 className="centerText">Ingrese nuevos valores ...</h3>
             <br></br>

@@ -4,7 +4,7 @@ const { getModelById, updateModel, deleteModel} = require('./base.controller')
 
 
 const createContact = async (req, res) => {
-console.log(req.body)
+
     try {
         const { name, phone, email, message } = req.body
 

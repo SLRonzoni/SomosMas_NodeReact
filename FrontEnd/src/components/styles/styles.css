@@ -4,6 +4,8 @@ body{
     font-family: Roboto, 'Segoe UI', Tahoma, sans-serif;
     width:100%;
     background-color:rgb(26, 26, 26);
+    background-image:url('C:\Users\Asus\Desktop\SomosMas_NodeReact\FrontEnd\src\components\images\manos_fondo1.jpg') ;
+    
     color:#fff;
 }
 
@@ -154,6 +156,11 @@ h1{
     font-size: 16px;
 }
 
+.centerContainer{
+    display: flex;
+    justify-content: center;
+}
+
 .photo{
     width: 40%;
     margin-left:25%;  
@@ -181,6 +188,7 @@ h1{
 
 .pUpdateCateg{
     margin-left: 14px;
+    color:black;
 }
 
 
@@ -283,11 +291,22 @@ h1{
     margin-left: 20px;
 }
 
+.divBtnDesplegable{
+    display:Flex;
+    width: 35rem;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 1rem;
+    background-color: #be6607;
+}
+
 .selectBtnDesplegable{
     background-color:#fff;
     color:black;
     width:20rem;
-    height:34px;
+    height:40px;
     margin-left: -10px;
 }
 
@@ -640,6 +659,14 @@ h1{
     background-color: rgb(37, 38, 38);
 }
 
+.bgGrey{
+    background-color: rgb(53, 53, 53);
+}
+
+.bgOrange{
+    background-color: #be6607;
+}
+
 .inputUpdateWidth{
     width: 95%;
     padding-left: 20px;
@@ -647,6 +674,7 @@ h1{
 
 .containerBorderWhiteBgOrange{
     border:1px solid #fff;
+
     background-color: #be6607;
     box-shadow:3px 0px 5px 3px grey;
     font-size: 16px;
@@ -787,6 +815,10 @@ h1{
     color:#0e0d0d;
 }
 
+.colorGrey{
+    color: rgb(53, 53, 53);
+}
+
 .btn-derecha{
     margin-left: 70%;
    }
@@ -866,6 +898,13 @@ h1{
 
 } */
 
+.containerMembersAllCard{
+    width: 80rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cardMembers{
     color:#fff;
     background-color: #be6607;
@@ -905,6 +944,7 @@ h1{
     padding:2.5rem;
     border-radius: 25px;
 }
+
 
 .fixedSizeCardMembers{
     height:8rem;
@@ -982,4 +1022,12 @@ h1{
     margin:460px 0px 0px 430px;
 }
 
+.pBtnDesplegableMembers{
+    font-size: 1.5rem;
+    margin-bottom:1rem;
+    background-color: #be6607;
+}
 
+.font2rem{
+    font-size: 2rem;
+}

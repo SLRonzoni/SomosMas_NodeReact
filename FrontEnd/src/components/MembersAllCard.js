@@ -1,5 +1,5 @@
 import React, {Fragment}from 'react';
-import { Card } from 'react-bootstrap';
+import { Card ,Container} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate';
@@ -20,10 +20,10 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
             <Card.Title className="centerText"><b>{name}</b></Card.Title>
             <Card.Text className="imagenCharCard centerText"> <img src={image}  alt="miembro" ></img></Card.Text>
             <br></br>
-            <Card.Text className="fixedSizeCardMembers"><b> Detalle :</b> {description}</Card.Text>
-            <Card.Text ><img className="iconSocialNetworks"src={facebook}></img> {facebookUrl}</Card.Text> 
-            <Card.Text ><img className="iconSocialNetworks"src={instagram}></img> {instagramUrl}</Card.Text>
-            <Card.Text ><img className="iconSocialNetworks bgwhite"src={linkedin}></img> {linkedinUrl}</Card.Text>
+            <Card.Text className="fixedSizeCardMembers "><b> </b> {description}</Card.Text>
+            <Card.Text ><img className="iconSocialNetworks"src={facebook} alt="facebook"></img> {facebookUrl}</Card.Text> 
+            <Card.Text ><img className="iconSocialNetworks"src={instagram} alt="instagram"></img> {instagramUrl}</Card.Text>
+            <Card.Text ><img className="iconSocialNetworks bgWhite"src={linkedin} alt="linkedin"></img> {linkedinUrl}</Card.Text>
             <br></br>
             <Card.Text >
                 <div className={ViewAdministratorOptions()}>

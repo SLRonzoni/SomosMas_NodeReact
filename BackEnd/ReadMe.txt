@@ -42,6 +42,7 @@ Modificaciones al proyecto original ( back end ):
   * CATEGORIES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se agregó al nombre de la
                             ruta CREATE,UPDATE y DEL
   * CATEGORIES, se agregó una ruta get by name
+  * COMMENTS, se cambió distribución de middleware de autenticacion de user
   * MEMBERS, se agregó al nombre de la ruta CREATE,UPDATE y DEL y se agregó middleware idExists
   * MEMBERS, se quitó la verificacion de administrador, para que los miembros los pueda ver cualquier usuario
   * MEMBERS, se agregó middleware de manejo de imagenes en create y update

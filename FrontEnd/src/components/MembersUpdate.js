@@ -185,7 +185,7 @@ return (
       onSubmit={(values)=>{ sendForm(values)}}
       >
       { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-      <form  className="container-sm col-4 col-md-6 bg-light" onSubmit={handleSubmit}>
+      <form  className="container-sm col-4 col-md-6 bgGrey" onSubmit={handleSubmit}>
         <h3 className="centerText">Datos a actualizar ...</h3>
         <br></br>
         
@@ -231,7 +231,7 @@ return (
             <div className="marginLeft25px " >
               <label className="marginLeft25px "><b>Detalle actual:</b>  </label>
               <div className="displayFlex marginLeft25px">
-                <textarea className="form-control"
+                <textarea className="form-control borderRounded"
                 type='text'
                 rows='3'
                 cols='140'

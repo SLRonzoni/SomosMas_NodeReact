@@ -131,12 +131,11 @@ return (
        onSubmit={ (values)=>{ sendForm(values) } }
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-       <form  className="container-sm col-6 col-md-4 bg-light" onSubmit={handleSubmit}>
+       <form  className="container-sm col-6 col-md-4 bgGrey" onSubmit={handleSubmit}>
           <br></br>
           <h3 className="centerText">Nueva categoría ...</h3>
           <br></br>
-          <div >
-
+          <div>
             <div>
               <div className="displayInLineFlex">
                 <InputForm
@@ -189,14 +188,14 @@ return (
             <br></br>
             
           </div>
-          { errors.formOk === "f" && 
+          { errors.formOk === "f" && (
             <MsjWrong> 
             <span className="centerText">
               <br /> Algun dato es incorrecto. 
               <br/> Por favor complete el formulario correctamente
             </span>        
             </MsjWrong>
-          }
+          )}
          
           <div>
             <br></br>
@@ -209,13 +208,12 @@ return (
                 > Volver
                 </Link>
             </div> 
-          </div>
-          
+          </div>  
         </form>
     )}
   </Formik>
 </>
 );
 
-}
+};
 export default CategoriesCreate;

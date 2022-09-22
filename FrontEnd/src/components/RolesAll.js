@@ -92,7 +92,7 @@ const RolesAll = (props) => {
       </div>
       <br></br>      
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>

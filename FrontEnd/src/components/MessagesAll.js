@@ -105,7 +105,7 @@ const MessagesAll = (props) => {
   } 
 
  
-  const showMessages = (props) => {
+  const showMessages = () => {
     return (
       <tbody >
         {messages.map((oneMessage) => (
@@ -153,11 +153,11 @@ const MessagesAll = (props) => {
                 onChange={changesId}
               >  
                 {messages.map(oneMessage => (
-                  <option key={oneMessage.id} value={oneMessage.email}>
+                  <option className='colorBlack' key={oneMessage.id} value={oneMessage.email}>
                     {oneMessage.email}
                   </option>
                 )).sort(OrderNameAsc(messages))}
-                <option value={"todos"}>Mostrar todos los mensajes</option>
+                <option className='colorBlack'value={"todos"}>Mostrar todos los mensajes</option>
               </select>
           </div> 
           
@@ -170,16 +170,16 @@ const MessagesAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {messages.map(oneMessage => (
-                  <option key={oneMessage.id} value={oneMessage.createdAt}>
+                  <option className='colorBlack'key={oneMessage.id} value={oneMessage.createdAt}>
                     {formatDate(new Date(oneMessage.createdAt))}
                   </option>
                 ))}
-                <option value={"todos"}>Mostrar todos los mensajes</option>
+                <option className='colorBlack'value={"todos"}>Mostrar todos los mensajes</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>

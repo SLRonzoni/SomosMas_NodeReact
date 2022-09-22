@@ -145,16 +145,16 @@ const CategoriesAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {categories.map(oneCategory => (
-                  <option key={oneCategory.id} value={oneCategory.name}>
+                  <option className="colorBlack" key={oneCategory.id} value={oneCategory.name}>
                     {oneCategory.name}
                   </option>
                 )).sort(OrderNameAsc(categories))}
-                <option value={"todas"}>Mostrar todas las categorías</option>
+                <option className="colorBlack"value={"todas"}>Mostrar todas las categorías</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>

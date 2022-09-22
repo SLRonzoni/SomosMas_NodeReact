@@ -54,7 +54,7 @@ const NewsAll = (props) => {
       .then((response) => {
         Swal.fire({
           icon: "success",
-          title: "Noticia Eliminada !",
+          title: "Noticia eliminada !",
           timer:1000,
           showConfirmButton: false
         });
@@ -108,7 +108,7 @@ const NewsAll = (props) => {
   } 
 
  
-  const showNews = (props) => {
+  const showNews = () => {
     return (
       <tbody >
         {news.map((oneNew) => (
@@ -158,11 +158,11 @@ const NewsAll = (props) => {
                 onChange={changesId}
               >  
                 {news.map(oneNew => (
-                  <option key={oneNew.id} value={oneNew.name}>
+                  <option className='colorBlack'key={oneNew.id} value={oneNew.name}>
                     {oneNew.name}
                   </option>
                 )).sort(OrderNameAsc(news))}
-                <option value={"todas"}>Mostrar todas las noticias</option>
+                <option className='colorBlack'value={"todas"}>Mostrar todas las noticias</option>
               </select>
           </div> 
           
@@ -175,11 +175,11 @@ const NewsAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {news.map(oneNew => (
-                  <option key={oneNew.id} value={oneNew.updatedAt}>
+                  <option className='colorBlack'key={oneNew.id} value={oneNew.updatedAt}>
                     {formatDate(new Date(oneNew.updatedAt))}
                   </option>
                 ))}
-                <option value={"todas"}>Mostrar todas las noticias</option>
+                <option className='colorBlack'value={"todas"}>Mostrar todas las noticias</option>
               </select>
           </div> 
 
@@ -192,17 +192,17 @@ const NewsAll = (props) => {
                 onChange={changesId}
               >  
                 {news.map(oneNew => (
-                  <option key={oneNew.id} value={oneNew.categoryId}>
+                  <option className='colorBlack'key={oneNew.id} value={oneNew.categoryId}>
                     {oneNew.categoryId}
                   </option>
                 ))}
-                <option value={"todas"}>Mostrar todas las noticias</option>
+                <option className='colorBlack'value={"todas"}>Mostrar todas las noticias</option>
               </select>
           </div> 
 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>

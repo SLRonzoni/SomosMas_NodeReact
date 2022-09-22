@@ -158,7 +158,7 @@ const ActivitiesAll = (props) => {
                     {oneActivity.name}
                   </option>
                 )).sort(OrderNameAsc(activities))}
-                <option value={"todas"}>Mostrar todas las actividades</option>
+                <option className="colorBlack"value={"todas"}>Mostrar todas las actividades</option>
               </select>
           </div> 
           
@@ -175,12 +175,12 @@ const ActivitiesAll = (props) => {
                     {formatDate(new Date(oneActivity.updatedAt))}
                   </option>
                 ))}
-                <option value={"todas"}>Mostrar todas las actividades</option>
+                <option className="colorBlack"value={"todas"}>Mostrar todas las actividades</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table table-striped table-responsive table-bordered ">
+      <table className="table table-responsive table-bordered bgGrey">
         <thead>
           <tr className="">
             <th className="tituloItem centerText  "> Id </th>

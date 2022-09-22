@@ -6,7 +6,7 @@ import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 const TestimonialsAllLine = ({id, name, image, content, create,update,remove}) =>{
   
     return (
-        <tr className='colorWhite' >
+        <tr  >
             <td className="renglonNro">{id}</td>
             <td className="renglon" >{name}</td>
             <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
@@ -15,7 +15,7 @@ const TestimonialsAllLine = ({id, name, image, content, create,update,remove}) =
             <td className="renglon centerText" >{formatDate(new Date(update))}</td>
             
             <td className={ViewAdministratorOptions()}>   
-                <button type="button" className="m-1 mr-md-2 btn btn-danger centertext" onClick={()=>{remove(id)}} >Eliminar </button>          
+                <button type="button" className="m-1 mr-md-2 btn btn-danger" onClick={()=>{remove(id)}} >Eliminar </button>          
             </td>   
         </tr>
     );

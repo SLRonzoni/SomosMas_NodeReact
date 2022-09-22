@@ -1,5 +1,5 @@
 import React, {Fragment}from 'react';
-import { Card, CardGroup } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate';
@@ -11,7 +11,6 @@ import whatsapp from './images/whatsapp.jpg';
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
-
 
   return (
     <>
@@ -57,6 +56,7 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
                 </div> 
               </div>        
             </Card.Text>
+          
           </Card.Body>
         </Card>    
       </Fragment>

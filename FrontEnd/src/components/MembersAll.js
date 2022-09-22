@@ -3,7 +3,7 @@ import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import MembersAllCard from './MembersAllCard';
 import Swal from "sweetalert2";
-import { Link, Redirect} from "react-router-dom";
+import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
@@ -119,25 +119,24 @@ const MembersAll = (props) => {
     );
   };
 
-  
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
     <>
     <Fragment >
-      <Container  >
+      
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
        {/* solo renderiza si hay miembros*/}
       {members && 
       <>
+      
       <div>
-        <h1 >Colaboradores</h1>
+        <h1 className="font2rem">Colaboradores</h1>
       </div>
        
-        <div className=" displayFlex marginLeft10px" >
-            <p className="pBtnDesplegable textBtnDesplegableCenter"> Buscar por nombre</p>
+        <div className="divBtnDesplegable" >
+            <span className=" textBtnDesplegableCenter pBtnDesplegableMembers "> Buscar por nombre</span>
               <select
                 type="text"
                 name="name"
@@ -145,7 +144,7 @@ const MembersAll = (props) => {
                 className="m-3 selectBtnDesplegable form-select "
               >  
                 {members.map(oneMember => (
-                  <option className="colorBlack" key={oneMember.id} value={oneMember.id}>
+                  <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
                     {oneMember.name}
                   </option>
                 )).sort(OrderNameAsc(members))}
@@ -156,11 +155,13 @@ const MembersAll = (props) => {
                 <Link to={'/MembersCreate'} className="m-3 btn btn-success "
                   role="button" > Agregar </Link>
               </p> 
-        </div>   
+        </div>  
+      <Container className="containerMembersAllCard"> 
         {showMembers()}
+      </Container>   
       </>
       } 
-      </Container>
+     
     </Fragment>
     </>
   );

@@ -3,18 +3,17 @@ import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import CommentsAllLine from './CommentsAllLine';
 import Swal from "sweetalert2";
-import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { Container } from "react-bootstrap";
 import { OrderNameAsc } from "./helpers/Order";
 
 const CommentsAll = (props) => { 
 
-  const [comments, setComments] = useState([]);  
-  const [commentsWithName, setCommentsWithName] = useState([]);  
+  const [commentsWithNames, setCommentsWitNames] = useState([]);  
+  const [commentsOnly, setCommentsOnly] = useState([]);  
 
-  const getComments = async () => {     
-     await axiosClient.get(`/comments`)
+  const getCommentsOnly = async () => {     
+    await axiosClient.get('/comments')
       .then( response => {
         if(response.status!==200){
           Swal.fire({
@@ -24,31 +23,32 @@ const CommentsAll = (props) => {
           });
         props.history.push('/');
         } 
-        setComments(response.data.data); 
-      }) 
+        setCommentsOnly(response.data.data) 
+      })
       .catch(function (error) {
         console.log(error)
       });  
   };
 
   //FIND USER NAME ( added name to comments state)
-  const findUserName=async () => { 
-    for(let j=0;j<comments.length;j++) {
-        let idUser=comments[j].user_id
-          await axiosClient.get(`/users/${idUser}`)
-            .then ( response =>{
-              if(response.data.id===idUser){
-                comments[j].user_firstName=response.data.firstName
-                comments[j].user_lastName=response.data.lastName
-                setCommentsWithName(comments)
-              }
-            }) 
-            .catch (
-              error => console.log(error)
-            )
-      }  
+  const getCommentsWithNames=async () => {   
+    for(let j=0;j<commentsOnly.length;j++) {
+      let idUser=commentsOnly[j].user_id
+      let resp=await axiosClient.get(`/users/${idUser}`)
+        if(resp.data.id===idUser){
+          commentsOnly[j].user_firstName=resp.data.firstName
+          commentsOnly[j].user_lastName=resp.data.lastName            
+        } 
+        setCommentsWitNames(commentsOnly) 
+    }
   };
-  findUserName()
+
+
+  useEffect(() => {
+    getCommentsOnly()
+    getCommentsWithNames()
+  },[]);
+console.log('commentsCOMPLETO',commentsWithNames)
 
 
   //DELETE
@@ -78,7 +78,7 @@ const CommentsAll = (props) => {
           timer:1000,
           showConfirmButton: false
         });
-        getComments();
+        getCommentsWithNames();
       })
       .catch(function (error) {
         Swal.fire({
@@ -88,18 +88,15 @@ const CommentsAll = (props) => {
         });
      });
   };
-
-  useEffect(() => {
-    getComments()
-  },[]);
-
+ 
   //FILTER BY ID
   let filterBy;
   const getFilterCommentsUser = async () => {
       await axiosClient
-      .get(`/comments/byUser/`+filterBy)
+      .get(`/comments/`+filterBy)
       .then((response) => {
-        setComments(response.data)
+        console.log(response.data)
+        setCommentsWitNames(response.data)
       })
       .catch(function (error) {
         console.log(error)
@@ -109,16 +106,17 @@ const CommentsAll = (props) => {
   const changesId = (e) => {
     filterBy = e.target.value;
     if (filterBy === "todos") {
-      getComments();
+      getCommentsWithNames();
     } else {
       getFilterCommentsUser();
     }
   };
   
+
   const showComments = () => {
     return (
       <tbody>
-        {commentsWithName.map((oneComment) => (
+        {commentsWithNames.map((oneComment) => (
           <CommentsAllLine 
             key={oneComment.id}
             id={oneComment.id}
@@ -133,23 +131,22 @@ const CommentsAll = (props) => {
             />
         ))}
       </tbody>
+
+      
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
-  
+
   return (
+    <>
     <Fragment>
       <Container>
-     
-      {/* para proteger ruta , si no hay token, redirige a login*/}
-      {!token && <Redirect to="/Login" />} 
-
+      
       {/* si aun está cargando comentarios*/}
-      {!comments &&  <LoadingBox/> }
+      {!commentsWithNames &&  <LoadingBox/> }
 
        {/* solo renderiza si hay comemtarios*/}
-      {comments && 
+      {commentsWithNames &&
       <>
       <div>
         <h1 >Commentarios</h1>
@@ -166,17 +163,17 @@ const CommentsAll = (props) => {
                 onChange={changesId}
                 className="m-3 selectBtnDesplegable form-select "
               >  
-                {commentsWithName.map(oneComment => (
-                  <option key={oneComment.user_id} value={oneComment.user_id}>
-                    {oneComment.user_firstName} {oneComment.user_lastName}
+                {commentsWithNames.map(oneComment => (
+                  <option className="colorBlack" key={oneComment.user_id} value={oneComment.user_id}>
+                   {oneComment.user_id} {oneComment.user_firstName} {oneComment.user_lastName}
                   </option>
-                )).sort(OrderNameAsc(commentsWithName))}
-                <option value={"todos"}>Mostrar todos los comentarios</option>
+                ))}
+                <option className="colorBlack" value={"todos"}>Mostrar todos los comentarios</option>
               </select>
           </div> 
         </div> 
  
-      <table className="table table-striped table-responsive table-bordered">
+      <table className="table table-responsive table-bordered bgGrey">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>
@@ -193,6 +190,7 @@ const CommentsAll = (props) => {
       } 
       </Container>
     </Fragment>
+    </>
   );
 };
 

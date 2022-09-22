@@ -9,8 +9,8 @@ const UsersAllLine = ({id, photo, lastName,firstName, email, role,created, updat
         <tr>
             <td className="renglonNro">{id}</td>
             <td className="imageChar centerText" ><img src={photo}  alt="UserImage"></img> </td>
-            <td className="renglon" >{firstName}</td>
             <td className="renglon" >{lastName}</td>
+            <td className="renglon" >{firstName}</td>
             <td className="renglon" >{email}</td>
             <td className="renglon centerText" >{role}</td>
             <td className="renglonNro centerText">{formatDate(new Date(created))}</td>
