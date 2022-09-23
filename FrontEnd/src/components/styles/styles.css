@@ -5,7 +5,6 @@ body{
     width:100%;
     background-color:rgb(26, 26, 26);
     background-image:url('C:\Users\Asus\Desktop\SomosMas_NodeReact\FrontEnd\src\components\images\manos_fondo1.jpg') ;
-    
     color:#fff;
 }
 
@@ -209,6 +208,13 @@ h1{
     width:10rem ;
 }
 
+.widthTestimonialsAndComments{
+    width:50rem ;
+    margin-left: 4rem;
+    /* background-color:whitesmoke; */
+    padding: 7px 5px 5px 12px;
+}
+
 /* .btn-redes{
     color:#7d8289;
     font-weight: 200;
@@ -239,6 +245,13 @@ h1{
   .img-search-news{
     width:70%;
     height: 70%;
+  }
+
+  .imgTestimonialsAndComments{
+    margin-left: 50%;
+    width:40%;
+    height: 90%;    
+    margin-top: 0.5rem;
   }
 
   /* .cart-titulo{
@@ -480,10 +493,11 @@ h1{
     width:5% ; 
 }
 
-/* .renglonMovie{  
-    width:75rem ;   
+.renglonMovieTestimonialsAndComments{  
+    width:85rem ;   
 }
 
+/*
 .inputMovie{  
     width:13rem ;   
 } */
@@ -674,7 +688,6 @@ h1{
 
 .containerBorderWhiteBgOrange{
     border:1px solid #fff;
-
     background-color: #be6607;
     box-shadow:3px 0px 5px 3px grey;
     font-size: 16px;
@@ -682,6 +695,12 @@ h1{
     font-size: 17px !important;
 } 
 
+.containerSlideSize{
+    height: 39rem;
+    width: 85rem;
+    margin: auto;
+    margin-top: -1rem;
+}
 /*
 .containerFijo{
     margin-top: 2.7%;
@@ -831,7 +850,7 @@ h1{
   }
 
   .footerP {
-    font-size: calc(4px + 1rem);
+    font-size: calc(4px + 0.7rem);
     margin-left: 1%;
     margin-top: 1%;
   }
@@ -964,7 +983,6 @@ h1{
     display:flex;
     margin:auto;
     height:12rem; 
-
 }
 
 .bgWhite{

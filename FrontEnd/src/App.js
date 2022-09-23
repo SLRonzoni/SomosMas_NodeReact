@@ -22,6 +22,7 @@ import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
 
 import CommentsAll from './components/CommentsAll';
+import CommentsPublic from './components/CommentsPublic';
 
 import ContactsAll from './components/ContactsAll';
 
@@ -41,6 +42,8 @@ import RolesCreate from "./components/RolesCreate";
 import RolesUpdate from "./components/RolesUpdate";
 
 import TestimonialsAll from "./components/TestimonialsAll";
+import TestimonialsPublic from "./components/TestimonialsPublic";
+
 
 import OrganizationsAll from "./components/OrganizationsAll";
 
@@ -79,6 +82,9 @@ function App() {
         <Route exact path="/auth/register" component={Register}/>
         <Route exact path="/contactForm" component={ContactForm}/>
         <Route exact path='/ActivitiesPublicAll' component={ActivitiesPublicAll}/>
+        <Route exact path='/CommentsPublic' component={CommentsPublic}/>
+        <Route exact path='/TestimonialsPublic' component={TestimonialsPublic}/>
+
               
         {/* ADMIN */}
         <Route exact path='/ActivitiesAll' component={ActivitiesAll}/>

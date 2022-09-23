@@ -35,15 +35,17 @@ const ActivitiesPublicAll = (props) => {
   return (
     <>
     <Fragment >
-      <Container  >
+      <Container className="bgWhite containerSlideSize" >
       {/* si aun está cargando actividades*/}
       {!activities &&  <LoadingBox/> }
 
       {/* solo renderiza si hay actividades*/}
       {activities && 
         <>
-          <div>
-            <h1 >Nuestras actividades...</h1>
+        <div >
+          <br></br>
+          <div >
+            <h1 className="colorBlack">Nuestras actividades...</h1>
           </div>
           
           <div>
@@ -52,20 +54,21 @@ const ActivitiesPublicAll = (props) => {
                 <div className="col-6">
                   <div>
                     <div>
-                      <Carousel >
+                      <Carousel className="colorBlack" >
                         {activities.map((oneActivity) => ( 
                         <Carousel.Item key={oneActivity.id}>
-                          <img className="d-block w-100 centerText" src={oneActivity.image} alt="slide" />
+                          <img className="d-block w-100 centerText" src={oneActivity.image} alt="Slide" />
                           <Card.Title >
-                            <h2 className="centerText"><b>{oneActivity.name}</b></h2>
+                            <h3 className="centerText colorBlack">{oneActivity.name}</h3>
                           </Card.Title>
                           <Card.Text> 
-                            <h5 className="centerText" >{oneActivity.content}</h5>
+                            <h5 className="centerText colorBlack" >{oneActivity.content}</h5>
                             <br></br> 
                           </Card.Text>
                         </Carousel.Item>
                         ))}
                       </Carousel>
+                      </div>
                     </div>
                   </div>
                 </div>

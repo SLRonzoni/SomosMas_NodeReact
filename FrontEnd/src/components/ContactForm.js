@@ -34,6 +34,7 @@ const ContactForm = (props) => {
             Swal.fire({
               icon: "error",
               title: "Error",
+              text:response.data.error.errors,
               showConfirmButton: true,
             });
           }
@@ -43,6 +44,7 @@ const ContactForm = (props) => {
           Swal.fire({
             icon: "error",
             title: "Error",
+            text:error
           });
         });
     };

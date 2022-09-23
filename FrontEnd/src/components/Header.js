@@ -40,8 +40,8 @@ export default function Header () {
                     <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan . . .</NavDropdown.Item>
-                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>                    
-                    <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item> 
+                    <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                    
+                    <NavDropdown.Item href="/CommentsPublic">Comentarios</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
                   </NavDropdown>
@@ -55,8 +55,8 @@ export default function Header () {
                     <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
-                    <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
-                    <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
+                    <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
+                    <NavDropdown.Item href="/CommentsPublic">Comentarios</NavDropdown.Item>
                     <NavDropdown.Divider />               
                     <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
