@@ -1,7 +1,7 @@
-import React, {Fragment}from 'react';
-import { Card ,Container} from 'react-bootstrap';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
+import './styles/card.css';
 import {formatDate} from './helpers/FormatDate';
 import facebook from './images/facebook.jpg';
 import instagram from './images/instagram.jpg';
@@ -13,19 +13,28 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
 
  
   return (
-    <>
-    <Fragment >
-        <Card  className="cardMembers ">
-          <Card.Body className="" >
-            <Card.Title className="centerText"><b>{name}</b></Card.Title>
-            <Card.Text className="imagenCharCard centerText"> <img src={image}  alt="miembro" ></img></Card.Text>
+    <div>
+        <div className="card-container">
+            <div className='image-container'> 
+              <img className='card-image' src={image} alt="foto"></img>
+            </div>
+           <div className='card-content'>
+              <div className="card-title"><em>{name}</em></div>
+                <p className="fixedSizeCardMembers "><b> </b> {description}</p>
+                <br></br>
+              </div>
+              <div>
+                <img className="iconNetworks" src={facebook} alt="facebook"></img> {facebookUrl} 
+              </div> 
+              <div>
+                <img className="iconNetworks" src={instagram} alt="instagram"></img> {instagramUrl}
+              </div>
+              <div> 
+                <img className="iconNetworks bgWhite" src={linkedin} alt="linkedin"></img> {linkedinUrl}
+              </div>
+            
             <br></br>
-            <Card.Text className="fixedSizeCardMembers "><b> </b> {description}</Card.Text>
-            <Card.Text ><img className="iconSocialNetworks"src={facebook} alt="facebook"></img> {facebookUrl}</Card.Text> 
-            <Card.Text ><img className="iconSocialNetworks"src={instagram} alt="instagram"></img> {instagramUrl}</Card.Text>
-            <Card.Text ><img className="iconSocialNetworks bgWhite"src={linkedin} alt="linkedin"></img> {linkedinUrl}</Card.Text>
-            <br></br>
-            <Card.Text >
+            <div >
                 <div className={ViewAdministratorOptions()}>
                   <div className="displayFlex centerText">
                     <span className=""><b> Ingreso :</b> {formatDate(new Date(created))}</span>
@@ -33,8 +42,8 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
                     <span className=""><b> Actualizado : </b>{formatDate(new Date(updated))}</span>
                   </div>
                 </div>
-            </Card.Text>
-            <Card.Text >
+            </div>
+            <div >
                 <div className={ViewAdministratorOptions()}>    
                   <div className='centerText'>        
                     <Link to={`/members/update/${id}`} className="btn btn-primary btn-sm mr-1 me-md-2 "
@@ -42,11 +51,9 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
                     <button type="button" className="btn btn-danger btn-sm mr-1 me-md-2 "onClick={()=>{remove(id);}} >Eliminar </button>
                   </div> 
                 </div>        
-              </Card.Text>
-          </Card.Body>
-        </Card>    
-      </Fragment>
-      </>
+              </div>
+        </div>    
+      </div>
   );
 };
 export default MembersCard;

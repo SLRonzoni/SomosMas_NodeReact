@@ -22,18 +22,16 @@ export default function Header () {
       }   
      
   return(
-      <Navbar expand="lg" bg="dark" variant="dark">
-        <Container>
-          <NavbarBrand >Somos Más Ong <img className="handsLogo borderRounded" src={imagen} alt="manosNiños"></img>
-            <Link to="/"className="nav-link" ></Link>
-          </NavbarBrand>  
-           
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
+      <Container >  
+        <Navbar  className="navBar" collapseOnSelect expand="md" variant="dark" fixed="top">
+          <Navbar.Collapse>
+            <Navbar.Text className="colorWhite" >
+              Somos Más Ong <img className="handsLogo" src={imagen} alt="manosNiños"></img>
+            </Navbar.Text >
             <Nav className="ms-auto">
-              <NavbarBrand >
+              <NavbarBrand className="colorWhite">
               {!userInfo &&(
-                  <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
+                  <NavDropdown  title="Secciones">  
                     <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
@@ -71,7 +69,7 @@ export default function Header () {
                     <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                     <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
-                    <NavDropdown.Item href="/CommentsAll">Comemtarios</NavDropdown.Item>
+                    <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
                     <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
                     <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
@@ -91,23 +89,25 @@ export default function Header () {
               </NavbarBrand>
               {!userInfo && ( 
                 <NavbarBrand > 
-                    <Link to="/auth/register" className="login  nav-link  p-1 col-1 " >Registro</Link>
+                    <Link to="/auth/register" className="login  nav-link  p-1 col-1 colorWhite" >Registro</Link>
                 </NavbarBrand>
                )}
               {!userInfo && ( 
                 <NavbarBrand>
-                    <Link to="/auth/login" className="login  nav-link  p-1 col-1 " >Login</Link>
+                    <Link to="/auth/login" className="login  nav-link  p-1 col-1 colorWhite" >Login</Link>
                 </NavbarBrand>
               )}
               {userInfo && ( 
                 <NavbarBrand>
-                  <Link  to="/auth/logout" onClick={logout} className="login  nav-link  p-1 col-1 " >Logout</Link>
+                  <Link  to="/auth/logout" onClick={logout} className="login  nav-link  p-1 col-1 colorWhite " >Logout</Link>
                 </NavbarBrand>
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            </Navbar>
+        </Container> 
+       
+    
   );
  }
 

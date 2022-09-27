@@ -1,12 +1,14 @@
-import React from 'react'
-import vision from './images/vision.jpg'
-import TrabajoEquipo from './images/TrabajoEquipo.jpg'
+import React from 'react';
+import vision from './images/vision.jpg';
+import TrabajoEquipo from './images/TrabajoEquipo.jpg';
+import { Container } from 'react-bootstrap';
 
 const About = () => {
 
   return (
     <>
-    <div className='displayFlex'>
+    <Container >
+    <div className='container'>
         <div className='cardAbout'>
             <h2>Nosotros</h2>
             <p>
@@ -26,16 +28,10 @@ const About = () => {
             </p> 
             <p>  
                 Hoy somos un centro comunitario que acompaña a más de 700 personas a través de 
-                las áreas de:
-            </p>    
-            <ul>
-                <li>Educación</li>
-                <li>Deportes</li>
-                <li>Primera infancia</li>
-                <li>Salud</li>
-                <li>Alimentación</li>
-                <li>Trabajo social</li>
-            </ul>  
+                las áreas de :
+                <br></br>
+                Alimentación, Educación, Deportes, Primera infancia, Salud y Trabajo social
+            </p> 
         </div>
         <br></br>
         <div className='cardAbout'>
@@ -60,6 +56,7 @@ const About = () => {
             <img className="imageAbout" src={TrabajoEquipo} alt='trabajoEnEquipo'></img>
         </div>
     </div>
+    </Container>
     </>
   )
 }

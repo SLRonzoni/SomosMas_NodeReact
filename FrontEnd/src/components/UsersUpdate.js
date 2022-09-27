@@ -154,7 +154,7 @@ const EditUsers = ({match, history}) =>{
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="container-sm col-6 col-md-4 bg-light "onSubmit={handleSubmit} > 
+        <form className="container-sm col-6 col-md-6 bg-light "onSubmit={handleSubmit} > 
             <h4 className='marginLeft40px'>Mi Perfil  
               <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>

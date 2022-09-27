@@ -120,6 +120,7 @@ const ContactForm = (props) => {
   //FORM
   return (
     <>
+     <br></br>
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
@@ -128,7 +129,7 @@ const ContactForm = (props) => {
         {(
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
           <form
-            className='container-sm col-6 col-md-4 containerBorderWhiteBgOrange' onSubmit={handleSubmit}>
+            className='container-sm col-6 col-md-6 containerBorderWhiteBgOrange' onSubmit={handleSubmit}>
             <br></br>
             <h4 className="centerText ">Formulario de Contacto</h4>
             <br></br>

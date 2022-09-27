@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect, Fragment} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
+import './styles/card.css';
 import MembersAllCard from './MembersAllCard';
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
+import { CardGroup, Container, Card } from "react-bootstrap";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -99,7 +100,7 @@ const MembersAll = (props) => {
  
   const showMembers = () => {
     return (
-      <div >
+      <div className="container">
         {members.map((oneMember) => (
           <MembersAllCard
             key={oneMember.id}
@@ -122,21 +123,21 @@ const MembersAll = (props) => {
 
   return (
     <>
-    <Fragment >
-      
+    <Fragment className="container" >  
+ 
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
        {/* solo renderiza si hay miembros*/}
       {members && 
       <>
-      
-      <div>
-        <h1 className="font2rem">Colaboradores</h1>
-      </div>
+      <div >
+        <div className="container">
+          <h1  >Colaboradores</h1>
+        </div>
        
         <div className="divBtnDesplegable" >
-            <span className=" textBtnDesplegableCenter pBtnDesplegableMembers "> Buscar por nombre</span>
+            <span className="   "> Buscar por nombre</span>
               <select
                 type="text"
                 name="name"
@@ -156,12 +157,13 @@ const MembersAll = (props) => {
                   role="button" > Agregar </Link>
               </p> 
         </div>  
-      <Container className="containerMembersAllCard"> 
-        {showMembers()}
-      </Container>   
-      </>
-      } 
-     
+      </div>
+          
+      {showMembers()}
+          
+    </>
+    } 
+    
     </Fragment>
     </>
   );

@@ -152,7 +152,7 @@ const FormCategory = ({match,history}) => {
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-4 bgGrey" onSubmit={handleSubmit}>
+         <form  className="container-sm col-6 col-md-6 bgGrey" onSubmit={handleSubmit}>
             <br></br>
             <h3 className="centerText">Ingrese nuevos valores ...</h3>
             <br></br>

@@ -35,7 +35,7 @@ const ActivitiesPublicAll = (props) => {
   return (
     <>
     <Fragment >
-      <Container className="bgWhite containerSlideSize" >
+      <Container className="containerSlideSize" >
       {/* si aun está cargando actividades*/}
       {!activities &&  <LoadingBox/> }
 
@@ -45,24 +45,24 @@ const ActivitiesPublicAll = (props) => {
         <div >
           <br></br>
           <div >
-            <h1 className="colorBlack">Nuestras actividades...</h1>
+            <h1 >Nuestras actividades...</h1>
           </div>
           
           <div>
-            <div className='container' >
+            <div className='' >
               <div className="row d-flex-inline justify-content-center mt-6">  
-                <div className="col-6">
+                <div className="col-12">
                   <div>
                     <div>
-                      <Carousel className="colorBlack" >
+                      <Carousel  >
                         {activities.map((oneActivity) => ( 
                         <Carousel.Item key={oneActivity.id}>
-                          <img className="d-block w-100 centerText" src={oneActivity.image} alt="Slide" />
+                          <img className=" imageActivity " src={oneActivity.image} alt="Slide" />
                           <Card.Title >
-                            <h3 className="centerText colorBlack">{oneActivity.name}</h3>
+                            <h3 className="centerText ">{oneActivity.name}</h3>
                           </Card.Title>
                           <Card.Text> 
-                            <h5 className="centerText colorBlack" >{oneActivity.content}</h5>
+                            <h5 className="centerText " >{oneActivity.content}</h5>
                             <br></br> 
                           </Card.Text>
                         </Carousel.Item>
