@@ -1,3 +1,8 @@
+.container-title {
+    margin-top:1.5rem;
+    font-size: 16px;
+}
+
 .card-container{
     display: flex;
     flex-direction: column; 
@@ -10,17 +15,62 @@
     transition: 0.3s;
     animation:ease-in;
     margin:1.5rem;
+    margin-top:-3rem;
 }
-
+/* 
 .card-container:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 15px 0px;
+} */
+
+
+.card-container-Member{
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    width: 300px;
+    height: 47rem;
+    box-shadow: 0px 0px 15px -5px;
+    margin:1rem 0.5rem 1rem 1rem;
+}
+.card-container-Organization{
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    width: 300px;
+    height: 57rem;
+    box-shadow: 0px 0px 15px -5px;
+    margin:1rem 0.5rem 1rem 1rem;
+}
+
+.card-container-About{
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    width: 1000px;
+    height: 28.5rem;
+    box-shadow: 0px 0px 15px -5px;
+    margin:0rem 0rem 1.5rem 0.5rem;
+}
+
+.card-container-About-Horizontally{
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    width: 490px;
+    height: 29rem;
+    box-shadow: 0px 0px 15px -5px;
+    margin:0rem 0.5rem 0.5rem 1rem;
 }
 
 .image-container {
     overflow: hidden;
     height: 19rem;
-    margin-top:-24px
+    margin:-5rem 0rem 0rem 0rem;
 }
 
 .card-content{
@@ -28,17 +78,54 @@
     margin-top: 0.6rem;
 }
 
+.card-content-Member{
+    margin:1rem;
+    margin-top: -3rem;
+}
+
 .card-title {
     margin-bottom:0.5rem;
 }
 
-.card-image{        
-    height:18rem; 
-    width: 19rem; 
+.card-image-Member{        
+    height:15rem; 
+    width: 15rem; 
+    margin-left: 17%;
+}
+
+.card-image-Organization{        
+    height:20rem; 
+    width:23rem; 
+    margin-top:7%;
+}
+
+.card-image-About{        
+    height:auto; 
+    width:70%; 
+    margin-left:14%;
 }
 
 .iconNetworks{
     width: 7%;
     margin-left:15px;
     margin-bottom: 10px;
+}
+
+.iconSocialNetworksOrganization{
+    width: 4%;
+    height: 4%;
+    margin-left: 0.3%;
+}
+
+.fixedSizeCardMember{
+    height:11rem;
+}
+
+.fixedSizeCardOrganization{
+    height:10rem;
+}
+
+
+.fixedSizeCardWelcomeOrganization{
+    height:6rem;
 }

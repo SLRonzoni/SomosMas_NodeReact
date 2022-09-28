@@ -185,7 +185,8 @@ return (
       onSubmit={(values)=>{ sendForm(values)}}
       >
       { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-      <form  className="container-sm col-4 col-md-6 bgGrey" onSubmit={handleSubmit}>
+      <form  className="container-sm col-4 col-md-8 bgGrey" onSubmit={handleSubmit}>
+        <br></br>
         <h3 className="centerText">Datos a actualizar ...</h3>
         <br></br>
         
@@ -230,11 +231,11 @@ return (
           <div>
             <div className="marginLeft25px " >
               <label className="marginLeft25px "><b>Detalle actual:</b>  </label>
-              <div className="displayFlex marginLeft25px">
+              <div className="displayFlex textArea-Members">
                 <textarea className="form-control borderRounded"
                 type='text'
                 rows='3'
-                cols='140'
+                cols='75'
                 name="description"
                 placeholder="Ingrese nuevo detalle"
                 value={values.description}
@@ -248,7 +249,7 @@ return (
           </div>
           <br></br>
           <div className="displayFlex ">
-            <div className="inputUpdateWidth">
+            <div className="inputUpdateWidth ">
                 <div className="displayFlex inputUpdateWidth">
                   <InputUpdateForm
                   type="text"
@@ -303,7 +304,7 @@ return (
           </div>
 
           <br></br>
-          <div className="displayFlex marginLeft40px">
+          <div className="displayFlex marginLeft40px centerText">
             <div>
               <Label htmlFor="name">Creado  :
                 <span className="fontNotBold " >{formatDate(new Date(members.createdAt))}</span>

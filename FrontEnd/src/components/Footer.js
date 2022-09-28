@@ -5,6 +5,7 @@ import mapa from './images/mapa.png';
 import facebook from './images/facebook.jpg';
 import instagram from './images/instagram.jpg';
 import {Navbar, Container,Nav, NavbarBrand} from "react-bootstrap";
+import ViewRegularUserOptions from "./helpers/ViewRegularUserOptions";
 
 
 function Footer () {
@@ -26,20 +27,23 @@ function Footer () {
                         
                         <span className="colorBlack"> .. </span>
                         011-6011-2988
-                        
-                        <span className="colorBlack"> ........ </span>
+
+                        <span className="colorBlack"> ........ </span>   
                         <img className="iconMapPhoneMailFooter"src={email} alt="email"></img>  
-                        
-                        <span className="colorBlack"> ... </span>
-                        <a href="/contactForm"  >somos.mas.97@gmail.com</a>
-                        
+                        <span className="colorBlack"> ...... </span> 
+   
+                        <span className="colorBlack"> .. </span>
+                        <div className={ViewRegularUserOptions()}> 
+                            <a href="/contactForm" >  somos.mas.97@gmail.com</a>    
+                        </div>
+
                         <span className="colorBlack"> ...... </span>
                         <a href="http://instagram.com" >
                             <img className="iconFacebookInstagramFooter"src={instagram} alt="instagram"></img>
                         </a>
                         <a href="http://facebook.com"  >
                             <img className="iconFacebookInstagramFooter"src={facebook} alt="facebook"></img>
-                        </a>
+                        </a>   
                     </NavbarBrand> 
                 </Nav> 
             </Navbar.Collapse>

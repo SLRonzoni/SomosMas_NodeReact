@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/card.css";
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import OrganizationsAllCard from "./OrganizationsAllCard";
 import {OrderNameAsc} from "./helpers/Order";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
@@ -97,7 +97,7 @@ const OrganizationsAll = (props) => {
 
    const showOrganizations = () => {
     return (
-      <div >
+      <div className="container">
         {organizations.map((oneOrganization) => (
           <OrganizationsAllCard
             key={oneOrganization.id}
@@ -124,21 +124,19 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-    <Fragment>
-      <Container>
-    
+      <div>
       {/* si aun está cargando las organizaciones*/}
       {!organizations &&  <LoadingBox/> }
 
        {/* solo renderiza si hay organizaciones*/}
       {organizations && 
       <>
-      <div>
-        <h1 className="font2rem" >Organizaciones que nos acompañan</h1>
+      <div className="container-title centerText">
+        <h4  >Organizaciones que nos acompañan</h4>
       </div>
          
-      <div className="divBtnDesplegable" >
-            <span className="textBtnDesplegableCenter pBtnDesplegableMembers"> Buscar por nombre</span>
+      <div className="divBtnDesplegableOrganizations">
+            <span > Buscar por nombre</span>
               <select
                   type="text"
                   name="name"
@@ -150,7 +148,7 @@ const OrganizationsAll = (props) => {
                       {oneOrganization.name}
                     </option>
                   )).sort(OrderNameAsc(organizations))}
-                    <option className="colorBlack"  value={"todas"}>
+                    <option className="colorBlack"  key={organizations.name} value={"todas"}>
                     Mostrar todas las organizaciones
                     </option>
               </select>
@@ -160,13 +158,12 @@ const OrganizationsAll = (props) => {
                   role="button" > Agregar </Link>
               </span> 
         </div> 
-        <Container className="containerMembersAllCard"> 
-          {showOrganizations()}
-        </Container>  
+       
+        {showOrganizations()}
+       
       </>
       } 
-      </Container>
-    </Fragment>
+    </div>
   </>
   );
 };

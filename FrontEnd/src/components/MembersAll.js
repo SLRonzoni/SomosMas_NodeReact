@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Fragment} from "react";
+import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import './styles/card.css';
@@ -6,7 +6,6 @@ import MembersAllCard from './MembersAllCard';
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { CardGroup, Container, Card } from "react-bootstrap";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -123,8 +122,7 @@ const MembersAll = (props) => {
 
   return (
     <>
-    <Fragment className="container" >  
- 
+    <div>  
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
@@ -132,12 +130,12 @@ const MembersAll = (props) => {
       {members && 
       <>
       <div >
-        <div className="container">
-          <h1  >Colaboradores</h1>
+        <div>
+          <h4 className="container-title centerText" >Colaboradores</h4>
         </div>
        
-        <div className="divBtnDesplegable" >
-            <span className="   "> Buscar por nombre</span>
+        <div className="divBtnDesplegableOrganizations" >
+            <span > Buscar por nombre</span>
               <select
                 type="text"
                 name="name"
@@ -149,7 +147,7 @@ const MembersAll = (props) => {
                     {oneMember.name}
                   </option>
                 )).sort(OrderNameAsc(members))}
-                <option className="colorBlack" value={"todos"}>Mostrar todos los colaboradores</option>
+                <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
               </select>
               
               <p className={ViewAdministratorOptions()} >  
@@ -163,8 +161,7 @@ const MembersAll = (props) => {
           
     </>
     } 
-    
-    </Fragment>
+    </div>
     </>
   );
 };

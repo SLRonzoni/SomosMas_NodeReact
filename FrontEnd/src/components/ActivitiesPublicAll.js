@@ -3,7 +3,7 @@ import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import Swal from "sweetalert2";
 import LoadingBox from "./LoadingBox";
-import { Container, Card, Carousel } from "react-bootstrap";
+import { Card, Carousel } from "react-bootstrap";
 
 const ActivitiesPublicAll = (props) => { 
 
@@ -34,8 +34,7 @@ const ActivitiesPublicAll = (props) => {
 
   return (
     <>
-    <Fragment >
-      <Container className="containerSlideSize" >
+      <div className="containerSlideSize" >
       {/* si aun está cargando actividades*/}
       {!activities &&  <LoadingBox/> }
 
@@ -77,8 +76,7 @@ const ActivitiesPublicAll = (props) => {
           </div>
         </>
         }
-      </Container>
-    </Fragment>
+    </div>
     </>
   );
 };
