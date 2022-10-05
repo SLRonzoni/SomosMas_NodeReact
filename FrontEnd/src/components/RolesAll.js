@@ -108,11 +108,11 @@ const RolesAll = (props) => {
         <tbody>
         {roles.map((oneRole) => ( 
           <tr key={oneRole.id}>
-            <td className="renglonNro">{oneRole.id}</td>
-            <td className="renglon" >{oneRole.name}</td>
-            <td className="renglon" >{oneRole.description}</td>
-            <td className="renglon centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
-            <td className="renglon centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
+            <td >{oneRole.id}</td>
+            <td >{oneRole.name}</td>
+            <td >{oneRole.description}</td>
+            <td className="centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
+            <td className="centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
             <td className=" displayFlex centerText">   
                 <Link to={`/roles/update/${oneRole.id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          

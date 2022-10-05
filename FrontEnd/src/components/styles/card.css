@@ -1,9 +1,9 @@
-.container-title {
+.containerTitle {
     margin-top:1.5rem;
     font-size: 16px;
 }
 
-.card-container{
+.cardContainer{
     display: flex;
     flex-direction: column; 
     position: relative;
@@ -24,7 +24,18 @@
 } */
 
 
-.card-container-Member{
+.cardContainerMember{
+    display:flex;
+    position:relative;
+    width: 1920px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3px;
+    margin-top: 2%;  
+}
+
+.cardContainerMember{
     display: flex;
     flex-direction: column; 
     position: relative;
@@ -32,20 +43,22 @@
     width: 300px;
     height: 47rem;
     box-shadow: 0px 0px 15px -5px;
-    margin:1rem 0.5rem 1rem 1rem;
+    margin:1.5rem 0.5rem 1rem 1rem;
+    padding:0.5rem;
 }
-.card-container-Organization{
+
+.cardContainerOrganization{
     display: flex;
     flex-direction: column; 
     position: relative;
     justify-content: center;
     width: 300px;
-    height: 57rem;
+    height: 50rem;
     box-shadow: 0px 0px 15px -5px;
-    margin:1rem 0.5rem 1rem 1rem;
+    margin:7rem 0.5rem 1rem 1rem;
 }
 
-.card-container-About{
+.cardContainerAbout{
     display: flex;
     flex-direction: column; 
     position: relative;
@@ -56,7 +69,7 @@
     margin:0rem 0rem 1.5rem 0.5rem;
 }
 
-.card-container-About-Horizontally{
+.cardContainerAboutHorizontally{
     display: flex;
     flex-direction: column; 
     position: relative;
@@ -67,39 +80,46 @@
     margin:0rem 0.5rem 0.5rem 1rem;
 }
 
-.image-container {
+.imageContainer {
     overflow: hidden;
-    height: 19rem;
-    margin:-5rem 0rem 0rem 0rem;
+    height: 12rem;
+    margin:-12.3rem 0rem 0rem 0rem;
 }
 
-.card-content{
+.imageContainerMember {
+    height: 11rem;
+    margin:-12rem 0rem -2rem -4rem ;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardContent{
     margin:1rem;
     margin-top: 0.6rem;
 }
 
-.card-content-Member{
-    margin:1rem;
-    margin-top: -3rem;
+.cardContentMember{
+    margin-top: -1rem;
 }
 
-.card-title {
-    margin-bottom:0.5rem;
+.cardTitle {
+    margin-bottom:0rem;
 }
 
-.card-image-Member{        
-    height:15rem; 
-    width: 15rem; 
-    margin-left: 17%;
+.cardImageMember{        
+    height:7rem; 
+    width: 8rem; 
+    margin-left: 30%;
 }
 
-.card-image-Organization{        
-    height:20rem; 
-    width:23rem; 
+.cardImageOrganization{        
+    height:13rem; 
+    width:22rem; 
     margin-top:7%;
 }
 
-.card-image-About{        
+.cardImageAbout{        
     height:auto; 
     width:70%; 
     margin-left:14%;

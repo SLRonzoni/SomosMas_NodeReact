@@ -7,12 +7,12 @@ const CommentsAllLine = ({id, body, user_id,user_firstName, user_lastName, news_
   
     return (
         <tr>
-            <td className="renglonNro">{id}</td>
-            <td className="renglon" >{body}</td>
-            <td className="renglon" >{user_id} - {user_firstName} {user_lastName}</td>
-            <td className="renglonNro" >{news_id}</td>
-            <td className="renglon centerText" >{formatDate(new Date(create))}</td>
-            <td className="renglon centerText" >{formatDate(new Date(update))}</td>
+            <td >{id}</td>
+            <td >{body}</td>
+            <td >{user_id} - {user_firstName} {user_lastName}</td>
+            <td >{news_id}</td>
+            <td className="centerText" >{formatDate(new Date(create))}</td>
+            <td className="centerText" >{formatDate(new Date(update))}</td>
             
             <td className={ViewAdministratorOptions()}>   
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          

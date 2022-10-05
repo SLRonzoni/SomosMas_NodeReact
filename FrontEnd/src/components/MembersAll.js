@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {Fragment,useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import './styles/card.css';
@@ -8,6 +8,7 @@ import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import { OrderNameAsc } from "./helpers/Order";
+import { Container } from "react-bootstrap";
 
 const MembersAll = (props) => { 
 
@@ -121,17 +122,17 @@ const MembersAll = (props) => {
 
 
   return (
-    <>
-    <div>  
+    <Fragment>
+      <Container>  
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
        {/* solo renderiza si hay miembros*/}
       {members && 
       <>
-      <div >
-        <div>
-          <h4 className="container-title centerText" >Colaboradores</h4>
+      <div>
+        <div className="containerTitle centerText">
+          <h3 >Colaboradores</h3>
         </div>
        
         <div className="divBtnDesplegableOrganizations" >
@@ -161,8 +162,9 @@ const MembersAll = (props) => {
           
     </>
     } 
-    </div>
-    </>
+    </Container>
+  </Fragment>
+      
   );
 };
 

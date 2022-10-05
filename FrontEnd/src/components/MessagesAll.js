@@ -138,6 +138,8 @@ const MessagesAll = (props) => {
       {messages && 
       <>
       <div>
+      <br></br>
+      <div>
         <h1 >Listado de Mensajes</h1>
         <p>{}</p>
       </div>
@@ -191,6 +193,7 @@ const MessagesAll = (props) => {
         </thead>
         {showMessages()}
       </table>
+      </div>
       </>
       } 
       </Container>

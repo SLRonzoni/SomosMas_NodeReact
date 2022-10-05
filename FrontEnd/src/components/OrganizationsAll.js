@@ -131,10 +131,11 @@ const OrganizationsAll = (props) => {
        {/* solo renderiza si hay organizaciones*/}
       {organizations && 
       <>
-      <div className="container-title centerText">
-        <h4  >Organizaciones que nos acompañan</h4>
+      <div>
+      <div className="containerTitle centerText">
+        <h3  >Organizaciones que nos acompañan</h3>
       </div>
-         
+       
       <div className="divBtnDesplegableOrganizations">
             <span > Buscar por nombre</span>
               <select
@@ -158,9 +159,9 @@ const OrganizationsAll = (props) => {
                   role="button" > Agregar </Link>
               </span> 
         </div> 
-       
+        
         {showOrganizations()}
-       
+       </div>
       </>
       } 
     </div>

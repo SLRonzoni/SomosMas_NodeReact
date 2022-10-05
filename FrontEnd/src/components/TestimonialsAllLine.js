@@ -7,12 +7,12 @@ const TestimonialsAllLine = ({id, name, image, content, create,update,remove}) =
   
     return (
         <tr  >
-            <td className="renglonNro">{id}</td>
-            <td className="renglon" >{name}</td>
+            <td >{id}</td>
+            <td >{name}</td>
             <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
-            <td className="renglon" >{content}</td>
-            <td className="renglon centerText" >{formatDate(new Date(create))}</td>
-            <td className="renglon centerText" >{formatDate(new Date(update))}</td>
+            <td >{content}</td>
+            <td className="centerText" >{formatDate(new Date(create))}</td>
+            <td className="centerText" >{formatDate(new Date(update))}</td>
             
             <td className={ViewAdministratorOptions()}>   
                 <button type="button" className="m-1 mr-md-2 btn btn-danger" onClick={()=>{remove(id)}} >Eliminar </button>          

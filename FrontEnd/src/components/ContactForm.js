@@ -129,14 +129,14 @@ const ContactForm = (props) => {
         {(
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
           <form
-            className='container-sm col-6 col-md-6 containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
+            className='container-sm col-6 col-md-12 containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
             <br></br>
             <h4 className="centerText ">Formulario de Contacto</h4>
             <br></br>
             <div className='centerText'>
               <div>
-                <div>
-                  <Label htmlFor='firstName'>Nombre y Apellido</Label>
+                <div className="displayFlex">
+                  <Label className="labelWidthContactForm" htmlFor='name'>Nombre y Apellido</Label>
                   <InputGroup >
                     <InputUser 
                       type='text'
@@ -158,9 +158,9 @@ const ContactForm = (props) => {
               <br></br>
 
               <div>
-                <div >
-                  <Label htmlFor='lastName'>Teléfono </Label>
-                  <InputGroup>
+                <div className="displayFlex ">
+                  <Label className="labelWidthContactForm"htmlFor='phone'>Teléfono </Label>
+                  <InputGroup >
                     <InputUser 
                       type='text'
                       name='phone'
@@ -181,9 +181,9 @@ const ContactForm = (props) => {
               <br></br>
 
               <div>
-                <div >
-                  <Label htmlFor='lastName'>E-mail  </Label>
-                  <InputGroup>
+                <div className="displayFlex">
+                  <Label className="labelWidthContactForm"htmlFor='email'>E-mail  </Label>
+                  <InputGroup >
                     <InputUser 
                       type='text'
                       name='email'
@@ -204,13 +204,13 @@ const ContactForm = (props) => {
               <br></br>
 
               <div>
-                <div>
-                  <Label htmlFor='message'>Mensaje </Label>
-                  <InputGroup>
+                <div className="displayFlex">
+                  <Label className="labelWidthContactForm"htmlFor='message'>Mensaje </Label>
+                  <InputGroup >
                     <textarea className="textArea form-control borderRounded"
                       type='text'
-                      rows='8'
-                      cols='57'
+                      rows='5'
+                      cols='48'
                       name='message'
                       placeholder="    Tu mensaje..."
                       value={values.message}
@@ -226,7 +226,6 @@ const ContactForm = (props) => {
                   <ErrorText>{errors.message} </ErrorText>
                 )}
               </div>
-              <br></br>
             </div>
 
             {errors.formOk === "f" && (

@@ -1,130 +1,136 @@
-import React,{useEffect,useState} from 'react';
-import axiosClient from '../configuration/axiosClient';
-import {formatDate} from './helpers/FormatDate';
+import React, { useEffect, useState } from "react";
+import axiosClient from "../configuration/axiosClient";
+import { formatDate } from "./helpers/FormatDate";
 
-function WordSearchResults () {
+function WordSearchResults() {
 
-    const [news,setNews]=useState([]);
-        
-    let query = new URLSearchParams(window.location.search)
-    let keyword=query.get('keyword')  
+  const [news, setNews] = useState([]);
+  const [newsComplete, setNewsComplete] = useState([]);
+  
+  let query = new URLSearchParams(window.location.search);
 
-    //SEARCH WORD
-    const findKeyword=async () => {
-      await axiosClient.get(`/news?name=${keyword}`)
-      .then ( findKeyword =>{
-        console.log(findKeyword.data)
-        setNews(findKeyword.data)
-      }) 
-      .catch (
-        error => console.log(error)
-      );
-    };
-
-    useEffect(() => {
-      findKeyword() 
-    },[keyword]); 
-
-    //FIND CATEGORY NAME ( added name to news state)
-    const findCategoryName=async () => { 
-       for(let i=0;i<news.length;i++) {
-         let idCategory=news[i].categoryId
-           await axiosClient.get(`/categories/${idCategory}`)
-             .then ( response =>{
-               if(response.data.id===idCategory){
-                 news[i].categoryName=response.data.name
-               }
-             }) 
-             .catch (
-               error => console.log(error)
-             )
-       };
-    };
-    
-    //FIND USER NAME ( added name to comments state)
-    const findUserName=async () => { 
-      for(let j=0;j<news.length;j++) {
-        for(let i=0;i<news[j].comments.length;i++) {
-          let idUser=news[j].comments[i].user_id
-            await axiosClient.get(`/users/${idUser}`)
-              .then ( response =>{
-                if(response.data.id===idUser){
-                  news[j].comments[i].firstName=response.data.firstName
-                  news[j].comments[i].lastName=response.data.lastName
-                }
-              }) 
-              .catch (
-                error => console.log(error)
-              )
-        } 
-      }
-    };
-   
-    
-
-    findUserName();
-    findCategoryName();
+  let keyword = query.get("keyword");
 
   
-    return(
-       <>
-       <div className='container centrar'>
-       
-       {news.length===0 && <h3>No se hallaron resultados</h3>}
-       
-       {news.map((oneResult) => {
-       
-            return (
-              <div className='' key={oneResult.id} >
-                
-                 <br></br> <br></br>
-                 <h2><b><u>Noticia</u></b> : {oneResult.name} </h2>
-                 <br></br>
-                <div className='row'>
-                  <div className='col-6'>
-                    <img  className="img-search-news" src={oneResult.image}alt="Imagen"></img> 
+  //SEARCH WORD
+  const findKeyword = async () => {
+    await axiosClient
+      .get(`/news/byName/${keyword}`)
+      .then((findKeyword) => {
+        setNews(findKeyword.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  
+  //FIND CATEGORY NAME ( added name to news state)
+  const findCategoryName = async () => {
+    for (let i = 0; i < news.length; i++) {
+      let idCategory = news[i].categoryId;
+      await axiosClient
+        .get(`/categories/public/${idCategory}`)
+        .then((response) => {       
+          news[i].categoryName = response.data.name || "";
+        })
+        .catch((error) => console.log(error));
+    }
+  };
+  findCategoryName();
+ 
+
+ // FIND DATA USERS  ( added data users to comments)
+  const findUserData = async () => {
+    for (let i = 0; i < news.length; i++) {
+      for (let j = 0; j < news[i].comments.length; j++) {
+        let idUser = news[i].comments[j].user_id;
+        await axiosClient
+          .get(`/users/${idUser}`)
+          .then((response) => {
+            news[i].comments[j].userImage = response.data.photo || "";
+            news[i].comments[j].firstName = response.data.firstName || "";
+            news[i].comments[j].lastName = response.data.lastName || "";
+          })
+          .catch((error) => console.log(error));
+      }
+    }
+  };
+  findUserData();
+
+  const finalNews = ()=>{
+    findKeyword();
+    setNewsComplete(news);
+  };
+  
+  useEffect(() => { 
+    finalNews();
+  }, [keyword]);
+
+console.log('newsComplete',newsComplete)
+ 
+
+  return (
+    <>
+      <div className='container centrar'>
+        
+        {newsComplete.length===0 && <h5>No se hallaron resultados</h5>}
+
+        {newsComplete.map((oneResult) => {
+          
+          return (
+            <div className='containerSearchNews' key={oneResult.id}>
+              
+              <div>
+                <br></br>
+                <div className='displayFlex'>
+                  <div className='col-6 marginLeft40px'>
+                    <img
+                      className='imgSearchNews'
+                      src={oneResult.image}
+                      alt='Imagen'
+                    ></img>
                   </div>
-                  
-                  <div className='col-6'>
-                    <div >
-                      <h5 className="search-align"><b><u>Categoría</u></b> : {oneResult.categoryName}</h5>
-                       <br></br>
-                      <h4 className="search-align"><b><u>Reseña</u></b> : {oneResult.content}</h4>  
-                    </div> 
-                    <br></br> 
 
+                  <div className='col-6 marginRigth-80px '>
                     <div>
-                      <table className="table table-striped table-responsive  ">
-                        <thead>
-                          <tr>
-                            <th className="titleItem "> Usuario  </th>
-                            <th className="titleItem "> Comentario </th>
-                            <th className="titleItem "> Creado</th>
-                          </tr>
-                        </thead> 
-
-                        <tbody>                        
-                          {oneResult.comments.map((oneComment) => {
-                            return (    
-                            <tr key={oneComment.user_id}>
-                              <td className="" >{oneComment.firstName} {oneComment.lastName}</td>
-                              <td className="" >{oneComment.body}</td>
-                              <td className="" >{formatDate(new Date(oneComment.createdAt))}</td>                       
-                            </tr>
-                            )} 
-                         )}
-                          </tbody>
-                      </table>    
+                      <h2> {oneResult.name} </h2>
+                      <h5 className='searchAlign '>( {oneResult.categoryName} )</h5>
+                      <br></br>
+                      <h4 className='searchAlign '> {oneResult.content}</h4>
                     </div>
 
+                    <br></br>
+                    <div>
+                      {oneResult.comments.length===0 && 
+                          <div className="userComments" >
+                            <span>sin comentarios</span>
+                          </div>
+                      }
+
+                      {oneResult.comments.map((oneComment) => {
+                        return (
+                          <div className="userComments" key={oneComment.id}>
+                            <div  >
+                              <img className='imageComment' src={oneComment.userImage} alt="user"></img>
+                              <span className=''> {oneComment.firstName} {oneComment.lastName}</span>
+                            </div>
+                            <div>                              
+                              <br></br>
+                              <span className=''>{oneComment.body}</span>
+                              <span className='dateComment'> {formatDate(new Date(oneComment.createdAt))}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          )
-       })} 
+          );
+        })}
       </div>
-      </>
-    )
+    </>
+  );
 }
 
 export default WordSearchResults;

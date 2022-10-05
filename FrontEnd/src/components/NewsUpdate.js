@@ -138,7 +138,7 @@ let validateInputs=(values) =>{
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-5 col-md-6 bgGrey" onSubmit={handleSubmit}>
+         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
             <h3 className="centerText">Ingrese nuevos valores ...</h3>
             
             <div>

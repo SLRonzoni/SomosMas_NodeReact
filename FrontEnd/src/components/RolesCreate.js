@@ -126,7 +126,7 @@ return (
        onSubmit={(values)=>{ sendForm(values)}}
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors}) => (    // props con destrunturing {}
-       <form  className="container-sm col-6 col-md-6 bgGrey" onSubmit={handleSubmit}>
+       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
           <br></br>
           <h3 className="centerText">Nuevo role ...</h3>
           <br></br>

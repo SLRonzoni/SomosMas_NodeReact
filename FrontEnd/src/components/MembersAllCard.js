@@ -13,17 +13,19 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
 
  
   return (
-    <div>
-        <div className="card-container-Member">
-            <div className="image-container"> 
-              <img className="card-image-Member" src={image} alt="colaborador"></img>
+   
+        <div className="cardContainerMember">
+          
+            <div className="imageContainerMember"> 
+              <img className="cardImageMember" src={image} alt="colaborador"></img>
             </div>
-            <div className='card-content-Member'>
-              <div className="card-title centerText"><em>{name}</em></div>
+            <div className='cardContentMember'>
               <br></br>
-              <p className="fixedSizeCardMember "><b> </b> {description}</p>
+              <div className="cardTitle centerText"><em>{name}</em></div>
+              <br></br>
+              <p className="fixedSizeCardMember centerText"><b> </b> {description}</p>
               
-              <div>
+              <div className='centerText'>
                 <img className="iconSocialNetworksOrganization" src={facebook} alt="facebook"></img><nbsp/> {facebookUrl} 
                 <span className='colorBlack'><br></br></span>
                 <img className="iconSocialNetworksOrganization" src={instagram} alt="instagram"></img><nbsp/> {instagramUrl}
@@ -31,7 +33,6 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
                 <img className="iconSocialNetworksOrganization bgWhite" src={linkedin} alt="linkedin"></img><nbsp/> {linkedinUrl}
               </div>
            
-            
             <div className={ViewAdministratorOptions()}>
               <hr></hr>
               <div className="displayFlex centerText">
@@ -41,15 +42,16 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
               </div>
             </div>            
             <div className={ViewAdministratorOptions()}>    
-              <div className='centerText'>        
-                <Link to={`/members/update/${id}`} className="btn btn-primary btn-sm mr-1 me-md-2 "
+              <div className='centerText'> 
+              <br></br>       
+                <Link to={`/members/update/${id}`} className="btn btn-primary btn-sm  me-md-5 "
                       role="button" aria-pressed="true"> Modificar </Link>            
-                <button type="button" className="btn btn-danger btn-sm mr-1 me-md-2 "onClick={()=>{remove(id);}} >Eliminar </button>
+                <button type="button" className="btn btn-danger btn-sm mr-1 me-md-1 "onClick={()=>{remove(id);}} >Eliminar </button>
               </div> 
             </div>        
           </div>
         </div>    
-      </div>
+      
   );
 };
 export default MembersCard;

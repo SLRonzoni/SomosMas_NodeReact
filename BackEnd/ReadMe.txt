@@ -20,6 +20,7 @@ Modificaciones al proyecto original ( back end ):
   * CATEGORIES, CREATE, se modificó para trabajar con imágenes y S3 Amazon
   * CATEGORIES, GET ALL se eliminó atributo de paginación "name"
   * CATEGORIES, se sgregó el servicio GETONECATEGORYBYNAME
+  * CATEGORIES, se sgregó el servicio GETONECATEGORYPUBLIC
   * CONTACT, se cambió nombre de la variable que guarda el modelo de contacts 
   * CONTACT, se eliminó campo message 
   * MEMBERS, se cambio nombre de inputs , de data a inputVars, y se adaptó servicio para manejar imagenes ,en create y update
@@ -42,6 +43,7 @@ Modificaciones al proyecto original ( back end ):
   * CATEGORIES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se agregó al nombre de la
                             ruta CREATE,UPDATE y DEL
   * CATEGORIES, se agregó una ruta get by name
+  * CATEGORIES, se cambió la verificacion de administrador, para poder agregar una ruta publica
   * COMMENTS, se cambió distribución de middleware de autenticacion de user
   * MEMBERS, se agregó al nombre de la ruta CREATE,UPDATE y DEL y se agregó middleware idExists
   * MEMBERS, se quitó la verificacion de administrador, para que los miembros los pueda ver cualquier usuario

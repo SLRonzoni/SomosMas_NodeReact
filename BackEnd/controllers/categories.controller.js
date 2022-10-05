@@ -21,6 +21,20 @@ const getAllCategories= async (req, res) => {
    }
 };
 
+const getOneCategoryPublic= async (req, res) => {     
+  const id = req.params.id;                     
+  try {
+		 const category=await ModelCategories.findByPk(id);
+      if (!category) {			
+       return res.status(404).json('name not found')
+      } else{
+        res.status(200).json(category)
+      }
+	} catch (error) {		
+		res.status(500).send(error);
+	}
+};
+
 const getOneCategory= async (req, res) => {                          
   return baseController.getModelById(req, res, ModelCategories)
 };
@@ -92,6 +106,7 @@ const deleteCategory=async (req,res)=>{
 
 module.exports = {getAllCategories,
                   getOneCategory,
+                  getOneCategoryPublic,
                   getOneCategoryByName,
                   createCategory,
                   updateCategory,

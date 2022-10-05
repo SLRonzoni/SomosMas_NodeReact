@@ -136,6 +136,7 @@ const UsersAll = (props) => {
         {/* solo renderiza si hay users*/}
         {users && 
          <>
+         <div>
             <div>
               <h1>Listado de Usuarios</h1>
               <p>{}</p>
@@ -176,6 +177,7 @@ const UsersAll = (props) => {
               </thead>
               {showUsers()}
             </table>
+            </div>
           </>
         }
       </Container>

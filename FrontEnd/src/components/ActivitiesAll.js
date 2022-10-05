@@ -139,11 +139,11 @@ const ActivitiesAll = (props) => {
       {activities && 
       <>
       <div>
-        <h1 >Listado de Actividades</h1>
-        <p>{}</p>
-      </div>
-      <br></br>      
-        <div className="displayFlex " >
+        <div className="containerTitle centerText">
+          <h3 >Listado de Actividades</h3>
+        </div>
+
+        <div className="displayFlex centerText" >
           
           <div>
             <p className="pBtnDesplegable" >Buscar actividades por nombre</p>
@@ -180,23 +180,24 @@ const ActivitiesAll = (props) => {
           </div> 
         </div> 
 
-      <table className="table table-responsive table-bordered bgGrey">
-        <thead>
-          <tr className="">
-            <th className="tituloItem centerText  "> Id </th>
-            <th className="tituloItem "> Actividad </th>
-            <th className="tituloItem "> Imágen </th>
-            <th className="tituloItem "> Descripción </th>
-            <th className="tituloItem centerText"> Creada</th>
-            <th className="tituloItem centerText"> Actualizada</th>
+        <table className="table bgGrey table-responsive table-bordered ">
+          <thead>
+            <tr className="">
+              <th className="tituloItem centerText  "> Id </th>
+              <th className="tituloItem "> Actividad </th>
+              <th className="tituloItem "> Imágen </th>
+              <th className="tituloItem "> Descripción </th>
+              <th className="tituloItem centerText"> Creada</th>
+              <th className="tituloItem centerText"> Actualizada</th>
 
-            <th className="centerText" ><Link to={'/ActivitiesCreate'} className="m-1 mr-md-2 btn btn-success"
-                  role="button" > Agregar </Link> 
-            </th>
-          </tr>
-        </thead>
-        {showActivities()}
-      </table>
+              <th className="centerText" ><Link to={'/ActivitiesCreate'} className="m-1 mr-md-2 btn btn-success"
+                    role="button" > Agregar </Link> 
+              </th>
+            </tr>
+          </thead>
+          {showActivities()}
+        </table>
+      </div>
       </>
       } 
       </Container>

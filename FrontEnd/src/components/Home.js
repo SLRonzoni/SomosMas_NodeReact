@@ -5,10 +5,15 @@ import image from "./images/manos_fondo.jpg";
 const Home = () => {
  
   return (
-    <h1>
+    <div className="container">
+      <br></br>
+      <br></br>
+      <h1> Bienvenido@s !!!</h1>
+      
       <img className="homeBgImage" src={image} alt="manos" ></img>
-    </h1>
+    </div>
   );
   
-  };
+};
+
 export default Home;

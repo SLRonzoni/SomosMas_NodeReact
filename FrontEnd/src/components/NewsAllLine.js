@@ -7,15 +7,15 @@ const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove
   
     return (
         <tr>
-            <td className="renglonNro">{id}</td>
-            <td className="renglon" >{name}</td>
+            <td >{id}</td>
+            <td >{name}</td>
             <td className="imageChar centerText" ><img src={image}  alt="newsImage"></img> </td>
-            <td className="renglon" >{categoryId}</td>
-            <td className="renglon" >{content}</td>
-            <td className="renglon centerText" >{formatDate(new Date(create))}</td>
-            <td className="renglon centerText" >{formatDate(new Date(update))}</td>
+            <td >{categoryId}</td>
+            <td >{content}</td>
+            <td className="centerText" >{formatDate(new Date(create))}</td>
+            <td className="centerText" >{formatDate(new Date(update))}</td>
             
-            <td className="renglon centerText">   
+            <td className="centerText">   
                 <Link to={`/news/update/${id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
             </td>      

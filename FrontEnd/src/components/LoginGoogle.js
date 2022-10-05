@@ -87,11 +87,11 @@ function RespuestaGoogle() {
   return (
     <div>
         <GoogleLogin
-          className='m-3 mr-md-2 btn-redes'
+          className='m-3 mr-md-2 btn-redes' 
           clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
           onSuccess={onSuccess}
           onFailure={onFailure}
-          buttonText='Iniciar sesion con Google'
+          buttonText='Iniciar sesion con Google'         
         />
     </div>
   );

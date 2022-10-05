@@ -34,6 +34,7 @@ import MembersOne from './components/MembersOne';
 import MembersUpdate from './components/MembersUpdate';
 
 import NewsAll from './components/NewsAll';
+import NewsAllPublic from './components/NewsAllPublic';
 import NewsCreate from "./components/NewsCreate";
 import NewsUpdate from "./components/NewsUpdate";
 
@@ -84,6 +85,7 @@ function App() {
         <Route exact path='/ActivitiesPublicAll' component={ActivitiesPublicAll}/>
         <Route exact path='/CommentsPublic' component={CommentsPublic}/>
         <Route exact path='/TestimonialsPublic' component={TestimonialsPublic}/>
+        <Route exact path='/NewsAllPublic' component={NewsAllPublic}/>
 
               
         {/* ADMIN */}

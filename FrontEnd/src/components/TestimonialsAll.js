@@ -130,6 +130,7 @@ const TestimonialsAll = (props) => {
        {/* solo renderiza si hay testimonios*/}
       {testimonials && 
       <>
+      <div>
       <div >
         <h1 >Testimonios</h1>
         <p>{}</p>
@@ -189,6 +190,7 @@ const TestimonialsAll = (props) => {
         </thead>
         {showTestimonials()}
       </table>
+      </div>
       </>
       } 
       </Container>

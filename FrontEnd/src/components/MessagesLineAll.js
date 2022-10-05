@@ -6,13 +6,13 @@ const MessageAllLine = ({id, name, email, message, create, remove}) =>{
   
     return (
         <tr>
-            <td className="renglonNro">{id}</td>
-            <td className="renglon" >{name}</td>
-            <td className="renglon" >{email} </td>
-            <td className="renglon" >{message}</td>
-            <td className="renglon centerText" >{formatDate(new Date(create))}</td>
+            <td >{id}</td>
+            <td >{name}</td>
+            <td >{email} </td>
+            <td >{message}</td>
+            <td className="centerText" >{formatDate(new Date(create))}</td>
 
-            <td className="renglon centerText">   
+            <td className="centerText">   
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
             </td>      
         </tr>

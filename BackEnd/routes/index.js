@@ -8,8 +8,8 @@ const organizationRouter = require('./organizations.routes');
 const testimonialsRouter = require('./testimonials.routes');
 const newsRouter = require('./news.routes');
 const categoriesRouter = require('./categories.routes');
-const authRouter = require('./auth.routes')
-const membersRouter = require('./members.routes')
+const authRouter = require('./auth.routes');
+const membersRouter = require('./members.routes');
 const rolesRouter = require('./role.routes');
 const activitiesRouter = require('./activities.routes');
 const slidesRouter = require('./slides.routes');
@@ -24,11 +24,11 @@ router.get('/', function (req, res, next) {
 
 router.use('/users', usersRouter);
 router.use('/organization', organizationRouter);
-router.use('/testimonials', testimonialsRouter)
+router.use('/testimonials', testimonialsRouter);
 router.use('/news', newsRouter);
 router.use('/categories', categoriesRouter);
 router.use('/auth', authRouter);
-router.use('/members', membersRouter)
+router.use('/members', membersRouter);
 router.use('/roles', rolesRouter);
 router.use('/activities', activitiesRouter);
 router.use('/slides', slidesRouter);

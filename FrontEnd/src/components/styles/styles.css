@@ -28,7 +28,7 @@ body{
 .container{
     display:flex;
     position:relative;
-    width: 1920px;
+    width: 100%;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
@@ -36,12 +36,28 @@ body{
     margin-top: 2%;  
 }
 
-.containerSlideSize{
+.containerSearchNews{
+    height: 34rem;
+    width: 85rem;
+    margin: auto;
+    margin-top: -1rem;
+    margin-bottom: -5rem;
+}
 
+.containerSlideSize{
     height: 38rem;
     width: 85rem;
     margin: auto;
     margin-top: -3rem;
+}
+
+.containerLogin{
+    height: 27rem;
+    width: 35rem;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 20px;
+    background-color: lightgrey;
 }
 
 .containerMembersAllCard{
@@ -49,6 +65,14 @@ body{
     display:flex;
     flex-direction: column; 
     position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerUpdateCreate{
+    width: 45rem;
+    margin:2rem;
+    padding:1rem;
     justify-content: center;
     align-items: center;
 }
@@ -73,7 +97,7 @@ body{
     display: block;
     justify-content: center;
     margin:auto;
-    width: 25rem;
+    width: 38rem;
     height: auto;
     border-radius: 10px;
 }
@@ -230,8 +254,8 @@ h1{
 }
 
 .margenEnd{
-    margin-left: 40%;
-    font-size: 16px;
+    margin-left: 20%;
+    font-size: 12px;
 }
 
 .centerContainer{
@@ -321,7 +345,7 @@ h1{
     height: 30%;
   }*/
 
-  .img-search-news{
+  .imgSearchNews{
     width:70%;
     height: 70%;
   }
@@ -379,8 +403,8 @@ h1{
 } */
 
 .pBtnDesplegable{
-    margin-bottom:-1rem;
-    margin-left: 20px;
+    margin-bottom:-0.5rem;
+    margin-left: 0rem;
 }
 
 .divBtnDesplegable{
@@ -408,8 +432,9 @@ h1{
     background-color:#fff;
     color:black;
     width:20rem;
-    height:40px;
+    height:30px;
     margin-left: -10px;
+    font-size: 12px;
 }
 
 .marginCero{
@@ -448,10 +473,11 @@ h1{
     margin-left: 20%;
 } */ 
 
-.search-align{
+.searchAlign{
     text-align: left;
     margin: 0;
 }
+
 
 /* .ancho{
     min-width: 300px;
@@ -573,17 +599,19 @@ h1{
     display:flex; 
 } */
 
-.renglon{  
+.row{  
     width:19rem ; 
 }
 
-.renglonNro{
+.rowNro{
     text-align: center;
     width:5% ; 
 }
 
-.renglonMovieTestimonialsAndComments{  
-    width:85rem ;   
+.rowTestimonialsAndComments{  
+    width:35rem ;   
+    margin-left: 2rem;
+    background-color:rgb(212, 218, 245);
 }
 
 /*
@@ -742,6 +770,13 @@ h1{
     padding-left: 20px;
 }
 
+
+.inputCreateWidth{
+    margin-top: -2rem;
+    width: 100%;
+    padding-left: 20px;
+}
+
 .containerBorderWhiteBgGrey{
     border:1px solid #fff;
     background-color:rgb(56, 55, 55);
@@ -842,7 +877,9 @@ h1{
   } */
 
 .homeBgImage {
-    width: 79%;
+    margin:auto;
+    margin-top:2rem;
+    width: 100%;
 }
 
 .handsLogo{
@@ -879,15 +916,14 @@ h1{
 
 .btn-derecha{
     margin-left: 70%;
-   }
+}
 
 .stripe{
     width: 30%;
     border:1px solid #687ea3;
     padding:15px;
     border-radius: 10px;
-  }
-
+}
  
 
   
@@ -979,11 +1015,15 @@ h1{
     margin-left: 40px;
 }
 
+
+.marginRigth-80px{
+    margin-left: -80px;
+}
+
 .centerHorizontally{
     display:flex;
     justify-content:center;
 }
-
 
 .contactFormName{
     margin:230px 0px 0px 430px;
@@ -1005,4 +1045,34 @@ h1{
 
 .font2rem{
     font-size: 2rem;
+}
+
+
+.font1-5rem{
+    font-size: 1.5rem;
+}
+
+.labelWidthContactForm{
+    display: inline-block;
+    width:12rem;
+    text-align: left;
+}
+
+.userComments{
+    background-color: gray;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom:8px;
+}
+
+.imageComment{
+   border-radius: 50%;
+   width: 7%;
+   margin-right: 6px;
+}
+
+.dateComment{
+   display: flex;
+   justify-content: end;
+   font-size: 10px;
 }

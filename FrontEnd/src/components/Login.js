@@ -76,10 +76,10 @@ const Login =()=>{
      
     
     return (
-      <div className="container-sm col-6 col-md-4 bg-light " >  
+      <div className="containerLogin" >  
  
         <div className="displayFlex " >  
-          <div className="centerText">
+          <div className="centerText ">
            <LoginGoogle> </LoginGoogle>
           </div>
           <br/>
@@ -90,11 +90,11 @@ const Login =()=>{
         <h3 className="colorBlack">Inicio de sesión</h3>
 
         <div className="form-group">
-         <label className="formLabel">Email </label>
+         <label className="formLabel colorBlack">Email </label>
          <input type="email" 
                 className="form-control" 
                 name="email"  
-                placeholder="correo@correo.com.ar" 
+                placeholder="correo@correo.xxx.xx" 
                 required
                 uppercase="true"
                 onChange={(e)=>setEmail(e.target.value)}
@@ -103,7 +103,7 @@ const Login =()=>{
         <br/>
       
         <div className="form-group" >
-          <label className="formLabel">Contraseña </label>
+          <label className="formLabel colorBlack">Contraseña </label>
           <input type="password" 
                   className="form-control"  
                   name="password"  

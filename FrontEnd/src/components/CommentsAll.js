@@ -149,7 +149,8 @@ console.log('commentsCOMPLETO',commentsWithNames)
       {commentsWithNames &&
       <>
       <div>
-        <h1 >Commentarios</h1>
+      <div className="centerText containerTitle">
+        <h3 >Comentarios</h3>
         <p>{}</p>
       </div>
       <br></br>      
@@ -186,6 +187,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
         </thead>
         {showComments()}
       </table>
+      </div>
       </>
       } 
       </Container>

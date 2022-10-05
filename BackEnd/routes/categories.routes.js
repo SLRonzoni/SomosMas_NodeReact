@@ -7,23 +7,24 @@ const { validateCategories }=require('../validators')
 
 const {getAllCategories,
        getOneCategory,
+       getOneCategoryPublic,
        getOneCategoryByName,
        createCategory,
        updateCategory,
        deleteCategory}=(require('../controllers/categories.controller'))
 
-router.use(verifyIsAdmin)
+router.get("/public/:id", idExists, getOneCategoryPublic);
 
-router.get("/",  getAllCategories);
+router.get("/", getAllCategories);
 
-router.post("/create", optionsFileUpload ,validateCategories, createCategory);
+router.post("/create", verifyIsAdmin,optionsFileUpload ,validateCategories, createCategory);
 
-router.get("/:id", idExists, getOneCategory);
+router.get("/:id",verifyIsAdmin, idExists, getOneCategory);
 
-router.get("/byName/:name", getOneCategoryByName);
+router.get("/byName/:name",verifyIsAdmin, getOneCategoryByName);
 
-router.put("/update/:id", idExists, optionsFileUpload ,validateCategories, updateCategory);
+router.put("/update/:id", verifyIsAdmin,idExists, optionsFileUpload ,validateCategories, updateCategory);
 
-router.delete("/del/:id", deleteCategory);
+router.delete("/del/:id",verifyIsAdmin, deleteCategory);
 
 module.exports = router;

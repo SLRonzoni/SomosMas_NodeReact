@@ -29,7 +29,7 @@ function TestimonialsPublic () {
                 return (
                     <div className='' key={oneResult.id} >
                         <br></br>
-                        <div className='row bgWhite borderRounded renglonMovieTestimonialsAndComments'>
+                        <div className=' borderRounded rowTestimonialsAndComments'>
                             <div className='col-3 '>
                                 <img className="imgTestimonialsAndComments  " src={oneResult.image}alt="ImagenTestimonio"></img> 
                             </div>

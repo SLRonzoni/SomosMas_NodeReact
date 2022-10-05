@@ -143,6 +143,7 @@ const NewsAll = (props) => {
       {news && 
       <>
       <div>
+      <div>
         <h1 >Noticias</h1>
         <p>{}</p>
       </div>
@@ -220,6 +221,7 @@ const NewsAll = (props) => {
         </thead>
         {showNews()}
       </table>
+      </div>
       </>
       } 
       </Container>

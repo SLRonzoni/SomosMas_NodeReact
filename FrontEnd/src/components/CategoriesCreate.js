@@ -131,14 +131,13 @@ return (
        onSubmit={ (values)=>{ sendForm(values) } }
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-       <form  className="container-sm col-6 col-md-6 bgGrey" onSubmit={handleSubmit}>
+       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
           <br></br>
           <h3 className="centerText">Nueva categoría ...</h3>
-          <br></br>
           <div>
             <div>
-              <div className="displayInLineFlex">
-                <InputForm
+              <div className="displayInLineFlex inputCreateWidth">
+                <InputForm 
                   type="text"
                   name="name"
                   label="Nombre : " 
@@ -154,7 +153,7 @@ return (
             </div>
             <br></br>
             <div>
-              <div className="displayInLineFlex">
+              <div className="displayInLineFlex inputCreateWidth">
                 <InputForm
                   type="file"
                   name="image"
@@ -170,7 +169,7 @@ return (
             </div>
             <br></br>
             <div>
-              <div className="displayInLineFlex">
+              <div className="displayInLineFlex inputCreateWidth">
                 <InputForm
                   type="text"
                   name="description"
@@ -185,7 +184,6 @@ return (
               </div>
               {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
             </div>
-            <br></br>
             
           </div>
           { errors.formOk === "f" && (
@@ -198,7 +196,6 @@ return (
           )}
          
           <div>
-            <br></br>
             <div className="centerText">
                 <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                 <Link 

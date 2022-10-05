@@ -185,15 +185,15 @@ return (
       onSubmit={(values)=>{ sendForm(values)}}
       >
       { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-      <form  className="container-sm col-4 col-md-8 bgGrey" onSubmit={handleSubmit}>
+      <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
         <br></br>
         <h3 className="centerText">Datos a actualizar ...</h3>
         <br></br>
         
         <div>
           <div className="displayFlex">
-            <div className=" inputUpdateWidth">
-              <div className="displayFlex inputUpdateWidth">
+            <div >
+              <div className="displayFlex ">
                 <InputUpdateForm
                 type="file"
                 name="image"
@@ -229,9 +229,9 @@ return (
           </div>
           <br></br>
           <div>
-            <div className="marginLeft25px " >
-              <label className="marginLeft25px "><b>Detalle actual:</b>  </label>
-              <div className="displayFlex textArea-Members">
+            <div >
+              <label className=" "><b>Detalle actual:</b>  </label>
+              <div className="displayFlex ">
                 <textarea className="form-control borderRounded"
                 type='text'
                 rows='3'
@@ -249,8 +249,8 @@ return (
           </div>
           <br></br>
           <div className="displayFlex ">
-            <div className="inputUpdateWidth ">
-                <div className="displayFlex inputUpdateWidth">
+            <div >
+                <div className="displayFlex ">
                   <InputUpdateForm
                   type="text"
                   name="facebookUrl"
@@ -285,8 +285,8 @@ return (
           </div>
           <br></br>
           <div>
-            <div className="inputUpdateWidth">
-              <div className="displayFlex inputUpdateWidth">
+            <div >
+              <div className="displayFlex ">
                 <InputUpdateForm
                 type="text"
                 name="linkedinUrl"

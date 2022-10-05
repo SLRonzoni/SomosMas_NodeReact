@@ -49,13 +49,15 @@ const ActivitiesPublicAll = (props) => {
           
           <div>
             <div className='' >
-              <div className="row d-flex-inline justify-content-center mt-6">  
+              <div className="d-flex-inline justify-content-center mt-6">  
                 <div className="col-12">
                   <div>
                     <div>
                       <Carousel  >
                         {activities.map((oneActivity) => ( 
                         <Carousel.Item key={oneActivity.id}>
+                          <br></br>
+                          <br></br>
                           <img className=" imageActivity " src={oneActivity.image} alt="Slide" />
                           <Card.Title >
                             <h3 className="centerText ">{oneActivity.name}</h3>

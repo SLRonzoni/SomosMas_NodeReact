@@ -39,7 +39,7 @@ const MembersOne = (props) => {
     <Fragment  >
       <br></br> 
         <div >
-        <div className="containerEditGender">         
+        <div className="containerUpdateCreate containerBorderWhiteBgGrey">         
            <Card.Text className="card-text-edit-gender center"> 
            <br></br>
            <h5 className="text colorBlack" >Colaborador </h5>   

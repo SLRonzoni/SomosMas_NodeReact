@@ -10,11 +10,11 @@ const About = () => {
     <>
     <div className='container displayFlex' >
         
-        <div className='card-container-About'>
+        <div className='cardContainerAbout'>
             <br></br>
             <br></br>
-            <h2 className='card-title centerText'>Nosotros</h2>
-            <div className='card-content'>
+            <h2 className='cardTitle centerText'>Nosotros</h2>
+            <div className='cardContent'>
                 <p>
                     Desde 1997 en Somos Más trabajamos con los chicos y chicas,
                     mamás y papás, abuelos y vecinos del barrio La Cava generando
@@ -47,33 +47,33 @@ const About = () => {
         </div>
         <br></br>
 
-        <div className='card-container-About-Horizontally'>
+        <div className='cardContainerAboutHorizontally'>
             <br></br>
             <br></br>
-            <h2 className='card-title centerText'>Misión</h2>
-            <div className='card-content'>
+            <h2 className='cardTitle centerText'>Misión</h2>
+            <div className='cardContent'>
                 <p>
                     Trabajar articuladamente con los distintos aspectos de la vida de las
                     familias, generando espacios de desarrollo personal y familiar,
                     brindando herramientas que logren mejorar la calidad de vida a
                     través de su propio esfuerzo.
                 </p>
-                <img  className="card-image-About" src={vision} alt='vision'></img>
+                <img  className="cardImageAbout" src={vision} alt='vision'></img>
             </div>
         </div>
         <br></br>
-        <div className='card-container-About-Horizontally'>
+        <div className='cardContainerAboutHorizontally'>
             <br></br>
             <br></br>
-            <h2 className='card-title centerText'>Visión</h2>
-            <div className='card-content'>
+            <h2 className='cardTitle centerText'>Visión</h2>
+            <div className='cardContent'>
                 <p>
                     Mejorar la calidad de vida de niños y familias en situación de
                     vulnerabilidad en el barrio " La Tranquerita " , otorgando un cambio de rumbo
                     en cada individuo a través de la educación, salud, trabajo, deporte,
                     responsabilidad y compromiso.
                 </p>
-                <img className="card-image-About" src={TrabajoEquipo} alt='trabajoEnEquipo'></img>
+                <img className="cardImageAbout" src={TrabajoEquipo} alt='trabajoEnEquipo'></img>
             </div>   
         </div>
         </div>

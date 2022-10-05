@@ -141,12 +141,9 @@ const RolesUpdate = ({match,history}) => {
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-6 bgGrey" onSubmit={handleSubmit}>
-            <br></br>
-            <h3 className="centerText">Ingrese nuevos valores ...</h3>
-            <br></br>
+         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+            <h3 className="centerText">Nuevos valores ...</h3>
             <div>
-
               <div>
                 <div className="displayInLineFlex">
                   <InputForm
@@ -202,7 +199,6 @@ const RolesUpdate = ({match,history}) => {
             }
            
             <div>
-              <br></br>
               <div className="centerText">
                   <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                   <Link 

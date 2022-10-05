@@ -6,13 +6,13 @@ const ContactsAllLine = ({id, name, phone, email, create, remove}) =>{
   
     return (
         <tr>
-            <td className="renglonNro">{id}</td>
-            <td className="renglon" >{name}</td>
-            <td className="renglon" >{phone} </td>
-            <td className="renglon" >{email}</td>
-            <td className="renglon centerText" >{formatDate(new Date(create))}</td>
+            <td >{id}</td>
+            <td >{name}</td>
+            <td >{phone} </td>
+            <td >{email}</td>
+            <td className="centerText" >{formatDate(new Date(create))}</td>
             
-            <td className="renglon centerText">   
+            <td className=" centerText">   
                 <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
             </td>      
         </tr>

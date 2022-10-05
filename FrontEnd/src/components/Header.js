@@ -36,7 +36,7 @@ export default function Header () {
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
-                    <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
+                    <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan . . .</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                    
                     <NavDropdown.Item href="/CommentsPublic">Comentarios</NavDropdown.Item> 
@@ -51,14 +51,14 @@ export default function Header () {
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
                     <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
-                    <NavDropdown.Item href="/NewsAll">Noticias</NavDropdown.Item>
+                    <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
                     <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
                     <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
                     <NavDropdown.Item href="/CommentsPublic">Comentarios</NavDropdown.Item>
                     <NavDropdown.Divider />               
                     <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
                     <NavDropdown.Divider /> 
-                    <NavLink to={`/users/update/${userInfo.id}`} className="renglonBtn nav p-3 col-1">Mi Perfil</NavLink>
+                    <NavLink to={`/users/update/${userInfo.id}`} className="renglonBtn nav p-3 col-1 colorBlack">Mi Perfil</NavLink>
                   </NavDropdown> 
                 )} 
               </NavbarBrand>

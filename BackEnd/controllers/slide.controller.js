@@ -7,8 +7,6 @@ const { decodeImgName } = require('../helpers/decodeImgName');
 const sequelize = require('sequelize');
 
 
-
-
 const getAllSlides = async (req, res) => {
     return baseController.getAllModels( req, res, Slide )
 }

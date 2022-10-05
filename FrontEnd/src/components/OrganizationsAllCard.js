@@ -14,12 +14,13 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
 
   return (
     <div>
-      <div className="card-container-Organization" >
-        <div className='image-container'> 
-          <img className="card-image-Organization" src={image}  alt="organization" ></img>
+      <br></br>
+      <div className="cardContainerOrganization" >
+        <div className='imageContainer'> 
+          <img className="cardImageOrganization" src={image}  alt="organization" ></img>
         </div>
-        <div className='card-content'>
-          <div className="card-title centerText"><em>{name}</em></div>
+        <div className='cardContent'>
+          <div className="cardTitle centerText"><em>{name}</em></div>
           <br></br>
           <p className=''><u> Domicilio</u> : {address}</p>
           <div>        

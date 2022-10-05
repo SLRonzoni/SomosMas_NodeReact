@@ -2,8 +2,8 @@ const newsModel = require('../models').News;
 const commentModel = require('../models').Comment;
 //const { uploadToBucket } = require('../services/s3');
 
-const { query } = require('express');
-const { Sequelize } = require('../models');
+const {query} = require ('express');
+const {Sequelize} = require('../models');
 const { 
     getAllModels, 
     createModel,
@@ -13,39 +13,29 @@ const {
 } = require('./base.controller');
 
 
-const getAllNews = async (req, res) =>{
-    const keyword=req.query.name
-    const Op = Sequelize.Op
-    if(!keyword==='undefined'){
-        try{
-            const news = await newsModel.findAll({ 
-                where: {name:{[Op.like]:`%${keyword}%`}}, 
-                include: [{
-                    model: commentModel, as: "comments"
-                }]
-            })
-            res.status(200).json(news);
-        } catch(error) {
-            console.log(error)
-            res.status(500).json(error.message);
-        }
-    } else {  
-        await getAllModels(req, res, newsModel);
-    }
+const getAllNews = async (req, res) =>{ 
+    await getAllModels(req, res, newsModel);
 };
 
 const getByName= async (req, res) => {    
-	const paramsName = req.params.name;
+    const keyword=req.params.name
+    const Op = Sequelize.Op
 	try{
-		const news= await newsModel.findAll({where:{name:paramsName}})
-		if(!news){
-		return res.status(404).json('name not found')
-		} else{
-		res.status(200).json(news)
+		const news= await newsModel.findAll({
+            where: {name:{[Op.like]:`%${keyword}%`}}, 
+            include: [{
+                model: commentModel, as: "comments"
+            }]
+        })
+        if(!news){
+            return res.status(404).json('name not found')
+        } else{
+            res.status(200).json(news)
 		}
 	} catch(error) {
 		res.status(500).json(error)
 	}     
+ 
 };
 	  
 const getByDate= async (req, res) => {    
@@ -120,15 +110,15 @@ const deleteNews = async (req, res) =>{
 
 const getAllCommentsOfNews = async (req, res) => {
     try{
-        const n = await newsModel.findOne({ 
+        const commentsOfNews = await newsModel.findOne({ 
             where: { id: req.params.id }, 
             include: [{
                 model: commentModel, as: "comments"
             }]
         })
-        res.status(201).json(n.comments);
-    }catch(e) {
-        console.log(e)
+        res.status(201).json(commentsOfNews.comments);
+    }catch(error) {
+        console.log(error)
         res.status(500).send(e.message);
     }
 };

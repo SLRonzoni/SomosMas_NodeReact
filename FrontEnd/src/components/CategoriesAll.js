@@ -130,47 +130,49 @@ const CategoriesAll = (props) => {
       {categories && 
       <>
       <div>
-        <h1 >Listado de Categorías</h1>
-        <p>{}</p>
-      </div>
-      <br></br>      
-        <div className="" >
-          
-          <div >
-            <p className="pBtnDesplegable " >Buscar por nombre de categoría</p>
-              <select
-                type="text"
-                name="categoryId"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
-              >  
-                {categories.map(oneCategory => (
-                  <option className="colorBlack" key={oneCategory.id} value={oneCategory.name}>
-                    {oneCategory.name}
-                  </option>
-                )).sort(OrderNameAsc(categories))}
-                <option className="colorBlack"value={"todas"}>Mostrar todas las categorías</option>
-              </select>
+        <div className="containerTitle centerText">
+          <h3 >Listado de Categorías</h3>
+          <p>{}</p>
+        </div>
+        <br></br>      
+          <div className="" >
+            
+            <div >
+              <p className="pBtnDesplegable " >Buscar por nombre de categoría</p>
+                <select
+                  type="text"
+                  name="categoryId"
+                  onChange={changesId}
+                  className="m-3 selectBtnDesplegable form-select "
+                >  
+                  {categories.map(oneCategory => (
+                    <option className="colorBlack" key={oneCategory.id} value={oneCategory.name}>
+                      {oneCategory.name}
+                    </option>
+                  )).sort(OrderNameAsc(categories))}
+                  <option className="colorBlack"value={"todas"}>Mostrar todas las categorías</option>
+                </select>
+            </div> 
           </div> 
-        </div> 
 
-      <table className="table bgGrey table-responsive table-bordered">
-        <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Categoría </th>
-            <th className="tituloItem centerText"> Imágen </th>
-            <th className="tituloItem "> Descripción </th>
-            <th className="tituloItem centerText"> Creado</th>
-            <th className="tituloItem centerText"> Actualizado </th>
+        <table className="table bgGrey table-responsive table-bordered">
+          <thead>
+            <tr>
+              <th className="tituloItem centerText "> Id </th>
+              <th className="tituloItem "> Categoría </th>
+              <th className="tituloItem centerText"> Imágen </th>
+              <th className="tituloItem "> Descripción </th>
+              <th className="tituloItem centerText"> Creado</th>
+              <th className="tituloItem centerText"> Actualizado </th>
 
-            <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
-                  role="button" > Agregar </Link> 
-            </th>
-          </tr>
-        </thead>
-        {showCategories()}
-      </table>
+              <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
+                    role="button" > Agregar </Link> 
+              </th>
+            </tr>
+          </thead>
+          {showCategories()}
+        </table>
+      </div>
       </>
       } 
       </Container>

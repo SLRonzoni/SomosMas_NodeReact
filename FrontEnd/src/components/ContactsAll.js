@@ -129,6 +129,8 @@ const ContactsAll = (props) => {
       {contacts && 
       <>
       <div>
+        <br></br>
+      <div>
         <h1 >Listado de Contactos</h1>
         <p>{}</p>
       </div>
@@ -153,7 +155,7 @@ const ContactsAll = (props) => {
           </div> 
         </div> 
 
-      <table className="table bgGrey table-responsive table-bordered">
+      <table className="table bgGrey table-responsive table-bordered ">
         <thead>
           <tr>
             <th className="tituloItem centerText "> Id </th>
@@ -165,6 +167,7 @@ const ContactsAll = (props) => {
         </thead>
         {showContacts()}
       </table>
+      </div>
       </>
       } 
       </Container>

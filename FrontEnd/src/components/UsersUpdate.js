@@ -154,18 +154,19 @@ const EditUsers = ({match, history}) =>{
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="container-sm col-6 col-md-6 bg-light "onSubmit={handleSubmit} > 
-            <h4 className='marginLeft40px'>Mi Perfil  
+        <form className="container-lg col-6 col-md-12 bgGrey "onSubmit={handleSubmit} > 
+        <br></br><br></br>
+            <h4 className='marginLeft10px '>Mi Perfil  
               <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>
-            <div className='marginTop marginLeft40px '>
+            <div className='marginTop marginLeft10px '>
 
               <div>
                 <div >   
-                  <Label htmlFor="photo"> </Label>
-                  <p className="pUpdateCateg"><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
+                  <Label htmlFor="photo" className='colorBlack'> </Label>
+                  <p className="pUpdateCateg "><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
                   <InputGroup  >
-                    <InputUser className="form-control"
+                    <InputUser className="form-control colorBlack"
                           type="file" 
                           name="photo" 
                           id="photo"  
@@ -183,9 +184,9 @@ const EditUsers = ({match, history}) =>{
                 
               <div>
                 <div>
-                  <Label htmlFor="firstName">Nombre actual :<span className="pUpdateCateg" ><em>{user.firstName}</em></span></Label>
+                  <Label htmlFor="firstName" >Nombre actual :<span className="pUpdateCateg" ><em>{user.firstName}</em></span></Label>
                     <InputGroup >
-                      <InputUser
+                      <InputUser className='colorBlack'
                         type="text" 
                         name="firstName" 
                         id="firstName"  
@@ -202,7 +203,7 @@ const EditUsers = ({match, history}) =>{
 
               <div>
                 <div>
-                <Label htmlFor="lastName">Apellido actual : <span className="spanUpdateCateg"><em>{user.lastName}</em></span></Label>
+                <Label htmlFor="lastName" >Apellido actual : <span className="spanUpdateCateg colorBlack"><em>{user.lastName}</em></span></Label>
                     <InputGroup>
                       <InputUser
                         type="text" 
@@ -221,23 +222,23 @@ const EditUsers = ({match, history}) =>{
 
               <div>
                 <div>
-                    <Label htmlFor="lastName">Email registrado ( no se permite modificar ) </Label>
-                    <p className="pUpdateCateg"> {user.email}</p>
+                    <Label htmlFor="lastName" >Email registrado ( no se permite modificar ) </Label>
+                    <p className="spanUpdateCateg marginLeft10px "> {user.email}</p>
                 </div> 
               </div>
               <br></br>
               
               <div>
                 <div>
-                    <Label htmlFor="password"> Password : 
+                    <Label htmlFor="password" > Password : 
                       <button type="button" 
-                              className='btn buttonBlue marginLeft40px' 
+                              className='btn buttonBlue marginLeft10px colorBlack' 
                               onClick={switchShown}> {shown ? 'Ocultar' : 'Mostrar'}
                       </button> 
                     </Label>  
 
                     <InputGroup>
-                      <InputUser
+                      <InputUser className='colorBlack'
                         type={shown ? "text" : "password" }
                         name="password" 
                         id="password"  
@@ -253,7 +254,7 @@ const EditUsers = ({match, history}) =>{
 
               { errors.formOk === "f" && 
               <MsjWrong> 
-              <span className="centerText">
+              <span className="centerText colorBlack">
                 <br /> Algun dato es incorrecto. 
                 <br/> Por favor complete el formulario correctamente
               </span>        
