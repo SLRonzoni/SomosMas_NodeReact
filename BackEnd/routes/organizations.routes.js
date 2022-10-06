@@ -13,7 +13,7 @@ const router = express.Router();
 
 router.get('/public', getOrganizations)
 router.get('/public/:id', idExists ,getOrganizationById);
-router.post('/create',verifyIsAdmin, validateOrganization, createOrganization);
+router.post('/',verifyIsAdmin, validateOrganization, createOrganization);
 router.put('/:id',verifyIsAdmin, authenticatedUser, idExists ,updateOrganization);
 router.delete('/:id',verifyIsAdmin, idExists ,deleteOrganization)
 

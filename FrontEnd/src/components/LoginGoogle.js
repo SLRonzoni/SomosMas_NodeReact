@@ -11,7 +11,7 @@ function RespuestaGoogle() {
   function start() {
     gapi.client.init({
       clientId:process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID,
-        scope: "email",
+        scope: "email"
     });
   }
   gapi.load("client:auth2", start);
@@ -85,13 +85,17 @@ function RespuestaGoogle() {
     };
     
   return (
-    <div>
+    <div >
         <GoogleLogin
-          className='m-3 mr-md-2 btn-redes' 
+          className=''
           clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
           onSuccess={onSuccess}
           onFailure={onFailure}
-          buttonText='Iniciar sesion con Google'         
+          buttonText='Iniciar sesion con Google'
+          cookiePolicy={'single_host_origin'}
+          buttonTheme='filled_blue'
+          buttonSize='small'
+          buttonSharp='pill'
         />
     </div>
   );

@@ -76,11 +76,11 @@ const Login =()=>{
      
     
     return (
-      <div className="containerLogin" >  
+      <div className="containerLogin " >  
  
         <div className="displayFlex " >  
-          <div className="centerText ">
-           <LoginGoogle> </LoginGoogle>
+          <div className="centerText" >
+           <LoginGoogle > </LoginGoogle>
           </div>
           <br/>
           <br/>

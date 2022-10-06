@@ -153,13 +153,14 @@ let validateInputs=(values) =>{
   //FORM
   return (
     <>
+    <br></br>
     <Formik
          initialValues={initialValues}           
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-7 bgGrey" onSubmit={handleSubmit}>
+         <form  className="container-sm col-6 col-md-7 containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
             <br></br>
             <h3 className="centerText ">Ingrese nuevos valores ...</h3>
             <br></br>

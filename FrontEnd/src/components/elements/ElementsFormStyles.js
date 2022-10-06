@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Colors ={
     border:'#0075FF',
-    error:'#bb2929',
+    error:'hsl(0, 97%, 49%)',
     success:'#1ed12d',
     fondoMsj:"ligthYellow",
     fondoMsjError:"#EDBB99"
@@ -113,11 +113,12 @@ const IconUser=styled.p`
 
 
 const ErrorText = styled.p`
-    font-size:18px;
+    font-size:14px;
     margin:auto;
+    margin-left:100px;
     border-radius:10px;
     width:35rem;
-    background:${Colors.fondoMsjError};
+    // background:${Colors.fondoMsjError};
     color:${Colors.error};
 ;`
 

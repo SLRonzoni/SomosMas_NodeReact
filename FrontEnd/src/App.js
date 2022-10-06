@@ -45,8 +45,9 @@ import RolesUpdate from "./components/RolesUpdate";
 import TestimonialsAll from "./components/TestimonialsAll";
 import TestimonialsPublic from "./components/TestimonialsPublic";
 
-
 import OrganizationsAll from "./components/OrganizationsAll";
+import OrganizationsCreate from "./components/OrganizationsCreate";
+import OrganizationsUpdate from "./components/OrganizationsUpdate";
 
 import ContactForm from './components/ContactForm';
 
@@ -121,6 +122,8 @@ function App() {
         <Route exact path='/TestimonialsAll' component={TestimonialsAll}/>
 
         <Route exact path="/OrganizationsAll" component={OrganizationsAll}/>
+        <Route exact path='/OrganizationsCreate' component={OrganizationsCreate}/>
+        <Route exact path='/organizations/:id' component={OrganizationsUpdate}/>
 
         <Route exact path='/UsersAll' component={UsersAll}/>
        

@@ -144,23 +144,26 @@ const Register=(props)=> {
     //FORM
     return (
     <>
+    <br></br><br></br>
     <Formik  
             initialValues={initialValues}           
             validate={validateInputs}
             onSubmit={(values)=>{ sendForm(values)}}
-    >
+    > 
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="container-sm col-6 col-md-12 bgGrey " onSubmit={handleSubmit}>
+   
+        <form className="container-lg col-6 col-md-12 containerBorderWhiteBgGrey " onSubmit={handleSubmit}>
             <br></br>
             <h4 className="centerText">Formulario de Registro</h4>
-            <div className="centerContainer">
-                <div className="alignCenter">
+            <div >
+                <div >
                     <div >
                         <div >   
-                            <Label htmlFor="photo"> </Label>
-                            <p className="pUpdateCateg">
+                            <br></br>
+                            {/* <Label htmlFor="photo"> </Label> */}
+                            <span >
                                 { values.photo ? <img  src={values.photo}  alt="userPhoto"/> : ''}
-                            </p>
+                            </span>
                             <InputGroup  >
                             <InputUser className="form-control"
                                     type="file" 
@@ -175,7 +178,6 @@ const Register=(props)=> {
                         </div> 
                     {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
                     </div>
-                    <br></br>
                     
                     <div>
                         <div>
@@ -194,7 +196,6 @@ const Register=(props)=> {
                         </div>
                     {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
                     </div>
-                    <br></br>
 
                     <div>
                         <div>
@@ -213,7 +214,6 @@ const Register=(props)=> {
                         </div> 
                     {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
                     </div>
-                    <br></br>
 
                     <div>
                         <div>
@@ -232,15 +232,14 @@ const Register=(props)=> {
                         </div> 
                     {touched.email && errors.email && <ErrorText>{errors.email} </ErrorText> }
                     </div>
-                    <br></br>
                     
                     <div>
                         <div>
                             <Label htmlFor="password"> Password : 
-                                <span className="colorGrey">.........</span>
+                                <span className="colorGrey">..</span>
                                 <button type="button" 
-                                        className='btn buttonBlue' 
-                                        onClick={switchShown}> {shown ? 'Ocultar' : 'Ver'}
+                                        className='btn buttonLight' 
+                                        onClick={switchShown}> {shown ? '🙈' : '👀'}
                                 </button> 
                             </Label>  
 

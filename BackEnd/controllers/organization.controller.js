@@ -36,7 +36,7 @@ const getOrganizationById = async(req, res) => {
         
         const organization = await OrganizationModel.findOne({
             where: { id },
-            attributes: ['name', 'image', 'address', 'phone','email', 'facebookUrl', 'instagramUrl', 'linkedinUrl','welcomeText', 'aboutUsText']
+            attributes: ['name', 'image', 'address', 'phone','email', 'facebookUrl', 'instagramUrl', 'linkedinUrl','welcomeText', 'aboutUsText', 'createdAt', 'updatedAt']
         });
 
         const slidesByOrg = await Slide.findAll({

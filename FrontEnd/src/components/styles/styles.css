@@ -77,6 +77,12 @@ body{
     align-items: center;
 }
 
+.containerUpdateOrganizations{
+    width: 80rem;
+    margin:1.5rem;
+    padding:1rem;
+}
+
 
  .imageCharCard{
     display:flex;
@@ -316,6 +322,11 @@ h1{
     margin-left: 4rem;
     /* background-color:whitesmoke; */
     padding: 7px 5px 5px 12px;
+}
+
+.buttonLoginGoogle{
+    color:'black'!important;
+   
 }
 
 /* .btn-redes{
@@ -910,8 +921,25 @@ h1{
     background-color:rgb(2, 117, 216); 
 }
 
+
+.buttonLight{
+    background-color:whitesmoke;
+    color:#1E90FF;
+    margin: 0px;
+    width:10%;
+    height:25px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height:12px;
+    cursor:pointer;
+}
+
 .colorGrey{
     color: rgb(53, 53, 53);
+}
+
+.colorTransparent{
+    color: transparent;
 }
 
 .btn-derecha{
@@ -1026,15 +1054,15 @@ h1{
 }
 
 .contactFormName{
-    margin:230px 0px 0px 430px;
+    margin:140px 0px 0px 390px;
 }
 
 .contactFormPhone{
-    margin:345px 0px 0px 430px;
+    margin:205px 0px 0px 390px;
 }
 
 .contactFormEmail{
-    margin:460px 0px 0px 430px;
+    margin:270px 0px 0px 390px;
 }
 
 .pBtnDesplegableMembers{

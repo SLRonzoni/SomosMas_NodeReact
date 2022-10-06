@@ -5,7 +5,6 @@ import { formatDate } from "./helpers/FormatDate";
 function NewsAllPublic() {
 
   const [news, setNews] = useState([]);
-  const [newsComplete, setNewsComplete] = useState([]);
 
   
   //FIND NEWS
@@ -18,42 +17,16 @@ function NewsAllPublic() {
       .catch((error) => console.log(error));
   };
 
-  
-//   //FIND CATEGORY NAME ( added name to news state)
-//   const findCategoryName = async () => {
-//     for (let i = 0; i < news.length; i++) {
-//       let idCategory = news[i].categoryId;
-//       await axiosClient
-//         .get(`/categories/public/${idCategory}`)
-//         .then((response) => {       
-//           news[i].categoryName = response.data.name || "";
-//         })
-//         .catch((error) => console.log(error));
-//     }
-//   };
-//   findCategoryName();
- 
-
-  const finalNews = ()=>{
-    findNews();
-    setNewsComplete(news);
-  };
-  
-  useEffect(() => { 
-    finalNews();
+  useEffect(() => {
+    findNews()
   }, []);
-
-console.log('newsComplete',newsComplete)
  
   return (
     <>
       <div className='container centrar'>
-
-        {newsComplete.map((oneResult) => {
-          
+        {news.map((oneResult) => {
           return (
-            <div className='containerSearchNews' key={oneResult.id}>
-              
+            <div className='containerSearchNews' key={oneResult.id}> 
               <div>
                 <br></br>
                 <div className='displayFlex'>
@@ -68,13 +41,11 @@ console.log('newsComplete',newsComplete)
                   <div className='col-6 marginRigth-80px '>
                     <div>
                       <h2> {oneResult.name} </h2>
-                      {/* <h5 className='searchAlign '>( {oneResult.categoryName} )</h5> */}
                       <br></br>
                       <h4 className='searchAlign '> {oneResult.content}</h4>
+                      <br></br>
+                      <span className='dateComment'>Actualizada : {formatDate(new Date(oneResult.createdAt))}</span>
                     </div>
-
-                    <br></br>
-                    
                   </div>
                 </div>
               </div>

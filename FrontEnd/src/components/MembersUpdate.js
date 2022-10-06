@@ -179,6 +179,7 @@ const MembersUpdate = ({match, history}) => {
 //FORM
 return (
   <>
+
     <Formik
       initialValues={initialValues}           
       validate={validateInputs}
@@ -187,7 +188,7 @@ return (
       { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
         <br></br>
-        <h3 className="centerText">Datos a actualizar ...</h3>
+        <h3 className="centerText">Nuevos datos ...</h3>
         <br></br>
         
         <div>
@@ -229,7 +230,7 @@ return (
           </div>
           <br></br>
           <div>
-            <div >
+            <div>
               <label className=" "><b>Detalle actual:</b>  </label>
               <div className="displayFlex ">
                 <textarea className="form-control borderRounded"
@@ -325,6 +326,7 @@ return (
             </span>        
             </MsjWrong>
             }
+            
           <div>
             <div className=" centerText ">
               <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
