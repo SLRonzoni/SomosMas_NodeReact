@@ -23,12 +23,13 @@ export default function Header () {
      
   return(
       <Container >  
-        <Navbar  className="navBar" collapseOnSelect expand="md" variant="dark" fixed="top">
-          <Navbar.Collapse>
+        <Navbar  className="navBar" collapseOnSelect expand="lg" variant="dark" fixed="top">
+          
+          <Navbar.Collapse id="responsive-navbar-nav" >
             <Navbar.Text className="colorWhite" >
               Somos Más Ong <img className="handsLogo" src={imagen} alt="manosNiños"></img>
             </Navbar.Text >
-            <Nav className="ms-auto">
+            <Nav className="me-auto">
               <NavbarBrand className="colorWhite">
               {!userInfo &&(
                   <NavDropdown  title="Secciones">  

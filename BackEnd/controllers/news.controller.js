@@ -79,7 +79,7 @@ const createNews = async (req,res) =>{
         image:regularImglocation}
     await createModel(res, newsModel, inputVars);
   } catch (error) {        
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 };
 
@@ -96,7 +96,7 @@ const updateNews = async (req, res) =>{
         image:regularImglocation}
     await updateModel(req, res, newsModel, inputVars);
   } catch (error) {        
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 };
 
@@ -116,10 +116,9 @@ const getAllCommentsOfNews = async (req, res) => {
                 model: commentModel, as: "comments"
             }]
         })
-        res.status(201).json(commentsOfNews.comments);
+        res.status(201).json(commentsOfNews);
     }catch(error) {
-        console.log(error)
-        res.status(500).send(e.message);
+        res.status(500).json(error);
     }
 };
 

@@ -124,47 +124,51 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-      <div>
-      {/* si aun está cargando las organizaciones*/}
-      {!organizations &&  <LoadingBox/> }
+      <div className="container center">
+        {/* si aun está cargando las organizaciones*/}
+        {!organizations &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay organizaciones*/}
-      {organizations && 
-      <>
-      <div>
-      <div className="containerTitle centerText">
-        <h3  >Organizaciones que nos acompañan</h3>
-      </div>
-       
-      <div className="divBtnDesplegableOrganizations">
-            <span > Buscar por nombre</span>
-              <select
-                  type="text"
-                  name="name"
-                  onChange={changesId}
-                  className="m-3 selectBtnDesplegable form-select "
-              >  
-                  {organizations.map(oneOrganization => (
-                    <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
-                      {oneOrganization.name}
-                    </option>
-                  )).sort(OrderNameAsc(organizations))}
-                    <option className="colorBlack"  key={organizations.name} value={"todas"}>
-                    Mostrar todas las organizaciones
-                    </option>
-              </select>
+        {/* solo renderiza si hay organizaciones*/}
+        {organizations && 
+          <>
+            <div>
+              <div className="containerTitle centerText">
+                <h3  >Organizaciones que nos acompañan</h3>
+              </div>
               
-              <span className={ViewAdministratorOptions()} >  
-                <Link to={'/OrganizationsCreate'} className="m-3 btn btn-success "
-                  role="button" > Agregar </Link>
-              </span> 
-        </div> 
-        
-        {showOrganizations()}
-       </div>
-      </>
-      } 
-    </div>
+              <div className="divBtnDesplegableOrganizations">
+                    <span> 
+                      Buscar por nombre
+                    </span>
+                    <select
+                          type="text"
+                          name="name"
+                          onChange={changesId}
+                          className="m-3 selectBtnDesplegable form-select "
+                    >  
+                        {organizations.map(oneOrganization => (
+                          <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
+                            {oneOrganization.name}
+                          </option>
+                        )).sort(OrderNameAsc(organizations))}
+                          <option className="colorBlack"  key={organizations.name} value={"todas"}>
+                          Mostrar todas las organizaciones
+                          </option>
+                    </select>
+                      
+                    <p className={ViewAdministratorOptions()} >  
+                      <Link to={'/OrganizationsCreate'} className="m-3 btn btn-success "role="button" > Agregar </Link>
+                    </p> 
+              </div> 
+                
+              <div className="container">
+                {showOrganizations()}
+              </div>
+
+            </div>
+          </>
+        } 
+      </div>
   </>
   );
 };

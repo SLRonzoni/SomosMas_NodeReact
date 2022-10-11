@@ -36,7 +36,6 @@ function WordSearchResults() {
     }
   };
   findCategoryName();
- 
 
  // FIND DATA USERS  ( added data users to comments)
   const findUserData = async () => {
@@ -65,65 +64,64 @@ function WordSearchResults() {
     finalNews();
   }, [keyword]);
 
-console.log('newsComplete',newsComplete)
- 
-
   return (
     <>
       <div className='container centrar'>
-        
         {newsComplete.length===0 && <h5>No se hallaron resultados</h5>}
-
         {newsComplete.map((oneResult) => {
-          
           return (
-            <div className='containerSearchNews' key={oneResult.id}>
-              
-              <div>
-                <br></br>
-                <div className='displayFlex'>
-                  <div className='col-6 marginLeft40px'>
-                    <img
-                      className='imgSearchNews'
-                      src={oneResult.image}
-                      alt='Imagen'
-                    ></img>
-                  </div>
+            <div className="container centrar">
+              <div className='containerSearchNews' key={oneResult.id}>
+                
+                <div>
+                  <br></br>
+                  <div className='displayFlex'>
 
-                  <div className='col-6 marginRigth-80px '>
-                    <div>
-                      <h2> {oneResult.name} </h2>
-                      <h5 className='searchAlign '>( {oneResult.categoryName} )</h5>
+                    <div className='col-6 marginLeft40px'>
+                      <img
+                        className='imgSearchNews'
+                        src={oneResult.image}
+                        alt='Imagen'
+                      ></img>
+                    </div>
+
+                    <div className='col-6 marginRigth-80px '>
+                      <div>
+                        <h2> {oneResult.name} </h2>
+                        <h5 className='searchAlign '>( {oneResult.categoryName} )</h5>
+                        <br></br>
+                        <h4 className='searchAlign '> {oneResult.content}</h4>
+                      </div>
+
                       <br></br>
-                      <h4 className='searchAlign '> {oneResult.content}</h4>
+                      <div>
+                        {oneResult.comments.length===0 && 
+                            <div className="userComments" >
+                              <span>sin comentarios</span>
+                            </div>
+                        }
+
+                        {oneResult.comments.map((oneComment) => {
+                          return (
+                            <div className="userComments" key={oneComment.id}>
+                              <div  >
+                                <img className='imageComment' src={oneComment.userImage} alt="user"></img>
+                                <span className=''> {oneComment.firstName} {oneComment.lastName}</span>
+                              </div>
+                              <div>                              
+                                <br></br>
+                                <span className=''>{oneComment.body}</span>
+                                <span className='dateComment'> {formatDate(new Date(oneComment.createdAt))}</span>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
 
-                    <br></br>
-                    <div>
-                      {oneResult.comments.length===0 && 
-                          <div className="userComments" >
-                            <span>sin comentarios</span>
-                          </div>
-                      }
-
-                      {oneResult.comments.map((oneComment) => {
-                        return (
-                          <div className="userComments" key={oneComment.id}>
-                            <div  >
-                              <img className='imageComment' src={oneComment.userImage} alt="user"></img>
-                              <span className=''> {oneComment.firstName} {oneComment.lastName}</span>
-                            </div>
-                            <div>                              
-                              <br></br>
-                              <span className=''>{oneComment.body}</span>
-                              <span className='dateComment'> {formatDate(new Date(oneComment.createdAt))}</span>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           );

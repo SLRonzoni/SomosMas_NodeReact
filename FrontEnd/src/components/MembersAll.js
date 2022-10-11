@@ -1,4 +1,4 @@
-import React, {Fragment,useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import './styles/card.css';
@@ -122,8 +122,8 @@ const MembersAll = (props) => {
 
 
   return (
-    <Fragment>
-      <Container>  
+    <>
+      <div className="container center">  
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
@@ -136,34 +136,37 @@ const MembersAll = (props) => {
         </div>
        
         <div className="divBtnDesplegableOrganizations" >
-            <span > Buscar por nombre</span>
-              <select
-                type="text"
-                name="name"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
-              >  
-                {members.map(oneMember => (
-                  <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
-                    {oneMember.name}
-                  </option>
-                )).sort(OrderNameAsc(members))}
-                <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
-              </select>
+            <span> 
+              Buscar por nombre
+            </span>
+            <select
+              type="text"
+              name="name"
+              onChange={changesId}
+              className="m-3 selectBtnDesplegable form-select "
+            >  
+              {members.map(oneMember => (
+                <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
+                  {oneMember.name}
+                </option>
+              )).sort(OrderNameAsc(members))}
+              <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
+            </select>
               
-              <p className={ViewAdministratorOptions()} >  
-                <Link to={'/MembersCreate'} className="m-3 btn btn-success "
-                  role="button" > Agregar </Link>
-              </p> 
+            <p className={ViewAdministratorOptions()} >  
+              <Link to={'/MembersCreate'} className="m-3 btn btn-success "
+                role="button" > Agregar </Link>
+            </p> 
         </div>  
       </div>
           
-      {showMembers()}
-          
+      <div className="container">
+        {showMembers()}
+      </div>    
     </>
     } 
-    </Container>
-  </Fragment>
+    </div>
+  </>
       
   );
 };

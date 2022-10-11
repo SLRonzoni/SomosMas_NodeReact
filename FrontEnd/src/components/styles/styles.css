@@ -37,11 +37,27 @@ body{
 }
 
 .containerSearchNews{
-    height: 34rem;
+    height: auto;
     width: 85rem;
     margin: auto;
     margin-top: -1rem;
-    margin-bottom: -5rem;
+    padding: 1rem;
+    border-bottom: 1px solid grey;
+}
+
+
+.containerItemSearchNews{
+    display:flex;
+    position:relative;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 3px;
+    margin-top: 2%;
+    margin-bottom: 3%;  
+    height: auto;
+   
 }
 
 .containerSlideSize{
@@ -58,6 +74,7 @@ body{
     margin-top: 3rem;
     padding: 20px;
     background-color: lightgrey;
+    border-radius: 15px;
 }
 
 .containerMembersAllCard{
@@ -320,13 +337,11 @@ h1{
 .widthTestimonialsAndComments{
     width:50rem ;
     margin-left: 4rem;
-    /* background-color:whitesmoke; */
     padding: 7px 5px 5px 12px;
 }
 
 .buttonLoginGoogle{
     color:'black'!important;
-   
 }
 
 /* .btn-redes{
@@ -620,9 +635,15 @@ h1{
 }
 
 .rowTestimonialsAndComments{  
-    width:35rem ;   
+    width:37rem ;   
     margin-left: 2rem;
-    background-color:rgb(212, 218, 245);
+    box-shadow: 0px 0px 15px -5px;
+    color:#fff;
+}
+
+.pTestimonialsPublic{
+    width: 31rem;
+    height: auto;
 }
 
 /*
@@ -795,6 +816,7 @@ h1{
     font-size: 16px;
     border-radius: 25px;
     font-size: 17px !important;
+    margin-top:1.4rem;
 } 
 
 /*

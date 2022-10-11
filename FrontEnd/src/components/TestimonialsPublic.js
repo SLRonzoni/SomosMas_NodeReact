@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import axiosClient from '../configuration/axiosClient';
 import {formatDate} from './helpers/FormatDate';
+import "./styles/styles.css";
 
 function TestimonialsPublic () {
 
@@ -33,15 +34,15 @@ function TestimonialsPublic () {
                             <div className='col-3 '>
                                 <img className="imgTestimonialsAndComments  " src={oneResult.image}alt="ImagenTestimonio"></img> 
                             </div>
-                            <div className='col- widthTestimonialsAndComments '>
-                                
-                                <div >
-                                    <h3 className='colorBlack'>{oneResult.name} </h3>
+                            
+                            <div className=' widthTestimonialsAndComments '>
+                                <div className='pTestimonialsPublic'>
+                                    <h3>{oneResult.name} </h3>
                                 </div>   
-                                <div>
-                                    <p className="colorBlack"> {oneResult.content}</p>  
+                                <div >
+                                    <p className='pTestimonialsPublic'> {oneResult.content}</p>  
                                     <br></br> 
-                                    <p className="colorBlack" >Fecha : {formatDate(new Date(oneResult.createdAt))}</p>                       
+                                    <p className='datecomment margenEnd'>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>                       
                                 </div>
                             </div>
                         </div>

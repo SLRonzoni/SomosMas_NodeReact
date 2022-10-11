@@ -26,10 +26,10 @@ function NewsAllPublic() {
       <div className='container centrar'>
         {news.map((oneResult) => {
           return (
-            <div className='containerSearchNews' key={oneResult.id}> 
-              <div>
-                <br></br>
+            <div className="container centrar">
+              <div className='containerSearchNews' key={oneResult.id}>               
                 <div className='displayFlex'>
+
                   <div className='col-6 marginLeft40px'>
                     <img
                       className='imgSearchNews'
@@ -45,8 +45,9 @@ function NewsAllPublic() {
                       <h4 className='searchAlign '> {oneResult.content}</h4>
                       <br></br>
                       <span className='dateComment'>Actualizada : {formatDate(new Date(oneResult.createdAt))}</span>
-                    </div>
+                    </div> 
                   </div>
+
                 </div>
               </div>
             </div>

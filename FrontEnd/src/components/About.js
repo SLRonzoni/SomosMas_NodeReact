@@ -12,9 +12,8 @@ const About = () => {
         
         <div className='cardContainerAbout'>
             <br></br>
-            <br></br>
             <h2 className='cardTitle centerText'>Nosotros</h2>
-            <div className='cardContent'>
+            <div className='cardContentAbout'>
                 <p>
                     Desde 1997 en Somos Más trabajamos con los chicos y chicas,
                     mamás y papás, abuelos y vecinos del barrio La Cava generando
@@ -49,9 +48,8 @@ const About = () => {
 
         <div className='cardContainerAboutHorizontally'>
             <br></br>
-            <br></br>
             <h2 className='cardTitle centerText'>Misión</h2>
-            <div className='cardContent'>
+            <div className='cardContentAbout'>
                 <p>
                     Trabajar articuladamente con los distintos aspectos de la vida de las
                     familias, generando espacios de desarrollo personal y familiar,
@@ -64,9 +62,8 @@ const About = () => {
         <br></br>
         <div className='cardContainerAboutHorizontally'>
             <br></br>
-            <br></br>
             <h2 className='cardTitle centerText'>Visión</h2>
-            <div className='cardContent'>
+            <div className='cardContentAbout'>
                 <p>
                     Mejorar la calidad de vida de niños y familias en situación de
                     vulnerabilidad en el barrio " La Tranquerita " , otorgando un cambio de rumbo

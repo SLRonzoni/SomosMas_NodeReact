@@ -148,13 +148,14 @@ const EditUsers = ({match, history}) =>{
   //FORM
   return (
     <>
+    <br></br>
     <Formik  
          initialValues={initialValues}           
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="container-lg col-6 col-md-12 bgGrey "onSubmit={handleSubmit} > 
+        <form className="container-lg col-6 col-md-12 containerBorderWhiteBgGrey "onSubmit={handleSubmit} > 
         <br></br><br></br>
             <h4 className='marginLeft10px '>Mi Perfil  
               <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>

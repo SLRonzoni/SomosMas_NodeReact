@@ -28,6 +28,7 @@ Modificaciones al proyecto original ( back end ):
   * NEWS, se modificó condicion en linea 19
   * NEWS, se crearon servicios  getByName, getByDate, getByCategory
   * NEWS, se adaptaron servicios create y update, para el manejo de imagenes
+  * NEWS, se standarizaron respuestas catch error y se cambió respuesta servicio getAllCommentsOfNews
   * ORGANIZATIONS, se agregaron a los servicios facebook, instagram y linkedin
   * ORGANIZATIONS, se agregaron atributos a ruta getById
   * USERS, se modificó el servicio update para que tomara imagenes y hasheara password

@@ -13,17 +13,18 @@ import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
   return (
-    <div>
-      <br></br>
+    
       <div className="cardContainerOrganization" >
-        <div className='imageContainer'> 
+        
+        <div className='imageContainerOrganization'> 
           <img className="cardImageOrganization" src={image}  alt="organization" ></img>
         </div>
-        <div className='cardContent'>
+       
+        <div className='cardContentOrganization'>
           <div className="cardTitle centerText"><em>{name}</em></div>
           <br></br>
-          <p className=''><u> Domicilio</u> : {address}</p>
-          <div>        
+          <p className='centerText'>Domicilio : {address}</p>
+          <div className='marginLeft25px'>        
               <img className="iconSocialNetworksOrganization "src={whatsapp} alt="telefono"></img> <span className="colorTransparent"></span> {phone}
               <span> <br></br></span>
               <img className="iconSocialNetworksOrganization "src={emailLogo} alt="email"></img> <span ></span>{email}
@@ -33,7 +34,8 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
               <img className="iconSocialNetworksOrganization "src={instagramLogo} alt="logoInstagram" ></img> <span ></span>{instagram}
               <span><br></br></span>
               <img className="iconSocialNetworksOrganization  bgWhite"src={linkedinLogo} alt="logoLinkedin"></img> <span ></span>{linkedin}
-          </div>  
+          </div> 
+
           <hr></hr>
           <div className='fixedSizeCardWelcomeOrganization'><> Hola !, </> {welcomeText}</div>
           <br></br>
@@ -60,7 +62,6 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
             </div>
         </div>
       </div>
-    </div>
   );
 };
 export default OrganizationsAllCard;

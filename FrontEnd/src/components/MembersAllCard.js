@@ -20,7 +20,6 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
               <img className="cardImageMember" src={image} alt="colaborador"></img>
             </div>
             <div className='cardContentMember'>
-              <br></br>
               <div className="cardTitle centerText"><em>{name}</em></div>
               <br></br>
               <p className="fixedSizeCardMember centerText"><b> </b> {description}</p>

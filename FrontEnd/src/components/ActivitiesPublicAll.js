@@ -34,6 +34,8 @@ const ActivitiesPublicAll = (props) => {
 
   return (
     <>
+    <div className="container centerText">
+  
       <div className="containerSlideSize" >
       {/* si aun está cargando actividades*/}
       {!activities &&  <LoadingBox/> }
@@ -78,6 +80,7 @@ const ActivitiesPublicAll = (props) => {
           </div>
         </>
         }
+    </div>
     </div>
     </>
   );
