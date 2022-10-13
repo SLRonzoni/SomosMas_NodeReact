@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import ContactsAllLine from "./ContactsAllLine";
 import Swal from "sweetalert2";
 import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { OrderNameAsc } from "./helpers/Order";
 
 const ContactsAll = (props) => { 
@@ -117,8 +118,8 @@ const ContactsAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
-    <Fragment>
-      <Container>
+    <>
+     <div className="container ">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -138,7 +139,6 @@ const ContactsAll = (props) => {
         <div className="" >
           
           <div >
-            <p className="pBtnDesplegable " >Buscar por nombre del contacto</p>
               <select
                 type="text"
                 name="name"
@@ -150,28 +150,33 @@ const ContactsAll = (props) => {
                     {oneContact.name}
                   </option>
                 )).sort(OrderNameAsc(contacts))}
-                <option className="colorBlack" value={"todos"}>Mostrar todos los contactos</option>
+                <option className="colorBlack" value={"todos"}>Mostrar contactos (por nombre)</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table bgGrey table-responsive table-bordered ">
-        <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Contacto </th>
-            <th className="tituloItem "> Teléfono </th>
-            <th className="tituloItem "> Email </th>
-            <th className="tituloItem centerText"> Creado</th>
-          </tr>
-        </thead>
-        {showContacts()}
-      </table>
+        <div>
+          <table className="table bgGrey table-responsive table-bordered ">
+            <thead>
+              <tr>
+                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem "> Contacto </th>
+                <th className="tituloItem "> Email </th>
+                <th className="tituloItem "> Teléfono </th>
+                <th className="tituloItem centerText"> Creado</th>
+                <th className="invisible"></th>
+              </tr>
+            </thead>
+
+            {showContacts()}
+
+          </table>
+        </div>
       </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      </div>
+    </>
   );
 };
 

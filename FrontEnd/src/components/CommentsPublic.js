@@ -49,7 +49,8 @@ function CommentsPublic () {
       }
     };
     getComments();
-         
+        
+    
     //FIND DATA USERS  ( added data users to comments)
     const findUserData = async () => {
       for (let i = 0; i < news.length; i++) {

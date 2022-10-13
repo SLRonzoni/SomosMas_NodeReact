@@ -1,8 +1,9 @@
 import React from "react";
-import "./styles/styles.css"
+import "./styles/styles.css";
+import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
 import { Link, NavLink} from "react-router-dom";
-import { Navbar,Container,Nav,NavDropdown, NavbarBrand } from "react-bootstrap";
+import { Navbar,Nav,NavDropdown, NavbarBrand } from "react-bootstrap";
 import Searcher from "./Searcher";
 import imagen from "./images/manos_logo.jpg";
 
@@ -22,10 +23,10 @@ export default function Header () {
       }   
      
   return(
-      <Container >  
-        <Navbar  className="navBar" collapseOnSelect expand="lg" variant="dark" fixed="top">
+      <div className="container">  
+        <Navbar  className="navBar" collapseOnSelect expand="sm" variant="dark" fixed="top">
           
-          <Navbar.Collapse id="responsive-navbar-nav" >
+          <Navbar.Collapse  >
             <Navbar.Text className="colorWhite" >
               Somos Más Ong <img className="handsLogo" src={imagen} alt="manosNiños"></img>
             </Navbar.Text >
@@ -106,7 +107,7 @@ export default function Header () {
             </Nav>
           </Navbar.Collapse>
             </Navbar>
-        </Container> 
+        </div> 
        
     
   );

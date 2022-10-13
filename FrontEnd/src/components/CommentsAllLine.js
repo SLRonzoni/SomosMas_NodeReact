@@ -9,8 +9,8 @@ const CommentsAllLine = ({id, body, user_id,user_firstName, user_lastName, news_
         <tr>
             <td >{id}</td>
             <td >{body}</td>
-            <td >{user_id} - {user_firstName} {user_lastName}</td>
             <td >{news_id}</td>
+            <td >{user_id} - {user_firstName} {user_lastName}</td>
             <td className="centerText" >{formatDate(new Date(create))}</td>
             <td className="centerText" >{formatDate(new Date(update))}</td>
             

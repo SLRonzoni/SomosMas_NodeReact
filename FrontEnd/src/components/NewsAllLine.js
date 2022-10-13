@@ -8,8 +8,8 @@ const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove
     return (
         <tr>
             <td >{id}</td>
-            <td >{name}</td>
             <td className="imageChar centerText" ><img src={image}  alt="newsImage"></img> </td>
+            <td >{name}</td>
             <td >{categoryId}</td>
             <td >{content}</td>
             <td className="centerText" >{formatDate(new Date(create))}</td>

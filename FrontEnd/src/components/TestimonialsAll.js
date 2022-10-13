@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import TestimonialsAllLine from "./TestimonialsAllLine";
 import Swal from "sweetalert2";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -122,24 +123,18 @@ const TestimonialsAll = (props) => {
   };
 
   return (
-    <Fragment >
-      <Container >
+    <>
+     <div className="container ">  
       {/* si aun está cargando los testimonios*/}
       {!testimonials &&  <LoadingBox/> }
 
        {/* solo renderiza si hay testimonios*/}
       {testimonials && 
       <>
-      <div>
-      <div >
-        <h1 >Testimonios</h1>
-        <p>{}</p>
-      </div>
-      <br></br>      
+      <div className="centerText">
+        <h3 className="ContainerTitle" >Listado de Testimonios</h3>  
         <div className="displayFlex centerText" >
-          
           <div>
-            <p className="pBtnDesplegable" >Buscar testimonios por nombre</p>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
                 type="text"
@@ -151,12 +146,11 @@ const TestimonialsAll = (props) => {
                     {oneTestimonial.name}
                   </option>
                 )).sort(OrderNameAsc(testimonials))}
-                <option className="colorBlack" value={"todos"}>Mostrar todos los testimonios</option>
+                <option className="colorBlack" value={"todos"}>Mostrar testimonios (por nombre)</option>
               </select>
           </div> 
           
           <div >
-            <p className="pBtnDesplegable " >Buscar testimonios por fecha de creación</p>
               <select
                 type="text"
                 name="name"
@@ -168,33 +162,38 @@ const TestimonialsAll = (props) => {
                     {formatDate(new Date(oneTestimonial.createdAt))}
                   </option>
                 ))}
-                <option className="colorBlack" value={"todos"}>Mostrar todos los testimonios</option>
+                <option className="colorBlack" value={"todos"}>Mostrar testimonios (por creación)</option>
               </select>
           </div>
         </div> 
 
-      <table className="table bgGrey table-responsive table-bordered" >
-        <thead >
-          <tr >
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Testimonio </th>
-            <th className="tituloItem "> Imágen </th>
-            <th className="tituloItem "> Contenido </th>
-            <th className="tituloItem centerText"> Creado</th>
-            <th className="tituloItem centerText"> Actualizado</th>
+        <div>
+          <table className="table table-responsive table-bordered bgGrey" >
+            <thead >
+              <tr >
+                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem centerText"> Imágen </th>
+                <th className="tituloItem "> Testimonio </th>
+                <th className="tituloItem "> Contenido </th>
+                <th className="tituloItem centerText"> Creado</th>
+                <th className="tituloItem centerText"> Actualizado</th>
+                <th className="tituloItem centerText"></th>
 
-            {/* <th className="centerText" ><Link to={'/TestimonialsCreate'} className="m-1 mr-md-2 btn btn-success"
-                  role="button" > Agregar </Link> 
-            </th> */}
-          </tr>
-        </thead>
-        {showTestimonials()}
-      </table>
+                {/* <th className="centerText" ><Link to={'/TestimonialsCreate'} className="m-1 mr-md-2 btn btn-success"
+                      role="button" > Agregar </Link> 
+                </th> */}
+              </tr>
+            </thead>
+
+            {showTestimonials()}
+
+          </table>
+        </div>
       </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      </div>
+    </>
   );
 };
 

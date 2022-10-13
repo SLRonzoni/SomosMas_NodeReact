@@ -1,6 +1,7 @@
 .containerTitle {
-    margin-top:1.5rem;
-    font-size: 16px;
+    margin-top:1rem;
+    font-size: 18px;
+    margin: auto;
 }
 
 .cardContainer{
@@ -39,22 +40,21 @@
     display: flex;
     flex-direction: column; 
     position: relative;
-    justify-content: center;
     width: 300px;
-    height: 47rem;
+    height: 50rem;
     box-shadow: 0px 0px 15px -5px;
-    margin:1.5rem 0.5rem 1rem 1rem;
+    margin:0rem 1rem 1.5rem 1rem;
 }
 
 .cardContainerOrganization{
     display: flex;
     flex-direction: column; 
     position: relative;
-    justify-content: center;
     width: 300px;
-    height: 50rem;
+    height: 58.5rem;
     box-shadow: 0px 0px 15px -5px;
-    margin:1rem 0.5rem 1rem 1rem;
+    margin:0rem 1.5rem 1.2rem 1rem;
+    padding:1rem;
 }
 
 .cardContainerAbout{
@@ -84,23 +84,25 @@
 }
 
 .imageContainerOrganization {
-    height: 22rem;
+    height: 19.5rem;
     width: 100%;
+    margin-bottom:1.5rem ;
     display:flex;
     align-items: center;
+    justify-content:center;
 }
 
 .imageContainerMember {
-    height: 20.4rem;
+    height: 19.5rem;
     width: 100%;
-    margin:-5.8rem -0.8rem 0rem -0.8rem ;
-    display:flex;
+    margin-bottom:1.5rem ;
+    display:flex; 
     align-items: center;
+    justify-content:center;
 }
 
 .cardContentOrganization{
-    margin:1rem;
-    margin-top: 0.6rem;
+    margin-top: -1rem;
 }
 
 .cardContentAbout{
@@ -118,12 +120,12 @@
 
 .cardImageMember{        
     height:auto; 
-    width: 100%; 
+    width: 92%; 
 }
 
 .cardImageOrganization{        
-    height:14.3rem; 
-    width:100%; 
+    height:auto; 
+    width:92%; 
 }
 
 .cardImageAbout{        
@@ -151,7 +153,6 @@
 .fixedSizeCardOrganization{
     height:10rem;
 }
-
 
 .fixedSizeCardWelcomeOrganization{
     height:6rem;

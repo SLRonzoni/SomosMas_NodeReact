@@ -1,10 +1,11 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
 import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -75,8 +76,8 @@ const RolesAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
-    <Fragment>
-      <Container>
+    <>
+      <div className="container ">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -86,45 +87,49 @@ const RolesAll = (props) => {
        {/* solo renderiza si hay roles*/}
       {roles && 
       <>
-      <div>
-        <h1 >Roles</h1>
-        <p>{}</p>
-      </div>
-      <br></br>      
-
-      <table className="table bgGrey table-responsive table-bordered">
-        <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Nombre </th>
-            <th className="tituloItem "> Descripción </th>
-            <th className="tituloItem centerText"> Creado</th>
-            <th className="tituloItem centerText"> Actualizado</th>
-            <th className="centerText">
-              <Link to={'/roles/create'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-        {roles.map((oneRole) => ( 
-          <tr key={oneRole.id}>
-            <td >{oneRole.id}</td>
-            <td >{oneRole.name}</td>
-            <td >{oneRole.description}</td>
-            <td className="centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
-            <td className="centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
-            <td className=" displayFlex centerText">   
-                <Link to={`/roles/update/${oneRole.id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
-                <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          
-            </td>  
-          </tr>
-           )).sort(OrderNameAsc(roles))}
-        </tbody>
-      </table>
+       <div className="centerText">
+          <br></br>
+          <h3 className="containerTitle">Listado de Roles</h3>
+          <br></br>
+          <div>
+            <table className="table  table-responsive table-bordered bgGrey">
+              <thead>
+                <tr>
+                  <th className="tituloItem centerText "> Id </th>
+                  <th className="invisible ">  </th>
+                  <th className="tituloItem "> Role </th>
+                  <th className="tituloItem "> Descripción </th>
+                  <th className="tituloItem centerText"> Creado</th>
+                  <th className="tituloItem centerText"> Actualizado</th>
+                  <th className="centerText">
+                    <Link to={'/roles/create'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+              {roles.map((oneRole) => ( 
+                <tr key={oneRole.id}>
+                  <td >{oneRole.id}</td>
+                  <td className="invisible"></td>
+                  <td >{oneRole.name}</td>
+                  <td >{oneRole.description}</td>
+                  <td className="centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
+                  <td className="centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
+                  <td className=" displayFlex centerText">   
+                      <Link to={`/roles/update/${oneRole.id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
+                      <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          
+                  </td>  
+                </tr>
+                )).sort(OrderNameAsc(roles))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      
+      </div>
+    </>
   );
 };
 

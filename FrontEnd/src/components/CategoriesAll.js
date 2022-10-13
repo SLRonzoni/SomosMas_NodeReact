@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import CategoriesAllLine from './CategoriesAllLine';
 import Swal from "sweetalert2";
 import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { OrderNameAsc } from "./helpers/Order";
 
 const CategoriesAll = (props) => { 
@@ -118,8 +119,8 @@ const CategoriesAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
-    <Fragment>
-      <Container>
+    <>
+      <div className="container">
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -138,7 +139,6 @@ const CategoriesAll = (props) => {
           <div className="" >
             
             <div >
-              <p className="pBtnDesplegable " >Buscar por nombre de categoría</p>
                 <select
                   type="text"
                   name="categoryId"
@@ -150,33 +150,37 @@ const CategoriesAll = (props) => {
                       {oneCategory.name}
                     </option>
                   )).sort(OrderNameAsc(categories))}
-                  <option className="colorBlack"value={"todas"}>Mostrar todas las categorías</option>
+                  <option className="colorBlack"value={"todas"}>Mostrar categorías (por nombre)</option>
                 </select>
             </div> 
           </div> 
 
-        <table className="table bgGrey table-responsive table-bordered">
-          <thead>
-            <tr>
-              <th className="tituloItem centerText "> Id </th>
-              <th className="tituloItem "> Categoría </th>
-              <th className="tituloItem centerText"> Imágen </th>
-              <th className="tituloItem "> Descripción </th>
-              <th className="tituloItem centerText"> Creado</th>
-              <th className="tituloItem centerText"> Actualizado </th>
+        <div>
+          <table className="table table-responsive table-bordered bgGrey">
+            <thead>
+              <tr>
+                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem centerText"> Imágen </th>
+                <th className="tituloItem "> Categoría </th>
+                <th className="tituloItem "> Descripción </th>
+                <th className="tituloItem centerText"> Creado</th>
+                <th className="tituloItem centerText"> Actualizado </th>
 
-              <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
-                    role="button" > Agregar </Link> 
-              </th>
-            </tr>
-          </thead>
-          {showCategories()}
-        </table>
+                <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
+                      role="button" > Agregar </Link> 
+                </th>
+              </tr>
+            </thead>
+
+            {showCategories()}
+
+          </table>
+        </div>
       </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      </div>
+    </>
   );
 };
 

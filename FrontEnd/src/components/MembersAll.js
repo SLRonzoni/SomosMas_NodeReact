@@ -8,7 +8,6 @@ import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import { OrderNameAsc } from "./helpers/Order";
-import { Container } from "react-bootstrap";
 
 const MembersAll = (props) => { 
 
@@ -123,28 +122,22 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="container center">  
+      <div className="container ">  
       {/* si aun está cargando miembros*/}
       {!members &&  <LoadingBox/> }
 
        {/* solo renderiza si hay miembros*/}
       {members && 
       <>
-      <div>
-        <div className="containerTitle centerText">
-          <h3 >Colaboradores</h3>
-        </div>
-       
-        <div className="divBtnDesplegableOrganizations" >
-            <span> 
-              Buscar por nombre
-            </span>
+      <div className="centerText">
+        <h2 className="containerTitle">Colaboradores</h2>       
+        <div className="divBtnDesplegableOrganizations " >
             <select
               type="text"
               name="name"
               onChange={changesId}
-              className="m-3 selectBtnDesplegable form-select "
-            >  
+              className="m-1 selectBtnDesplegable form-select "
+            >
               {members.map(oneMember => (
                 <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
                   {oneMember.name}
@@ -153,14 +146,14 @@ const MembersAll = (props) => {
               <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
             </select>
               
-            <p className={ViewAdministratorOptions()} >  
-              <Link to={'/MembersCreate'} className="m-3 btn btn-success "
+            <span className={ViewAdministratorOptions()} >  
+              <Link to={'/MembersCreate'} className="m-1 btn btn-success "
                 role="button" > Agregar </Link>
-            </p> 
+            </span> 
         </div>  
       </div>
-          
-      <div className="container">
+     
+      <div className="container centerText">
         {showMembers()}
       </div>    
     </>

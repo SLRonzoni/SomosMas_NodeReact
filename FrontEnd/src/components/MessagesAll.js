@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import MessagesAllLine from "./MessagesLineAll";
 import Swal from "sweetalert2";
 import { Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -126,8 +127,8 @@ const MessagesAll = (props) => {
   let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
-    <Fragment>
-      <Container>
+    <>
+      <div className="container ">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -137,17 +138,11 @@ const MessagesAll = (props) => {
        {/* solo renderiza si hay mensajes*/}
       {messages && 
       <>
-      <div>
-      <br></br>
-      <div>
-        <h1 >Listado de Mensajes</h1>
-        <p>{}</p>
-      </div>
-      <br></br>      
-        <div className="displayFlex " >
-          
+      <div className="centerText">
+        <br></br>
+        <h3 className="containerTitle">Listado de Mensajes</h3>     
+        <div className="displayFlex centerText" >
           <div>
-            <p className="pBtnDesplegable" >Buscar mensajes por email</p>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
                 type="text"
@@ -159,12 +154,11 @@ const MessagesAll = (props) => {
                     {oneMessage.email}
                   </option>
                 )).sort(OrderNameAsc(messages))}
-                <option className='colorBlack'value={"todos"}>Mostrar todos los mensajes</option>
+                <option className='colorBlack'value={"todos"}>Mostrar todos los emails</option>
               </select>
           </div> 
           
           <div >
-            <p className="pBtnDesplegable " >Buscar mensajes por fecha</p>
               <select
                 type="text"
                 name="name"
@@ -176,28 +170,33 @@ const MessagesAll = (props) => {
                     {formatDate(new Date(oneMessage.createdAt))}
                   </option>
                 ))}
-                <option className='colorBlack'value={"todos"}>Mostrar todos los mensajes</option>
+                <option className='colorBlack'value={"todos"}>Mostrar todas las fechas</option>
               </select>
           </div> 
         </div> 
 
-      <table className="table bgGrey table-responsive table-bordered">
-        <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Contacto </th>
-            <th className="tituloItem "> Email </th>
-            <th className="tituloItem "> Mensaje </th>
-            <th className="tituloItem centerText"> Recibido</th>
-          </tr>
-        </thead>
-        {showMessages()}
-      </table>
+        <div>
+          <table className="table  table-responsive table-bordered bgGrey">
+            <thead>
+              <tr>
+                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem "> Contacto </th>
+                <th className="tituloItem "> Email </th>
+                <th className="tituloItem "> Mensaje </th>
+                <th className="tituloItem centerText"> Recibido</th>
+                <th className="invisible"></th>
+              </tr>
+            </thead>
+
+            {showMessages()}
+
+          </table>
+        </div>
       </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      </div>
+    </>
   );
 };
 

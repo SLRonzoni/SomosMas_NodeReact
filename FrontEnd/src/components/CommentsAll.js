@@ -1,10 +1,11 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import CommentsAllLine from './CommentsAllLine';
 import Swal from "sweetalert2";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { OrderNameAsc } from "./helpers/Order";
 
 const CommentsAll = (props) => { 
@@ -30,19 +31,18 @@ const CommentsAll = (props) => {
       });  
   };
 
-  //FIND USER NAME ( added name to comments state)
+  // //FIND USER NAME ( added name to comments state)
   const getCommentsWithNames=async () => {   
-    for(let j=0;j<commentsOnly.length;j++) {
-      let idUser=commentsOnly[j].user_id
-      let resp=await axiosClient.get(`/users/${idUser}`)
-        if(resp.data.id===idUser){
-          commentsOnly[j].user_firstName=resp.data.firstName
-          commentsOnly[j].user_lastName=resp.data.lastName            
-        } 
-        setCommentsWitNames(commentsOnly) 
-    }
+  //   for(let j=0;j<commentsOnly.length;j++) {
+  //     let idUser=commentsOnly[j].user_id
+  //     let resp=await axiosClient.get(`/users/${idUser}`)
+  //       if(resp.data.id===idUser){
+  //         commentsOnly[j].user_firstName=resp.data.firstName
+  //         commentsOnly[j].user_lastName=resp.data.lastName            
+  //       } 
+         setCommentsWitNames(commentsOnly) 
+  //   }
   };
-
 
   useEffect(() => {
     getCommentsOnly()
@@ -136,11 +136,9 @@ console.log('commentsCOMPLETO',commentsWithNames)
     );
   };
 
-
   return (
     <>
-    <Fragment>
-      <Container>
+    <div className="container ">  
       
       {/* si aun está cargando comentarios*/}
       {!commentsWithNames &&  <LoadingBox/> }
@@ -148,16 +146,10 @@ console.log('commentsCOMPLETO',commentsWithNames)
        {/* solo renderiza si hay comemtarios*/}
       {commentsWithNames &&
       <>
-      <div>
-      <div className="centerText containerTitle">
-        <h3 >Comentarios</h3>
-        <p>{}</p>
-      </div>
-      <br></br>      
-        <div className="displayFlex" >
-          
+      <div className="centerText">
+        <h3 className="containerTitle">Listado de Comentarios</h3>  
+        <div className="displayFlex centerText" >
           <div >
-            <p className="pBtnDesplegable " >Buscar comentarios por usuario</p>
               <select
                 type="text"
                 name="user_id"
@@ -168,30 +160,34 @@ console.log('commentsCOMPLETO',commentsWithNames)
                   <option className="colorBlack" key={oneComment.user_id} value={oneComment.user_id}>
                    {oneComment.user_id} {oneComment.user_firstName} {oneComment.user_lastName}
                   </option>
-                ))}
-                <option className="colorBlack" value={"todos"}>Mostrar todos los comentarios</option>
+                )).sort(OrderNameAsc(commentsWithNames))}
+                <option className="colorBlack" value={"todos"}>Mostrar comentarios (por usuario)</option>
               </select>
           </div> 
         </div> 
  
-      <table className="table table-responsive table-bordered bgGrey">
-        <thead>
-          <tr>
-            <th className="tituloItem centerText "> Id </th>
-            <th className="tituloItem "> Comentario </th>
-            <th className="tituloItem centerText"> Usuario </th>
-            <th className="tituloItem centerText"> Noticia </th>
-            <th className="tituloItem centerText"> Creado</th>
-            <th className="tituloItem centerText"> Actualizado </th>
-          </tr>
-        </thead>
-        {showComments()}
-      </table>
+ 
+        <div>
+          <table className="table table-responsive table-bordered bgGrey">
+            <thead>
+              <tr>
+                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem "> Comentario </th>
+                <th className="tituloItem centerText"> Noticia </th>
+                <th className="tituloItem centerText"> Usuario </th>
+                <th className="tituloItem centerText"> Creado</th>
+                <th className="tituloItem centerText"> Actualizado </th>
+              </tr>
+            </thead>
+
+            {showComments()}
+
+          </table>
+        </div>
       </div>
       </>
       } 
-      </Container>
-    </Fragment>
+      </div>
     </>
   );
 };

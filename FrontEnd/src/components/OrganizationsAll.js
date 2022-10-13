@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import "./styles/card.css";
+import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
@@ -124,22 +125,16 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-      <div className="container center">
+      <div className="container">
         {/* si aun está cargando las organizaciones*/}
         {!organizations &&  <LoadingBox/> }
 
         {/* solo renderiza si hay organizaciones*/}
         {organizations && 
           <>
-            <div>
-              <div className="containerTitle centerText">
-                <h3  >Organizaciones que nos acompañan</h3>
-              </div>
-              
+            <div className="centerText">
+              <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
               <div className="divBtnDesplegableOrganizations">
-                    <span> 
-                      Buscar por nombre
-                    </span>
                     <select
                           type="text"
                           name="name"
@@ -151,25 +146,24 @@ const OrganizationsAll = (props) => {
                             {oneOrganization.name}
                           </option>
                         )).sort(OrderNameAsc(organizations))}
-                          <option className="colorBlack"  key={organizations.name} value={"todas"}>
-                          Mostrar todas las organizaciones
-                          </option>
+                          <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
                     </select>
                       
-                    <p className={ViewAdministratorOptions()} >  
-                      <Link to={'/OrganizationsCreate'} className="m-3 btn btn-success "role="button" > Agregar </Link>
-                    </p> 
+                    <span className={ViewAdministratorOptions()} >  
+                      <Link to={'/OrganizationsCreate'} className="m-1 btn btn-success "
+                         role="button" > Agregar </Link>
+                    </span> 
               </div> 
-                
-              <div className="container">
-                {showOrganizations()}
-              </div>
+            </div> 
 
+            <div className="container centerText">
+              {showOrganizations()}
             </div>
           </>
         } 
       </div>
-  </>
+    </>
+    
   );
 };
 

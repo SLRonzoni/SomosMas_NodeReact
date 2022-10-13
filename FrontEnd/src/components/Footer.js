@@ -1,17 +1,18 @@
 import "./styles/styles.css";
+import "./styles/tableMediaScreen.css";
 import whatsapp from './images/whatsapp.jpg';
 import email from './images/email.jpg';
 import mapa from './images/mapa.png';
 import facebook from './images/facebook.jpg';
 import instagram from './images/instagram.jpg';
-import {Navbar, Container,Nav, NavbarBrand} from "react-bootstrap";
+import {Navbar,Nav, NavbarBrand} from "react-bootstrap";
 import ViewRegularUserOptions from "./helpers/ViewRegularUserOptions";
 
 
 function Footer () {
     return (
-     <Container>
-        <Navbar  className="footer" collapseOnSelect expand="md" bg="dark" variant="dark" fixed="bottom">
+      <div className="container"> 
+        <Navbar  className="footer" collapseOnSelect expand="sm" bg="dark" variant="dark" fixed="bottom">
             <Navbar.Collapse>
                 <Nav className="ms-auto">
                     <NavbarBrand className="footerNavBrand"> 
@@ -48,7 +49,7 @@ function Footer () {
                 </Nav> 
             </Navbar.Collapse>
         </Navbar>
-     </Container>
+     </div>
     )
 }
 

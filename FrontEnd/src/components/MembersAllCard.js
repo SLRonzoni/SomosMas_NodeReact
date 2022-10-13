@@ -19,6 +19,7 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
             <div className="imageContainerMember"> 
               <img className="cardImageMember" src={image} alt="colaborador"></img>
             </div>
+            
             <div className='cardContentMember'>
               <div className="cardTitle centerText"><em>{name}</em></div>
               <br></br>
@@ -31,15 +32,16 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
                 <span className='colorBlack'><br></br></span>
                 <img className="iconSocialNetworksOrganization bgWhite" src={linkedin} alt="linkedin"></img><nbsp/> {linkedinUrl}
               </div>
+
+              <br></br>
            
             <div className={ViewAdministratorOptions()}>
-              <hr></hr>
               <div className="displayFlex centerText">
-                <span className=""><b> Ingreso</b> {formatDate(new Date(created))}</span>
-                <nbsp></nbsp>
-                <span className=""><b> Actualizado </b>{formatDate(new Date(updated))}</span>
+                <span><b> Ingreso</b> {formatDate(new Date(created))}</span>
+                <span><b> Actualizado </b>{formatDate(new Date(updated))}</span>
               </div>
-            </div>            
+            </div> 
+
             <div className={ViewAdministratorOptions()}>    
               <div className='centerText'> 
               <br></br>       

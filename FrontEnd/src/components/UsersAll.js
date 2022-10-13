@@ -1,11 +1,12 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/table.css";
+import "./styles/tableMediaScreen.css";
 import UsersAllLine from "./UsersAllLine";
 import Swal from "sweetalert2";
 import { Redirect } from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { Container } from "react-bootstrap";
 import { OrderLastNameAsc } from "./helpers/Order";
 
 
@@ -100,7 +101,7 @@ const UsersAll = (props) => {
     }
   };
 
-  const showUsers = (props) => {
+  const showUsers = () => {
     return (
       <tbody>
         {users.map((oneUser) => (
@@ -125,8 +126,8 @@ const UsersAll = (props) => {
   let token = JSON.parse(sessionStorage.getItem("token")); //para proteger ruta
 
   return (
-    <Fragment>
-      <Container>
+    <>
+      <div className="container ">  
         {/* para proteger ruta , si no hay token, redirige a login*/}
         {!token && <Redirect to='/Login' />}
 
@@ -136,52 +137,49 @@ const UsersAll = (props) => {
         {/* solo renderiza si hay users*/}
         {users && 
          <>
-         <div>
-            <div>
-              <h1>Listado de Usuarios</h1>
-              <p>{}</p>
-            </div>
-            <br></br>
-            <div className=''>
-
+         <div className="centerText">
+            <h3 className="containerTitle">Listado de Usuarios</h3>
+            <div className="displayFlex centerText" >
               <div>
-                <p className='pBtnDesplegable '>Buscar por apellido</p>
                 <select
+                  className='m-3 selectBtnDesplegable form-select '
                   type='text'
                   name='lastName'
                   onChange={changesId}
-                  className='m-3 selectBtnDesplegable form-select '
                 >
                   {users.map((oneUser) => (
                     <option className='colorBlack'key={oneUser.id} value={oneUser.lastName}>
                     {oneUser.lastName}
                     </option>
                   )).sort(OrderLastNameAsc(users))}
-                  <option className='colorBlack'value={"todos"}>Mostrar todos los usuarios</option>
+                  <option className='colorBlack'value={"todos"}>Mostrar usuarios (por apellido)</option>
                 </select>
               </div>
             </div>
 
-            <table className='table bgGrey table-responsive table-bordered'>
-              <thead>
-                <tr>
-                  <th className='tituloItem centerText'> Id </th>
-                  <th className='tituloItem centerText'> Imágen</th>
-                  <th className='tituloItem '> Apellido </th>
-                  <th className='tituloItem '> Nombre </th>
-                  <th className='tituloItem '> Email </th>
-                  <th className='tituloItem centerText'> Role</th>
-                  <th className='tituloItem '> Registrado</th>
-                  <th className='tituloItem '> Modificado</th>
-                </tr>
-              </thead>
-              {showUsers()}
-            </table>
+            <div>
+              <table className='table table-responsive table-bordered bgGrey'>
+                <thead>
+                  <tr>
+                    <th className='tituloItem centerText'> Id </th>
+                    <th className='tituloItem '> Imágen</th>
+                    <th className='tituloItem leftText'> Role y Usuario </th>
+                    <th className='tituloItem leftText'> Email </th>
+                    <th className='tituloItem centerText'> Registrado</th>
+                    <th className='tituloItem centerText'> Actualizado</th>
+                    <th className='tituloItem centerText'> </th>
+                  </tr>
+                </thead>
+
+                {showUsers()}
+
+              </table>
+            </div>
             </div>
           </>
         }
-      </Container>
-    </Fragment>
+      </div>
+    </>
   );
 };
 

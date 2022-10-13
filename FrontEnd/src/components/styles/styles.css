@@ -115,7 +115,6 @@ body{
     height:100px; 
 }
 
-
 .imageActivity{
     display: block;
     justify-content: center;
@@ -279,6 +278,11 @@ h1{
 .margenEnd{
     margin-left: 20%;
     font-size: 12px;
+}
+
+.leftText{
+    text-align: left;
+    margin-left: 2rem;
 }
 
 .centerContainer{
@@ -1126,3 +1130,4 @@ h1{
    justify-content: end;
    font-size: 10px;
 }
+

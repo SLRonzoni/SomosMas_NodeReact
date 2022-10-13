@@ -1,0 +1,116 @@
+@media screen and (min-width: 630px) and (max-width: 920px) {
+    table {
+        width: 100%;
+    }
+
+    /* encolumna btn filtros */
+    div:nth-child(2){
+        display:block;
+    }
+
+    /* Ocultar imagen */
+    table tr th:nth-child(2),
+    table tr td:nth-child(2){
+       display:none;
+   }
+ 
+    /* Ocultar descripcion, o contenido  o emailUser */
+    table tr th:nth-child(4),
+    table tr td:nth-child(4) {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width: 630px) and (max-width: 705px) {
+   div header :nth-child(1){
+       background-color: aqua;
+   }
+
+   div footer :nth-child(1){
+      background-color: blue;
+   }
+
+}
+
+@media screen and (min-width: 578px) and (max-width: 629px) {
+     
+    div header :nth-child(1){
+        background-color: aqua;
+    }
+ 
+    div footer :nth-child(2){
+       background-color: blue;
+    }
+
+    /* encolumna btn filtros */
+    div:nth-child(2){
+        display:block;
+    }
+
+    /* Ocultar imagen */
+     table tr th:nth-child(2),
+     table tr td:nth-child(2){
+        display:none;
+    }
+
+     /* Ocultar descripcion, o contenido  o emailUser */
+     table tr th:nth-child(4),
+     table tr td:nth-child(4) {
+         display: none;
+    }
+     
+     /* Ocultar creada */
+     table tr th:nth-child(5),
+     table tr td:nth-child(5) {
+        display: none;
+     }
+}
+ 
+
+@media screen  and (max-width: 577px) {
+
+    div header :nth-child(1){
+        background-color: aqua;
+    }
+ 
+    div footer :nth-child(1){
+       background-color: blue;
+    }
+
+    /* encolumna btn filtros */
+    div:nth-child(2){
+        display:block;
+    }
+ 
+    /* Ocultar imagen */
+     table tr th:nth-child(2),
+     table tr td:nth-child(2){
+        display:none;
+    }
+
+    /* Ocultar descripcion */
+    table tr th:nth-child(4),
+    table tr td:nth-child(4) {
+        display: none;
+    }  
+     
+     /* Ocultar creada */
+     table tr th:nth-child(5),
+     table tr td:nth-child(5) {
+        display: none;
+     }
+
+
+    /* Ocultar actualizada */
+    table tr th:nth-child(6),
+    table tr td:nth-child(6) {
+       display: none;
+    }
+
+    /* encolumna btn modificar y eliminar */
+    table tr th:nth-child(7),
+    table tr td:nth-child(7) {
+        display:block;
+    }
+}
