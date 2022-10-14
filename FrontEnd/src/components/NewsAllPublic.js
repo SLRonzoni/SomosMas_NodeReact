@@ -31,11 +31,7 @@ function NewsAllPublic() {
                 <div className='displayFlex'>
 
                   <div className='col-6 marginLeft40px'>
-                    <img
-                      className='imgSearchNews'
-                      src={oneResult.image}
-                      alt='Imagen'
-                    ></img>
+                    <img className='imgSearchNews'src={oneResult.image} alt='Imagen'></img>
                   </div>
 
                   <div className='col-6 marginRigth-80px '>

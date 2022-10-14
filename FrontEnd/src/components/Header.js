@@ -5,11 +5,12 @@ import Swal from "sweetalert2";
 import { Link, NavLink} from "react-router-dom";
 import { Navbar,Nav,NavDropdown, NavbarBrand } from "react-bootstrap";
 import Searcher from "./Searcher";
-import imagen from "./images/manos_logo.jpg";
+import imagen from "./images/manos_logo-sinFondo.png";
 
 export default function Header () {
   
   let userInfo  = JSON.parse(sessionStorage.getItem('userInfo'));
+  let name='';
  
     const logout = ()=>{
       Swal.fire({
@@ -21,6 +22,9 @@ export default function Header () {
       sessionStorage.clear();
       setTimeout( function() { window.location.href = "/"; }, 2000 );
       }   
+
+      {userInfo && userInfo.roleId!==1 && userInfo.firstName && (name=userInfo.firstName)}
+      {userInfo && userInfo.roleId!==1 && userInfo.givenName && (name=userInfo.givenName)}
      
   return(
       <div className="container">  
@@ -28,7 +32,7 @@ export default function Header () {
           
           <Navbar.Collapse  >
             <Navbar.Text className="colorWhite" >
-              Somos Más Ong <img className="handsLogo" src={imagen} alt="manosNiños"></img>
+              Somos Más Ong <img className="handsLogo shadowFilterNav" src={imagen} alt="manosNiños"></img>
             </Navbar.Text >
             <Nav className="me-auto">
               <NavbarBrand className="colorWhite">
@@ -47,8 +51,10 @@ export default function Header () {
                   </NavDropdown>
               )}
 
+              
+
               {userInfo && userInfo.roleId!==1 && (
-                   <NavDropdown title={`Secciones para ${userInfo.firstName}` } id="basic-nav-dropdown">
+                   <NavDropdown title={`Secciones para ${name}` } id="basic-nav-dropdown">
                     <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                     <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                     <NavDropdown.Divider /> 
@@ -91,17 +97,17 @@ export default function Header () {
               </NavbarBrand>
               {!userInfo && ( 
                 <NavbarBrand > 
-                    <Link to="/auth/register" className="login  nav-link  p-1 col-1 colorWhite" >Registro</Link>
+                    <Link to="/auth/register" className="btn btn-sucess colorWhite" >Registro</Link>
                 </NavbarBrand>
                )}
               {!userInfo && ( 
                 <NavbarBrand>
-                    <Link to="/auth/login" className="login  nav-link  p-1 col-1 colorWhite" >Login</Link>
+                    <Link to="/auth/login" className="btn btn-sucess colorWhite" >Login</Link>
                 </NavbarBrand>
               )}
               {userInfo && ( 
                 <NavbarBrand>
-                  <Link  to="/auth/logout" onClick={logout} className="login  nav-link  p-1 col-1 colorWhite " >Logout</Link>
+                  <Link  to="/auth/logout" onClick={logout} className="btn btn-sucess colorWhite " >Logout</Link>
                 </NavbarBrand>
               )}
             </Nav>

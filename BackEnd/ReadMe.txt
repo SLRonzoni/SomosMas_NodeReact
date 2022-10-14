@@ -34,6 +34,7 @@ Modificaciones al proyecto original ( back end ):
   * USERS, se modificó el servicio update para que tomara imagenes y hasheara password
   * USERS, se modificó el servicio create para que tomara imagenes
   * USERS, se incorporó USER_REGULAR_ROLE_ID como variable de entorno en create y update
+  * USERS, se creó controlador,  para obtener datos del usuario cuando existe un logueo con google
   
   
 ** ROUTES **
@@ -63,6 +64,7 @@ Modificaciones al proyecto original ( back end ):
   * USERS, se agregó /del a la ruta
   * USERS, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
   * USERS, se eliminó VerifyIsAdmin de las rutas update y get one
+  * USERS, se creó ruta get by email, para obtener datos del usuario cuando existe un logueo con google
   
 ** VIEWS **
   * VIEWS emailContact e emailWelcome , se agregó nueva imagen de logo y se corrigió texto del email

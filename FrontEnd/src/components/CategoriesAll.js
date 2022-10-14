@@ -156,7 +156,7 @@ const CategoriesAll = (props) => {
           </div> 
 
         <div>
-          <table className="table table-responsive table-bordered bgGrey">
+          <table className="table table-responsive table-bordered bgGrey colorWhite">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>

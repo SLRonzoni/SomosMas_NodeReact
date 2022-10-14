@@ -124,7 +124,7 @@ return (
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
        <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-          <h3 className="centerText">Nueva noticia ...</h3>
+          <h3 className="centerText">Nueva noticia</h3>
           <div >
             <div>
               <div className="displayInLineFlex">

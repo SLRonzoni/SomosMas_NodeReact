@@ -11,6 +11,14 @@ body{
     padding:0.2rem 3rem 0.2rem 3rem;
     font-size: 18px;
 }
+
+.shadowFilterHeader{
+    filter:drop-shadow(4px 6px 5px #fff)
+}
+
+.shadowFilterNav{
+    filter:drop-shadow(2px 1px 1px #fff)
+}
  
 .footer{
     background-color:#0e0d0d !important;
@@ -37,12 +45,11 @@ body{
 }
 
 .containerSearchNews{
-    height: auto;
+    height: 23rem;
     width: 85rem;
     margin: auto;
     margin-top: -1rem;
     padding: 1rem;
-    border-bottom: 1px solid grey;
 }
 
 
@@ -124,14 +131,30 @@ body{
     border-radius: 10px;
 }
 
-.iconMapPhoneMailFooter{
-    width: 2.5%;
+.iconPhoneFooter{
+    width: 19%;
+    height:70%;
+    border-radius: 50px;
+    margin-bottom: 0px;
+}
+
+.iconMapFooter{
+    width: 4%;
+    border-radius: 50px;
+    margin-bottom: 8px;
 }
 
 .iconFacebookInstagramFooter{
-    width: 39%;
+    width: 27%;
+    border-radius: 50px;
+    margin-bottom: 8px;
 }
 
+.iconEmailFooter{
+    width: 20%;
+    border-radius: 50px;
+    margin-bottom: 8px;
+}
 
 .boton
 .tituloListado{
@@ -267,16 +290,16 @@ h1{
     height: auto;
 } */
 
-.login {
+/* .login {
     color:#fff;
     background-color:transparent;
     font-size: 20px;
     width: 7%;
     height: auto; 
-}
+} */
 
 .margenEnd{
-    margin-left: 20%;
+    margin-left: 35%;
     font-size: 12px;
 }
 
@@ -376,7 +399,7 @@ h1{
   }*/
 
   .imgSearchNews{
-    width:70%;
+    width:60%;
     height: 70%;
   }
 
@@ -435,6 +458,15 @@ h1{
 .pBtnDesplegable{
     margin-bottom:-0.5rem;
     margin-left: 0rem;
+}
+
+.inputSearcher{
+    margin-top: 0.4rem;
+    margin-right: -2.5rem;
+}
+
+.h1SizeHome{
+    font-size: 3rem;
 }
 
 .divBtnDesplegable{
@@ -742,6 +774,10 @@ h1{
     color:#fff !important;
 }
 
+.colorGrey{
+    color:#444!important;
+}
+
 .textArea{
     border-radius: 3px;
     border-color: #fff;
@@ -895,7 +931,7 @@ h1{
  }
 
 .imageMyProfile{
-    width: 18%;
+    width: 12%;
 }
 
 
@@ -915,8 +951,7 @@ h1{
 
 .homeBgImage {
     margin:auto;
-    margin-top:2rem;
-    width: 100%;
+    width: 99%;
 }
 
 .handsLogo{
@@ -1101,9 +1136,12 @@ h1{
     font-size: 2rem;
 }
 
-
 .font1-5rem{
     font-size: 1.5rem;
+}
+
+.font10px{
+    font-size: 10px;
 }
 
 .labelWidthContactForm{

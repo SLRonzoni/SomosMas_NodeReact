@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import "./styles/styles.css";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import Swal from "sweetalert2";
@@ -42,14 +43,14 @@ function RespuestaGoogle() {
     }
    
     sessionStorage.setItem('userInfo',JSON.stringify(googleData.profileObj))
-    //sessionStorage.setItem('token',JSON.stringify(response.data.token))
+    sessionStorage.setItem('token',JSON.stringify(googleData.tokenObj.id_token))
     sessionStorage.setItem('loginData',true)
 
 
     const getUserData = async () => {
       //BUSCAR EN BD DATOS DEL ID Y ROLE DEL EMAIL LOGUEADO 
       //Busco id   
-        const response=await axiosClient.get(`/users/redes?userEmail=${googleData.profileObj.email.toUpperCase()}`,
+        const response=await axiosClient.get(`/users/${googleData.profileObj.email.toUpperCase()}`,
           { withCredentials: true }
         );
        
@@ -85,17 +86,13 @@ function RespuestaGoogle() {
     };
     
   return (
-    <div >
+    <div  >
         <GoogleLogin
-          className=''
           clientId={process.env.REACT_APP_GOOGLE_OAUTH_CLIENT_ID}
           onSuccess={onSuccess}
           onFailure={onFailure}
           buttonText='Iniciar sesion con Google'
           cookiePolicy={'single_host_origin'}
-          buttonTheme='filled_blue'
-          buttonSize='small'
-          buttonSharp='pill'
         />
     </div>
   );

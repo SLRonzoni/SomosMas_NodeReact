@@ -156,7 +156,7 @@ const ContactsAll = (props) => {
         </div> 
 
         <div>
-          <table className="table bgGrey table-responsive table-bordered ">
+          <table className="table bgGrey table-responsive table-bordered colorWhite">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>

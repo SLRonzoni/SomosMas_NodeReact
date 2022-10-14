@@ -92,7 +92,7 @@ const RolesAll = (props) => {
           <h3 className="containerTitle">Listado de Roles</h3>
           <br></br>
           <div>
-            <table className="table  table-responsive table-bordered bgGrey">
+            <table className="table  table-responsive table-bordered bgGrey colorWhite">
               <thead>
                 <tr>
                   <th className="tituloItem centerText "> Id </th>

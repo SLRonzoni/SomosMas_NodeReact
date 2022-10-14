@@ -43,10 +43,10 @@ const ActivitiesPublicAll = (props) => {
       {/* solo renderiza si hay actividades*/}
       {activities && 
         <>
-        <div >
-          <br></br>
-          <div >
-            <h1 >Nuestras actividades...</h1>
+        <div>
+          <div>
+            <br></br><br></br>
+            <h1>Nuestras actividades</h1>
           </div>
           
           <div>
@@ -62,10 +62,10 @@ const ActivitiesPublicAll = (props) => {
                           <br></br>
                           <img className=" imageActivity " src={oneActivity.image} alt="Slide" />
                           <Card.Title >
-                            <h3 className="centerText ">{oneActivity.name}</h3>
+                            <h4 className="centerText ">{oneActivity.name}</h4>
                           </Card.Title>
                           <Card.Text> 
-                            <h5 className="centerText " >{oneActivity.content}</h5>
+                            <h6 className="centerText " >{oneActivity.content}</h6>
                             <br></br> 
                           </Card.Text>
                         </Carousel.Item>

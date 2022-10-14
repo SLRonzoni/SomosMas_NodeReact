@@ -57,7 +57,7 @@
     padding:1rem;
 }
 
-.cardContainerAbout{
+/* .cardContainerAbout{
     display: flex;
     flex-direction: column; 
     position: relative;
@@ -68,19 +68,19 @@
     margin:0rem 0.5rem 1.5rem 1rem;
     border-radius: 15px;
     padding:15px;
-}
+} */
 
 .cardContainerAboutHorizontally{
     display: flex;
     flex-direction: column; 
     position: relative;
-    justify-content: center;
-    width: 490px;
-    height: 29rem;
-    box-shadow: 0px 0px 15px -5px;
-    margin:0rem 0.5rem 0.5rem 1rem;
+    font-size: 0.1rem!important;
+    width: 355px;
+    height: 35.5rem;
+    box-shadow: 0px 0px 12px -5px;
+    margin:0rem 0.5rem 0rem 0.8rem;
     border-radius: 15px;
-    padding:15px;
+    padding:10px;
 }
 
 .imageContainerOrganization {
@@ -106,8 +106,8 @@
 }
 
 .cardContentAbout{
-    margin:1rem;
-    margin-top: 0.6rem;
+    margin:0.5rem;
+    margin-top: 0.5rem;
 }
 
 .cardContentMember{
@@ -115,7 +115,7 @@
 }
 
 .cardTitle {
-    margin-bottom:0rem;
+    margin-bottom:0.2rem;
 }
 
 .cardImageMember{        
@@ -130,8 +130,9 @@
 
 .cardImageAbout{        
     height:auto; 
-    width:70%; 
-    margin-left:14%;
+    width:90%; 
+    margin-left:4%;
+    margin-top:10%;
 }
 
 .iconNetworks{

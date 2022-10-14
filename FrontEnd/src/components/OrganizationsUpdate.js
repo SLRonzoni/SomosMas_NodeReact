@@ -184,7 +184,7 @@ const OrganizationsUpdate = ({match,history}) => {
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
     <form  className="containerUpdateOrganizations containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-        <h3 className="centerText ">Nuevos datos ...</h3>
+        <h3 className="centerText ">Nuevos datos</h3>
 
         <div>
            <br></br> 

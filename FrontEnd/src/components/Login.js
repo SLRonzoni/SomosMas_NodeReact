@@ -3,7 +3,7 @@ import "./styles/styles.css";
 import axiosClient from "../configuration/axiosClient";
 import { Link,Redirect} from "react-router-dom"; 
 import Swal from "sweetalert2";
-import LoginGoogle from './LoginGoogle';// boton login con google
+import LoginGoogle from './LoginGoogle';
 
 const Login =()=>{   
  
@@ -60,8 +60,7 @@ const Login =()=>{
           setTimeout( function() { window.location.href = "/" }, 1000 );
           
         } else {
-          loginError(response);
-          console.log(response)            
+          loginError(response);          
         }
       }) 
       .catch(error=>{
@@ -126,8 +125,7 @@ const Login =()=>{
               role="button"
               aria-pressed="true"
             >
-              {" "}
-              Volver{" "}
+              Volver
             </Link>
         </div>
 
@@ -135,8 +133,7 @@ const Login =()=>{
           <span className="colorBlack">No tienes cuenta ? 
             <Link to={"/auth/register"}
             className="m-2 ">
-            {" "}
-            registrarse{" "}
+            registrarse
           </Link>
           </span>
         </div>

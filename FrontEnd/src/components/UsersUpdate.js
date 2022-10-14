@@ -156,15 +156,15 @@ const EditUsers = ({match, history}) =>{
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
         <form className="container-lg col-6 col-md-12 containerBorderWhiteBgGrey "onSubmit={handleSubmit} > 
-        <br></br><br></br>
+        <br></br>
             <h4 className='marginLeft10px '>Mi Perfil  
-              <span className='margenEnd'><em>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
+              <span className='margenEnd'><em className='font10px'>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>
             <div className='marginTop marginLeft10px '>
 
               <div>
                 <div >   
-                  <Label htmlFor="photo" className='colorBlack'> </Label>
+                  <Label htmlFor="photo" > </Label>
                   <p className="pUpdateCateg "><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
                   <InputGroup  >
                     <InputUser className="form-control colorBlack"
@@ -172,7 +172,6 @@ const EditUsers = ({match, history}) =>{
                           name="photo" 
                           id="photo"  
                           encType="multipart/form-data"
-                          // value={values.photo}
                           onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
                           onBlur={handleBlur}
                     />
@@ -181,7 +180,6 @@ const EditUsers = ({match, history}) =>{
                 </div> 
                 {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
               </div>
-              <br></br>
                 
               <div>
                 <div>
@@ -200,7 +198,6 @@ const EditUsers = ({match, history}) =>{
                 </div>
                 {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
               </div>
-              <br></br>
 
               <div>
                 <div>
@@ -219,7 +216,6 @@ const EditUsers = ({match, history}) =>{
                 </div> 
                 {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
               </div>
-              <br></br>
 
               <div>
                 <div>
@@ -227,7 +223,6 @@ const EditUsers = ({match, history}) =>{
                     <p className="spanUpdateCateg marginLeft10px "> {user.email}</p>
                 </div> 
               </div>
-              <br></br>
               
               <div>
                 <div>

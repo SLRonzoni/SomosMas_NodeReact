@@ -18,6 +18,7 @@ function WordSearchResults() {
       .get(`/news/byName/${keyword}`)
       .then((findKeyword) => {
         setNews(findKeyword.data);
+        setNewsComplete(findKeyword.data);                                        
       })
       .catch((error) => console.log(error));
   };
@@ -55,23 +56,26 @@ function WordSearchResults() {
   };
   findUserData();
 
-  const finalNews = ()=>{
-    findKeyword();
-    setNewsComplete(news);
-  };
   
   useEffect(() => { 
-    finalNews();
+    findKeyword();
   }, [keyword]);
 
   return (
     <>
-      <div className='container centrar'>
-        {newsComplete.length===0 && <h5>No se hallaron resultados</h5>}
+    <br></br>
+    <h4><em>Palabra buscada</em> : {keyword}</h4>
+    
+    <div className='container centrar'>   
+    
+      <div>          
+        {newsComplete.length===0 && <h5> ☹️ No se hallaron resultados  </h5>}
+      </div>
+                 
         {newsComplete.map((oneResult) => {
           return (
-            <div className="container centrar">
-              <div className='containerSearchNews' key={oneResult.id}>
+            <div className="container centrar"key={oneResult.id}>
+              <div className='containerSearchNews' >
                 
                 <div>
                   <br></br>
@@ -104,7 +108,7 @@ function WordSearchResults() {
                         {oneResult.comments.map((oneComment) => {
                           return (
                             <div className="userComments" key={oneComment.id}>
-                              <div  >
+                              <div >
                                 <img className='imageComment' src={oneComment.userImage} alt="user"></img>
                                 <span className=''> {oneComment.firstName} {oneComment.lastName}</span>
                               </div>

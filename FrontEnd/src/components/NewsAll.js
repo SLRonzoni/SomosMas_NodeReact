@@ -174,7 +174,7 @@ const NewsAll = (props) => {
                     {formatDate(new Date(oneNew.updatedAt))}
                   </option>
                 ))}
-                <option className='colorBlack'value={"todas"}>Mostrar noticias (por fecha)</option>
+                <option className='colorBlack'value={"todas"}>Noticias (por fecha de actualización)</option>
               </select>
           </div> 
 
@@ -197,7 +197,7 @@ const NewsAll = (props) => {
         </div> 
 
         <div>
-          <table className="table table-responsive table-bordered bgGrey">
+          <table className="table table-responsive table-bordered bgGrey colorWhite">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>

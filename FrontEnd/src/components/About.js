@@ -10,9 +10,9 @@ const About = () => {
     <>
     <div className='container displayFlex' >
         
-        <div className='cardContainerAbout'>
+        <div className='cardContainerAboutHorizontally'>
             <br></br>
-            <h2 className='cardTitle centerText'>Nosotros</h2>
+            <h4 className='cardTitle centerText'>Nosotros</h4>
             <div className='cardContentAbout'>
                 <p>
                     Desde 1997 en Somos Más trabajamos con los chicos y chicas,
@@ -32,23 +32,26 @@ const About = () => {
                 <p>  
                     Hoy somos un centro comunitario que acompaña a más de 700 personas a través de 
                     las áreas de :
-                    <br></br>
-                    <ul>
-                        <li>Alimentación</li>
-                        <li>Educación</li>
-                        <li>Deportes</li>
-                        <li>Primera infancia</li>
-                        <li>Salud</li>
-                        <li>Trabajo social</li>
-                    </ul>
+                    <br></br><br></br>
+                    <div className='displayFlex'>
+                        <ul className='marginLeft25px'>
+                            <li>Alimentación</li>
+                            <li>Educación</li>
+                            <li>Deportes</li>
+                        </ul>
+
+                        <ul className='marginLeft25px'>
+                            <li>Primera infancia</li>
+                            <li>Salud</li>
+                            <li>Trabajo social</li>
+                        </ul>
+                    </div>
                 </p> 
             </div>
         </div>
-        <br></br>
 
         <div className='cardContainerAboutHorizontally'>
-            <br></br>
-            <h2 className='cardTitle centerText'>Misión</h2>
+            <h4 className='cardTitle centerText'>Misión</h4>
             <div className='cardContentAbout'>
                 <p>
                     Trabajar articuladamente con los distintos aspectos de la vida de las
@@ -56,13 +59,13 @@ const About = () => {
                     brindando herramientas que logren mejorar la calidad de vida a
                     través de su propio esfuerzo.
                 </p>
+                <br></br>
                 <img  className="cardImageAbout" src={vision} alt='vision'></img>
             </div>
         </div>
-        <br></br>
+       
         <div className='cardContainerAboutHorizontally'>
-            <br></br>
-            <h2 className='cardTitle centerText'>Visión</h2>
+            <h4 className='cardTitle centerText'>Visión</h4>
             <div className='cardContentAbout'>
                 <p>
                     Mejorar la calidad de vida de niños y familias en situación de
@@ -70,6 +73,7 @@ const About = () => {
                     en cada individuo a través de la educación, salud, trabajo, deporte,
                     responsabilidad y compromiso.
                 </p>
+                <br></br>
                 <img className="cardImageAbout" src={TrabajoEquipo} alt='trabajoEnEquipo'></img>
             </div>   
         </div>
