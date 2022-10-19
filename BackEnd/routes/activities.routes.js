@@ -19,11 +19,11 @@ router.get('/public/:id', idExists, getActivityById)
 router.get('/public/byName/:name', getActivitiesByName)
 router.get('/public/byDate/:date', getActivitiesByDate)
 
-router.post('/create', authenticatedUser,verifyIsAdmin,optionsFileUpload , validateActivity,  createActivity)
+router.post('/', authenticatedUser,verifyIsAdmin,optionsFileUpload , validateActivity,  createActivity)
 router.get('/',authenticatedUser,verifyIsAdmin, getAllActivities)
 router.get('/:id', authenticatedUser,idExists, getActivityById)
-router.put('/update/:id',authenticatedUser, verifyIsAdmin,idExists,optionsFileUpload, validateActivity,  updateActivity)
-router.delete('/del/:id',authenticatedUser, verifyIsAdmin, idExists, deleteActivity)
+router.put('/:id',authenticatedUser, verifyIsAdmin,idExists,optionsFileUpload, validateActivity,  updateActivity)
+router.delete('/:id',authenticatedUser, verifyIsAdmin, idExists, deleteActivity)
 
 module.exports = router;
 

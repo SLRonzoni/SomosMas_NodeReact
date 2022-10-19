@@ -28,7 +28,7 @@ function OrganizationsCreate(props) {
 
     const saveOrganizations = async () => {
       await axiosClient
-        .post("/organizations/create",body)     
+        .post("/organizations",body)     
         .then((response) => {
           if(response) {
             setOrganizations(response.data)

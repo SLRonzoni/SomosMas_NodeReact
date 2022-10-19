@@ -50,7 +50,7 @@ const ContactsAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/contacts/del/${id}`)
+      .delete(`/contacts/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

@@ -30,7 +30,7 @@ function CategoriesCreate(props) {
 
     const saveCategories = async () => {
       await axiosClient
-        .post("/categories/create",body)     
+        .post("/categories/",body)     
         .then((response) => {
           if(response.status===201) {
             setCategories(response.data)
@@ -130,7 +130,7 @@ return (
        validate={ validateInputs }
        onSubmit={ (values)=>{ sendForm(values) } }
   >
-  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
+  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
        <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
           <br></br>
           <h3 className="centerText">Nueva categoría</h3>

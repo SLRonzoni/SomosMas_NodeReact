@@ -51,7 +51,7 @@ const MessagesAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/messages/del/${id}`)
+      .delete(`/messages/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

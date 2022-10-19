@@ -10,7 +10,7 @@ import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup}
 import Swal from "sweetalert2";
 
 
-const EditUsers = ({match, history}) =>{
+const MyProfileUpdate = ({match, history}) =>{
       
   const  id= match.params.id;
 
@@ -45,7 +45,6 @@ const EditUsers = ({match, history}) =>{
     getUser();
   },[id]); 
 
-
   //SEND
   const sendForm = (values) => {   
     //UPDATE     
@@ -53,11 +52,14 @@ const EditUsers = ({match, history}) =>{
     body.append("firstName",values.firstName);
     body.append("lastName",values.lastName);
     body.append("password",values.password);
-    body.append("photo",values.photo);  
+    body.append("photo",values.photo);
+    body.append("role",user.roleId);
+    body.append("email",user.email);
 
     const updateUser = async () => {
       await axiosClient
-        .put(`/users/update/${id}`,body)
+        .put(`/users/${id}`,body)
+        
         .then(response => {
           if (response.status===201) {
             setUser(response.data)
@@ -107,9 +109,11 @@ const EditUsers = ({match, history}) =>{
     if (!regexUserfirstName.test(values.firstName)) {
       errors.firstName=msgValidationUserFirstName
       errors.icoNfirstName= '❌'
+      errors.formOk='f'
       return errors
     } else {
       errors.icoNfirstName= '✔️'
+      errors.formOk='v'
     };
 
     if (!values.lastName) {
@@ -119,9 +123,11 @@ const EditUsers = ({match, history}) =>{
     if (!regexUserLastName.test(values.lastName)) {
       errors.lastName=msgValidationUserLastName
       errors.icoNlastName= '❌'
+      errors.formOk='f'
       return errors
     } else {
       errors.icoNlastName= '✔️'
+      errors.formOk='v'
     };
 
     if (!values.password) {
@@ -133,41 +139,38 @@ const EditUsers = ({match, history}) =>{
     if (!regexUserPassword.test(values.password)) {
       errors.password=msgValidationUserPassword
       errors.icoNpassword= '❌'
+      errors.formOk='f'
       return errors
     } else {
       errors.icoNpassword= '✔️'
+      errors.formOk='v'
     };
-
-    if(errors.firstName || errors.lastName || errors.photo || errors.password){
-    errors.formOk='f'
-    } else {
-    errors.formOk='v'
-    };  
   }
 
   //FORM
   return (
     <>
-    <br></br>
     <Formik  
          initialValues={initialValues}           
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="container-lg col-6 col-md-12 containerBorderWhiteBgGrey "onSubmit={handleSubmit} > 
-        <br></br>
-            <h4 className='marginLeft10px '>Mi Perfil  
+        <form className="containerMyPerfil containerBorderWhiteBgGrey "onSubmit={handleSubmit} > 
+            <h4 className='marginLeft25px'>Mi Perfil  
               <span className='margenEnd'><em className='font10px'>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
             </h4>
-            <div className='marginTop marginLeft10px '>
+            <div className='marginLeft10px '>
 
-              <div>
-                <div >   
-                  <Label htmlFor="photo" > </Label>
-                  <p className="pUpdateCateg "><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
+              <div className="marginLeft10px">
+                <br></br>
+                <div>   
+                  <div className='displayFlex'>
+                    <p className="marginLeft10px"><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
+                    <p className='pEmailRegisterUserUpdate'>Email registrado : {user.email}</p>
+                  </div> 
                   <InputGroup  >
-                    <InputUser className="form-control colorBlack"
+                    <InputUser className="form-control "
                           type="file" 
                           name="photo" 
                           id="photo"  
@@ -178,17 +181,18 @@ const EditUsers = ({match, history}) =>{
                   </InputGroup>  
                   {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
                 </div> 
-                {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
+                {touched.photo && errors.photo && <ErrorText className='errorText-myProfile-update'>{errors.photo} </ErrorText> }
               </div>
                 
-              <div>
+              <div className="marginLeft10px marginBottom05rem">
                 <div>
-                  <Label htmlFor="firstName" >Nombre actual :<span className="pUpdateCateg" ><em>{user.firstName}</em></span></Label>
+                  <Label className='font12px' htmlFor="firstName" >Nombre ( actual : {user.firstName} )</Label>
                     <InputGroup >
                       <InputUser className='colorBlack'
                         type="text" 
                         name="firstName" 
                         id="firstName"  
+                        placeholder='Ingrese su nombre'
                         value={values.firstName}
                         onChange={handleChange} 
                         onBlur={handleBlur}
@@ -196,40 +200,35 @@ const EditUsers = ({match, history}) =>{
                       {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
                     </InputGroup> 
                 </div>
-                {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
+                {touched.firstName && errors.firstName && <ErrorText className='errorText-myProfile-update'>{errors.firstName} </ErrorText> }
               </div>
 
-              <div>
+              <div className="marginLeft10px marginBottom05rem">
                 <div>
-                <Label htmlFor="lastName" >Apellido actual : <span className="spanUpdateCateg colorBlack"><em>{user.lastName}</em></span></Label>
+                <Label className='font12px'htmlFor="lastName" >Apellido  ( actual : {user.lastName} )</Label>
                     <InputGroup>
                       <InputUser
                         type="text" 
                         name="lastName" 
                         id="lastName"  
                         value={values.lastName}
+                        placeholder='Ingrese su apellido'
                         onChange={handleChange} 
                         onBlur={handleBlur}
                       />
                       {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
                     </InputGroup>
                 </div> 
-                {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
-              </div>
-
-              <div>
-                <div>
-                    <Label htmlFor="lastName" >Email registrado ( no se permite modificar ) </Label>
-                    <p className="spanUpdateCateg marginLeft10px "> {user.email}</p>
-                </div> 
+                {touched.lastName && errors.lastName && <ErrorText className='errorText-myProfile-update'>{errors.lastName} </ErrorText> }
               </div>
               
-              <div>
+              <div className="marginLeft10px marginBottom05rem">
                 <div>
-                    <Label htmlFor="password" > Password : 
+                    <Label className='font12px'htmlFor="password" > Password
+                      <span className="colorTransparent">..</span>
                       <button type="button" 
-                              className='btn buttonBlue marginLeft10px colorBlack' 
-                              onClick={switchShown}> {shown ? 'Ocultar' : 'Mostrar'}
+                        className='btn btn-light' 
+                        onClick={switchShown}> {shown ? '🙈' : '👀'}
                       </button> 
                     </Label>  
 
@@ -242,30 +241,24 @@ const EditUsers = ({match, history}) =>{
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
-                    {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
+                      {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
                     </InputGroup>
                 </div> 
-                {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+                {touched.password && errors.password && <ErrorText className='errorText-myProfile-update'>{errors.password} </ErrorText> }
               </div>
 
               { errors.formOk === "f" && 
-              <MsjWrong> 
-              <span className="centerText colorBlack">
+              <MsjWrong className='centerText'> 
+              <span className="centerText">
                 <br /> Algun dato es incorrecto. 
                 <br/> Por favor complete el formulario correctamente
               </span>        
               </MsjWrong>
               }
 
-              <br></br>
               <div className="centerText">
-                  <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link 
-                    to={"/"}
-                    className="m-3 mr-md-2 btn buttonBlue"
-                    role="button"
-                  > Volver
-                  </Link>
+                  <SendButton type="submit" className="m-1 btn btn-primary md-end "> Guardar </SendButton>
+                  <Link to={"/"}  className="m-1 mr-md-1 btn buttonBlue" role="button" > Volver </Link>
               </div>  
          </div> 
     </form>
@@ -274,4 +267,4 @@ const EditUsers = ({match, history}) =>{
   </>
   );
 };
-export default EditUsers;
+export default MyProfileUpdate;

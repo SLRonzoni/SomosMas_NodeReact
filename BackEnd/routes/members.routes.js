@@ -8,9 +8,9 @@ const { getAllMember, getMemberById, createMember, updateMember, deleteMember} =
 
 router.get('/',  getAllMember )
 router.get('/:id',  idExists, getMemberById)
-router.post('/create', verifyIsMemberAdmin,optionsFileUpload, validateMembers, createMember)
-router.put('/update/:id', verifyIsMemberAdmin, idExists,optionsFileUpload, validateMembers, updateMember)
-router.delete('/del/:id',verifyIsMemberAdmin , idExists, deleteMember)
+router.post('/', verifyIsMemberAdmin,optionsFileUpload, validateMembers, createMember)
+router.put('/:id', verifyIsMemberAdmin, idExists,optionsFileUpload, validateMembers, updateMember)
+router.delete('/:id',verifyIsMemberAdmin , idExists, deleteMember)
 
 
 module.exports = router;

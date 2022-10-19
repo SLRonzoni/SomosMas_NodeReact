@@ -1,17 +1,21 @@
+const { Sequelize } = require('../models');
 const TestimonialModel = require("../models").Testimonial;
 const { uploadToBucket } = require('../services/s3');
 const BaseController = require("./base.controller");
+const {Op}=require('sequelize')
 
 //Create a testimonial
 const createTestimonial = async (req, res) => {
     let img = req.files.image;
-    let regularImglocation;
+    //let regularImglocation;
     try {
-        regularImglocation = await uploadToBucket(img);
+        //regularImglocation = await uploadToBucket(img);
+        regularImglocation=`https://via.placeholder.com/600/51aa97`
         const inputVars = {
             name: req.body.name, 
             image: regularImglocation, 
-            content: req.body.content
+            content: req.body.content,
+            userId:req.body.userId
         };
         return BaseController.createModel(res, TestimonialModel, inputVars);
     } catch (error) {        
@@ -39,9 +43,11 @@ const getTestimonialsByName= async (req, res) => {
   };
 
   const getTestimonialsByDate= async (req, res) => {    
-	const paramsDate = req.params.date;
+	const paramsDate = req.params.date.slice(0,10);
+    const start=paramsDate+'T00:00:00.000Z';
+	const end=paramsDate+'T24:00:00.000Z';
 	try{
-		const testimonial= await TestimonialModel.findAll({where:{createdAt:paramsDate}})
+		const testimonial= await TestimonialModel.findAll({where:{ [Op.or]: [{ createdAt:{[Op.between]:[start, end]} }] } })
 		if(!testimonial){
 		return res.status(404).json('date not found')
 		} else{

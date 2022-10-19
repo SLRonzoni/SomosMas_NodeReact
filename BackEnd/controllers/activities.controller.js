@@ -1,5 +1,7 @@
+const { Sequelize } = require('../models');
 const baseController= require('./base.controller');
 const ActivityModel = require("../models").Activity;
+const {Op}=require('sequelize')
 //const { uploadToBucket } = require('../services/s3');
 
 const createActivity = async (req, res) => { 
@@ -40,9 +42,11 @@ const getActivitiesByName= async (req, res) => {
 };
 	  
 const getActivitiesByDate= async (req, res) => {    
-	const paramsDate = req.params.date;
+	const paramsDate = req.params.date.slice(0,10);
+	const start=paramsDate+'T00:00:00.000Z';
+	const end=paramsDate+'T24:00:00.000Z';
 	try{
-		const activities= await ActivityModel.findAll({where:{updatedAt:paramsDate}})
+		const activities= await ActivityModel.findAll({where:{ [Op.or]: [{ updatedAt:{[Op.between]:[start, end]} }] } })
 		if(!activities){
 		return res.status(404).json('date not found')
 		} else{

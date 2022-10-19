@@ -18,11 +18,11 @@ const validateTestimonial = [
     .withMessage('Field name can not be empty').trim().escape().isString().isLength({ min: 6 })
     .withMessage('name must contain at least 6 characters'),
   check("content").exists().not().isEmpty()
-    .withMessage('Field content can not be empty').trim().escape(), 
-  verifyFile, 
-  (req, res, next) => {
-    validateResult(req, res, next)
-  }
+    .withMessage('Field content can not be empty').trim().escape(),
+   verifyFile, 
+  // (req, res, next) => {
+  //   validateResult(req, res, next)
+  // }
 ]
 
 module.exports= { 

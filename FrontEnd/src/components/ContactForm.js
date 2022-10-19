@@ -77,17 +77,21 @@ const ContactForm = (props) => {
     if (!regexUserfirstName.test(values.name)) {
       errors.name = msgValidationUserFirstName;
       errors.icoNname = "❌";
+      errors.formOk = "f";
       return errors;
     } else {
       errors.icoNname = "✔️";
+      errors.formOk = "v";
     }
 
     if (!regexUserPhone.test(values.phone)) {
       errors.phone = msgValidationUserPhone;
       errors.icoNphone = "❌";
+      errors.formOk = "f";
       return errors;
     } else {
       errors.icoNphone = "✔️";
+      errors.formOk = "v";
     }
 
     if (!values.email) {
@@ -99,9 +103,11 @@ const ContactForm = (props) => {
     if (!regexUserEmail.test(values.email)) {
       errors.email = msgValidationUserEmail;
       errors.icoNemail = "❌";
+      errors.formOk = "f";
       return errors;
     } else {
       errors.icoNemail = "✔️";
+      errors.formOk = "v";
     }
 
     if (!values.message) {
@@ -120,7 +126,6 @@ const ContactForm = (props) => {
   //FORM
   return (
     <>
-     <br></br>
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
@@ -136,9 +141,9 @@ const ContactForm = (props) => {
             <div className='centerText'>
               <div>
                 <div className="displayFlex">
-                  <Label className="labelWidthContactForm" htmlFor='name'>Nombre y Apellido</Label>
-                  <InputGroup >
-                    <InputUser 
+                  <Label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</Label>
+                  <InputGroup>
+                    <InputUser  className="form-control"
                       type='text'
                       name='name'
                       placeholder="Ingresá tu nombre y apellido"
@@ -147,7 +152,7 @@ const ContactForm = (props) => {
                       onBlur={handleBlur}
                     />
                     {touched.name && errors.icoNname && (
-                      <IconUser className="contactFormName">{errors.icoNname}</IconUser>
+                      <IconUser>{errors.icoNname}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -159,9 +164,9 @@ const ContactForm = (props) => {
 
               <div>
                 <div className="displayFlex ">
-                  <Label className="labelWidthContactForm"htmlFor='phone'>Teléfono </Label>
+                  <Label className="labelWidthForm"htmlFor='phone'>Teléfono </Label>
                   <InputGroup >
-                    <InputUser 
+                    <InputUser className="form-control"
                       type='text'
                       name='phone'
                       placeholder="Ingresá tu número de teléfono"
@@ -170,7 +175,7 @@ const ContactForm = (props) => {
                       onBlur={handleBlur}
                     />
                     {touched.phone && errors.icoNphone && (
-                      <IconUser className="contactFormPhone">{errors.icoNphone}</IconUser>
+                      <IconUser>{errors.icoNphone}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -182,9 +187,9 @@ const ContactForm = (props) => {
 
               <div>
                 <div className="displayFlex">
-                  <Label className="labelWidthContactForm"htmlFor='email'>E-mail  </Label>
+                  <Label className="labelWidthForm"htmlFor='email'>E-mail  </Label>
                   <InputGroup >
-                    <InputUser 
+                    <InputUser className="form-control"
                       type='text'
                       name='email'
                       placeholder="Ingresá tu e-mail"
@@ -193,7 +198,7 @@ const ContactForm = (props) => {
                       onBlur={handleBlur}
                     />
                     {touched.email && errors.icoNemail && (
-                      <IconUser className="contactFormEmail">{errors.icoNemail}</IconUser>
+                      <IconUser>{errors.icoNemail}</IconUser>
                     )}
                   </InputGroup>
                 </div>
@@ -205,7 +210,7 @@ const ContactForm = (props) => {
 
               <div>
                 <div className="displayFlex">
-                  <Label className="labelWidthContactForm"htmlFor='message'>Mensaje </Label>
+                  <Label className="labelWidthForm"htmlFor='message'>Mensaje </Label>
                   <InputGroup >
                     <textarea className="textArea form-control borderRounded"
                       type='text'
@@ -229,7 +234,7 @@ const ContactForm = (props) => {
             </div>
 
             {errors.formOk === "f" && (
-              <MsjWrong>
+              <MsjWrong className="centerText">
                 <span className='centerText'>
                   <br /> Algun dato es incorrecto.
                   <br /> Por favor complete el formulario correctamente

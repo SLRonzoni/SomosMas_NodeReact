@@ -22,9 +22,9 @@ import CategoriesCreate from './components/CategoriesCreate';
 import CategoriesUpdate from './components/CategoriesUpdate';
 
 import CommentsAll from './components/CommentsAll';
-import CommentsPublic from './components/CommentsPublic';
 
 import ContactsAll from './components/ContactsAll';
+import ContactForm from './components/ContactForm';
 
 import MessagesAll from './components/MessagesAll';
 
@@ -44,17 +44,15 @@ import RolesUpdate from "./components/RolesUpdate";
 
 import TestimonialsAll from "./components/TestimonialsAll";
 import TestimonialsPublic from "./components/TestimonialsPublic";
+import TestimonialsCreate from './components/TestimonialsCreate';
 
 import OrganizationsAll from "./components/OrganizationsAll";
 import OrganizationsCreate from "./components/OrganizationsCreate";
 import OrganizationsUpdate from "./components/OrganizationsUpdate";
 
-import ContactForm from './components/ContactForm';
-
 import UsersAll from './components/UsersAll';
 import Register from './components/Register';
-import EditUsers from './components/UsersUpdate';
-
+import MyProfileUpdate from './components/UsersUpdate';
 
 
 function App() {
@@ -74,61 +72,59 @@ function App() {
         {/* BOTH */}
         <Route exact path="/auth/logout"component={Home}/>
         <Route exact path="/auth/login" component={Login}/>
-        <Route exact path="/LoginGoogle" component={LoginGoogle}/>
-        <Route exact path="/redes" component={LoginGoogle}/>
-        <Route exact path='/searchResults'component={SearchResults}/>
-        <Route exact path='/About'component={About}/>
+        <Route path="/LoginGoogle" component={LoginGoogle}/>
+        <Route path="/redes" component={LoginGoogle}/>
+        <Route path='/searchResults'component={SearchResults}/>
+        <Route path='/About'component={About}/>
         
 
         {/* USER */}
         <Route exact path="/auth/register" component={Register}/>
-        <Route exact path="/contactForm" component={ContactForm}/>
-        <Route exact path='/ActivitiesPublicAll' component={ActivitiesPublicAll}/>
-        <Route exact path='/CommentsPublic' component={CommentsPublic}/>
-        <Route exact path='/TestimonialsPublic' component={TestimonialsPublic}/>
-        <Route exact path='/NewsAllPublic' component={NewsAllPublic}/>
+        <Route path="/contactForm" component={ContactForm}/>
+        <Route exact path='/users/:id' component={MyProfileUpdate}/>
+        <Route path='/ActivitiesPublicAll' component={ActivitiesPublicAll}/>
+        <Route path='/TestimonialsCreate' component={TestimonialsCreate}/>
+        <Route path='/TestimonialsPublic' component={TestimonialsPublic}/>
+        <Route path='/NewsAllPublic' component={NewsAllPublic}/>
 
               
         {/* ADMIN */}
-        <Route exact path='/ActivitiesAll' component={ActivitiesAll}/>
-        <Route exact path='/ActivitiesCreate' component={ActivitiesCreate}/>
+        <Route path='/ActivitiesAll' component={ActivitiesAll}/>
+        <Route path='/ActivitiesCreate' component={ActivitiesCreate}/>
         <Route exact path='/activities/update/:id' component={ActivitiesUpdate}/>
 
-        <Route exact path='/CategoriesAll' component={CategoriesAll}/>
-        <Route exact path='/CategoriesCreate' component={CategoriesCreate}/>
+        <Route path='/CategoriesAll' component={CategoriesAll}/>
+        <Route path='/CategoriesCreate' component={CategoriesCreate}/>
         <Route exact path='/categories/update/:id' component={CategoriesUpdate}/>
-        <Route exact path='/categories/del/:id' component={CategoriesAll}/>
+        <Route exact path='/categories/:id' component={CategoriesAll}/>
 
-        <Route exact path='/CommentsAll' component={CommentsAll}/>
+        <Route path='/CommentsAll' component={CommentsAll}/>
         <Route exact path='/comments/byUser/:user_id' component={CommentsAll}/>
 
-        <Route exact path='/ContactsAll' component={ContactsAll}/>
+        <Route path='/ContactsAll' component={ContactsAll}/>
 
-        <Route exact path='/MembersAll' component={MembersAll}/>
-        <Route exact path='/MembersCreate' component={MembersCreate}/>
-        <Route exact path='/MembersOne' component={MembersOne}/>
+        <Route path='/MembersAll' component={MembersAll}/>
+        <Route path='/MembersCreate' component={MembersCreate}/>
+        <Route path='/MembersOne' component={MembersOne}/>
         <Route exact path='/members/update/:id' component={MembersUpdate}/>
 
-        <Route exact path='/MessagesAll' component={MessagesAll}/>
+        <Route path='/MessagesAll' component={MessagesAll}/>
 
-        <Route exact path='/NewsAll' component={NewsAll}/>
-        <Route exact path='/NewsCreate' component={NewsCreate}/>
+        <Route path='/NewsAll' component={NewsAll}/>
+        <Route path='/NewsCreate' component={NewsCreate}/>
         <Route exact path='/news/update/:id' component={NewsUpdate}/>
 
-        <Route exact path='/RolesAll' component={RolesAll}/>
-        <Route exact path='/roles/create' component={RolesCreate}/>
+        <Route path='/RolesAll' component={RolesAll}/>
+        <Route exact path='/roles' component={RolesCreate}/>
         <Route exact path='/roles/update/:id' component={RolesUpdate}/>
 
-        <Route exact path='/TestimonialsAll' component={TestimonialsAll}/>
+        <Route path='/TestimonialsAll' component={TestimonialsAll}/>
 
-        <Route exact path="/OrganizationsAll" component={OrganizationsAll}/>
-        <Route exact path='/OrganizationsCreate' component={OrganizationsCreate}/>
-        <Route exact path='/organizations/:id' component={OrganizationsUpdate}/>
+        <Route path="/OrganizationsAll" component={OrganizationsAll}/>
+        <Route path='/OrganizationsCreate' component={OrganizationsCreate}/>
+        <Route exact path='/organizations/update/:id' component={OrganizationsUpdate}/>
 
-        <Route exact path='/UsersAll' component={UsersAll}/>
-       
-        <Route exact path='/users/update/:id' component={EditUsers}/>
-       
+        <Route path='/UsersAll' component={UsersAll}/>       
          
       </main>
 

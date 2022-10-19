@@ -17,14 +17,14 @@ router.get("/public/:id", idExists, getOneCategoryPublic);
 
 router.get("/", getAllCategories);
 
-router.post("/create", verifyIsAdmin,optionsFileUpload ,validateCategories, createCategory);
+router.post("/", verifyIsAdmin,optionsFileUpload ,validateCategories, createCategory);
 
 router.get("/:id",verifyIsAdmin, idExists, getOneCategory);
 
 router.get("/byName/:name",verifyIsAdmin, getOneCategoryByName);
 
-router.put("/update/:id", verifyIsAdmin,idExists, optionsFileUpload ,validateCategories, updateCategory);
+router.put("/:id", verifyIsAdmin,idExists, optionsFileUpload ,validateCategories, updateCategory);
 
-router.delete("/del/:id",verifyIsAdmin, deleteCategory);
+router.delete("/:id",verifyIsAdmin, deleteCategory);
 
 module.exports = router;

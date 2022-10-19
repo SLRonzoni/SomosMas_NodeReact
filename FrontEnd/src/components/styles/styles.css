@@ -3,7 +3,6 @@ body{
     justify-content: center; 
     width:100%;
     background-color:rgb(26, 26, 26);
-    /* background-image:url('C:\Users\Asus\Desktop\SomosMas_NodeReact\FrontEnd\src\components\images\manos_fondo1.jpg') ; */
 }
 
 .navBar {
@@ -52,7 +51,6 @@ body{
     padding: 1rem;
 }
 
-
 .containerItemSearchNews{
     display:flex;
     position:relative;
@@ -64,7 +62,6 @@ body{
     margin-top: 2%;
     margin-bottom: 3%;  
     height: auto;
-   
 }
 
 .containerSlideSize{
@@ -107,14 +104,34 @@ body{
     padding:1rem;
 }
 
+.containerBorderWhiteBgGrey{
+    border:1px solid #fff;
+    background-color:rgb(82, 80, 80);
+    box-shadow:1px 0px 5px 1px whitesmoke;
+    font-size: 16px;
+    border-radius: 25px;
+    font-size: 17px !important;
+    margin-top:1.4rem;
+} 
 
- .imageCharCard{
+.containerRegister{
+    width: 45rem;
+    margin:1.5rem;
+    padding:1rem;
+}
+
+.containerMyPerfil{
+    width: 35rem;
+    margin:1.5rem;
+    padding:0.5rem;
+}
+
+.imageCharCard{
     display:flex;
     margin:auto;
     height:10rem; 
     width: 20rem;
 } 
-
 
 .imageChar{
     display:flex;
@@ -156,6 +173,10 @@ body{
     margin-bottom: 8px;
 }
 
+.errorsRegister{
+    margin-left:-3rem
+}
+
 .boton
 .tituloListado{
     background-color: aqua;
@@ -183,7 +204,6 @@ body{
     font-size: 12px;
     margin-top:10px; 
     background-color: #2892fd;
-
 }
 
 .titleItem{
@@ -193,26 +213,6 @@ body{
     height:0.3rem;
 }
 
-/* .grupoBoton{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top:20px;
-} */
-
-/* .GrupoBtn{
-    display:flex;
-    flex-direction:column;
-}
-
-
-.Btn {
-    height:35px;
-    background-color:wheat;
-    border-radius:5px;
-    font-size:16px;
-    margin-top:30px;
-} */
 
 h1{
     font-size: 25px;
@@ -226,15 +226,6 @@ h1{
     text-align: center;  
 }
 
-
-/* .lineAllClient{
-    display: flex;
-    padding-top:50px;
-    margin-left:10px;
-    width:70%;  
-} */
-
-
 /* .modifBtn{  
     color: white;
     text-align: center;  
@@ -247,60 +238,13 @@ h1{
 } */
 
 
-/* h5{
-    margin-left:500px;
-}
-
-.modifH5{
-    margin-left:390px;
-}
-
-.modifInput{
-    margin-left:260px;
-} */
-
-/* .botonNuevo{
-    margin-left: 25%;
-} */
-
-/* .castillo{
-   display: flex;
-   margin: auto;
-   width: 34%;
-   height: 24%;
-} */
-
-/* .bienvenidos{
-   color:whitesmoke;
-   font-size: 340%;
-   margin: auto;
-} */
-
-/* .imagen-fluid, .nav-link{
-   margin-left: 50px;
-   margin-right:1px;
-}
-
-.logout{
-    color:whitesmoke;
-    background-color:transparent;
-    font-size: 20px;
-    margin-right: 30px;
-    width: 7%; 
-    height: auto;
-} */
-
-/* .login {
-    color:#fff;
-    background-color:transparent;
-    font-size: 20px;
-    width: 7%;
-    height: auto; 
-} */
-
 .margenEnd{
     margin-left: 35%;
     font-size: 12px;
+}
+
+.marginBottom05rem{
+    margin-bottom: 0.9rem;
 }
 
 .leftText{
@@ -343,10 +287,14 @@ h1{
     color:black;
 }
 
-
-/* .box-carrito{
-    margin-top:45px;
-} */
+.pEmailRegisterUserUpdate{
+    margin-left: 10rem;
+    padding:5px;
+    height: 35px;
+    position:absolute;
+    border-radius: 10px;
+    border:1px solid white;
+}
 
 .google{
     margin-left: 75%;
@@ -393,11 +341,6 @@ h1{
     margin-left: 3rem;
   } */
 
-  /* .img-cart{
-    width:30%;
-    height: 30%;
-  }*/
-
   .imgSearchNews{
     width:60%;
     height: 70%;
@@ -424,36 +367,11 @@ h1{
     display:Flex;
 }
 
-/* .responsive{
-    display:flex;
-    flex-wrap: wrap;
-}
-
-.itemResponsive{
-    flex: 150px  1   ;
-}*/
-
 .text{
     margin:auto;
     color:#fff;
     margin-top:-1%;
 }
-
-/* .textTitulo{
-    color:black;
-    margin-left:3rem;
-}  */
-
-/* .btnNvo{
-    margin-left:53rem;
-    margin-top:-3.5%;
-}
-
-.divBtnDesplegable{
-    display:inline-block;
-    text-align:center;
-    height:5rem;
-} */
 
 .pBtnDesplegable{
     margin-bottom:-0.5rem;
@@ -479,7 +397,6 @@ h1{
     margin-bottom: 3.5rem;
 }
 
-
 .divBtnDesplegableOrganizations{
     display:Flex;
     width: auto;
@@ -503,11 +420,6 @@ h1{
     margin-left:0;
 }
 
-/* .lineAll{
-    margin:auto;
-    width:90%;  
-}*/
-
 .visible{
     display: block;
 }
@@ -520,75 +432,10 @@ h1{
     width:max-content;
 }
 
-/* .justify{
-    text-justify: baseline;
-}
-
-.lineAllCategory{
-    margin:auto;
-    width:50%;  
-}
-
-
-
-.medio{
-    margin-left: 20%;
-} */ 
-
 .searchAlign{
     text-align: left;
     margin: 0;
 }
-
-
-/* .ancho{
-    min-width: 300px;
-} */
-
-/* .btnBuscaxPeli{
-    display:inline-block;
-    text-align:center;
-    margin:auto;
-    height:5rem; 
-}
-
-.colorWhitesmoke{
-    color:whitesmoke;
-}
-
-.bgWhitesmoke{
-    background-color:whitesmoke;
-} */
-
-/* .containerAllMovie{
-    display:inline-block;
-    margin:auto;
-}
-
-.h1AllMovie{
-    color:whitesmoke;
-}
-
-.btnNvoAllMovie{
-    margin-left:4rem;
-}
-
-.marginAutoWidthAuto{
-    margin:auto;
-    width:auto;
-} */
-
-/* .margen{
-    margin-left: 1.3%;
-    margin-right: 1.3%;
-}
-
-.containerEditChar{
-    width:59rem;
-    margin:auto;
-    background-color:whitesmoke;
-    box-shadow:3px 0px 5px 3px grey; 
-}*/
 
 .containerEditGender{
     width:32rem;
@@ -597,22 +444,6 @@ h1{
     background-color:rgb(26, 26, 26);
     box-shadow:3px 0px 5px 3px grey; 
 }
-/*
-.divEditChar{
-    margin-left:3rem;
-    margin-bottom:0.5rem;
-}
-
-.list-group-flush{
-    margin:auto;
-    width:20rem;
-    display:flex; 
-} */
-
-/* .list-group-flush-char{
-    margin:auto;
-    display:flex; 
-} */
 
 .list-group-char{
     margin:1rem;
@@ -620,19 +451,6 @@ h1{
     display:block; 
 }
 
-/* .list-group-movie{
-    margin:1rem;
-    width:59rem;
-    display:block; 
-}
-
-.div-input-edit-char{
-    display:block;
-    margin-left:4.5rem;
-    padding:0.5rem; 
-    text-align: center;
-}
-*/
 .colorBlack{
     color:black;
 }
@@ -641,25 +459,6 @@ h1{
     margin:auto;
     height:auto;
 }
-
-/* .containerEditMovie{
-    width:54rem;
-    margin:auto;
-    box-shadow:3px 0px 5px 3px grey; 
-}
-
-.fotoEditMovie{
-    margin-left:7rem;
-    height:8rem;
-    width: 6rem;
-    margin:auto;
-}
-
-.list-group-editMovie{
-    margin:auto;
-    width:24rem;
-    display:flex; 
-} */
 
 .row{  
     width:19rem ; 
@@ -680,15 +479,6 @@ h1{
 .pTestimonialsPublic{
     width: 31rem;
     height: auto;
-}
-
-/*
-.inputMovie{  
-    width:13rem ;   
-} */
-
-/* .inputMovie-artistas{  
-    width:46rem ;   
 }
 
 .fotoEdit{
@@ -733,10 +523,7 @@ h1{
     text-align: center;
 
 }
-
-.thead-carrito{
-    text-align: center;
-} */
+ */
 
 /* .botonAgregar{
     font-size:10px; 
@@ -744,13 +531,7 @@ h1{
     border:none;
     box-shadow:3px 0px 5px 3px grey;
 }
-
-
-.marginCarrito{
-    padding:25px;
-    margin-left:45px;
-    text-align: justify;
-} */
+*/
 
 .center{
     margin:auto;
@@ -763,6 +544,10 @@ h1{
 .errorText-input-update{
     margin:30px !important;
     margin-top:0 !important;
+}
+
+.errorText-myProfile-update{
+    margin-left:0rem !important;
 }
 
 .centerText{
@@ -787,34 +572,6 @@ h1{
 .textArea:focus{
     border-color:#0616fc;
 }
-
-
-/* .boton{
-    margin-left: 10%;
-}
-
-.imagenGender{
-    display:flex;
-    margin:auto;
-    height:6rem;
-    width: 19rem; 
-} */
-
-
-/* .renglonLine{ 
-    margin-right:1rem;
-    margin-left:1rem; 
-}
-
-.box-card{
-    height: auto;
-    min-height: 380px;
-} */
-
-/* repetida */
-/* .display{
-    display: block;
-} */
 
 .alinear{
     margin-left:-10px;
@@ -842,112 +599,29 @@ h1{
     padding-left: 20px;
 }
 
-
 .inputCreateWidth{
     margin-top: -2rem;
     width: 100%;
     padding-left: 20px;
 }
-
-.containerBorderWhiteBgGrey{
-    border:1px solid #fff;
-    background-color:rgb(56, 55, 55);
-    box-shadow:1px 0px 5px 1px whitesmoke;
-    font-size: 16px;
-    border-radius: 25px;
-    font-size: 17px !important;
-    margin-top:1.4rem;
-} 
-
-/*
-.containerFijo{
-    margin-top: 2.7%;
-  }
-  
-  .card-list{
-     margin-left: 1rem;
-     margin-right: 1rem; 
-  }
-  
-  .card-dimentions{
-      width: 23rem;
-      height: auto;
-      font: 0.1rem sans-serif;
-      display:inline-flex;
-      margin-right: 1rem;
-  } */
-  
-  /* .cardOne{
-      margin-top: 3.7%
-  }
-  
-  .nombreTitulo{
-      width: auto;
-  }
-  .listMovie{
-      margin-left: -20%;
-      margin-top: 3.7%;
-  }
-  
-  .list-dimentions{
-      width: auto;
-      height: auto;
-  } */
-  
-  /* repetida */
+ 
 .displayBlock{ 
     display: block;
-}
-  
-  /* .movies-list{
-      background-color: whitesmoke;
-      width: 100%;
-      box-shadow:3px 0px 5px 3px grey; 
-  }
-  
-  .centrar-thead{
-      text-align: center;
-      border:1px solid grey;
-      margin-left: 10px;
-      margin-right: 10px;
-  } */
-  
-  /* .centra-dato{
-      font-size: medium;
-      text-align: center;
-      border:1px solid grey;
-      margin-left: 10px;
-      margin-right: 10px;
-      width: auto;
-  }
-    
-  .ancho{
-      width: 10%;
-  }
-   */
+}  
     
 .imageSmall{
     width:10%;
  }
 
-.imageMyProfile{
-    width: 12%;
+.imageSmallUpdateForm{
+    width:12%;
+    margin-left:-26rem
 }
 
-
-  /* .h2{
-      color:black;
-      font-size: 140%;
-      background-color:whitesmoke;
-      text-align: center;
-      width: 100%;
-      height:auto;
-      box-shadow:3px 0px 5px 3px grey; 
-  }
-  
-  .textWhite{
-      color:white;
-  } */
+.imageMyProfile{
+    width: 40%;
+    margin-top:-2rem;
+}
 
 .homeBgImage {
     margin:auto;
@@ -982,7 +656,6 @@ h1{
     background-color:rgb(2, 117, 216); 
 }
 
-
 .buttonLight{
     background-color:whitesmoke;
     color:#1E90FF;
@@ -1014,7 +687,6 @@ h1{
     border-radius: 10px;
 }
  
-
   
 /* .rating span {
  color:#cac035
@@ -1039,45 +711,6 @@ h1{
 /* .img-thumbnail{
   height: 80px;
 } */
-
-
- /* .products {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-} */
-
-/* .product {
-  border: 1px #404040 solid;
-  margin: 1rem;
-  text-align: center;
-  height: 26rem;
-} */
-
-/* .product img {
-  width: 85%;
-  max-width: 400px;
-  height:15rem;
-}  */
-
-/* .product-info {
-  padding: 1rem;
-} */
-
-/* .product-img {
-  padding: 3rem;
-} */
-
-/* .btn-primary{
-  border-radius: 5px 5px 5px 5px;
-  border: 1px #404040 solid;
-  margin-left: 35%; 
-  background-color: #f0c040;
-  color:#000000;
-
-} */
-
-
 
 .bgWhite{
     background-color: #fff;
@@ -1114,18 +747,6 @@ h1{
     justify-content:center;
 }
 
-.contactFormName{
-    margin:140px 0px 0px 390px;
-}
-
-.contactFormPhone{
-    margin:205px 0px 0px 390px;
-}
-
-.contactFormEmail{
-    margin:270px 0px 0px 390px;
-}
-
 .pBtnDesplegableMembers{
     font-size: 1.5rem;
     margin-bottom:1rem;
@@ -1140,14 +761,26 @@ h1{
     font-size: 1.5rem;
 }
 
+.font12px{
+    font-size: 12px;
+}
+
 .font10px{
     font-size: 10px;
 }
 
-.labelWidthContactForm{
+.labelWidthForm{
     display: inline-block;
     width:12rem;
     text-align: left;
+}
+
+.defaultValueWidthForm{
+    margin-left:-4.5rem;
+}
+
+.inputImageHeightForm{
+    height: 20rem;
 }
 
 .userComments{

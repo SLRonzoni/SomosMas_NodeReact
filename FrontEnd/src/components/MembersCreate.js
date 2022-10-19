@@ -35,7 +35,7 @@ function MembersCreate(props) {
 
     const saveMembers = async () => {
       await axiosClient
-        .post("/members/create",body)     
+        .post("/members",body)     
         .then((response) => {
           if(response) {
             setMembers(response)

@@ -39,29 +39,27 @@ Modificaciones al proyecto original ( back end ):
   
 ** ROUTES **
   * AUTH, se agregó moddleware optionsFileUpload 
-  * AUTH, se creo 
+  * AUTH, se creo ruta para login con google
   * ACTIVITIES, se crearon rutas para getByName, getByDate, get public y get public id y se agregaron middlewares
-  * ACTIVITIES, se modificaron rutas create, getAll, update, del  ruta para login con google
-  * CATEGORIES, CREATE Y UPDATE, se agregó middleware "optionsFileUpload" y se agregó al nombre de la
-                            ruta CREATE,UPDATE y DEL
+  * ACTIVITIES, se modificaron rutas create, getAll, update, del  
+  * CATEGORIES, en post y update, se agregó middleware "optionsFileUpload" 
   * CATEGORIES, se agregó una ruta get by name
   * CATEGORIES, se cambió la verificacion de administrador, para poder agregar una ruta publica
   * COMMENTS, se cambió distribución de middleware de autenticacion de user
-  * MEMBERS, se agregó al nombre de la ruta CREATE,UPDATE y DEL y se agregó middleware idExists
+  * MEMBERS, se agregó middleware idExists
   * MEMBERS, se quitó la verificacion de administrador, para que los miembros los pueda ver cualquier usuario
   * MEMBERS, se agregó middleware de manejo de imagenes en create y update
   * MESSAGES , se crearon rutas
-  * NEWS, GET , se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
+
+  * NEWS, en get se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda leer las noticias
   * NEWS, se agregó middleware de manejo de imagenes en create y update
-  * NEWS, se agregó al nombre de la ruta CREATE,UPDATE y DEL 
   * NEWS, se crearon rutas para getByName, getByDate y getByCategory
-  * NEWS, se anregó middleware para manejo de imagenes en create y update
+  * NEWS, se agregó middleware para manejo de imagenes en create y update
   * ORGANIZATIONS, se cambió opciones de verificar administrador, y se agregó /public a rutas get
-  * ROLES, se agregó al nombre de la ruta CREATE,UPDATE y DEL. 
   * ROLES, se creó ruta para getByName
   * TESTIMONIALS, se crearon rutas para public/getByName y  public/getByDate, get public y get public id
   * TESTIMONIALS, se cambió la distribución del middlewares de verificacion user y admin, para usar rutas public
-  * USERS, se agregó /del a la ruta
+  * TESTIMONIALS, en post y put, se eliminó validacion VerifyIsAdmin, para que cualquier persona pueda crear un testimonio
   * USERS, se agregaron moddlewares isExists y optionsFileUpload a la ruta update
   * USERS, se eliminó VerifyIsAdmin de las rutas update y get one
   * USERS, se creó ruta get by email, para obtener datos del usuario cuando existe un logueo con google
@@ -77,9 +75,8 @@ Modificaciones al proyecto original ( back end ):
 
 ** DOCUMENTATION ** 
   * AUTH , LOGIN, se cambió datos para admin
-  * CATEGORIES , se adaptó create y update para que puedan recibir archivos de imagen y se cambió nombre 
-                              de rutas en CREATE,UPDATE y DELETE
-  * CONTACT , POST se eliminó id y se colocó campo message como required
+  * CATEGORIES , se adaptó create y update para que puedan recibir archivos de imagen
+  * CONTACT , en post se eliminó id y se colocó campo message como required
   * MESSAGES  , se creó documentation
 
 
@@ -107,7 +104,9 @@ Modificaciones al proyecto original ( back end ):
   * CONTACT , se eliminó campo message 
   * MESSAGES  , se creó modelo
   * ORGANIZATIONS, se agregó facebook, instagram y linkedin ( segun migracion adicional )
+  * TESTIMONIALS, se agregó campo userId para que los testimonios solo los puedan cargar los usuarios registrados, se agregó allownull a los campos
 
 
 ** MIGRATION **
   * MESSAGES , se creó  migracion 
+  * TESTIMONIALS, se quitó nulo en image, se agregó campo userId, y se agregó not null en userId y content

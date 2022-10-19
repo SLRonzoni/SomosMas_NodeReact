@@ -55,7 +55,7 @@ const MembersUpdate = ({match, history}) => {
   
     const updateMember = async () => {
       await axiosClient
-        .put(`/members/update/${id}`,body)
+        .put(`/members/${id}`,body)
         .then(response => {
           if (response.status===201) {
             setMembers(response.data);
@@ -211,7 +211,6 @@ return (
             <br></br>
             
             <div className=" inputUpdateWidth">
-              {/* <p></p> */}
               <div className="displayInLineFlex inputUpdateWidth">
                 <InputUpdateForm
                 type="text"

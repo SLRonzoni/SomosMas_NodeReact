@@ -19,11 +19,11 @@ router.get('/:id', idExists, getRoleById);
 
 router.get('/byName/:name', getRoleByName);
 
-router.post('/create', validateRoles , createRole);
+router.post('/', validateRoles , createRole);
 
-router.put('/update/:id', idExists, validateRoles , updateRole);
+router.put('/:id', idExists, validateRoles , updateRole);
 
-router.delete('/del/:id', idExists, deleteRole);
+router.delete('/:id', idExists, deleteRole);
 
 
 module.exports = router;

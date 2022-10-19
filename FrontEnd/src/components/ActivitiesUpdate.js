@@ -4,11 +4,10 @@ import Swal from "sweetalert2";
 import "./styles/styles.css";
 import { Formik } from 'formik';
 import { Link } from "react-router-dom";
-import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
-import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated} from './helpers/validationMessages';
-import {regexActivitiesName } from "./helpers/RegExp";
-import { formatDate} from './helpers/FormatDate';
+import { Label,SendButton, MsjWrong, ErrorText,IconUser, InputUser, InputGroup, Defaultvalue} from './elements/ElementsFormStyles';
+import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated, msgValidationCategoryDescription} from './helpers/validationMessages';
+import {regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
+
 
 const FormActivity = ({match,history}) => {
 
@@ -48,7 +47,7 @@ const FormActivity = ({match,history}) => {
   
     const updateActivity = async () => {
       await axiosClient
-        .put(`/activities/update/${id}`,body)
+        .put(`/activities/${id}`,body)
         .then(response => {
           if (response.status===201) {
             setActivities(response.data);
@@ -94,142 +93,145 @@ const FormActivity = ({match,history}) => {
 
   
   //FORMIK INITIAL VALUES
-  let initialValues={name:activities.name,
-                     content:activities.content}
+  let initialValues={name:activities.name, content:activities.content}
 
   //FORMIK VALIDATIONS 
-let validateInputs=(values) =>{   
+  let validateInputs=(values) =>{   
 
-  let errors = {name: '', image:'',content:'',  
-                icoNname:'', icoNimage:'', icoNcontent:'',formOk:''};  
+    let errors = {name: '', image:'',content:'',  
+                  icoNname:'', icoNimage:'', icoNcontent:'',formOk:''};  
 
-  if (!values.name) {
-    errors.name=msgRequired
-    errors.icoNname= '❌'
-    return errors
-  };
+    if (!values.name) {
+      errors.name=msgRequired
+      errors.icoNname= '❌'
+      return errors
+    }
 
-  if (!regexActivitiesName.test(values.name)) {
-    errors.name=msgValidationActivitiesName
-    errors.icoNname= '❌'
-    return errors
-  } else {
-    errors.icoNname= '✔️'
-  };
-
-  let searchName=values.name
-    repeat(searchName, errors)
-    if(duplicated===searchName){
-      errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'         
+    if (!regexActivitiesName.test(values.name)) {
+      errors.name=msgValidationActivitiesName
+      errors.icoNname= '❌'
+      errors.formOk='f'
       return errors
     } else {
       errors.icoNname= '✔️'
+      errors.formOk='v'
+    }
+
+    let searchName=values.name
+    repeat(searchName, errors)
+    if(duplicated===searchName){
+      errors.name=msgValidationDuplicated
+      errors.icoNname= '❌'    
+      errors.formOk='f'     
+      return errors
+    } else {
+      errors.icoNname= '✔️'
+      errors.formOk='v'
     };
 
-  if(!values.image) {
-    errors.image=msgRequired
-    errors.icoNimage= '❌'
-    return errors
-  } else {
-    errors.icoNimage= '✔️'
-  };
+    if(!values.image) {
+      errors.image=msgRequired
+      errors.icoNimage= '❌'
+      return errors
+    }
 
-  if (!values.content) {
-    errors.content=msgRequired
-    errors.icoNcontent= '❌'
-    return errors
-  } else {
-    errors.icoNcontent= '✔️'
-  };
+    if (!values.content) {
+      errors.content=msgRequired
+      errors.icoNcontent= '❌'
+      return errors
+    }
 
-  if(errors.name || errors.image || errors.content){
-    errors.formOk='f'
-  } else {
-    errors.formOk='v'
-  };
-} 
+    if (!regexCategoryDescription.test(values.content)) {
+      errors.content=msgValidationCategoryDescription
+      errors.icoNcontent= '❌'
+      errors.formOk='f'
+      return errors
+    } else {
+      errors.icoNcontent= '✔️'
+      errors.formOk='v'
+    };
+  }
+
     
   //FORM
   return (
     <>
-    <br></br>
     <Formik
          initialValues={initialValues}           
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="container-sm col-6 col-md-7 containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-            <br></br>
-            <h3 className="centerText ">Ingrese nuevos valores ...</h3>
-            <br></br>
-            <div>
-
+    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
+         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+            <h3 className="centerText displayFlex ">Nuevos valores</h3> 
+            <div  className='centerText'>
               <div>
-                <div className="displayInLineFlex ">
-                  <InputForm
-                    type="text"
-                    name="name"
-                    label="Nombre actual : " 
-                    defaultValue={activities.name}
-                    placeholder="Ingrese nuevo nombre"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
+                <div>
+                  <div className="displayFlex ">
+                    <Label className="labelWidthForm" htmlFor='name'>Nombre</Label>
+                    <Defaultvalue className="defaultValueWidthForm" >( actual : {activities.name} )</Defaultvalue>
+                  </div>
+                  <InputGroup >
+                    <InputUser
+                      type="text"
+                      name="name"
+                      placeholder='Ingrese nuevo nombre '
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      />
+                      {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
+                  </InputGroup>
                 </div>
                 {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
               </div>
               <br></br>
+            <div className='centerText'>
+            <div>
               <div>
-                <div className="displayInLineFlex">
-                  <InputForm
+                <div className="displayFlex">
+                  <Label className="labelWidthForm" htmlFor='image'>Imágen</Label>
+                  <Defaultvalue> {<img className="imageSmallUpdateForm" src={activities.image}  alt="categoryImage"/>} </Defaultvalue>
+                </div>
+                <InputGroup >
+                  <InputUser
                     type="file"
                     name="image"
-                    label="Imágen :"
                     encType="multipart/form-data"
-                    defaultValue={<img className="imageSmall" src={activities.image}  alt="categoryImage"/>}
                     onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
                     onBlur={handleBlur}
                   />
-                  {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
+                  {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}
+                </InputGroup>
                 </div>
                 {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
               </div>
               <br></br>
-              <div>
-                <div className="displayInLineFlex">
-                  <InputForm
-                    type="text"
-                    name="content"
-                    label="Descripción actual : "
-                    defaultValue={activities.content}
-                    placeholder="Ingrese nueva descripción"
-                    value={values.description}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.content && errors.icoNcontent && <Icon>{errors.icoNcontent}</Icon>}
-                </div>
-                {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
+            <div>
+            <div>
+              <div className="displayFlex">
+                <Label className="labelWidthForm" htmlFor='content'>Descripción</Label>
+                <Defaultvalue className="defaultValueWidthForm" >( actual : {activities.content} )</Defaultvalue>
               </div>
-              <br></br>
-              <div className="centerText displayFlex">
-                <div>
-                  <Label htmlFor="name">Creada  :</Label>
-                  <span className="center" >{formatDate(new Date(activities.createdAt))}</span>
-                </div>
-                <div>   
-                  <Label htmlFor="name">Última modificación  :</Label>
-                  <span className="center" >{formatDate(new Date(activities.updatedAt))}</span>
-                </div>
+              <InputGroup>
+                <InputUser
+                  type="text"
+                  name="content"
+                  placeholder="Ingrese nueva descripción"
+                  value={values.content}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
+              </InputGroup>
               </div>
+              {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
+            </div>
+            <br></br>
             </div>
             { errors.formOk === "f" && 
               <MsjWrong> 
-              <span className="centerText colorBlack">
+              <span className="centerText">
                 <br /> Algun dato es incorrecto. 
                 <br/> Por favor complete el formulario correctamente
               </span>        
@@ -237,23 +239,19 @@ let validateInputs=(values) =>{
             }
            
             <div>
-              <br></br>
+              <span>( todos los campos son obligatorios )</span>
               <div className="centerText">
-                  <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link 
-                    to={"/ActivitiesAll"}
-                    className="m-3 mr-md-2 btn buttonBlue"
-                    role="button"
-                  > Volver
-                  </Link>
+                  <SendButton type="submit" className="m-1 btn btn-primary md-end "> Guardar </SendButton>
+                  <Link to={"/ActivitiesAll"} className="m-1 mr-md-2 btn buttonBlue"  role="button" > Volver </Link>
               </div> 
             </div>
-            
+            </div>
           </form>
       )}
     </Formik>
   </>
   );
+  
 };
 
 export default FormActivity;

@@ -26,9 +26,19 @@ const Label = styled.label`
     cursor:pointer;
 `;
 
+const Defaultvalue = styled.label`
+    display: block;
+    font-weight:600;
+    padding:10px;
+    min-height:40px;
+    cursor:pointer;
+`;
+
 const InputGroup = styled.div`
     display:flexinline
     background:green;
+    position:relative;
+    z-index:90;
 `;
 
 
@@ -39,6 +49,7 @@ const Input = styled.input`
     border-radius:15px;
     line-height:45px;
     padding:0 40px 0 10px;
+    transition:.3s ease all;
     border:3px solid transparent;
 
     &:focus {
@@ -50,13 +61,14 @@ const Input = styled.input`
 
 const InputUser = styled.input`
     width:30rem;
-    height:45px;
+    height:auto;
     background:#fff;
     color:rgb(26, 26, 26);
     border-radius:15px;
     margin:auto;
     line-height:45px;
     padding:0 40px 0 10px;
+    transition:.3s ease all;
     position:relative;
     border:3px solid transparent;
 
@@ -74,6 +86,10 @@ const InputUpdate = styled.input`
     border-radius:15px;
     line-height:45px;
     color:black;
+    line-height:45px;
+    padding:0 40px 0 10px;
+    transition:.3s ease all;
+    position:relative;
     border:3px solid transparent;
 
     &:focus {
@@ -84,41 +100,48 @@ const InputUpdate = styled.input`
 `;
 
 const Icon=styled.p`  
-    width:10%;
+    width:9%;
     height:45px;
     line-height:45px;  
-    font-size:20px;
+    font-size:16px;
     margin:45px 0px 0 150px;
     top:20px;
+    right:10px;
+    bottom:14px;
+    z-index:100;
     position:absolute;
 
 `;
 
 const IconUpdate=styled.p`  
     line-height:45px;  
-    font-size:20px;
+    font-size:16px;
     margin:45px 0px 0px 0px;
+    right:10px;
+    bottom:14px;
+    z-index:100;
     position:absolute;
 `;
 
 const IconUser=styled.p`  
     width:1%;
-    height:0px;
-    line-height:0px;  
-    font-size:20px;
-  
+    height:45px;
+    line-height:12px;  
+    font-size:16px;
     top:20px;
+    right:25px;
+    bottom:14px;
+    z-index:100;
     position:absolute;
 `;
 
-
 const ErrorText = styled.p`
-    font-size:14px;
+    font-size:12px;
     margin:auto;
+    margin-bottom:0;
     margin-left:100px;
     border-radius:10px;
     width:35rem;
-    // background:${Colors.fondoMsjError};
     color:${Colors.error};
 ;`
 
@@ -147,7 +170,7 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-export {Form, Label, Colors , Input, InputUser,InputUpdate, Icon, IconUser, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
+export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
 
 
   

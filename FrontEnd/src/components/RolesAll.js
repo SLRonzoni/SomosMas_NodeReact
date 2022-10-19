@@ -50,7 +50,7 @@ const RolesAll = (props) => {
   };
 
   const removing = async (id) => {
-    await axiosClient.delete(`/roles/del/${id}`)
+    await axiosClient.delete(`/roles${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -102,7 +102,7 @@ const RolesAll = (props) => {
                   <th className="tituloItem centerText"> Creado</th>
                   <th className="tituloItem centerText"> Actualizado</th>
                   <th className="centerText">
-                    <Link to={'/roles/create'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
+                    <Link to={'/roles'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
                   </th>
                 </tr>
               </thead>

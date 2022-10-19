@@ -19,6 +19,6 @@ router.get("/byEmail/:email", getMessagesByEmail);
 
 router.get("/byDate/:date", getMessagesByDate);
 
-router.delete("/del/:id", idExists,deleteMessage);
+router.delete("/:id", idExists,deleteMessage);
 
 module.exports = router;

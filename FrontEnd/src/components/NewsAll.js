@@ -51,7 +51,7 @@ const NewsAll = (props) => {
   };
 
   const removing = async (id) => {
-    await axiosClient.delete(`/news/del/${id}`)
+    await axiosClient.delete(`/news/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

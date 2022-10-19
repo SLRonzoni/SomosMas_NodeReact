@@ -27,7 +27,7 @@ function RoleCreate(props) {
 
     const saveRoles = async () => {
       await axiosClient
-        .post("/roles/create",body)     
+        .post("/roles",body)     
         .then((response) => {
           if(response.status===201) {
             setRoles(response.data)

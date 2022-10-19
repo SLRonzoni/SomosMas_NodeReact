@@ -70,7 +70,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/comments/del/${id}`)
+      .delete(`/comments/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

@@ -50,7 +50,7 @@ const MembersAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/members/del/${id}`)
+      .delete(`/members/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

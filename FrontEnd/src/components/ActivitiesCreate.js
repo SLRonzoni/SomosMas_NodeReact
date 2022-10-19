@@ -1,17 +1,16 @@
 import React, { useState } from "react";
+import "./styles/styles.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
-import { msgRequired, msgValidationActivitiesName} from './helpers/validationMessages';
-import { regexActivitiesName } from "./helpers/RegExp";
-import "./styles/styles.css";
+import { SendButton, MsjWrong, ErrorText,Label, InputGroup, IconUser, InputUser} from './elements/ElementsFormStyles';
+import { msgRequired, msgValidationActivitiesName, msgValidationCategoryDescription} from './helpers/validationMessages';
+import { regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
 
 function ActivitiesCreate(props) {
   
-  const [activities, setActivities] = useState({
+  const [ setActivities] = useState({
     name: "",
     content:"",
     image:""        
@@ -28,7 +27,7 @@ function ActivitiesCreate(props) {
 
     const saveActivities = async () => {
       await axiosClient
-        .post("/activities/create",body)     
+        .post("/activities",body)     
         .then((response) => {
           if(response) {
             setActivities(response.data)
@@ -53,8 +52,7 @@ function ActivitiesCreate(props) {
   };
 
 //FORMIK INITIAL VALUES
-let initialValues={name:activities.name,
-                   content:activities.content}
+let initialValues={name:"", content:""}
 
 //FORMIK VALIDATIONS 
 let validateInputs=(values) =>{   
@@ -66,39 +64,40 @@ let validateInputs=(values) =>{
     errors.name=msgRequired
     errors.icoNname= '❌'
     return errors
-  };
+  }
 
   if (!regexActivitiesName.test(values.name)) {
     errors.name=msgValidationActivitiesName
     errors.icoNname= '❌'
+    errors.formOk='f'
     return errors
   } else {
     errors.icoNname= '✔️'
-  };
+    errors.formOk='v'
+  }
 
   if(!values.image) {
     errors.image=msgRequired
     errors.icoNimage= '❌'
     return errors
-  } else {
-    errors.icoNimage= '✔️'
-  };
+  }
 
   if (!values.content) {
     errors.content=msgRequired
     errors.icoNcontent= '❌'
     return errors
+  }
+
+  if (!regexCategoryDescription.test(values.content)) {
+    errors.content=msgValidationCategoryDescription
+    errors.icoNcontent= '❌'
+    errors.formOk='f'
+    return errors
   } else {
     errors.icoNcontent= '✔️'
-  };
-
-  if(errors.name || errors.image || errors.content){
-    errors.formOk='f'
-  } else {
     errors.formOk='v'
   };
 }
-
 
 //FORM
 return (
@@ -108,63 +107,67 @@ return (
        validate={validateInputs}
        onSubmit={(values)=>{ sendForm(values)}}
   >
-  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
+  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
        <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
           <h3 className="centerText">Nueva actividad</h3>
-          
-          <div >
-
+          <br></br>
+          <div className='centerText'>
             <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="text"
-                  name="name"
-                  label="Nombre : " 
-                  defaultValue=""
-                  placeholder="Ingrese nombre"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
+              <div className="displayFlex"> 
+                <Label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</Label>
+                <InputGroup>
+                  <InputUser
+                    type="text"
+                    name="name"
+                    placeholder="Ingrese nombre"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
+                </InputGroup>
               </div>
               {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
             </div>
             <br></br>
+            <div className='centerText'>
             <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="file"
-                  name="image"
-                  label="Imágen :"
-                  encType="multipart/form-data"
-                  defaultValue=''
-                  onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                  onBlur={handleBlur}
-                />
-                {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
+              <div className="displayFlex">
+                <Label className="labelWidthForm" htmlFor='image'>Imágen</Label>
+                <InputGroup >
+                  <InputUser className="form-control"
+                    type="file"
+                    name="image"
+                    encType="multipart/form-data"
+                    onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                    onBlur={handleBlur}
+                  />
+                  {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}
+                  </InputGroup>
               </div>
               {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
             </div>
             <br></br>
             <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="text"
-                  name="content"
-                  label="Descripción : "
-                  defaultValue=""
-                  placeholder="Ingrese descripción"
-                  value={values.content}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.content && errors.icoNcontent && <Icon>{errors.icoNcontent}</Icon>}
+              <div className="displayFlex">
+                <Label className="labelWidthForm" htmlFor='content'>Descripción</Label>
+                <InputGroup>
+                  <InputUser
+                    type="text"
+                    name="content"
+                    placeholder="Ingrese descripción"
+                    value={values.content}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
+                  </InputGroup>
               </div>
               {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
             </div>
-            
-          </div>
+            <br></br>
+            </div>
+
           { errors.formOk === "f" && 
             <MsjWrong> 
             <span className="centerText">
@@ -173,7 +176,7 @@ return (
             </span>        
             </MsjWrong>
           }
-         
+         </div>
           <div>
             <div className="centerText">
                 <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>

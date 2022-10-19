@@ -51,7 +51,7 @@ const ActivitiesAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/activities/del/${id}`)
+      .delete(`/activities/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -86,8 +86,7 @@ const ActivitiesAll = (props) => {
         route='/activities/public/byName/'
       };
 
-    await axiosClient
-    .get(route+filterBy)
+    await axiosClient.get(route+filterBy)
     .then((response) => {
       setActivities(response.data)
     })

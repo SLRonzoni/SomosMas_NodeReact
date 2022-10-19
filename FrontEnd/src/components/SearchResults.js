@@ -43,8 +43,7 @@ function WordSearchResults() {
     for (let i = 0; i < news.length; i++) {
       for (let j = 0; j < news[i].comments.length; j++) {
         let idUser = news[i].comments[j].user_id;
-        await axiosClient
-          .get(`/users/${idUser}`)
+        await axiosClient.get(`/users/${idUser}`)
           .then((response) => {
             news[i].comments[j].userImage = response.data.photo || "";
             news[i].comments[j].firstName = response.data.firstName || "";

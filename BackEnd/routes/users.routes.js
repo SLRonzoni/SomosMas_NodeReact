@@ -14,8 +14,8 @@ router.get('/:id', getUserId)
 //GET user by email
 router.get('/:email', getUserEmail)
 //UPDATE user
-router.put('/update/:id', idExists, optionsFileUpload ,authenticatedUser, updateUser)
+router.put('/:id', idExists, optionsFileUpload ,authenticatedUser, updateUser)
 //DELETE user
-router.delete('/del/:id', verifyIsAdmin,authenticatedUser, deleteUser)
+router.delete('/:id', verifyIsAdmin,authenticatedUser, deleteUser)
 
 module.exports = router;

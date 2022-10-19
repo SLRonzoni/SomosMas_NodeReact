@@ -14,9 +14,13 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Testimonial.init({
-        name: DataTypes.STRING,
+        name:{ type: DataTypes.STRING, 
+              allowNull: false },
         image: DataTypes.STRING,
-        content: DataTypes.STRING,
+        content: { type: DataTypes.STRING, 
+                  allowNull: false},
+        userId:{ type: DataTypes.NUMBER, 
+                 allowNull: false}
     },{
         sequelize,
         modelName: 'Testimonial',

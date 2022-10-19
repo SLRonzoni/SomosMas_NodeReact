@@ -22,7 +22,7 @@ const Register=(props)=> {
         body.append("lastName",values.lastName);
         body.append("email",values.email);
         body.append("roleId",process.env.REACT_APP_ROLE_REGULAR_USER);
-        body.append("password",values.password);
+        body.append("password",values.currentPassword);
         body.append("photo",values.photo);  
 
         const createUser = async () => {
@@ -61,14 +61,30 @@ const Register=(props)=> {
         lastName:'',
         photo:'',
         email:'',
-        password:'',
+        currentPassword:'',
         confirmPassword:''}
 
     //FORMIK VALIDATIONS 
     let validateInputs=(values) =>{   
 
-        let errors = {firstName: '',lastName:'', photo:'', email:'',password:'', 
+        let errors = {firstName: '',lastName:'', photo:'', email:'',currentPassword:'', 
         icoNfirstName:'',icoNlastName:'', icoNphoto:'',iconNemail:'', icoNpassword:'',formOk:''};  
+
+        if (!values.email) {
+            errors.email=msgRequired
+            errors.icoNemail= '❌'
+            return errors
+        };
+
+        if (!regexUserEmail.test(values.email)) {
+            errors.email=msgValidationUserEmail
+            errors.icoNemail= '❌'
+            errors.formOk='f'
+            return errors
+        } else {
+            errors.icoNemail= '✔️'
+            errors.formOk='v'
+        };
 
         if (!values.firstName) {
             errors.firstName=msgRequired
@@ -79,9 +95,11 @@ const Register=(props)=> {
         if (!regexUserfirstName.test(values.firstName)) {
             errors.firstName=msgValidationUserFirstName
             errors.icoNfirstName= '❌'
+            errors.formOk='f'
             return errors
         } else {
             errors.icoNfirstName= '✔️'
+            errors.formOk='v'
         };
 
         if (!values.lastName) {
@@ -93,58 +111,44 @@ const Register=(props)=> {
         if (!regexUserLastName.test(values.lastName)) {
             errors.lastName=msgValidationUserLastName
             errors.icoNlastName= '❌'
+            errors.formOk='f'
             return errors
         } else {
             errors.icoNlastName= '✔️'
+            errors.formOk='v'
         };
+       
 
-        if (!values.email) {
-            errors.email=msgRequired
-            errors.icoNemail= '❌'
-            return errors
-        };
-
-        if (!regexUserEmail.test(values.email)) {
-            errors.email=msgValidationUserEmail
-            errors.icoNemail= '❌'
-            return errors
-        } else {
-            errors.icoNemail= '✔️'
-        };
-
-        if (!values.password) {
+        if (!values.currentPassword) {
             errors.password=msgRequired
             errors.icoNpassword= '❌'
             return errors
         };
 
-        if (!regexUserPassword.test(values.password)) {
+        if (!regexUserPassword.test(values.currentPassword)) {
             errors.password=msgValidationUserPassword
             errors.icoNpassword= '❌'
+            errors.formOk='f'
             return errors
         } else {
             errors.icoNpassword= '✔️'
+            errors.formOk='v'
         };
 
-        if (values.password!==values.confirmPassword){
+        if (values.currentPassword!==values.confirmPassword){
             errors.password=msgValidationUserConfirmPassword
             errors.icoNpassword= '❌'
+            errors.formOk='f'
             return errors
         } else {
             errors.icoNpassword= '✔️'
+            errors.formOk='v'
         };
-
-        if(errors.firstName || errors.lastName || errors.email || errors.photo || errors.password){
-        errors.formOk='f'
-        } else {
-        errors.formOk='v'
-        };  
     }   
 
     //FORM
     return (
     <>
-    <br></br><br></br>
     <Formik  
             initialValues={initialValues}           
             validate={validateInputs}
@@ -152,74 +156,35 @@ const Register=(props)=> {
     > 
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
    
-        <form className="container-lg col-6 col-md-12 containerBorderWhiteBgGrey " onSubmit={handleSubmit}>
-            <br></br>
-            <h4 className="centerText">Formulario de Registro</h4>
-            <div >
-                <div >
-                    <div >
-                        <div >   
-                            <br></br>
-                            {/* <Label htmlFor="photo"> </Label> */}
-                            <span >
-                                { values.photo ? <img  src={values.photo}  alt="userPhoto"/> : ''}
-                            </span>
+        <form className="containerRegister containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+            <h5 className="centerText marginBottom05rem">Formulario de Registro</h5>
+            <div>
+                <div>
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label htmlFor="photo">Foto </Label>
+                            <span className="colorTransparent">.......................</span>
                             <InputGroup  >
-                            <InputUser className="form-control"
-                                    type="file" 
-                                    name="photo" 
-                                    id="photo"  
-                                    encType="multipart/form-data"
-                                    onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
-                                    onBlur={handleBlur}
-                            />
-                            </InputGroup>  
-                            {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
-                        </div> 
-                    {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
-                    </div>
-                    
-                    <div>
-                        <div>
-                            <Label htmlFor="firstName">Nombre :</Label>
-                            <InputGroup >
-                                <InputUser
-                                type="text" 
-                                name="firstName" 
-                                id="firstName"  
-                                value={values.firstName}
-                                onChange={handleChange} 
-                                onBlur={handleBlur}
-                                />              
-                                {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
-                            </InputGroup> 
-                        </div>
-                    {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
-                    </div>
-
-                    <div>
-                        <div>
-                        <Label htmlFor="lastName">Apellido : </Label>
-                            <InputGroup>
-                                <InputUser
-                                type="text" 
-                                name="lastName" 
-                                id="lastName"  
-                                value={values.lastName}
-                                onChange={handleChange} 
-                                onBlur={handleBlur}
+                                <InputUser className="form-control"
+                                        type="file" 
+                                        name="photo" 
+                                        id="photo"  
+                                        encType="multipart/form-data"
+                                        onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
+                                        onBlur={handleBlur}
                                 />
-                                {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
-                            </InputGroup>
+                                {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
+                            </InputGroup> 
                         </div> 
-                    {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
+                        {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
                     </div>
 
-                    <div>
-                        <div>
-                            <Label htmlFor="lastName">Email : </Label>
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label  htmlFor="email">Email</Label>
+                            <span className="colorTransparent">......................</span>
                             <InputGroup>
-                                <InputUser
+                                <InputUser className="form-control"
                                 type="text" 
                                 name="email" 
                                 id="email"  
@@ -230,15 +195,53 @@ const Register=(props)=> {
                                 {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
                             </InputGroup>
                         </div> 
-                    {touched.email && errors.email && <ErrorText>{errors.email} </ErrorText> }
+                        {touched.email && errors.email && <ErrorText className="errorsRegister">{errors.email} </ErrorText> }
                     </div>
                     
-                    <div>
-                        <div>
-                            <Label htmlFor="password"> Password : 
-                                <span className="colorGrey">..</span>
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label htmlFor="firstName">Nombre</Label>
+                            <span className="colorTransparent">.................</span>
+                            <InputGroup >
+                                <InputUser className="form-control"
+                                type="text" 
+                                name="firstName" 
+                                id="firstName"  
+                                value={values.firstName}
+                                onChange={handleChange} 
+                                onBlur={handleBlur}
+                                />              
+                                {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
+                            </InputGroup> 
+                        </div>
+                        {touched.firstName && errors.firstName && <ErrorText className="errorsRegister">{errors.firstName} </ErrorText> }
+                    </div>
+
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label htmlFor="lastName">Apellido</Label>
+                            <span className="colorTransparent">.................</span>
+                            <InputGroup>
+                                <InputUser className="form-control"
+                                type="text" 
+                                name="lastName" 
+                                id="lastName"  
+                                value={values.lastName}
+                                onChange={handleChange} 
+                                onBlur={handleBlur}
+                                />
+                                {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
+                            </InputGroup>
+                        </div> 
+                        {touched.lastName && errors.lastName && <ErrorText className="errorsRegister">{errors.lastName} </ErrorText> }
+                    </div>
+                   
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label htmlFor="currentPassword"> Password 
+                                <span className="colorTransparent">..</span>
                                 <button type="button" 
-                                        className='btn buttonLight' 
+                                        className='btn btn-light' 
                                         onClick={switchShown}> {shown ? '🙈' : '👀'}
                                 </button> 
                             </Label>  
@@ -246,26 +249,26 @@ const Register=(props)=> {
                             <InputGroup>
                                 <InputUser
                                 type={shown ? "text" : "password" }
-                                name="password" 
-                                id="password"  
-                                value={values.password}
+                                name="currentPassword" 
+                                id="currentPassword"  
+                                value={values.currentPassword}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 />
-                            {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
+                                {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
                             </InputGroup>
                         </div> 
-                    {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+                        {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
                     </div>
-                    <div>
-                        <div>
-                            <Label htmlFor="confirmPassword"> Repetir Password : </Label>  
 
+                    <div className="marginLeft10px marginBottom05rem">
+                        <div className="displayInLineFlex">   
+                            <Label htmlFor="confirmPassword"> Repetir Password</Label>  
                             <InputGroup>
                                 <InputUser
                                 type={shown ? "text" : "password" }
                                 name="confirmPassword" 
-                                id="password"  
+                                id="confirmPassword"  
                                 value={values.confirmPassword}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
@@ -273,24 +276,23 @@ const Register=(props)=> {
                             {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
                             </InputGroup>
                         </div> 
-                    {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+                        {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
                     </div>
 
                     { errors.formOk === "f" && 
-                    <MsjWrong> 
+                    <MsjWrong className="centerText"> 
                     <span className="centerText">
-                    <br /> Algun dato es incorrecto. 
-                    <br/> Por favor complete el formulario correctamente
+                        <br /> Algun dato es incorrecto. 
+                        <br/> Por favor complete el formulario correctamente
                     </span>        
                     </MsjWrong>
                     }
 
-                    <br></br>
                     <div className="centerText">
                         <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
                         <Link 
                         to={"/"}
-                        className="m-3 mr-md-2 btn buttonBlue"
+                        className="m-1 mr-md-2 btn buttonBlue"
                         role="button"
                         > Volver
                         </Link>

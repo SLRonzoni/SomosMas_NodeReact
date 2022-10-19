@@ -51,7 +51,7 @@ const TestimonialsAll = (props) => {
   };
 
   const removing = async (id) => {
-    await axiosClient.delete(`/testimonials/public/${id}`)
+    await axiosClient.delete(`/testimonials/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
@@ -86,7 +86,7 @@ const TestimonialsAll = (props) => {
     };
     await axiosClient.get(route+filterBy)
     .then((response) => {
-      setTestimonials([response.data[0]])
+      setTestimonials(response.data)
     })
     .catch(function (error) {
       console.log(error)
@@ -113,6 +113,7 @@ const TestimonialsAll = (props) => {
             name={oneTestimonial.name}
             image={oneTestimonial.image}
             content={oneTestimonial.content}
+            userId={oneTestimonial.userId}
             create={oneTestimonial.createdAt}
             update={oneTestimonial.updatedAt}
             remove={confirmRemove}
@@ -175,13 +176,10 @@ const TestimonialsAll = (props) => {
                 <th className="tituloItem centerText"> Imágen </th>
                 <th className="tituloItem "> Testimonio </th>
                 <th className="tituloItem "> Contenido </th>
+                <th className="tituloItem centerText"> userId </th>
                 <th className="tituloItem centerText"> Creado</th>
                 <th className="tituloItem centerText"> Actualizado</th>
                 <th className="tituloItem centerText"></th>
-
-                {/* <th className="centerText" ><Link to={'/TestimonialsCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Agregar </Link> 
-                </th> */}
               </tr>
             </thead>
 

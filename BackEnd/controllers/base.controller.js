@@ -42,7 +42,7 @@ const updateModel = async (req, res, model, inputVars) => {
     try {
         const id = req.params.id
         const retrievedModel = await model.findByPk(id);
-        
+       
         if(!retrievedModel) {
             return sendNotFound(res, id);
         }

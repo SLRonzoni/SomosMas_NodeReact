@@ -26,9 +26,9 @@ router.get('/:id', detailNews);
 
 router.get('/:id/comments', idExists ,getAllCommentsOfNews);
 
-router.post('/create/' ,  verifyIsAdmin,optionsFileUpload,validateNews,  createNews);
-router.put('/update/:id' , idExists ,verifyIsAdmin,optionsFileUpload,validateNews, updateNews);
-router.delete('/del/:id', idExists ,verifyIsAdmin,deleteNews);
+router.post('/' ,  verifyIsAdmin,optionsFileUpload,validateNews,  createNews);
+router.put('/:id' , idExists ,verifyIsAdmin,optionsFileUpload,validateNews, updateNews);
+router.delete('/:id', idExists ,verifyIsAdmin,deleteNews);
 
 
 

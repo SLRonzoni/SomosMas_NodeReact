@@ -3,7 +3,7 @@ import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate';
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 
-const TestimonialsAllLine = ({id, name, image, content, create,update,remove}) =>{
+const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,remove}) =>{
   
     return (
         <tr >
@@ -11,6 +11,7 @@ const TestimonialsAllLine = ({id, name, image, content, create,update,remove}) =
             <td className="imageChar centerText borderTransparent" ><img src={image}  alt="categoryImage"></img> </td>
             <td >{name}</td>
             <td >{content}</td>
+            <td >{userId}</td>
             <td className="centerText" >{formatDate(new Date(create))}</td>
             <td className="centerText" >{formatDate(new Date(update))}</td>
             

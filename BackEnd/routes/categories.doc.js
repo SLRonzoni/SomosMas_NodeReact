@@ -80,7 +80,7 @@
 
 /**
  * @swagger
- * /api/categories/create :
+ * /api/categories :
  *   post:
  *     security:
  *        - bearerAuth: []
@@ -116,7 +116,7 @@
 
 /**
  * @swagger
- * /api/categories/update/{id} :
+ * /api/categories/{id} :
  *   put:
  *     security:
  *        - bearerAuth: []
@@ -159,7 +159,7 @@
 
 /**
  * @swagger
- * /api/categories/del/{id} :
+ * /api/categories/{id} :
  *   delete:
  *     security:
  *        - bearerAuth: []

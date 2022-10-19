@@ -32,7 +32,7 @@ function NewsCreate(props) {
 
     const saveNews = async () => {
       await axiosClient
-        .post("/news/create",body)     
+        .post("/news",body)     
         .then((response) => {
           if(response) {
             console.log(response)

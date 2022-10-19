@@ -42,19 +42,22 @@ const createUser = async (req, res) => {
   }
 };
 
+
 const updateUser = async (req, res) => {
   let img = req.files;
   let regularImglocation;
   try{
     //regularImglocation = await uploadToBucket(img);
-    regularImglocation=`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1044.jpg`;
+    regularImglocation=`https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1044.jpg`
     const pass = bcrypt.hashSync(req.body.password, parseInt(process.env.SALT));
+    
     const inputVars={firstName:req.body.firstName,
                      lastName:req.body.lastName,
-                     roleId:  USER_REGULAR_ROLE_ID,
+                     email:req.body.email,
+                     roleId: req.body.roleId,
                      password:pass,
                      photo:regularImglocation} 
-                                                            
+                                                         
     return BaseController.updateModel(req, res, ModeloUser, inputVars )
   } catch (error) {        
     res.status(500).send(error);

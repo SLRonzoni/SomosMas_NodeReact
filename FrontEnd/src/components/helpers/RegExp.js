@@ -2,9 +2,9 @@
 //REGULAR EXPRESSIONS
 const regexActivitiesName=/^[a-zA-Z0-9_-\s]{6,50}$/ // Letras, numeros, guion y guion_bajo, entre 6 y 16 digitos
 
-const regexUserfirstName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+const regexUserfirstName=/^[a-zA-Z_-\s]{4,50}$/ // Letras, guion y guion_bajo, entre 4 y 16 digitos
 
-const regexUserLastName=/^[a-zA-Z0-9_-\s]{4,50}$/ // Letras, numeros, guion y guion_bajo, entre 4 y 16 digitos
+const regexUserLastName=/^[a-zA-Z_-\s]{4,50}$/ // Letras, guion y guion_bajo, entre 4 y 16 digitos
 
 const regexCategoryId=/^[0-9]{1,5}$/
 const regexUserEmail=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/

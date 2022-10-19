@@ -25,9 +25,9 @@ router.get('/public/byDate/:date', getTestimonialsByDate);
 
 router.get('/',authenticatedUser, verifyIsAdmin, getAllTestimonials);
 
-router.post('/',authenticatedUser, verifyIsAdmin, optionsFileUpload, validateTestimonial, createTestimonial);
+router.post('/',authenticatedUser, optionsFileUpload, validateTestimonial, createTestimonial);
 
-router.put('/:id',authenticatedUser, verifyIsAdmin, idExists, optionsFileUpload, validateUpdateTestimonial, updateTestimonial);
+router.put('/:id',authenticatedUser, idExists, optionsFileUpload, validateUpdateTestimonial, updateTestimonial);
 
 router.delete('/:id',authenticatedUser, verifyIsAdmin, idExists, deleteTestimonial);
 

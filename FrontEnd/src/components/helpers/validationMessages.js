@@ -10,9 +10,9 @@ const msgValidationIsNumber="El dato debe ser numérico"
 
 const msgValidationActivitiesName= "Puede contener entre 6 y 16 digitos ( letras, números, guión y guión bajo )"
 
-const msgValidationUserFirstName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
+const msgValidationUserFirstName= "Puede contener entre 4 y 16 digitos ( letras, guión y guión bajo )"
 
-const msgValidationUserLastName= "Puede contener entre 4 y 16 digitos ( letras, números, guión y guión bajo )"
+const msgValidationUserLastName= "Puede contener entre 4 y 16 digitos ( letras, guión y guión bajo )"
 
 const msgValidationUserEmail="Puede contener entre 4 y 12 dígitos. Formato correo@correo.xxx o .xxx.xx"
 

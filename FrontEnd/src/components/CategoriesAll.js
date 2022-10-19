@@ -50,7 +50,7 @@ const CategoriesAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/categories/del/${id}`)
+      .delete(`/categories/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",

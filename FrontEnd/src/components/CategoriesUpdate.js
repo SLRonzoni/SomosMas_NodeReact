@@ -11,7 +11,8 @@ import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import { formatDate } from "./helpers/FormatDate";
 import DuplicatedName from "./helpers/DuplicatedName";
 
-const FormCategory = ({match,history}) => {
+
+const CategoriesUpdate = ({match,history}) => {
 
   const id  = match.params.id;
 
@@ -51,7 +52,7 @@ const FormCategory = ({match,history}) => {
   
     const updateCategory = async () => {
       await axiosClient
-        .put(`/categories/update/${id}`,body)
+        .put(`/categories/${id}`,body)
         .then(response => {
           if (response.status===201) {
             setCategories(response.data);
@@ -151,13 +152,13 @@ const FormCategory = ({match,history}) => {
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
+    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
          <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
             <h3 className="centerText">Nuevos valores ...</h3>
             <br></br>
             <div>
-              <div>
-                <div className="displayInLineFlex inputCreateWidth">
+              <div >
+                <div className="displayInLineFlex inputCreateWidth ">
                   <InputForm
                     type="text"
                     name="name"
@@ -246,4 +247,4 @@ const FormCategory = ({match,history}) => {
   );
 };
 
-export default FormCategory;
+export default CategoriesUpdate;

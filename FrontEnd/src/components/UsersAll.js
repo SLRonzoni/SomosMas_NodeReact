@@ -48,7 +48,7 @@ const UsersAll = (props) => {
 
   const removing = async (id) => {
     await axiosClient
-      .delete(`/users/del/${id}`)
+      .delete(`/users/${id}`)
       .then((response) => {
         Swal.fire({
           icon: "success",
