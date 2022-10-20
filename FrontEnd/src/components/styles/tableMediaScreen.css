@@ -1,4 +1,43 @@
-@media screen and (min-width: 630px) and (max-width: 920px) {
+@media only screen and (max-width:890px) {
+    header .nav-btn {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    header nav{
+        position: fixed;
+        top:0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:1.5rem;
+        transition: 1s;
+        transform: translateY(-100vh);
+    }
+
+    header .responsiveNav{
+        transform: none;
+        background-color: #0e0d0d;
+        z-index: 100;
+    }
+
+    nav .nav-close-btn{
+        position:absolute;
+        top:2rem;
+        right: 2rem;
+    }
+
+    .NavDropdown-Item{
+        font-size: 1.3rem;
+    }
+
+}
+
+@media only screen  and (min-width: 630px) and (max-width: 920px) {
     table {
         width: 100%;
     }
@@ -22,26 +61,7 @@
 }
 
 
-@media screen and (min-width: 630px) and (max-width: 722px) {
-   div header :nth-child(1){
-       background-color: aqua;
-   }
-
-   div footer :nth-child(1){
-      background-color: blue;
-   }
-
-}
-
-@media screen and (min-width: 578px) and (max-width: 629px) {
-     
-    div header :nth-child(1){
-        background-color: aqua;
-    }
- 
-    div footer :nth-child(2){
-       background-color: blue;
-    }
+@media only screen and (min-width: 578px) and (max-width: 629px) {
 
     /* encolumna btn filtros */
     div:nth-child(2){
@@ -68,15 +88,7 @@
 }
  
 
-@media screen  and (max-width: 577px) {
-
-    div header :nth-child(1){
-        background-color: aqua;
-    }
- 
-    div footer :nth-child(1){
-       background-color: blue;
-    }
+@media only screen  and (max-width: 577px) {
 
     /* encolumna btn filtros */
     div:nth-child(2){

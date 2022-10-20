@@ -156,7 +156,7 @@ const Register=(props)=> {
     > 
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
    
-        <form className="containerRegister containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+        <form className="containerRegister centerText containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
             <h5 className="centerText marginBottom05rem">Formulario de Registro</h5>
             <div>
                 <div>

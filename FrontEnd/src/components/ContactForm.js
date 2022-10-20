@@ -134,7 +134,7 @@ const ContactForm = (props) => {
         {(
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
           <form
-            className='container-lg col-6 col-md-12 containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
+            className='container-lg col-6 col-md-6 containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
             <br></br>
             <h4 className="centerText ">Formulario de Contacto</h4>
             <br></br>

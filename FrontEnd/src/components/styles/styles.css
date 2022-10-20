@@ -5,10 +5,38 @@ body{
     background-color:rgb(26, 26, 26);
 }
 
-.navBar {
+header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60px;
+    padding:0.2rem 2rem 0.2rem 0rem;
     background-color:#0e0d0d !important;
-    padding:0.2rem 3rem 0.2rem 3rem;
-    font-size: 18px;
+}
+
+header h5 {
+    margin-left: 20px;
+    width: 12rem;
+    color: #fff;
+}
+
+.nav-btn{
+    padding:5px;
+    cursor:pointer;
+    border:none;
+    outline: none;
+    background-color:#0e0d0d !important;
+    color:#fff;
+    opacity:0;
+    visibility: hidden;
+    font-size: 1.8rem;
+}
+
+.NavDropdown-Item{
+    color:#fff;
+    text-decoration: none;
+    color:#0e0d0d;
 }
 
 .shadowFilterHeader{
@@ -40,7 +68,7 @@ body{
     align-items: center;
     flex-wrap: wrap;
     padding: 3px;
-    margin-top: 2%;  
+    margin-top: -0.5rem;  
 }
 
 .containerSearchNews{
@@ -116,7 +144,7 @@ body{
 
 .containerRegister{
     width: 45rem;
-    margin:1.5rem;
+    margin:auto;
     padding:1rem;
 }
 
@@ -379,8 +407,9 @@ h1{
 }
 
 .inputSearcher{
-    margin-top: 0.4rem;
+    margin-top: 0.15rem;
     margin-right: -2.5rem;
+    height: 2.4rem;
 }
 
 .h1SizeHome{
@@ -618,18 +647,26 @@ h1{
     margin-left:-26rem
 }
 
+.imageNavBar{
+    width: 4%;
+    border-radius: 50%;
+    box-shadow:1px 0px 5px 1px grey;
+}
+
+
 .imageMyProfile{
     width: 40%;
     margin-top:-2rem;
+    border-radius: 50%;
 }
 
 .homeBgImage {
     margin:auto;
-    width: 99%;
+    width: 91%;
 }
 
 .handsLogo{
-    width: 8%;
+    width: 20%;
 }
 
 .borderRounded{

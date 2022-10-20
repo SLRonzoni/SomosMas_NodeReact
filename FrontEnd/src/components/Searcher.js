@@ -25,11 +25,10 @@ function Searcher() {
 
   return (
   <form className="displayFlex" onSubmit={submitHandler}>
-    <label className=" form-label mx-1 mb-1 ">
-      <input className="inputSearcher colorBlack centerText " type="text" name="keyword" placeholder="  noticia a buscar...">
+    <label className=" form-label mx-5 mb-1 ">
+      <input className="inputSearcher colorBlack  borderRounded " type="text" name="keyword" placeholder=" 🔍 Buscar en Noticias">
       </input>
     </label>
-    <button className="btn btn-sucess mx-5 mb-1 " type="submit"> Buscar</button>
   </form>
   )
 }
