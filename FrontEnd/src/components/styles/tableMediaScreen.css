@@ -1,3 +1,49 @@
+/* para formulario de contacto y formulario de registro*/
+@media only screen  and (min-width: 633px) and (max-width:1024px) {
+    form .displayInLineFlex{
+        display:block;
+    }
+
+    form .form-control{
+        width: 100%;
+        margin:auto;
+    }
+
+    form .form-image{
+        width:100%;
+        margin:auto;
+    }
+
+    form .textArea{
+        width: 100%;
+        margin:auto;
+    }
+}
+
+
+@media only screen  and (min-width: 630px) and (max-width: 920px) {
+    table {
+        width: 100%;
+    }
+
+    /* encolumna btn filtros */
+    div:nth-child(2){
+        display:block;
+    }
+
+    /* Ocultar imagen */
+    table tr th:nth-child(2),
+    table tr td:nth-child(2){
+       display:none;
+   }
+ 
+    /* Ocultar descripcion, o contenido  o emailUser */
+    table tr th:nth-child(4),
+    table tr td:nth-child(4) {
+        display: none;
+    }
+}
+
 @media only screen and (max-width:890px) {
     header .nav-btn {
         visibility: visible;
@@ -23,11 +69,15 @@
         transform: none;
         background-color: #0e0d0d;
         z-index: 100;
+        justify-content: start;
+        align-content: flex-start;
+        padding:0 1rem 0rem 1rem;
+        top:0.5rem;
     }
 
     nav .nav-close-btn{
         position:absolute;
-        top:2rem;
+        top:-0.5rem;
         right: 2rem;
     }
 
@@ -35,34 +85,65 @@
         font-size: 1.3rem;
     }
 
+    footer nav span{
+        visibility: hidden;
+    }
 }
 
-@media only screen  and (min-width: 630px) and (max-width: 920px) {
-    table {
-        width: 100%;
+/* para formulario de contacto y formulario de registro*/
+@media only screen and (max-width: 632px) {
+    form .form-control{
+        width:100%;
+        margin:auto;
     }
 
-    /* encolumna btn filtros */
-    div:nth-child(2){
+    form .textArea{
+        width:100%;
+        margin:auto;
+    }
+
+    form .form-image{
+        width:90%;
+        margin-left:1.6rem;
+    }
+
+    form .button{
+        display:block;
+        margin:auto;
+    }
+}
+
+/*para actividades*/
+@media only screen and (max-width:784px) {
+    .containerSlideSize{
+         width: 85%;
+         margin:auto;
+         padding:1rem;
+    }
+
+    .imageActivity{
+        width: 55%;
+    }
+
+    .h4SlideActivity{
+        margin-top:2rem;
+    }
+
+    .h6SlideActivity{
+        margin-top:2.5rem;
+    }
+
+    .profile{
         display:block;
     }
 
-    /* Ocultar imagen */
-    table tr th:nth-child(2),
-    table tr td:nth-child(2){
-       display:none;
-   }
- 
-    /* Ocultar descripcion, o contenido  o emailUser */
-    table tr th:nth-child(4),
-    table tr td:nth-child(4) {
-        display: none;
+    .imageMyProfile{
+        width: 30%;
     }
 }
 
 
 @media only screen and (min-width: 578px) and (max-width: 629px) {
-
     /* encolumna btn filtros */
     div:nth-child(2){
         display:block;
@@ -84,12 +165,36 @@
      table tr th:nth-child(5),
      table tr td:nth-child(5) {
         display: none;
-     }
+    }
+
+    /* para formulario de contacto y formulario de registro*/
+    form .displayInLineFlex{
+        display:block;
+    }
+
+    form .textArea{
+        width: 100%;
+        margin:auto;
+    }
+
+    form .form-control {
+        width: 100%;
+        margin:auto;
+    }
+
+    form .form-image{
+        width: 100%;
+        margin:auto;
+    }
+
+    form .button{
+        display:block;
+        margin:auto;
+    }
 }
  
 
-@media only screen  and (max-width: 577px) {
-
+@media only screen and (min-width:481px) and (max-width: 577px) {
     /* encolumna btn filtros */
     div:nth-child(2){
         display:block;
@@ -124,5 +229,92 @@
     table tr th:nth-child(7),
     table tr td:nth-child(7) {
         display:block;
+    }
+
+    /* para formulario de contacto y formulario de registro*/
+    form .displayInLineFlex{
+        display:block;
+    }
+
+    form .form-control{
+        width:100%;
+        margin:auto;
+    }
+
+    form .form-image{
+        width:100%;
+        margin:auto;
+    }
+
+    form .textArea{
+        width:100%;
+        margin:auto;
+    }
+
+    form .button{
+        display:block;
+        margin:auto;
+    }
+}
+
+/* para formulario de contacto y formulario de registro*/
+@media only screen  and (max-width: 480px) {
+    form .displayInLineFlex{
+        display:block;
+    }
+
+    form .form-control{
+        width:100%;
+        margin:auto;
+    }
+
+    form .textArea{
+        width: 100%;
+    }
+
+    form .form-image{
+        width:100%;
+        margin:auto;
+    }
+
+    form .buttonSendButton {
+        display:block;
+        width: 100%;
+    }
+
+    form .buttonLink{
+        display:block;
+        width: 100%;
+    }
+}
+
+/* para formulario de contacto y formulario de registro*/
+@media only screen and (min-width:210px)  and (max-width:379px) {
+    form .displayInLineFlex{
+        display:block;
+    }
+
+    form .form-control{
+        width:50%;
+        margin:auto;
+    }
+
+    form .textArea{
+        width: 50%;
+    }
+
+    form .form-image{
+        width:50%;
+        margin:auto;
+    }
+
+    form .buttonSendButton {
+        display:block;
+        width: 90%;
+    }
+
+    form .buttonLink{
+        display:block;
+        width: 90%;
     }
 }

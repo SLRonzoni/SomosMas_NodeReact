@@ -13,9 +13,7 @@ import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
   return (
-    
       <div className="cardContainerOrganization" >
-        
         <div className='imageContainerOrganization'> 
           <img className="cardImageOrganization" src={image}  alt="organization" ></img>
         </div>
@@ -26,15 +24,15 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
           <p className='centerText'>Domicilio : {address}</p>
           
           <div className='leftText'>        
-              <img className="iconSocialNetworksOrganization "src={whatsapp} alt="telefono"></img> <nbsp/> {phone}
+              <img className="iconSocialNetworksOrganization "src={whatsapp} alt="telefono"></img>  {phone}
               <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={emailLogo} alt="email"></img> <nbsp/>{email}
+              <img className="iconSocialNetworksOrganization "src={emailLogo} alt="email"></img> {email}
               <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={facebookLogo} alt="logoFacebook"></img> <nbsp/>{facebook}
+              <img className="iconSocialNetworksOrganization "src={facebookLogo} alt="logoFacebook"></img> {facebook}
               <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={instagramLogo} alt="logoInstagram" ></img> <nbsp/>{instagram}
+              <img className="iconSocialNetworksOrganization "src={instagramLogo} alt="logoInstagram" ></img> {instagram}
               <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization  bgWhite"src={linkedinLogo} alt="logoLinkedin"></img> <nbsp/>{linkedin}
+              <img className="iconSocialNetworksOrganization  bgWhite"src={linkedinLogo} alt="logoLinkedin"></img> {linkedin}
           </div> 
 
           <br></br>

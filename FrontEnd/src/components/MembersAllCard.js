@@ -26,11 +26,11 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
               <p className="fixedSizeCardMember centerText"><b> </b> {description}</p>
               
               <div className='centerText'>
-                <img className="iconSocialNetworksOrganization" src={facebook} alt="facebook"></img><nbsp/> {facebookUrl} 
+                <img className="iconSocialNetworksOrganization" src={facebook} alt="facebook"></img> {facebookUrl} 
                 <span className='colorBlack'><br></br></span>
-                <img className="iconSocialNetworksOrganization" src={instagram} alt="instagram"></img><nbsp/> {instagramUrl}
+                <img className="iconSocialNetworksOrganization" src={instagram} alt="instagram"></img> {instagramUrl}
                 <span className='colorBlack'><br></br></span>
-                <img className="iconSocialNetworksOrganization bgWhite" src={linkedin} alt="linkedin"></img><nbsp/> {linkedinUrl}
+                <img className="iconSocialNetworksOrganization bgWhite" src={linkedin} alt="linkedin"></img> {linkedinUrl}
               </div>
 
               <br></br>

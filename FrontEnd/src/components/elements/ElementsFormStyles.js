@@ -20,7 +20,6 @@ const Form =styled.form`
 
 const Label = styled.label`
     display: block;
-    font-weight:700;
     padding:10px;
     min-height:40px;
     cursor:pointer;
@@ -45,9 +44,9 @@ const InputGroup = styled.div`
 const Input = styled.input`
     width:160%;
     height:45px;
+    line-height:30px;
     background:#fff;
-    border-radius:15px;
-    line-height:45px;
+    border-radius:7px;
     padding:0 40px 0 10px;
     transition:.3s ease all;
     border:3px solid transparent;
@@ -60,16 +59,17 @@ const Input = styled.input`
 `;
 
 const InputUser = styled.input`
+    display:flex;
+    flex-direction:column;
+    position:relative;
     width:30rem;
-    height:auto;
+    height:45px;
+    line-height:30px;
     background:#fff;
     color:rgb(26, 26, 26);
-    border-radius:15px;
-    margin:auto;
-    line-height:45px;
+    border-radius:7px;
     padding:0 40px 0 10px;
     transition:.3s ease all;
-    position:relative;
     border:3px solid transparent;
 
     &:focus {
@@ -82,11 +82,10 @@ const InputUser = styled.input`
 const InputUpdate = styled.input`
     width:20rem;
     height:45px;
+     line-height:45px;
     background:#fff;
-    border-radius:15px;
-    line-height:45px;
+    border-radius:7px;
     color:black;
-    line-height:45px;
     padding:0 40px 0 10px;
     transition:.3s ease all;
     position:relative;
@@ -147,14 +146,14 @@ const ErrorText = styled.p`
 
 const SendButton = styled.button`
     width:20%;
-    height:30px;
+    height:32px;
+    line-height:30px;
     background:#1E90FF;
     color:#fff;
     font-weight:bold;
     border-radius:3px;
-    line-height:30px;
     cursor:pointer;
-    border:none;
+    
     border-radius:3px;
     padding:1px;
 

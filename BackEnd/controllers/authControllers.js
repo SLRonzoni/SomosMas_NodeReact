@@ -19,7 +19,8 @@ const login = async (req, res) => {
                     lastName:user.lastName,
                     id:user.id,
                     email:user.email,
-                    roleId:user.roleId
+                    roleId:user.roleId,
+                    image:user.photo
         }    
         
         return res.status(200).json({

@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="container">
       <h1 className="h1SizeHome"> Bienvenido@s !!!</h1>
-      <img className="homeBgImage shadowFilterHeader " src={image} alt="manos" ></img>
+      <img className="imageBgHome" src={image} alt="manos" ></img>
     </div>
   );
   

@@ -5,12 +5,9 @@ import { formatDate } from "./helpers/FormatDate";
 function NewsAllPublic() {
 
   const [news, setNews] = useState([]);
-
   
-  //FIND NEWS
   const findNews = async () => {
-    await axiosClient
-      .get('/news')
+    await axiosClient.get('/news')
       .then((response) => {
         setNews(response.data.data);
       })
@@ -23,27 +20,19 @@ function NewsAllPublic() {
  
   return (
     <>
-      <div className='container centrar'>
+    <br></br>
+      <div className='container'>
         {news.map((oneResult) => {
           return (
-            <div className="container centrar">
-              <div className='containerSearchNews' key={oneResult.id}>               
-                <div className='displayFlex'>
-
-                  <div className='col-6 marginLeft40px'>
-                    <img className='imgSearchNews'src={oneResult.image} alt='Imagen'></img>
-                  </div>
-
-                  <div className='col-6 marginRigth-80px '>
-                    <div>
-                      <h2> {oneResult.name} </h2>
-                      <br></br>
-                      <h4 className='searchAlign '> {oneResult.content}</h4>
-                      <br></br>
-                      <span className='dateComment'>Actualizada : {formatDate(new Date(oneResult.createdAt))}</span>
-                    </div> 
-                  </div>
-
+            <div className='containerSearchNews' key={oneResult.id}>               
+              <div className='displayFlex'>
+                <img className='imgSearchNews'src={oneResult.image} alt='Imagen'></img>
+                <div className='marginLeft25px '>
+                    <h4> {oneResult.name} </h4>
+                    <br></br>
+                    <p className='searchAlign '> {oneResult.content}</p>
+                    <br></br>
+                    <span className='dateComment'>Actualizada : {formatDate(new Date(oneResult.createdAt))}</span>
                 </div>
               </div>
             </div>

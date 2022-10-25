@@ -8,7 +8,7 @@ Modificaciones al proyecto original ( back end ):
 
 ** CONTROLLERS **
   * AUTH, se creo servicio para login con google
-  * AUTH, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id
+  * AUTH, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id e photo
   * ACTIVITIES, se crearon  servicios  getByName y getByDate
   * ACTIVITIES, se modificaron servicios create y update, para el manejo de imagenes
   * BASE, SETNOTFOUND se modificó message de error

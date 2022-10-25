@@ -122,45 +122,46 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="container ">  
-      {/* si aun está cargando miembros*/}
-      {!members &&  <LoadingBox/> }
+      <div className="container">  
+        {/* si aun está cargando miembros*/}
+        {!members &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay miembros*/}
-      {members && 
-      <>
-      <div className="centerText">
-        <h2 className="containerTitle">Colaboradores</h2>       
-        <div className="divBtnDesplegableOrganizations " >
-            <select
-              type="text"
-              name="name"
-              onChange={changesId}
-              className="m-1 selectBtnDesplegable form-select "
-            >
-              {members.map(oneMember => (
-                <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
-                  {oneMember.name}
-                </option>
-              )).sort(OrderNameAsc(members))}
-              <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
-            </select>
-              
-            <span className={ViewAdministratorOptions()} >  
-              <Link to={'/MembersCreate'} className="m-1 btn btn-success "
-                role="button" > Agregar </Link>
-            </span> 
-        </div>  
+        {/* solo renderiza si hay miembros*/}
+        {members && 
+          <>
+            <div className="centerText containerMembersAllCard">
+              <h2 className="containerTitle">Colaboradores</h2>       
+              <div className="divBtnDesplegableOrganizations " >
+                  <select
+                    type="text"
+                    name="name"
+                    onChange={changesId}
+                    className="m-1 selectBtnDesplegable form-select "
+                  >
+                    {members.map(oneMember => (
+                      <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
+                        {oneMember.name}
+                      </option>
+                    )).sort(OrderNameAsc(members))}
+                    <option className="colorBlack" key={members.id}value={"todos"}>Mostrar todos los colaboradores</option>
+                  </select>
+                    
+                  <span className={ViewAdministratorOptions()} >  
+                    <Link to={'/MembersCreate'} className="m-1 btn btn-success "
+                      role="button" > Agregar </Link>
+                  </span> 
+              </div>  
+            </div>
+          
+            <div className=" centerText">
+              <br></br>
+              <br></br>
+              {showMembers()}
+            </div>    
+          </>
+        } 
       </div>
-     
-      <div className="container centerText">
-        {showMembers()}
-      </div>    
-    </>
-    } 
-    </div>
-  </>
-      
+    </>    
   );
 };
 

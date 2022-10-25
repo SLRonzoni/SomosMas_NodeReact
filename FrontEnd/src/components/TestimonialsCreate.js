@@ -107,6 +107,8 @@ const TestimonialsCreate=(props)=> {
     return (
     <>
     <br></br>
+    { !user && <h3 className="centerText">"Para dar testimonio, tenés que estar registrado"</h3>}
+    { user && 
     <Formik  
             initialValues={initialValues}           
             validate={validateInputs}
@@ -124,7 +126,7 @@ const TestimonialsCreate=(props)=> {
                         <div className="displayInLineFlex">   
                             <Label htmlFor="userId">Usuario </Label>
                             <span className="colorTransparent">.................</span>
-                            <Label>{user.firstName}, {user.lastName} </Label>                                                 
+                            <Label>{user.firstName}  , {user.lastName} </Label>                                                 
                         </div>
                     </div>
 
@@ -211,6 +213,7 @@ const TestimonialsCreate=(props)=> {
         </form>
       )}
    </Formik>
+   }
   </>
   );
 };

@@ -4,6 +4,7 @@ import axiosClient from "../configuration/axiosClient";
 import { Link,Redirect} from "react-router-dom"; 
 import Swal from "sweetalert2";
 import LoginGoogle from './LoginGoogle';
+import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 
 const Login =()=>{   
  
@@ -76,67 +77,68 @@ const Login =()=>{
     
     return (
       <div className="containerLogin " >  
- 
-        <div className="displayFlex " >  
-          <div className="centerText" >
-           <LoginGoogle > </LoginGoogle>
-          </div>
-          <br/>
-          <br/>
+        <div>
+          <LoginGoogle > </LoginGoogle>
         </div>
+       
         <br/>
      
-        <h3 className="colorBlack">Inicio de sesión</h3>
+        <h3>Inicio de sesión</h3>
 
-        <div className="form-group">
-         <label className="formLabel colorBlack">Email </label>
-         <input type="email" 
+        <div >
+         <Label htmlFor="email">Email </Label>
+         <InputUser type="email" 
                 className="form-control" 
                 name="email"  
                 placeholder="correo@correo.xxx.xx" 
                 required
                 uppercase="true"
                 onChange={(e)=>setEmail(e.target.value)}
+                // onBlur={handleBlur}
                 />
         </div>
         <br/>
       
         <div className="form-group" >
-          <label className="formLabel colorBlack">Contraseña </label>
-          <input type="password" 
+          <Label htmlFor="password">Contraseña </Label>
+          <InputUser type="password" 
                   className="form-control"  
                   name="password"  
                   placeholder="Contraseña" 
                   required
                   onChange={(e)=>setPassword(e.target.value)}
+                  // onBlur={handleBlur}
                   />
         </div>
       
-        <div className="d-grid gap-4 d-md-flex justify-content-md-center">
-            <button
-              className="m-2 btn btn-primary"
+        <div className="centerText">
+            <SendButton
+              type="submit" className="m-2 btn btn-primary md-end "
               onClick={beginSession}
             >
               Login
-            </button>
+            </SendButton>
+            
             <Link
               to={"/"}
-              className="m-2 btn btn-primary"
+              className="m-3 mr-md-2 btn buttonBlue"
               role="button"
               aria-pressed="true"
             >
               Volver
             </Link>
+            
         </div>
 
         <div>
-          <span className="colorBlack">No tienes cuenta ? 
+          <span>No tienes cuenta ? 
             <Link to={"/auth/register"}
             className="m-2 ">
             registrarse
           </Link>
           </span>
         </div>
+      
       </div>
     );
   };

@@ -154,6 +154,8 @@ const OrganizationsAll = (props) => {
                          role="button" > Agregar </Link>
                     </span> 
               </div> 
+              <br></br>
+              <br></br>
             </div> 
 
             <div className="container centerText">

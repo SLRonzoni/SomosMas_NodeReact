@@ -25,7 +25,7 @@
 } */
 
 
-.cardContainerMember{
+/* .cardContainerMember{
     display:flex;
     position:relative;
     width: 1920px;
@@ -34,7 +34,7 @@
     flex-wrap: wrap;
     padding: 3px;
     margin-top: 2%;  
-}
+} */
 
 .cardContainerMember{
     display: flex;
@@ -54,7 +54,6 @@
     height: 58.5rem;
     box-shadow: 0px 0px 15px -5px;
     margin:0rem 1.5rem 1.2rem 1rem;
-    padding:1rem;
 }
 
 /* .cardContainerAbout{
@@ -84,25 +83,27 @@
 }
 
 .imageContainerOrganization {
-    height: 19.5rem;
+    height: 15rem;
     width: 100%;
     margin-bottom:1.5rem ;
-    display:flex;
+    /* display:flex;
     align-items: center;
-    justify-content:center;
+    justify-content:center; */
+    background-color: aqua;
 }
 
 .imageContainerMember {
-    height: 19.5rem;
+    height: 15rem;
     width: 100%;
     margin-bottom:1.5rem ;
-    display:flex; 
+    /* display:flex; 
     align-items: center;
-    justify-content:center;
+    justify-content:center; */
 }
 
 .cardContentOrganization{
     margin-top: -1rem;
+    padding:1rem;
 }
 
 .cardContentAbout{
@@ -112,6 +113,7 @@
 
 .cardContentMember{
     margin-top: -1rem;
+    padding:1rem;
 }
 
 .cardTitle {
@@ -119,13 +121,15 @@
 }
 
 .cardImageMember{        
-    height:auto; 
-    width: 92%; 
+    height:90%; 
+    width: 60%; 
+    margin-top: 1rem;
+    box-shadow: 0px 0px 15px 5px black;
 }
 
 .cardImageOrganization{        
-    height:auto; 
-    width:92%; 
+    height:100%; 
+    width:100%; 
 }
 
 .cardImageAbout{        

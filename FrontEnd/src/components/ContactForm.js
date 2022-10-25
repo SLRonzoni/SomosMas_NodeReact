@@ -133,122 +133,118 @@ const ContactForm = (props) => {
       >
         {(
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
-          <form
-            className='container-lg col-6 col-md-6 containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
+          <form className='containerRegisterContactForm centerText containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
+            <h5 className="centerText marginBottom05rem ">Formulario de Contacto</h5>
             <br></br>
-            <h4 className="centerText ">Formulario de Contacto</h4>
-            <br></br>
-            <div className='centerText'>
+            <div>
               <div>
-                <div className="displayFlex">
-                  <Label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</Label>
-                  <InputGroup>
-                    <InputUser  className="form-control"
-                      type='text'
-                      name='name'
-                      placeholder="Ingresá tu nombre y apellido"
-                      value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.name && errors.icoNname && (
-                      <IconUser>{errors.icoNname}</IconUser>
-                    )}
-                  </InputGroup>
+                <div className="marginLeft10px marginBottom05rem">
+                  <div className="displayInLineFlex">
+                    <Label className="labelWidthContactForm" htmlFor='name'>Nombre y Apellido</Label>
+                    <InputGroup>
+                      <InputUser  className="form-control"
+                        type='text'
+                        name='name'
+                        placeholder="Ingresá tu nombre y apellido"
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.name && errors.icoNname && (
+                        <IconUser>{errors.icoNname}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.name && errors.name && (
+                    <ErrorText>{errors.name} </ErrorText>
+                  )}
                 </div>
-                {touched.name && errors.name && (
-                  <ErrorText>{errors.name} </ErrorText>
-                )}
+                <br></br>
+
+                <div className="marginLeft10px marginBottom05rem">
+                  <div className="displayInLineFlex ">
+                    <Label className="labelWidthContactForm"htmlFor='phone'>Teléfono </Label>
+                    <InputGroup >
+                      <InputUser className="form-control"
+                        type='text'
+                        name='phone'
+                        placeholder="Ingresá tu número de teléfono"
+                        value={values.phone}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.phone && errors.icoNphone && (
+                        <IconUser>{errors.icoNphone}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.phone && errors.phone && (
+                    <ErrorText>{errors.phone} </ErrorText>
+                  )}
+                </div>
+                <br></br>
+
+                <div className="marginLeft10px marginBottom05rem">
+                  <div className="displayInLineFlex">
+                    <Label className="labelWidthContactForm"htmlFor='email'>E-mail  </Label>
+                    <InputGroup >
+                      <InputUser className="form-control"
+                        type='text'
+                        name='email'
+                        placeholder="Ingresá tu e-mail"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.email && errors.icoNemail && (
+                        <IconUser>{errors.icoNemail}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.email && errors.email && (
+                    <ErrorText>{errors.email} </ErrorText>
+                  )}
+                </div>
+                <br></br>
+
+                <div className="marginLeft10px marginBottom05rem">
+                  <div className="displayInLineFlex">
+                    <Label className="labelWidthContactForm"htmlFor='message'>Mensaje </Label>
+                    <InputGroup >
+                      <textarea className="textArea form-control borderRounded"
+                        type='text'
+                        rows='5'
+                        cols='48'
+                        name='message'
+                        placeholder="    Tu mensaje..."
+                        value={values.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.message && errors.icoNmessage && (
+                        <IconUser>{errors.icoNmessage}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.message && errors.message && (
+                    <ErrorText>{errors.message} </ErrorText>
+                  )}
+                </div>
               </div>
-              <br></br>
+
+              {errors.formOk === "f" && 
+                <MsjWrong className="centerText">
+                  <span className='centerText'>
+                    <br /> Algun dato es incorrecto.
+                    <br /> Por favor complete el formulario correctamente
+                  </span>
+                </MsjWrong>
+              }
 
               <div>
-                <div className="displayFlex ">
-                  <Label className="labelWidthForm"htmlFor='phone'>Teléfono </Label>
-                  <InputGroup >
-                    <InputUser className="form-control"
-                      type='text'
-                      name='phone'
-                      placeholder="Ingresá tu número de teléfono"
-                      value={values.phone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.phone && errors.icoNphone && (
-                      <IconUser>{errors.icoNphone}</IconUser>
-                    )}
-                  </InputGroup>
-                </div>
-                {touched.phone && errors.phone && (
-                  <ErrorText>{errors.phone} </ErrorText>
-                )}
+                <SendButton type='submit' className='m-2 btn btn-primary md-end buttonSendButton centerText'> {" "} Enviar{" "}</SendButton>
+                <Link to={"/"}  className='m-2 mr-md-2 btn buttonBlue buttonLink' role='button' > Volver </Link>
               </div>
-              <br></br>
-
-              <div>
-                <div className="displayFlex">
-                  <Label className="labelWidthForm"htmlFor='email'>E-mail  </Label>
-                  <InputGroup >
-                    <InputUser className="form-control"
-                      type='text'
-                      name='email'
-                      placeholder="Ingresá tu e-mail"
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.email && errors.icoNemail && (
-                      <IconUser>{errors.icoNemail}</IconUser>
-                    )}
-                  </InputGroup>
-                </div>
-                {touched.email && errors.email && (
-                  <ErrorText>{errors.email} </ErrorText>
-                )}
-              </div>
-              <br></br>
-
-              <div>
-                <div className="displayFlex">
-                  <Label className="labelWidthForm"htmlFor='message'>Mensaje </Label>
-                  <InputGroup >
-                    <textarea className="textArea form-control borderRounded"
-                      type='text'
-                      rows='5'
-                      cols='48'
-                      name='message'
-                      placeholder="    Tu mensaje..."
-                      value={values.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.message && errors.icoNmessage && (
-                      <IconUser>{errors.icoNmessage}</IconUser>
-                    )}
-                  </InputGroup>
-                </div>
-                {touched.message && errors.message && (
-                  <ErrorText>{errors.message} </ErrorText>
-                )}
-              </div>
-            </div>
-
-            {errors.formOk === "f" && (
-              <MsjWrong className="centerText">
-                <span className='centerText'>
-                  <br /> Algun dato es incorrecto.
-                  <br /> Por favor complete el formulario correctamente
-                </span>
-              </MsjWrong>
-            )}
-            <div className='centerText'>
-              <SendButton type='submit' className='m-2 btn btn-primary md-end '> {" "} Enviar{" "}</SendButton>
-              <Link
-                to={"/"}
-                className='m-3 mr-md-2 btn buttonBlue'
-                role='button'
-              > Volver
-              </Link>
             </div>
           </form>
         )}

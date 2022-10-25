@@ -155,22 +155,22 @@ const MyProfileUpdate = ({match, history}) =>{
          validate={validateInputs}
          onSubmit={(values)=>{ sendForm(values)}}
     >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
-        <form className="containerMyPerfil containerBorderWhiteBgGrey "onSubmit={handleSubmit} > 
+    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+        <form className="containerMyPerfil"onSubmit={handleSubmit} > 
             <h4 className='marginLeft25px'>Mi Perfil  
-              <span className='margenEnd'><em className='font10px'>( última actualización : {formatDate(new Date(user.updatedAt))} )</em></span>
+              <span className='margenEnd'><em className='font10px'> última actualización : {formatDate(new Date(user.updatedAt))} </em></span>
+               <p className='pEmailRegisterUserUpdate font10px'><u className='font10px'>Email registrado</u> : {user.email}</p>
             </h4>
             <div className='marginLeft10px '>
-
               <div className="marginLeft10px">
                 <br></br>
                 <div>   
-                  <div className='displayFlex'>
+                  <div className='displayFlex profile'>
                     <p className="marginLeft10px"><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
-                    <p className='pEmailRegisterUserUpdate'>Email registrado : {user.email}</p>
+                   
                   </div> 
                   <InputGroup  >
-                    <InputUser className="form-control "
+                    <InputUser className="form-image"
                           type="file" 
                           name="photo" 
                           id="photo"  
@@ -188,7 +188,7 @@ const MyProfileUpdate = ({match, history}) =>{
                 <div>
                   <Label className='font12px' htmlFor="firstName" >Nombre ( actual : {user.firstName} )</Label>
                     <InputGroup >
-                      <InputUser className='colorBlack'
+                      <InputUser className='colorBlack form-control'
                         type="text" 
                         name="firstName" 
                         id="firstName"  
@@ -207,7 +207,7 @@ const MyProfileUpdate = ({match, history}) =>{
                 <div>
                 <Label className='font12px'htmlFor="lastName" >Apellido  ( actual : {user.lastName} )</Label>
                     <InputGroup>
-                      <InputUser
+                      <InputUser className='form-control'
                         type="text" 
                         name="lastName" 
                         id="lastName"  
@@ -233,7 +233,7 @@ const MyProfileUpdate = ({match, history}) =>{
                     </Label>  
 
                     <InputGroup>
-                      <InputUser className='colorBlack'
+                      <InputUser className='colorBlack form-control'
                         type={shown ? "text" : "password" }
                         name="password" 
                         id="password"  
@@ -257,8 +257,8 @@ const MyProfileUpdate = ({match, history}) =>{
               }
 
               <div className="centerText">
-                  <SendButton type="submit" className="m-1 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link to={"/"}  className="m-1 mr-md-1 btn buttonBlue" role="button" > Volver </Link>
+                  <SendButton type="submit" className="m-1 btn btn-primary md-end buttonSendButton"> Guardar </SendButton>
+                  <Link to={"/"}  className="m-1 btn buttonBlue buttonLink" role="button" > Volver </Link>
               </div>  
          </div> 
     </form>

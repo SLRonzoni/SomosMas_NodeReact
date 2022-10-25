@@ -156,16 +156,15 @@ const Register=(props)=> {
     > 
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
    
-        <form className="containerRegister centerText containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+        <form className="containerRegisterContactForm centerText containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
             <h5 className="centerText marginBottom05rem">Formulario de Registro</h5>
             <div>
                 <div>
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label htmlFor="photo">Foto </Label>
-                            <span className="colorTransparent">.......................</span>
+                            <Label className="labelWidthForm"  htmlFor="photo">Foto </Label>
                             <InputGroup  >
-                                <InputUser className="form-control"
+                                <InputUser className="form-image"
                                         type="file" 
                                         name="photo" 
                                         id="photo"  
@@ -181,8 +180,7 @@ const Register=(props)=> {
 
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label  htmlFor="email">Email</Label>
-                            <span className="colorTransparent">......................</span>
+                            <Label className="labelWidthForm"  htmlFor="email">Email</Label>
                             <InputGroup>
                                 <InputUser className="form-control"
                                 type="text" 
@@ -200,8 +198,7 @@ const Register=(props)=> {
                     
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label htmlFor="firstName">Nombre</Label>
-                            <span className="colorTransparent">.................</span>
+                            <Label className="labelWidthForm"  htmlFor="firstName">Nombre</Label>
                             <InputGroup >
                                 <InputUser className="form-control"
                                 type="text" 
@@ -219,8 +216,7 @@ const Register=(props)=> {
 
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label htmlFor="lastName">Apellido</Label>
-                            <span className="colorTransparent">.................</span>
+                            <Label className="labelWidthForm"  htmlFor="lastName">Apellido</Label>
                             <InputGroup>
                                 <InputUser className="form-control"
                                 type="text" 
@@ -238,16 +234,15 @@ const Register=(props)=> {
                    
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label htmlFor="currentPassword"> Password 
-                                <span className="colorTransparent">..</span>
+                            <Label className="labelWidthForm"  htmlFor="currentPassword"> Password 
                                 <button type="button" 
-                                        className='btn btn-light' 
+                                        className='btn btn-light marginLeft10px' 
                                         onClick={switchShown}> {shown ? '🙈' : '👀'}
                                 </button> 
                             </Label>  
-
+                           
                             <InputGroup>
-                                <InputUser
+                                <InputUser className="form-control"
                                 type={shown ? "text" : "password" }
                                 name="currentPassword" 
                                 id="currentPassword"  
@@ -263,9 +258,9 @@ const Register=(props)=> {
 
                     <div className="marginLeft10px marginBottom05rem">
                         <div className="displayInLineFlex">   
-                            <Label htmlFor="confirmPassword"> Repetir Password</Label>  
+                            <Label className="labelWidthForm"  htmlFor="confirmPassword"> Repetir Password</Label>  
                             <InputGroup>
-                                <InputUser
+                                <InputUser className="form-control"
                                 type={shown ? "text" : "password" }
                                 name="confirmPassword" 
                                 id="confirmPassword"  
@@ -288,14 +283,9 @@ const Register=(props)=> {
                     </MsjWrong>
                     }
 
-                    <div className="centerText">
-                        <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                        <Link 
-                        to={"/"}
-                        className="m-1 mr-md-2 btn buttonBlue"
-                        role="button"
-                        > Volver
-                        </Link>
+                    <div>
+                        <SendButton type="submit" className="m-2 btn btn-primary md-end buttonSendButton centerText"> Guardar </SendButton>
+                        <Link to={"/"} className="m-2 mr-md-2 btn buttonBlue buttonLink" role="button"> Volver </Link>
                     </div>  
                 </div>  
             </div>

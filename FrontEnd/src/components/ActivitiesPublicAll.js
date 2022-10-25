@@ -34,54 +34,38 @@ const ActivitiesPublicAll = (props) => {
 
   return (
     <>
-    <div className="container centerText">
-  
-      <div className="containerSlideSize" >
-      {/* si aun está cargando actividades*/}
-      {!activities &&  <LoadingBox/> }
+      <div className="container ">
+        <div className="containerSlideSize" >
+          {/* si aun está cargando actividades*/}
+          {!activities &&  <LoadingBox/> }
 
-      {/* solo renderiza si hay actividades*/}
-      {activities && 
-        <>
-        <div>
-          <div>
-            <br></br><br></br>
-            <h1>Nuestras actividades</h1>
-          </div>
-          
-          <div>
-            <div className='' >
-              <div className="d-flex-inline justify-content-center mt-6">  
-                <div className="col-12">
-                  <div>
-                    <div>
-                      <Carousel  >
-                        {activities.map((oneActivity) => ( 
-                        <Carousel.Item key={oneActivity.id}>
-                          <br></br>
-                          <br></br>
-                          <img className=" imageActivity " src={oneActivity.image} alt="Slide" />
-                          <Card.Title >
-                            <h4 className="centerText ">{oneActivity.name}</h4>
-                          </Card.Title>
-                          <Card.Text> 
-                            <h6 className="centerText " >{oneActivity.content}</h6>
-                            <br></br> 
-                          </Card.Text>
-                        </Carousel.Item>
-                        ))}
-                      </Carousel>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          {/* solo renderiza si hay actividades*/}
+          {activities && 
+            <>
+              
+              <div className="col-12">
+                <h3 className="centerText ">Nuestras actividades</h3>
+                <Carousel  >
+                  {activities.map((oneActivity) => ( 
+                  <Carousel.Item key={oneActivity.id}>
+                    <img className=" imageActivity " src={oneActivity.image} alt="Slide" />
+                    <Card.Title>
+                      <br></br>
+                      <h4 className="centerText h4SlideActivity">{oneActivity.name}</h4>
+                    </Card.Title>
+                    <Card.Text> 
+                      <br></br>
+                      <h6 className="centerText h6SlideActivity" >{oneActivity.content}</h6>
+                      <br></br> 
+                    </Card.Text>
+                  </Carousel.Item>
+                  ))}
+                </Carousel>
               </div>
-            </div>
-          </div>
-        </>
-        }
-    </div>
-    </div>
+            </>
+          }
+        </div>
+      </div>
     </>
   );
 };
