@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
+import "./styles/activity.css";
 import {formatDate} from './helpers/FormatDate'
 
 const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{

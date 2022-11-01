@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import './styles/card.css';
+import './styles/members-organizations.css';
 import {formatDate} from './helpers/FormatDate';
 import facebook from './images/facebook.jpg';
 import instagram from './images/instagram.jpg';

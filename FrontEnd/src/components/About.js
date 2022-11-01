@@ -8,7 +8,7 @@ const About = () => {
 
   return (
     <>
-    <div className='container displayFlex' >
+    <div className='containerBasic displayFlex' >
         
         <div className='cardContainerAboutHorizontally'>
             <br></br>

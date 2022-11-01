@@ -2,6 +2,7 @@ import React, { useState,useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import "./styles/styles.css";
+import "./styles/news-comments.css";
 import { Formik } from 'formik';
 import { Link } from "react-router-dom";
 import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';

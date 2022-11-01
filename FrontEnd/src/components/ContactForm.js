@@ -1,5 +1,6 @@
 import React from "react";
 import "./styles/styles.css";
+import "./styles/contactForm.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -135,7 +136,7 @@ const ContactForm = (props) => {
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( // props con destrunturing {}
           <form className='containerRegisterContactForm centerText containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
             <h5 className="centerText marginBottom05rem ">Formulario de Contacto</h5>
-            <br></br>
+            
             <div>
               <div>
                 <div className="marginLeft10px marginBottom05rem">

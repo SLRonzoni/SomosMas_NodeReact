@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import "./styles/styles.css";
+import "./styles/beggin-login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
 import { Link,Redirect} from "react-router-dom"; 
 import Swal from "sweetalert2";
@@ -20,7 +21,7 @@ const Login =()=>{
       showConfirmButton: false,
       timer:1000
     })
-    return( <Redirect to="/" />)
+    return( <Redirect to="/Beggin"/>)
   } else {
     const loginOK = (usuario)=>{
       Swal.fire({
@@ -58,7 +59,7 @@ const Login =()=>{
            sessionStorage.setItem('loginData',true)
 
           loginOK(name);
-          setTimeout( function() { window.location.href = "/" }, 1000 );
+          setTimeout( function() { window.location.href = "/Beggin" }, 1000 );
           
         } else {
           loginError(response);          
@@ -76,7 +77,7 @@ const Login =()=>{
      
     
     return (
-      <div className="containerLogin " >  
+      <div className="containerLogin" >  
         <div>
           <LoginGoogle > </LoginGoogle>
         </div>
@@ -112,30 +113,13 @@ const Login =()=>{
         </div>
       
         <div className="centerText">
-            <SendButton
-              type="submit" className="m-2 btn btn-primary md-end "
-              onClick={beginSession}
-            >
-              Login
-            </SendButton>
-            
-            <Link
-              to={"/"}
-              className="m-3 mr-md-2 btn buttonBlue"
-              role="button"
-              aria-pressed="true"
-            >
-              Volver
-            </Link>
-            
+            <SendButton type="submit" className="m-2 btn buttonBlue " onClick={beginSession} >Login </SendButton>
+            <Link to={"/"} className="m-3 mr-md-2 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
         </div>
 
         <div>
-          <span>No tienes cuenta ? 
-            <Link to={"/auth/register"}
-            className="m-2 ">
-            registrarse
-          </Link>
+          <span>No tenés cuenta ? 
+            <Link to={"/auth/register"} className="m-2 ">registrate</Link>
           </span>
         </div>
       

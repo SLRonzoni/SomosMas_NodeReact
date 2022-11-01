@@ -7,6 +7,7 @@ Modificaciones al proyecto original ( back end ):
     return  upload.Location  
 
 ** CONTROLLERS **
+  * DONATIONS, se crearon servicios para donaciones
   * AUTH, se creo servicio para login con google
   * AUTH, LOGIN , linea 26 se agregó la devolucion de los datos del user, linea 20 se agregó id e photo
   * ACTIVITIES, se crearon  servicios  getByName y getByDate
@@ -38,6 +39,7 @@ Modificaciones al proyecto original ( back end ):
   
   
 ** ROUTES **
+  * DONATIONS, se crearon rutas para donaciones
   * AUTH, se agregó moddleware optionsFileUpload 
   * AUTH, se creo ruta para login con google
   * ACTIVITIES, se crearon rutas para getByName, getByDate, get public y get public id y se agregaron middlewares
@@ -64,6 +66,7 @@ Modificaciones al proyecto original ( back end ):
   * USERS, se eliminó VerifyIsAdmin de las rutas update y get one
   * USERS, se creó ruta get by email, para obtener datos del usuario cuando existe un logueo con google
   
+  
 ** VIEWS **
   * VIEWS emailContact e emailWelcome , se agregó nueva imagen de logo y se corrigió texto del email
 
@@ -86,6 +89,7 @@ Modificaciones al proyecto original ( back end ):
 
 ** SEEDERS **
   * SEEDERS, se standarizaron todos los nombres de los archivos
+  * DONATIONS, se creó seeder para donaciones
   * ACTIVITIES, se aumentaron los registros
   * CATEGORIES, se cambiaron numeros por letras, en los nombres
   * CONTACT, se eliminó campo message 
@@ -100,6 +104,7 @@ Modificaciones al proyecto original ( back end ):
 
 
 ** MODELS ** 
+  * DONATIONS, se creó modelo para donaciones
   * CATEGORIES , se modificó image allowNull:false
   * CONTACT , se eliminó campo message 
   * MESSAGES  , se creó modelo
@@ -108,5 +113,6 @@ Modificaciones al proyecto original ( back end ):
 
 
 ** MIGRATION **
+  * DONATIONS, se creó migración
   * MESSAGES , se creó  migracion 
   * TESTIMONIALS, se quitó nulo en image, se agregó campo userId, y se agregó not null en userId y content

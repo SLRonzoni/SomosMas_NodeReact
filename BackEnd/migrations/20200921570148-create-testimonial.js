@@ -9,19 +9,28 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             name: {
-                allowNull: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
             image: {
                 type: Sequelize.STRING
             },
             content: {
-                allowNull: false,
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
             userId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: {
+                      tableName: "Users",
+                    },
+                    key: "id",
+                  },
                 allowNull: false,
-                type: Sequelize.NUMBER
+            },
+            deletedAt: {
+                type: Sequelize.DATE
             },
             createdAt: {
                 allowNull: false,
@@ -31,9 +40,6 @@ module.exports = {
                 allowNull: false,
                 type: Sequelize.DATE
             },
-            deletedAt: {                
-                type: Sequelize.DATE
-            }
         });
     },
     down: async(queryInterface, Sequelize) =>{

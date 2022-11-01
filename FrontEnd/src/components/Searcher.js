@@ -1,6 +1,8 @@
+import React from 'react';
 import {useHistory} from 'react-router-dom';
 import Swal from "sweetalert2";
 import "./styles/styles.css";
+import './styles/searcher.css';
 
 function Searcher() {
 

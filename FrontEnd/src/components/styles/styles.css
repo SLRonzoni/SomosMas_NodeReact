@@ -1,129 +1,34 @@
-body{ 
-    display: flex;
-    justify-content: center; 
-    width:100%;
-    background-color:rgb(26, 26, 26);
-}
-
-header{
+.containerBasic{
     display:flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-wrap:wrap;
     width: 100%;
-    height: 60px;
-    padding:0.2rem 2rem 0.2rem 0rem;
-    background-color:#0e0d0d !important;
+    height: 99.8vh;
+    background-color:#0e0d0d;
 }
 
-header h5 {
-    margin-left: 20px;
-    width: 12rem;
-    color: #fff;
+.loadingBox{
+    margin-left: 35rem;
+    margin-top: 12rem;
 }
 
-.nav-btn{
-    padding:5px;
+.buttonBlue{
+    background-color:#1E90FF;
+    color:#fff;
+    width:20%;
+    height:32px;
+    font-weight: bold;
+    line-height:30px;
     cursor:pointer;
-    border:none;
-    outline: none;
-    background-color:#0e0d0d !important;
+    padding: 1px;
+}
+
+.buttonBlue:hover {
     color:#fff;
-    opacity:0;
-    visibility: hidden;
-    font-size: 1.8rem;
+    background-color:rgb(3, 82, 151); 
 }
 
-.NavDropdown-Item{
-    color:#fff;
-    text-decoration: none;
-    color:#0e0d0d;
-}
-
-.shadowFilterHeader{
-    filter:drop-shadow(4px 6px 5px #fff)
-}
-
-.shadowFilterNav{
-    filter:drop-shadow(2px 1px 1px #fff)
-}
- 
-footer{
-    background-color:#0e0d0d !important;
-    
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    width: 100%;
-    height: 3rem;
-    padding:0.5rem 0rem 0.5rem 1rem;
-}
-
-footer nav {
-    display: flex;
-    align-items: center;
-    justify-content:baseline;
-    font-size: 1px;
-}
-
-.container{
-    display:flex;
-    position:relative;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 3px;
-    margin-top: -0.5rem;  
-}
-
-.containerSearchNews{
-    height: auto;
-    width: 100%;
-    margin: 0 1rem 2rem 3rem;
-    padding: 1rem;
-    border-bottom: 1px solid lightgray;
-}
-
-.containerItemSearchNews{
-    display:flex;
-    position:relative;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 3px;
-    margin-top: 2%;
-    margin-bottom: 2%;  
-}
-
-.containerSlideSize{
-    height: 33rem;
-    width: 100%;
-    margin: auto;
-}
-
-.containerLogin{
-    height: 29rem;
-    width: 35rem;
-    margin: auto;
-    margin-top: 3rem;
-    padding: 20px;
-    background-color: lightgrey;
-    color:#0e0d0d;
-    border-radius: 15px;
-}
-
-.containerRegisterContactForm{
-    width: 60%;
-    margin:auto;
-    display:flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    padding:1rem;
+.displayInLineFlex{
+    display:inline-flex;
 }
 
 .containerMyPerfil{
@@ -139,15 +44,6 @@ footer nav {
     border-radius: 15px;
 }
 
-.containerMembersAllCard{
-    width: 100%;
-    display:flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    align-items: center;
-}
-
 .containerUpdateCreate{
     width: 45rem;
     margin:2rem;
@@ -156,11 +52,6 @@ footer nav {
     align-items: center;
 }
 
-.containerUpdateOrganizations{
-    width: 80rem;
-    margin:1.5rem;
-    padding:1rem;
-}
 
 .containerBorderWhiteBgGrey{
     border:1px solid #fff;
@@ -186,45 +77,6 @@ footer nav {
     height:100px; 
 }
 
-.imageActivity{
-    display: block;
-    justify-content: center;
-    margin:auto;
-    width: 37rem;
-    height: auto;
-    border-radius: 10px;
-}
-
-.iconPhoneFooter{
-    width: 2%;
-    margin-right:5px;
-    border-radius: 50px;
-    text-align: center;
-    font-size: 8px;
-}
-
-.iconMapFooter{
-    width: 3%;
-    border:2px solid grey;
-    margin-right:10px;
-    border-radius: 50px;
-}
-
-.iconFacebookInstagramFooter{
-    width: 30%;
-    border-radius: 50px;
-}
-
-.iconEmailFooter{
-    width: 30%;
-    border-radius: 50px;
-    bottom: 8px;
-}
-
-.errorsRegister{
-    margin-left:-3rem
-}
-
 .boton
 .tituloListado{
     background-color: aqua;
@@ -241,7 +93,7 @@ footer nav {
     margin-top:4px;   
 }
 
-.btnShowPassword{
+/* .btnShowPassword{
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
@@ -252,7 +104,7 @@ footer nav {
     font-size: 12px;
     margin-top:10px; 
     background-color: #2892fd;
-}
+} */
 
 .titleItem{
     color:#fff;    
@@ -261,13 +113,11 @@ footer nav {
     height:0.3rem;
 }
 
-
 h1{
     font-size: 25px;
     text-align: center;
     color:#fff;
 }
-
 
 .renglonBtn{  
     color: #fff;
@@ -318,17 +168,6 @@ h1{
     margin-top:-30px;
 }
 
-/* .eneable{
-    opacity:1;
-}
-.disable{
-    opacity:0;
-}  */
-
-.displayInLineFlex{
-    display:inline-flex;
-}
-
 .pUpdateCateg{
     margin-left: 14px;
     color:black;
@@ -342,27 +181,8 @@ h1{
     border-radius: 10px;
 }
 
-.google{
-    margin-left: 75%;
-}
-
-.loadingBox{
-    margin-left: 35rem;
-    margin-top: 12rem;
-}
-
 .widthDate{
     width:10rem ;
-}
-
-.widthTestimonialsAndComments{
-    width:50rem ;
-    margin-left: 4rem;
-    padding: 7px 5px 5px 12px;
-}
-
-.buttonLoginGoogle{
-    color:'black'!important;;
 }
 
 /* .btn-redes{
@@ -376,36 +196,8 @@ h1{
     padding:9px;
     margin-top: 16px;
 }
-.capitalize{
-    text-transform: capitalize !important;
-  }
-.cardPlaceOrder{   
-    height: auto;
-    width: auto;
-    margin-left: 3rem;
-  } */
 
-  .imgSearchNews{
-    width:25%;
-    height: 50%;
-  }
-
-  .imgTestimonialsAndComments{
-    margin-left: 50%;
-    width:40%;
-    height: 90%;    
-    margin-top: 0.5rem;
-  }
-
-  /* .cart-titulo{
-    text-align: left;
-    margin-left:33%
-  }
-  .cart-total-button{
-    display: inline-flex;
-    align-items: center;
-  } */ 
-
+*/ 
 .displayFlex{
     display:Flex;
 }
@@ -421,16 +213,6 @@ h1{
     margin-left: 0rem;
 }
 
-.inputSearcher{
-    margin-top: 0.15rem;
-    margin-right: -2.5rem;
-    height: 2.4rem;
-}
-
-.h1SizeHome{
-    font-size: 3rem;
-}
-
 .divBtnDesplegable{
     display:Flex;
     width: auto;
@@ -439,16 +221,6 @@ h1{
     align-items: center;
     margin: auto;
     margin-bottom: 3.5rem;
-}
-
-.divBtnDesplegableOrganizations{
-    display:Flex;
-    width: auto;
-    height: 4rem;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    margin-bottom: -2.5rem;
 }
 
 .selectBtnDesplegable{
@@ -476,10 +248,6 @@ h1{
     width:max-content;
 }
 
-.searchAlign{
-    text-align: left;
-    margin: 0;
-}
 
 .containerEditGender{
     width:32rem;
@@ -511,18 +279,6 @@ h1{
 .rowNro{
     text-align: center;
     width:5% ; 
-}
-
-.rowTestimonialsAndComments{  
-    width:37rem ;   
-    margin-left: 2rem;
-    box-shadow: 0px 0px 15px -5px;
-    color:#fff;
-}
-
-.pTestimonialsPublic{
-    width: 31rem;
-    height: auto;
 }
 
 .fotoEdit{
@@ -660,28 +416,12 @@ h1{
     margin-left:-26rem
 }
 
-.imageNavBar{
-    width: 4%;
-    border-radius: 50%;
-    box-shadow:1px 0px 5px 1px grey;
-}
-
-
 .imageMyProfile{
     width: 40%;
     margin-top:-2rem;
     border-radius: 50%;
 }
 
-.imageBgHome {
-    margin:auto;
-    width: 84%;
-    filter:drop-shadow(4px 6px 5px #fff)
-}
-
-.handsLogo{
-    width: 20%;
-}
 
 .borderRounded{
     border-radius:15px;
@@ -691,21 +431,6 @@ h1{
     box-shadow:0px 0px 0px 2px grey;
 }
 
-.buttonBlue{
-    background-color:#1E90FF;
-    color:#fff;
-    width:20%;
-    height:32px;
-    font-weight: bold;
-    line-height:30px;
-    cursor:pointer;
-    padding: 1px;
-}
-
-.buttonBlue:hover {
-    color:#fff;
-    background-color:rgb(2, 117, 216); 
-}
 
 .buttonLight{
     background-color:whitesmoke;
@@ -731,13 +456,6 @@ h1{
     margin-left: 70%;
 }
 
-.stripe{
-    width: 30%;
-    border:1px solid #687ea3;
-    padding:15px;
-    border-radius: 10px;
-}
- 
   
 /* .rating span {
  color:#cac035
@@ -774,10 +492,6 @@ h1{
     margin-left: 25px;
 }
 
-.textArea-Members{
-    margin-left: 15px;
-    width: 49rem;
-}
 
 .marginLeft10px{
     margin-left: 10px;
@@ -797,11 +511,6 @@ h1{
     justify-content:center;
 }
 
-.pBtnDesplegableMembers{
-    font-size: 1.5rem;
-    margin-bottom:1rem;
-    background-color: #be6607;
-}
 
 .font2rem{
     font-size: 2rem;
@@ -825,12 +534,6 @@ h1{
     text-align: left;
 }
 
-.labelWidthContactForm{
-    width:12rem;
-    text-align: left;
-}
-
-
 .defaultValueWidthForm{
     margin-left:-4.5rem;
 }
@@ -839,22 +542,4 @@ h1{
     height: 20rem;
 }
 
-.userComments{
-    background-color: gray;
-    border-radius: 10px;
-    padding: 10px;
-    margin-bottom:8px;
-}
-
-.imageComment{
-   border-radius: 50%;
-   width: 7%;
-   margin-right: 6px;
-}
-
-.dateComment{
-   display: flex;
-   justify-content: end;
-   font-size: 10px;
-}
 

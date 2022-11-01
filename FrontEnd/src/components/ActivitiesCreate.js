@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/styles.css";
+import "./styles/activity.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";

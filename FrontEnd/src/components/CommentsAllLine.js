@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/styles.css';
+import "./styles/news-comments.css";
 import {formatDate} from './helpers/FormatDate'
 import ViewAdministratorOptions from './helpers/ViewAdministratorOptions';
 

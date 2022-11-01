@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import "./styles/table.css";
+import "./styles/news-comments.css";
 import "./styles/tableMediaScreen.css";
 import NewsAllLine from "./NewsAllLine";
 import Swal from "sweetalert2";

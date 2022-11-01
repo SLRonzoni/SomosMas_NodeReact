@@ -1,77 +1,79 @@
-import React, { useContext, useState} from "react";
-import { Form } from "react-bootstrap";
-import { Button } from "react-bootstrap";
-import { Store } from "../Store";
-import { Link } from "react-router-dom";
+import React,{useState} from "react";
+import { Link} from "react-router-dom";
+import "./styles/payments.css";
+import "./styles/styles.css";
 
-export default function PaymentMethod() {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const {
-    cart: {  paymentMethod },
-  } = state;
+function PaymentMethod() {
+   
+  const [selectRadio, setSelectRadio] = useState("");
+  let link="";
 
-  const [paymentMethodName, setPaymentMethod] = useState(
-    paymentMethod || "Debito"
-  );
-
-  
-  const submit = (e) => {
-    //e.preventDefault();
-    ctxDispatch({ type: "SAVE_PAYMENT_METHOD", payload: paymentMethodName });
-    localStorage.setItem("paymentMethod", paymentMethodName);
+  const changeSelectRadio= (e) =>{
+    setSelectRadio(e.target.value)
   };
+ 
+  const paymentOption=()=>{
+  if (selectRadio=="stripe") {
+    sessionStorage.setItem("paymentMethod",selectRadio); 
+    link="/Stripe"
+    } else { 
+    sessionStorage.setItem("paymentMethod",selectRadio);
+    link= "/MercadoPago" 
+  }
+ }
+paymentOption()
 
   return (
-    <div className='container small-container'>
-      <title>Métodos de pago</title>
-      <h1 className='my-5'>Métodos de pago</h1>
-      <Form onSubmit={submit}>
-      
-        <div className='mb-4'>
-          <Form.Check
-            type='radio'
-            id='Stripe'
-            label='Stripe'
-            value='Stripe'
-            checked={paymentMethodName === "Stripe"}
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          />
-        </div>
+    <div className="containerBasic">
+      <div className='containerPayment'>
+        <h1 className='centerText colorBlack'>Métodos de donación</h1>
+        <br></br>
+        <form>
+          <div className='mb-3'>
+            <input 
+              type="radio"
+              id='stripe'
+              value='stripe'
+              checked={selectRadio=="stripe"?true:false}
+              onChange={changeSelectRadio}
+            /> 
+            <label className="marginLeft10px">Stripe ( donar en U$S )</label>
+          </div>
 
-        <div className='mb-4'>
-          <Form.Check
-            type='radio'
-            id='mercadoPago'
-            label='Mercado Pago'
-            value='MercadoPago'
-            checked={paymentMethodName === "MercadoPago"}
-            onChange={(e) => setPaymentMethod(e.target.value)}
-          />
-        </div>
-
-       
-        <div className='d-grid gap-4 d-md-flex justify-content-md-center'>
-          <Link
-            to={"/"}
-            className='m-2 btn btn-warning'
-            role='button'
-            aria-pressed='true'
-          >
-            {" "}
-            Atras{" "}
-          </Link>
-          <Link to={'/'} className=''>
-            <Button
-              type='submit'
-              variant='primary'
-              onClick={() => submit()}
-              className='m-2 btn btn-primary'
+          <div className='mb-3'>
+            <input 
+              type="radio"
+              id='mercadoPago'
+              value='mercadoPago'
+              checked={selectRadio=="mercadoPago"?true:false}
+              onChange={changeSelectRadio}
+            /> 
+            <label className="marginLeft10px">Mercado Pago ( donar en AR$ )</label>
+          </div>
+        
+          <div className='centerText '>
+            <Link
+              to={"/"}
+              className='m-2 btn buttonBlue'
+              role='button'
+              aria-pressed='true'
             >
-              Continúe{" "}
-            </Button>
-          </Link>
-        </div>
-      </Form>
+              Atras
+            </Link>
+            
+            <Link
+              to={link}
+              className='m-2 btn btn-success'
+              role='button'
+              aria-pressed='true'
+            >
+              Continúe
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
+
+export default PaymentMethod;

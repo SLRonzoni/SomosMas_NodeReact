@@ -1,0 +1,268 @@
+.containerTransparent{
+    max-width: 100%;
+    height: 99%;
+    position: absolute;
+    top:48%;
+    left:0%;
+    right: 49.5%;
+    margin-top:0.7rem;
+    transform:
+    translateY(-50%);
+    color:#2abe1d;
+    background-color:rgb(57, 7, 136);
+    border-right: 16px groove #2abe1d;
+    border-radius: 0px  350px  350px  0px ;
+}
+
+.contentHome{
+    max-width: 100%;
+    height: 80%;
+    position: absolute;
+    top:50.5%;   
+    transform:
+    translateY(-50%);
+}
+
+.contentHome h1{
+    color:#2abe1d;
+    font-size: 45px;
+    line-height: 70px;
+    margin: 25px 0;
+    text-align: center;
+    margin-top: -5%;
+    margin:auto;
+}
+
+.contentHome p{
+    text-align: center;
+    font-size: 25px;
+    line-height: 28px;
+    margin-bottom: 45px;  
+    color:#2abe1d;
+}
+
+.contentHome button{
+    background-color: #2892fd;
+    display:flex;
+    margin:auto;
+}
+
+.contentHomeFooter{
+   margin-top:1rem;
+   margin:auto;
+}
+
+.contentHomeIcon{
+    width: 6%;
+    margin:auto;
+    margin-top: 2px;
+    border-radius: 50%;
+    border:1px solid #fff;
+    box-shadow:1px 0px 2px 1px rgb(180, 178, 178);
+}
+
+.contentHomeIconMap{
+    width: 26%;
+    margin-left: 60%;
+}
+
+.contentHomeIconFI{
+    width: 43%;
+    margin:auto;
+    margin-top: 2px;
+    border-radius: 50%;
+    border:1px solid #fff;
+    box-shadow:1px 0px 1px 1px rgb(180, 178, 178);
+}
+
+/* .faceInstagramHome a{
+   margin-left: 21%;    
+} */
+
+.container1Home a{
+    display:flex;
+    justify-content: center;
+    width: 20%;
+    margin-top: 2rem;
+    margin-left: 6.5%;
+}
+
+.container1Home span{
+    display:flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.container2Home span{
+    display:flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.container2Home img{
+    display:flex;
+    justify-content: baseline;
+}
+
+.faceInstagramHome{
+    display:flex;
+    justify-content: baseline;
+}
+
+.centerContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.imgHome{
+    border: 1px solid #2abe1d;
+    border-radius: 55%;
+    width:11%!important;
+}
+
+.sliderHome{
+    width: 85%;
+    height: 20%;
+    display:flex;
+    align-content:center;
+    margin-top: 1%;
+    margin-left: 8%;  
+}
+
+.buttonIngresar{
+    background-color:#fff;
+    color:rgb(57, 7, 136);
+}
+
+.slideHome-right-col{
+    width: 97%; 
+    flex-basis: 50%;
+    height: 95%;
+    position:relative;
+    margin-left: 49%;
+    margin-top:2rem;
+    color:#2abe1d; 
+}
+
+.sliderHome content{
+    width: 100%;
+    height: 40%;
+    padding-top:30px;
+    padding-left:30px;
+}
+
+.containerBeggin{
+    display:flex;
+    flex-wrap:wrap;
+    width:100%;
+    height: 100vh;
+    background-color: #0e0d0d;
+}
+
+.imgBeggin{
+    width:130%;
+    filter:drop-shadow(3px 5px 4px rgb(180, 178, 178)); 
+    bottom:1rem; 
+}
+
+.h1Beggin{
+    font-size: 2rem;
+}
+
+.mainBeggin{
+    width: 79.5%;
+}
+
+.containerLogin{
+    height: 29rem;
+    width: 35rem;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 20px;
+    background-color: lightgrey;
+    color:#0e0d0d;
+    border-radius: 15px;
+}
+
+.begginLogin{
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+
+.begginLogin-right-col{
+    width: 100%; 
+    flex-basis: 50%;
+    height: 80vh;
+    position: relative;
+    margin-left: 50%;
+    color:#0e0d0d;
+    background-color:lightgray;
+}
+
+.google{
+    margin-left: 75%;
+}
+
+.buttonLoginGoogle{
+    color:'black'!important;;
+}
+
+.begginRegister{
+    width: 100%;
+    display:flex;
+    align-items: center;
+}
+
+.begginRegister-right-col{
+    width: 100%; 
+    flex-basis: 50%;
+    height: 80vh;
+    position: relative;
+    margin-left: 50%;
+    color:#0e0d0d;
+    background-color:lightgray;
+}
+
+.labelRegister{
+    display: inline-block;
+    width:6.5rem;
+}
+
+.registerMsj-Buttons{
+    margin: auto;
+    margin-left: 6rem;
+    margin-top: -30px;
+    width:auto;
+    text-align: center;
+}
+
+.registerMsj-Buttons-button{
+    width:20%;
+    line-height:30px;
+}
+
+.withoutBorder{
+    border:transparent;
+}
+
+.containerRegisterContactForm{
+    width: 60%;
+    margin:auto;
+    display:flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding:1rem;
+}
+
+.errorsRegister{
+    margin-left:-3rem
+}
+
+.buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}

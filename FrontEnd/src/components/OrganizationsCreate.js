@@ -8,6 +8,7 @@ import  InputForm  from './elements/InputForm';
 import { msgRequired, msgValidationActivitiesName} from './helpers/validationMessages';
 import { regexActivitiesName } from "./helpers/RegExp";
 import "./styles/styles.css";
+import './styles/members-organizations.css';
 
 function OrganizationsCreate(props) {
   

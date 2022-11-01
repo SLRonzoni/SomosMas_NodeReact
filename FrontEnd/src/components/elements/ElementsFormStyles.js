@@ -82,7 +82,7 @@ const InputUser = styled.input`
 const InputUpdate = styled.input`
     width:20rem;
     height:45px;
-     line-height:45px;
+    line-height:45px;
     background:#fff;
     border-radius:7px;
     color:black;

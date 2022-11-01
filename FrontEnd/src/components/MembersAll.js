@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
 import './styles/card.css';
+import './styles/members-organizations.css';
 import MembersAllCard from './MembersAllCard';
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
@@ -122,11 +123,10 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="container">  
-        {/* si aun está cargando miembros*/}
+      <div className="containerBasic">  
+        
         {!members &&  <LoadingBox/> }
 
-        {/* solo renderiza si hay miembros*/}
         {members && 
           <>
             <div className="centerText containerMembersAllCard">

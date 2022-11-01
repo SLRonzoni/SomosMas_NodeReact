@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/news-comments.css";
 import "./styles/table.css";
 import "./styles/tableMediaScreen.css";
 import CommentsAllLine from './CommentsAllLine';

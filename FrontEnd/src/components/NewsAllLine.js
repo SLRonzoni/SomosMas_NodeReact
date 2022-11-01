@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
+import "./styles/news-comments.css";
 import {formatDate} from './helpers/FormatDate'
 
 const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove}) =>{

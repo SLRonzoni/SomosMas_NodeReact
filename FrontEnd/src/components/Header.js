@@ -45,7 +45,7 @@ export default function Header () {
       <header>  
             <h5> Somos Más Ong <img className="handsLogo shadowFilterNav" src={imagen} alt="manosNiños"></img> </h5>
             <br/>
-            <nav ref={navRef}>
+            <nav ref={navRef} className="headerNav">
               <Nav>
                 <NavbarBrand >
                   {!userInfo &&(
@@ -59,6 +59,7 @@ export default function Header () {
                       <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                     
                       <NavDropdown.Divider /> 
                       <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
+                      <NavDropdown.Item href="/DonartionsPublic">Donar</NavDropdown.Item>
                     </NavDropdown>
                   )}
                   {userInfo && userInfo.roleId!==1 && (
@@ -71,7 +72,8 @@ export default function Header () {
                       <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
                       <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
                       <NavDropdown.Divider />               
-                      <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
+                      <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item>
+                      <NavDropdown.Item href="/DonartionsPublic">Donar</NavDropdown.Item>
                       <NavDropdown.Divider /> 
                       <NavDropdown.Item href={`/users/${userInfo.id}`}>Mi perfil</NavDropdown.Item>
                   </NavDropdown> 
@@ -83,6 +85,7 @@ export default function Header () {
                       <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
                       <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
                       <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
+                      <NavDropdown.Item href="/DonationsAll">Donaciones</NavDropdown.Item>
                       <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
                       <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                       <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
@@ -93,34 +96,34 @@ export default function Header () {
                     </NavDropdown>
                   )} 
                   </NavbarBrand>     
+              </Nav>
+            </nav>
+            <div>
+              <Searcher />
+            </div>
 
-                  <NavbarBrand>
-                    <Searcher />
-                  </NavbarBrand>
+            <div>
+              {!userInfo && ( 
+                <Link to="/auth/register" className="btnLoginLogoutRegister" >Register </Link>
+              )}
+            </div>
+          
+            <div>
+              {!userInfo && ( 
+                <Link to="/auth/login" className="btnLoginLogoutRegister" >Login </Link>
+              )}
+            </div>
+        
+            <div>
+              {userInfo && ( 
+                <Link  to="/auth/logout" onClick={logout} className="btnLogout">Logout </Link> 
+              )}
+            </div>
 
-                  <NavbarBrand>
-                    {!userInfo && ( 
-                      <Link to="/auth/register" className="btnLoginLogoutRegister" >Register </Link>
-                    )}
-                  </NavbarBrand>
-               
-                  <NavbarBrand>
-                    {!userInfo && ( 
-                      <Link to="/auth/login" className="btnLoginLogoutRegister" >Login </Link>
-                    )}
-                  </NavbarBrand>
-              
-                  <NavbarBrand>
-                    {userInfo && ( 
-                      <Link  to="/auth/logout" onClick={logout} className="btnLogout">Logout </Link> 
-                    )}
-                  </NavbarBrand>
-
-                <button className= "nav-btn nav-close-btn" onClick={showNavBarX}>
-                  <FaTimes></FaTimes>
-                </button>              
-           </Nav>
-          </nav>
+          <button className= "nav-btn nav-close-btn" onClick={showNavBarX}>
+            <FaTimes></FaTimes>
+          </button>              
+          
           {login===true && (
             <img className="imageNavBar" src={photo} alt="user image"></img>
           )}

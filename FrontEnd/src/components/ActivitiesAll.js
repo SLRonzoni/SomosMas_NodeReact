@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import "./styles/table.css";
+import "./styles/activity.css";
 import "./styles/tableMediaScreen.css";
 import ActivitiesAllLine from "./ActivitiesAllLine";
 import Swal from "sweetalert2";

@@ -16,6 +16,7 @@ const slidesRouter = require('./slides.routes');
 const contactRoutes = require('./contacts.routes');
 const commentRouter = require('./comments.routes');
 const messagesRouter = require('./messages.routes');
+const donationsRouter = require('./donations.routes');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -35,6 +36,7 @@ router.use('/slides', slidesRouter);
 router.use('/contacts', contactRoutes);
 router.use('/comments', commentRouter);
 router.use('/messages', messagesRouter);
+router.use('/donations', donationsRouter);
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(swagger));
 
 module.exports = router;

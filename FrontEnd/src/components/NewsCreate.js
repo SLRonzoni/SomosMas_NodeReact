@@ -8,6 +8,7 @@ import  InputForm  from './elements/InputForm';
 import { msgRequired, msgValidationCategoryName, msgValidationIsNumber} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryId } from "./helpers/RegExp";
 import "./styles/styles.css";
+import "./styles/news-comments.css";
 
 function NewsCreate(props) {
   

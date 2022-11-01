@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
+import './styles/members-organizations.css';
 import './styles/card.css';
 import {formatDate} from './helpers/FormatDate';
 import facebookLogo from './images/facebook.jpg';

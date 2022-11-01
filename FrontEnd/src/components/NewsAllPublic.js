@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosClient from "../configuration/axiosClient";
 import { formatDate } from "./helpers/FormatDate";
+import "./styles/news-comments.css";
 
 function NewsAllPublic() {
 

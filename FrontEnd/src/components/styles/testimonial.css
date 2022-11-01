@@ -1,0 +1,27 @@
+
+
+.imgTestimonialsAndComments{
+    margin-left: 50%;
+    width:40%;
+    height: 90%;    
+    margin-top: 0.5rem;
+  }
+
+  
+.rowTestimonialsAndComments{  
+    width:37rem ;   
+    margin-left: 2rem;
+    box-shadow: 0px 0px 15px -5px;
+    color:#fff;
+}
+
+.pTestimonialsPublic{
+    width: 31rem;
+    height: auto;
+}
+
+.widthTestimonialsAndComments{
+    width:50rem ;
+    margin-left: 4rem;
+    padding: 7px 5px 5px 12px;
+}

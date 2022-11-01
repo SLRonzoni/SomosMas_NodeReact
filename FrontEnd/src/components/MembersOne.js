@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useEffect } from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import './styles/members-organizations.css';
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
