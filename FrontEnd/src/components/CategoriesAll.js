@@ -120,7 +120,7 @@ const CategoriesAll = (props) => {
 
   return (
     <>
-      <div className="container">
+      <div className="containerBasic">
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -167,7 +167,7 @@ const CategoriesAll = (props) => {
                 <th className="tituloItem centerText"> Actualizado </th>
 
                 <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Agregar </Link> 
+                      role="button" > Nueva </Link> 
                 </th>
               </tr>
             </thead>

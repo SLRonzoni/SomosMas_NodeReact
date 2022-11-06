@@ -1,16 +1,26 @@
 .containerPayment{
     max-width:550px;
-   margin: auto;
-    background-color: #fff;
- 
-    
-    margin:280px 0px 0px 360px;
+    margin:auto;
+    align-items: flex-end;
+    background-color: rgb(249, 244, 244);    
+    margin-top:357px;
     padding: 30px;
     color:black;
     border: 1px solid black;
     transform:
     translateY(-50%);
 }
+
+.formPaymentMethod {
+    width: 30vw;
+    min-width: 500px;
+    align-self: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 0.5px rgb(169, 169, 190),
+      0px 2px 5px 0px rgba(169, 169, 190, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
+    border-radius: 7px;
+    padding: 5px;
+  }
 
 .buttonSuccess{
     background-color:#03791a;

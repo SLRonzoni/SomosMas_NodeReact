@@ -125,7 +125,7 @@ const TestimonialsAll = (props) => {
 
   return (
     <>
-     <div className="container ">  
+     <div className="containerBasic">  
       {/* si aun está cargando los testimonios*/}
       {!testimonials &&  <LoadingBox/> }
 

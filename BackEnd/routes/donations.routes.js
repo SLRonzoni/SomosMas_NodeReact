@@ -10,13 +10,13 @@ const { authenticatedUser, verifyIsAdmin, idExists} = require('../middlewares');
 
 router.get('/',verifyIsAdmin, authenticatedUser, getAllDonations)
 
-router.get('/:id',idExists, getDonationId)
+router.get('/:id',idExists,verifyIsAdmin, authenticatedUser, getDonationId)
 
-router.get('/byPayForm/:payForm', getAllDonationsByPayForm)
-router.get('/byEmail/:userEmail', getAllDonationsByEmail)
-router.get('/byDate/:create', getAllDonationsByCreate)
+router.get('/byPayForm/:payForm',verifyIsAdmin, authenticatedUser, getAllDonationsByPayForm)
+router.get('/byEmail/:userEmail',verifyIsAdmin, authenticatedUser, getAllDonationsByEmail)
+router.get('/byDate/:create',verifyIsAdmin, authenticatedUser, getAllDonationsByCreate)
 
-router.post('/',createDonation)
+// router.post('/',createDonation)
 
 router.post('/paymentsStripe',paymentsStripe)
 router.post('/paymentsMePa',paymentsMePa)

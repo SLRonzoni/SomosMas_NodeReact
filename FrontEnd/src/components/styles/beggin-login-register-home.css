@@ -1,6 +1,10 @@
+.containerHome{
+    height: 100vh;
+}
+
 .containerTransparent{
     max-width: 100%;
-    height: 99%;
+    height: 100%;
     position: absolute;
     top:48%;
     left:0%;
@@ -8,7 +12,6 @@
     margin-top:0.7rem;
     transform:
     translateY(-50%);
-    color:#2abe1d;
     background-color:rgb(57, 7, 136);
     border-right: 16px groove #2abe1d;
     border-radius: 0px  350px  350px  0px ;
@@ -18,17 +21,15 @@
     max-width: 100%;
     height: 80%;
     position: absolute;
-    top:50.5%;   
+    top:50%;   
     transform:
     translateY(-50%);
 }
 
 .contentHome h1{
-    color:#2abe1d;
     font-size: 45px;
     line-height: 70px;
     margin: 25px 0;
-    text-align: center;
     margin-top: -5%;
     margin:auto;
 }
@@ -38,7 +39,6 @@
     font-size: 25px;
     line-height: 28px;
     margin-bottom: 45px;  
-    color:#2abe1d;
 }
 
 .contentHome button{
@@ -61,52 +61,50 @@
     box-shadow:1px 0px 2px 1px rgb(180, 178, 178);
 }
 
-.contentHomeIconMap{
-    width: 26%;
-    margin-left: 60%;
-}
-
-.contentHomeIconFI{
-    width: 43%;
-    margin:auto;
-    margin-top: 2px;
-    border-radius: 50%;
-    border:1px solid #fff;
-    box-shadow:1px 0px 1px 1px rgb(180, 178, 178);
-}
-
-/* .faceInstagramHome a{
-   margin-left: 21%;    
-} */
-
 .container1Home a{
     display:flex;
     justify-content: center;
     width: 20%;
-    margin-top: 2rem;
+    margin-top: 0.2rem;
     margin-left: 6.5%;
 }
 
 .container1Home span{
     display:flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 0.2rem;
+    margin-left:-10px;
 }
 
-.container2Home span{
+.container2Home{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
+
+.iconHome{
+    display: flex;  
+    font-size: 160%;
+    color: #2abe1d;
+    margin: auto;
+}
+
+.iconHomeMap{
+    font-size: 160%;
+    color: #2abe1d;
+    margin-left: 60%;
+}
+
+.spanEscribinos{
     display:flex;
     justify-content: center;
-    margin-top: 2rem;
 }
 
 .container2Home img{
     display:flex;
-    justify-content: baseline;
-}
-
-.faceInstagramHome{
-    display:flex;
-    justify-content: baseline;
+    justify-content: center;
 }
 
 .centerContainer{
@@ -117,31 +115,30 @@
 .imgHome{
     border: 1px solid #2abe1d;
     border-radius: 55%;
-    width:11%!important;
-}
-
-.sliderHome{
-    width: 85%;
-    height: 20%;
-    display:flex;
-    align-content:center;
-    margin-top: 1%;
-    margin-left: 8%;  
+    width:10%;
+    height: 8%;
+    margin-top: 15px;
+    margin-left: 15px;
 }
 
 .buttonIngresar{
     background-color:#fff;
-    color:rgb(57, 7, 136);
+    color:#390788;
 }
 
-.slideHome-right-col{
-    width: 97%; 
-    flex-basis: 50%;
-    height: 95%;
-    position:relative;
-    margin-left: 49%;
-    margin-top:2rem;
-    color:#2abe1d; 
+.sliderHome{
+    display:flex;
+    width: 90%;
+    margin-left: 52%; 
+    margin-left: 48%; 
+}
+
+.carousel-indicators{
+    visibility:hidden;
+}
+
+.h3Activities{
+    color:transparent;
 }
 
 .sliderHome content{
@@ -160,7 +157,7 @@
 }
 
 .imgBeggin{
-    width:130%;
+    width:100%;
     filter:drop-shadow(3px 5px 4px rgb(180, 178, 178)); 
     bottom:1rem; 
 }

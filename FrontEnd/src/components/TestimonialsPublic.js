@@ -47,7 +47,7 @@ function TestimonialsPublic () {
  console.log(testimonials)  
     return(
         <>
-            <div className=''>
+            <div className='containerBasic'>
                 <Link to={'/TestimonialsCreate'} className=" btn btn-success centerText" role="button" > Dar mi testimonio </Link> 
                 <div>
                     {testimonials.map((oneResult) => {
@@ -55,8 +55,8 @@ function TestimonialsPublic () {
                             <div key={oneResult.id} >
                                 <br></br>
                                 <div className=' borderRounded rowTestimonialsAndComments'>
-                                    <div className='col-3 '>
-                                        <img className="imgTestimonialsAndComments  " src={oneResult.image}alt="ImagenTestimonio"></img> 
+                                    <div>
+                                        <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
                                     </div>
                                     
                                     <div className=' widthTestimonialsAndComments '>

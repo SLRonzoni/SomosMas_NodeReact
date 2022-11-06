@@ -5,7 +5,9 @@ const Colors ={
     error:'hsl(0, 97%, 49%)',
     success:'#1ed12d',
     fondoMsj:"ligthYellow",
-    fondoMsjError:"#EDBB99"
+    fondoMsjError:"#EDBB99",
+    buttonSuccess:"#198754",
+    buttonMenu:"#390788",
 }
 
 const Form =styled.form`
@@ -109,7 +111,6 @@ const Icon=styled.p`
     bottom:14px;
     z-index:100;
     position:absolute;
-
 `;
 
 const IconUpdate=styled.p`  
@@ -146,19 +147,18 @@ const ErrorText = styled.p`
 
 const SendButton = styled.button`
     width:20%;
-    height:32px;
+    height:30px;
     line-height:30px;
-    background:#1E90FF;
+    background:#198754;
     color:#fff;
     font-weight:bold;
     border-radius:3px;
     cursor:pointer;
-    
-    border-radius:3px;
+    border-radius:7px;
     padding:1px;
 
     &:focus {
-        box-shadow:3px 0px 30px rgba(163,163,163,1);
+       background-color: #249924;
     }
 `;
 
@@ -169,7 +169,49 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
+const MenuButtonBars = styled.button`
+    border: none;
+    background-color:lightgrey;
+    cursor:pointer;
+    border:none;
+    box-shadow: 0px 0px 4px #fff;
+    color:#390788;
+    font-size: 1.3rem;
+    height:9%;
+    padding:7px;
+    margin:5px 10px 5px 10px;
+    visibility: ${props => (props.open ? "visible" : "hidden")};
+`;
+
+const MenuButtonX = styled.button`
+    border: none;
+    background-color:lightgrey;
+    cursor:pointer;
+    border:none;
+    box-shadow: 0px 0px 4px rgb(50, 50, 50);
+    color:#390788;
+    font-size: 1.3rem;
+    padding:7px;
+    height:9%;
+    margin:5px 5px 0px -43px ;
+    visibility: ${props => (props.open ? "visible" : "hidden")}; 
+`;
+
+const NavbarWrapper = styled.nav`
+    display:flex;
+    flex-wrap:wrap;
+    background-color: #1ed12d;
+    top:0;
+    position: fixed;
+    width: ${props => (props.open ? "0%" : "21%")};
+    left: ${props => (props.open ? "0" : "-200")}; 
+    height:100%;
+    transition: top 0.3s linear; 
+    z-index:100;
+`;
+
+export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, 
+        IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong, NavbarWrapper, MenuButtonBars, MenuButtonX};
 
 
   

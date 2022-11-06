@@ -100,7 +100,7 @@ const MembersAll = (props) => {
  
   const showMembers = () => {
     return (
-      <div className="container">
+      <div className="containerBasic">
         {members.map((oneMember) => (
           <MembersAllCard
             key={oneMember.id}
@@ -148,12 +148,12 @@ const MembersAll = (props) => {
                     
                   <span className={ViewAdministratorOptions()} >  
                     <Link to={'/MembersCreate'} className="m-1 btn btn-success "
-                      role="button" > Agregar </Link>
+                      role="button" > Nuevo </Link>
                   </span> 
               </div>  
             </div>
           
-            <div className=" centerText">
+            <div>
               <br></br>
               <br></br>
               {showMembers()}

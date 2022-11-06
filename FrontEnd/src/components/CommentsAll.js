@@ -139,7 +139,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
 
   return (
     <>
-    <div className="container ">  
+    <div className="containerBasic">  
       
       {/* si aun está cargando comentarios*/}
       {!commentsWithNames &&  <LoadingBox/> }

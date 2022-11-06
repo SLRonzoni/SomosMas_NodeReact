@@ -62,24 +62,21 @@ function WordSearchResults() {
   }, [keyword]);
 
   return (
-    <>
-    <br></br>
+    <>   
+    <div className='containerBasic'>   
     <h4><em>Palabra buscada</em> : {keyword}</h4>
-    
-    <div className='container centrar'>   
-    
       <div>          
         {newsComplete.length===0 && <h5> ☹️ No se hallaron resultados  </h5>}
       </div>
                  
         {newsComplete.map((oneResult) => {
           return (
-            <div className="container centrar"key={oneResult.id}>
+            <div className="containerBasic"key={oneResult.id}>
               <div className='containerSearchNews' >
                 
                 <div>
                   <br></br>
-                  <div className='displayFlex'>
+                  <div className='d-flex'>
 
                     <div className='col-6 marginLeft40px'>
                       <img
@@ -114,7 +111,7 @@ function WordSearchResults() {
                               </div>
                               <div>                              
                                 <br></br>
-                                <span className=''>{oneComment.body}</span>
+                                <span >{oneComment.body}</span>
                                 <span className='dateComment'> {formatDate(new Date(oneComment.createdAt))}</span>
                               </div>
                             </div>

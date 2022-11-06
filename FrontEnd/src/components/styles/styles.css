@@ -1,9 +1,16 @@
+
+body{
+    margin:0;
+    padding:0;
+}
+
 .containerBasic{
     display:flex;
     flex-wrap:wrap;
     width: 100%;
-    height: 99.8vh;
-    background-color:#0e0d0d;
+    justify-content: center;
+    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    color:#fff;
 }
 
 .loadingBox{
@@ -25,6 +32,22 @@
 .buttonBlue:hover {
     color:#fff;
     background-color:rgb(3, 82, 151); 
+}
+
+.buttonGreen{
+    background-color:#198754;
+    color:#fff;
+    width:20%;
+    height:32px;
+    font-weight: bold;
+    line-height:30px;
+    cursor:pointer;
+    padding: 1px;
+}
+
+.buttonGreen:hover {
+    color:#fff;
+    background-color:rgb(2, 52, 32); 
 }
 
 .displayInLineFlex{
@@ -51,7 +74,6 @@
     justify-content: center;
     align-items: center;
 }
-
 
 .containerBorderWhiteBgGrey{
     border:1px solid #fff;
@@ -247,7 +269,6 @@ h1{
 .productDescrip{
     width:max-content;
 }
-
 
 .containerEditGender{
     width:32rem;

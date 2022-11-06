@@ -8,10 +8,9 @@ const About = () => {
 
   return (
     <>
-    <div className='containerBasic displayFlex' >
+    <div className='containerBasic'>
         
         <div className='cardContainerAboutHorizontally'>
-            <br></br>
             <h4 className='cardTitle centerText'>Nosotros</h4>
             <div className='cardContentAbout'>
                 <p>
@@ -32,8 +31,8 @@ const About = () => {
                 <p>  
                     Hoy somos un centro comunitario que acompaña a más de 700 personas a través de 
                     las áreas de :
-                    <br></br><br></br>
-                    <div className='displayFlex'>
+                    
+                    <div className='listaAbout'>
                         <ul className='marginLeft25px'>
                             <li>Alimentación</li>
                             <li>Educación</li>

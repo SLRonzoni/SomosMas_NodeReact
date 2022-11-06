@@ -25,10 +25,10 @@ paymentOption()
 
   return (
     <div className="containerBasic">
-      <div className='containerPayment'>
+      <div className='containerPayment'>      
         <h1 className='centerText colorBlack'>Métodos de donación</h1>
         <br></br>
-        <form>
+        <form className="formPaymentMethod">
           <div className='mb-3'>
             <input 
               type="radio"
@@ -52,23 +52,8 @@ paymentOption()
           </div>
         
           <div className='centerText '>
-            <Link
-              to={"/"}
-              className='m-2 btn buttonBlue'
-              role='button'
-              aria-pressed='true'
-            >
-              Atras
-            </Link>
-            
-            <Link
-              to={link}
-              className='m-2 btn btn-success'
-              role='button'
-              aria-pressed='true'
-            >
-              Continúe
-            </Link>
+            <Link to={"/Beggin"} className='m-2 btn buttonBlue' role='button' aria-pressed='true'> Volver </Link>
+            <Link to={link} className='m-2 btn btn-success' role='button'aria-pressed='true'> Continúe</Link>
           </div>
         </form>
       </div>

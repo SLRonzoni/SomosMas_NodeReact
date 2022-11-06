@@ -129,7 +129,7 @@ const ActivitiesAll = (props) => {
 
   return (
     <>
-      <div className="container ">  
+      <div className="containerBasic ">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -187,7 +187,7 @@ const ActivitiesAll = (props) => {
                 <th className="tituloItem centerText"> Actualizada</th>
 
                 <th className="centerText" ><Link to={'/ActivitiesCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Agregar </Link> 
+                      role="button" > Nueva </Link> 
                 </th>
               </tr>
             </thead>

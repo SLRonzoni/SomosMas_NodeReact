@@ -19,8 +19,7 @@ const ContactForm = (props) => {
                 "message": values.message};
 
     const sendMessage = async () => {
-      await axiosClient
-        .post("/contacts", body)
+      await axiosClient.post("/contacts", body)
         .then((response) => {
           console.log(response)
           if (response.status === 201) {
@@ -243,8 +242,8 @@ const ContactForm = (props) => {
               }
 
               <div>
-                <SendButton type='submit' className='m-2 btn btn-primary md-end buttonSendButton centerText'> {" "} Enviar{" "}</SendButton>
-                <Link to={"/"}  className='m-2 mr-md-2 btn buttonBlue buttonLink' role='button' > Volver </Link>
+                <Link to={"/"}  className='m-2 mr-md-2 btn buttonBlue' role='button' > Volver </Link>
+                <SendButton type='submit' className='m-2 btn btn-primary buttonSendButton '> Enviar</SendButton>
               </div>
             </div>
           </form>

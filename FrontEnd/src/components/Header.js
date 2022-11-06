@@ -1,138 +1,143 @@
-import React, {useRef} from "react";
+import React, {useState} from "react";
 import "./styles/styles.css";
 import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
-import {FaBars, FaTimes} from "react-icons/fa";
+import {FaTimes, FaBars,FaAddressCard,FaArrowLeft, FaUserCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Nav,NavDropdown, NavbarBrand } from "react-bootstrap";
+import { NavDropdown, NavbarBrand } from "react-bootstrap";
 import Searcher from "./Searcher";
-import imagen from "./images/manos_logo-sinFondo.png";
 import user from "./images/user.png";
+import Footer from "./Footer";
+import { NavbarWrapper,MenuButtonBars, MenuButtonX } from "./elements/ElementsFormStyles";
 
 export default function Header () {
 
-  const navRef= useRef(null);
-  const showNavBar= ()=>{
-    navRef.current.className="responsiveNav";
-  }
+  const[open,setOpen]=useState(true)
 
-  const showNavBarX= ()=>{
-    navRef.current.className="";
-  }
-  
+  const handleOpen=()=>{
+    setOpen(!open)
+  };
+    
   let userInfo  = JSON.parse(sessionStorage.getItem('userInfo'));
   let login  = JSON.parse(sessionStorage.getItem('loginData'));
+  let show;
   let name;
   let photo;
-  if (userInfo && userInfo.image!==""? photo=userInfo.image : photo=user);
-
+  if (userInfo && userInfo.image!=="" ? photo=userInfo.image : photo=user);
+  if (userInfo && userInfo.name!=="" ? name=userInfo.firstName : name="");
  
-    const logout = ()=>{
-      Swal.fire({
-        icon: "info",
-        title: `Sesión finalizada, gracias por visitarnos !`,
-        showConfirmButton:false,
-        timer:2000
-      })
-      sessionStorage.clear();
-      setTimeout( function() { window.location.href = "/"; }, 2000 );
-      }   
+  const logout = ()=>{
+    Swal.fire({
+      icon: "info",
+      title: `Sesión finalizada, gracias por visitarnos !`,
+      showConfirmButton:false,
+      timer:2000
+    })
+    sessionStorage.clear();
+    setTimeout( function() { window.location.href = "/"; }, 2000 );
+  };   
 
-      {userInfo && userInfo.roleId!==1 && userInfo.firstName && (name=userInfo.firstName)}
-      {userInfo && userInfo.roleId!==1 && userInfo.givenName && (name=userInfo.givenName)}
+  userInfo && userInfo.roleId!==1 && userInfo.firstName && (name=userInfo.firstName)
+  userInfo && userInfo.roleId!==1 && userInfo.givenName && (name=userInfo.givenName)
      
-  return(
-      <header>  
-            <h5> Somos Más Ong <img className="handsLogo shadowFilterNav" src={imagen} alt="manosNiños"></img> </h5>
-            <br/>
-            <nav ref={navRef} className="headerNav">
-              <Nav>
-                <NavbarBrand >
-                  {!userInfo &&(
-                    <NavDropdown title="Secciones">  
-                      <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                      <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                      <NavDropdown.Divider /> 
-                      <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
-                      <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
-                      <NavDropdown.Item href="/OrganizationsAll">Nos acompañan . . .</NavDropdown.Item>
-                      <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                     
-                      <NavDropdown.Divider /> 
-                      <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
-                      <NavDropdown.Item href="/DonartionsPublic">Donar</NavDropdown.Item>
-                    </NavDropdown>
-                  )}
-                  {userInfo && userInfo.roleId!==1 && (
-                    <NavDropdown title={`${name}, tus secciones` } id="basic-nav-dropdown">
-                      <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                      <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                      <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
-                      <NavDropdown.Divider /> 
-                      <NavDropdown.Item href="/OrganizationsAll">Nos acompañan</NavDropdown.Item>
-                      <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
-                      <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
-                      <NavDropdown.Divider />               
-                      <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item>
-                      <NavDropdown.Item href="/DonartionsPublic">Donar</NavDropdown.Item>
-                      <NavDropdown.Divider /> 
-                      <NavDropdown.Item href={`/users/${userInfo.id}`}>Mi perfil</NavDropdown.Item>
-                  </NavDropdown> 
-                  )}               
-                  {userInfo && userInfo.roleId===1 && ( 
-                    <NavDropdown title="Administrador, tus secciones" id="basic-nav-dropdown">  
-                      <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                      <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
-                      <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
-                      <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
-                      <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
-                      <NavDropdown.Item href="/DonationsAll">Donaciones</NavDropdown.Item>
-                      <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
-                      <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                      <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
-                      <NavDropdown.Item href="/OrganizationsAll">Organizaciones</NavDropdown.Item>
-                      <NavDropdown.Item href="/RolesAll">Roles</NavDropdown.Item>
-                      <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
-                      <NavDropdown.Item href="/UsersAll">Usuarios</NavDropdown.Item>             
-                    </NavDropdown>
-                  )} 
-                  </NavbarBrand>     
-              </Nav>
-            </nav>
-            <div>
-              <Searcher />
-            </div>
+  return(  
+    <>     
+      {(open==true) ? show="collapse" : show="visible"}
+      <NavbarWrapper open={open} >
 
-            <div>
-              {!userInfo && ( 
-                <Link to="/auth/register" className="btnLoginLogoutRegister" >Register </Link>
-              )}
-            </div>
-          
-            <div>
-              {!userInfo && ( 
-                <Link to="/auth/login" className="btnLoginLogoutRegister" >Login </Link>
-              )}
-            </div>
+        <MenuButtonBars  open={open} onClick={handleOpen} >
+          <FaBars></FaBars>
+        </MenuButtonBars>
+
+        <MenuButtonX open={!open} onClick={handleOpen}>
+          <FaTimes></FaTimes>
+        </MenuButtonX> 
+
+        <div className={show}>          
         
-            <div>
-              {userInfo && ( 
-                <Link  to="/auth/logout" onClick={logout} className="btnLogout">Logout </Link> 
-              )}
-            </div>
+          <div className="navbarUser">
+            {login===true && (
+              <div>
+                <img className="imageNavBar" src={photo} alt="user image"></img>
+                <p className="centerText menuItem">{name}</p>
+              </div>
+            )}
+          </div>
 
-          <button className= "nav-btn nav-close-btn" onClick={showNavBarX}>
-            <FaTimes></FaTimes>
-          </button>              
+          <Searcher />
           
-          {login===true && (
-            <img className="imageNavBar" src={photo} alt="user image"></img>
-          )}
-          <button className= "nav-btn" onClick={showNavBar}>
-            <FaBars></FaBars>
-          </button>
 
-        </header> 
-       
+          <NavbarBrand>
+            {!userInfo &&(
+              <NavDropdown title="Secciones" className="iconNavbar"> 
+                <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
+                <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
+                <NavDropdown.Divider /> 
+                <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
+                <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
+                <NavDropdown.Item href="/OrganizationsAll">Quienes nos acompañan</NavDropdown.Item>
+                <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                     
+                <NavDropdown.Divider /> 
+                <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
+                <NavDropdown.Item href="/PaymentMethod">Donar</NavDropdown.Item>
+              </NavDropdown>
+            )}
+            {userInfo && userInfo.roleId!==1 && (
+              <NavDropdown title="Secciones" className="NavDrop">
+                <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
+                <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
+                <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
+                <NavDropdown.Divider /> 
+                <NavDropdown.Item href="/OrganizationsAll">Quienes nos acompañan</NavDropdown.Item>
+                <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
+                <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
+                <NavDropdown.Divider />               
+                <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item>
+                <NavDropdown.Item href="/PaymentMethod">Donar</NavDropdown.Item>
+                <NavDropdown.Divider /> 
+                <NavDropdown.Item href={`/users/${userInfo.id}`}>Mi perfil</NavDropdown.Item>
+            </NavDropdown> 
+            )}               
+            {userInfo && userInfo.roleId===1 && ( 
+              <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
+                <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
+                <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
+                <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
+                <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
+                <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
+                <NavDropdown.Item href="/DonationsAll">Donaciones</NavDropdown.Item>
+                <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
+                <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
+                <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
+                <NavDropdown.Item href="/OrganizationsAll">Organizaciones</NavDropdown.Item>
+                <NavDropdown.Item href="/RolesAll">Roles</NavDropdown.Item>
+                <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
+                <NavDropdown.Item href="/UsersAll">Usuarios</NavDropdown.Item>             
+              </NavDropdown>
+            )} 
+          </NavbarBrand>     
+                      
+          {!userInfo && (
+            <div className={show}>
+              <FaAddressCard  className="iconNavbar"/> 
+              <Link to="/auth/register" className="menuItem m-3 mr-md-2" >Register </Link>
+              <br/>
+              <FaUserCheck className="iconNavbar"/>
+              <Link to="/auth/login" className="menuItem m-3 mr-md-2" >Login </Link>
+            </div> 
+          )} 
+          {userInfo && (
+            <div>
+              <br/>
+              <FaArrowLeft className="iconNavbarLogout" /> 
+              <Link  to="/auth/logout" onClick={logout} className="menuItem m-3 mr-md-2">Logout </Link> 
+            </div> 
+          )} 
+
+          <Footer/>
+          </div> 
+        </NavbarWrapper>  
+      </> 
   );
  }
 

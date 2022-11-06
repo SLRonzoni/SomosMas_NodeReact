@@ -18,6 +18,8 @@ const regexCategoryDescription=/^[a-zA-Z0-9À-ÿ\s+]{0,200}$/ // Letras, numeros
 
 const regexUrl=/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,40}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
 
+const regexAmount=/^[0-9]{1,6}$/
+
 
 
 let eCharCode;
@@ -51,7 +53,7 @@ const charactersOk = {
 
 }
 
-export { regexActivitiesName, regexCategoryId,
+export { regexActivitiesName, regexCategoryId, regexAmount,
 	     regexUserfirstName,regexUserLastName,regexUserPassword,regexUserEmail,regexUserPhone,
 	     regexCategoryName,regexCategoryDescription, regexUrl,
 	     charactersOk };

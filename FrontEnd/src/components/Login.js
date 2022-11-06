@@ -59,7 +59,7 @@ const Login =()=>{
            sessionStorage.setItem('loginData',true)
 
           loginOK(name);
-          setTimeout( function() { window.location.href = "/Beggin" }, 1000 );
+          setTimeout( function() { window.location.href = "/ActivitiesPublicAll" }, 1000 );
           
         } else {
           loginError(response);          
@@ -113,8 +113,8 @@ const Login =()=>{
         </div>
       
         <div className="centerText">
-            <SendButton type="submit" className="m-2 btn buttonBlue " onClick={beginSession} >Login </SendButton>
-            <Link to={"/"} className="m-3 mr-md-2 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+          <Link to={"/"} className="m-3 mr-md-2 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+          <SendButton type="submit" className="m-2 btn" onClick={beginSession} >Login </SendButton> 
         </div>
 
         <div>

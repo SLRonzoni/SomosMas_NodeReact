@@ -2,8 +2,9 @@ const ModelDonations= require('../models').Donations;
 const ModelHelper=require('../helpers/modelHelper');
 const baseController = require("./base.controller");
 const {Op}=require('sequelize');
-const { stripeSecretKey } = process.env.STRIPE_SECRET_KEY;
-const stripe = require("stripe")(stripeSecretKey);
+const Stripe=require('stripe');
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 const getAllDonations= async (req, res) => {
   try{
@@ -73,12 +74,21 @@ const getAllDonationsByCreate= async (req, res) => {
 
 const createDonation= async (req,res)=> { 
   try{
-    const inputVars={name:req.body.name,
-                    description:req.body.description
+    const {userId, userName, userLastName, userEmail, userPhone, amount, payForm, message}=req.body
+    const inputVars={
+                    userId:userId,
+                    userName:userName,
+                    userLastName:userLastName,
+                    userEmail:userEmail,
+                    userPhone:userPhone,
+                    amount:amount,
+                    payForm:payForm,
+                    message:message
                     }
+                    
     return baseController.createModel(res, ModelDonations, inputVars) 
   } catch (error) {        
-    res.status(500).send(error);
+    res.status(500).json(error);
   }
 };
 
@@ -100,27 +110,25 @@ const deleteDonation=async (req,res)=>{
   // Stripe
   const paymentsStripe=async (req, res) => {
     try{
-      const { id,amount } = req.body;
-    
+      const { id } = req.body;
+      
       //Create a PaymentIntent with the order amount and currency
       const payment = await stripe.paymentIntents.create({
-        amount,
+        amount:req.body.data.amount,
         currency: "usd",
         description:"donation Stripe",
-        payment_methods:id,
+        payment_method:id,
         confirm:true
       });
-
-      console.log(payment)
-      res.send({message: "Pago exitoso" });
-      //res.send({clientSecret: payment.client_secret });
+      res.status(200).json({message: "Pago exitoso", 
+                            clientSecret: payment });
 
       //Guardar los datos en mi bd
-      createDonation()
+      //createDonation()
 
   } catch(error) {
-      console.log(error)
-      res.status(500).json(error.row.message)
+      console.log(error.raw.message)
+      res.status(500).json(error.raw.message)
   }
 
   };
@@ -128,7 +136,7 @@ const deleteDonation=async (req,res)=>{
    // Mercado Pago
    const paymentsMePa=async (req, res) => {
     try{
-      const { id,amount } = req.body;
+     
     
       
 

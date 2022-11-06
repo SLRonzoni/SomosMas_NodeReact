@@ -257,8 +257,8 @@ const MyProfileUpdate = ({match, history}) =>{
               }
 
               <div className="centerText">
-                  <SendButton type="submit" className="m-1 btn btn-primary md-end buttonSendButton"> Guardar </SendButton>
-                  <Link to={"/"}  className="m-1 btn buttonBlue buttonLink" role="button" > Volver </Link>
+                <Link to={"/"}  className="m-1 btn buttonBlue" role="button" > Volver </Link>
+                <SendButton type="submit" className="m-1 btn  buttonGreen"> Guardar </SendButton> 
               </div>  
          </div> 
     </form>

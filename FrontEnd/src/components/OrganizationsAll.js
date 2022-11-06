@@ -99,7 +99,7 @@ const OrganizationsAll = (props) => {
 
    const showOrganizations = () => {
     return (
-      <div className="container">
+      <div className="containerBasic">
         {organizations.map((oneOrganization) => (
           <OrganizationsAllCard
             key={oneOrganization.id}
@@ -126,7 +126,7 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-      <div className="container">
+      <div className="containerBasic">
         {/* si aun está cargando las organizaciones*/}
         {!organizations &&  <LoadingBox/> }
 
@@ -152,7 +152,7 @@ const OrganizationsAll = (props) => {
                       
                     <span className={ViewAdministratorOptions()} >  
                       <Link to={'/OrganizationsCreate'} className="m-1 btn btn-success "
-                         role="button" > Agregar </Link>
+                         role="button" > Nueva </Link>
                     </span> 
               </div> 
               <br></br>

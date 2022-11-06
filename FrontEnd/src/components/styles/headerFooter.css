@@ -1,91 +1,58 @@
-header{
+.containerNavbar{
     display:flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 60px;
-    padding:0.2rem 2rem 0.2rem 0rem;
-    background-color:#0e0d0d !important;
+    flex-wrap:wrap;
 }
 
-header h5 {
-    margin-left: 20px;
-    width: 12rem;
-    color: #fff;
+nav{
+    display: flex;
+    align-items: baseline;
 }
 
-.handsLogo{
-    width: 20%;
-}
-
-.nav-btn{
-    padding:5px;
-    cursor:pointer;
-    border:none;
-    outline: none;
-    background-color:#0e0d0d !important;
-    color:#fff;
-    opacity:0;
-    visibility: hidden;
-    font-size: 1.8rem;
-}
-
-.NavDropdown-Item{
-    color:#fff;
+.NavDrop{
+    margin:0px 0px 0px 18%;
+    width: 40%;
     text-decoration: none;
-    color:#0e0d0d;
-}
-
-.imageNavBar{
-    width: 4%;
-    border-radius: 50%;
-    box-shadow:1px 0px 5px 1px grey;
-}
-
-.shadowFilterHeader{
-    filter:drop-shadow(4px 6px 5px #fff)
+    color:#390788;
 }
 
 .shadowFilterNav{
     filter:drop-shadow(2px 1px 1px #fff)
 }
- 
+
+.menuItem{
+    text-decoration: none;
+    color:#390788;
+}
+
+.navbarUser{
+    margin-top: -200%;
+}
+
+.imageNavBar{
+    width: 30%;
+    border-radius: 50%;
+    box-shadow:1px 0px 5px 1px grey;
+    margin: 0 0 1% 35%;
+}
+
+.iconNavbar{
+    color:#390788;
+}
+
+.iconNavbarLogout{
+    color:#390788;
+    text-decoration: none;
+    margin-left: 48px;
+}
+  
 footer{
-    background-color:#0e0d0d;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    width: 100%;
-    height: 3rem;
-    padding:0.5rem 0rem 0.5rem 1rem;
+   color:#390788;
+   margin:1rem;
 }
 
-footer nav{
-    display: flex;
-    align-items: center;
-    justify-content:baseline;
-    font-size: 1px;
-}
-
-.iconMapFooter{
-    width: 4%;
-    border:2px solid grey;
-    margin-right:20px;
-    border-radius: 50px;
-    box-shadow:1px 0px 2px 1px rgb(180, 178, 178);
-}
-
-.iconFacebookInstagramFooter{
-    width: 11%;
-    border-radius: 50px;
-    margin-right: 20px;
-    box-shadow:1px 0px 2px 1px rgb(180, 178, 178);
-}
-
-.iconEmailFooter{
-    width: 11%;
-    border-radius: 50px;
-    margin-right: 20px;
-    box-shadow:1px 0px 2px 1px rgb(180, 178, 178);
+.iconFooter{
+   width: 15%;
+   color:#390788;
+   margin-left: 22px;
+   
 }

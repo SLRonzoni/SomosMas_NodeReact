@@ -128,7 +128,7 @@ const MessagesAll = (props) => {
 
   return (
     <>
-      <div className="container ">  
+      <div className="containerBasic ">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 

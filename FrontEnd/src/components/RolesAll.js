@@ -77,7 +77,7 @@ const RolesAll = (props) => {
 
   return (
     <>
-      <div className="container ">  
+      <div className="containerBasic">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -102,7 +102,7 @@ const RolesAll = (props) => {
                   <th className="tituloItem centerText"> Creado</th>
                   <th className="tituloItem centerText"> Actualizado</th>
                   <th className="centerText">
-                    <Link to={'/roles'} className="m-1 mr-md-2 btn btn-success" role="button" > Agregar </Link>
+                    <Link to={'/roles'} className="m-1 mr-md-2 btn btn-success" role="button" > Nuevo </Link>
                   </th>
                 </tr>
               </thead>

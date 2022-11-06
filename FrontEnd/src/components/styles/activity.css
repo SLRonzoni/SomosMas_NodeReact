@@ -1,20 +1,34 @@
-
+.containerActivities{
+    display:flex;
+    flex-wrap:wrap;
+    width: 100%;
+    /* height: 100vh; */
+    justify-content: center;
+    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    color:#fff;
+}
 .imageActivity{
     display: block;
     justify-content: center;
     margin:auto;
-    width: 36rem;
+    width: 32rem;
     height: auto;
     border-radius: 10px;
 }
 
-
 .containerSlideSize{
-    height: 33rem;
-    width: 100%;
-    margin: auto;
+    height: 38.5rem;
+    width:90%;
 }
 
 .h6SlideActivity{
     margin-top:1rem;
+    margin: auto;
+    width: 65%;
+    text-align: center;
 }
+
+.h3Activities{
+    color: #fff;
+}
+

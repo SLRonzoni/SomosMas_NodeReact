@@ -8,8 +8,6 @@ import { Formik } from "formik";
 import { msgRequired,msgValidationUserFirstName,msgValidationUserLastName, msgValidationUserEmail, msgValidationUserPassword, msgValidationUserConfirmPassword} from './helpers/validationMessages';
 import { regexUserfirstName, regexUserLastName, regexUserPassword, regexUserEmail } from "./helpers/RegExp";
 import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
-import Header from "./Header";
-import Footer from "./Footer";
 import image from "./images/manos_fondo-sinFondo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
@@ -156,9 +154,6 @@ const Register=(props)=> {
     return (
     <>
     <div className="containerBeggin">
-        <header>
-            <Header />
-        </header>
 
         <div className="contentHome">          
           <h1>Bienvenid@s !!!</h1>
@@ -303,8 +298,9 @@ const Register=(props)=> {
                                 } 
                                 { errors.formOk === "v" || !errors.formOk && 
                                     <span>
-                                        <SendButton type="submit" className="m-3 btn buttonBlue">Guardar </SendButton>
                                         <Link to={"/Beggin"} className="m-3 btn  registerMsj-Buttons-button buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+                                        <SendButton type="submit" className="m-3 btn buttonSendButton">Guardar </SendButton>
+                                        
                                     </span>
                                 }
                             </div> 
@@ -317,9 +313,6 @@ const Register=(props)=> {
           </div>
         </div>
         
-        <footer className="footer">
-            <Footer/>
-        </footer>
     </div>    
   </>
   );

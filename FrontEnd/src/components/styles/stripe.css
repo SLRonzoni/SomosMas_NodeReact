@@ -1,30 +1,48 @@
-/* #root {
-    display: flex;
-    align-items: center;
-  }
-   */
-  /* body {
+  .containerStripe {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     -webkit-font-smoothing: antialiased;
-    display: flex;
-    justify-content: center;
-    align-content: center;
+    display: block;
     height: 100vh;
     width: 100vw;
-  } */
+    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    color:#fff;
+  } 
   
-  form {
+  .formStripe {
     width: 30vw;
     min-width: 500px;
     align-self: center;
-    box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-      0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+    justify-content: center;
+    background-color:rgb(40, 26, 62);
+    box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
+      0px 2px 5px 0px rgba(12, 12, 12, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
     border-radius: 7px;
-    padding: 40px;
+    padding: 5px;
   }
-  
-  
+
+  .formCard{
+    margin: auto;
+    border-radius: 0px 0px 7px 7px;
+    padding:15px;
+  }
+
+  .formUserData{
+    margin:auto;
+    width: 30vw;
+    min-width: 500px;
+    background-color:rgb(40, 26, 62);
+    box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
+      0px 2px 5px 0px rgba(230, 230, 238, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
+      border-radius: 7px 7px 0px 0px;
+    padding: 15px;
+  }
+
+  .formUserData p{
+    width: 80%;
+    height: 50%;
+  }
+    
   #payment-message {
     color: rgb(105, 115, 134);
     font-size: 16px;
@@ -34,12 +52,10 @@
   }
   
   #payment-element {
-    margin-bottom: 24px;
+    margin-bottom: 24px; 
   }
   
-  /* Buttons and links */
-  button {
-    background: #5469d4;
+  .buttonStripe {
     font-family: Arial, sans-serif;
     color: #ffffff;
     border-radius: 4px;
@@ -50,20 +66,19 @@
     cursor: pointer;
     display: block;
     transition: all 0.2s ease;
-    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+    box-shadow: 0px 4px 5.5px 0px rgba(240, 236, 236, 0.07);
     width: 100%;
   }
   
-  button:hover {
+  .buttonStripe:hover {
     filter: contrast(115%);
   }
   
-  button:disabled {
+  .buttonStripe:disabled {
     opacity: 0.5;
     cursor: default;
   }
   
-  /* spinner/processing state, errors */
   .spinner,
   .spinner:before,
   .spinner:after {
@@ -140,3 +155,18 @@
     padding:15px;
     border-radius: 10px;
 }
+
+  .imgStripe{
+    width: 4vw;  
+    border-radius: 50%;
+    margin-left: 90%;
+  }
+
+  .input{
+    margin-left: 2%;
+    width: 35%;
+    height: 95%;
+    line-height: 90%;
+    text-align: center;
+    border-radius: 10px;
+  } 

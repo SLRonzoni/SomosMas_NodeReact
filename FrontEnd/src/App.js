@@ -10,6 +10,8 @@ import MercadoPago from "./components/MercadoPago";
 import Stripe from "./components/Stripe";
 
 import Home from './components/Home';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Beggin from './components/Beggin';
 import About from './components/About';
 import SearchResults from "./components/SearchResults";
@@ -65,6 +67,7 @@ const App = () => {
  
   return (
     <BrowserRouter>
+      <Header></Header>
       <Switch>
         <>           
             <Route exact path="/" component={Home}/> 
@@ -133,6 +136,7 @@ const App = () => {
             <Route path='/UsersAll' component={UsersAll}/>              
         </>
       </Switch>
+      
     </BrowserRouter>
   );  
 };

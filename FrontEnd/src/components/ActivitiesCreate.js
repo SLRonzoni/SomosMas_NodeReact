@@ -27,8 +27,7 @@ function ActivitiesCreate(props) {
     body.append("image",values.image);
 
     const saveActivities = async () => {
-      await axiosClient
-        .post("/activities",body)     
+      await axiosClient.post("/activities",body)     
         .then((response) => {
           if(response) {
             setActivities(response.data)

@@ -40,10 +40,11 @@
     display: flex;
     flex-direction: column; 
     position: relative;
-    width: 300px;
-    height: 50rem;
+    width: 320px;
     box-shadow: 0px 0px 15px -5px;
-    margin:0rem 1rem 1.5rem 1rem;
+    margin:auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .cardContainerOrganization{
@@ -73,11 +74,11 @@
     display: flex;
     flex-direction: column; 
     position: relative;
-    font-size: 0.1rem!important;
-    width: 355px;
-    height: 35.5rem;
+    font-size: 0.88rem!important;
+    width: 357px;
+    height: 34rem;
     box-shadow: 0px 0px 12px -5px;
-    margin:0rem 0.5rem 0rem 0.8rem;
+    margin:2rem;
     border-radius: 15px;
     padding:10px;
 }
@@ -96,9 +97,9 @@
     height: 15rem;
     width: 100%;
     margin-bottom:1.5rem ;
-    /* display:flex; 
+    display:flex; 
     align-items: center;
-    justify-content:center; */
+    justify-content:center;
 }
 
 .cardContentOrganization{
@@ -110,6 +111,8 @@
     margin:0.5rem;
     margin-top: 0.5rem;
 }
+
+
 
 .cardContentMember{
     margin-top: -1rem;
@@ -161,4 +164,11 @@
 
 .fixedSizeCardWelcomeOrganization{
     height:6rem;
+}
+
+.listaAbout{
+    display:flex;
+    margin-top: 8%;
+    margin-left:-4%;
+
 }
