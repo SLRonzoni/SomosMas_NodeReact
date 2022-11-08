@@ -1,6 +1,6 @@
 .containerTitle {
     margin-top:1rem;
-    font-size: 18px;
+    font-size: 1.13rem;
     margin: auto;
 }
 
@@ -9,133 +9,100 @@
     flex-direction: column; 
     position: relative;
     justify-content: center;
-    width: 300px;
+    width: 18.75rem;
     height: 50rem;
     overflow: hidden;
-    box-shadow: 0px 0px 15px -5px;
+    box-shadow: 0px 0px 1rem -0.32rem;
     transition: 0.3s;
     animation:ease-in;
     margin:1.5rem;
     margin-top:-3rem;
-}
-/* 
-.card-container:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 15px 0px;
-} */
+} 
 
-
-/* .cardContainerMember{
-    display:flex;
-    position:relative;
-    width: 1920px;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 3px;
-    margin-top: 2%;  
-} */
-
-.cardContainerMember{
+.cardContainerMember{ /* ✅ */
     display: flex;
     flex-direction: column; 
     position: relative;
-    width: 320px;
-    box-shadow: 0px 0px 15px -5px;
-    margin:auto;
     justify-content: center;
     align-items: center;
+    width: 16.25rem;
+    margin:1rem;
+    box-shadow: 0px 0px 1rem -0.32rem;
+    
 }
 
 .cardContainerOrganization{
     display: flex;
     flex-direction: column; 
     position: relative;
-    width: 300px;
-    height: 58.5rem;
-    box-shadow: 0px 0px 15px -5px;
+    width: 18.75rem;
+    height: auto;
+    box-shadow: 0px 0px 1rem -0.32rem;
     margin:0rem 1.5rem 1.2rem 1rem;
 }
 
-/* .cardContainerAbout{
-    display: flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    width: 1000px;
-    height: 35rem;
-    box-shadow: 0px 0px 15px -5px;
-    margin:0rem 0.5rem 1.5rem 1rem;
-    border-radius: 15px;
-    padding:15px;
-} */
-
-.cardContainerAboutHorizontally{
+ .cardContainerAbout{ /* ✅ */
     display: flex;
     flex-direction: column; 
     position: relative;
     font-size: 0.88rem!important;
-    width: 357px;
-    height: 34rem;
-    box-shadow: 0px 0px 12px -5px;
-    margin:2rem;
-    border-radius: 15px;
-    padding:10px;
+    width: 25.6rem;
+    height: auto;
+    box-shadow: 0px 0px 1rem -0.32rem;
+    margin:1.4rem 0.5rem;
+    border-radius: 1rem;
+    padding:1rem;
 }
 
 .imageContainerOrganization {
     height: 15rem;
     width: 100%;
     margin-bottom:1.5rem ;
-    /* display:flex;
-    align-items: center;
-    justify-content:center; */
     background-color: aqua;
 }
 
-.imageContainerMember {
-    height: 15rem;
+.imageContainerMember { /* ✅ */
     width: 100%;
     margin-bottom:1.5rem ;
-    display:flex; 
-    align-items: center;
-    justify-content:center;
+    text-align: center;
 }
 
-.cardContentOrganization{
+.cardContentOrganization{ /* ✅ */
     margin-top: -1rem;
     padding:1rem;
 }
 
-.cardContentAbout{
-    margin:0.5rem;
+.cardContentAbout{/* ✅ */
     margin-top: 0.5rem;
-}
-
-
-
-.cardContentMember{
-    margin-top: -1rem;
     padding:1rem;
+    width: 100%;
 }
 
-.cardTitle {
+.cardContentMember{/* ✅ */
+    margin-top: -1rem;
+}
+
+.cardContainerMember p{  /* ✅ */
+    margin-left: 1rem;
+}
+
+.cardTitle {  /* ✅ */
     margin-bottom:0.2rem;
 }
 
-.cardImageMember{        
+.cardImageMember{  /* ✅ */       
     height:90%; 
     width: 60%; 
     margin-top: 1rem;
-    box-shadow: 0px 0px 15px 5px black;
+    box-shadow: 0px 0px 1rem 0.32rem black;
 }
 
-.cardImageOrganization{        
+.cardImageOrganization{  /* ✅ */    
     height:100%; 
     width:100%; 
 }
 
-.cardImageAbout{        
+.cardImageAbout{    /* ✅ */     
     height:auto; 
     width:90%; 
     margin-left:4%;
@@ -144,8 +111,8 @@
 
 .iconNetworks{
     width: 7%;
-    margin-left:15px;
-    margin-bottom: 10px;
+    margin-left:1rem;
+    margin-bottom: 0.63rem;
 }
 
 .iconSocialNetworksOrganization{
@@ -154,21 +121,21 @@
     margin-left: 0.3%;
 }
 
-.fixedSizeCardMember{
+.fixedSizeCardMember{ /* ✅ */
     height:11rem;
 }
 
-.fixedSizeCardOrganization{
+.fixedSizeCardOrganization{ /* ✅ */
     height:10rem;
 }
 
-.fixedSizeCardWelcomeOrganization{
+.fixedSizeCardWelcomeOrganization{  /* ✅ */
     height:6rem;
 }
 
-.listaAbout{
+.listaAbout{ /* ✅ */
     display:flex;
     margin-top: 8%;
-    margin-left:-4%;
+    margin-left:-10%;
 
 }

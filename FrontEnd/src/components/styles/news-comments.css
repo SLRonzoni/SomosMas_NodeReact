@@ -1,21 +1,18 @@
-
-
-
-.userComments{
+.userComments{ 
     background-color: gray;
-    border-radius: 10px;
-    padding: 10px;
+    border-radius: 1rem;
+    padding: 1rem;
     margin-bottom:8px;
 }
 
 .imageComment{
    border-radius: 50%;
    width: 7%;
-   margin-right: 6px;
+   margin-right: 0.38rem;
 }
 
 .dateComment{
    display: flex;
    justify-content: end;
-   font-size: 10px;
+   font-size: 0.63rem;
 }

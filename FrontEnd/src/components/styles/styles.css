@@ -1,15 +1,23 @@
-
-body{
+*{
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
+
+body{
+    background-color: repeating-linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c ); 
+    font-size:16px;
+    width: 100vw;   
+} 
 
 .containerBasic{
     display:flex;
+    justify-content: center;
     flex-wrap:wrap;
     width: 100%;
-    justify-content: center;
-    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    height: auto;
+    margin: 0px auto;   
+    background-color:rgb(32, 10, 67);
     color:#fff;
 }
 
@@ -22,9 +30,9 @@ body{
     background-color:#1E90FF;
     color:#fff;
     width:20%;
-    height:32px;
+    height:2em;
     font-weight: bold;
-    line-height:30px;
+    line-height:1.87em;
     cursor:pointer;
     padding: 1px;
 }
@@ -38,9 +46,9 @@ body{
     background-color:#198754;
     color:#fff;
     width:20%;
-    height:32px;
+    height:2em;
     font-weight: bold;
-    line-height:30px;
+    line-height:1.87em;
     cursor:pointer;
     padding: 1px;
 }
@@ -80,7 +88,7 @@ body{
     background-color: lightgrey;
     color:black;
     /* box-shadow:1px 0px 5px 1px whitesmoke; */
-    font-size: 15px;
+    font-size: 1em;
     border-radius: 12px;
     /* font-size: 17px !important; */
     margin-top:1.4rem;
@@ -89,8 +97,8 @@ body{
 .imageCharCard{
     display:flex;
     margin:auto;
-    height:10rem; 
-    width: 20rem;
+    height:0.62em; 
+    width: 1.25em;
 } 
 
 .imageChar{
@@ -246,12 +254,11 @@ h1{
 }
 
 .selectBtnDesplegable{
+    width:17rem;
+    height:2rem;
+    font-size: 12px;
     background-color:#fff;
     color:black;
-    width:20rem;
-    height:30px;
-    margin-left: -10px;
-    font-size: 12px;
 }
 
 .marginCero{

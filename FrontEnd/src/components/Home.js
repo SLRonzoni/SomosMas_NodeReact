@@ -1,18 +1,19 @@
 import React from "react";
 import "./styles/styles.css";
+import "./styles/headerFooter.css";
 import "./styles/beggin-login-register-home.css";
 import { Link } from "react-router-dom";
-import {FaFacebook, FaInstagram,FaMailBulk,FaMapMarker,FaPhone } from "react-icons/fa";
+import {FaFacebook, FaInstagram,FaMailBulk,FaMapMarker} from "react-icons/fa";
 import ViewRegularUserOptions from "./helpers/ViewRegularUserOptions";
 import ActivitiesPublicAll from "./ActivitiesPublicAll";
 import imagen from "./images/manos_logo-sinFondo.png";
 
-
 function Home() {
   return (  
     <div className="containerBasic containerHome">      
-      <div className="containerTransparent">       
-          <div className="contentHome">
+      <div className="containerTransparent">  
+        <div className="contentHome">
+        
             <h1 className="d-flex centerText"> Somos Más
               <img className="shadowFilterNav imgHome" src={imagen} alt="manosNiños"></img>
             </h1> 
@@ -26,7 +27,7 @@ function Home() {
           
             <div className="buttons">
               <Link to={'/auth/login'} className="m-5 btn btn-success"role="button"> Donar </Link> 
-            </div>
+            </div> 
         
             <div className="container2Home">
               <div className={ViewRegularUserOptions()}> 
@@ -55,7 +56,7 @@ function Home() {
         <ActivitiesPublicAll/>
       </div>
 
-    </div>    
+    </div>  
   );
 };
 

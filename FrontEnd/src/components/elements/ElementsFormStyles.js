@@ -169,49 +169,8 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-const MenuButtonBars = styled.button`
-    border: none;
-    background-color:lightgrey;
-    cursor:pointer;
-    border:none;
-    box-shadow: 0px 0px 4px #fff;
-    color:#390788;
-    font-size: 1.3rem;
-    height:9%;
-    padding:7px;
-    margin:5px 10px 5px 10px;
-    visibility: ${props => (props.open ? "visible" : "hidden")};
-`;
-
-const MenuButtonX = styled.button`
-    border: none;
-    background-color:lightgrey;
-    cursor:pointer;
-    border:none;
-    box-shadow: 0px 0px 4px rgb(50, 50, 50);
-    color:#390788;
-    font-size: 1.3rem;
-    padding:7px;
-    height:9%;
-    margin:5px 5px 0px -43px ;
-    visibility: ${props => (props.open ? "visible" : "hidden")}; 
-`;
-
-const NavbarWrapper = styled.nav`
-    display:flex;
-    flex-wrap:wrap;
-    background-color: #1ed12d;
-    top:0;
-    position: fixed;
-    width: ${props => (props.open ? "0%" : "21%")};
-    left: ${props => (props.open ? "0" : "-200")}; 
-    height:100%;
-    transition: top 0.3s linear; 
-    z-index:100;
-`;
-
 export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, 
-        IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong, NavbarWrapper, MenuButtonBars, MenuButtonX};
+        IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
 
 
   

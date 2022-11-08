@@ -108,6 +108,7 @@ const TestimonialsCreate=(props)=> {
     <>
     <br></br>
     { !user && <h3 className="centerText">"Para dar testimonio, tenés que estar registrado"</h3>}
+    { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1000 )}
     { user && 
     <Formik  
             initialValues={initialValues}           

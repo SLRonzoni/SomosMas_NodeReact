@@ -150,6 +150,7 @@ const MyProfileUpdate = ({match, history}) =>{
   //FORM
   return (
     <>
+    <div className="containerHome">
     <Formik  
          initialValues={initialValues}           
          validate={validateInputs}
@@ -264,6 +265,7 @@ const MyProfileUpdate = ({match, history}) =>{
     </form>
     )}
    </Formik>
+   </div>
   </>
   );
 };

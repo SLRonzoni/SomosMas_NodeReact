@@ -2,7 +2,6 @@ import React from "react";
 import "./styles/styles.css";
 import "./styles/headerFooter.css";
 import "./styles/tableMediaScreen.css";
-import { Link } from "react-router-dom";
 import {FaFacebook, FaInstagram,FaMailBulk,FaMapMarker,FaPhone } from "react-icons/fa";
 import ViewRegularUserOptions from "./helpers/ViewRegularUserOptions";
 
@@ -15,12 +14,11 @@ function Footer () {
                     <FaMapMarker className="iconFooter"/> 
                 </a>
                 <span className="">Av. R.Balbin 4780</span>
-                <br/>
+                
                 <span className="marginLeft40px"> C.A.B.A.</span>  
                 <br/>
                 <FaPhone className="iconFooter"/> 
                 <span className="">011-6011-2988</span>
-               
 
                 <div className={ViewRegularUserOptions()}> 
                     <a href="/contactForm" >

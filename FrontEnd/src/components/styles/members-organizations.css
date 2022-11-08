@@ -1,10 +1,14 @@
-.containerMembersAllCard{
-    width: 100%;
+.containerMembersAllCard{  /* ✅ */
+    width:100%;
     display:flex;
     flex-direction: column; 
     position: relative;
     justify-content: center;
     align-items: center;
+}
+
+.containerMembersAllCard h2{ /* ✅ */
+    margin-top:1rem;
 }
 
 .containerUpdateOrganizations{
@@ -13,23 +17,25 @@
     padding:1rem;
 }
 
+.containerTitle{  /* ✅ */
+    margin-top:1rem;
+    font-size: 1.2rem;
+}
 
 .textArea-Members{
-    margin-left: 15px;
+    margin-left: 1rem;
     width: 49rem;
 }
 
-.pBtnDesplegableMembers{
+.pBtnDesplegableMembers{  /* ✅ */
     font-size: 1.5rem;
-    margin-bottom:1rem;
+    margin-bottom:0.5rem;
 }
 
-.divBtnDesplegableOrganizations{
+.divBtnDesplegableOrganizations{ /* ✅ */
     display:Flex;
-    width: auto;
-    height: 4rem;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    height: 4rem; 
     margin-bottom: -2.5rem;
 }

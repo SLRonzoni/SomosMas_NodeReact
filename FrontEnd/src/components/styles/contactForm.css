@@ -1,15 +1,6 @@
-
-
-
 .containerRegisterContactForm{
-    width: 60%;
-    margin:auto;
-    display:flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    padding:1rem;
+    width: 55%;
+    margin:auto;    
 }
 
 .labelWidthContactForm{

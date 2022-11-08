@@ -59,7 +59,7 @@ const Login =()=>{
            sessionStorage.setItem('loginData',true)
 
           loginOK(name);
-          setTimeout( function() { window.location.href = "/ActivitiesPublicAll" }, 1000 );
+          setTimeout( function() { window.location.href = "/About" }, 1000 );
           
         } else {
           loginError(response);          

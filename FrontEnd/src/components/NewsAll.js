@@ -130,23 +130,19 @@ const NewsAll = (props) => {
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+  let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
     <>
-      <div className="container ">  
-      {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerBasic">  
       {!token && <Redirect to="/Login" />} 
-
-      {/* si aun está cargando las noticias*/}
       {!news &&  <LoadingBox/> }
-
-       {/* solo renderiza si hay noticias*/}
       {news && 
+      
       <>
       <div className="centerText">
         <h3 className="containerTitle">Listado de Noticias</h3>
-        <div className="displayFlex centerText" >
+        <div className="d-flex centerText" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "

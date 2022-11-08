@@ -1,5 +1,7 @@
 .containerHome{
     height: 100vh;
+    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    margin-top: -2.9rem;
 }
 
 .containerTransparent{
@@ -19,7 +21,7 @@
 
 .contentHome{
     max-width: 100%;
-    height: 80%;
+    height: 70%;
     position: absolute;
     top:50%;   
     transform:
@@ -83,10 +85,9 @@
     margin: auto;
 }
 
-
 .iconHome{
     display: flex;  
-    font-size: 160%;
+    font-size: 200%;
     color: #2abe1d;
     margin: auto;
 }
@@ -96,6 +97,11 @@
     color: #2abe1d;
     margin-left: 60%;
 }
+
+.iconHome :hover,
+.iconHomeMap :hover{
+    color:#fff;  
+} 
 
 .spanEscribinos{
     display:flex;
@@ -121,24 +127,15 @@
     margin-left: 15px;
 }
 
-.buttonIngresar{
-    background-color:#fff;
-    color:#390788;
-}
-
 .sliderHome{
     display:flex;
-    width: 90%;
+    width: 82%;
     margin-left: 52%; 
     margin-left: 48%; 
 }
 
 .carousel-indicators{
     visibility:hidden;
-}
-
-.h3Activities{
-    color:transparent;
 }
 
 .sliderHome content{

@@ -128,7 +128,7 @@ const MessagesAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic ">  
+      <div className="containerBasic">  
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -141,7 +141,7 @@ const MessagesAll = (props) => {
       <div className="centerText">
         <br></br>
         <h3 className="containerTitle">Listado de Mensajes</h3>     
-        <div className="displayFlex centerText" >
+        <div className="d-flex centerText" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "

@@ -1,12 +1,13 @@
-.containerSearchNews{
+.containerSearchNews{ /* ✅ */
     height: auto;
-    width: 100%;
+    width: 70%;
     margin: 0 1rem 2rem 3rem;
     padding: 1rem;
-    border-bottom: 1px solid lightgray;
+    justify-content: center;
+    border-bottom: 0.07rem solid lightgray;
 }
 
-.containerItemSearchNews{
+.containerItemSearchNews{/* ✅ */
     display:flex;
     position:relative;
     width: 100%;
@@ -14,28 +15,27 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 3px;
+    padding: 0.19rem;
     margin-top: 2%;
     margin-bottom: 2%;  
 }
 
-.imgSearchNews{
+.imgSearchNews{/* ✅ */
     width:25%;
     height: 50%;
 }
 
-.inputSearcher{
+.inputSearcher{/* ✅ */
     display:flex;
     flex-wrap:wrap;
-    padding-left:7px;
+    padding:0.50rem;
     height: 1.8rem;
-    border-radius: 10px;
+    border-radius: 0.32rem;
     width: 100%;
     border:none;
-    box-shadow: 0px 0px 4px rgb(50, 50, 50);
+    box-shadow: 0rem 0rem 0.25rem rgb(50, 50, 50);
 }
 
-.searchAlign{
+.searchAlign{ /* ✅ */
     text-align: left;
-    margin: 0;
 }

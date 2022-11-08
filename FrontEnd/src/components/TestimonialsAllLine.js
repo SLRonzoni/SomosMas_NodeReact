@@ -8,7 +8,7 @@ const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,r
     return (
         <tr >
             <td >{id}</td>
-            <td className="imageChar centerText borderTransparent" ><img src={image}  alt="categoryImage"></img> </td>
+            <td className="imageChar centerText borderTransparent" ><img src={image}  alt="testimonialImage"></img> </td>
             <td >{name}</td>
             <td >{content}</td>
             <td >{userId}</td>

@@ -136,24 +136,24 @@ const OrganizationsAll = (props) => {
             <div className="centerText">
               <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
               <div className="divBtnDesplegableOrganizations">
-                    <select
-                          type="text"
-                          name="name"
-                          onChange={changesId}
-                          className="m-3 selectBtnDesplegable form-select "
-                    >  
-                        {organizations.map(oneOrganization => (
-                          <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
-                            {oneOrganization.name}
-                          </option>
-                        )).sort(OrderNameAsc(organizations))}
-                          <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
-                    </select>
-                      
-                    <span className={ViewAdministratorOptions()} >  
-                      <Link to={'/OrganizationsCreate'} className="m-1 btn btn-success "
-                         role="button" > Nueva </Link>
-                    </span> 
+                <select
+                      type="text"
+                      name="name"
+                      onChange={changesId}
+                      className="m-3 selectBtnDesplegable form-select "
+                >  
+                    {organizations.map(oneOrganization => (
+                      <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
+                        {oneOrganization.name}
+                      </option>
+                    )).sort(OrderNameAsc(organizations))}
+                      <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
+                </select>
+                  
+                <span className={ViewAdministratorOptions()} >  
+                  <Link to={'/OrganizationsCreate'} className="m-1 btn btn-success "
+                      role="button" > Nueva </Link>
+                </span> 
               </div> 
               <br></br>
               <br></br>

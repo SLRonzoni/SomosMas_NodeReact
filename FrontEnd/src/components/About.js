@@ -10,7 +10,7 @@ const About = () => {
     <>
     <div className='containerBasic'>
         
-        <div className='cardContainerAboutHorizontally'>
+        <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Nosotros</h4>
             <div className='cardContentAbout'>
                 <p>
@@ -32,14 +32,14 @@ const About = () => {
                     Hoy somos un centro comunitario que acompaña a más de 700 personas a través de 
                     las áreas de :
                     
-                    <div className='listaAbout'>
-                        <ul className='marginLeft25px'>
+                    <div className='listaAbout centerText'>
+                        <ul>
                             <li>Alimentación</li>
                             <li>Educación</li>
                             <li>Deportes</li>
                         </ul>
 
-                        <ul className='marginLeft25px'>
+                        <ul>
                             <li>Primera infancia</li>
                             <li>Salud</li>
                             <li>Trabajo social</li>
@@ -49,7 +49,7 @@ const About = () => {
             </div>
         </div>
 
-        <div className='cardContainerAboutHorizontally'>
+        <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Misión</h4>
             <div className='cardContentAbout'>
                 <p>
@@ -63,7 +63,7 @@ const About = () => {
             </div>
         </div>
        
-        <div className='cardContainerAboutHorizontally'>
+        <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Visión</h4>
             <div className='cardContentAbout'>
                 <p>

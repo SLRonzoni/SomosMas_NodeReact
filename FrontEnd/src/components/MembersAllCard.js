@@ -24,7 +24,7 @@ const MembersCard = ({ id, name, image, description, facebookUrl, instagramUrl, 
             <div className='cardContentMember'>
               <div className="cardTitle centerText"><em>{name}</em></div>
               <br></br>
-              <p className="fixedSizeCardMember centerText"><b> </b> {description}</p>
+              <p className="fixedSizeCardMember"><b> </b> {description}</p>
               
               <div className='centerText'>
                 <img className="iconSocialNetworksOrganization" src={facebook} alt="facebook"></img> {facebookUrl} 

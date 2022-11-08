@@ -27,7 +27,7 @@ function Searcher() {
 
   return (
   <form className="d-flex" onSubmit={submitHandler}>
-    <label className=" form-label mx-2 mb-3 ">
+    <label className="form-label">
       <input className="inputSearcher" type="text" name="keyword" placeholder=" 🔍 Buscar en Noticias">
       </input>
     </label>

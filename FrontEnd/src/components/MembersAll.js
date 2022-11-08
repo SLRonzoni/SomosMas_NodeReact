@@ -136,7 +136,7 @@ const MembersAll = (props) => {
                     type="text"
                     name="name"
                     onChange={changesId}
-                    className="m-1 selectBtnDesplegable form-select "
+                    className="selectBtnDesplegable form-select "
                   >
                     {members.map(oneMember => (
                       <option className="colorBlack " key={oneMember.id} value={oneMember.id}>

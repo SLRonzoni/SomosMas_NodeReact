@@ -1,58 +1,106 @@
-.containerNavbar{
+.navbar{
     display:flex;
-    flex-wrap:wrap;
+    justify-content: start;
+    align-items: center;
+    height: 3rem;
+    width: 10rem;
+    z-index:100;
 }
 
-nav{
+.menu-bars{
+    border: none;
+    background-color:lightgray;
+    cursor:pointer;
+    box-shadow: 0 0 0.25rem gray;
+    color:#390788;
+    font-size: 1.3rem;
+    padding:0.5rem;
+    margin-left:0rem;
+}
+
+.menu-bars:hover{
+    color:#2abe1d;
+    background-color: grey;
+}
+
+.nav-menu{
+    position: fixed;
+    display:flex;
+    justify-content: center;
+    top:0;
+    width:14rem;
+    background-color:#2abe1d;
+    height: 100vh;
+    z-index:100;
+    left:-14rem;
+    transition: all 500ms linear;
+}
+
+.nav-menu.active{
+    left:0;
+    transition: all 500ms linear;
+}
+
+.navbar-toogle{
     display: flex;
-    align-items: baseline;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    text-align:start;
+    margin:0.1rem 0.5rem 0 -1.3rem;
+    padding:0.5rem 0 8px 1rem;
+    height: 3.75rem;
+}
+
+.item{
+    text-decoration: none;  
+    color:#390788; 
+}
+
+.navbar-searcher{
+   list-style: none;
+   margin-top:2.3rem;
+   margin-right: 0.4rem;
+   cursor:pointer;
 }
 
 .NavDrop{
-    margin:0px 0px 0px 18%;
+    margin:0 0 0 18%;
     width: 40%;
     text-decoration: none;
     color:#390788;
 }
 
 .shadowFilterNav{
-    filter:drop-shadow(2px 1px 1px #fff)
+    filter:drop-shadow(0.13rem 0.06rem 0.06rem #fff)
 }
-
-.menuItem{
-    text-decoration: none;
-    color:#390788;
-}
-
+ 
 .navbarUser{
-    margin-top: -200%;
+    margin: -10% 0% -15% 0%;
+    list-style: none;
 }
 
-.imageNavBar{
-    width: 30%;
+.imageUserNavBar{
+    width: 40%;
     border-radius: 50%;
-    box-shadow:1px 0px 5px 1px grey;
-    margin: 0 0 1% 35%;
-}
-
-.iconNavbar{
+    display:block;
+    margin: 0 auto;
     color:#390788;
-}
+    box-shadow:0.06rem 0 0.13rem 0.06rem whitesmoke;
+} 
 
-.iconNavbarLogout{
-    color:#390788;
-    text-decoration: none;
-    margin-left: 48px;
-}
-  
 footer{
    color:#390788;
-   margin:1rem;
+   display: flex;
+   align-content:end;
+  
 }
 
 .iconFooter{
-   width: 15%;
-   color:#390788;
-   margin-left: 22px;
-   
+   width: 12%;
+   color:#390788; 
 }
+
+.iconFooter :hover{
+    color:#fff;  
+} 

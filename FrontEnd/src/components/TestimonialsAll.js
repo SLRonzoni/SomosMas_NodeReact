@@ -126,15 +126,13 @@ const TestimonialsAll = (props) => {
   return (
     <>
      <div className="containerBasic">  
-      {/* si aun está cargando los testimonios*/}
       {!testimonials &&  <LoadingBox/> }
-
-       {/* solo renderiza si hay testimonios*/}
       {testimonials && 
+      
       <>
       <div className="centerText">
         <h3 className="ContainerTitle" >Listado de Testimonios</h3>  
-        <div className="displayFlex centerText" >
+        <div className="d-flex centerText" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "

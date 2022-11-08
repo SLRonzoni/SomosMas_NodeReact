@@ -66,7 +66,7 @@ const CheckoutForm= (props) => {
           elements.getElement(CardElement).clear();
           values.amount=""
           setTimeout(() => {
-            history.push('/Beggin');
+            history.push('/');
           }, 1500);
         }       
       } catch (error) {
@@ -143,8 +143,7 @@ const CheckoutForm= (props) => {
                 onBlur={handleBlur}
               /> 
           </div>
-          {touched.amount && errors.amount && (
-                    <ErrorText>{errors.amount} </ErrorText>)}
+          {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
         </div>
 
         <div className="form-group">
@@ -169,7 +168,7 @@ const CheckoutForm= (props) => {
         <br/>
 
         <div className="d-flex centerText">
-          <Link to={"/Beggin"}  className='m-2 mr-md-2 btn buttonBlue' role='button' > Volver </Link>
+          <Link to={"/"}  className='m-2 mr-md-2 btn buttonBlue' role='button' > Volver </Link>
           <button disabled={isLoading || !stripe || !elements} id="submit" type="submit" className='m-2 btn btn-success buttonGreen'>        
             <span id="button-text ">
               {isLoading ? <div className="spinner" id="spinner"></div> : "Donar"}

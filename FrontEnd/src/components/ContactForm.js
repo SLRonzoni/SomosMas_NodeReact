@@ -126,6 +126,7 @@ const ContactForm = (props) => {
   //FORM
   return (
     <>
+    <div className="containerBasic containerHome">
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
@@ -249,6 +250,7 @@ const ContactForm = (props) => {
           </form>
         )}
       </Formik>
+      </div>
     </>
   );
 };

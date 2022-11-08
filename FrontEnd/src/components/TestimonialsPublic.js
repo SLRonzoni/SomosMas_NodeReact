@@ -3,11 +3,12 @@ import axiosClient from '../configuration/axiosClient';
 import {formatDate} from './helpers/FormatDate';
 import { Link } from 'react-router-dom';
 import "./styles/styles.css";
+import "./styles/testimonial.css";
 
 function TestimonialsPublic () {
 
     const [testimonials,setTestimonials]=useState([]);
-    // const [testimonialsComplete,setTestimonialsComplete]=useState([]);
+    const [testimonialsComplete,setTestimonialsComplete]=useState([]);
 
     const getTestimonials=async () => {
         await axiosClient.get(`/testimonials/public`)
@@ -40,11 +41,9 @@ function TestimonialsPublic () {
     
 
     useEffect(() => {
-      getTestimonials() 
-       
+      getTestimonials()  
     },[]); 
 
- console.log(testimonials)  
     return(
         <>
             <div className='containerBasic'>
@@ -66,7 +65,7 @@ function TestimonialsPublic () {
                                         <div>
                                             <p className='pTestimonialsPublic'> {oneResult.content}</p>  
                                             <br></br> 
-                                            <div className='displayFlex'>
+                                            <div className='d-flex'>
                                                 <img className=" imageMyProfile" src={oneResult.photo} alt="user"></img> 
                                                 <p>{oneResult.firstName}</p>
                                                 <span className="colorTransparent">......</span>
