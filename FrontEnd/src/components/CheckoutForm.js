@@ -16,12 +16,13 @@ const CheckoutForm= (props) => {
   const history=useHistory();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState("");
+  let [user, setUser] = useState("");
   
   let initialValues = { amount: "", message: "" };
   let photo;
 
   if (user && user.image!==""? photo=user.image : photo="😎");
+  if (!user ? user="": user=user);
   
   //obtener datos del usuario en sesión
   useEffect(() => {
@@ -104,22 +105,14 @@ const CheckoutForm= (props) => {
     }
   }
 
-
   return (
+    <>
     <div className="containerStripe">
-     <br/>
-      <div className="formUserData" >
-        <img className="imgStripe" src={photo} alt="user image"></img>
-        <div className="d-flex">
-          <p className=""> Nombre   : {user.firstName}</p>
-          <p className=""> Apellido : {user.lastName} </p>
-        </div>
-        <div className="d-flex">
-        <p> Email: {user.email}</p>
-        <p> Teléfono : {user.phone}</p>
-        </div>
-      </div>
-
+      <br/>
+      {!user && <h3 className="centerText">"Para hacer una donación, tenés que estar registrado"</h3>} 
+      {/* {!user && history.push("/PaymentMethod" )} */}
+            
+      { user &&
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
@@ -129,6 +122,18 @@ const CheckoutForm= (props) => {
         { values, handleSubmit, handleChange, handleBlur, touched, errors }) => (
       
       <form onSubmit={handleSubmit} className="formCard formStripe">
+        <div className="formUserData" >          
+          <img className="imgStripe" src={photo} alt="user image"></img>
+          <div className="d-flex">
+            <p className=""> Nombre   : {user.firstName}</p>
+            <p className=""> Apellido : {user.lastName} </p>
+          </div>
+          <div className="d-flex">
+          <p> Email: {user.email}</p>
+          <p> Teléfono : {user.phone}</p>
+          </div>
+        </div>
+
         <br/>
         <div className="form-group">
           <div className="d-flex centerText" >
@@ -178,7 +183,9 @@ const CheckoutForm= (props) => {
       </form>
       )}
       </Formik>
-    </div>
+    }
+   </div>
+   </>
   );
 }
 

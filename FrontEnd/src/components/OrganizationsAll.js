@@ -126,7 +126,7 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic">
+      <div className="containerBasic containerMember">
         {/* si aun está cargando las organizaciones*/}
         {!organizations &&  <LoadingBox/> }
 
@@ -159,7 +159,7 @@ const OrganizationsAll = (props) => {
               <br></br>
             </div> 
 
-            <div className="container centerText">
+            <div className="m-5 centerText">
               {showOrganizations()}
             </div>
           </>

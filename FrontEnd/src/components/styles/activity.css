@@ -4,8 +4,9 @@
     width: 100%;
     /* height: 100vh; */
     justify-content: center;
-    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    background-color:rgb(32, 10, 67);
     color:#fff;
+    margin-top:-3rem;
 }
 .imageActivity{
     display: block;
@@ -14,6 +15,10 @@
     width: 32rem;
     height: auto;
     border-radius: 10px;
+}
+
+.h3Activities{
+    color: #fff;
 }
 
 .containerSlideSize{
@@ -28,7 +33,5 @@
     text-align: center;
 }
 
-.h3Activities{
-    color: #fff;
-}
+
 

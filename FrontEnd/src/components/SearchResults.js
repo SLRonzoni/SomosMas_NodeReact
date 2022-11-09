@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axiosClient from "../configuration/axiosClient";
 import { formatDate } from "./helpers/FormatDate";
 import './styles/searcher.css';
+import './styles/news-comments.css';
 
 function WordSearchResults() {
 
@@ -63,7 +64,7 @@ function WordSearchResults() {
 
   return (
     <>   
-    <div className='containerBasic'>
+    <div className='containerBasic '>
     <br/>   
     <h4><em>Palabra buscada</em> : {keyword}</h4>
       <div>          

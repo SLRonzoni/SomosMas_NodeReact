@@ -21,7 +21,7 @@ function NewsAllPublic() {
  
   return (
     <>
-      <div className='containerBasic'>
+      <div className='containerBasic containerNews'>
         {news.map((oneResult) => {
           return (
             <div className='containerSearchNews' key={oneResult.id}>               

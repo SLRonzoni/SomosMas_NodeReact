@@ -24,7 +24,7 @@ function PaymentMethod() {
 paymentOption()
 
   return (
-    <div className="containerBasic">
+    <div className="containerBasic containerAbout">
       <div className='containerPayment'>      
         <h1 className='centerText colorBlack'>Métodos de donación</h1>
         <br></br>
@@ -52,7 +52,7 @@ paymentOption()
           </div>
         
           <div className='centerText '>
-            <Link to={"/Beggin"} className='m-2 btn buttonBlue' role='button' aria-pressed='true'> Volver </Link>
+            <Link to={"/"} className='m-2 btn buttonBlue' role='button' aria-pressed='true'> Volver </Link>
             <Link to={link} className='m-2 btn btn-success' role='button'aria-pressed='true'> Continúe</Link>
           </div>
         </form>

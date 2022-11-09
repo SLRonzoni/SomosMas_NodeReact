@@ -1,12 +1,16 @@
+.containerTestimonials{
+    margin-top:-3rem;
+}
+
 .imgTestimonialsAndComments{  /* ✅ */
     width:10rem;
     margin:1rem;
-  }
-
+}
   
 .rowTestimonialsAndComments{  
-    width:37rem ;   
-    margin-left: 2rem;
+    width:35rem;
+    height: 30rem;   
+    margin: 0.5rem;
     box-shadow: 0px 0px 15px -5px;
     color:#fff;
 }
@@ -14,11 +18,29 @@
 .pTestimonialsPublic{
     width: 31rem;
     height: auto;
-  
 }
 
 .widthTestimonialsAndComments{
     width:50rem ;
     margin-left: 4rem;
     padding: 7px 5px 5px 12px;
+}
+
+.containerTestimonialCreate{
+    width:41rem;
+    margin: 4rem auto;
+    background-color: lightgray;
+    border-radius: 15px;
+    color:black;
+}
+
+
+.containerTestimonials{
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    height: 100vh;
+    margin-top:-3rem;
+    background-color:rgb(32, 10, 67);
+    color:#fff;
 }

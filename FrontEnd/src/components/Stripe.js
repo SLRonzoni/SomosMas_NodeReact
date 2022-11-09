@@ -16,7 +16,6 @@ const Stripe= ()=> {
 
   return (  
     <>
-      {!userData &&  <h1>Debes loguarte</h1> }    
       <Elements stripe={stripePromise} >
         <CheckoutForm/>
       </Elements> 

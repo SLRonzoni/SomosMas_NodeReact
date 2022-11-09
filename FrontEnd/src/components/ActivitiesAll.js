@@ -10,6 +10,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
+import * as FaIcon from 'react-icons/fa';
 
 const ActivitiesAll = (props) => { 
 
@@ -125,23 +126,21 @@ const ActivitiesAll = (props) => {
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+  let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
     <>
-      <div className="containerBasic ">  
-      {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerActivities ">  
+     
       {!token && <Redirect to="/Login" />} 
-
-      {/* si aun está cargando actividades*/}
+     
       {!activities &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay actividades*/}
       {activities && 
       <>
       <div className="centerText">
         <h3 className="containerTitle">Listado de Actividades</h3>
-        <div className="displayFlex centerText" >
+        <div className="d-flex centerText" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -175,19 +174,21 @@ const ActivitiesAll = (props) => {
           </div> 
         </div>
 
-        <div >
-          <table  className="table table-responsive table-bordered  bgGrey colorWhite"  >
+        <div className="tableActivities">
+          <table  className="table table-responsive table-bordered"  >
             <thead>
               <tr>
-                <th className="tituloItem centerText  "> Id </th>
-                <th className="tituloItem "> Imágen </th>
-                <th className="tituloItem "> Actividad </th>
-                <th className="tituloItem "> Descripción </th>
-                <th className="tituloItem centerText"> Creada</th>
-                <th className="tituloItem centerText"> Actualizada</th>
+                <th> Id </th>
+                <th> Imágen </th>
+                <th> Actividad </th>
+                <th> Descripción </th>
+                <th> Creada</th>
+                <th> Actualizada</th>
 
-                <th className="centerText" ><Link to={'/ActivitiesCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Nueva </Link> 
+                <th className="centerText" >
+                  <Link to={'/ActivitiesCreate'} className="m-1 mr-md-2">
+                    <FaIcon.FaPlusSquare className="iconBlue"/>
+                  </Link> 
                 </th>
               </tr>
             </thead>

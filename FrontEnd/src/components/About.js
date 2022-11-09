@@ -8,8 +8,8 @@ const About = () => {
 
   return (
     <>
-    <div className='containerBasic'>
-        
+    <div className='containerAbout containerBasic'>
+      
         <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Nosotros</h4>
             <div className='cardContentAbout'>
@@ -77,7 +77,7 @@ const About = () => {
             </div>   
         </div>
         </div>
-   
+        
     </>
   )
 }

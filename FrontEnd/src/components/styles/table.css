@@ -23,6 +23,40 @@ tbody tr:hover {
 }
  
 thead {
-    background-color:rgb(26, 26, 26);;
+    background-color:rgb(26, 26, 26);
     color: white;
+}
+
+.tableActivities{
+    /* background-color: rgb(55, 42, 70); */
+    margin:auto;
+    width: 95%;
+}
+
+.table th{
+    color: rgb(255, 255, 255);
+    background-color:#2abe1d ;
+}
+
+.table tr{
+    color: #fff;
+    background-color:rgb(45, 41, 49) ;
+}
+
+.iconBlue{
+    color:#0616fc;
+    margin:15px;
+    font-size: 28px;
+    padding:5px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.iconRed{
+    color:rgb(245, 34, 34);
+    margin:15px;
+    font-size: 27px;
+    padding:5px;
+    background-color: #ccc;
+    border-radius: 5px;
 }

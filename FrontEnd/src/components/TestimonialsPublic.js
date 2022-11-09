@@ -46,14 +46,17 @@ function TestimonialsPublic () {
 
     return(
         <>
-            <div className='containerBasic'>
-                <Link to={'/TestimonialsCreate'} className=" btn btn-success centerText" role="button" > Dar mi testimonio </Link> 
-                <div>
+            <div className='containerBasic containerTestimonials'>
+                <div className='m-5'>
+                    <Link to={'/TestimonialsCreate'} className=" btn btn-success" role="button" > Dar mi testimonio </Link> 
+                </div>
+
+                <div className='containerBasic d-flex'>
                     {testimonials.map((oneResult) => {
                         return (
-                            <div key={oneResult.id} >
+                            <div key={oneResult.id}  >
                                 <br></br>
-                                <div className=' borderRounded rowTestimonialsAndComments'>
+                                <div className=' borderRounded rowTestimonialsAndComments '>
                                     <div>
                                         <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
                                     </div>

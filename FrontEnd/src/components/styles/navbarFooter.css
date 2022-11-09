@@ -3,8 +3,8 @@
     justify-content: start;
     align-items: center;
     height: 3rem;
-    width: 10rem;
-    z-index:100;
+    width: 5rem;
+    z-index:1;
 }
 
 .menu-bars{
@@ -13,9 +13,8 @@
     cursor:pointer;
     box-shadow: 0 0 0.25rem gray;
     color:#390788;
-    font-size: 1.3rem;
+    font-size: 1rem;
     padding:0.5rem;
-    margin-left:0rem;
 }
 
 .menu-bars:hover{
@@ -49,12 +48,17 @@
     text-align:start;
     margin:0.1rem 0.5rem 0 -1.3rem;
     padding:0.5rem 0 8px 1rem;
-    height: 3.75rem;
+    height: 2rem;
 }
 
 .item{
-    text-decoration: none;  
+    text-decoration: none; 
+    margin-left:1rem; 
     color:#390788; 
+}
+
+.item:hover{
+    color:#fff;
 }
 
 .navbar-searcher{
@@ -91,16 +95,15 @@
 
 footer{
    color:#390788;
-   display: flex;
-   align-content:end;
-  
+   margin-top: 70%;
 }
 
 .iconFooter{
    width: 12%;
+   margin-left:0.3rem;
    color:#390788; 
 }
 
 .iconFooter :hover{
-    color:#fff;  
+   color:#fff;  
 } 

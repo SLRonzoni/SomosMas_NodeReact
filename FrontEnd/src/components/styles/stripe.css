@@ -5,20 +5,22 @@
     display: block;
     height: 100vh;
     width: 100vw;
-    background:linear-gradient(180deg, rgb(114, 34, 243),#0c0c0c );
+    background-color:rgb(32, 10, 67);
     color:#fff;
+    margin-top: -3rem;
   } 
   
   .formStripe {
     width: 30vw;
-    min-width: 500px;
+    min-width: 550px;
     align-self: center;
     justify-content: center;
-    background-color:rgb(40, 26, 62);
+    background-color:lightgray;
     box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
       0px 2px 5px 0px rgba(12, 12, 12, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
     border-radius: 7px;
     padding: 5px;
+    color:#0c0c0c;
   }
 
   .formCard{
@@ -31,7 +33,8 @@
     margin:auto;
     width: 30vw;
     min-width: 500px;
-    background-color:rgb(40, 26, 62);
+    background-color:lightgrey;
+    color:#0c0c0c;
     box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
       0px 2px 5px 0px rgba(230, 230, 238, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
       border-radius: 7px 7px 0px 0px;

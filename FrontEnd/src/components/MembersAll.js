@@ -123,7 +123,7 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic">  
+      <div className="containerBasic containerMember">  
         
         {!members &&  <LoadingBox/> }
 

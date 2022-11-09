@@ -11,8 +11,7 @@ import Stripe from "./components/Stripe";
 
 import Home from './components/Home';
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Beggin from './components/Beggin';
+
 import About from './components/About';
 import SearchResults from "./components/SearchResults";
 
@@ -71,11 +70,10 @@ const App = () => {
       <Switch>
         <>           
           <Route exact path="/" component={Home}/> 
-          <Route exact path="/Beggin" component={Beggin}/> 
-
+          
           {/* BOTH */}
           <Route exact path="/auth/logout"component={Home}/>
-          <Route exact path="/auth/login" component={Beggin}/>
+          <Route exact path="/auth/login" component={Login}/>
           <Route path="/LoginGoogle" component={LoginGoogle}/>
           <Route path="/redes" component={LoginGoogle}/>
           <Route path='/searchResults'component={SearchResults}/>

@@ -3,8 +3,8 @@ import axiosClient from '../configuration/axiosClient';
 import './styles/styles.css';
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { msgRequired,msgValidationUserFirstName,msgValidationUserLastName, msgValidationUserPassword} from './helpers/validationMessages';
-import { regexUserfirstName, regexUserLastName, regexUserPassword } from "./helpers/RegExp";
+import * as msg from './helpers/validationMessages';
+import * as regex  from "./helpers/RegExp";
 import {formatDate} from './helpers/FormatDate';
 import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 import Swal from "sweetalert2";
@@ -106,8 +106,8 @@ const MyProfileUpdate = ({match, history}) =>{
       values.firstName=user.firstName
     };
 
-    if (!regexUserfirstName.test(values.firstName)) {
-      errors.firstName=msgValidationUserFirstName
+    if (!regex.regexUserfirstName.test(values.firstName)) {
+      errors.firstName=msg.msgValidationUserFirstName
       errors.icoNfirstName= '❌'
       errors.formOk='f'
       return errors
@@ -120,8 +120,8 @@ const MyProfileUpdate = ({match, history}) =>{
       values.lastName=user.lastName
     };
 
-    if (!regexUserLastName.test(values.lastName)) {
-      errors.lastName=msgValidationUserLastName
+    if (!regex.regexUserLastName.test(values.lastName)) {
+      errors.lastName=msg.msgValidationUserLastName
       errors.icoNlastName= '❌'
       errors.formOk='f'
       return errors
@@ -131,13 +131,13 @@ const MyProfileUpdate = ({match, history}) =>{
     };
 
     if (!values.password) {
-      errors.password=msgRequired
+      errors.password=msg.msgRequired
       errors.icoNpassword= '❌'
       return errors
     };
 
-    if (!regexUserPassword.test(values.password)) {
-      errors.password=msgValidationUserPassword
+    if (!regex.regexUserPassword.test(values.password)) {
+      errors.password=msg.msgValidationUserPassword
       errors.icoNpassword= '❌'
       errors.formOk='f'
       return errors
@@ -151,6 +151,7 @@ const MyProfileUpdate = ({match, history}) =>{
   return (
     <>
     <div className="containerHome">
+    <br/>
     <Formik  
          initialValues={initialValues}           
          validate={validateInputs}

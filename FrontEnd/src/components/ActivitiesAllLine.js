@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import "./styles/activity.css";
 import {formatDate} from './helpers/FormatDate'
+import * as FaIcons from 'react-icons/fa';
 
 const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
   
@@ -17,8 +18,12 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
             
             <td className=" centerText"> 
                 <div> 
-                    <Link to={`/activities/update/${id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
-                    <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
+                    <Link to={`/activities/update/${id}`} className="" role="button"> 
+                        <FaIcons.FaPencilAlt className='iconBlue'/> 
+                    </Link>
+                    <Link to={`/activities/update/${id}`} className="" role="button"onClick={()=>{remove(id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    </Link>              
                 </div> 
             </td>      
         </tr>

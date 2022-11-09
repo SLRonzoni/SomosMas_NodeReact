@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import "./styles/styles.css";
-import "./styles/headerFooter.css";
+import "./styles/navbarFooter.css";
 import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
 import * as FaIcons from "react-icons/fa";
@@ -67,9 +67,10 @@ export default function Sidebar () {
           </li>
 
           <li className="navbar-toogle" >
+            <FaIcons.FaList className="item"/> 
             <Navbar.Brand >
               {!userInfo &&(
-                <NavDropdown title="Secciones" className="item"> 
+                <NavDropdown title="Secciones" className="item" > 
                   <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                   <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                   <NavDropdown.Divider /> 
@@ -118,20 +119,16 @@ export default function Sidebar () {
             </Navbar.Brand>    
           </li>
 
-          <li className="navbar-toogle">
-            {userInfo && (
-              <div >
-                <FaIcons.FaArrowLeft className="item m-1"/> 
-                <Link  to="/auth/logout" onClick={logout} className="item">Logout </Link> 
-              </div> 
-            )} 
-          </li>
+          <li className="navbar-toogle" >
+                <FaIcons.FaHome className="item"/> 
+                <Link to="/" className="item m-3">Inicio </Link>
+          </li> 
 
           <li className="navbar-toogle">
             {!userInfo && (
               <div>
                 <FaIcons.FaAddressCard className="item"/> 
-                <Link to="/auth/register" className="item m-1">Register </Link>
+                <Link to="/auth/register" className="item m-3">Registro </Link>
               </div> 
             )} 
           </li>
@@ -140,14 +137,23 @@ export default function Sidebar () {
             {!userInfo && (
               <div>
                 <FaIcons.FaUserCheck className="item"/>
-                <Link to="/auth/login" className="item m-1">Login </Link>
+                <Link to="/auth/login" className="item m-3">Login </Link>
               </div> 
             )} 
           </li>
 
-          <li className="navbar-toogle footer">
-             <Footer/>
+          <li className="navbar-toogle">
+            {userInfo && (
+              <div >
+                <FaIcons.FaArrowLeft className="item"/> 
+                <Link  to="/auth/logout" onClick={logout} className="item m-3">Logout </Link> 
+              </div> 
+            )} 
           </li>
+
+          <div className="footer">
+             <Footer/>
+          </div>
 
         </ul>
       </nav>
