@@ -153,7 +153,7 @@ const CategoriesUpdate = ({match,history}) => {
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
-         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+         <form  className="containerUpdateCreate" onSubmit={handleSubmit}>
             <h3 className="centerText">Nuevos valores ...</h3>
             <br></br>
             <div>

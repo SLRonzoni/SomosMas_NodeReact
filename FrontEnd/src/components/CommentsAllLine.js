@@ -3,6 +3,7 @@ import './styles/styles.css';
 import "./styles/news-comments.css";
 import {formatDate} from './helpers/FormatDate'
 import ViewAdministratorOptions from './helpers/ViewAdministratorOptions';
+import * as FaIcons from 'react-icons/fa';
 
 const CommentsAllLine = ({id, body, user_id,user_firstName, user_lastName, news_id, create,update,remove}) =>{
   
@@ -16,8 +17,10 @@ const CommentsAllLine = ({id, body, user_id,user_firstName, user_lastName, news_
             <td className="centerText" >{formatDate(new Date(update))}</td>
             
             <td className={ViewAdministratorOptions()}>   
-                <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
-            </td>      
+                <div className="button" onClick={()=>{remove(id)}}> 
+                    <FaIcons.FaTrashAlt className='iconRed'/>
+                </div> 
+            </td>     
         </tr>
     );
 };

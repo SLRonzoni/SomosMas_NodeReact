@@ -10,6 +10,7 @@ import LoadingBox from "./LoadingBox";
 import OrganizationsAllCard from "./OrganizationsAllCard";
 import {OrderNameAsc} from "./helpers/Order";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
+import * as FaIcons from 'react-icons/fa';
 
 
 const OrganizationsAll = (props) => { 
@@ -99,7 +100,7 @@ const OrganizationsAll = (props) => {
 
    const showOrganizations = () => {
     return (
-      <div className="containerBasic">
+      <div className="containerFirst">
         {organizations.map((oneOrganization) => (
           <OrganizationsAllCard
             key={oneOrganization.id}
@@ -126,21 +127,20 @@ const OrganizationsAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic containerMember">
-        {/* si aun está cargando las organizaciones*/}
+      <div className="containerFirst">
+
         {!organizations &&  <LoadingBox/> }
 
-        {/* solo renderiza si hay organizaciones*/}
         {organizations && 
           <>
-            <div className="centerText">
+            <div className="containerOrganizationAllCard">
               <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
               <div className="divBtnDesplegableOrganizations">
                 <select
                       type="text"
                       name="name"
                       onChange={changesId}
-                      className="m-3 selectBtnDesplegable form-select "
+                      className="m-2 selectBtnDesplegable"
                 >  
                     {organizations.map(oneOrganization => (
                       <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
@@ -151,15 +151,15 @@ const OrganizationsAll = (props) => {
                 </select>
                   
                 <span className={ViewAdministratorOptions()} >  
-                  <Link to={'/OrganizationsCreate'} className="m-1 btn btn-success "
-                      role="button" > Nueva </Link>
+                  <Link to={'/OrganizationsCreate'} className="m-1">
+                    <FaIcons.FaPlusSquare className="iconBlue"/> 
+                  </Link>
                 </span> 
               </div> 
-              <br></br>
-              <br></br>
+              <br/>
             </div> 
-
-            <div className="m-5 centerText">
+            <div>
+              <br/>
               {showOrganizations()}
             </div>
           </>

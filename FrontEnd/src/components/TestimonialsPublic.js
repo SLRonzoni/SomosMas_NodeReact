@@ -46,7 +46,7 @@ function TestimonialsPublic () {
 
     return(
         <>
-            <div className='containerBasic containerTestimonials'>
+            <div className='containerFirst containerTestimonials'>
                 <div className='m-5'>
                     <Link to={'/TestimonialsCreate'} className=" btn btn-success" role="button" > Dar mi testimonio </Link> 
                 </div>

@@ -10,20 +10,18 @@ import linkedinLogo from'./images/linkedin.png';
 import emailLogo from './images/email.jpg';
 import whatsapp from './images/whatsapp.jpg';
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
+import * as FaIcons from 'react-icons/fa';
 
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
   return (
       <div className="cardContainerOrganization" >
-        <div className='imageContainerOrganization'> 
-          <img className="cardImageOrganization" src={image}  alt="organization" ></img>
-        </div>
+        <img className="cardImageOrganization" src={image}  alt="organization" ></img>
        
         <div className='cardContentOrganization'>
           <div className="cardTitle centerText"><em>{name}</em></div>
-          <br></br>
+          <br/>
           <p className='centerText'>Domicilio : {address}</p>
-          
           <div className='leftText'>        
               <img className="iconSocialNetworksOrganization "src={whatsapp} alt="telefono"></img>  {phone}
               <span className='colorBlack'><br></br></span>
@@ -35,13 +33,11 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
               <span className='colorBlack'><br></br></span>
               <img className="iconSocialNetworksOrganization  bgWhite"src={linkedinLogo} alt="logoLinkedin"></img> {linkedin}
           </div> 
-
-          <br></br>
-          
+          <br/>    
           <div className='fixedSizeCardWelcomeOrganization'><> Hola !, </> {welcomeText}</div>
           <br></br>
           <div className='fixedSizeCardOrganization'><u> Sobre nosotros</u> : {aboutUsText}</div>
-          <br></br>
+          <br/>
           <div >
             <div className={ViewAdministratorOptions()}>
               <hr></hr>
@@ -49,19 +45,21 @@ const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook
                 <span ><b> Ingreso</b> {formatDate(new Date(created))}</span>
                 <span ><b> Actualizado </b>{formatDate(new Date(updated))}</span>
               </div>
-              <br></br>
+              <br/>
             </div>
           </div>
           <div >
             <div className={ViewAdministratorOptions()}>    
-              <div className='centerText'>        
-                <Link to={`/organizations/${id}`} className="btn btn-primary btn-sm mr-1 me-md-5 "
-                      role="button" aria-pressed="true"> Modificar </Link>            
-                <button type="button" className="btn btn-danger btn-sm mr-1 me-md-1 "onClick={()=>{remove(id);}} >Eliminar </button>
+              <div className='centerText d-flex'>
+                <Link to={`/organizations/update/${id}`}> 
+                  <FaIcons.FaPencilAlt className='iconBlue'/> 
+                </Link>
+                <div className="button" onClick={()=>{remove(id)}}> 
+                  <FaIcons.FaTrashAlt className='iconRed'/>
+                </div> 
               </div> 
-              <br></br>
             </div>        
-            </div>
+          </div>
         </div>
       </div>
   );

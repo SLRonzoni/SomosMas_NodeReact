@@ -64,7 +64,7 @@ function WordSearchResults() {
 
   return (
     <>   
-    <div className='containerBasic '>
+    <div className='containerFirst '>
     <br/>   
     <h4><em>Palabra buscada</em> : {keyword}</h4>
       <div>          

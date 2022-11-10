@@ -1,6 +1,10 @@
 .containerRegisterContactForm{
-    width: 55%;
-    margin:auto;    
+    width: 48rem;
+    margin:auto;
+    background-color:lightgrey; 
+    color:black;  
+    border-radius: 15px; 
+    text-align: center;
 }
 
 .labelWidthContactForm{

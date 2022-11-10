@@ -9,6 +9,7 @@ import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import { OrderNameAsc } from "./helpers/Order";
+import * as FaIcons from 'react-icons/fa'
 
 const MembersAll = (props) => { 
 
@@ -100,7 +101,7 @@ const MembersAll = (props) => {
  
   const showMembers = () => {
     return (
-      <div className="containerBasic">
+      <div className="containerFirst">
         {members.map((oneMember) => (
           <MembersAllCard
             key={oneMember.id}
@@ -123,20 +124,20 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic containerMember">  
+      <div className="containerFirst">  
         
         {!members &&  <LoadingBox/> }
 
         {members && 
           <>
-            <div className="centerText containerMembersAllCard">
+            <div className="containerMembersAllCard">
               <h2 className="containerTitle">Colaboradores</h2>       
-              <div className="divBtnDesplegableOrganizations " >
+              <div className="divBtnDesplegableMembers" >
                   <select
                     type="text"
                     name="name"
                     onChange={changesId}
-                    className="selectBtnDesplegable form-select "
+                    className="m-2 selectBtnDesplegable"
                   >
                     {members.map(oneMember => (
                       <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
@@ -147,15 +148,16 @@ const MembersAll = (props) => {
                   </select>
                     
                   <span className={ViewAdministratorOptions()} >  
-                    <Link to={'/MembersCreate'} className="m-1 btn btn-success "
-                      role="button" > Nuevo </Link>
+                    <Link to={'/MembersCreate'} className="m-1">
+                      <FaIcons.FaPlusSquare className="iconBlue"/> 
+                    </Link>
                   </span> 
-              </div>  
+              </div>
+              <br/>
             </div>
           
             <div>
-              <br></br>
-              <br></br>
+              <br/>
               {showMembers()}
             </div>    
           </>

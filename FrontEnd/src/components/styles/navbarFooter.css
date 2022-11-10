@@ -5,6 +5,7 @@
     height: 3rem;
     width: 5rem;
     z-index:1;
+    /* position:fixed; */
 }
 
 .menu-bars{

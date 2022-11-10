@@ -130,7 +130,7 @@ const ActivitiesAll = (props) => {
 
   return (
     <>
-      <div className="containerActivities ">  
+      <div className="containerFirst">  
      
       {!token && <Redirect to="/Login" />} 
      
@@ -186,7 +186,7 @@ const ActivitiesAll = (props) => {
                 <th> Actualizada</th>
 
                 <th className="centerText" >
-                  <Link to={'/ActivitiesCreate'} className="m-1 mr-md-2">
+                  <Link to={'/ActivitiesCreate'} className="m-1">
                     <FaIcon.FaPlusSquare className="iconBlue"/>
                   </Link> 
                 </th>

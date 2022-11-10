@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/styles.css';
 import { formatDate } from './helpers/FormatDate';
+import * as FaIcons from 'react-icons/fa';
 
 const MessageAllLine = ({id, name, email, message, create, remove}) =>{
   
@@ -14,9 +15,9 @@ const MessageAllLine = ({id, name, email, message, create, remove}) =>{
             <td className='invisible'></td>
 
             <td className="centerText"> 
-                <div> 
-                    <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
-                </div> 
+                <div className="button" onClick={()=>{remove(id)}}> 
+                    <FaIcons.FaTrashAlt className='iconRed'/>
+                </div>  
             </td>      
         </tr>
     );

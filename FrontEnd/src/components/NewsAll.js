@@ -10,6 +10,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
+import * as FaIcons from 'react-icons/fa';
 
 const NewsAll = (props) => { 
 
@@ -134,7 +135,7 @@ const NewsAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic">  
+      <div className="containerFirst">  
       {!token && <Redirect to="/Login" />} 
       {!news &&  <LoadingBox/> }
       {news && 
@@ -194,7 +195,7 @@ const NewsAll = (props) => {
         </div> 
 
         <div>
-          <table className="table table-responsive table-bordered bgGrey colorWhite">
+          <table className="table table-responsive table-bordered">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>
@@ -205,8 +206,10 @@ const NewsAll = (props) => {
                 <th className="tituloItem centerText"> Creada</th>
                 <th className="tituloItem centerText"> Actualizada</th>
 
-                <th className="centerText" ><Link to={'/NewsCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Agregar </Link> 
+                <th className="centerText" >
+                  <Link to={'/NewsCreate'} className="m-1">
+                    <FaIcons.FaPlusSquare className="iconBlue"/> 
+                  </Link> 
                 </th>
               </tr>
             </thead>

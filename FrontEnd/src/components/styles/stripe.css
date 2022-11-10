@@ -31,7 +31,7 @@
 
   .formUserData{
     margin:auto;
-    width: 30vw;
+    width: 28vw;
     min-width: 500px;
     background-color:lightgrey;
     color:#0c0c0c;
@@ -162,7 +162,7 @@
   .imgStripe{
     width: 4vw;  
     border-radius: 50%;
-    margin-left: 90%;
+    margin-left: 85%;
   }
 
   .input{

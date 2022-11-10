@@ -126,7 +126,7 @@ const ContactForm = (props) => {
   //FORM
   return (
     <>
-    <div className="containerBasic containerHome">
+    <div className="containerFirst">
       <Formik
         initialValues={initialValues}
         validate={validateInputs}
@@ -134,7 +134,7 @@ const ContactForm = (props) => {
       >
         {(
           { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( 
-          <form className='containerRegisterContactForm centerText containerBorderWhiteBgGrey' onSubmit={handleSubmit}>
+          <form className='containerRegisterContactForm' onSubmit={handleSubmit}>
             <h5 className="centerText marginBottom05rem ">Formulario de Contacto</h5>
             
             <div>

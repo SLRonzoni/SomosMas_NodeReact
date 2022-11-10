@@ -152,7 +152,7 @@ const Register=(props)=> {
 
     return (
         <>
-            <div className="containerBeggin">
+            <div className="containerFirst containerMember">
                 <div className="begginRegister">
                     <Formik  
                             initialValues={initialValues}           

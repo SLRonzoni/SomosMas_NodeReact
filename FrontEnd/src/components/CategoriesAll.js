@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { Link, Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { OrderNameAsc } from "./helpers/Order";
+import * as FaIcons from 'react-icons/fa';
 
 const CategoriesAll = (props) => { 
 
@@ -120,7 +121,7 @@ const CategoriesAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic">
+      <div className="containerFirst">
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -135,10 +136,9 @@ const CategoriesAll = (props) => {
           <h3 >Listado de Categorías</h3>
           <p>{}</p>
         </div>
-        <br></br>      
-          <div className="" >
-            
-            <div >
+        <br/>      
+          <div>
+            <div>
                 <select
                   type="text"
                   name="categoryId"
@@ -156,18 +156,20 @@ const CategoriesAll = (props) => {
           </div> 
 
         <div>
-          <table className="table table-responsive table-bordered  colorWhite">
+          <table className="table table-responsive table-bordered">
             <thead>
               <tr>
-                <th className="tituloItem centerText "> Id </th>
+                <th className="tituloItem centerText"> Id </th>
                 <th className="tituloItem centerText"> Imágen </th>
-                <th className="tituloItem "> Categoría </th>
-                <th className="tituloItem "> Descripción </th>
+                <th className="tituloItem"> Categoría </th>
+                <th className="tituloItem"> Descripción </th>
                 <th className="tituloItem centerText"> Creado</th>
                 <th className="tituloItem centerText"> Actualizado </th>
 
-                <th className="centerText" ><Link to={'/CategoriesCreate'} className="m-1 mr-md-2 btn btn-success"
-                      role="button" > Nueva </Link> 
+                <th className="centerText" >
+                  <Link to={'/CategoriesCreate'} className="m-1">
+                    <FaIcons.FaPlusSquare className="iconBlue"/> 
+                  </Link> 
                 </th>
               </tr>
             </thead>

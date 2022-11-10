@@ -9,7 +9,7 @@ import imagen from "./images/manos_logo-sinFondo.png";
 
 function Home() {
   return (  
-    <div className="containerBasic containerHome">      
+    <div className="containerHome">      
       <div className="containerTransparent">  
         <div className="contentHome">
         

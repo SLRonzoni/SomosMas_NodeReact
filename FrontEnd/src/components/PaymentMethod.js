@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import { Link} from "react-router-dom";
 import "./styles/payments.css";
 import "./styles/styles.css";
+import * as FaIcons from "react-icons/fa";
 
 function PaymentMethod() {
    
@@ -24,7 +25,7 @@ function PaymentMethod() {
 paymentOption()
 
   return (
-    <div className="containerBasic containerAbout">
+    <div className="containerFirst">
       <div className='containerPayment'>      
         <h1 className='centerText colorBlack'>Métodos de donación</h1>
         <br></br>
@@ -37,7 +38,9 @@ paymentOption()
               checked={selectRadio=="stripe"?true:false}
               onChange={changeSelectRadio}
             /> 
-            <label className="marginLeft10px">Stripe ( donar en U$S )</label>
+            <label className="marginLeft10px">
+              <FaIcons.FaCcStripe className="icons"/> ( U$S )
+            </label>
           </div>
 
           <div className='mb-3'>
@@ -48,7 +51,9 @@ paymentOption()
               checked={selectRadio=="mercadoPago"?true:false}
               onChange={changeSelectRadio}
             /> 
-            <label className="marginLeft10px">Mercado Pago ( donar en AR$ )</label>
+            <label className="marginLeft10px">
+            <FaIcons.FaCreditCard className="icons"/> ( Mercado Pago en AR$ )
+            </label>
           </div>
         
           <div className='centerText '>

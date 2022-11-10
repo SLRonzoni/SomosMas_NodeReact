@@ -9,17 +9,14 @@ body{
     width: 100vw;  
 } 
 
-.containerBasic{
+.containerFirst{
     display:flex;
     justify-content: center;
     flex-wrap:wrap;
+    min-height: 100vh;
     height: auto;
-    /* margin: 0px auto;    */
     background-color:rgb(32, 10, 67);
-    color:#fff;
-}
-
-.containerAbout{
+    color:#fff; 
     margin-top:-3rem;
 }
 

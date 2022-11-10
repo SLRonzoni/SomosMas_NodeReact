@@ -2,12 +2,13 @@
     display:flex;
     flex-wrap:wrap;
     width: 100%;
-    /* height: 100vh; */
+    height: 100vh;
     justify-content: center;
     background-color:rgb(32, 10, 67);
     color:#fff;
     margin-top:-3rem;
 }
+
 .imageActivity{
     display: block;
     justify-content: center;

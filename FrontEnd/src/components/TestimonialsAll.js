@@ -125,8 +125,9 @@ const TestimonialsAll = (props) => {
 
   return (
     <>
-     <div className="containerBasic">  
+     <div className="containerFirst">  
       {!testimonials &&  <LoadingBox/> }
+      
       {testimonials && 
       
       <>
@@ -167,7 +168,7 @@ const TestimonialsAll = (props) => {
         </div> 
 
         <div>
-          <table className="table table-responsive table-bordered bgGrey colorWhite" >
+          <table className="table table-responsive table-bordered" >
             <thead >
               <tr >
                 <th className="tituloItem centerText "> Id </th>

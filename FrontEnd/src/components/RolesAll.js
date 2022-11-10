@@ -8,6 +8,7 @@ import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
+import * as FaIcons from 'react-icons/fa';
 
 const RolesAll = (props) => { 
 
@@ -44,12 +45,12 @@ const RolesAll = (props) => {
     })
     .then((result) => {
       if (result.value) {
-        removing(id);
+        remove(id);
       }
     });
   };
 
-  const removing = async (id) => {
+  const remove = async (id) => {
     await axiosClient.delete(`/roles${id}`)
       .then((response) => {
         Swal.fire({
@@ -73,18 +74,16 @@ const RolesAll = (props) => {
     getRoles()
   },[]);
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+  let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
     <>
-      <div className="containerBasic">  
-      {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerFirst">  
+   
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando los roles*/}
       {!roles &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay roles*/}
       {roles && 
       <>
        <div className="centerText">
@@ -92,7 +91,7 @@ const RolesAll = (props) => {
           <h3 className="containerTitle">Listado de Roles</h3>
           <br></br>
           <div>
-            <table className="table  table-responsive table-bordered bgGrey colorWhite">
+            <table className="table table-responsive table-bordered">
               <thead>
                 <tr>
                   <th className="tituloItem centerText "> Id </th>
@@ -102,7 +101,9 @@ const RolesAll = (props) => {
                   <th className="tituloItem centerText"> Creado</th>
                   <th className="tituloItem centerText"> Actualizado</th>
                   <th className="centerText">
-                    <Link to={'/roles'} className="m-1 mr-md-2 btn btn-success" role="button" > Nuevo </Link>
+                  <Link to={'/Roles'} className="m-1">
+                    <FaIcons.FaPlusSquare className="iconBlue"/> 
+                  </Link> 
                   </th>
                 </tr>
               </thead>
@@ -116,8 +117,14 @@ const RolesAll = (props) => {
                   <td className="centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
                   <td className="centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
                   <td className=" displayFlex centerText">   
-                      <Link to={`/roles/update/${oneRole.id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
-                      <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{confirmRemove(oneRole.id)}} >Eliminar </button>          
+                  <div className="d-flex centerText"> 
+                    <Link to={`/categories/update/${oneRole.id}`}> 
+                        <FaIcons.FaPencilAlt className='iconBlue'/> 
+                    </Link>
+                    <div className="button" onClick={()=>{remove(oneRole.id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    </div>                          
+                </div>  
                   </td>  
                 </tr>
                 )).sort(OrderNameAsc(roles))}

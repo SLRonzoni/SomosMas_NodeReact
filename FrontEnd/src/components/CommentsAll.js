@@ -139,7 +139,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
 
   return (
     <>
-    <div className="containerBasic">  
+    <div className="containerFirst">  
       
       {/* si aun está cargando comentarios*/}
       {!commentsWithNames &&  <LoadingBox/> }
@@ -169,7 +169,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
  
  
         <div>
-          <table className="table table-responsive table-bordered bgGrey">
+          <table className="table table-responsive table-bordered">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>

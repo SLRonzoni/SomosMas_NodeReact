@@ -180,7 +180,6 @@ const MembersUpdate = ({match, history}) => {
 //FORM
 return (
   <>
-
     <Formik
       initialValues={initialValues}           
       validate={validateInputs}

@@ -2,6 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router-dom';
 import {formatDate} from './helpers/FormatDate';
 import './styles/styles.css';
+import * as FaIcons from 'react-icons/fa';
 
 const UsersAllLine = ({id, photo, lastName,firstName, email, role,created, updated, remove}) =>{
   
@@ -16,8 +17,9 @@ const UsersAllLine = ({id, photo, lastName,firstName, email, role,created, updat
 
             <td className="centerText"> 
                 <div> 
-                    {/* <Link to={`/users/update/${id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>             */}
-                    <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
+                    <div className="button" onClick={()=>{remove(id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    </div>
                 </div> 
             </td>      
         </tr>

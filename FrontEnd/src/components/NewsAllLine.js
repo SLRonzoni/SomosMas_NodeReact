@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './styles/styles.css';
 import "./styles/news-comments.css";
-import {formatDate} from './helpers/FormatDate'
+import {formatDate} from './helpers/FormatDate';
+import * as FaIcons from 'react-icons/fa';
 
 const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove}) =>{
   
@@ -16,10 +17,16 @@ const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove
             <td className="centerText" >{formatDate(new Date(create))}</td>
             <td className="centerText" >{formatDate(new Date(update))}</td>
             
-            <td className="centerText">   
-                <Link to={`/news/update/${id}`} className="m-1 mr-md-2 btn btn-primary" role="button"> Modificar </Link>            
-                <button type="button" className="m-1 mr-md-2 btn btn-danger"onClick={()=>{remove(id)}} >Eliminar </button>          
-            </td>      
+            <td >
+                <div className="centerText d-flex"> 
+                    <Link to={`/news/update/${id}`}> 
+                        <FaIcons.FaPencilAlt className='iconBlue'/> 
+                    </Link>
+                    <div className="button" onClick={()=>{remove(id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    </div>                          
+                </div>  
+            </td>       
         </tr>
     );
 };

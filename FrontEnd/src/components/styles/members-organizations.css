@@ -1,5 +1,6 @@
 .containerMember{
     margin-top:-3rem;
+    height: 100vh;
 }
 
 .containerMembersAllCard{  /* ✅ */
@@ -9,6 +10,7 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .containerMembersAllCard h2{ /* ✅ */
@@ -38,8 +40,16 @@
 
 .divBtnDesplegableOrganizations{ /* ✅ */
     display:Flex;
-    justify-content: center;
     align-items: center;
     height: 4rem; 
-    margin-bottom: -2.5rem;
+    margin:auto;
+    width: 17rem;;
+}
+
+.divBtnDesplegableMembers{ /* ✅ */
+    display:Flex;
+    align-items: center;
+    height: 2rem; 
+    width: 16rem;
+    margin-top:-15rem;
 }

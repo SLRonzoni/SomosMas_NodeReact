@@ -131,7 +131,7 @@ return (
        onSubmit={ (values)=>{ sendForm(values) } }
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
-       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
+       <form  className="containerUpdateCreate" onSubmit={handleSubmit}>
           <br></br>
           <h3 className="centerText">Nueva categoría</h3>
           <div>

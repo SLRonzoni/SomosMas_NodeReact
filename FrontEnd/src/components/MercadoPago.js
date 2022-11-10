@@ -11,7 +11,7 @@ const MercadoPago=()=> {
        
 
   return (
-    <div className="containerBasic">
+    <div className="containerFirst">
       <h1>Mercado Pago</h1>
     
 

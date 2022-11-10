@@ -30,7 +30,6 @@ import ContactsAll from './components/ContactsAll';
 import ContactForm from './components/ContactForm';
 
 import DonationsAll from './components/DonationsAll';
-import DonationsPublic from "./components/DonationsPublic";
 
 import MessagesAll from './components/MessagesAll';
 
@@ -91,8 +90,6 @@ const App = () => {
           <Route path='/TestimonialsPublic' component={TestimonialsPublic}/>
           <Route path='/Stripe' component={Stripe}/>
           <Route path='/MercadoPago' component={MercadoPago}/>
-          <Route path='/DonationsPublic' component={DonationsPublic}/>
-
                   
           {/* ADMIN */}
           <Route path='/ActivitiesAll' component={ActivitiesAll}/>

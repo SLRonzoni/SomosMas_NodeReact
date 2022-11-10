@@ -125,8 +125,8 @@ const CheckoutForm= (props) => {
         <div className="formUserData" >          
           <img className="imgStripe" src={photo} alt="user image"></img>
           <div className="d-flex">
-            <p className=""> Nombre   : {user.firstName}</p>
-            <p className=""> Apellido : {user.lastName} </p>
+            <p> Nombre   : {user.firstName}</p>
+            <p> Apellido : {user.lastName} </p>
           </div>
           <div className="d-flex">
           <p> Email: {user.email}</p>

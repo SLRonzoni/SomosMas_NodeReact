@@ -124,18 +124,16 @@ const MessagesAll = (props) => {
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+  let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
     <>
-      <div className="containerBasic">  
-      {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerFirst">  
+     
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando mensajes*/}
       {!messages &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay mensajes*/}
       {messages && 
       <>
       <div className="centerText">
@@ -176,7 +174,7 @@ const MessagesAll = (props) => {
         </div> 
 
         <div>
-          <table className="table  table-responsive table-bordered bgGrey colorWhite">
+          <table className="table table-responsive table-bordered">
             <thead>
               <tr>
                 <th className="tituloItem centerText "> Id </th>
@@ -184,7 +182,7 @@ const MessagesAll = (props) => {
                 <th className="tituloItem "> Email </th>
                 <th className="tituloItem "> Mensaje </th>
                 <th className="tituloItem centerText"> Recibido</th>
-                <th className="invisible"></th>
+                <th></th>
               </tr>
             </thead>
 

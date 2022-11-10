@@ -18,12 +18,12 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
             
             <td className=" centerText"> 
                 <div> 
-                    <Link to={`/activities/update/${id}`} className="" role="button"> 
+                    <Link to={`/activities/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>
-                    <Link to={`/activities/update/${id}`} className="" role="button"onClick={()=>{remove(id)}}> 
+                    <div className="button" onClick={()=>{remove(id)}}> 
                         <FaIcons.FaTrashAlt className='iconRed'/>
-                    </Link>              
+                    </div>              
                 </div> 
             </td>      
         </tr>

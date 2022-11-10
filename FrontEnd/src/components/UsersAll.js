@@ -127,14 +127,12 @@ const UsersAll = (props) => {
 
   return (
     <>
-      <div className="containerBasic ">  
-        {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerFirst">  
+       
         {!token && <Redirect to='/Login' />}
 
-        {/* si aun está cargando users*/}
         {!users && <LoadingBox />}
 
-        {/* solo renderiza si hay users*/}
         {users && 
          <>
          <div className="centerText">
@@ -158,7 +156,7 @@ const UsersAll = (props) => {
             </div>
 
             <div>
-              <table className='table table-responsive table-bordered bgGrey colorWhite'>
+              <table className='table table-responsive table-bordered'>
                 <thead>
                   <tr>
                     <th className='tituloItem centerText'> Id </th>

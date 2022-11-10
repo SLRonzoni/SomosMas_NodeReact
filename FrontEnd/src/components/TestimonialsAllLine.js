@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate';
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
+import * as FaIcons from 'react-icons/fa';
 
 const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,remove}) =>{
   
@@ -17,7 +18,9 @@ const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,r
             
             <td >
                 <div className={ViewAdministratorOptions()}>   
-                    <button type="button" className="m-1 mr-md-3 btn btn-danger" onClick={()=>{remove(id)}} >Eliminar </button>  
+                    <div className="button" onClick={()=>{remove(id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    </div>
                  </div>   
             </td>   
         </tr>

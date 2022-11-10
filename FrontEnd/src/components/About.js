@@ -8,7 +8,7 @@ const About = () => {
 
   return (
     <>
-    <div className='containerAbout containerBasic'>
+    <div className='containerFirst'>
       
         <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Nosotros</h4>

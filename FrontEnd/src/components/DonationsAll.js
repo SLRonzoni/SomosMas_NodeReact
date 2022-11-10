@@ -132,26 +132,26 @@ const DonationsAll = (props) => {
     );
   };
 
-  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+  let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
     <>
-      <div className="containerBasic ">  
-      {/* para proteger ruta , si no hay token, redirige a login*/}
+      <div className="containerFirst">  
+     
       {!token && <Redirect to="/Login" />} 
 
-      {/* si aun está cargando actividades*/}
       {!donations &&  <LoadingBox/> }
 
-       {/* solo renderiza si hay actividades*/}
       {donations && 
       <>
-      <div className="centerText">
+      <div>
+      <div className="containerTitle centerText">
         <h3 className="containerTitle">Listado de Donaciones</h3>
-        <div className="displayFlex centerText" >
-          <div>
+        <br/>
+        <div className="d-flex centerText">
+          <div >
               <select 
-                className="m-3 selectBtnDesplegable form-select "
+                className="m-3 selectBtnDesplegable form-select"
                 type="text"
                 name="payForm"
                 onChange={changesId}
@@ -170,7 +170,7 @@ const DonationsAll = (props) => {
                 type="text"
                 name="createdAt"
                 onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
+                className="m-3 selectBtnDesplegable form-select"
               >  
                 {donations.map(oneDonations => (
                   <option className="colorBlack" key={oneDonations.id} value={oneDonations.createdAt}>
@@ -199,7 +199,7 @@ const DonationsAll = (props) => {
         </div>
 
         <div >
-          <table  className="table table-responsive table-bordered  bgGrey colorWhite"  >
+          <table  className="table table-responsive table-bordered">
             <thead>
               <tr>
                 <th className="tituloItem centerText  "> Id </th>
@@ -219,6 +219,7 @@ const DonationsAll = (props) => {
             
           </table>
         </div>
+      </div>
       </div>
       </>
       } 
