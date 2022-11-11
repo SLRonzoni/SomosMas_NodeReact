@@ -141,7 +141,7 @@ const NewsAll = (props) => {
       {news && 
       
       <>
-      <div className="centerText">
+      <div className="centerText m-5">
         <h3 className="containerTitle">Listado de Noticias</h3>
         <div className="d-flex centerText" >
           <div>

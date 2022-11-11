@@ -86,7 +86,7 @@ const RolesAll = (props) => {
 
       {roles && 
       <>
-       <div className="centerText">
+       <div className="centerText m-5">
           <br></br>
           <h3 className="containerTitle">Listado de Roles</h3>
           <br></br>

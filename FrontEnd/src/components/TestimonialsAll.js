@@ -131,7 +131,7 @@ const TestimonialsAll = (props) => {
       {testimonials && 
       
       <>
-      <div className="centerText">
+      <div className="centerText m-5">
         <h3 className="ContainerTitle" >Listado de Testimonios</h3>  
         <div className="d-flex centerText" >
           <div>

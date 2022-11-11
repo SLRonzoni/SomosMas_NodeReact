@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import * as FaIcons from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Navbar,NavDropdown} from "react-bootstrap";
+import imagen from "./images/manos_logo-sinFondo.png";
 import Searcher from "./Searcher";
 import user from "./images/user.png";
 import Footer from "./Footer";
@@ -46,8 +47,12 @@ export default function Sidebar () {
         <Link to="#" className="menu-bars ms-4">
           <FaIcons.FaBars onClick={showNavbar}/>
         </Link>
-      </div>                  
-      
+     
+        <h1 className=""> Somos Más o.n.g.
+          <img className="shadowFilterNav imgHome" src={imagen} alt="manosNiños"></img>
+        </h1>                   
+      </div>
+
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
       
         <ul className="nav-menu-items">

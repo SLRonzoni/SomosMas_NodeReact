@@ -133,7 +133,7 @@ const OrganizationsAll = (props) => {
 
         {organizations && 
           <>
-            <div className="containerOrganizationAllCard">
+            <div className="containerOrganizationAllCard m-5">
               <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
               <div className="divBtnDesplegableOrganizations">
                 <select

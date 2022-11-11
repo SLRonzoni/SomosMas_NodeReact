@@ -51,12 +51,12 @@ function TestimonialsPublic () {
                     <Link to={'/TestimonialsCreate'} className=" btn btn-success" role="button" > Dar mi testimonio </Link> 
                 </div>
 
-                <div className='containerBasic d-flex'>
+                <div className='containerFirst'>
                     {testimonials.map((oneResult) => {
                         return (
                             <div key={oneResult.id}  >
-                                <br></br>
-                                <div className=' borderRounded rowTestimonialsAndComments '>
+                                <br/>
+                                <div className='borderRounded rowTestimonialsAndComments '>
                                     <div>
                                         <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
                                     </div>
@@ -69,7 +69,7 @@ function TestimonialsPublic () {
                                             <p className='pTestimonialsPublic'> {oneResult.content}</p>  
                                             <br></br> 
                                             <div className='d-flex'>
-                                                <img className=" imageMyProfile" src={oneResult.photo} alt="user"></img> 
+                                                <img className="imageUserTestimonials" src={oneResult.photo} alt="user"></img> 
                                                 <p>{oneResult.firstName}</p>
                                                 <span className="colorTransparent">......</span>
                                                 <p className='dateComment centerText '>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>   

@@ -144,7 +144,7 @@ const DonationsAll = (props) => {
 
       {donations && 
       <>
-      <div>
+      <div className="m-5">
       <div className="containerTitle centerText">
         <h3 className="containerTitle">Listado de Donaciones</h3>
         <br/>

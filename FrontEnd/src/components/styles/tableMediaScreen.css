@@ -1,3 +1,25 @@
+/* Home */
+@media only screen  and (max-width:1263px) {
+    .containerHome{
+        display: block;
+        height: 100%;  
+    }
+    .navbar{
+        display: block;
+    }
+    .containerLeft{
+        margin: auto ;
+        margin-bottom:1rem;
+    }
+    .containerAddress{
+        margin:auto;
+        display: block;
+    }
+    .sliderHome{
+        margin:auto;
+    }
+}
+
 /* para formulario de contacto y formulario de registro*/
 @media only screen  and (min-width: 633px) and (max-width:1024px) {
     form .displayInLineFlex{

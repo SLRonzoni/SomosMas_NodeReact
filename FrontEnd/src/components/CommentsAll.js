@@ -147,7 +147,7 @@ console.log('commentsCOMPLETO',commentsWithNames)
        {/* solo renderiza si hay comemtarios*/}
       {commentsWithNames &&
       <>
-      <div className="centerText">
+      <div className="centerText m-5">
         <h3 className="containerTitle">Listado de Comentarios</h3>  
         <div className="displayFlex centerText" >
           <div >

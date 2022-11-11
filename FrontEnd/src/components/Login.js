@@ -77,7 +77,7 @@ const Login =()=>{
      
     
     return (
-      <div className="containerBeggin">
+      <div className="containerFirst">
         <div className="containerLogin">  
           <div>
             <LoginGoogle > </LoginGoogle>

@@ -1,11 +1,24 @@
 .navbar{
     display:flex;
-    justify-content: start;
     align-items: center;
-    height: 3rem;
-    width: 5rem;
+    height: 3.5rem;
+    width:100%;
     z-index:1;
-    /* position:fixed; */
+    background-color: rgb(32, 10, 67);
+    position:fixed;
+}
+
+.imgHome{
+    border: 1px solid #2abe1d;
+    border-radius: 55%;
+    width:8%;
+    margin-left: 1rem;
+}
+
+.navbar h1{
+    display: flex;
+    justify-content: end;
+    margin-right:1rem;    
 }
 
 .menu-bars{

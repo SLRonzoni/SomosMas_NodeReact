@@ -1,10 +1,23 @@
 .containerTestimonials{
-    margin-top:-3rem;
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    height: 100vh;
+    background-color:rgb(32, 10, 67);
+    color:#fff;
+    padding-top: 2rem;
 }
 
 .imgTestimonialsAndComments{  /* ✅ */
     width:10rem;
     margin:1rem;
+}
+
+.imageUserTestimonials{
+    width: 7%;
+    height:5%;
+    margin:-1.6rem 1rem 0rem 0rem;
+    border-radius: 50%;
 }
   
 .rowTestimonialsAndComments{  
@@ -28,19 +41,10 @@
 
 .containerTestimonialCreate{
     width:41rem;
+    height: 30rem;
     margin: 4rem auto;
     background-color: lightgray;
     border-radius: 15px;
     color:black;
 }
 
-
-.containerTestimonials{
-    display:flex;
-    justify-content: center;
-    flex-wrap:wrap;
-    height: 100vh;
-    margin-top:-3rem;
-    background-color:rgb(32, 10, 67);
-    color:#fff;
-}

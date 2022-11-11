@@ -14,8 +14,8 @@ const About = () => {
             <h4 className='cardTitle centerText'>Nosotros</h4>
             <div className='cardContentAbout'>
                 <p>
-                    Desde 1997 en Somos Más trabajamos con los chicos y chicas,
-                    mamás y papás, abuelos y vecinos del barrio La Cava generando
+                    Desde 1997 en Somos Más trabajamos con los chicos, chicas, mamás,
+                    papás, familiares, vecinas y vecinos del barrio La Tranquerita generando
                     procesos de crecimiento y de inserción social. 
                 </p> 
                 <p>  

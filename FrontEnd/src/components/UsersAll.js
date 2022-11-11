@@ -135,7 +135,7 @@ const UsersAll = (props) => {
 
         {users && 
          <>
-         <div className="centerText">
+         <div className="centerText m-5">
             <h3 className="containerTitle">Listado de Usuarios</h3>
             <div className="displayFlex centerText" >
               <div>

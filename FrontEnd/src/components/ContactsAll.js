@@ -127,13 +127,12 @@ const ContactsAll = (props) => {
 
       {contacts && 
       <>
-      <div>
-        <br></br>
+      <div className="m-5">
+        <br/>
       <div>
         <h1 >Listado de Contactos</h1>
-        <p>{}</p>
       </div>
-      <br></br>      
+      <br/>     
         <div className="" >
           
           <div >

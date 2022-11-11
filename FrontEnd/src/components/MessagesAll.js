@@ -136,10 +136,10 @@ const MessagesAll = (props) => {
 
       {messages && 
       <>
-      <div className="centerText">
-        <br></br>
-        <h3 className="containerTitle">Listado de Mensajes</h3>     
-        <div className="d-flex centerText" >
+      <div className="m-5">
+        <br/>
+        <h3 className="containerTitle centerText m-2">Listado de Mensajes</h3>     
+        <div className="d-flex centerText m-3" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "

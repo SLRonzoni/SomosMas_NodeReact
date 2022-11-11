@@ -138,7 +138,7 @@ const ActivitiesAll = (props) => {
 
       {activities && 
       <>
-      <div className="centerText">
+      <div className="centerText m-5">
         <h3 className="containerTitle">Listado de Actividades</h3>
         <div className="d-flex centerText" >
           <div>

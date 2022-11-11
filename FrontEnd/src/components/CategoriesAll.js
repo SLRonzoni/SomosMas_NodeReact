@@ -121,7 +121,7 @@ const CategoriesAll = (props) => {
 
   return (
     <>
-      <div className="containerFirst">
+      <div className="containerFirst ">
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -132,7 +132,7 @@ const CategoriesAll = (props) => {
       {categories && 
       <>
       <div>
-        <div className="containerTitle centerText">
+        <div className="containerTitle centerText m-5">
           <h3 >Listado de Categorías</h3>
           <p>{}</p>
         </div>
@@ -143,7 +143,7 @@ const CategoriesAll = (props) => {
                   type="text"
                   name="categoryId"
                   onChange={changesId}
-                  className="m-3 selectBtnDesplegable form-select "
+                  className="m-3 selectBtnDesplegable form-select"
                 >  
                   {categories.map(oneCategory => (
                     <option className="colorBlack" key={oneCategory.id} value={oneCategory.name}>
