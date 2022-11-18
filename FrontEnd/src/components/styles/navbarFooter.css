@@ -1,7 +1,7 @@
 .navbar{
     display:flex;
     align-items: center;
-    height: 3.5rem;
+    height: 4.5rem;
     width:100%;
     z-index:1;
     background-color: rgb(32, 10, 67);

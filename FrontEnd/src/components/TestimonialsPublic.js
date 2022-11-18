@@ -4,6 +4,7 @@ import {formatDate} from './helpers/FormatDate';
 import { Link } from 'react-router-dom';
 import "./styles/styles.css";
 import "./styles/testimonial.css";
+import LoadingBox from './LoadingBox';
 
 function TestimonialsPublic () {
 
@@ -46,33 +47,34 @@ function TestimonialsPublic () {
 
     return(
         <>
-            <div className='containerFirst containerTestimonials'>
-                <div className='m-5'>
+            <div className='containerFirst'>
+            
+            {!testimonials &&  <LoadingBox/> }
+            
+            {testimonials && 
+             <>
+                <div className='buttonTestimonials'>
                     <Link to={'/TestimonialsCreate'} className=" btn btn-success" role="button" > Dar mi testimonio </Link> 
                 </div>
 
-                <div className='containerFirst'>
+                <div className="containerTestimonials">
                     {testimonials.map((oneResult) => {
                         return (
                             <div key={oneResult.id}  >
                                 <br/>
-                                <div className='borderRounded rowTestimonialsAndComments '>
-                                    <div>
-                                        <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
-                                    </div>
+                                <div className='cardTestimonialsAndComments '>
+                                   
+                                    <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
                                     
-                                    <div className=' widthTestimonialsAndComments '>
-                                        <div className='pTestimonialsPublic'>
-                                            <h3>{oneResult.name} </h3>
-                                        </div>   
+                                    <div className='widthTestimonialsAndComments '>
+                                        <h3 className='pTestimonialsPublic'>{oneResult.name} </h3>
                                         <div>
                                             <p className='pTestimonialsPublic'> {oneResult.content}</p>  
-                                            <br></br> 
+                                            <br/>
                                             <div className='d-flex'>
                                                 <img className="imageUserTestimonials" src={oneResult.photo} alt="user"></img> 
                                                 <p>{oneResult.firstName}</p>
-                                                <span className="colorTransparent">......</span>
-                                                <p className='dateComment centerText '>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>   
+                                                <p className='dateComment'>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>   
                                             </div>                    
                                         </div>
                                     </div>
@@ -80,7 +82,11 @@ function TestimonialsPublic () {
                             </div>
                         )
                     })} 
+               
                 </div>
+                </>
+                }
+                
             </div>
        </>
     )

@@ -5,6 +5,7 @@ import axiosClient from "../configuration/axiosClient";
 import { Link,Redirect} from "react-router-dom"; 
 import Swal from "sweetalert2";
 import LoginGoogle from './LoginGoogle';
+import * as FaIcons from "react-icons/fa";
 import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 
 const Login =()=>{   
@@ -78,44 +79,50 @@ const Login =()=>{
     
     return (
       <div className="containerFirst">
-        <div className="containerLogin">  
-          <div>
-            <LoginGoogle > </LoginGoogle>
-          </div>
         
-          <br/>
-      
+        <div className="containerLogin">
+
+          <div className="buttonLoginGoogle">  
+            <LoginGoogle > </LoginGoogle>        
+          </div>
+
           <h3>Inicio de sesión</h3>
 
-          <div >
+          <div>
           <Label htmlFor="email">Email </Label>
-          <InputUser type="email" 
-                  className="form-control" 
-                  name="email"  
-                  placeholder="correo@correo.xxx.xx" 
-                  required
-                  uppercase="true"
-                  onChange={(e)=>setEmail(e.target.value)}
-                  // onBlur={handleBlur}
-                  />
+          <InputGroup className="iconInsideInputDiv">
+              <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
+              <InputUser type="email" 
+                      className="form-control" 
+                      name="email"
+                      placeholder="      correo@correo.xxx.xx" 
+                      required
+                      uppercase="true"
+                      onChange={(e)=>setEmail(e.target.value)}
+                      // onBlur={handleBlur}
+                      />
+               </InputGroup>       
           </div>
           <br/>
         
-          <div className="form-group" >
+          <div>
             <Label htmlFor="password">Contraseña </Label>
-            <InputUser type="password" 
-                    className="form-control"  
-                    name="password"  
-                    placeholder="Contraseña" 
-                    required
-                    onChange={(e)=>setPassword(e.target.value)}
-                    // onBlur={handleBlur}
-                    />
+            <InputGroup className="iconInsideInputDiv">
+              <FaIcons.FaKey className="iconInsideInputIcon"></FaIcons.FaKey>
+              <InputUser type="password" 
+                      className="form-control"  
+                      name="password" 
+                      placeholder="      contraseña" 
+                      required
+                      onChange={(e)=>setPassword(e.target.value)}
+                      // onBlur={handleBlur}
+                      />
+              </InputGroup>
           </div>
         
-          <div className="centerText">
-            <Link to={"/"} className="m-3 mr-md-2 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
-            <SendButton type="submit" className="m-2 btn" onClick={beginSession} >Login </SendButton> 
+          <div className="buttonsResponsive">
+            <Link to={"/"} className="m-3 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+            <SendButton type="submit" className="m-3 btn" onClick={beginSession} >Login </SendButton> 
           </div>
 
           <div>

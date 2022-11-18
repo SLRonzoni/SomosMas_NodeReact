@@ -44,14 +44,13 @@ const ActivitiesPublicAll = (props) => {
           {activities && 
             <>
               <div className="mt-5">
-                <h3 className="centerText h3Activities">Actividades</h3>
-                <Carousel  >
+                <br/>
+                <Carousel>
                   {activities.map((oneActivity) => ( 
                   <Carousel.Item key={oneActivity.id}>
                     <img className=" imageActivity" src={oneActivity.image} alt="Slide" />
-                    <br></br>
                     <Card.Title>
-                      <h4 className="centerText h4SlideActivity">{oneActivity.name}</h4>
+                      <h4 className="centerText h4SlideActivity m-2">{oneActivity.name}</h4>
                     </Card.Title>
                     <div> 
                       <h6 className="h6SlideActivity" >{oneActivity.content}</h6>

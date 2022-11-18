@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles/styles.css";
 import "./styles/testimonial.css";
+import "./styles/card.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import {Link} from 'react-router-dom';
@@ -107,9 +108,9 @@ const TestimonialsCreate=(props)=> {
     //FORM
     return (
         <>
-            <div className="containerTestimonials">
-            { !user && <h3 className="centerText">"Para dar testimonio, tenés que estar registrado"</h3>}
-            { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1000 )}
+            <div className="containerFirst">
+            { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar registrado"</h3>}
+            { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1500 )}
             { user && 
                 <Formik  
                         initialValues={initialValues}           
@@ -119,23 +120,20 @@ const TestimonialsCreate=(props)=> {
                 { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
             
                     <form className="containerTestimonialCreate" onSubmit={handleSubmit}>
-                        <br></br>
                         <h5 className="centerText marginBottom05rem">Doy mi testimonio</h5>
-                        <br></br>
                         <div>
                             <div>
                                 <div className="marginLeft10px marginBottom05rem">
-                                    <div className="displayInLineFlex">   
+                                    <div className="d-flex">   
                                         <Label htmlFor="userId">Usuario </Label>
-                                        <span className="colorTransparent">.................</span>
-                                        <Label>{user.firstName}  , {user.lastName} </Label>                                                 
+                                        <img  className="imageUserTestimonials m-1" src={user.image} alt="usuario"></img>
+                                        <span className="m-3">{user.firstName}, {user.lastName} </span>                                                 
                                     </div>
                                 </div>
 
                                 <div className="marginLeft10px marginBottom05rem">
-                                    <div className="displayInLineFlex">   
-                                        <Label htmlFor="image">Foto </Label>
-                                        <span className="colorTransparent">.......................</span>
+                                    <div className="d-flex">   
+                                        <Label htmlFor="image">Imágen </Label>
                                         <InputGroup  >
                                             <InputUser className="form-control"
                                                     type="file" 
@@ -152,9 +150,8 @@ const TestimonialsCreate=(props)=> {
                                 </div>
 
                                 <div className="marginLeft10px marginBottom05rem">
-                                    <div className="displayInLineFlex">   
+                                    <div className="d-flex">   
                                         <Label  htmlFor="name">Título</Label>
-                                        <span className="colorTransparent">....................</span>
                                         <InputGroup>
                                             <InputUser className="form-control"
                                             type="text" 
@@ -172,14 +169,13 @@ const TestimonialsCreate=(props)=> {
                                 </div>
                                 
                                 <div className="marginLeft10px marginBottom05rem">
-                                    <div className="displayInLineFlex">   
+                                    <div className="d-flex">   
                                         <Label htmlFor="content">Detalle</Label>
-                                        <span className="colorTransparent">.................</span>
                                         <InputGroup >
                                             <textarea className="textArea form-control borderRounded"
                                                 type='text'
                                                 rows='5'
-                                                cols='48'
+                                                cols='45'
                                                 name='content'
                                                 placeholder="  Tu testimonio..."
                                                 value={values.content}
@@ -201,14 +197,9 @@ const TestimonialsCreate=(props)=> {
                                 </MsjWrong>
                                 }
 
-                                <div className="centerText">
-                                    <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                                    <Link 
-                                    to={"/TestimonialsPublic"}
-                                    className="m-1 mr-md-2 btn buttonBlue"
-                                    role="button"
-                                    > Volver
-                                    </Link>
+                                <div className="buttonsResponsive">
+                                    <Link to={"/TestimonialsPublic"} className="m-2 btn buttonBlue" role="button"> Volver</Link>
+                                    <SendButton type="submit" className="m-2 btn "> Guardar </SendButton>
                                 </div>  
                             </div>  
                         </div>

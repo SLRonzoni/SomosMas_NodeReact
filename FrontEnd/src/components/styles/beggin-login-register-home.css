@@ -1,21 +1,21 @@
 .containerHome{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     background-color:rgb(32, 10, 67);
     display: flex;
     justify-content:space-around;
-    align-items: start;
+    align-items: start; 
+    padding: 0 10px;
+    color:#fff;
 }
 
 .containerLeft{
     width: 40%;
     height: auto;
     color:#fff;
-    background-color:rgb(57, 7, 136);
-    border:1px solid lightskyblue;
     border-radius: 1rem;
-    margin: 3.5rem -7rem 0rem 0rem;
-}  
+    margin: 4.5rem -7rem 0 0;
+} 
 
 .containerLeft p{
     text-align:justify;
@@ -27,18 +27,17 @@
 
 .containerAddress{
     padding:0.5rem;
+    display: flex;
 }
 
 .containerAddress a{
     display:flex;
     justify-content: center;
     margin-top: -2rem;
-   
 }
 
 .containerAddress span{
     margin-left:0.2rem;
-    
 }
 
 .containerAddress p{
@@ -54,20 +53,16 @@
     margin-top: -4rem;
 }
 
-.sliderHome{
-    width: 40rem;
-}
-
 .iconHome{
-    margin: auto; 
-    font-size: 200%;
+    margin: auto;
+    width: 80%; 
+    height: auto;
     color: #2abe1d;
-    margin-bottom: 2rem;
-    margin-top:2rem;
+    margin-bottom: 0rem;
+    padding:0.5rem;
 }
 
 .iconPhone{
-    margin-left: 4rem;
     font-size: 180%;  
     color: #2abe1d;  
 }
@@ -79,23 +74,27 @@
 
 .iconPhone :hover,
 .iconHome :hover,
-.iconHomeMap :hover{
-    color:#fff;    
+.iconHomeMap :hover{    
+    color:#fff;     
 } 
+
+.sliderHome{
+    width: 50%;
+}
 
 .carousel-indicators{
     visibility:hidden;
 }
 
 .containerLogin{
-    height: 29rem;
     width: 35rem;
+    height: auto;
+    margin-top: 5rem;
     margin: auto;
-    margin-top: 4rem;
     padding: 20px;
     background-color: lightgrey;
     color:#0e0d0d;
-    border-radius: 15px;
+    border-radius: 1rem;   
 }
 
 .google{
@@ -103,7 +102,9 @@
 }
 
 .buttonLoginGoogle{
-    color:'black'!important;;
+    display: flex;
+    justify-content: end;
+    margin-bottom: 2rem;
 }
 
 .begginRegister{

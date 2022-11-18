@@ -13,25 +13,26 @@ const Colors ={
 const Form =styled.form`
     display=grid;
     grid-template-columns: 1fr 1frM;
-    gap:20px;
+    gap:1.25rem;
 
-    @media (max-with:800px){
+    @media (max-with:50rem){
         grid-template-columns: 1fr;
     }
 `;
 
 const Label = styled.label`
     display: block;
-    padding:10px;
-    min-height:40px;
+    padding:0.5rem;
+    width:6rem;
+    min-height:3rem;
     cursor:pointer;
 `;
 
 const Defaultvalue = styled.label`
     display: block;
     font-weight:600;
-    padding:10px;
-    min-height:40px;
+    padding:0.5rem;
+    min-height:3rem;
     cursor:pointer;
 `;
 
@@ -45,18 +46,18 @@ const InputGroup = styled.div`
 
 const Input = styled.input`
     width:160%;
-    height:45px;
-    line-height:30px;
+    height:2rem;
+    line-height:1rem;
     background:#fff;
     border-radius:7px;
-    padding:0 40px 0 10px;
+    padding:0 2.5rem 0 0.62rem;
     transition:.3s ease all;
-    border:3px solid transparent;
+    border:0.19rem solid transparent;
 
     &:focus {
-        border:3px solid ${Colors.border};
+        border:0.19rem solid ${Colors.border};
         outline:none;
-        box-shadow:3px 0px 30px rgba(163,163,163,0.4);
+        box-shadow:0.19rem 0rem 1.87rem rgba(163,163,163,0.4);
     }
 `;
 
@@ -64,98 +65,98 @@ const InputUser = styled.input`
     display:flex;
     flex-direction:column;
     position:relative;
-    width:30rem;
-    height:45px;
-    line-height:30px;
+    width:28rem;
+    height:2rem;
+    line-height:1rem;
     background:#fff;
     color:rgb(26, 26, 26);
-    border-radius:7px;
-    padding:0 40px 0 10px;
+    border-radius:0.44rem;
+    padding:0 2rem 0 0.62rem;
     transition:.3s ease all;
     border:3px solid transparent;
 
     &:focus {
-        border:3px solid ${Colors.border};
+        border:0.12rem solid ${Colors.border};
         outline:none;
-        box-shadow:3px 0px 30px rgba(163,163,163,0.4);
+        box-shadow:0.12rem 0rem 1.2rem rgba(163,163,163,0.4);
     }
 `;
 
 const InputUpdate = styled.input`
     width:20rem;
-    height:45px;
-    line-height:45px;
+    height:2rem;
+    line-height:1rem;
     background:#fff;
-    border-radius:7px;
+    border-radius:0.43rem;
     color:black;
-    padding:0 40px 0 10px;
+    padding:0 2.5rem 0 0.62rem;
     transition:.3s ease all;
     position:relative;
-    border:3px solid transparent;
+    border:0.18rem solid transparent;
 
     &:focus {
-        border:3px solid ${Colors.border};
+        border:0.18rem solid ${Colors.border};
         outline:none;
-        box-shadow:3px 0px 30px rgba(163,163,163,0.4);
+        box-shadow:0.18rem 0rem 1.87rem rgba(163,163,163,0.4);
     }
 `;
 
 const Icon=styled.p`  
     width:9%;
-    height:45px;
-    line-height:45px;  
-    font-size:16px;
-    margin:45px 0px 0 150px;
-    top:20px;
-    right:10px;
-    bottom:14px;
+    height:2.81rem;
+    line-height:2.81rem;  
+    font-size:1rem;
+    margin:2.81rem 0rem 0 9.37rem;
+    top:1.25rem;
+    right:0.62rem;
+    bottom:0.87rem;
     z-index:100;
     position:absolute;
 `;
 
 const IconUpdate=styled.p`  
-    line-height:45px;  
-    font-size:16px;
-    margin:45px 0px 0px 0px;
-    right:10px;
-    bottom:14px;
+    line-height:2.81rem;  
+    font-size:1rem;
+    margin:2.81rem 0rem 0rem 0rem;
+    right:0.62rem;
+    bottom:0.87rem;
     z-index:100;
     position:absolute;
 `;
 
 const IconUser=styled.p`  
     width:1%;
-    height:45px;
-    line-height:12px;  
-    font-size:16px;
-    top:20px;
-    right:25px;
-    bottom:14px;
+    height:2.81rem;
+    line-height:0.75rem;  
+    font-size:1rem;
+    top:0.7rem;
+    right:1.56rem;
+    bottom:0.87rem;
     z-index:100;
     position:absolute;
 `;
 
 const ErrorText = styled.p`
-    font-size:12px;
+    font-size:0.75rem;
     margin:auto;
     margin-bottom:0;
-    margin-left:100px;
-    border-radius:10px;
+    margin-left:6.25rem;
+    border-radius:0.62rem;
     width:35rem;
     color:${Colors.error};
 ;`
 
 const SendButton = styled.button`
     width:20%;
-    height:30px;
-    line-height:30px;
+    height:1.87rem;
+    line-height:1.87rem;
     background:#198754;
     color:#fff;
     font-weight:bold;
-    border-radius:3px;
+    border-radius:0.19rem;
     cursor:pointer;
-    border-radius:7px;
-    padding:1px;
+    border-radius:0.44rem;
+    padding:0.07rem;
 
     &:focus {
        background-color: #249924;
@@ -163,8 +164,8 @@ const SendButton = styled.button`
 `;
 
 const MsjWrong =styled.p`
-    font-size:15px;
-    padding:5px;
+    font-size:0.94rem;
+    padding:0.31rem;
     color:${Colors.error};
     background-color:${Colors.fondoMsj}; 
 `;

@@ -130,14 +130,14 @@ const MembersAll = (props) => {
 
         {members && 
           <>
-            <div className="containerMembersAllCard m-5">
+            <div className="containerMembersAllCard">
               <h2 className="containerTitle ">Colaboradores</h2>       
-              <div className="divBtnDesplegableMembers " >
+              <div className="divBtnDesplegableMembers" >
                   <select
                     type="text"
                     name="name"
                     onChange={changesId}
-                    className="m-5 selectBtnDesplegable"
+                    className="selectBtnDesplegable"
                   >
                     {members.map(oneMember => (
                       <option className="colorBlack " key={oneMember.id} value={oneMember.id}>
@@ -156,8 +156,7 @@ const MembersAll = (props) => {
               <br/>
             </div>
           
-            <div>
-              <br/>
+            <div className="m-1">
               {showMembers()}
             </div>    
           </>

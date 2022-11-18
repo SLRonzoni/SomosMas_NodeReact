@@ -133,14 +133,14 @@ const OrganizationsAll = (props) => {
 
         {organizations && 
           <>
-            <div className="containerOrganizationAllCard m-5">
+            <div className="containerMembersAllCard">
               <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
-              <div className="divBtnDesplegableOrganizations">
+              <div className="divBtnDesplegableMembers">
                 <select
                       type="text"
                       name="name"
                       onChange={changesId}
-                      className="m-2 selectBtnDesplegable"
+                      className="selectBtnDesplegable"
                 >  
                     {organizations.map(oneOrganization => (
                       <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
@@ -158,15 +158,13 @@ const OrganizationsAll = (props) => {
               </div> 
               <br/>
             </div> 
-            <div>
-              <br/>
+            <div  className="m-1">
               {showOrganizations()}
             </div>
           </>
         } 
       </div>
     </>
-    
   );
 };
 

@@ -15,7 +15,7 @@ import * as FaIcons from 'react-icons/fa';
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
   return (
-      <div className="cardContainerOrganization" >
+      <div className="cardContainerMember" >
         <img className="cardImageOrganization" src={image}  alt="organization" ></img>
        
         <div className='cardContentOrganization'>

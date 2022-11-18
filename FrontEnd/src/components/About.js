@@ -12,7 +12,7 @@ const About = () => {
       
         <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Nosotros</h4>
-            <div className='cardContentAbout'>
+            <div  className='m-2'>
                 <p>
                     Desde 1997 en Somos Más trabajamos con los chicos, chicas, mamás,
                     papás, familiares, vecinas y vecinos del barrio La Tranquerita generando
@@ -51,7 +51,7 @@ const About = () => {
 
         <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Misión</h4>
-            <div className='cardContentAbout'>
+            <div className='m-3'>
                 <p>
                     Trabajar articuladamente con los distintos aspectos de la vida de las
                     familias, generando espacios de desarrollo personal y familiar,
@@ -65,7 +65,7 @@ const About = () => {
        
         <div className='cardContainerAbout'>
             <h4 className='cardTitle centerText'>Visión</h4>
-            <div className='cardContentAbout'>
+            <div  className='m-3'>
                 <p>
                     Mejorar la calidad de vida de niños y familias en situación de
                     vulnerabilidad en el barrio " La Tranquerita " , otorgando un cambio de rumbo

@@ -1,7 +1,7 @@
 .containerSearchNews{ /* ✅ */
     height: auto;
-    width: 70%;
-    margin: 0 1rem 2rem 3rem;
+    max-width: 70%;
+    margin: 0rem 1rem 2rem 3rem;
     padding: 1rem;
     justify-content: center;
     border-bottom: 0.07rem solid lightgray;

@@ -25,51 +25,51 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 18.75rem;
+    max-width: 18.75rem;
     height: auto;
-    margin:3rem 1rem 1rem 1rem;
+    margin:0rem 1rem 1rem 1rem;
     box-shadow: 0px 0px 1rem -0.32rem;
 }
 
-.cardContainerOrganization{
-    display: flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    width: 18.75rem;
-    height: auto;
-    box-shadow: 0px 0px 1rem -0.32rem;
-    margin:3rem 1rem 1rem 1rem;
-}
-
- .cardContainerAbout{ /* ✅ */
+.cardContainerAbout{ /* ✅ */
     display: flex;
     flex-direction: column;
     position: relative; 
     justify-items: center;
     align-items: center;    
     font-size: 0.88rem!important;
-    width: 25.6rem;
-    height: 35rem;
+    width: 24rem;
+    height: auto;
     box-shadow: 0px 0px 1rem -0.32rem;
     margin:auto;
-    margin:5rem 0rem 0rem 0.7rem;
+    margin:5rem 1rem 1rem 1.5rem;
     border-radius: 1rem;
-    padding:1rem;
+    padding:0.5rem;
 }
+
+.containerTestimonials{ /* ✅ */
+    display:flex;
+    flex-wrap:wrap;
+    position: relative;
+    justify-content: center;
+    width:100%;
+}
+
+.cardTestimonialsAndComments{   
+    width:32rem;
+    height: 30rem;
+    margin:1rem;   
+    box-shadow: 0px 0px 15px -5px;
+    border-radius: 1rem;
+}
+
 .containerMembersAllCard{  /* ✅ */
     width:100vw;
-    height: 10vh;
+    height: auto;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-
-.containerOrganizationAllCard{  /* ✅ */
-    width:100vw;
-    align-items: center;
-    text-align: center;
+    margin-top:3.5rem;
 }
 
 .imageContainerOrganization {
@@ -90,7 +90,6 @@
 }
 
 .cardContentAbout{/* ✅ */
-    margin-top: 0.5rem;
     padding:1rem;
     width: 100%;
 }
@@ -120,8 +119,8 @@
 }
 
 .cardImageOrganization{  /* ✅ */    
-    height:100%; 
-    width:100%; 
+    height:90%; 
+    max-width:100%; 
 }
 
 .cardImageAbout{    /* ✅ */     
@@ -157,7 +156,7 @@
 
 .listaAbout{ /* ✅ */
     display:flex;
-    margin-top: 8%;
+    margin-top: 4%;
     margin-left:-10%;
 
 }
