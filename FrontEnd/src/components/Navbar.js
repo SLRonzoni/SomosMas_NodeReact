@@ -42,29 +42,36 @@ export default function Sidebar () {
   userInfo && userInfo.roleId!==1 && userInfo.givenName && (name=userInfo.givenName)
   
   return(  
-    <>         
+    <> 
       <div className="navbar">
-        <Link to="#" className="menu-bars ms-4">
+        <Link to="#" className="menu-bars">
           <FaIcons.FaBars onClick={showNavbar}/>
         </Link>
-     
-        <h1 className=""> Somos Más o.n.g.
-          <img className="shadowFilterNav imgHome" src={imagen} alt="manosNiños"></img>
-        </h1>                   
+
+
+       <h1 className={sidebar ? "navbarH1 active" : "navbarH1"}>Somos Más o.n.g.
+          <img className={sidebar ?"shadowFilterNav imgHome active" : "shadowFilterNav imgHome"} src={imagen} alt="manosNiños"></img>
+        </h1>
+
+        <div className="footer mt-2">
+          <Footer/>
+        </div>  
       </div>
 
-      <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-      
-        <ul className="nav-menu-items">
+      <nav className={sidebar ? "nav-menu active" : "nav-menu "}>
+     
+        <ul className="nav-menu-items ">
+
           <li className="navbar-toogle">
-            <Link to="#" className="menu-bars">
+            <Link to="#" className="menu-x">
               <FaIcons.FaTimes onClick={showNavbar}/>
             </Link>
           </li>
 
           <li className="navbarUser ">
+            <h1 className="h1NavbarUser">Somos Más o.n.g.  </h1>
             <img className="imageUserNavBar" src={photo} alt="user image"></img>
-            <p className="centerText ">{name}</p>
+            <p className="centerText m-4">{name}</p>
           </li>
           
           <li className="navbar-searcher">
@@ -154,14 +161,11 @@ export default function Sidebar () {
                 <Link  to="/auth/logout" onClick={logout} className="item m-3">Logout </Link> 
               </div> 
             )} 
-          </li>
-
-          <div className="footer">
-             <Footer/>
-          </div>
-
-        </ul>
+          </li> 
+       
+        </ul>        
       </nav>
+      
     </> 
   );
  }

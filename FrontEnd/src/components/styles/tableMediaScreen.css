@@ -1,4 +1,4 @@
-/* Home */
+/* Home , Navbar*/
 @media only screen  and (max-width:1150px) { /* ✅ */
     .containerHome{
         display: block; 
@@ -9,6 +9,25 @@
     .containerLeft{
         width: 100%;   
     }
+
+    .navbar{
+        justify-content:left;
+    }
+
+    .navbarH1{
+        width: auto;
+        margin-left: 1rem;
+    }
+
+    .inputSearcher{
+        width: 70%;
+     }
+
+    .imgHome,
+    .footer{
+        display:none;
+    }
+
     .containerAddress{
         display: block;
     }
