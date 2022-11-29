@@ -109,7 +109,7 @@ const TestimonialsCreate=(props)=> {
     return (
         <>
             <div className="containerFirst">
-            { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar registrado"</h3>}
+            { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar logueado"</h3>}
             { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1500 )}
             { user && 
                 <Formik  
@@ -120,19 +120,18 @@ const TestimonialsCreate=(props)=> {
                 { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
             
                     <form className="containerTestimonialCreate" onSubmit={handleSubmit}>
-                        <h5 className="centerText marginBottom05rem">Doy mi testimonio</h5>
+                        <h5 className="centerText marginBottom05rem">Mi testimonio</h5>
                         <div>
                             <div>
-                                <div className="marginLeft10px marginBottom05rem">
+                                <div className="ms-3">
                                     <div className="d-flex">   
-                                        <Label htmlFor="userId">Usuario </Label>
                                         <img  className="imageUserTestimonials m-1" src={user.image} alt="usuario"></img>
-                                        <span className="m-3">{user.firstName}, {user.lastName} </span>                                                 
+                                        <span className="ms-2 mt-2">{user.firstName}, {user.lastName} </span>                                                 
                                     </div>
                                 </div>
 
-                                <div className="marginLeft10px marginBottom05rem">
-                                    <div className="d-flex">   
+                                <div className="ms-3">
+                                    <div>   
                                         <Label htmlFor="image">Imágen </Label>
                                         <InputGroup  >
                                             <InputUser className="form-control"
@@ -149,8 +148,8 @@ const TestimonialsCreate=(props)=> {
                                     {touched.image && errors.image && <ErrorText>{errors.image} </ErrorText> }
                                 </div>
 
-                                <div className="marginLeft10px marginBottom05rem">
-                                    <div className="d-flex">   
+                                <div className="ms-3">
+                                    <div>   
                                         <Label  htmlFor="name">Título</Label>
                                         <InputGroup>
                                             <InputUser className="form-control"
@@ -168,14 +167,14 @@ const TestimonialsCreate=(props)=> {
                                     {touched.name && errors.name && <ErrorText className="errorsRegister">{errors.name} </ErrorText> }
                                 </div>
                                 
-                                <div className="marginLeft10px marginBottom05rem">
-                                    <div className="d-flex">   
+                                <div className="ms-3">
+                                    <div>   
                                         <Label htmlFor="content">Detalle</Label>
                                         <InputGroup >
                                             <textarea className="textArea form-control borderRounded"
                                                 type='text'
                                                 rows='5'
-                                                cols='45'
+                                                cols='40'
                                                 name='content'
                                                 placeholder="  Tu testimonio..."
                                                 value={values.content}
@@ -188,20 +187,11 @@ const TestimonialsCreate=(props)=> {
                                     {touched.content && errors.content && <ErrorText className="errorsRegister">{errors.content} </ErrorText> }
                                 </div>
 
-                                { errors.formOk === "f" && 
-                                <MsjWrong className="centerText"> 
-                                <span className="centerText">
-                                    <br /> Algun dato es incorrecto. 
-                                    <br/> Por favor complete el formulario correctamente
-                                </span>        
-                                </MsjWrong>
-                                }
-
                                 <div className="buttonsResponsive">
-                                    <Link to={"/TestimonialsPublic"} className="m-2 btn buttonBlue" role="button"> Volver</Link>
-                                    <SendButton type="submit" className="m-2 btn "> Guardar </SendButton>
-                                </div>  
-                            </div>  
+                                    <Link to={"/TestimonialsPublic"} className=" btn buttonBlue" role="button"> Volver</Link>
+                                    <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
+                                </div> </div> 
+                             
                         </div>
                     </form>
                 )}

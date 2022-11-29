@@ -71,10 +71,12 @@ function TestimonialsPublic () {
                                         <div>
                                             <p className='pTestimonialsPublic'> {oneResult.content}</p>  
                                             <br/>
-                                            <div className='d-flex'>
-                                                <img className="imageUserTestimonials" src={oneResult.photo} alt="user"></img> 
-                                                <p>{oneResult.firstName}</p>
-                                                <p className='dateComment'>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>   
+                                            <div className='userTestimonials'>
+                                                <div className='d-flex'>
+                                                    <img className="imageUserTestimonials" src={oneResult.photo} alt="user"></img> 
+                                                    <p>{oneResult.firstName +"  " + oneResult.lastName}</p>
+                                                </div>   
+                                                <p className='dateTestimonials'>Fecha : {formatDate(new Date(oneResult.createdAt))}</p>   
                                             </div>                    
                                         </div>
                                     </div>
@@ -84,7 +86,7 @@ function TestimonialsPublic () {
                     })} 
                
                 </div>
-                </>
+                </> 
                 }
                 
             </div>

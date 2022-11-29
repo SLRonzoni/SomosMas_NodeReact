@@ -24,10 +24,10 @@ function NewsAllPublic() {
       <div className='containerFirst containerNews'>
         {news.map((oneResult) => {
           return (
-            <div className='containerSearchNews ' key={oneResult.id}>               
-              <div className='d-flex'>
+            <div className='eachNew' key={oneResult.id}>               
+              <div>
                 <img className='imgSearchNews'src={oneResult.image} alt='Imagen'></img>
-                <div className='m-5'>
+                <div className='mt-3'>
                     <h4> {oneResult.name} </h4>
                     <p className='searchAlign'> {oneResult.content}</p>
                     <br/>

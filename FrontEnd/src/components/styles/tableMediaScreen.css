@@ -21,19 +21,41 @@
 
     .inputSearcher{
         width: 70%;
-     }
+    }
 
+    .margenEnd{
+        margin-top:1rem;
+        margin-left:15%;
+        display:block;
+    }
+
+    .pEmailRegisterUserUpdate{
+        margin-left:10%;
+        margin-bottom:1rem;
+    }
+
+    .containerImgHalfScreen,
     .imgHome,
     .footer{
         display:none;
     }
 
+    .buttonsResponsive,
     .containerAddress{
         display: block;
     }
+
+    .form-control,
+    .containerLogin,
     .imageActivity{
-        max-width: 100%;
-    } 
+        width: 90%;
+    }
+    
+    .buttonBlue{
+        margin:0.1rem;  
+    }
+   
+
 } 
 
 /* Create Testimonial */

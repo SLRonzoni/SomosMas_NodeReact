@@ -64,28 +64,21 @@ function WordSearchResults() {
 
   return (
     <>   
-    <div className='containerFirst '>
-    <br/>   
-    <h4><em>Palabra buscada</em> : {keyword}</h4>
-      <div>          
-        {newsComplete.length===0 && <h5> ☹️ No se hallaron resultados  </h5>}
-      </div>
-                 
+      <div className='containerFirst'>
+        <div className="searcherMsg mt5rem"> 
+          <h4 className="h4Searcher"><em>Palabra buscada</em> : {keyword}</h4>       
+            {newsComplete.length===0 && <h5 className="mt-4">☹️ No se hallaron resultados  </h5>}
+        </div>
+                  
         {newsComplete.map((oneResult) => {
           return (
             <div className="containerBasic"key={oneResult.id}>
-              <div className='containerSearchNews' >
-                
+              <div className='containerSearchNews mt-4'> 
                 <div>
                   <br></br>
                   <div className='d-flex'>
-
                     <div className='col-6 marginLeft40px'>
-                      <img
-                        className='imgSearchNews'
-                        src={oneResult.image}
-                        alt='Imagen'
-                      ></img>
+                      <img className='imgSearchNews'src={oneResult.image} alt='Imagen'></img>
                     </div>
 
                     <div className='col-6 marginRigth-80px '>
@@ -121,10 +114,8 @@ function WordSearchResults() {
                         })}
                       </div>
                     </div>
-
                   </div>
                 </div>
-
               </div>
             </div>
           );

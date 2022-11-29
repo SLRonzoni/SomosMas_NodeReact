@@ -1,4 +1,4 @@
-.containerMember{
+.containerMember{/* ✅ */
     height: 100vh;
 }
 
@@ -23,8 +23,20 @@
 }
 
 .containerTitle{  /* ✅ */
-    margin-top:1rem;
+    margin-top:5rem;
     font-size: 1.2rem;
+    text-align: center;
+}
+
+.membersTitle{  /* ✅ */
+    padding-top:5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color:#fff;
+}
+
+.membersHeader{/* ✅ */
+    height: auto;
 }
 
 .textArea-Members{
@@ -39,8 +51,14 @@
 
 .divBtnDesplegableMembers{ /* ✅ */
     display:Flex;
-    align-items: center;
+    margin: auto;
     height: 2rem; 
     width: 16rem;
     margin-top:1rem;
+}
+
+.iconNetwork{/* ✅ */
+    display: block;
+    text-align: center;
+    font-size: 0.6rem!important;
 }

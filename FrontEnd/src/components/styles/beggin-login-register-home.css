@@ -86,15 +86,25 @@
     visibility:hidden;
 }
 
+.containerImgHalfScreen{
+    background-color:rgb(32, 10, 67);
+}
+
+.imgHalfScreen{
+    height: 51vh;
+    width: 49vw;
+    margin: 28% 0 0 0;
+    border-radius: 0 0 50% 50%; 
+}
+
+
+
 .containerLogin{
-    width: 35rem;
-    height: auto;
-    margin-top: 5rem;
-    margin: auto;
-    padding: 20px;
+    width: 50vw;
+    margin-top: 4rem;
     background-color: lightgrey;
     color:#0e0d0d;
-    border-radius: 1rem;   
+    padding:1rem  0 0 0;
 }
 
 .google{
@@ -104,36 +114,46 @@
 .buttonLoginGoogle{
     display: flex;
     justify-content: end;
-    margin-bottom: 2rem;
+    margin:1rem;
 }
+
+.containerLoginForm{
+    max-width: 90%;
+    margin:auto;
+    display:flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding:2rem;
+}
+
+
 
 .begginRegister{
     display:flex;
     align-items: center;
-    height:50vh;
-    width: 35vw;
-    margin-top:4rem;
-    margin-left: 1%;
+    width: 40vw;
+    padding:1rem  0 0 0;
     color:#0e0d0d;
-    border-radius: 15px;
     background-color:lightgray;
 }
 
 .labelRegister{
     display: inline-block;
-    width:6.5rem;
+    max-width:8rem;
 }
 
 .registerMsj-Buttons{
     margin: auto;
     margin-left: 6rem;
     margin-top: -30px;
-    width:auto;
+    max-width:auto;
     text-align: center;
 }
 
 .registerMsj-Buttons-button{
-    width:20%;
+    max-width:20%;
     line-height:30px;
 }
 
@@ -141,18 +161,14 @@
     border:transparent;
 }
 
-.containerRegisterContactForm{
-    width: 60%;
-    margin:auto;
-    display:flex;
-    flex-direction: column; 
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    padding:1rem;
-}
-
 .errorsRegister{
     margin-left:-3rem
+}
+
+
+.pEmailRegisterUserUpdate{
+    margin-left: 34%;
+    padding:5px;
+    height: 1.2rem;
 }
 

@@ -10,6 +10,7 @@ import * as regex from "./helpers/RegExp";
 import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import imagen from "./images/manos_fondo-sinFondo.png";
 
 const Register=(props)=> {
 
@@ -152,12 +153,16 @@ const Register=(props)=> {
 
     return (
         <>
-            <div className="containerFirst containerMember">
+            <div className="containerFirst">
+                <div className="containerImgHalfScreen"> 
+                    <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
+                </div>
+
                 <div className="begginRegister">
                     <Formik  
-                            initialValues={initialValues}           
-                            validate={validateInputs}
-                            onSubmit={(values)=>{ sendForm(values)}}
+                        initialValues={initialValues}           
+                        validate={validateInputs}
+                        onSubmit={(values)=>{ sendForm(values)}}
                     > 
                     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
                 
@@ -188,7 +193,7 @@ const Register=(props)=> {
                                             <Label className="labelRegister"  htmlFor="email">Email</Label>
                                             <InputGroup>
                                                 <InputUser className="form-control"
-                                                type="text" 
+                                                type="email" 
                                                 name="email" 
                                                 id="email"  
                                                 value={values.email}
@@ -250,9 +255,11 @@ const Register=(props)=> {
                                                 onBlur={handleBlur}
                                                 />
                                                 {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>} 
-                                                {<IconUser><button className="withoutBorder" type="button" onClick={switchShown}> 
-                                                            {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
-                                                </button> </IconUser>} 
+                                                {<IconUser>
+                                                    <button className="withoutBorder" type="button" onClick={switchShown}> 
+                                                        {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
+                                                    </button> 
+                                                </IconUser>} 
                                             </InputGroup>
                                         </div> 
                                         {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
@@ -277,18 +284,10 @@ const Register=(props)=> {
                                     </div>
 
                                     <div className="registerMsj-Buttons">                              
-                                        { errors.formOk === "f" && 
-                                            <MsjWrong className="centerText"> 
-                                            <span className="centerText">
-                                                <br /> Algun dato es incorrecto. 
-                                                <br/> Por favor complete el formulario correctamente
-                                            </span>        
-                                        </MsjWrong>
-                                        } 
                                         { errors.formOk === "v" || !errors.formOk && 
-                                            <span>
-                                                <Link to={"/"} className="m-3 btn  registerMsj-Buttons-button buttonBlue" role="button" aria-pressed="true"> Volver </Link>
-                                                <SendButton type="submit" className="m-3 btn buttonSendButton">Guardar </SendButton>
+                                            <span className="buttonsResponsive">
+                                                <Link to={"/"} className=" btn registerMsj-Buttons-button buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+                                                <SendButton type="submit" className="ms-5 btn buttonSendButton">Guardar </SendButton>
                                                 
                                             </span>
                                         }

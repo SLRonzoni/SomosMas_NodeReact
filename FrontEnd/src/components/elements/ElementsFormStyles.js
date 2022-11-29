@@ -23,7 +23,7 @@ const Form =styled.form`
 const Label = styled.label`
     display: block;
     padding:0.5rem;
-    width:6rem;
+    max-width:6rem;
     min-height:3rem;
     cursor:pointer;
 `;
@@ -45,7 +45,7 @@ const InputGroup = styled.div`
 
 
 const Input = styled.input`
-    width:160%;
+    max-width:160%;
     height:2rem;
     line-height:1rem;
     background:#fff;
@@ -65,7 +65,7 @@ const InputUser = styled.input`
     display:flex;
     flex-direction:column;
     position:relative;
-    width:28rem;
+    max-width:28rem;
     height:2rem;
     line-height:1rem;
     background:#fff;
@@ -83,7 +83,7 @@ const InputUser = styled.input`
 `;
 
 const InputUpdate = styled.input`
-    width:20rem;
+    max-width:20rem;
     height:2rem;
     line-height:1rem;
     background:#fff;
@@ -102,7 +102,7 @@ const InputUpdate = styled.input`
 `;
 
 const Icon=styled.p`  
-    width:9%;
+    max-width:9%;
     height:2.81rem;
     line-height:2.81rem;  
     font-size:1rem;
@@ -125,7 +125,7 @@ const IconUpdate=styled.p`
 `;
 
 const IconUser=styled.p`  
-    width:1%;
+    max-width:1%;
     height:2.81rem;
     line-height:0.75rem;  
     font-size:1rem;
@@ -140,9 +140,13 @@ const ErrorText = styled.p`
     font-size:0.75rem;
     margin:auto;
     margin-bottom:0;
-    margin-left:6.25rem;
+    margin-left:0rem;
+    //margin-left:6.25rem;
     border-radius:0.62rem;
-    width:35rem;
+    width:20rem;
+    padding:0 0 0 0.5rem;
+    //width:35rem;
+  
     color:${Colors.error};
 ;`
 

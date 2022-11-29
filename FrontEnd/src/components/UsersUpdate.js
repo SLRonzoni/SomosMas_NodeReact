@@ -1,12 +1,15 @@
 import React, {useState,useEffect} from 'react';
 import axiosClient from '../configuration/axiosClient';
 import './styles/styles.css';
+import './styles/users.css';
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
 import * as msg from './helpers/validationMessages';
 import * as regex  from "./helpers/RegExp";
 import {formatDate} from './helpers/FormatDate';
-import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import {ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 import Swal from "sweetalert2";
 
 
@@ -150,7 +153,7 @@ const MyProfileUpdate = ({match, history}) =>{
   //FORM
   return (
     <>
-    <div className="containerHome">
+    <div className="containerFirst">
     <br/>
     <Formik  
          initialValues={initialValues}           
@@ -159,57 +162,55 @@ const MyProfileUpdate = ({match, history}) =>{
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
         <form className="containerMyPerfil"onSubmit={handleSubmit} > 
-            <h4 className='marginLeft25px'>Mi Perfil  
-              <span className='margenEnd'><em className='font10px'> última actualización : {formatDate(new Date(user.updatedAt))} </em></span>
-               <p className='pEmailRegisterUserUpdate font10px'><u className='font10px'>Email registrado</u> : {user.email}</p>
-            </h4>
-            <div className='marginLeft10px '>
-              <div className="marginLeft10px">
-                <br></br>
-                <div>   
-                  <div className='displayFlex profile'>
-                    <p className="marginLeft10px"><img className='imageMyProfile' src={user.photo}  alt="userPhoto"/></p>
-                   
-                  </div> 
-                  <InputGroup  >
-                    <InputUser className="form-image"
-                          type="file" 
-                          name="photo" 
-                          id="photo"  
-                          encType="multipart/form-data"
-                          onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
-                          onBlur={handleBlur}
-                    />
-                  </InputGroup>  
+            <h4 className='ms-4'>Mi Perfil </h4> 
+            <span className='margenEnd'><em className='font10px'> Última actualización : {formatDate(new Date(user.updatedAt))} </em></span>
+            <p className='pEmailRegisterUserUpdate font10px'><u className='font10px'>Email registrado</u> : {user.email}</p>
+            <div>
+
+              <div>
+                <img className='imageMyProfile' src={user.photo}  alt="userPhoto"/>  
+                 <div className='mb-2'>
+                    <InputGroup className='d-block' >
+                      <label  htmlFor="photo" >Cambiar foto</label>
+                      <InputUser className="form-control mb-1"Cambiar foto
+                            type="file" 
+                            name="photo" 
+                            id="photo"  
+                            encType="multipart/form-data"
+                           
+                            onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
+                            onBlur={handleBlur}
+                      />
+                    </InputGroup>  
                   {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
-                </div> 
+                  </div> 
                 {touched.photo && errors.photo && <ErrorText className='errorText-myProfile-update'>{errors.photo} </ErrorText> }
               </div>
                 
-              <div className="marginLeft10px marginBottom05rem">
-                <div>
-                  <Label className='font12px' htmlFor="firstName" >Nombre ( actual : {user.firstName} )</Label>
-                    <InputGroup >
-                      <InputUser className='colorBlack form-control'
-                        type="text" 
-                        name="firstName" 
-                        id="firstName"  
-                        placeholder='Ingrese su nombre'
-                        value={values.firstName}
-                        onChange={handleChange} 
-                        onBlur={handleBlur}
-                      />              
-                      {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
-                    </InputGroup> 
+              <div>
+                <div className='mb-2'>
+                  <label  htmlFor="firstName" >Nombre ( actual : {user.firstName} )</label>
+                  <InputGroup className='d-block'>
+                    <InputUser className='colorBlack form-control mb-1'
+                      type="text" 
+                      name="firstName" 
+                      id="firstName"  
+                      placeholder='Ingrese su nombre'
+                      value={values.firstName}
+                      onChange={handleChange} 
+                      onBlur={handleBlur}
+                    />              
+                    {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
+                  </InputGroup> 
                 </div>
                 {touched.firstName && errors.firstName && <ErrorText className='errorText-myProfile-update'>{errors.firstName} </ErrorText> }
               </div>
 
-              <div className="marginLeft10px marginBottom05rem">
-                <div>
-                <Label className='font12px'htmlFor="lastName" >Apellido  ( actual : {user.lastName} )</Label>
-                    <InputGroup>
-                      <InputUser className='form-control'
+              <div>
+                <div className='mb-2'>
+                  <label htmlFor="lastName" >Apellido  ( actual : {user.lastName} )</label>
+                    <InputGroup className='d-block'>
+                      <InputUser className='form-control mb-1'
                         type="text" 
                         name="lastName" 
                         id="lastName"  
@@ -224,18 +225,15 @@ const MyProfileUpdate = ({match, history}) =>{
                 {touched.lastName && errors.lastName && <ErrorText className='errorText-myProfile-update'>{errors.lastName} </ErrorText> }
               </div>
               
-              <div className="marginLeft10px marginBottom05rem">
-                <div>
-                    <Label className='font12px'htmlFor="password" > Password
-                      <span className="colorTransparent">..</span>
-                      <button type="button" 
-                        className='btn btn-light' 
-                        onClick={switchShown}> {shown ? '🙈' : '👀'}
+              <div>
+                <div className='mb-2'>
+                    <label  htmlFor="password" > Password</label> 
+                    {<button className="withoutBorder ms-1" type="button" onClick={switchShown}> 
+                        {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
                       </button> 
-                    </Label>  
-
-                    <InputGroup>
-                      <InputUser className='colorBlack form-control'
+                    }
+                    <InputGroup className='d-block'>
+                      <InputUser className='colorBlack form-control '
                         type={shown ? "text" : "password" }
                         name="password" 
                         id="password"  
@@ -243,24 +241,16 @@ const MyProfileUpdate = ({match, history}) =>{
                         onChange={handleChange}
                         onBlur={handleBlur}
                       />
+                       
                       {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
                     </InputGroup>
                 </div> 
                 {touched.password && errors.password && <ErrorText className='errorText-myProfile-update'>{errors.password} </ErrorText> }
               </div>
 
-              { errors.formOk === "f" && 
-              <MsjWrong className='centerText'> 
-              <span className="centerText">
-                <br /> Algun dato es incorrecto. 
-                <br/> Por favor complete el formulario correctamente
-              </span>        
-              </MsjWrong>
-              }
-
-              <div className="centerText">
-                <Link to={"/"}  className="m-1 btn buttonBlue" role="button" > Volver </Link>
-                <SendButton type="submit" className="m-1 btn  buttonGreen"> Guardar </SendButton> 
+              <div className="buttonsResponsive">
+                <Link to={"/"}  className="btn buttonBlue" role="button" > Volver </Link>
+                <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button> 
               </div>  
          </div> 
     </form>

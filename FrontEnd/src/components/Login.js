@@ -2,18 +2,28 @@ import React,{useState} from "react";
 import "./styles/styles.css";
 import "./styles/beggin-login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
-import { Link,Redirect} from "react-router-dom"; 
+import { Link,Redirect } from "react-router-dom"; 
 import Swal from "sweetalert2";
 import LoginGoogle from './LoginGoogle';
+import { Formik } from "formik";
+import * as msg  from './helpers/validationMessages';
+import * as regex from "./helpers/RegExp"
 import * as FaIcons from "react-icons/fa";
-import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
+import imagen from "./images/manos_fondo-sinFondo.png";
+import {ErrorText,IconUser, Label,Input, InputGroup} from './elements/ElementsFormStyles';
 
 const Login =()=>{   
  
-  const [email, setEmail] = useState("")
+  // const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
   const loginData= sessionStorage.getItem('loginData')
+
+  //SHOW PASSWORD
+  const [shown, setShown] = React.useState(false);
+  const switchShown = () => setShown(!shown);
   
   if(loginData==='true') {
     Swal.fire({
@@ -44,12 +54,9 @@ const Login =()=>{
    };
     
     //INICIO DE SESION
-     const beginSession = async (e) => { 
-      e.preventDefault();  
-      
- //FALTAN VALIDACIONES     
+    const beginSession = async (values) => {    
 
-      await axiosClient.post('/auth/login',{"email":email,"password":password},{withCredentials:true})
+      await axiosClient.post('/auth/login',{"email":values.email,"password":values.password},{withCredentials:true})
 
       .then(response=>{
         if(response.status===204 ||response.status===200 ){
@@ -74,64 +81,142 @@ const Login =()=>{
          text: ' Usuario o contraseña incorrectos'
        });
       });
-     };  
+    };  
+
+     //FORMIK INITIAL VALUES
+    let initialValues={ email:'', password }
+
+    //FORMIK VALIDATIONS 
+    let validateInputs=(values) =>{   
+
+        let errors = {email:'',password:'',iconNemail:'', icoNpassword:'',formOk:''};  
+
+        if (!values.email) {
+            errors.email=msg.msgRequired
+            errors.icoNemail= '❌'
+            return errors
+        };
+
+        if (!regex.regexUserEmail.test(values.email)) {
+            errors.email=msg.msgValidationUserEmail
+            errors.icoNemail= '❌'
+            errors.formOk='f'
+            return errors
+        } else {
+            errors.icoNemail= '✔️'
+            errors.formOk='v'
+        };
+
+        if (!values.password) {
+            errors.password=msg.msgRequired
+            errors.icoNpassword= '❌'
+            return errors
+        };
+
+        if (!regex.regexUserPassword.test(values.password)) {
+            errors.password=msg.msgValidationUserPassword
+            errors.icoNpassword= '❌'
+            errors.formOk='f'
+            return errors
+        } else {
+            errors.icoNpassword= '✔️'
+            errors.formOk='v'
+        };
+    }   
      
     
     return (
+      <>
       <div className="containerFirst">
+        <div className="containerImgHalfScreen"> 
+          <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
+        </div>
         
         <div className="containerLogin">
-
           <div className="buttonLoginGoogle">  
-            <LoginGoogle > </LoginGoogle>        
+            <LoginGoogle> </LoginGoogle>        
           </div>
 
-          <h3>Inicio de sesión</h3>
+          <Formik  
+            initialValues={initialValues}           
+            validate={validateInputs}
+            onSubmit={(values)=>{ beginSession(values)}}
+          > 
+          { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
+      
+              <form className="containerLoginForm" onSubmit={handleSubmit}>
+                  <h5 className="centerText ">Inicio de sesión</h5>
+                  <div>
+                      <div >   
+                        <Label className="labelRegister"  htmlFor="email">Email</Label>
+                        <InputGroup className="iconInsideInputDiv">
+                          <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
+                          <Input className="ps-5 form-control"
+                            type="email" 
+                            name="email" 
+                            id="email"  
+                            value={values.email}
+                            placeholder="correo@correo.xxx.xx" 
+                            required
+                            uppercase="true"
+                            onChange={handleChange} 
+                            onBlur={handleBlur}
+                            />
+                          {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
+                        </InputGroup>
+                      </div> 
+                      {touched.email && errors.email && <ErrorText className="errorsRegister">{errors.email} </ErrorText> }
+                  </div>
+                  <br/>
+                  <div>
+                    <div> 
+                      <div className="d-block">
+                        <label  htmlFor="password">Password</label>
+                        {<button className="withoutBorder ms-1" type="button" onClick={switchShown}> 
+                            {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
+                          </button>
+                        }  
+                      </div> 
+                      <InputGroup className="iconInsideInputDiv">
+                        <FaIcons.FaKey className="iconInsideInputIcon"></FaIcons.FaKey>
+                        <Input className="ps-5 form-control"
+                          type={shown ? "text" : "password" }
+                          name="password" 
+                          id="password"  
+                          value={values.password}
+                          placeholder="contraseña" 
+                          required
+                          onChange={handleChange} 
+                          onBlur={handleBlur}
+                          />
+                        {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}
+                        
+                      </InputGroup>
+                    </div> 
+                    {touched.password && errors.password && <ErrorText className="errorsRegister">{errors.password} </ErrorText> }
+                  </div>
 
-          <div>
-          <Label htmlFor="email">Email </Label>
-          <InputGroup className="iconInsideInputDiv">
-              <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
-              <InputUser type="email" 
-                      className="form-control" 
-                      name="email"
-                      placeholder="      correo@correo.xxx.xx" 
-                      required
-                      uppercase="true"
-                      onChange={(e)=>setEmail(e.target.value)}
-                      // onBlur={handleBlur}
-                      />
-               </InputGroup>       
-          </div>
-          <br/>
+                  <div>                              
+                    { errors.formOk === "v" || !errors.formOk && 
+                      <span className="buttonsResponsive">
+                        <Link to={"/"} className=" btn buttonBlue" role="button"> Volver </Link>
+                        <button type="submit" className=" btn buttonBlue buttonGreen" onClick={beginSession} >Login </button> 
+                      </span>
+                    }
+                  </div> 
+                  
+                </form>
+                )}
+            </Formik>
         
-          <div>
-            <Label htmlFor="password">Contraseña </Label>
-            <InputGroup className="iconInsideInputDiv">
-              <FaIcons.FaKey className="iconInsideInputIcon"></FaIcons.FaKey>
-              <InputUser type="password" 
-                      className="form-control"  
-                      name="password" 
-                      placeholder="      contraseña" 
-                      required
-                      onChange={(e)=>setPassword(e.target.value)}
-                      // onBlur={handleBlur}
-                      />
-              </InputGroup>
-          </div>
-        
-          <div className="buttonsResponsive">
-            <Link to={"/"} className="m-3 btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
-            <SendButton type="submit" className="m-3 btn" onClick={beginSession} >Login </SendButton> 
-          </div>
-
-          <div>
-            <span>No tenés cuenta ? 
-              <Link to={"/auth/register"} className="m-2 ">registrate</Link>
-            </span>
-          </div>
+            <div className="buttonsResponsive">
+              <span>No tenés cuenta ? 
+                <Link to={"/auth/register"} className="p-1">registrate</Link>
+              </span>
+            </div>
         </div>
       </div>
+      </>
     );
   };
 };

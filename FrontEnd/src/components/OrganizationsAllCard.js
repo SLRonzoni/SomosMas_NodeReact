@@ -15,26 +15,23 @@ import * as FaIcons from 'react-icons/fa';
 const OrganizationsAllCard = ({ id, name, image, address, phone, email, facebook, instagram, linkedin,welcomeText, aboutUsText, created, updated, remove}) =>{
 
   return (
-      <div className="cardContainerMember" >
-        <img className="cardImageOrganization" src={image}  alt="organization" ></img>
+      <div className="cardContainerMember cardContainerOrganization" >
+        <img className="cardImageOrganization m-2 ms-4" src={image}  alt="organization" ></img>
        
         <div className='cardContentOrganization'>
           <div className="cardTitle centerText"><em>{name}</em></div>
           <br/>
           <p className='centerText'>Domicilio : {address}</p>
-          <div className='leftText'>        
-              <img className="iconSocialNetworksOrganization "src={whatsapp} alt="telefono"></img>  {phone}
-              <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={emailLogo} alt="email"></img> {email}
-              <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={facebookLogo} alt="logoFacebook"></img> {facebook}
-              <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization "src={instagramLogo} alt="logoInstagram" ></img> {instagram}
-              <span className='colorBlack'><br></br></span>
-              <img className="iconSocialNetworksOrganization  bgWhite"src={linkedinLogo} alt="logoLinkedin"></img> {linkedin}
-          </div> 
+          <div className='iconNetwork'>
+            <p className='m-1'><FaIcons.FaPhone className='me-1'/>{phone}</p>
+            <p className='m-1'><FaIcons.FaMailBulk className='me-1'/>{email}</p>
+            <p className='m-1'><FaIcons.FaFacebook className='me-1'/>{facebook}</p>
+            <p className='m-1'> <FaIcons.FaInstagram className='me-1'/>{instagram}</p>
+            <p className='m-1'> <FaIcons.FaLinkedin className='me-1'/>{linkedin}</p>
+          </div>
+
           <br/>    
-          <div className='fixedSizeCardWelcomeOrganization'><> Hola !, </> {welcomeText}</div>
+          <div className='fixedSizeCardWelcomeOrganization'>Bienvenid@s !, {welcomeText}</div>
           <br></br>
           <div className='fixedSizeCardOrganization'><u> Sobre nosotros</u> : {aboutUsText}</div>
           <br/>

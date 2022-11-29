@@ -1,12 +1,14 @@
 .containerNews{
+   display: flex;
+   flex-direction: row;
    height: 100%;
    max-width: 100%;
    padding-top: 4rem;
 }
 
 .userComments{ 
-    background-color: gray;
-    border-radius: 1rem;
+    box-shadow:1px 0px 4px 2px grey; 
+    border-radius: 0.5rem;
     padding: 1rem;
     margin-bottom:0.5rem;
 }
@@ -21,4 +23,15 @@
    display: flex;
    justify-content: end;
    font-size: 0.63rem;
+}
+
+.eachNew{
+   display: flex;
+   flex-wrap: wrap;
+   margin:1rem;
+   justify-content: center;
+   align-items: center;
+   padding: 2rem;
+   width: 32rem;
+   box-shadow:1px 0px 4px 2px grey; 
 }

@@ -124,15 +124,15 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div className="containerFirst">  
+      <div>  
         
         {!members &&  <LoadingBox/> }
 
         {members && 
-          <>
-            <div className="containerMembersAllCard">
-              <h2 className="containerTitle ">Colaboradores</h2>       
-              <div className="divBtnDesplegableMembers" >
+          <> 
+            <div className="membersHeader">  
+              <h2 className="membersTitle">Colaboradores</h2>       
+              <div className="divBtnDesplegableMembers " >
                   <select
                     type="text"
                     name="name"
@@ -148,17 +148,19 @@ const MembersAll = (props) => {
                   </select>
                     
                   <span className={ViewAdministratorOptions()} >  
-                    <Link to={'/MembersCreate'} className="m-1">
+                    <Link to={'/MembersCreate'} className="ms-2">
                       <FaIcons.FaPlusSquare className="iconBlue"/> 
                     </Link>
                   </span> 
               </div>
               <br/>
-            </div>
+            </div>  
           
-            <div className="m-1">
+
+            <div className="containerFirst">
               {showMembers()}
             </div>    
+           
           </>
         } 
       </div>

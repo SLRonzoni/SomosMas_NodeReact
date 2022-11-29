@@ -158,7 +158,7 @@ const OrganizationsAll = (props) => {
               </div> 
               <br/>
             </div> 
-            <div  className="m-1">
+            <div>
               {showOrganizations()}
             </div>
           </>
