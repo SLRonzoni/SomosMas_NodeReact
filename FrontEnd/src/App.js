@@ -106,6 +106,7 @@ const App = () => {
 
           <Route path='/ContactsAll' component={ContactsAll}/>
           <Route path='/DonationsAll' component={DonationsAll}/>
+          <Route path='/donations/createDonation' component={DonationsAll}/>
 
           <Route path='/MembersAll' component={MembersAll}/>
           <Route path='/MembersCreate' component={MembersCreate}/>

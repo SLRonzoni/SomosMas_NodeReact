@@ -51,6 +51,24 @@ const getMessagesByDate= async (req, res) => {
   }     
 };
 
+const createMessage = async (req, res) => {
+  try {
+      const { name, email, message } = req.body
+
+      const messages = await ModelMessages.create({
+          name: name,
+          email: email,
+          message: message
+      })
+
+      res.status(201).json({msg:`${messages.name} ha enviado un mensaje`})
+
+  } catch (error) {
+      res.status(500).json({ error })
+  }
+}
+
+
 const deleteMessage=async (req,res)=>{
   try{
     const message= await ModelMessages.findByPk(req.params.id) 
@@ -58,7 +76,7 @@ const deleteMessage=async (req,res)=>{
     if(!message){
       return res.status(404).json('id not found')
     } else{
-      const delMessage=await ModelMessages.destroy({where: {id: req.params.id}})
+      await ModelMessages.destroy({where: {id: req.params.id}})
       return res.status(200).json({msg:`message ${req.params.id} deleted`})
     }  
   } catch(error) {
@@ -70,4 +88,5 @@ module.exports = {getAllMessages,
                   getOneMessage,
                   getMessagesByEmail,
                   getMessagesByDate,
+                  createMessage,
                   deleteMessage};

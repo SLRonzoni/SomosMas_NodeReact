@@ -30,7 +30,7 @@
 .inputSearcher{/* ✅ */
     display:flex;
     flex-wrap:wrap;
-    padding:0.50rem;
+    padding:0 0 0 0.2rem;
     height: 1.8rem;
     border-radius: 0.32rem;
     width: 100%;
@@ -45,11 +45,12 @@
 .searcherMsg{/* ✅ */
     margin-top: 5rem;
     width: 28rem;
-    height:2rem;
-    padding:1rem;
+    height:3rem;
+    padding:0.5rem;
+    
 }
 
 .h4Searcher{/* ✅ */
     padding:0 0.2rem 0 0.5rem ;
-    box-shadow:2px 0px 2px 2px grey; 
+    margin-left:-11rem;
 }

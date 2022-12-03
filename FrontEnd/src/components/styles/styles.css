@@ -58,6 +58,10 @@ body{
     padding:1rem;
 }
 
+.withoutBg{
+    background-color: transparent;
+}
+
 .displayInLineFlex{
     display:inline-flex;
 }

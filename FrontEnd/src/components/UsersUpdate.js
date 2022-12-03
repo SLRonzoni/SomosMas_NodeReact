@@ -9,7 +9,7 @@ import * as regex  from "./helpers/RegExp";
 import {formatDate} from './helpers/FormatDate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
-import {ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import {ErrorText,IconUser,InputUser, InputGroup} from './elements/ElementsFormStyles';
 import Swal from "sweetalert2";
 
 
@@ -163,16 +163,21 @@ const MyProfileUpdate = ({match, history}) =>{
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
         <form className="containerMyPerfil"onSubmit={handleSubmit} > 
             <h4 className='ms-4'>Mi Perfil </h4> 
-            <span className='margenEnd'><em className='font10px'> Última actualización : {formatDate(new Date(user.updatedAt))} </em></span>
-            <p className='pEmailRegisterUserUpdate font10px'><u className='font10px'>Email registrado</u> : {user.email}</p>
-            <div>
-
+            <div className='userDiv'>
+              <img className='imageMyProfile' src={user.photo}  alt="userPhoto"/>  
               <div>
-                <img className='imageMyProfile' src={user.photo}  alt="userPhoto"/>  
+                <span><em className='font10px'> Última actualización : {formatDate(new Date(user.updatedAt))} </em></span>
+                <br/>
+                <span className='font10px'><u className='font10px'>Email registrado</u> : {user.email}</span>  
+              </div>
+            </div>
+
+            <div>
+              <div>
                  <div className='mb-2'>
                     <InputGroup className='d-block' >
                       <label  htmlFor="photo" >Cambiar foto</label>
-                      <InputUser className="form-control mb-1"Cambiar foto
+                      <InputUser className="form-control pt-1"
                             type="file" 
                             name="photo" 
                             id="photo"  
@@ -191,7 +196,7 @@ const MyProfileUpdate = ({match, history}) =>{
                 <div className='mb-2'>
                   <label  htmlFor="firstName" >Nombre ( actual : {user.firstName} )</label>
                   <InputGroup className='d-block'>
-                    <InputUser className='colorBlack form-control mb-1'
+                    <InputUser className='form-control mb-1'
                       type="text" 
                       name="firstName" 
                       id="firstName"  
@@ -228,12 +233,12 @@ const MyProfileUpdate = ({match, history}) =>{
               <div>
                 <div className='mb-2'>
                     <label  htmlFor="password" > Password</label> 
-                    {<button className="withoutBorder ms-1" type="button" onClick={switchShown}> 
+                    {<button className="withoutBorder withoutBg ms-1" type="button" onClick={switchShown}> 
                         {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
                       </button> 
                     }
                     <InputGroup className='d-block'>
-                      <InputUser className='colorBlack form-control '
+                      <InputUser className='form-control '
                         type={shown ? "text" : "password" }
                         name="password" 
                         id="password"  

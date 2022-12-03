@@ -4,19 +4,18 @@ const { getModelById, updateModel, deleteModel} = require('./base.controller')
 
 
 const createContact = async (req, res) => {
-
     try {
         const { name, phone, email, message } = req.body
 
         const contact = await ModelContacts.create({
                     name: name,
                     phone: phone,
-                    email: email,
-                    message: message
+                    email: email
         })
 
         const emailSend = await emailContact(contact)
         res.status(201).json({ contact, emailSend })
+
     } catch (error) {
         res.status(500).json({ error })
     }

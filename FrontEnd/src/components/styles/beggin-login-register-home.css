@@ -4,7 +4,7 @@
     background-color:rgb(32, 10, 67);
     display: flex;
     justify-content:space-around;
-    align-items: start; 
+    align-items: flex-start; 
     padding: 0 10px;
     color:#fff;
 }
@@ -91,13 +91,12 @@
 }
 
 .imgHalfScreen{
-    height: 51vh;
+    height: 48vh;
     width: 49vw;
-    margin: 28% 0 0 0;
-    border-radius: 0 0 50% 50%; 
+    margin: 30% 0 0 1% ;
+    border-radius: 0 0 10% 3%;
+    filter: drop-shadow(0.3rem 0.3rem 0.2rem #fff); 
 }
-
-
 
 .containerLogin{
     width: 50vw;
@@ -113,7 +112,7 @@
 
 .buttonLoginGoogle{
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin:1rem;
 }
 
@@ -128,26 +127,26 @@
     padding:2rem;
 }
 
-
-
 .begginRegister{
     display:flex;
-    align-items: center;
-    width: 40vw;
-    padding:1rem  0 0 0;
+    /* align-items: center; */
+    width: 50vw;
+    height: 100vh;
+    padding:3rem;
+    margin-top:0rem;
     color:#0e0d0d;
     background-color:lightgray;
 }
 
 .labelRegister{
-    display: inline-block;
-    max-width:8rem;
+    display:flex;
+    align-items: center;
+    width:10rem;
 }
 
-.registerMsj-Buttons{
+ .registerMsj-Buttons{
     margin: auto;
     margin-left: 6rem;
-    margin-top: -30px;
     max-width:auto;
     text-align: center;
 }
@@ -157,14 +156,22 @@
     line-height:30px;
 }
 
+.iconGreen{
+    color: #2abe1d;
+}
+
+.iconRed{
+   
+    background-color: transparent;
+}
+
 .withoutBorder{
     border:transparent;
 }
 
 .errorsRegister{
-    margin-left:-3rem
+    margin-left:3rem
 }
-
 
 .pEmailRegisterUserUpdate{
     margin-left: 34%;
@@ -172,3 +179,56 @@
     height: 1.2rem;
 }
 
+ .heart{
+    background-color:rgb(252, 84, 84);
+    width: 5rem;
+    height: 5rem;
+    margin:8.2rem 43em;
+    transform: rotate(30deg); 
+    border-radius: 0.3rem;
+    animation: palpitar 2s linear infinite alternate;
+    will-change:transform;
+    position: absolute;
+}
+
+.heart::before, 
+.heart:after{
+    content:"";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(252, 84, 84);
+    border-radius: 50%;
+}
+
+.heart::before{
+    top:0;
+    left:-50%;
+}
+
+.heart::after{
+    top:-50%;
+    left:0;
+}
+
+.heart p{
+    font-size: 0.8rem;
+    width:6rem;
+    margin: auto;
+    margin-left: -1rem;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    transform: rotate(-45deg); 
+    color:#fff;
+}
+
+@keyframes palpitar{
+    0%{
+        transform:rotate(30deg) scale(1)
+    }
+    50%{
+        transform:rotate(30deg) scale(1.2)
+    }
+}

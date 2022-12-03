@@ -19,7 +19,7 @@ function Home() {
             </div>
 
             <div className="buttonHome centerText">
-              <Link to={'/auth/login'} className="m-5 btn btn-success"role="button"> Donar </Link> 
+              <Link to={'/auth/login'} className="m-5 btn btn-success"role="button"> Donar </Link>
             </div>
 
             <div className="containerAddress centerText">

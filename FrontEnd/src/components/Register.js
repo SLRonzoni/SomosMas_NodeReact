@@ -7,12 +7,15 @@ import {Link} from 'react-router-dom';
 import { Formik } from "formik";
 import * as msg  from './helpers/validationMessages';
 import * as regex from "./helpers/RegExp";
-import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import { ErrorText,IconUser, InputUser, InputGroup} from './elements/ElementsFormStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import imagen from "./images/manos_fondo-sinFondo.png";
 
 const Register=(props)=> {
+
+    const X='❌';
+    const V='✔️';
 
     //SHOW PASSWORD
     const [shown, setShown] = React.useState(false);
@@ -40,7 +43,7 @@ const Register=(props)=> {
                         timer:1000,
                         showConfirmButton:false
                     });
-                props.history.push("/auth/login");
+                props.history.push("/About");
                 } else {             
                     Swal.fire({
                     icon: "error",
@@ -71,81 +74,87 @@ const Register=(props)=> {
     //FORMIK VALIDATIONS 
     let validateInputs=(values) =>{   
 
-        let errors = {firstName: '',lastName:'', photo:'', email:'',currentPassword:'', 
-        icoNfirstName:'',icoNlastName:'', icoNphoto:'',iconNemail:'', icoNpassword:'',formOk:''};  
+        let errors = {firstName: '',lastName:'', photo:'', email:'',currentPassword:'',confirmPassword:'', 
+        icoNfirstName:'',icoNlastName:'', icoNphoto:'',iconNemail:'', icoNcurrentPassword:'', icoNconfirmPassword:'',formOk:''};  
 
         if (!values.email) {
             errors.email=msg.msgRequired
-            errors.icoNemail= '❌'
+            errors.icoNemail=X
             return errors
         };
 
         if (!regex.regexUserEmail.test(values.email)) {
             errors.email=msg.msgValidationUserEmail
-            errors.icoNemail= '❌'
+            errors.icoNemail= V
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNemail= '✔️'
+            errors.icoNemail=V
             errors.formOk='v'
         };
 
         if (!values.firstName) {
             errors.firstName=msg.msgRequired
-            errors.icoNfirstName= '❌'
+            errors.icoNfirstName= X
             return errors
         };
 
         if (!regex.regexUserfirstName.test(values.firstName)) {
             errors.firstName=msg.msgValidationUserFirstName
-            errors.icoNfirstName= '❌'
+            errors.icoNfirstName=X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNfirstName= '✔️'
+            errors.icoNfirstName= V
             errors.formOk='v'
         };
 
         if (!values.lastName) {
             errors.lastName=msg.msgRequired
-            errors.icoNlastName= '❌'
+            errors.icoNlastName= X
             return errors
         };
 
         if (!regex.regexUserLastName.test(values.lastName)) {
             errors.lastName=msg.msgValidationUserLastName
-            errors.icoNlastName= '❌'
+            errors.icoNlastName= X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNlastName= '✔️'
+            errors.icoNlastName= V
             errors.formOk='v'
         };
        
 
         if (!values.currentPassword) {
-            errors.password=msg.msgRequired
-            errors.icoNpassword= '❌'
+            errors.currentPassword=msg.msgRequired
+            errors.icoNcurrentPassword= X
             return errors
         };
 
         if (!regex.regexUserPassword.test(values.currentPassword)) {
-            errors.password=msg.msgValidationUserPassword
-            errors.icoNpassword= '❌'
+            errors.currentPassword=msg.msgValidationUserPassword
+            errors.icoNcurrentPassword= X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNpassword= '✔️'
+            errors.icoNcurrentPassword= V
             errors.formOk='v'
         };
 
+        if (!values.confirmPassword) {
+            errors.confirmPassword=msg.msgRequired
+            errors.icoNconfirmPassword=X
+            return errors
+        };
+
         if (values.currentPassword!==values.confirmPassword){
-            errors.password=msg.msgValidationUserConfirmPassword
-            errors.icoNpassword= '❌'
+            errors.confirmPassword="las passwords ingresadas son distintas"
+            errors.icoNconfirmPassword= X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNpassword= '✔️'
+            errors.icoNpassword= V
             errors.formOk='v'
         };
     }   
@@ -164,23 +173,23 @@ const Register=(props)=> {
                         validate={validateInputs}
                         onSubmit={(values)=>{ sendForm(values)}}
                     > 
-                    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
+                    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
                 
                         <form className="containerRegisterContactForm " onSubmit={handleSubmit}>
-                            <h5 className="centerText ">Formulario de Registro</h5>
+                            <h5 className="centerText mt-5 mb-4">Formulario de Registro</h5>
                             <div>
                                 <div>
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="photo">Foto </Label>
+                                    <div className="mb-4">
+                                        <div className="d-flex">   
+                                            <label className="labelRegister"  htmlFor="photo">Foto </label>
                                             <InputGroup  >
-                                                <InputUser className="form-image"
-                                                        type="file" 
-                                                        name="photo" 
-                                                        id="photo"  
-                                                        encType="multipart/form-data"
-                                                        onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
-                                                        onBlur={handleBlur}
+                                                <InputUser className="form-control pt-1"
+                                                    type="file" 
+                                                    name="photo" 
+                                                    id="photo"  
+                                                    encType="multipart/form-data"
+                                                    onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
+                                                    onBlur={handleBlur}
                                                 />
                                                 {touched.photo && errors.icoNphoto && <IconUser>{errors.icoNphoto}</IconUser>}    
                                             </InputGroup> 
@@ -188,86 +197,85 @@ const Register=(props)=> {
                                         {touched.photo && errors.photo && <ErrorText>{errors.photo} </ErrorText> }
                                     </div>
 
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="email">Email</Label>
+                                    <div className="mb-4">
+                                        <div className="d-flex">   
+                                            <label className="labelRegister"  htmlFor="email">Email</label>
                                             <InputGroup>
                                                 <InputUser className="form-control"
-                                                type="email" 
-                                                name="email" 
-                                                id="email"  
-                                                value={values.email}
-                                                onChange={handleChange} 
-                                                onBlur={handleBlur}
+                                                    type="email" 
+                                                    name="email" 
+                                                    id="email"  
+                                                    value={values.email}
+                                                    onChange={handleChange} 
+                                                    onBlur={handleBlur}
                                                 />
                                                 {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
                                             </InputGroup>
                                         </div> 
-                                        {touched.email && errors.email && <ErrorText className="errorsRegister">{errors.email} </ErrorText> }
+                                        {touched.email && errors.email && <ErrorText>{errors.email} </ErrorText> }
                                     </div>
                                     
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="firstName">Nombre</Label>
+                                    <div className="mb-4">
+                                        <div className="d-flex">   
+                                            <label className="labelRegister"  htmlFor="firstName">Nombre</label>
                                             <InputGroup >
                                                 <InputUser className="form-control"
-                                                type="text" 
-                                                name="firstName" 
-                                                id="firstName"  
-                                                value={values.firstName}
-                                                onChange={handleChange} 
-                                                onBlur={handleBlur}
+                                                    type="text" 
+                                                    name="firstName" 
+                                                    id="firstName"  
+                                                    value={values.firstName}
+                                                    onChange={handleChange} 
+                                                    onBlur={handleBlur}
                                                 />              
                                                 {touched.firstName && errors.icoNfirstName && <IconUser>{errors.icoNfirstName}</IconUser>}
                                             </InputGroup> 
                                         </div>
-                                        {touched.firstName && errors.firstName && <ErrorText className="errorsRegister">{errors.firstName} </ErrorText> }
+                                        {touched.firstName && errors.firstName && <ErrorText>{errors.firstName} </ErrorText> }
                                     </div>
 
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="lastName">Apellido</Label>
+                                    <div className="mb-4">
+                                        <div className="d-flex">   
+                                            <label className="labelRegister"  htmlFor="lastName">Apellido</label>
                                             <InputGroup>
                                                 <InputUser className="form-control"
-                                                type="text" 
-                                                name="lastName" 
-                                                id="lastName"  
-                                                value={values.lastName}
-                                                onChange={handleChange} 
-                                                onBlur={handleBlur}
+                                                    type="text" 
+                                                    name="lastName" 
+                                                    id="lastName"  
+                                                    value={values.lastName}
+                                                    onChange={handleChange} 
+                                                    onBlur={handleBlur}
                                                 />
                                                 {touched.lastName && errors.icoNlastName && <IconUser>{errors.icoNlastName}</IconUser>}
                                             </InputGroup>
                                         </div> 
-                                        {touched.lastName && errors.lastName && <ErrorText className="errorsRegister">{errors.lastName} </ErrorText> }
+                                        {touched.lastName && errors.lastName && <ErrorText>{errors.lastName} </ErrorText> }
                                     </div>
                                 
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="currentPassword"> Password </Label>  
+                                    <div className="mb-4">
+                                        <div className="d-flex withoutBorder withoutBg">   
+                                            <label className="labelRegister"  htmlFor="currentPassword"> Password 
+                                                <button className="withoutBorder withoutBg ms-3" type="button" onClick={switchShown}> 
+                                                    {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
+                                                </button> 
+                                            </label> 
                                             <InputGroup>
                                                 <InputUser className="form-control"
-                                                type={shown ? "text" : "password" }
-                                                name="currentPassword" 
-                                                id="currentPassword"  
-                                                value={values.currentPassword}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
+                                                    type={shown ? "text" : "password" }
+                                                    name="currentPassword" 
+                                                    id="currentPassword"  
+                                                    value={values.currentPassword}
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
                                                 />
-                                                {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>} 
-                                                {<IconUser>
-                                                    <button className="withoutBorder" type="button" onClick={switchShown}> 
-                                                        {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
-                                                    </button> 
-                                                </IconUser>} 
+                                                {touched.currentPassword && errors.icoNcurrentPassword && <IconUser>{errors.icoNcurrentPassword}</IconUser>}   
                                             </InputGroup>
                                         </div> 
-                                        {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+                                        {touched.currentPassword && errors.currentPassword && <ErrorText>{errors.currentPassword} </ErrorText> }
                                     </div>
 
-                                    <div className="marginBottom05rem">
-                                        <div className="displayInLineFlex">   
-                                            <Label className="labelRegister"  htmlFor="confirmPassword"> Repetir Password</Label>  
+                                    <div className="mb-4">
+                                        <div className="d-flex">   
+                                            <label className="labelRegister"  htmlFor="confirmPassword"> Repetir Password</label>  
                                             <InputGroup>
                                                 <InputUser className="form-control"
                                                 type={shown ? "text" : "password" }
@@ -277,18 +285,17 @@ const Register=(props)=> {
                                                 onChange={handleChange}
                                                 onBlur={handleBlur}
                                                 />
-                                            {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}   
+                                            {touched.confirmPassword && errors.icoNconfirmPassword && <IconUser>{errors.icoNconfirmPassword}</IconUser>}   
                                             </InputGroup>
                                         </div> 
-                                        {touched.password && errors.password && <ErrorText>{errors.password} </ErrorText> }
+                                        {touched.confirmPassword && errors.confirmPassword && <ErrorText>{errors.confirmPassword} </ErrorText> }
                                     </div>
 
-                                    <div className="registerMsj-Buttons">                              
-                                        { errors.formOk === "v" || !errors.formOk && 
+                                    <div className="registerMsj-Buttons ">                              
+                                        { (errors.formOk === "v" || !errors.formOk )&& 
                                             <span className="buttonsResponsive">
-                                                <Link to={"/"} className=" btn registerMsj-Buttons-button buttonBlue" role="button" aria-pressed="true"> Volver </Link>
-                                                <SendButton type="submit" className="ms-5 btn buttonSendButton">Guardar </SendButton>
-                                                
+                                                <Link to={"/"} className=" btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
+                                                <button type="submit" className="btn buttonBlue buttonGreen">Guardar </button>
                                             </span>
                                         }
                                     </div> 

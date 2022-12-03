@@ -7,6 +7,7 @@
     padding: 30px;
     color:black;
     border: 1px solid black;
+    border-radius: 1rem;
     transform:
     translateY(-50%);
 }
@@ -35,4 +36,5 @@
 
 .icons{
   font-size: 40px;
+  color:#422472;
 }

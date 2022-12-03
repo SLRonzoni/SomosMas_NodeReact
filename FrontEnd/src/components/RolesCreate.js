@@ -21,17 +21,14 @@ function RoleCreate(props) {
 
   //SEND
   const sendForm = (values) => {
-    console.log('values',values)
-   
     let body ={"name":values.name,"description":values.description};
 
     const saveRoles = async () => {
-      await axiosClient
-        .post("/roles",body)     
+      await axiosClient.post("/roles",body)     
         .then((response) => {
           if(response.status===201) {
             setRoles(response.data)
-            console.log(response.data)
+            
             Swal.fire({
               icon: "success",
               title: "Role Agregado!",
@@ -168,14 +165,14 @@ return (
             <br></br>
             
           </div>
-          { errors.formOk === "f" && 
+          {/* { errors.formOk === "f" && 
             <MsjWrong> 
             <span className="centerText">
               <br /> Algun dato es incorrecto. 
               <br/> Por favor complete el formulario correctamente
             </span>        
             </MsjWrong>
-          }
+          } */}
          
           <div>
             <br></br>

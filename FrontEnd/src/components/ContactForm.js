@@ -8,19 +8,31 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as msg from "./helpers/validationMessages";
 import * as regex from "./helpers/RegExp";
-import {SendButton,MsjWrong,ErrorText,IconUser,Label,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
+import {ErrorText,IconUser,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
 
 const ContactForm = (props) => {
-  //SEND
+ 
   const sendForm =  (values) => {
-    //CREATE
+   
     let body = {"name": values.name,
                 "phone": values.phone,
                 "email": values.email,
                 "message": values.message};
 
     const sendMessage = async () => {
+      await axiosClient.post("/messages", body)
+        .then((resp) => {
+          console.log(resp)
+          if (resp.status !== 201) {
+           console.log('error al crear mensaje ')
+          }        
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+
       await axiosClient.post("/contacts", body)
         .then((response) => {
           console.log(response)
@@ -218,8 +230,8 @@ const ContactForm = (props) => {
                   <InputGroup >
                     <textarea className="textArea form-control borderRounded mb-3"
                       type='text'
-                      rows='8'
-                      cols='27'
+                      rows='6'
+                      cols='39'
                       name='message'
                       placeholder="    Tu mensaje..."
                       required
@@ -237,7 +249,7 @@ const ContactForm = (props) => {
                 )}
               </div>
 
-              <div className="responsiveButton">
+              <div className="buttonsResponsive">
                 <Link to={"/"}  className='btn buttonBlue' role='button' > Volver </Link>
                 <button type='submit' className="btn buttonBlue buttonGreen"> Enviar</button>
               </div>

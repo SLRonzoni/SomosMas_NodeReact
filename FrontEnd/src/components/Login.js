@@ -12,11 +12,13 @@ import * as FaIcons from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import imagen from "./images/manos_fondo-sinFondo.png";
-import {ErrorText,IconUser, Label,Input, InputGroup} from './elements/ElementsFormStyles';
+import {ErrorText,IconUser, Input, InputGroup} from './elements/ElementsFormStyles';
 
 const Login =()=>{   
  
-  // const [email, setEmail] = useState("")
+  const X='❌';
+  const V='✔️';
+
   const [password, setPassword] = useState("")
 
   const loginData= sessionStorage.getItem('loginData')
@@ -93,33 +95,33 @@ const Login =()=>{
 
         if (!values.email) {
             errors.email=msg.msgRequired
-            errors.icoNemail= '❌'
+            errors.icoNemail= X
             return errors
         };
 
         if (!regex.regexUserEmail.test(values.email)) {
             errors.email=msg.msgValidationUserEmail
-            errors.icoNemail= '❌'
+            errors.icoNemail= X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNemail= '✔️'
+            errors.icoNemail=V
             errors.formOk='v'
         };
 
         if (!values.password) {
             errors.password=msg.msgRequired
-            errors.icoNpassword= '❌'
+            errors.icoNpassword= X
             return errors
         };
 
         if (!regex.regexUserPassword.test(values.password)) {
             errors.password=msg.msgValidationUserPassword
-            errors.icoNpassword= '❌'
+            errors.icoNpassword= X
             errors.formOk='f'
             return errors
         } else {
-            errors.icoNpassword= '✔️'
+            errors.icoNpassword= V
             errors.formOk='v'
         };
     }   
@@ -128,8 +130,15 @@ const Login =()=>{
     return (
       <>
       <div className="containerFirst">
-        <div className="containerImgHalfScreen"> 
-          <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
+        
+        <div className="d-flex">
+          <div className="containerImgHalfScreen "> 
+            <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
+          </div>
+
+           <div className="heart">
+            <p>Para hacer una donación ... logueate</p>
+          </div> 
         </div>
         
         <div className="containerLogin">
@@ -145,10 +154,10 @@ const Login =()=>{
           { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
       
               <form className="containerLoginForm" onSubmit={handleSubmit}>
-                  <h5 className="centerText ">Inicio de sesión</h5>
+                  <h5 className="centerText m-4">Inicio de sesión</h5>
                   <div>
-                      <div >   
-                        <Label className="labelRegister"  htmlFor="email">Email</Label>
+                      <div>   
+                        <label className="d-block ms-2" htmlFor="email">Email</label>
                         <InputGroup className="iconInsideInputDiv">
                           <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
                           <Input className="ps-5 form-control"
@@ -165,14 +174,14 @@ const Login =()=>{
                           {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
                         </InputGroup>
                       </div> 
-                      {touched.email && errors.email && <ErrorText className="errorsRegister">{errors.email} </ErrorText> }
+                      {touched.email && errors.email && <ErrorText className="ms-2">{errors.email} </ErrorText> }
                   </div>
                   <br/>
                   <div>
                     <div> 
-                      <div className="d-block">
-                        <label  htmlFor="password">Password</label>
-                        {<button className="withoutBorder ms-1" type="button" onClick={switchShown}> 
+                      <div className="withoutBorder withoutBg">
+                        <label className="p-2" htmlFor="password">Password</label>
+                        {<button className="withoutBorder withoutBg ms-1" type="button" onClick={switchShown}> 
                             {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
                           </button>
                         }  
@@ -190,30 +199,29 @@ const Login =()=>{
                           onBlur={handleBlur}
                           />
                         {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}
-                        
                       </InputGroup>
                     </div> 
-                    {touched.password && errors.password && <ErrorText className="errorsRegister">{errors.password} </ErrorText> }
+                    {touched.password && errors.password && <ErrorText className="ms-2">{errors.password} </ErrorText> }
                   </div>
 
                   <div>                              
-                    { errors.formOk === "v" || !errors.formOk && 
+                    { (errors.formOk === "v" || !errors.formOk) && 
                       <span className="buttonsResponsive">
                         <Link to={"/"} className=" btn buttonBlue" role="button"> Volver </Link>
                         <button type="submit" className=" btn buttonBlue buttonGreen" onClick={beginSession} >Login </button> 
                       </span>
                     }
                   </div> 
-                  
                 </form>
                 )}
             </Formik>
         
-            <div className="buttonsResponsive">
-              <span>No tenés cuenta ? 
-                <Link to={"/auth/register"} className="p-1">registrate</Link>
-              </span>
-            </div>
+              <div className="buttonsResponsive">
+                <span className="ms-5">No tenés cuenta ? 
+                  <Link to={"/auth/register"} className="p-1 ">registrate</Link>
+                </span>
+              </div>
+
         </div>
       </div>
       </>

@@ -4,11 +4,6 @@ import './styles/styles.css';
 import './styles/members-organizations.css';
 import './styles/card.css';
 import {formatDate} from './helpers/FormatDate';
-import facebookLogo from './images/facebook.jpg';
-import instagramLogo from './images/instagram.jpg';
-import linkedinLogo from'./images/linkedin.png';
-import emailLogo from './images/email.jpg';
-import whatsapp from './images/whatsapp.jpg';
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
 import * as FaIcons from 'react-icons/fa';
 

@@ -24,7 +24,6 @@ const createOrganization = async (req, res) => {
         welcomeText,
         aboutUsText
     }
-
     return baseController.createModel( res, OrganizationModel, data )
 
 };

@@ -121,7 +121,7 @@ const RolesAll = (props) => {
                     <Link to={`/categories/update/${oneRole.id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>
-                    <div className="button" onClick={()=>{remove(oneRole.id)}}> 
+                    <div className="button" onClick={()=>{confirmRemove(oneRole.id)}}> 
                         <FaIcons.FaTrashAlt className='iconRed'/>
                     </div>                          
                 </div>  

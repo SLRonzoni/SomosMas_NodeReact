@@ -7,18 +7,20 @@ const {getAllMessages,
        getOneMessage,
        getMessagesByEmail,
        getMessagesByDate,
+       createMessage,
        deleteMessage}=(require('../controllers/messages.controller'))
 
-router.use(verifyIsAdmin)
 
-router.get("/",  getAllMessages);
+router.get("/",verifyIsAdmin,  getAllMessages);
 
-router.get("/:id", idExists, getOneMessage);
+router.get("/:id", idExists,verifyIsAdmin, getOneMessage);
 
-router.get("/byEmail/:email", getMessagesByEmail);
+router.get("/byEmail/:email",verifyIsAdmin, getMessagesByEmail);
 
-router.get("/byDate/:date", getMessagesByDate);
+router.get("/byDate/:date",verifyIsAdmin, getMessagesByDate);
 
-router.delete("/:id", idExists,deleteMessage);
+router.post("/", createMessage);
+
+router.delete("/:id", idExists,verifyIsAdmin,deleteMessage);
 
 module.exports = router;

@@ -22,9 +22,10 @@ const Form =styled.form`
 
 const Label = styled.label`
     display: block;
-    padding:0.5rem;
-    max-width:6rem;
-    min-height:3rem;
+    padding:0.1rem;
+    margin-top:0.8rem;
+    width:26rem;
+    min-height:1rem;
     cursor:pointer;
 `;
 
@@ -65,7 +66,7 @@ const InputUser = styled.input`
     display:flex;
     flex-direction:column;
     position:relative;
-    max-width:28rem;
+    width:25.2rem;
     height:2rem;
     line-height:1rem;
     background:#fff;
@@ -138,17 +139,14 @@ const IconUser=styled.p`
 
 const ErrorText = styled.p`
     font-size:0.75rem;
-    margin:auto;
-    margin-bottom:0;
-    margin-left:0rem;
-    //margin-left:6.25rem;
+    margin: 0rem 0rem 0.2rem 10.5rem;
     border-radius:0.62rem;
     width:20rem;
     padding:0 0 0 0.5rem;
-    //width:35rem;
-  
+    width:20rem;
     color:${Colors.error};
 ;`
+
 
 const SendButton = styled.button`
     width:20%;

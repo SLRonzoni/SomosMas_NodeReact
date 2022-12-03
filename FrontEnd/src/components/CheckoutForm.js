@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { ErrorText } from "./elements/ElementsFormStyles";
 import { msgRequired,msgValidationAmount } from "./helpers/validationMessages";
 import { regexAmount } from "./helpers/RegExp";
+import * as FaIcons from "react-icons/fa";
 
 const CheckoutForm= (props) => {
   const stripe = useStripe();
@@ -21,8 +22,8 @@ const CheckoutForm= (props) => {
   let initialValues = { amount: "", message: "" };
   let photo;
 
-  if (user && user.image!==""? photo=user.image : photo="😎");
-  if (!user ? user="": user=user);
+  if (user && user.image!==""? photo=user.image : photo=<FaIcons.FaUser/>);
+  if (!user ? user="": user);
   
   //obtener datos del usuario en sesión
   useEffect(() => {
@@ -31,8 +32,7 @@ const CheckoutForm= (props) => {
   }, [])
   
   //enviar formulario
-  const sendForm = async (values,e) => {
-
+  const sendForm = async (values) => {
     let data = {
                 "userId": user.id,
                 "userName": user.firstName || "",
@@ -43,8 +43,8 @@ const CheckoutForm= (props) => {
                 "payForm":"Stripe",
                 "message": values.message
               };
-
     setIsLoading(true);
+    
 
     const {error,paymentMethod}=await stripe.createPaymentMethod({
       type:'card',
@@ -69,7 +69,7 @@ const CheckoutForm= (props) => {
           setTimeout(() => {
             history.push('/');
           }, 1500);
-        }       
+       }       
       } catch (error) {
         console.log(error)
         Swal.fire({
@@ -123,7 +123,7 @@ const CheckoutForm= (props) => {
       
       <form onSubmit={handleSubmit} className="formCard formStripe">
         <div className="formUserData" >          
-          <img className="imgStripe" src={photo} alt="user image"></img>
+          <img className="imgStripe" src={photo} alt="user"></img>
           <div className="d-flex">
             <p> Nombre   : {user.firstName}</p>
             <p> Apellido : {user.lastName} </p>
@@ -137,7 +137,7 @@ const CheckoutForm= (props) => {
         <br/>
         <div className="form-group">
           <div className="d-flex centerText" >
-              <span> Forma de pago : {"Stripe U$S"}</span>
+              <span>Medio de pago : Stripe , Moneda : U$S</span>
               <input className="input"
                 name="amount"
                 type="number"
@@ -158,7 +158,7 @@ const CheckoutForm= (props) => {
         </div>
         
         <div>
-          <label> Mensaje </label>
+          <label className="ms-3"> Mensaje </label>
           <textarea className="textArea form-control borderRounded"
             type='text'
             rows='3'
@@ -170,11 +170,10 @@ const CheckoutForm= (props) => {
             onBlur={handleBlur}
           />
         </div>
-        <br/>
 
-        <div className="d-flex centerText">
-          <Link to={"/"}  className='m-2 mr-md-2 btn buttonBlue' role='button' > Volver </Link>
-          <button disabled={isLoading || !stripe || !elements} id="submit" type="submit" className='m-2 btn btn-success buttonGreen'>        
+        <div className="buttonsResponsive">
+          <Link to={"/"}  className='btn buttonBlue' role='button' > Volver </Link>
+          <button disabled={isLoading || !stripe || !elements} id="submit" type="submit" className="btn buttonBlue buttonGreen">        
             <span id="button-text ">
               {isLoading ? <div className="spinner" id="spinner"></div> : "Donar"}
             </span>

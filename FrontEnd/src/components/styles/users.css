@@ -8,12 +8,19 @@
     padding:1rem;
     background-color: lightgrey;
     color:#0e0d0d;
-    border-radius: 15px;
+    border-radius: 1rem;
 }
-
 
 .imageMyProfile{
     width: 15%;
     margin-bottom:1rem;
     border-radius: 50%;
+    margin-left:1rem;
+}
+
+.userDiv{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   padding: 1rem;
 }

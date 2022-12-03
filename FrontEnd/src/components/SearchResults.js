@@ -65,7 +65,7 @@ function WordSearchResults() {
   return (
     <>   
       <div className='containerFirst'>
-        <div className="searcherMsg mt5rem"> 
+        <div className="searcherMsg"> 
           <h4 className="h4Searcher"><em>Palabra buscada</em> : {keyword}</h4>       
             {newsComplete.length===0 && <h5 className="mt-4">☹️ No se hallaron resultados  </h5>}
         </div>

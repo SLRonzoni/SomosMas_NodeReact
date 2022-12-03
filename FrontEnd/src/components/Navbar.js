@@ -70,19 +70,21 @@ export default function Sidebar () {
 
           <li className="navbarUser ">
             <h1 className="h1NavbarUser">Somos Más o.n.g.  </h1>
-            <img className="imageUserNavBar" src={photo} alt="user image"></img>
-            <p className="centerText m-4">{name}</p>
+            <img className="imageUserNavBar" src={photo} alt="user"></img>
+            <p className="centerText m-1">{name}</p>
           </li>
           
           <li className="navbar-searcher">
-            <Searcher/>
+            {((userInfo && userInfo.roleId!==1) || !userInfo) && (
+              <Searcher/>
+            )}
           </li>
 
           <li className="navbar-toogle" >
             <FaIcons.FaList className="item"/> 
             <Navbar.Brand >
               {!userInfo &&(
-                <NavDropdown title="Secciones" className="item" > 
+                <NavDropdown title="Secciones" className="item ms-2" > 
                   <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                   <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                   <NavDropdown.Divider /> 
@@ -96,7 +98,7 @@ export default function Sidebar () {
                 </NavDropdown>
               )}
               {userInfo && userInfo.roleId!==1 && (
-                <NavDropdown title="Secciones" className="NavDrop">
+                <NavDropdown title="Secciones" className="NavDrop ms-2">
                   <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                   <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
                   <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
@@ -112,7 +114,7 @@ export default function Sidebar () {
               </NavDropdown> 
               )}               
               {userInfo && userInfo.roleId===1 && ( 
-                <NavDropdown title="Secciones" id="basic-nav-dropdown" >  
+                <NavDropdown title="Secciones" id="basic-nav-dropdown" className="ms-2" >  
                   <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
                   <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
                   <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
@@ -133,14 +135,14 @@ export default function Sidebar () {
 
           <li className="navbar-toogle" >
                 <FaIcons.FaHome className="item"/> 
-                <Link to="/" className="item m-3">Inicio </Link>
+                <Link to="/" className="item m-2">Inicio </Link>
           </li> 
 
           <li className="navbar-toogle">
             {!userInfo && (
               <div>
                 <FaIcons.FaAddressCard className="item"/> 
-                <Link to="/auth/register" className="item m-3">Registro </Link>
+                <Link to="/auth/register" className="item m-2">Registro </Link>
               </div> 
             )} 
           </li>
@@ -149,18 +151,15 @@ export default function Sidebar () {
             {!userInfo && (
               <div>
                 <FaIcons.FaUserCheck className="item"/>
-                <Link to="/auth/login" className="item m-3">Login </Link>
+                <Link to="/auth/login" className="item m-2">Login </Link>
               </div> 
             )} 
-          </li>
-
-          <li className="navbar-toogle">
             {userInfo && (
               <div >
                 <FaIcons.FaArrowLeft className="item"/> 
-                <Link  to="/auth/logout" onClick={logout} className="item m-3">Logout </Link> 
+                <Link  to="/auth/logout" onClick={logout} className="item m-2">Logout </Link> 
               </div> 
-            )} 
+            )}         
           </li> 
        
         </ul>        

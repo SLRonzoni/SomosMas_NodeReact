@@ -7,8 +7,7 @@ import Swal from "sweetalert2";
 import {Link} from 'react-router-dom';
 import { Formik } from "formik";
 import * as msg from './helpers/validationMessages';
-import * as regex  from "./helpers/RegExp";
-import { SendButton, MsjWrong, ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import { ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 
 const TestimonialsCreate=(props)=> {
 
@@ -132,7 +131,7 @@ const TestimonialsCreate=(props)=> {
 
                                 <div className="ms-3">
                                     <div>   
-                                        <Label htmlFor="image">Imágen </Label>
+                                        <Label htmlFor="image">Agregá una imágen para tu testimonio </Label>
                                         <InputGroup  >
                                             <InputUser className="form-control"
                                                     type="file" 
@@ -152,11 +151,11 @@ const TestimonialsCreate=(props)=> {
                                     <div>   
                                         <Label  htmlFor="name">Título</Label>
                                         <InputGroup>
-                                            <InputUser className="form-control"
+                                            <InputUser className="form-control "
                                             type="text" 
                                             name="name" 
                                             id="name" 
-                                            placeholder="Ingresá el título de tu testimonio"
+                                            placeholder="Ingresá un título para tu testimonio"
                                             value={values.name}
                                             onChange={handleChange} 
                                             onBlur={handleBlur}

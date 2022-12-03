@@ -72,23 +72,12 @@ const getAllDonationsByCreate= async (req, res) => {
   }     
 };
 
-const createDonation= async (req,res)=> { 
+const createDonation= async (data)=> { 
   try{
-    const {userId, userName, userLastName, userEmail, userPhone, amount, payForm, message}=req.body
-    const inputVars={
-                    userId:userId,
-                    userName:userName,
-                    userLastName:userLastName,
-                    userEmail:userEmail,
-                    userPhone:userPhone,
-                    amount:amount,
-                    payForm:payForm,
-                    message:message
-                    }
-                    
-    return baseController.createModel(res, ModelDonations, inputVars) 
+    const donation=await ModelDonations.create(data)         
+    console.log(donation)
   } catch (error) {        
-    res.status(500).json(error);
+    console.log(error);
   }
 };
 
@@ -109,9 +98,8 @@ const deleteDonation=async (req,res)=>{
    
   // Stripe
   const paymentsStripe=async (req, res) => {
-    try{
-      const { id } = req.body;
-      
+    const { id, data } = req.body;
+    try{      
       //Create a PaymentIntent with the order amount and currency
       const payment = await stripe.paymentIntents.create({
         amount:req.body.data.amount,
@@ -121,30 +109,26 @@ const deleteDonation=async (req,res)=>{
         confirm:true
       });
       res.status(200).json({message: "Pago exitoso", 
-                            clientSecret: payment });
-
+                            clientSecret: payment });     
       //Guardar los datos en mi bd
-      //createDonation()
-
+      createDonation(data)
   } catch(error) {
       console.log(error.raw.message)
       res.status(500).json(error.raw.message)
   }
-
   };
 
    // Mercado Pago
    const paymentsMePa=async (req, res) => {
     try{
      
-    
       
 
-      createDonation()
+      //createDonation()
 
   } catch(error) {
       console.log(error)
-      res.status(500).json(error)
+      // res.status(500).json(error)
   }
 
   };

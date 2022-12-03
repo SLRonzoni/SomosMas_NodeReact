@@ -16,7 +16,7 @@ router.get('/byPayForm/:payForm',verifyIsAdmin, authenticatedUser, getAllDonatio
 router.get('/byEmail/:userEmail',verifyIsAdmin, authenticatedUser, getAllDonationsByEmail)
 router.get('/byDate/:create',verifyIsAdmin, authenticatedUser, getAllDonationsByCreate)
 
-// router.post('/',createDonation)
+router.post('/createDonation',createDonation)
 
 router.post('/paymentsStripe',paymentsStripe)
 router.post('/paymentsMePa',paymentsMePa)
