@@ -36,7 +36,7 @@
 }
 
 .membersHeader{/* ✅ */
-    height: auto;
+    height: 9.7rem;
 }
 
 .textArea-Members{
@@ -45,8 +45,7 @@
 }
 
 .pBtnDesplegableMembers{  /* ✅ */
-    font-size: 1.5rem;
-    margin-bottom:0.5rem;
+    font-size: 1.5rem; 
 }
 
 .divBtnDesplegableMembers{ /* ✅ */

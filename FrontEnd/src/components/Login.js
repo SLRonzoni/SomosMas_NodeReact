@@ -16,8 +16,8 @@ import {ErrorText,IconUser, Input, InputGroup} from './elements/ElementsFormStyl
 
 const Login =()=>{   
  
-  const X='❌';
-  const V='✔️';
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
 
   const [password, setPassword] = useState("")
 

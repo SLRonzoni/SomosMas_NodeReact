@@ -8,10 +8,14 @@ import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as msg from "./helpers/validationMessages";
 import * as regex from "./helpers/RegExp";
+import * as FaIcons from "react-icons/fa";
 import {ErrorText,IconUser,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
 
 const ContactForm = (props) => {
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
  
   const sendForm =  (values) => {
    
@@ -84,49 +88,49 @@ const ContactForm = (props) => {
 
     if (!values.name) {
       errors.name = msg.msgRequired;
-      errors.icoNname = "❌";
+      errors.icoNname = X;
       return errors;
     }
 
     if (!regex.regexUserfirstName.test(values.name)) {
       errors.name = msg.msgValidationUserFirstName;
-      errors.icoNname = "❌";
+      errors.icoNname = X;
       errors.formOk = "f";
       return errors;
     } else {
-      errors.icoNname = "✔️";
+      errors.icoNname = V;
       errors.formOk = "v";
     }
 
     if (!regex.regexUserPhone.test(values.phone)) {
       errors.phone = msg.msgValidationUserPhone;
-      errors.icoNphone = "❌";
+      errors.icoNphone = X;
       errors.formOk = "f";
       return errors;
     } else {
-      errors.icoNphone = "✔️";
+      errors.icoNphone = V;
       errors.formOk = "v";
     }
 
     if (!values.email) {
       errors.email = msg.msgRequired;
-      errors.icoNemail = "❌";
+      errors.icoNemail = X;
       return errors;
     }
 
     if (!regex.regexUserEmail.test(values.email)) {
       errors.email = msg.msgValidationUserEmail;
-      errors.icoNemail = "❌";
+      errors.icoNemail = X;
       errors.formOk = "f";
       return errors;
     } else {
-      errors.icoNemail = "✔️";
+      errors.icoNemail = V;
       errors.formOk = "v";
     }
 
     if (!values.message) {
       errors.message = msg.msgRequired;
-      errors.icoNmessage = "❌";
+      errors.icoNmessage = X;
       return errors;
     }
 
@@ -156,7 +160,7 @@ const ContactForm = (props) => {
             { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( 
             
             <form className='containerLoginForm containerContactForm' onSubmit={handleSubmit}>
-              <h5 className="centerText">Formulario de Contacto</h5>              
+              <h5 className="centerText mb-5">Formulario de Contacto</h5>              
               <div>                  
                 <div>
                   <label className="labelWidthContactForm" htmlFor='name'>Nombre y Apellido</label>
@@ -164,7 +168,7 @@ const ContactForm = (props) => {
                     <InputUser  className="form-control"
                       type='text'
                       name='name'
-                      placeholder="Ingresá tu nombre y apellido"
+                      placeholder="Tu nombre y apellido"
                       required
                       value={values.name}
                       onChange={handleChange}
@@ -184,7 +188,7 @@ const ContactForm = (props) => {
                     <InputUser className="form-control"
                       type='text'
                       name='phone'
-                      placeholder="Ingresá tu número de teléfono"
+                      placeholder="Tu número de teléfono"
                       value={values.phone}
                       onChange={handleChange}
                       onBlur={handleBlur}
@@ -207,7 +211,7 @@ const ContactForm = (props) => {
                     <InputUser className="form-control"
                       type='text'
                       name='email'
-                      placeholder="Ingresá tu e-mail"
+                      placeholder="Tu e-mail"
                       required
                       value={values.email}
                       onChange={handleChange}
@@ -226,14 +230,12 @@ const ContactForm = (props) => {
 
               <div>
                 <div>
-                  <label className="labelWidthContactForm"htmlFor='message'>Mensaje </label>
+                  <label className="labelWidthContactForm" htmlFor='message'>Mensaje </label>
                   <InputGroup >
-                    <textarea className="textArea form-control borderRounded mb-3"
-                      type='text'
-                      rows='6'
-                      cols='39'
+                    <textarea className="textArea form-control"
+                      type="textarea"
                       name='message'
-                      placeholder="    Tu mensaje..."
+                      placeholder=" Tu mensaje..."
                       required
                       value={values.message}
                       onChange={handleChange}

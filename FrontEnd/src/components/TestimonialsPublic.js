@@ -6,7 +6,7 @@ import "./styles/styles.css";
 import "./styles/testimonial.css";
 import LoadingBox from './LoadingBox';
 
-function TestimonialsPublic () {
+const TestimonialsPublic =() =>{
 
     const [testimonials,setTestimonials]=useState([]);
     const [testimonialsComplete,setTestimonialsComplete]=useState([]);

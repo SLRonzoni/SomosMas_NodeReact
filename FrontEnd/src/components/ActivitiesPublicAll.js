@@ -37,13 +37,13 @@ const ActivitiesPublicAll = (props) => {
     <>
       <div className="containerActivities">
         <div className="containerSlideSize" >
-          {/* si aun está cargando actividades*/}
+         
           {!activities &&  <LoadingBox/> }
 
-          {/* solo renderiza si hay actividades*/}
+         
           {activities && 
             <>
-              <div className="mt-5">
+              <div className="carrousel">
                 <br/>
                 <Carousel>
                   {activities.map((oneActivity) => ( 

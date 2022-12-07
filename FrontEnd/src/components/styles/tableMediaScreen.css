@@ -1,3 +1,14 @@
+/* About*/
+@media only screen  and (min-width:1150px) { /* ✅ */
+    .cardAbout{
+        font-size: 2.2vh!important;
+    }
+
+    .containerRegisterContactForm{
+        width: 51%;
+    }
+}
+
 /* Home , Navbar*/
 @media only screen  and (max-width:1150px) { /* ✅ */
     .containerHome{
@@ -36,12 +47,14 @@
         display:none;
     }
 
+    .listAbout,
     .buttonsResponsive,
     .containerAddress{
         display: block;
     }
 
-    .form-control,
+    
+    
     .containerLogin,
     .imageActivity{
         width: 90%;
@@ -50,8 +63,7 @@
     .buttonBlue{
         margin:0.1rem;  
     }
-   
-
+    
 } 
 
 /* Create Testimonial */
@@ -59,20 +71,26 @@
     .buttonsResponsive{
         display:block;
         margin: auto;
-    }    
+    } 
+    
+    /* form .textArea{
+        width: 100%;
+    } */
 } 
 
 
-/* para formulario de contacto y formulario de registro
-@media only screen  and (min-width: 633px) and (max-width:1024px) {
+/* para formulario de contacto y formulario de registro*/
+@media only screen  and (max-width:1024px) {
     
     form .displayInLineFlex{
         display:block;
     }
 
+    
     form .form-control{
         width: 100%;
         margin:auto;
+        font-size: 0.55rem;
     }
 
     form .form-image{
@@ -80,11 +98,7 @@
         margin:auto;
     }
 
-    form .textArea{
-        width: 100%;
-        margin:auto;
-    }
-}*/
+}
 
 
 /* @media only screen  and (min-width: 630px) and (max-width: 920px) {
@@ -119,7 +133,7 @@
 
     form .textArea{
         width:100%;
-        margin:auto;
+        
     }
 
     form .form-image{
@@ -132,8 +146,8 @@
         margin:auto;
     }
     
-}
-
+}*/
+/*
 @media only screen and (min-width: 578px) and (max-width: 629px) {
     encolumna btn filtros
     div:nth-child(2){
