@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/styles.css";
 import "./styles/contactForm.css";
-import "./styles/beggin-login-register-home.css";
+import "./styles/login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ import { Formik } from "formik";
 import * as msg from "./helpers/validationMessages";
 import * as regex from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
-import {ErrorText,IconUser,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
+import {TextArea,ErrorText,IconUser,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
 
 const ContactForm = (props) => {
@@ -229,11 +229,11 @@ const ContactForm = (props) => {
               <br/>
 
               <div>
-                <div>
+                <div> 
                   <label className="labelWidthContactForm" htmlFor='message'>Mensaje </label>
                   <InputGroup >
-                    <textarea className="textArea form-control"
-                      type="textarea"
+                    <TextArea className="form-control"
+                      type="text"
                       name='message'
                       placeholder=" Tu mensaje..."
                       required

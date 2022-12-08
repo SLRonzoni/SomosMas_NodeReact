@@ -138,65 +138,70 @@ const ActivitiesAll = (props) => {
 
       {activities && 
       <>
-      <div className="centerText m-5">
-        <h3 className="containerTitle">Listado de Actividades</h3>
-        <div className="d-flex centerText" >
-          <div>
-              <select 
-                className="m-3 selectBtnDesplegable form-select "
-                type="text"
-                name="name"
-                onChange={changesId}
-              >  
-                {activities.map(oneActivity => (
-                  <option className="colorBlack"key={oneActivity.id} value={oneActivity.name}>
-                    {oneActivity.name}
-                  </option>
-                )).sort(OrderNameAsc(activities))}
-                <option className="colorBlack"value={"todas"}>Todas las actividades (por nombre)</option>
-              </select>
-          </div> 
-          
-          <div >
-              <select
-                type="text"
-                name="name"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
-              >  
-                {activities.map(oneActivity => (
-                  <option className="colorBlack" key={oneActivity.id} value={oneActivity.updatedAt}>
-                    {formatDate(new Date(oneActivity.updatedAt))}
-                  </option>
-                ))}
-                <option className="colorBlack"value={"todas"}>Todas las actividades (por actualización)</option>
-              </select>
-          </div> 
-        </div>
+      <div className="m-2">
+        
+          <h3 className="containerTitle" >Listado de Actividades</h3>
+            <div className="flex-Center  mb-2" >
+              <div>
+                  <select 
+                    className="m-3 selectBtnDesplegable form-select "
+                    type="text"
+                    name="name"
+                    onChange={changesId}
+                  >  
+                    {activities.map(oneActivity => (
+                      <option className="colorBlack"key={oneActivity.id} value={oneActivity.name}>
+                        {oneActivity.name}
+                      </option>
+                    )).sort(OrderNameAsc(activities))}
+                    <option className="colorBlack"value={"todas"}>Todas las actividades (por nombre)</option>
+                  </select>
+              </div> 
+              
+              <div>
+                  <select
+                    type="text"
+                    name="name"
+                    onChange={changesId}
+                    className="m-3 selectBtnDesplegable form-select "
+                  >  
+                    {activities.map(oneActivity => (
+                      <option className="colorBlack" key={oneActivity.id} value={oneActivity.updatedAt}>
+                        {formatDate(new Date(oneActivity.updatedAt))}
+                      </option>
+                    ))}
+                    <option className="colorBlack"value={"todas"}>Todas las actividades (por actualización)</option>
+                  </select>
+              </div> 
+            </div>
 
-        <div className="tableActivities">
-          <table  className="table table-responsive table-bordered"  >
-            <thead>
-              <tr>
-                <th> Id </th>
-                <th> Imágen </th>
-                <th> Actividad </th>
-                <th> Descripción </th>
-                <th> Creada</th>
-                <th> Actualizada</th>
+            <div className="tableActivities">
+              <table  className="table table-responsive table-bordered"  >
+                <thead className="">
+                  <tr>
+                    <th> Id </th>
+                    <th> Imágen </th>
+                    <th> Actividad </th>
+                    <th> Descripción </th>
+                    <th> Creada</th>
+                    <th> Actualizada</th>
 
-                <th className="centerText" >
-                  <Link to={'/ActivitiesCreate'} className="m-1">
-                    <FaIcon.FaPlusSquare className="iconBlue"/>
-                  </Link> 
-                </th>
-              </tr>
-            </thead>
+                    <th className="centerText" >
+                      <Link to={'/ActivitiesCreate'} className="m-1">
+                        <FaIcon.FaPlusSquare className="iconBlue"/>
+                      </Link> 
+                    </th>
+                  </tr>
+                </thead>
+                
+                {showActivities()}
+             </table> 
+            </div>
 
-            {showActivities()}
-            
-          </table>
-        </div>
+           
+                
+             
+        
       </div>
       </>
       } 

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 const Colors ={
     border:'#0075FF',
     error:'hsl(0, 97%, 49%)',
-    success:'#1ed12d',
+    success:'#2abe1d;',
     fondoMsj:"ligthYellow",
     fondoMsjError:"#EDBB99",
-    buttonSuccess:"#198754",
+    buttonSuccess:"#2abe1d;",
     buttonMenu:"#390788",
 }
 
@@ -69,6 +69,28 @@ const InputUser = styled.input`
     width:25.2rem;
     height:2rem;
     line-height:1rem;
+    background:#fff;
+    color:rgb(26, 26, 26);
+    border-radius:0.44rem;
+    padding:0 2rem 0 0.62rem;
+    transition:.3s ease all;
+    border:3px solid transparent;
+
+    &:focus {
+        border:0.12rem solid ${Colors.border};
+        outline:none;
+        box-shadow:0.12rem 0rem 1.2rem rgba(163,163,163,0.4);
+    }
+`;
+
+const TextArea = styled.textarea`
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    width:25.2rem;
+    height:10rem;
+    line-height:1rem;
+    resize:none;
     background:#fff;
     color:rgb(26, 26, 26);
     border-radius:0.44rem;
@@ -173,7 +195,7 @@ const MsjWrong =styled.p`
 `;
 
 export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, 
-        IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
+        TextArea, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
 
 
   

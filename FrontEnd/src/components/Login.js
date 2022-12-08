@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import "./styles/styles.css";
-import "./styles/beggin-login-register-home.css";
+import "./styles/login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
 import { Link,Redirect } from "react-router-dom"; 
 import Swal from "sweetalert2";
@@ -131,15 +131,15 @@ const Login =()=>{
       <>
       <div className="containerFirst">
         
-        <div className="d-flex">
+        {/* <div className="handsAndHeart"> */}
           <div className="containerImgHalfScreen "> 
             <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
           </div>
 
            <div className="heart">
-            <p>Para hacer una donación ... logueate</p>
+            <p>Logueate y hacé una donación</p>
           </div> 
-        </div>
+        {/* </div> */}
         
         <div className="containerLogin">
           <div className="buttonLoginGoogle">  
@@ -153,8 +153,8 @@ const Login =()=>{
           > 
           { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
       
-              <form className="containerLoginForm" onSubmit={handleSubmit}>
-                  <h5 className="centerText m-4">Inicio de sesión</h5>
+              <form className="containerForm" onSubmit={handleSubmit}>
+                  <h5 className="h5Form">Inicio de sesión</h5>
                   <div>
                       <div>   
                         <label className="d-block ms-2" htmlFor="email">Email</label>
@@ -193,7 +193,7 @@ const Login =()=>{
                           name="password" 
                           id="password"  
                           value={values.password}
-                          placeholder="contraseña" 
+                          placeholder="password" 
                           required
                           onChange={handleChange} 
                           onBlur={handleBlur}

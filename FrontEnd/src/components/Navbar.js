@@ -50,7 +50,7 @@ export default function Sidebar () {
 
 
        <h1 className={sidebar ? "navbarH1 active" : "navbarH1"}>Somos Más o.n.g.
-          <img className={sidebar ?"shadowFilterNav imgHome active" : "shadowFilterNav imgHome"} src={imagen} alt="manosNiños"></img>
+          <img className={sidebar ? "shadowFilterNav imgHome active" : "shadowFilterNav imgHome"} src={imagen} alt="manosNiños"></img>
         </h1>
 
         <div className="footer mt-2">
@@ -84,50 +84,50 @@ export default function Sidebar () {
             <FaIcons.FaList className="item"/> 
             <Navbar.Brand >
               {!userInfo &&(
-                <NavDropdown title="Secciones" className="item ms-2" > 
-                  <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                  <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
+                <NavDropdown title="Secciones" className="item ms-2"> 
+                  <NavDropdown.Item href="/About" onClick={showNavbar}>Acerca de nosotros</NavDropdown.Item>
+                  <NavDropdown.Item href="/MembersAll" onClick={showNavbar}>Miembros</NavDropdown.Item>
                   <NavDropdown.Divider /> 
-                  <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
-                  <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
-                  <NavDropdown.Item href="/OrganizationsAll">Quienes nos acompañan</NavDropdown.Item>
-                  <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>                     
+                  <NavDropdown.Item href="/ActivitiesPublicAll" onClick={showNavbar}>Actividades</NavDropdown.Item>
+                  <NavDropdown.Item href="/NewsAllPublic" onClick={showNavbar}>Noticias</NavDropdown.Item>
+                  <NavDropdown.Item href="/OrganizationsAll" onClick={showNavbar}>Quienes nos acompañan</NavDropdown.Item>
+                  <NavDropdown.Item href="/TestimonialsPublic" onClick={showNavbar}>Testimonios</NavDropdown.Item>                     
                   <NavDropdown.Divider /> 
-                  <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item> 
-                  <NavDropdown.Item href="/PaymentMethod">Donar</NavDropdown.Item>
+                  <NavDropdown.Item href="/ContactForm" onClick={showNavbar}>Contacto</NavDropdown.Item> 
+                  <NavDropdown.Item href="/PaymentMethod" onClick={showNavbar}>Donar</NavDropdown.Item>
                 </NavDropdown>
               )}
               {userInfo && userInfo.roleId!==1 && (
                 <NavDropdown title="Secciones" className="NavDrop ms-2">
-                  <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                  <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                  <NavDropdown.Item href="/ActivitiesPublicAll">Actividades</NavDropdown.Item>
+                  <NavDropdown.Item href="/About" onClick={showNavbar}>Acerca de nosotros</NavDropdown.Item>
+                  <NavDropdown.Item href="/MembersAll" onClick={showNavbar}>Miembros</NavDropdown.Item>
+                  <NavDropdown.Item href="/ActivitiesPublicAll" onClick={showNavbar}>Actividades</NavDropdown.Item>
                   <NavDropdown.Divider /> 
-                  <NavDropdown.Item href="/OrganizationsAll">Quienes nos acompañan</NavDropdown.Item>
-                  <NavDropdown.Item href="/NewsAllPublic">Noticias</NavDropdown.Item>
-                  <NavDropdown.Item href="/TestimonialsPublic">Testimonios</NavDropdown.Item>
+                  <NavDropdown.Item href="/OrganizationsAll" onClick={showNavbar}>Quienes nos acompañan</NavDropdown.Item>
+                  <NavDropdown.Item href="/NewsAllPublic" onClick={showNavbar}>Noticias</NavDropdown.Item>
+                  <NavDropdown.Item href="/TestimonialsPublic" onClick={showNavbar}>Testimonios</NavDropdown.Item>
                   <NavDropdown.Divider />               
-                  <NavDropdown.Item href="/ContactForm">Contacto</NavDropdown.Item>
-                  <NavDropdown.Item href="/PaymentMethod">Donar</NavDropdown.Item>
+                  <NavDropdown.Item href="/ContactForm" onClick={showNavbar}>Contacto</NavDropdown.Item>
+                  <NavDropdown.Item href="/PaymentMethod" onClick={showNavbar}>Donar</NavDropdown.Item>
                   <NavDropdown.Divider /> 
                   <NavDropdown.Item href={`/users/${userInfo.id}`}>Mi perfil</NavDropdown.Item>
               </NavDropdown> 
               )}               
               {userInfo && userInfo.roleId===1 && ( 
                 <NavDropdown title="Secciones" id="basic-nav-dropdown" className="ms-2" >  
-                  <NavDropdown.Item href="/About">Acerca de nosotros</NavDropdown.Item>
-                  <NavDropdown.Item href="/ActivitiesAll">Actividades</NavDropdown.Item>
-                  <NavDropdown.Item href="/CategoriesAll">Categorias</NavDropdown.Item>
-                  <NavDropdown.Item href="/CommentsAll">Comentarios</NavDropdown.Item>
-                  <NavDropdown.Item href="/ContactsAll">Contactos</NavDropdown.Item>
-                  <NavDropdown.Item href="/DonationsAll">Donaciones</NavDropdown.Item>
-                  <NavDropdown.Item href="/MessagesAll">Mensajes</NavDropdown.Item>
-                  <NavDropdown.Item href="/MembersAll">Miembros</NavDropdown.Item>
-                  <NavDropdown.Item href="/newsAll">Noticias</NavDropdown.Item>
-                  <NavDropdown.Item href="/OrganizationsAll">Organizaciones</NavDropdown.Item>
-                  <NavDropdown.Item href="/RolesAll">Roles</NavDropdown.Item>
-                  <NavDropdown.Item href="/TestimonialsAll">Testimonios</NavDropdown.Item>
-                  <NavDropdown.Item href="/UsersAll">Usuarios</NavDropdown.Item>             
+                  <NavDropdown.Item href="/About" onClick={showNavbar}>Acerca de nosotros</NavDropdown.Item>
+                  <NavDropdown.Item href="/ActivitiesAll" onClick={showNavbar}>Actividades</NavDropdown.Item>
+                  <NavDropdown.Item href="/CategoriesAll" onClick={showNavbar}>Categorias</NavDropdown.Item>
+                  <NavDropdown.Item href="/CommentsAll" onClick={showNavbar}>Comentarios</NavDropdown.Item>
+                  <NavDropdown.Item href="/ContactsAll" onClick={showNavbar}>Contactos</NavDropdown.Item>
+                  <NavDropdown.Item href="/DonationsAll" onClick={showNavbar}>Donaciones</NavDropdown.Item>
+                  <NavDropdown.Item href="/MessagesAll" onClick={showNavbar}>Mensajes</NavDropdown.Item>
+                  <NavDropdown.Item href="/MembersAll" onClick={showNavbar}>Miembros</NavDropdown.Item>
+                  <NavDropdown.Item href="/newsAll" onClick={showNavbar}>Noticias</NavDropdown.Item>
+                  <NavDropdown.Item href="/OrganizationsAll" onClick={showNavbar}>Organizaciones</NavDropdown.Item>
+                  <NavDropdown.Item href="/RolesAll" onClick={showNavbar}>Roles</NavDropdown.Item>
+                  <NavDropdown.Item href="/TestimonialsAll" onClick={showNavbar}>Testimonios</NavDropdown.Item>
+                  <NavDropdown.Item href="/UsersAll" onClick={showNavbar}>Usuarios</NavDropdown.Item>             
                 </NavDropdown>
               )} 
             </Navbar.Brand>    
@@ -135,14 +135,14 @@ export default function Sidebar () {
 
           <li className="navbar-toogle" >
                 <FaIcons.FaHome className="item"/> 
-                <Link to="/" className="item m-2">Inicio </Link>
+                <Link to="/" className="item m-2" onClick={showNavbar}>Inicio </Link>
           </li> 
 
           <li className="navbar-toogle">
             {!userInfo && (
               <div>
                 <FaIcons.FaAddressCard className="item"/> 
-                <Link to="/auth/register" className="item m-2">Registro </Link>
+                <Link to="/auth/register" className="item m-2" onClick={showNavbar}>Registro </Link>
               </div> 
             )} 
           </li>
@@ -151,7 +151,7 @@ export default function Sidebar () {
             {!userInfo && (
               <div>
                 <FaIcons.FaUserCheck className="item"/>
-                <Link to="/auth/login" className="item m-2">Login </Link>
+                <Link to="/auth/login" className="item m-2" onClick={showNavbar}>Login </Link>
               </div> 
             )} 
             {userInfo && (

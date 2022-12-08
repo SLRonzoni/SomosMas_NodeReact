@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./styles/styles.css";
-import "./styles/beggin-login-register-home.css";
+import "./styles/login-register-home.css";
 import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import Swal from "sweetalert2";

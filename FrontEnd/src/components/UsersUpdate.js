@@ -2,10 +2,12 @@ import React, {useState,useEffect} from 'react';
 import axiosClient from '../configuration/axiosClient';
 import './styles/styles.css';
 import './styles/users.css';
+import './styles/tableMediaScreen.css';
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
 import * as msg from './helpers/validationMessages';
 import * as regex  from "./helpers/RegExp";
+import * as FaIcons from "react-icons/fa";
 import {formatDate} from './helpers/FormatDate';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +18,9 @@ import Swal from "sweetalert2";
 const MyProfileUpdate = ({match, history}) =>{
       
   const  id= match.params.id;
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
 
   const [user, setUser] = useState({
       id:'',
@@ -111,11 +116,11 @@ const MyProfileUpdate = ({match, history}) =>{
 
     if (!regex.regexUserfirstName.test(values.firstName)) {
       errors.firstName=msg.msgValidationUserFirstName
-      errors.icoNfirstName= '❌'
+      errors.icoNfirstName= X
       errors.formOk='f'
       return errors
     } else {
-      errors.icoNfirstName= '✔️'
+      errors.icoNfirstName= V
       errors.formOk='v'
     };
 
@@ -125,27 +130,27 @@ const MyProfileUpdate = ({match, history}) =>{
 
     if (!regex.regexUserLastName.test(values.lastName)) {
       errors.lastName=msg.msgValidationUserLastName
-      errors.icoNlastName= '❌'
+      errors.icoNlastName= X
       errors.formOk='f'
       return errors
     } else {
-      errors.icoNlastName= '✔️'
+      errors.icoNlastName= V
       errors.formOk='v'
     };
 
     if (!values.password) {
       errors.password=msg.msgRequired
-      errors.icoNpassword= '❌'
+      errors.icoNpassword= X
       return errors
     };
 
     if (!regex.regexUserPassword.test(values.password)) {
       errors.password=msg.msgValidationUserPassword
-      errors.icoNpassword= '❌'
+      errors.icoNpassword= X
       errors.formOk='f'
       return errors
     } else {
-      errors.icoNpassword= '✔️'
+      errors.icoNpassword= V
       errors.formOk='v'
     };
   }
@@ -161,7 +166,7 @@ const MyProfileUpdate = ({match, history}) =>{
          onSubmit={(values)=>{ sendForm(values)}}
     >
     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
-        <form className="containerMyPerfil"onSubmit={handleSubmit} > 
+        <form className="containerMyProfile" onSubmit={handleSubmit} > 
             <h4 className='ms-4'>Mi Perfil </h4> 
             <div className='userDiv'>
               <img className='imageMyProfile' src={user.photo}  alt="userPhoto"/>  
@@ -172,7 +177,7 @@ const MyProfileUpdate = ({match, history}) =>{
               </div>
             </div>
 
-            <div>
+            <div className='ms-4'>
               <div>
                  <div className='mb-2'>
                     <InputGroup className='d-block' >

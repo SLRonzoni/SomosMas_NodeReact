@@ -8,7 +8,7 @@ import * as FaIcons from 'react-icons/fa';
 const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
   
     return (
-        <tr >
+        <tr>
             <td >{id}</td>
             <td className="imageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
             <td >{name}</td>
@@ -27,6 +27,7 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
                 </div> 
             </td>      
         </tr>
+      
     );
 };
 export default ActivitiesAllLine;

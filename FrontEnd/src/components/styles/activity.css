@@ -8,7 +8,7 @@
     color:#fff;
 }
 
-.imageActivity{
+.imageActivity{/* ✅ */
     display: block;
     justify-content: center;
     margin:auto;

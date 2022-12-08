@@ -1,15 +1,35 @@
-/* About*/
+/* About, Register, MyProfile*/
 @media only screen  and (min-width:1150px) { /* ✅ */
+    .containerLeft,
     .cardAbout{
         font-size: 2.2vh!important;
     }
 
-    .containerRegisterContactForm{
+    .containerForm{
         width: 51%;
+    }
+
+    .containerMyProfile{
+        height: 70%;
+    }
+
+    .sliderHome,
+    .containerLeft{
+        margin:auto;
+    }
+
+    .sliderHome{
+        margin-top: -1rem;
+    }
+
+    .btn-success{
+        height:130%;
+        width: 50%;
+        font-size: 2.2vh;
     }
 }
 
-/* Home , Navbar*/
+/* Home , Navbar, Register, Contact, Login*/
 @media only screen  and (max-width:1150px) { /* ✅ */
     .containerHome{
         display: block; 
@@ -47,23 +67,45 @@
         display:none;
     }
 
-    .listAbout,
+    .formGroup,
     .buttonsResponsive,
     .containerAddress{
         display: block;
     }
-
-    
-    
-    .containerLogin,
+   
+    .containerLogin,.containerRegister,
     .imageActivity{
         width: 90%;
+    }
+
+    .h5Login{
+        padding-top:5rem;
     }
     
     .buttonBlue{
         margin:0.1rem;  
     }
-    
+
+    .heart,
+    .heart::before, 
+    .heart:after{
+        background-color: transparent;
+    }
+
+    .heart p{
+        background-color: red;
+        border-radius: 10%;
+        margin-top: 2.5rem;
+    }
+
+    .labelRegister{
+        width: auto;
+    }
+
+     .formGroup{
+        width: auto;
+        margin:0 -1rem;
+     }
 } 
 
 /* Create Testimonial */
@@ -73,19 +115,15 @@
         margin: auto;
     } 
     
-    /* form .textArea{
-        width: 100%;
-    } */
 } 
 
 
-/* para formulario de contacto y formulario de registro*/
+/* Contact, Register*/
 @media only screen  and (max-width:1024px) {
     
-    form .displayInLineFlex{
+    /* form .displayInLineFlex{
         display:block;
-    }
-
+    } */
     
     form .form-control{
         width: 100%;
@@ -93,10 +131,14 @@
         font-size: 0.55rem;
     }
 
+    .formGroup{
+       width: 13rem;
+    }
+/* 
     form .form-image{
         width:100%;
         margin:auto;
-    }
+    } */
 
 }
 
