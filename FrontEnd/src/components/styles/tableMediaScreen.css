@@ -90,6 +90,7 @@
     .heart::before, 
     .heart:after{
         background-color: transparent;
+        border:0;
     }
 
     .heart p{

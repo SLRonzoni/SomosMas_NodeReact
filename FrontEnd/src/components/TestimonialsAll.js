@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect} from "react";
+import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import "./styles/table.css";
@@ -6,6 +6,7 @@ import "./styles/tableMediaScreen.css";
 import TestimonialsAllLine from "./TestimonialsAllLine";
 import Swal from "sweetalert2";
 import LoadingBox from "./LoadingBox";
+import { Redirect} from "react-router-dom";
 import { formatDate } from "./helpers/FormatDate";
 import { OrderNameAsc } from "./helpers/Order";
 
@@ -123,17 +124,19 @@ const TestimonialsAll = (props) => {
     );
   };
 
+  const token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
+
   return (
     <>
-     <div className="containerFirst">  
+     <div className="containerFirst"> 
+      {!token && <Redirect to="/Login" />}  
       {!testimonials &&  <LoadingBox/> }
-      
       {testimonials && 
-      
       <>
-      <div className="centerText m-5">
-        <h3 className="ContainerTitle" >Listado de Testimonios</h3>  
-        <div className="d-flex centerText" >
+      <div className="m-5">
+        <div className="headsPage">
+        <h3>Listado de Testimonios</h3>  
+        <div className="flex-Center">
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -150,7 +153,7 @@ const TestimonialsAll = (props) => {
               </select>
           </div> 
           
-          <div >
+          <div>
               <select
                 type="text"
                 name="name"
@@ -166,19 +169,19 @@ const TestimonialsAll = (props) => {
               </select>
           </div>
         </div> 
-
-        <div>
+        </div> 
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered" >
-            <thead >
-              <tr >
-                <th className="tituloItem centerText "> Id </th>
+          <thead className="table-head table-bordered">
+              <tr>
+                <th> Id </th>
                 <th className="tituloItem centerText"> Imágen </th>
-                <th className="tituloItem "> Testimonio </th>
-                <th className="tituloItem "> Contenido </th>
-                <th className="tituloItem centerText"> userId </th>
-                <th className="tituloItem centerText"> Creado</th>
-                <th className="tituloItem centerText"> Actualizado</th>
-                <th className="tituloItem centerText"></th>
+                <th> Testimonio </th>
+                <th> Contenido </th>
+                <th> userId </th>
+                <th> Creado</th>
+                <th> Actualizado</th>
+                <th></th>
               </tr>
             </thead>
 

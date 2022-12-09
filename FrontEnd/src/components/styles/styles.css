@@ -27,6 +27,37 @@ body{ /* ✅ */
     margin-top: 12rem;
 }
 
+.containerTitle {
+    margin-top:1rem;
+    font-size: 1.13rem;
+    margin: auto;
+}
+
+.cardContainer{
+    display: flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    width: 18.75rem;
+    height: 50rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 1rem -0.32rem;
+    transition: 0.3s;
+    animation:ease-in;
+    margin:1.5rem;
+    margin-top:-3rem;
+} 
+
+.cardTitle {  /* ✅ */
+    margin-bottom:0.2rem;
+}
+
+.fixedSizeMember{
+    margin:1rem;
+    width:12rem; 
+    max-width:20rem;
+}
+
 .buttonBlue{ /* ✅ */
     background-color:#1E90FF;
     color:#fff;
@@ -395,7 +426,7 @@ h1{
     margin-left:0rem !important;
 }
 
-.centerText{
+.centerText{ /* ✅ */
     text-align: center;
     justify-content: center;
 }

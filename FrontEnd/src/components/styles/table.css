@@ -1,11 +1,11 @@
-table {
+table {/* ✅ */
     border-spacing: 0;
     border-collapse: collapse;
     width: 800px;
     margin: 0px auto;
 }
  
-td, th {
+td, th {/* ✅ */
     border: 1px solid #ccc;
     padding: 5px;
     text-align: left;   
@@ -13,38 +13,38 @@ td, th {
 
  
 td:nth-child(n + 3),
-th:nth-child(n + 3) {
+th:nth-child(n + 3) {/* ✅ */
     text-align: center;
 }
  
-tbody tr:hover {
+tbody tr:hover {/* ✅ */
     background-color: #fff;
     background-color: grey;
 }
  
-thead {
+thead {/* ✅ */
     background-color:rgb(26, 26, 26);
-    color: white;
+    color: #fff;
 }
 
-.tableActivities{
+.tableTotal{/* ✅ */
     background-color: rgb(55, 42, 70);
     margin:auto;
-    width: 95%;
+    width: 95vw;
 }
 
-.table th{
+.table th{/* ✅ */
     color: rgb(255, 255, 255);
     background-color:rgb(49, 28, 74) ;
     text-align: center;
 }
 
-.table tr{
+.table tr{/* ✅ */
     color: #fff;
     background-color:rgb(55, 42, 70) ;
 }
 
-.iconBlue{
+.iconBlue{/* ✅ */
     color:#0616fc;
     margin:10px;
     font-size: 28px;
@@ -53,7 +53,7 @@ thead {
     border-radius: 5px;
 }
 
-.iconRed{
+.iconRed{/* ✅ */
     color:rgb(245, 34, 34);
     margin:15px;
     font-size: 27px;
@@ -63,7 +63,36 @@ thead {
     margin-top:10px;
 }
 
-.button{
+.button{/* ✅ */
     background-color: transparent;
     cursor: pointer;
 }
+
+
+.headsPage{/* ✅ */
+    position:sticky;
+    top:3.8rem;
+    border-bottom: 1px solid #fff;
+    left: 2.8vw;
+    z-index: 1;
+    width: 95vw;
+    background-color: rgb(32, 10, 67);
+}
+
+.headsPage h3{/* ✅ */
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top:0.5rem;
+}    
+
+.table-head tr th{/* ✅ */
+    position:sticky;
+    top:10rem;
+    max-width: 80%;
+    z-index: 2;
+    background-color:rgb(154, 140, 176);
+    color:rgb(32, 10, 67);
+}
+
+
+

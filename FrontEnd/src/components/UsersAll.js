@@ -128,16 +128,14 @@ const UsersAll = (props) => {
   return (
     <>
       <div className="containerFirst">  
-       
         {!token && <Redirect to='/Login' />}
-
         {!users && <LoadingBox />}
-
         {users && 
          <>
-         <div className="centerText m-5">
-            <h3 className="containerTitle">Listado de Usuarios</h3>
-            <div className="displayFlex centerText" >
+         <div className="m-5">
+            <div className="headsPage">
+            <h3>Listado de Usuarios</h3>
+            <div className="flex-Center" >
               <div>
                 <select
                   className='m-3 selectBtnDesplegable form-select '
@@ -154,18 +152,18 @@ const UsersAll = (props) => {
                 </select>
               </div>
             </div>
-
-            <div>
+            </div>
+            <div className="tableTotal">
               <table className='table table-responsive table-bordered'>
-                <thead>
+              <thead className="table-head table-bordered">
                   <tr>
-                    <th className='tituloItem centerText'> Id </th>
-                    <th className='tituloItem '> Imágen</th>
-                    <th className='tituloItem leftText'> Role y Usuario </th>
-                    <th className='tituloItem leftText'> Email </th>
-                    <th className='tituloItem centerText'> Registrado</th>
-                    <th className='tituloItem centerText'> Actualizado</th>
-                    <th className='tituloItem centerText'> </th>
+                    <th> Id </th>
+                    <th> Imágen</th>
+                    <th> Role y Usuario </th>
+                    <th> Email </th>
+                    <th> Registrado</th>
+                    <th> Actualizado</th>
+                    <th> </th>
                   </tr>
                 </thead>
 

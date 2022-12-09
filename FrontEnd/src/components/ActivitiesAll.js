@@ -138,13 +138,13 @@ const ActivitiesAll = (props) => {
 
       {activities && 
       <>
-      <div className="m-2">
-        
-          <h3 className="containerTitle" >Listado de Actividades</h3>
-            <div className="flex-Center  mb-2" >
+      <div className="m-5">
+        <div className="headsPage">
+          <h3>Listado de Actividades</h3>
+            <div className="flex-Center">
               <div>
                   <select 
-                    className="m-3 selectBtnDesplegable form-select "
+                    className="m-3 selectBtnDesplegable form-select"
                     type="text"
                     name="name"
                     onChange={changesId}
@@ -174,10 +174,10 @@ const ActivitiesAll = (props) => {
                   </select>
               </div> 
             </div>
-
-            <div className="tableActivities">
+          </div>
+            <div className="tableTotal">
               <table  className="table table-responsive table-bordered"  >
-                <thead className="">
+                <thead className="table-head  table-bordered">
                   <tr>
                     <th> Id </th>
                     <th> Imágen </th>
@@ -197,12 +197,7 @@ const ActivitiesAll = (props) => {
                 {showActivities()}
              </table> 
             </div>
-
-           
-                
-             
-        
-      </div>
+        </div>
       </>
       } 
       </div>

@@ -1,7 +1,6 @@
 import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
-import "./styles/card.css";
 import './styles/members-organizations.css';
 import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";

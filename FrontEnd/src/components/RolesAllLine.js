@@ -4,19 +4,17 @@ import './styles/styles.css';
 import {formatDate} from './helpers/FormatDate';
 import * as FaIcons from 'react-icons/fa';
 
-const CategoriesAllLine = ({id, name, image, description, create,update,remove}) =>{
+const RolesAllLine = ({id, name, description, create,update,remove}) =>{
   
     return (
         <tr>
-            <td className='centerText'>{id}</td>
-            <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
+            <td className="centerText">{id}</td>
             <td >{name}</td>
             <td >{description}</td>
-            <td >{formatDate(new Date(create))}</td>
-            <td >{formatDate(new Date(update))}</td>
-            
-            <td >
-                <div> 
+            <td>{formatDate(new Date(create))}</td>
+            <td>{formatDate(new Date(update))}</td>
+            <td>   
+                <div className="flex-Center"> 
                     <Link to={`/categories/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>
@@ -24,8 +22,9 @@ const CategoriesAllLine = ({id, name, image, description, create,update,remove})
                         <FaIcons.FaTrashAlt className='iconRed'/>
                     </div>                          
                 </div>  
-            </td>      
-        </tr>
+            </td>  
+    </tr>
     );
 };
-export default CategoriesAllLine;
+export default RolesAllLine;
+             

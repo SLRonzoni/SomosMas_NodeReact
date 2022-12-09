@@ -7,12 +7,11 @@ const MessageAllLine = ({id, name, email, message, create, remove}) =>{
   
     return (
         <tr>
-            <td >{id}</td>
+            <td className='centerText'>{id}</td>
             <td >{name}</td>
             <td >{email} </td>
             <td >{message}</td>
-            <td className="centerText" >{formatDate(new Date(create))}</td>
-            <td className='invisible'></td>
+            <td >{formatDate(new Date(create))}</td>
 
             <td className="centerText"> 
                 <div className="button" onClick={()=>{remove(id)}}> 

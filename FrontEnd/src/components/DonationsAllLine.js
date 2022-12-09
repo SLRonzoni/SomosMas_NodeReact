@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/styles.css';
+import './styles/table.css';
 import { formatDate } from './helpers/FormatDate';
 import * as FaIcons from 'react-icons/fa';
 
@@ -7,10 +8,10 @@ const DonationsAllLine = ({id, payForm , amount,create, userId,name, lastName, e
   
     return (
         <tr>
-            <td >{id}</td>
+            <td className="centerText">{id}</td>
             <td >{payForm} </td>
             <td >{amount} </td>
-            <td className="centerText" >{formatDate(new Date(create))}</td>
+            <td >{formatDate(new Date(create))}</td>
             <td >{userId} </td>
             <td >{name},{lastName}</td>
             <td >{email}</td>

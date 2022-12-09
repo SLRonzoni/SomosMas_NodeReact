@@ -128,14 +128,10 @@ const ContactsAll = (props) => {
       {contacts && 
       <>
       <div className="m-5">
-        <br/>
-      <div>
-        <h1 >Listado de Contactos</h1>
-      </div>
-      <br/>     
-        <div className="" >
-          
-          <div >
+      <div className="headsPage">
+        <h3 >Listado de Contactos</h3>  
+        <div className="flex-Center" >
+          <div>
               <select
                 type="text"
                 name="name"
@@ -151,16 +147,16 @@ const ContactsAll = (props) => {
               </select>
           </div> 
         </div> 
-
-        <div>
+        </div> 
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered">
-            <thead>
+            <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText"> Id </th>
-                <th className="tituloItem"> Contacto </th>
-                <th className="tituloItem"> Email </th>
-                <th className="tituloItem"> Teléfono </th>
-                <th className="tituloItem centerText"> Creado</th>
+                <th> Id </th>
+                <th> Contacto </th>
+                <th> Email </th>
+                <th> Teléfono </th>
+                <th> Creado</th>
                 <th></th>
               </tr>
             </thead>

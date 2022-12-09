@@ -34,6 +34,6 @@
 }
 
 .cardAbout:hover{ /* ✅ */  
-    background-color: rgb(138, 193, 175);
+    background-color: rgb(143, 135, 155);
     color:rgb(32, 10, 67);
 }

@@ -9,15 +9,15 @@ const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove
   
     return (
         <tr>
-            <td >{id}</td>
+            <td className='centerText'>{id}</td>
             <td className="imageChar centerText" ><img src={image}  alt="newsImage"></img> </td>
-            <td >{name}</td>
-            <td >{categoryId}</td>
-            <td >{content}</td>
-            <td className="centerText" >{formatDate(new Date(create))}</td>
-            <td className="centerText" >{formatDate(new Date(update))}</td>
+            <td>{name}</td>
+            <td>{categoryId}</td>
+            <td>{content}</td>
+            <td>{formatDate(new Date(create))}</td>
+            <td>{formatDate(new Date(update))}</td>
             
-            <td >
+            <td>
                 <div className="centerText d-flex"> 
                     <Link to={`/news/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 

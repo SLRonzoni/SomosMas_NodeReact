@@ -137,10 +137,10 @@ const MessagesAll = (props) => {
       {messages && 
       <>
       <div className="m-5">
-        <br/>
-        <h3 className="containerTitle centerText m-2">Listado de Mensajes</h3>     
-        <div className="d-flex centerText m-3" >
-          <div>
+        <div className="headsPage">
+          <h3>Listado de Mensajes</h3>     
+          <div className="flex-Center">
+            <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
                 type="text"
@@ -170,18 +170,19 @@ const MessagesAll = (props) => {
                 ))}
                 <option className='colorBlack'value={"todos"}>Mostrar todas las fechas</option>
               </select>
+           </div> 
           </div> 
         </div> 
-
         <div>
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered">
-            <thead>
+            <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText "> Id </th>
-                <th className="tituloItem "> Contacto </th>
-                <th className="tituloItem "> Email </th>
-                <th className="tituloItem "> Mensaje </th>
-                <th className="tituloItem centerText"> Recibido</th>
+                <th> Id </th>
+                <th> Contacto </th>
+                <th> Email </th>
+                <th> Mensaje </th>
+                <th> Recibido</th>
                 <th></th>
               </tr>
             </thead>
@@ -191,9 +192,11 @@ const MessagesAll = (props) => {
           </table>
         </div>
       </div>
+       </div>
       </>
       } 
       </div>
+     
     </>
   );
 };

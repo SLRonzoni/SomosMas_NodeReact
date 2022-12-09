@@ -5,6 +5,7 @@ import "./styles/news-comments.css";
 import "./styles/table.css";
 import "./styles/tableMediaScreen.css";
 import CommentsAllLine from './CommentsAllLine';
+import {Redirect} from "react-router-dom";
 import Swal from "sweetalert2";
 import LoadingBox from "./LoadingBox";
 import { OrderNameAsc } from "./helpers/Order";
@@ -131,26 +132,24 @@ console.log('commentsCOMPLETO',commentsWithNames)
             remove={confirmRemove}
             />
         ))}
-      </tbody>
-
-      
+      </tbody>      
     );
   };
+
+  let token=JSON.parse(sessionStorage.getItem('token'))//para proteger ruta
 
   return (
     <>
     <div className="containerFirst">  
-      
-      {/* si aun está cargando comentarios*/}
+      {!token && <Redirect to="/Login" />} 
       {!commentsWithNames &&  <LoadingBox/> }
-
-       {/* solo renderiza si hay comemtarios*/}
       {commentsWithNames &&
       <>
-      <div className="centerText m-5">
-        <h3 className="containerTitle">Listado de Comentarios</h3>  
-        <div className="displayFlex centerText" >
-          <div >
+      <div className="m-5">
+        <div className="headsPage">
+        <h3>Listado de Comentarios</h3>  
+        <div className="flex-Center" >
+          <div>
               <select
                 type="text"
                 name="user_id"
@@ -166,18 +165,19 @@ console.log('commentsCOMPLETO',commentsWithNames)
               </select>
           </div> 
         </div> 
+        </div>
  
- 
-        <div>
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered">
-            <thead>
+            <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText "> Id </th>
-                <th className="tituloItem "> Comentario </th>
-                <th className="tituloItem centerText"> Noticia </th>
-                <th className="tituloItem centerText"> Usuario </th>
-                <th className="tituloItem centerText"> Creado</th>
-                <th className="tituloItem centerText"> Actualizado </th>
+                <th> Id </th>
+                <th> Comentario </th>
+                <th> Noticia </th>
+                <th> Usuario </th>
+                <th> Creado</th>
+                <th> Actualizado </th>
+                <th> </th>
               </tr>
             </thead>
 

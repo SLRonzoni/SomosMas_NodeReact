@@ -2,7 +2,6 @@ import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import "./styles/table.css";
-import "./styles/activity.css";
 import "./styles/tableMediaScreen.css";
 import DonationsAllLine from "./DonationsAllLine";
 import Swal from "sweetalert2";
@@ -145,11 +144,10 @@ const DonationsAll = (props) => {
       {donations && 
       <>
       <div className="m-5">
-      <div className="containerTitle centerText">
-        <h3 className="containerTitle">Listado de Donaciones</h3>
-        <br/>
-        <div className="d-flex centerText">
-          <div >
+      <div className="headsPage">
+        <h3>Listado de Donaciones</h3>
+        <div className="flex-Center">
+          <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select"
                 type="text"
@@ -165,7 +163,7 @@ const DonationsAll = (props) => {
               </select>
           </div> 
           
-          <div >
+          <div>
               <select
                 type="text"
                 name="createdAt"
@@ -181,7 +179,7 @@ const DonationsAll = (props) => {
               </select>
           </div> 
 
-          <div >
+          <div>
               <select
                 type="text"
                 name="userEmail"
@@ -198,20 +196,20 @@ const DonationsAll = (props) => {
           </div>
         </div>
 
-        <div >
+        <div className="tableTotal">
           <table  className="table table-responsive table-bordered">
-            <thead>
+            <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText  "> Id </th>
-                <th className="tituloItem "> Medio de Pago </th>
-                <th className="tituloItem "> Importe </th>
-                <th className="tituloItem "> Realizada</th>
-                <th className="tituloItem "> id Usuario </th>
-                <th className="tituloItem "> Apellido y Nombre </th>
-                <th className="tituloItem "> Email </th>
-                <th className="tituloItem "> Teléfono </th>
-                <th className="tituloItem "> Mensaje </th>
-                <th className="tituloItem "> </th>
+                <th> Id </th>
+                <th> Medio de Pago </th>
+                <th> Importe </th>
+                <th> Realizada</th>
+                <th> id Usuario </th>
+                <th> Apellido y Nombre </th>
+                <th> Email </th>
+                <th> Teléfono </th>
+                <th> Mensaje </th>
+                <th> </th>
               </tr>
             </thead>
 

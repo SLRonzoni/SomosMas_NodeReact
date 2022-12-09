@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles/styles.css";
 import "./styles/testimonial.css";
-import "./styles/card.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import {Link} from 'react-router-dom';

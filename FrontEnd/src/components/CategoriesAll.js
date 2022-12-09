@@ -121,7 +121,7 @@ const CategoriesAll = (props) => {
 
   return (
     <>
-      <div className="containerFirst ">
+      <div className="containerFirst">
       {/* para proteger ruta , si no hay token, redirige a login*/}
       {!token && <Redirect to="/Login" />} 
 
@@ -131,13 +131,10 @@ const CategoriesAll = (props) => {
        {/* solo renderiza si hay categorias*/}
       {categories && 
       <>
-      <div>
-        <div className="containerTitle centerText m-5">
-          <h3 >Listado de Categorías</h3>
-          <p>{}</p>
-        </div>
-        <br/>      
-          <div>
+      <div className="m-5">
+        <div className="headsPage">
+          <h3>Listado de Categorías</h3>    
+          <div className="flex-Center">
             <div>
                 <select
                   type="text"
@@ -154,17 +151,17 @@ const CategoriesAll = (props) => {
                 </select>
             </div> 
           </div> 
-
-        <div>
+        </div>
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered">
-            <thead>
+            <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText"> Id </th>
-                <th className="tituloItem centerText"> Imágen </th>
-                <th className="tituloItem"> Categoría </th>
-                <th className="tituloItem"> Descripción </th>
-                <th className="tituloItem centerText"> Creado</th>
-                <th className="tituloItem centerText"> Actualizado </th>
+                <th> Id </th>
+                <th> Imágen </th>
+                <th> Categoría </th>
+                <th> Descripción </th>
+                <th> Creado</th>
+                <th> Actualizado </th>
 
                 <th className="centerText" >
                   <Link to={'/CategoriesCreate'} className="m-1">

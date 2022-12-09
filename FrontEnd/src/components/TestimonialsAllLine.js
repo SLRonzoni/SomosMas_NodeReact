@@ -8,13 +8,13 @@ const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,r
   
     return (
         <tr >
-            <td >{id}</td>
+            <td>{id}</td>
             <td className="imageChar centerText borderTransparent" ><img src={image}  alt="testimonialImage"></img> </td>
-            <td >{name}</td>
-            <td >{content}</td>
-            <td >{userId}</td>
-            <td className="centerText" >{formatDate(new Date(create))}</td>
-            <td className="centerText" >{formatDate(new Date(update))}</td>
+            <td>{name}</td>
+            <td>{content}</td>
+            <td>{userId}</td>
+            <td>{formatDate(new Date(create))}</td>
+            <td>{formatDate(new Date(update))}</td>
             
             <td >
                 <div className={ViewAdministratorOptions()}>   

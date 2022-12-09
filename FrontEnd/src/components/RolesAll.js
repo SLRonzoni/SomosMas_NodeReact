@@ -6,8 +6,7 @@ import "./styles/tableMediaScreen.css";
 import Swal from "sweetalert2";
 import { Link,Redirect} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
-import { formatDate } from "./helpers/FormatDate";
-import { OrderNameAsc } from "./helpers/Order";
+import RolesAllLine from './RolesAllLine';
 import * as FaIcons from 'react-icons/fa';
 
 const RolesAll = (props) => { 
@@ -74,6 +73,24 @@ const RolesAll = (props) => {
     getRoles()
   },[]);
 
+  const showRoles = () => {
+    return (
+      <tbody >
+        {roles.map((oneRole) => (
+          <RolesAllLine 
+            key={oneRole.id}
+            id={oneRole.id}
+            name={oneRole.name}
+            description={oneRole.description}
+            create={oneRole.createdAt}
+            update={oneRole.updatedAt}
+            remove={confirmRemove}
+            />
+        ))}
+      </tbody>
+    );
+  };
+
   let token=JSON.parse(sessionStorage.getItem('token'))
 
   return (
@@ -86,52 +103,32 @@ const RolesAll = (props) => {
 
       {roles && 
       <>
-       <div className="centerText m-5">
-          <br></br>
-          <h3 className="containerTitle">Listado de Roles</h3>
-          <br></br>
-          <div>
+       <div className="m-5">
+          <div className="headsPage">
+          <h3>Listado de Roles</h3>
+          
+          <div className="tableTotal">
             <table className="table table-responsive table-bordered">
-              <thead>
+              <thead className="table-head table-bordered">
                 <tr>
-                  <th className="tituloItem centerText "> Id </th>
-                  <th className="invisible ">  </th>
-                  <th className="tituloItem "> Role </th>
-                  <th className="tituloItem "> Descripción </th>
-                  <th className="tituloItem centerText"> Creado</th>
-                  <th className="tituloItem centerText"> Actualizado</th>
+                  <th> Id </th>
+                  <th> Role </th>
+                  <th> Descripción </th>
+                  <th> Creado</th>
+                  <th> Actualizado</th>
+
                   <th className="centerText">
-                  <Link to={'/Roles'} className="m-1">
-                    <FaIcons.FaPlusSquare className="iconBlue"/> 
-                  </Link> 
+                    <Link to={'/Roles'} className="m-1">
+                      <FaIcons.FaPlusSquare className="iconBlue"/> 
+                    </Link> 
                   </th>
                 </tr>
               </thead>
-              <tbody>
-              {roles.map((oneRole) => ( 
-                <tr key={oneRole.id}>
-                  <td >{oneRole.id}</td>
-                  <td className="invisible"></td>
-                  <td >{oneRole.name}</td>
-                  <td >{oneRole.description}</td>
-                  <td className="centerText" >{formatDate(new Date(oneRole.createdAt))}</td>
-                  <td className="centerText" >{formatDate(new Date(oneRole.updatedAt))}</td>
-                  <td className=" displayFlex centerText">   
-                  <div className="d-flex centerText"> 
-                    <Link to={`/categories/update/${oneRole.id}`}> 
-                        <FaIcons.FaPencilAlt className='iconBlue'/> 
-                    </Link>
-                    <div className="button" onClick={()=>{confirmRemove(oneRole.id)}}> 
-                        <FaIcons.FaTrashAlt className='iconRed'/>
-                    </div>                          
-                </div>  
-                  </td>  
-                </tr>
-                )).sort(OrderNameAsc(roles))}
-              </tbody>
+              {showRoles()}
             </table>
           </div>
         </div>
+        </div> 
       </>
       } 
       

@@ -61,3 +61,60 @@
     text-align: center;
     font-size: 0.6rem!important;
 }
+
+.cardContainerMember{ /* ✅ */    
+    max-width:20rem;
+    margin:1rem;
+    box-shadow: 0 0 1rem -0.32rem;
+    border-radius: 0.5rem;
+}
+
+.cardContainerOrganization{ /* ✅ */  
+    max-width:15rem;
+}
+
+
+.cardContainerMember p{  /* ✅ */
+    font-size: 0.8rem !important;
+    text-align: center;
+    min-width: 13rem;
+}
+
+.cardTitleMember{/* ✅ */  
+    margin-top:-0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.cardImageMember{  /* ✅ */       
+    width: 40%; 
+    margin:6% 0 5% 30%;
+    box-shadow: 0p 0p 1rem 0.32rem black;
+    border-radius: 50%;
+}
+
+.cardImageOrganization{  /* ✅ */    
+    height:25%; 
+    max-width:80%; 
+    margin: auto;
+    border-radius: 20%;
+}
+
+.fixedSizeCardOrganization{ /* ✅ */
+    height:10rem;
+}
+
+.fixedSizeCardWelcomeOrganization{  /* ✅ */
+    height:6rem;
+}
+
+.cardContentOrganization{ /* ✅ */
+    margin-top: -1rem;
+    padding:1rem;
+}
+
+.imageContainerOrganization {
+    height: 15rem;
+    width: 100%;
+    margin-bottom:1.5rem ;
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import {formatDate} from './helpers/FormatDate';
 import './styles/styles.css';
 import * as FaIcons from 'react-icons/fa';
@@ -8,12 +7,12 @@ const UsersAllLine = ({id, photo, lastName,firstName, email, role,created, updat
   
     return (
         <tr>
-            <td >{id}</td>
+            <td className='centerText'>{id}</td>
             <td className="imageChar centerText" ><img src={photo}  alt="UserImage"></img> </td>
-            <td className='leftText'>({role }) {lastName}, {firstName}</td>
-            <td className='leftText'>{email}</td>
-            <td className="centerText">{formatDate(new Date(created))}</td>
-            <td className="centerText">{formatDate(new Date(updated))}</td>
+            <td>( {role } )  {lastName}, {firstName}</td>
+            <td>{email}</td>
+            <td>{formatDate(new Date(created))}</td>
+            <td>{formatDate(new Date(updated))}</td>
 
             <td className="centerText"> 
                 <div> 

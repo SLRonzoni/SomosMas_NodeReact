@@ -139,11 +139,11 @@ const NewsAll = (props) => {
       {!token && <Redirect to="/Login" />} 
       {!news &&  <LoadingBox/> }
       {news && 
-      
       <>
-      <div className="centerText m-5">
-        <h3 className="containerTitle">Listado de Noticias</h3>
-        <div className="d-flex centerText" >
+      <div className="m-5">
+        <div className="headsPage">
+        <h3>Listado de Noticias</h3>
+        <div className="flex-Center" >
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -191,20 +191,20 @@ const NewsAll = (props) => {
                 <option className='colorBlack'value={"todas"}>Mostrar todas las noticias (por categoría)</option>
               </select>
           </div> 
-
+          </div> 
         </div> 
 
-        <div>
+        <div className="tableTotal">
           <table className="table table-responsive table-bordered">
-            <thead>
+          <thead className="table-head table-bordered">
               <tr>
-                <th className="tituloItem centerText "> Id </th>
-                <th className="tituloItem "> Imágen </th>
-                <th className="tituloItem "> Noticia </th>
-                <th className="tituloItem "> Categoría </th>
-                <th className="tituloItem "> Contenido </th>
-                <th className="tituloItem centerText"> Creada</th>
-                <th className="tituloItem centerText"> Actualizada</th>
+                <th> Id </th>
+                <th> Imágen </th>
+                <th> Noticia </th>
+                <th> Categoría </th>
+                <th> Contenido </th>
+                <th> Creada</th>
+                <th> Actualizada</th>
 
                 <th className="centerText" >
                   <Link to={'/NewsCreate'} className="m-1">

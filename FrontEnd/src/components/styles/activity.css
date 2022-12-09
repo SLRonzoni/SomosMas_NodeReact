@@ -1,4 +1,4 @@
-.containerActivities{
+.containerActivities{/* ✅ */
     display:flex;
     flex-wrap:wrap;
     width: 100%;
@@ -17,26 +17,30 @@
     border-radius: 10px;
 }
 
-.h3Activities{
+.h3Activities{/* ✅ */
     color: #fff;
 }
 
-.containerSlideSize{
+.containerSlideSize{/* ✅ */
     height: 38.5rem;
     width:90%;
 }
 
-.h6SlideActivity{
+.h6SlideActivity{/* ✅ */
     margin-top:1rem;
     margin: auto;
     width: 65%;
     text-align: center;
 }
 
-.carrousel{
+.carrousel{/* ✅ */
     margin: auto;
     margin-top: 6rem;
 }
+
+
+
+
 
 
 

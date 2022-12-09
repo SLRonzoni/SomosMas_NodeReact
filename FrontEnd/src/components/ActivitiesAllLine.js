@@ -9,12 +9,12 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
   
     return (
         <tr>
-            <td >{id}</td>
+            <td className='centerText'>{id}</td>
             <td className="imageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
             <td >{name}</td>
-            <td  >{content}</td>
-            <td className=" centerText" >{formatDate(new Date(create))}</td>
-            <td className=" centerText" >{formatDate(new Date(update))}</td>
+            <td >{content}</td>
+            <td >{formatDate(new Date(create))}</td>
+            <td >{formatDate(new Date(update))}</td>
             
             <td className=" centerText"> 
                 <div> 
