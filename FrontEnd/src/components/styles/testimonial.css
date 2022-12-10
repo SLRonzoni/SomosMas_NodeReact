@@ -1,0 +1,77 @@
+.buttonTestimonials{ /* ✅ */
+    padding-top: 4.5rem;
+    text-align: center;
+    margin:auto;
+}
+
+.imgTestimonialsAndComments{  /* ✅ */
+    width:10rem;
+    height: 12rem;
+    margin:0.3rem;
+}
+
+.imageUserTestimonials{
+    width: 2rem;
+    height:5%;
+    margin:0.5rem;
+    border-radius: 50%;
+}
+
+.pTestimonialsPublic{
+    width: 100%;
+}
+
+.widthTestimonialsAndComments{
+    width:22rem ;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.containerTestimonialCreate{
+    max-width:41rem;
+    height: 100%;
+    margin-top: 5rem;
+    padding:1rem;
+    background-color: lightgray;
+    border-radius: 1rem;
+    color:black;
+}
+
+.h3CreateTestimonials{
+    color:#fff;
+    text-align: center;
+    margin-top: 10rem;
+}
+
+.userTestimonials{
+    width:auto;
+}
+
+.dateTestimonials{
+    text-align: end;
+    font-size: 0.63rem;
+}
+
+.containerTestimonials{ /* ✅ */
+    display:flex;    
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+    /* width: 100px;
+    height: auto; */
+    gap:1rem;
+    max-width:100vw; 
+}
+
+.cardTestimonialsAndComments{   
+    max-width:80vw; 
+    height: auto;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding:1rem; 
+    margin:1rem;  
+    box-shadow: 0px 0px 1rem -0.4rem;
+    border-radius: 0.5rem;
+}
+

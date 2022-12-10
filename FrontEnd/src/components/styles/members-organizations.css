@@ -1,0 +1,120 @@
+.containerMember{/* ✅ */
+    height: 100vh;
+}
+
+.containerMembersAllCard{  /* ✅ */
+    width:100vw;
+    display:flex;
+    flex-direction: column; 
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.containerMembersAllCard h2{ /* ✅ */
+    margin-top:1rem;
+}
+
+.containerUpdateOrganizations{
+    width: 80rem;
+    margin:1.5rem;
+    padding:1rem;
+}
+
+.containerTitle{  /* ✅ */
+    margin-top:5rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.membersTitle{  /* ✅ */
+    padding-top:5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color:#fff;
+}
+
+.membersHeader{/* ✅ */
+    height: 9.7rem;
+}
+
+.textArea-Members{
+    margin-left: 1rem;
+    width: 49rem;
+}
+
+.pBtnDesplegableMembers{  /* ✅ */
+    font-size: 1.5rem; 
+}
+
+.divBtnDesplegableMembers{ /* ✅ */
+    display:Flex;
+    margin: auto;
+    height: 2rem; 
+    width: 16rem;
+    margin-top:1rem;
+}
+
+.iconNetwork{/* ✅ */
+    display: block;
+    text-align: center;
+    font-size: 0.6rem!important;
+}
+
+.cardContainerMember{ /* ✅ */    
+    max-width:20rem;
+    margin:1rem;
+    box-shadow: 0 0 1rem -0.32rem;
+    border-radius: 0.5rem;
+}
+
+.cardContainerOrganization{ /* ✅ */  
+    max-width:15rem;
+}
+
+
+.cardContainerMember p{  /* ✅ */
+    font-size: 0.8rem !important;
+    text-align: center;
+    min-width: 13rem;
+}
+
+.cardTitleMember{/* ✅ */  
+    margin-top:-0.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.cardImageMember{  /* ✅ */       
+    width: 40%; 
+    margin:6% 0 5% 30%;
+    box-shadow: 0p 0p 1rem 0.32rem black;
+    border-radius: 50%;
+}
+
+.cardImageOrganization{  /* ✅ */    
+    height:25%; 
+    max-width:80%; 
+    margin: auto;
+    border-radius: 20%;
+}
+
+.fixedSizeCardOrganization{ /* ✅ */
+    height:10rem;
+}
+
+.fixedSizeCardWelcomeOrganization{  /* ✅ */
+    height:6rem;
+}
+
+.cardContentOrganization{ /* ✅ */
+    margin-top: -1rem;
+    padding:1rem;
+}
+
+.imageContainerOrganization {
+    height: 15rem;
+    width: 100%;
+    margin-bottom:1.5rem ;
+}

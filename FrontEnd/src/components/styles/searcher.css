@@ -1,0 +1,56 @@
+.containerSearchNews{ /* ✅ */
+    height: auto;
+    max-width: 70%;
+    margin: 1.5rem 1rem 2rem 3rem;
+    padding: 1rem;
+    margin: auto;
+    border-bottom: 0.07rem solid lightgray;
+}
+
+.containerItemSearchNews{/* ✅ */
+    display:flex;
+    position:relative;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.19rem;
+    margin-top: 2%;
+    margin-bottom: 2%;  
+}
+
+.imgSearchNews{/* ✅ */
+    width:40%;
+    height: auto;
+    border-radius: 0.5rem;
+   
+}
+
+.inputSearcher{/* ✅ */
+    display:flex;
+    flex-wrap:wrap;
+    padding:0 0 0 0.2rem;
+    height: 1.8rem;
+    border-radius: 0.32rem;
+    width: 100%;
+    border:none;
+    box-shadow: 0rem 0rem 0.25rem rgb(50, 50, 50);
+}
+
+.searchAlign{ /* ✅ */
+    text-align: left;
+}
+
+.searcherMsg{/* ✅ */
+    margin-top: 5rem;
+    width: 28rem;
+    height:3rem;
+    padding:0.5rem;
+    
+}
+
+.h4Searcher{/* ✅ */
+    padding:0 0.2rem 0 0.5rem ;
+    margin-left:-11rem;
+}

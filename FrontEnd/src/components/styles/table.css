@@ -1,0 +1,98 @@
+table {/* ✅ */
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 800px;
+    margin: 0px auto;
+}
+ 
+td, th {/* ✅ */
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;   
+}
+
+ 
+td:nth-child(n + 3),
+th:nth-child(n + 3) {/* ✅ */
+    text-align: center;
+}
+ 
+tbody tr:hover {/* ✅ */
+    background-color: #fff;
+    background-color: grey;
+}
+ 
+thead {/* ✅ */
+    background-color:rgb(26, 26, 26);
+    color: #fff;
+}
+
+.tableTotal{/* ✅ */
+    background-color: rgb(55, 42, 70);
+    margin:auto;
+    width: 95vw;
+}
+
+.table th{/* ✅ */
+    color: rgb(255, 255, 255);
+    background-color:rgb(49, 28, 74) ;
+    text-align: center;
+}
+
+.table tr{/* ✅ */
+    color: #fff;
+    background-color:rgb(55, 42, 70) ;
+}
+
+.iconBlue{/* ✅ */
+    color:#0616fc;
+    margin:10px;
+    font-size: 28px;
+    padding:5px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+
+.iconRed{/* ✅ */
+    color:rgb(245, 34, 34);
+    margin:15px;
+    font-size: 27px;
+    padding:5px;
+    background-color: #ccc;
+    border-radius: 5px;
+    margin-top:10px;
+}
+
+.button{/* ✅ */
+    background-color: transparent;
+    cursor: pointer;
+}
+
+
+.headsPage{ /* ✅ */
+    position:sticky;
+    top:3.8rem;
+    border-bottom: 1px solid #fff;
+    left: 2.8vw;
+    z-index: 1;
+    width: 95vw;
+    background-color: rgb(32, 10, 67);
+}
+
+.headsPage h3{/* ✅ */
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top:0.5rem;
+}    
+
+.table-head tr th{/* ✅ */
+    position:sticky;
+    top:10rem;
+    max-width: 80%;
+    z-index: 2;
+    background-color:rgb(154, 140, 176);
+    color:rgb(32, 10, 67);
+}
+
+
+

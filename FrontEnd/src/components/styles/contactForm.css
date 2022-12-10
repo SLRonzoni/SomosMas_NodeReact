@@ -1,0 +1,16 @@
+.containerRegisterContactForm{
+    max-width:100vw;
+    background-color:lightgrey; 
+    color:#0e0d0d; 
+}
+
+.labelWidthContactForm{
+    width: 9rem;
+    text-align: left;
+}
+
+.containerContactForm{
+    max-width: 100%; 
+    padding:5rem 3rem 0rem 3.5rem;
+    margin:auto;
+}

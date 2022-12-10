@@ -1,0 +1,263 @@
+/* About, Register, MyProfile*/
+@media only screen  and (min-width:1150px) { /* ✅ */
+    .containerLeft,
+    .cardAbout{
+        font-size: 2.2vh!important;
+    }
+
+    .containerForm{
+        width: 51%;
+    }
+
+    .containerMyProfile{
+        height: 70%;
+    }
+
+    .sliderHome,
+    .containerLeft{
+        margin:auto;
+    }
+
+    .sliderHome{
+        margin-top: -1rem;
+    }
+
+    .btn-success{
+        height:130%;
+        width: 50%;
+        font-size: 2.2vh;
+    }
+}
+
+/* Home , Navbar, Register, Contact, Login, DonationsList*/
+@media only screen  and (max-width:1150px) { /* ✅ */
+    .containerHome{
+        display: block; 
+        margin: auto ;
+        padding: 1rem 1rem 1rem 1rem ;
+    }
+    .sliderHome,
+    .containerLeft{
+        width: 100%;   
+    }
+
+    .navbar{
+        justify-content:left;
+    }
+
+    .navbarH1{
+        width: auto;
+        margin-left: 1rem;
+    }
+
+    .margenEnd{
+        margin-top:1rem;
+        margin-left:15%;
+        display:block; 
+    }
+
+    .pEmailRegisterUserUpdate{
+        margin-left:10%;
+        margin-bottom:1rem;
+    }
+
+    .containerImgHalfScreen,
+    .MQuserMessage,
+    .MQuserPhoneDonations,
+    .imgHome,
+    .footer{
+        display:none;
+    }
+
+    .formGroup,
+    .buttonsResponsive,
+    .containerAddress{
+        display: block;
+    }
+   
+    .containerLogin,.containerRegister,
+    .imageActivity{
+        width: 90%;
+    }
+
+    .h5Login{
+        padding-top:5rem;
+    }
+    
+    .buttonBlue{
+        margin:0.1rem;  
+    }
+
+    .heart,
+    .heart::before, 
+    .heart:after{
+        background-color: transparent;
+        border:0;
+    }
+
+    .heart p{
+        background-color: red;
+        border-radius: 10%;
+        margin-top: 2.5rem;
+    }
+
+    .labelRegister{
+        width: auto;
+    }
+
+    .formGroup{
+        width: auto;
+        margin:0 -1rem;
+    }
+} 
+
+/* Contact, Register, DonationsList*/
+@media only screen  and (max-width:1024px) {
+    form .form-control{
+        width: 100%;
+        margin:auto;
+        font-size: 0.55rem;
+    }
+
+    .formGroup{
+       width: 13rem;
+    }
+
+    .MQselectButtonsNews,
+    .MQselectButtonsDonations{
+        display: block;
+    }
+    
+    .MQuserIdDonations,
+    .MQuserNameDonations{
+        display: none;
+    }
+}
+
+/* NewsList */
+@media only screen  and (max-width:898px) { /* ✅ */
+    .MQupdatedTestim,
+    .MQimageCharTestim,
+    .MQimageCharNews,
+    .MQimageCharUser{
+        display: none;
+    }
+    
+} 
+
+/* TestimonialCreate */
+@media only screen  and (max-width:829px) { /* ✅ */
+    .buttonsResponsive{
+        display:block;
+        margin: auto;
+    }
+    
+    .MQbuttons{
+        display: block;
+    }
+
+    .MQcreatedUser{
+        display: none;
+    }
+   
+} 
+
+
+/* Lists */
+@media only screen and (max-width: 740px) {
+    .MQimageChar,
+    .MQuserPhone,
+    .MQmessage,
+    .MQcreatedRoles{
+        display:none;
+    }
+   
+    .tableTotal{
+        padding:1rem;
+    }
+
+    .tableUser,
+    .tableNews,
+    .tableDonations{
+        font-size: 60%;
+    }
+}
+
+/* Lists */
+@media only screen and (max-width: 660px) { 
+    .MQtestim{
+        display:none;
+    }
+
+}
+
+/* Lists */
+@media only screen and (max-width: 580px) { 
+    .MQupdated,
+    .MQcategNews,
+    .MQcreatedNews,
+    .MQuserEmail,
+    .MQcreatedDonations,
+    .MQdescripRoles,
+    .MQemailRoles{
+        display:none;
+    }
+
+    .selectBtnDesplegable{
+        font-size: 80%;
+        width: 88%;
+    }
+
+    .tableTotal{
+        padding:1rem;
+    }
+
+    .tableTestim,
+    .tableMessages,
+    .tableDonations{
+        font-size:50%;
+    }
+    
+}
+
+/* Lists */
+@media only screen and (max-width: 470px) {
+    .MQcontent,
+    .MQuser,
+    .MQnews,
+    .MQcreated{
+        display:none;
+    }
+
+    .MQselectButtons{
+        display: block;  
+    }
+
+    .tableTotal{
+        padding:1rem;
+    } 
+}
+
+/* Lists */
+@media only screen and (max-width: 391px) {
+    .MQuserEmailDonations,
+    .MQcreatedTestim,
+    .MQcontentNews,
+    .MQuserNameMessages{
+        display:none;
+    }
+
+    .MQiconDelRoles,
+    .MQiconDelTestim,
+    .MQiconDelMessages{
+        width: 50%;
+    }
+    
+    .navbar h1{
+        font-size:100%;
+    }
+
+    .tableRoles{
+        font-size:55%;
+    }
+}
