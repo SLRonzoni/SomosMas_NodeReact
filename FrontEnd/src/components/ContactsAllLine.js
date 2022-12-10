@@ -9,9 +9,9 @@ const ContactsAllLine = ({id, name, phone, email, create, remove}) =>{
         <tr>
             <td className='centerText'>{id}</td>
             <td >{name}</td>
-            <td >{email}</td>
-            <td >{phone} </td>
-            <td >{formatDate(new Date(create))}</td>
+            <td className='MQuserEmail'>{email}</td>
+            <td className='MQuserPhone'>{phone} </td>
+            <td className='MQcreated'>{formatDate(new Date(create))}</td>
                        
             <td>   
                 <div className="button" onClick={()=>{remove(id)}}> 

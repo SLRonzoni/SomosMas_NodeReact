@@ -143,7 +143,7 @@ const NewsAll = (props) => {
       <div className="m-5">
         <div className="headsPage">
         <h3>Listado de Noticias</h3>
-        <div className="flex-Center" >
+        <div className="flex-Center MQselectButtonsNews">
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -194,16 +194,16 @@ const NewsAll = (props) => {
           </div> 
         </div> 
 
-        <div className="tableTotal">
-          <table className="table table-responsive table-bordered">
-          <thead className="table-head table-bordered">
+        <div className="tableTotal tableNews">
+          <table className="table table-responsive">
+          <thead className="table-head">
               <tr>
                 <th> Id </th>
-                <th> Imágen </th>
+                <th className="MQimageCharNews"> Imágen </th>
                 <th> Noticia </th>
-                <th> Categoría </th>
-                <th> Contenido </th>
-                <th> Creada</th>
+                <th className="MQcategNews"> Categoría </th>
+                <th className="MQcontentNews"> Contenido </th>
+                <th className="MQcreatedNews"> Creada</th>
                 <th> Actualizada</th>
 
                 <th className="centerText" >

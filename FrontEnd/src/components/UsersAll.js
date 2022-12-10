@@ -153,15 +153,15 @@ const UsersAll = (props) => {
               </div>
             </div>
             </div>
-            <div className="tableTotal">
+            <div className="tableTotal tableUser">
               <table className='table table-responsive table-bordered'>
               <thead className="table-head table-bordered">
                   <tr>
                     <th> Id </th>
-                    <th> Imágen</th>
-                    <th> Role y Usuario </th>
+                    <th className="MQimageCharUser"> Imágen</th>
+                    <th className="MQemailRoles"> Role y Usuario </th>
                     <th> Email </th>
-                    <th> Registrado</th>
+                    <th className="MQcreatedUser"> Registrado</th>
                     <th> Actualizado</th>
                     <th> </th>
                   </tr>

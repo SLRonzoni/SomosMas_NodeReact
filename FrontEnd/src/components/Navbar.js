@@ -68,7 +68,7 @@ export default function Sidebar () {
             </Link>
           </li>
 
-          <li className="navbarUser ">
+          <li className="navbarUser">
             <h1 className="h1NavbarUser">Somos Más o.n.g.  </h1>
             <img className="imageUserNavBar" src={photo} alt="user"></img>
             <p className="centerText m-1">{name}</p>

@@ -10,15 +10,15 @@ const NewsAllLine = ({id, name, image, content, categoryId, create,update,remove
     return (
         <tr>
             <td className='centerText'>{id}</td>
-            <td className="imageChar centerText" ><img src={image}  alt="newsImage"></img> </td>
+            <td className="imageChar centerText MQimageCharNews" ><img src={image}  alt="newsImage"></img> </td>
             <td>{name}</td>
-            <td>{categoryId}</td>
-            <td>{content}</td>
-            <td>{formatDate(new Date(create))}</td>
+            <td className='MQcategNews'>{categoryId}</td>
+            <td className='MQcontentNews'>{content}</td>
+            <td className='MQcreatedNews'>{formatDate(new Date(create))}</td>
             <td>{formatDate(new Date(update))}</td>
             
             <td>
-                <div className="centerText d-flex"> 
+                <div className="flex-Center MQbuttons"> 
                     <Link to={`/news/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>

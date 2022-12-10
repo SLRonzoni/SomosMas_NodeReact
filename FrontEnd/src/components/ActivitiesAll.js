@@ -109,7 +109,7 @@ const ActivitiesAll = (props) => {
  
   const showActivities = () => {
     return (
-      <tbody >
+      <tbody>
         {activities.map((oneActivity) => (
           <ActivitiesAllLine 
             key={oneActivity.id}
@@ -131,17 +131,14 @@ const ActivitiesAll = (props) => {
   return (
     <>
       <div className="containerFirst">  
-     
       {!token && <Redirect to="/Login" />} 
-     
       {!activities &&  <LoadingBox/> }
-
       {activities && 
       <>
       <div className="m-5">
         <div className="headsPage">
           <h3>Listado de Actividades</h3>
-            <div className="flex-Center">
+            <div className="flex-Center MQselectButtons">
               <div>
                   <select 
                     className="m-3 selectBtnDesplegable form-select"
@@ -175,16 +172,16 @@ const ActivitiesAll = (props) => {
               </div> 
             </div>
           </div>
-            <div className="tableTotal">
+            <div className="tableTotal tableRoles">
               <table  className="table table-responsive table-bordered"  >
                 <thead className="table-head  table-bordered">
                   <tr>
                     <th> Id </th>
-                    <th> Imágen </th>
+                    <th className="MQimageChar"> Imágen </th>
                     <th> Actividad </th>
-                    <th> Descripción </th>
-                    <th> Creada</th>
-                    <th> Actualizada</th>
+                    <th className='MQcontent'> Descripción </th>
+                    <th className="MQcreated"> Creada</th>
+                    <th className="MQupdated"> Actualizada</th>
 
                     <th className="centerText" >
                       <Link to={'/ActivitiesCreate'} className="m-1">
@@ -193,7 +190,6 @@ const ActivitiesAll = (props) => {
                     </th>
                   </tr>
                 </thead>
-                
                 {showActivities()}
              </table> 
             </div>

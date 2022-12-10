@@ -154,15 +154,13 @@ const ContactsAll = (props) => {
               <tr>
                 <th> Id </th>
                 <th> Contacto </th>
-                <th> Email </th>
-                <th> Teléfono </th>
-                <th> Creado</th>
+                <th className="MQuserEmail"> Email </th>
+                <th className="MQuserPhone"> Teléfono </th>
+                <th className="MQcreated"> Creado</th>
                 <th></th>
               </tr>
             </thead>
-
             {showContacts()}
-
           </table>
         </div>
       </div>

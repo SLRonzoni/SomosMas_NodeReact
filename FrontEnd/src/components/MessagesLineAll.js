@@ -8,14 +8,14 @@ const MessageAllLine = ({id, name, email, message, create, remove}) =>{
     return (
         <tr>
             <td className='centerText'>{id}</td>
-            <td >{name}</td>
+            <td className='MQuserNameMessages'>{name}</td>
             <td >{email} </td>
-            <td >{message}</td>
+            <td className='MQmessage'>{message}</td>
             <td >{formatDate(new Date(create))}</td>
 
             <td className="centerText"> 
                 <div className="button" onClick={()=>{remove(id)}}> 
-                    <FaIcons.FaTrashAlt className='iconRed'/>
+                    <FaIcons.FaTrashAlt className='iconRed MQiconDelMessages'/>
                 </div>  
             </td>      
         </tr>

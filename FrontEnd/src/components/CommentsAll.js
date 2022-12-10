@@ -173,10 +173,10 @@ console.log('commentsCOMPLETO',commentsWithNames)
               <tr>
                 <th> Id </th>
                 <th> Comentario </th>
-                <th> Noticia </th>
-                <th> Usuario </th>
-                <th> Creado</th>
-                <th> Actualizado </th>
+                <th className="MQnews"> Noticia </th>
+                <th className="MQuser"> Usuario </th>
+                <th className="MQcreated"> Creado</th>
+                <th className="MQupdated"> Actualizado </th>
                 <th> </th>
               </tr>
             </thead>

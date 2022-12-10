@@ -9,17 +9,17 @@ const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,r
     return (
         <tr >
             <td>{id}</td>
-            <td className="imageChar centerText borderTransparent" ><img src={image}  alt="testimonialImage"></img> </td>
-            <td>{name}</td>
+            <td className="imageChar centerText MQimageCharTestim"><img src={image}  alt="testimonialImage"></img> </td>
+            <td className='MQtestim'>{name}</td>
             <td>{content}</td>
             <td>{userId}</td>
-            <td>{formatDate(new Date(create))}</td>
-            <td>{formatDate(new Date(update))}</td>
+            <td className='MQcreatedTestim'>{formatDate(new Date(create))}</td>
+            <td className='MQupdatedTestim'>{formatDate(new Date(update))}</td>
             
-            <td >
+            <td>
                 <div className={ViewAdministratorOptions()}>   
-                    <div className="button" onClick={()=>{remove(id)}}> 
-                        <FaIcons.FaTrashAlt className='iconRed'/>
+                    <div onClick={()=>{remove(id)}}> 
+                        <FaIcons.FaTrashAlt className='iconRed MQiconDelTestim'/>
                     </div>
                  </div>   
             </td>   

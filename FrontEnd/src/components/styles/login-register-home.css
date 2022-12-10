@@ -68,8 +68,9 @@
 }
 
 .iconHomeMap{ /* ✅ */
-    font-size: 200%;
+    font-size:210%;
     color: #2abe1d;
+    margin-top:1.5rem;
 }
 
 .iconPhone :hover,
@@ -80,7 +81,6 @@
 
 .sliderHome{ /* ✅ */
     width: 50%;
-    margin-top:-2.5rem;
 }
 
 .carousel-indicators{ /* ✅ */
@@ -194,7 +194,7 @@
     display: flex;
 }
 
- .heart{ /* ✅ */
+.heart{ /* ✅ */
     background-color:red;
     border-bottom:0px groove #fff;
     border-right:2px groove #fff;

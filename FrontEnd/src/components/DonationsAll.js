@@ -110,7 +110,7 @@ const DonationsAll = (props) => {
  
   const showDonations = () => {
     return (
-      <tbody >
+      <tbody>
         {donations.map((oneDonation) => (
           <DonationsAllLine 
             key={oneDonation.id}
@@ -135,93 +135,86 @@ const DonationsAll = (props) => {
 
   return (
     <>
-      <div className="containerFirst">  
-     
-      {!token && <Redirect to="/Login" />} 
-
-      {!donations &&  <LoadingBox/> }
-
-      {donations && 
-      <>
-      <div className="m-5">
-      <div className="headsPage">
-        <h3>Listado de Donaciones</h3>
-        <div className="flex-Center">
-          <div>
-              <select 
-                className="m-3 selectBtnDesplegable form-select"
-                type="text"
-                name="payForm"
-                onChange={changesId}
-              >  
-                {donations.map(oneDonations => (
-                  <option className="colorBlack"key={oneDonations.id} value={oneDonations.payForm}>
-                    {oneDonations.payForm}
-                  </option>
-                )).sort(OrderNameAsc(donations))}
-                <option className="colorBlack"value={"todas"}>Todas las donaciones (por medio de pago)</option>
-              </select>
-          </div> 
-          
-          <div>
-              <select
-                type="text"
-                name="createdAt"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select"
-              >  
-                {donations.map(oneDonations => (
-                  <option className="colorBlack" key={oneDonations.id} value={oneDonations.createdAt}>
-                    {formatDate(new Date(oneDonations.createdAt))}
-                  </option>
-                ))}
-                <option className="colorBlack"value={"todas"}>Todas las donaciones (por fecha de realización)</option>
-              </select>
-          </div> 
-
-          <div>
-              <select
-                type="text"
-                name="userEmail"
-                onChange={changesId}
-                className="m-3 selectBtnDesplegable form-select "
-              >  
-                {donations.map(oneDonations => (
-                  <option className="colorBlack" key={oneDonations.id} value={oneDonations.userEmail}>
-                    {oneDonations.userEmail}
-                  </option>
-                ))}
-                <option className="colorBlack"value={"todas"}>Todas las donaciones (por email del usuario)</option>
-              </select>
-          </div>
-        </div>
-
-        <div className="tableTotal">
-          <table  className="table table-responsive table-bordered">
-            <thead className="table-head table-bordered">
-              <tr>
-                <th> Id </th>
-                <th> Medio de Pago </th>
-                <th> Importe </th>
-                <th> Realizada</th>
-                <th> id Usuario </th>
-                <th> Apellido y Nombre </th>
-                <th> Email </th>
-                <th> Teléfono </th>
-                <th> Mensaje </th>
-                <th> </th>
-              </tr>
-            </thead>
-
-            {showDonations()}
-            
-          </table>
-        </div>
-      </div>
+    <div className="containerFirst">  
+        {!token && <Redirect to="/Login" />} 
+        {!donations &&  <LoadingBox/> }
+        {donations && 
+        <>
+        <div className="m-5">
+          <div className="headsPage">
+            <h3>Listado de Donaciones</h3>
+            <div className="flex-Center MQselectButtonsDonations">
+              <div>
+                <select 
+                  className="m-3 selectBtnDesplegable form-select"
+                  type="text"
+                  name="payForm"
+                  onChange={changesId}
+                >  
+                  {donations.map(oneDonations => (
+                    <option className="colorBlack"key={oneDonations.id} value={oneDonations.payForm}>
+                      {oneDonations.payForm}
+                    </option>
+                  )).sort(OrderNameAsc(donations))}
+                  <option className="colorBlack"value={"todas"}>Todas las donaciones (por medio de pago)</option>
+                </select>
+              </div> 
+              <div>
+                  <select
+                    type="text"
+                    name="createdAt"
+                    onChange={changesId}
+                    className="m-3 selectBtnDesplegable form-select"
+                  >  
+                    {donations.map(oneDonations => (
+                      <option className="colorBlack" key={oneDonations.id} value={oneDonations.createdAt}>
+                        {formatDate(new Date(oneDonations.createdAt))}
+                      </option>
+                    ))}
+                    <option className="colorBlack"value={"todas"}>Todas las donaciones (por fecha de realización)</option>
+                  </select>
+              </div> 
+              <div>
+                  <select
+                    type="text"
+                    name="userEmail"
+                    onChange={changesId}
+                    className="m-3 selectBtnDesplegable form-select"
+                  >  
+                    {donations.map(oneDonations => (
+                      <option className="colorBlack" key={oneDonations.id} value={oneDonations.userEmail}>
+                        {oneDonations.userEmail}
+                      </option>
+                    ))}
+                    <option className="colorBlack"value={"todas"}>Todas las donaciones (por email del usuario)</option>
+                  </select>
+              </div>
+            </div>
+            </div>
+            <div className="tableTotal tableDonations">
+              <table  className="table table-responsive table-bordered">
+                <thead className="table-head table-bordered">
+                  <tr>
+                    <th> Id </th>
+                    <th> Medio de Pago </th>
+                    <th> Importe </th>
+                    <th className="MQcreatedDonations"> Realizada</th>
+                    <th className="MQuserIdDonations"> id Usuario </th>
+                    <th className="MQuserNameDonations"> Apellido y Nombre </th>
+                    <th className="MQuserEmailDonations"> Email </th>
+                    <th className="MQuserPhoneDonations"> Teléfono </th>
+                    <th className="MQuserMessage"> Mensaje </th>
+                    <th> </th>
+                  </tr>
+                </thead>
+                {showDonations()}
+              </table>
+            </div>
+       
       </div>
       </>
       } 
-      </div>
+    </div>
     </>
   );
 };

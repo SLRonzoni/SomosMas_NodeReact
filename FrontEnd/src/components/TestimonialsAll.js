@@ -136,7 +136,7 @@ const TestimonialsAll = (props) => {
       <div className="m-5">
         <div className="headsPage">
         <h3>Listado de Testimonios</h3>  
-        <div className="flex-Center">
+        <div className="flex-Center MQselectButtons">
           <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -170,17 +170,17 @@ const TestimonialsAll = (props) => {
           </div>
         </div> 
         </div> 
-        <div className="tableTotal">
+        <div className="tableTotal tableTestim">
           <table className="table table-responsive table-bordered" >
           <thead className="table-head table-bordered">
               <tr>
                 <th> Id </th>
-                <th className="tituloItem centerText"> Imágen </th>
-                <th> Testimonio </th>
+                <th className="tituloItem centerText MQimageCharTestim"> Imágen </th>
+                <th className="MQtestim"> Testimonio </th>
                 <th> Contenido </th>
                 <th> userId </th>
-                <th> Creado</th>
-                <th> Actualizado</th>
+                <th className="MQcreatedTestim"> Creado</th>
+                <th className="MQupdatedTestim"> Actualizado</th>
                 <th></th>
               </tr>
             </thead>

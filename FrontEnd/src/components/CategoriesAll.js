@@ -157,11 +157,11 @@ const CategoriesAll = (props) => {
             <thead className="table-head table-bordered">
               <tr>
                 <th> Id </th>
-                <th> Imágen </th>
+                <th className="MQimageChar"> Imágen </th>
                 <th> Categoría </th>
-                <th> Descripción </th>
-                <th> Creado</th>
-                <th> Actualizado </th>
+                <th className="MQcontent"> Descripción </th>
+                <th className="MQcreated"> Creado</th>
+                <th className="MQupdated"> Actualizado </th>
 
                 <th className="centerText" >
                   <Link to={'/CategoriesCreate'} className="m-1">
@@ -170,9 +170,7 @@ const CategoriesAll = (props) => {
                 </th>
               </tr>
             </thead>
-
             {showCategories()}
-
           </table>
         </div>
       </div>

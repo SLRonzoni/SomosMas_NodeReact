@@ -11,10 +11,10 @@ const CommentsAllLine = ({id, body, user_id,user_firstName, user_lastName, news_
         <tr>
             <td className='centerText'>{id}</td>
             <td >{body}</td>
-            <td >{news_id}</td>
-            <td >{user_id} - {user_firstName} {user_lastName}</td>
-            <td >{formatDate(new Date(create))}</td>
-            <td >{formatDate(new Date(update))}</td>
+            <td className='MQnews'>{news_id}</td>
+            <td className='MQuser'>{user_id} - {user_firstName} {user_lastName}</td>
+            <td className='MQcreated'>{formatDate(new Date(create))}</td>
+            <td className='MQupdated'>{formatDate(new Date(update))}</td>
             
             <td className={ViewAdministratorOptions()}>   
                 <div className="button" onClick={()=>{remove(id)}}> 

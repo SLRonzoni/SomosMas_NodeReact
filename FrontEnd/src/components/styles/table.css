@@ -69,7 +69,7 @@ thead {/* ✅ */
 }
 
 
-.headsPage{/* ✅ */
+.headsPage{ /* ✅ */
     position:sticky;
     top:3.8rem;
     border-bottom: 1px solid #fff;

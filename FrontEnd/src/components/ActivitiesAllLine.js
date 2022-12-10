@@ -10,13 +10,13 @@ const ActivitiesAllLine = ({id, name, image, content, create,update,remove}) =>{
     return (
         <tr>
             <td className='centerText'>{id}</td>
-            <td className="imageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
+            <td className="imageChar MQimageChar centerText" ><img src={image}  alt="activityImage"></img> </td>
             <td >{name}</td>
-            <td >{content}</td>
-            <td >{formatDate(new Date(create))}</td>
-            <td >{formatDate(new Date(update))}</td>
+            <td className='MQcontent'>{content}</td>
+            <td className='MQcreated'>{formatDate(new Date(create))}</td>
+            <td className='MQupdated'>{formatDate(new Date(update))}</td>
             
-            <td className=" centerText"> 
+            <td className="centerText"> 
                 <div> 
                     <Link to={`/activities/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 

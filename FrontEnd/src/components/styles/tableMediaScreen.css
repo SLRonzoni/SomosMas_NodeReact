@@ -29,7 +29,7 @@
     }
 }
 
-/* Home , Navbar, Register, Contact, Login*/
+/* Home , Navbar, Register, Contact, Login, DonationsList*/
 @media only screen  and (max-width:1150px) { /* ✅ */
     .containerHome{
         display: block; 
@@ -62,6 +62,8 @@
     }
 
     .containerImgHalfScreen,
+    .MQuserMessage,
+    .MQuserPhoneDonations,
     .imgHome,
     .footer{
         display:none;
@@ -103,29 +105,14 @@
         width: auto;
     }
 
-     .formGroup{
+    .formGroup{
         width: auto;
         margin:0 -1rem;
-     }
+    }
 } 
 
-/* Create Testimonial */
-@media only screen  and (max-width:829px) { /* ✅ */
-    .buttonsResponsive{
-        display:block;
-        margin: auto;
-    } 
-    
-} 
-
-
-/* Contact, Register*/
+/* Contact, Register, DonationsList*/
 @media only screen  and (max-width:1024px) {
-    
-    /* form .displayInLineFlex{
-        display:block;
-    } */
-    
     form .form-control{
         width: 100%;
         margin:auto;
@@ -135,248 +122,142 @@
     .formGroup{
        width: 13rem;
     }
-/* 
-    form .form-image{
-        width:100%;
-        margin:auto;
-    } */
 
-}
-
-
-/* @media only screen  and (min-width: 630px) and (max-width: 920px) {
-    table {
-        width: 100%;
-    }
-
-    encolumna btn filtros
-    div:nth-child(2){
-        display:block;
-    }
-
-    Ocultar imagen
-    table tr th:nth-child(2),
-    table tr td:nth-child(2){
-       display:none;
-   }
- 
-    Ocultar descripcion, o contenido  o emailUser
-    table tr th:nth-child(4),
-    table tr td:nth-child(4) {
-        display: none;
-    }
-} */
-
-/* para formulario de contacto y formulario de registro
-@media only screen and (max-width: 632px) {
-    form .form-control{
-        width:100%;
-        margin:auto;
-    }
-
-    form .textArea{
-        width:100%;
-        
-    }
-
-    form .form-image{
-        width:90%;
-        margin-left:1.6rem;
-    }
-
-    form .button{
-        display:block;
-        margin:auto;
+    .MQselectButtonsNews,
+    .MQselectButtonsDonations{
+        display: block;
     }
     
-}*/
-/*
-@media only screen and (min-width: 578px) and (max-width: 629px) {
-    encolumna btn filtros
-    div:nth-child(2){
+    .MQuserIdDonations,
+    .MQuserNameDonations{
+        display: none;
+    }
+}
+
+/* NewsList */
+@media only screen  and (max-width:898px) { /* ✅ */
+    .MQupdatedTestim,
+    .MQimageCharTestim,
+    .MQimageCharNews,
+    .MQimageCharUser{
+        display: none;
+    }
+    
+} 
+
+/* TestimonialCreate */
+@media only screen  and (max-width:829px) { /* ✅ */
+    .buttonsResponsive{
         display:block;
+        margin: auto;
+    }
+    
+    .MQbuttons{
+        display: block;
     }
 
-    Ocultar imagen
-     table tr th:nth-child(2),
-     table tr td:nth-child(2){
+    .MQcreatedUser{
+        display: none;
+    }
+   
+} 
+
+
+/* Lists */
+@media only screen and (max-width: 740px) {
+    .MQimageChar,
+    .MQuserPhone,
+    .MQmessage,
+    .MQcreatedRoles{
+        display:none;
+    }
+   
+    .tableTotal{
+        padding:1rem;
+    }
+
+    .tableUser,
+    .tableNews,
+    .tableDonations{
+        font-size: 60%;
+    }
+}
+
+/* Lists */
+@media only screen and (max-width: 660px) { 
+    .MQtestim{
         display:none;
     }
 
-     Ocultar descripcion, o contenido  o emailUser
-     table tr th:nth-child(4),
-     table tr td:nth-child(4) {
-         display: none;
-    }
-     
-     Ocultar creada
-     table tr th:nth-child(5),
-     table tr td:nth-child(5) {
-        display: none;
-    }
-
-    para formulario de contacto y formulario de registro
-    form .displayInLineFlex{
-        display:block;
-    }
-
-    form .textArea{
-        width: 100%;
-        margin:auto;
-    }
-
-    form .form-control {
-        width: 100%;
-        margin:auto;
-    }
-
-    form .form-image{
-        width: 100%;
-        margin:auto;
-    }
-
-    form .button{
-        display:block;
-        margin:auto;
-    }
-    form .inputSearcher{
-        width: 95%;
-    }
 }
- 
 
-@media only screen and (min-width:481px) and (max-width: 577px) {
-    encolumna btn filtros
-    div:nth-child(2){
-        display:block;
-    }
- 
-    Ocultar imagen
-     table tr th:nth-child(2),
-     table tr td:nth-child(2){
+/* Lists */
+@media only screen and (max-width: 580px) { 
+    .MQupdated,
+    .MQcategNews,
+    .MQcreatedNews,
+    .MQuserEmail,
+    .MQcreatedDonations,
+    .MQdescripRoles,
+    .MQemailRoles{
         display:none;
     }
 
-    Ocultar descripcion
-    table tr th:nth-child(4),
-    table tr td:nth-child(4) {
-        display: none;
-    }  
-     
-     Ocultar creada
-     table tr th:nth-child(5),
-     table tr td:nth-child(5) {
-        display: none;
-     }
-
-
-    Ocultar actualizada
-    table tr th:nth-child(6),
-    table tr td:nth-child(6) {
-       display: none;
+    .selectBtnDesplegable{
+        font-size: 80%;
+        width: 88%;
     }
 
-    encolumna btn modificar y eliminar
-    table tr th:nth-child(7),
-    table tr td:nth-child(7) {
-        display:block;
+    .tableTotal{
+        padding:1rem;
     }
 
-    para formulario de contacto y formulario de registro
-    form .displayInLineFlex{
-        display:block;
+    .tableTestim,
+    .tableMessages,
+    .tableDonations{
+        font-size:50%;
     }
-
-    form .form-control{
-        width:100%;
-        margin:auto;
-    }
-
-    form .form-image{
-        width:100%;
-        margin:auto;
-    }
-
-    form .textArea{
-        width:100%;
-        margin:auto;
-    }
-
-    form .button{
-        display:block;
-        margin:auto;
-    }
-    form .inputSearcher{
-        width: 95%;
-    }
-}*/
-
-/* para formulario de contacto y formulario de registro
-@media only screen  and (max-width: 480px) {
-    form .displayInLineFlex{
-        display:block;
-    }
-
-    form .form-control{
-        width:100%;
-        margin:auto;
-    }
-
-    form .textArea{
-        width: 100%;
-    }
-
-    form .form-image{
-        width:100%;
-        margin:auto;
-    }
-
-    form .buttonSendButton {
-        display:block;
-        width: 100%;
-    }
-
-    form .buttonLink{
-        display:block;
-        width: 100%;
-    }
-    form .inputSearcher{
-        width: 95%;
-    }
+    
 }
-*/
-/* para formulario de contacto y formulario de registro
-@media only screen and (min-width:210px)  and (max-width:379px) {
-    form .displayInLineFlex{
-        display:block;
+
+/* Lists */
+@media only screen and (max-width: 470px) {
+    .MQcontent,
+    .MQuser,
+    .MQnews,
+    .MQcreated{
+        display:none;
     }
 
-    form .form-control{
-        width:50%;
-        margin:auto;
+    .MQselectButtons{
+        display: block;  
     }
 
-    form .textArea{
+    .tableTotal{
+        padding:1rem;
+    } 
+}
+
+/* Lists */
+@media only screen and (max-width: 391px) {
+    .MQuserEmailDonations,
+    .MQcreatedTestim,
+    .MQcontentNews,
+    .MQuserNameMessages{
+        display:none;
+    }
+
+    .MQiconDelRoles,
+    .MQiconDelTestim,
+    .MQiconDelMessages{
         width: 50%;
     }
-
-    form .form-image{
-        width:50%;
-        margin:auto;
-    }
-
-    form .buttonSendButton {
-        display:block;
-        width: 90%;
-    }
-
-    form .buttonLink{
-        display:block;
-        width: 90%;
-    }
-    form .inputSearcher{
-        width: 90%;
-    }
     
+    .navbar h1{
+        font-size:100%;
+    }
+
+    .tableRoles{
+        font-size:55%;
+    }
 }
-*/

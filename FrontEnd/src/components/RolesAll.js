@@ -73,6 +73,26 @@ const RolesAll = (props) => {
     getRoles()
   },[]);
 
+
+  let filterBy;
+  const getFilterRoles = async () => {
+    await axiosClient.get(`/roles/byName/${filterBy}`)
+    .then((response) => {
+      setRoles(response.data)
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
+  };
+  const changesId=(e)=>{
+    filterBy=e.target.value;
+    if(filterBy === 'todos'){
+      getRoles() 
+    } else {
+      getFilterRoles()   
+};
+} 
+
   const showRoles = () => {
     return (
       <tbody >
@@ -105,16 +125,33 @@ const RolesAll = (props) => {
       <>
        <div className="m-5">
           <div className="headsPage">
-          <h3>Listado de Roles</h3>
-          
-          <div className="tableTotal">
+            <h3>Listado de Roles</h3>
+            <div>
+              <div>
+                <select
+                  type="text"
+                  name="name"
+                  onChange={changesId}
+                  className="m-4 selectBtnDesplegable form-select "
+                >  
+                  {roles.map(oneRole => (
+                    <option className="colorBlack" key={oneRole.id} value={oneRole.name}>
+                      {oneRole.name}
+                    </option>
+                  ))}
+                  <option className="colorBlack"value={"todos"}>Todos los roles</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="tableTotal tableRoles">
             <table className="table table-responsive table-bordered">
-              <thead className="table-head table-bordered">
+              <thead className="table-head  table-bordered">
                 <tr>
                   <th> Id </th>
                   <th> Role </th>
-                  <th> Descripción </th>
-                  <th> Creado</th>
+                  <th className="MQdescripRoles"> Descripción </th>
+                  <th className="MQcreatedRoles"> Creado</th>
                   <th> Actualizado</th>
 
                   <th className="centerText">
@@ -127,7 +164,7 @@ const RolesAll = (props) => {
               {showRoles()}
             </table>
           </div>
-        </div>
+       
         </div> 
       </>
       } 

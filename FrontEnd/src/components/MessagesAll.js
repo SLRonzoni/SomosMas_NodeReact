@@ -139,7 +139,7 @@ const MessagesAll = (props) => {
       <div className="m-5">
         <div className="headsPage">
           <h3>Listado de Mensajes</h3>     
-          <div className="flex-Center">
+          <div className="flex-Center MQselectButtons">
             <div>
               <select 
                 className="m-3 selectBtnDesplegable form-select "
@@ -174,14 +174,14 @@ const MessagesAll = (props) => {
           </div> 
         </div> 
         <div>
-        <div className="tableTotal">
+        <div className="tableTotal tableMessages">
           <table className="table table-responsive table-bordered">
             <thead className="table-head table-bordered">
               <tr>
                 <th> Id </th>
-                <th> Contacto </th>
+                <th className="MQuserNameMessages"> Contacto </th>
                 <th> Email </th>
-                <th> Mensaje </th>
+                <th className="MQmessage"> Mensaje </th>
                 <th> Recibido</th>
                 <th></th>
               </tr>

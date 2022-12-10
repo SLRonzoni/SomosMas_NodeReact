@@ -9,13 +9,13 @@ const CategoriesAllLine = ({id, name, image, description, create,update,remove})
     return (
         <tr>
             <td className='centerText'>{id}</td>
-            <td className="imageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
+            <td className="imageChar MQimageChar centerText" ><img src={image}  alt="categoryImage"></img> </td>
             <td >{name}</td>
-            <td >{description}</td>
-            <td >{formatDate(new Date(create))}</td>
-            <td >{formatDate(new Date(update))}</td>
+            <td className='MQcontent'>{description}</td>
+            <td className='MQcreated'>{formatDate(new Date(create))}</td>
+            <td className='MQupdated'>{formatDate(new Date(update))}</td>
             
-            <td >
+            <td>
                 <div> 
                     <Link to={`/categories/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 

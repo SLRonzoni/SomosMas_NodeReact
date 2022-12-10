@@ -10,11 +10,11 @@ const RolesAllLine = ({id, name, description, create,update,remove}) =>{
         <tr>
             <td className="centerText">{id}</td>
             <td >{name}</td>
-            <td >{description}</td>
-            <td>{formatDate(new Date(create))}</td>
+            <td className='MQdescripRoles'>{description}</td>
+            <td className='MQcreatedRoles'>{formatDate(new Date(create))}</td>
             <td>{formatDate(new Date(update))}</td>
             <td>   
-                <div className="flex-Center"> 
+                <div className="flex-Center MQbuttons"> 
                     <Link to={`/categories/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>
