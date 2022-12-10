@@ -1,4 +1,4 @@
-Proyecto personal
+Proyecto personal - 
 Se trata de una web para la ONG Somos Más.
 
 Backend : Trabajé con una api base , desarrollada grupalmente en mi grupo de aceleración de Alkemy Node JS., 
