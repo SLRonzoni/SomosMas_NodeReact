@@ -27,6 +27,10 @@
         width: 50%;
         font-size: 2.2vh;
     }
+
+    .containerFormContact{
+        height: 100vh;
+    }
 }
 
 /* Home , Navbar, Register, Contact, Login, DonationsList*/
@@ -69,19 +73,22 @@
         display:none;
     }
 
-    .formGroup,
     .buttonsResponsive,
     .containerAddress{
         display: block;
     }
    
-    .containerLogin,.containerRegister,
+    .containerLogin,
     .imageActivity{
         width: 90%;
     }
 
     .h5Login{
         padding-top:5rem;
+    }
+
+    .buttonLoginGoogle{
+        height: 5rem;
     }
     
     .buttonBlue{
@@ -101,28 +108,28 @@
         margin-top: 2.5rem;
     }
 
-    .labelRegister{
-        width: auto;
-    }
-
     .formGroup{
-        width: auto;
-        margin:0 -1rem;
+        /* display:block; */
+        margin:auto;
+        width: 100%;
+        padding:0.5rem;
+        /* width: 70vw; */
     }
-} 
-
-/* Contact, Register, DonationsList*/
-@media only screen  and (max-width:1024px) {
+     
+    .labelRegister{
+        width: 40%;
+        font-size: 0.85rem;
+    }
+ 
+    .tArea,
     form .form-control{
         width: 100%;
-        margin:auto;
-        font-size: 0.55rem;
-    }
+        font-size: 0.65rem;
+    } 
+} 
 
-    .formGroup{
-       width: 13rem;
-    }
-
+/* Contact, Register, DonationsList, CreateForm*/
+@media only screen  and (max-width:1024px) {
     .MQselectButtonsNews,
     .MQselectButtonsDonations{
         display: block;
@@ -151,7 +158,7 @@
         display:block;
         margin: auto;
     }
-    
+  
     .MQbuttons{
         display: block;
     }
@@ -159,7 +166,6 @@
     .MQcreatedUser{
         display: none;
     }
-   
 } 
 
 
@@ -181,6 +187,11 @@
     .tableDonations{
         font-size: 60%;
     }
+
+    .divGroupContactForm,
+    .tArea{
+        display: block;
+    }
 }
 
 /* Lists */
@@ -188,7 +199,6 @@
     .MQtestim{
         display:none;
     }
-
 }
 
 /* Lists */
@@ -218,6 +228,10 @@
         font-size:50%;
     }
     
+    .heart{
+        padding-top:3rem;
+    }
+    
 }
 
 /* Lists */
@@ -236,6 +250,11 @@
     .tableTotal{
         padding:1rem;
     } 
+
+    .MQgroupRegister{
+        display: block
+    }
+
 }
 
 /* Lists */
@@ -246,18 +265,34 @@
     .MQuserNameMessages{
         display:none;
     }
-
+ 
+    .divGroupContactForm{
+        width: 115%;
+    }
+    
     .MQiconDelRoles,
     .MQiconDelTestim,
     .MQiconDelMessages{
         width: 50%;
     }
-    
+
     .navbar h1{
         font-size:100%;
     }
 
+    .labelContactForm,
     .tableRoles{
         font-size:55%;
+    }
+    
+    .formGroup{
+        display: block;
+    }
+
+    .buttonLoginGoogle,
+    .h5Form,
+    .MQnoTenesCuenta{
+        width: 10rem;
+        margin-left: -4rem;
     }
 }

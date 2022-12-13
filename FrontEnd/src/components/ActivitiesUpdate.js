@@ -5,7 +5,8 @@ import "./styles/styles.css";
 import "./styles/activity.css";
 import { Formik } from 'formik';
 import { Link } from "react-router-dom";
-import { Label,SendButton, MsjWrong, ErrorText,IconUser, InputUser, InputGroup, Defaultvalue} from './elements/ElementsFormStyles';
+import * as FaIcons from "react-icons/fa";
+import {ErrorText,IconUser, InputUser, InputGroup, Defaultvalue} from './elements/ElementsFormStyles';
 import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated, msgValidationCategoryDescription} from './helpers/validationMessages';
 import {regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
 
@@ -13,6 +14,10 @@ import {regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
 const FormActivity = ({match,history}) => {
 
   const id  = match.params.id;
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
+
 
   const [activities, setActivities] = useState({ 
           id:"", 
@@ -61,12 +66,9 @@ const FormActivity = ({match,history}) => {
           history.push("/ActivitiesAll");
           }
         })
-        .catch(function (error) {
-          Swal.fire({
-            icon:"error",
-            title: "Error"
-            });
-          });
+        .catch((error=>{
+          console.log(error);
+        }));
     };
     updateActivity();
   };
@@ -99,22 +101,22 @@ const FormActivity = ({match,history}) => {
   //FORMIK VALIDATIONS 
   let validateInputs=(values) =>{   
 
-    let errors = {name: '', image:'',content:'',  
+    let errors = {name:'', image:'',content:'',  
                   icoNname:'', icoNimage:'', icoNcontent:'',formOk:''};  
 
     if (!values.name) {
       errors.name=msgRequired
-      errors.icoNname= '❌'
+      errors.icoNname= X
       return errors
     }
 
     if (!regexActivitiesName.test(values.name)) {
       errors.name=msgValidationActivitiesName
-      errors.icoNname= '❌'
+      errors.icoNname= X
       errors.formOk='f'
       return errors
     } else {
-      errors.icoNname= '✔️'
+      errors.icoNname=V
       errors.formOk='v'
     }
 
@@ -122,137 +124,118 @@ const FormActivity = ({match,history}) => {
     repeat(searchName, errors)
     if(duplicated===searchName){
       errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'    
+      errors.icoNname= X    
       errors.formOk='f'     
       return errors
     } else {
-      errors.icoNname= '✔️'
+      errors.icoNname=V
       errors.formOk='v'
     };
 
     if(!values.image) {
       errors.image=msgRequired
-      errors.icoNimage= '❌'
+      errors.icoNimage= X
       return errors
     }
 
     if (!values.content) {
       errors.content=msgRequired
-      errors.icoNcontent= '❌'
+      errors.icoNcontent= X
       return errors
     }
 
     if (!regexCategoryDescription.test(values.content)) {
       errors.content=msgValidationCategoryDescription
-      errors.icoNcontent= '❌'
+      errors.icoNcontent= X
       errors.formOk='f'
       return errors
     } else {
-      errors.icoNcontent= '✔️'
+      errors.icoNcontent=V
       errors.formOk='v'
     };
   }
 
-    
-  //FORM
+  
   return (
     <>
-    <Formik
-         initialValues={initialValues}           
-         validate={validateInputs}
-         onSubmit={(values)=>{ sendForm(values)}}
-    >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
-         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-            <h3 className="centerText displayFlex ">Nuevos valores</h3> 
-            <div  className='centerText'>
+      <div className="containerFirst">
+        <Formik
+            initialValues={initialValues}           
+            validate={validateInputs}
+            onSubmit={(values)=>{ sendForm(values)}}
+        >
+        { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
+          <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+            <h4 className="mb-4 m-auto">Nuevos valores</h4> 
               <div>
-                <div>
-                  <div className="displayFlex ">
-                    <Label className="labelWidthForm" htmlFor='name'>Nombre</Label>
-                    <Defaultvalue className="defaultValueWidthForm" >( actual : {activities.name} )</Defaultvalue>
-                  </div>
-                  <InputGroup >
-                    <InputUser
-                      type="text"
-                      name="name"
-                      placeholder='Ingrese nuevo nombre '
-                      value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
+                <div className="w-75 m-auto">           
+                    <InputGroup className="d-block">
+                      <label htmlFor='name'>Actividad</label>
+                      <InputUser className="form-control pt-1"
+                        type="text"
+                        name="name"
+                        placeholder='Ingrese nuevo nombre'
+                        required
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        />
+                        {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                        <Defaultvalue> actual : {activities.name} </Defaultvalue>
+                      </InputGroup>
+                </div>
+                {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
+              </div>
+              <div>
+                  <div  className="w-75 mb-2 m-auto">          
+                    <InputGroup className="d-block">
+                      <label  htmlFor='image'>Imágen</label>
+                      <InputUser className="form-control pt-1"
+                        type="file"
+                        name="image"
+                        required
+                        encType="multipart/form-data"
+                        onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                        onBlur={handleBlur}
                       />
-                      {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
-                  </InputGroup>
+                      {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+                      <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={activities.image}  alt="categoryImage" />} </Defaultvalue>
+                    </InputGroup>
                 </div>
-                {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
+                {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
               </div>
-              <br></br>
-            <div className='centerText'>
-            <div>
               <div>
-                <div className="displayFlex">
-                  <Label className="labelWidthForm" htmlFor='image'>Imágen</Label>
-                  <Defaultvalue> {<img className="imageSmallUpdateForm" src={activities.image}  alt="categoryImage"/>} </Defaultvalue>
-                </div>
-                <InputGroup >
-                  <InputUser
-                    type="file"
-                    name="image"
-                    encType="multipart/form-data"
-                    onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                    onBlur={handleBlur}
-                  />
-                  {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}
-                </InputGroup>
-                </div>
-                {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
-              </div>
-              <br></br>
+                  <div className="w-75 m-auto">          
+                    <InputGroup className="d-block">
+                      <label  htmlFor='content'>Descripción</label>
+                      <InputUser className="form-control pt-1"
+                        type="text"
+                        name="content"
+                        required
+                        placeholder="Ingrese nueva descripción"
+                        value={values.content}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
+                      <Defaultvalue>actual : {activities.content} </Defaultvalue>
+                    </InputGroup>
+                  </div>
+                  {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}
+              </div>  
+            <h6 className="h6Update mt-2">( todos los campos son obligatorios )</h6>
             <div>
-            <div>
-              <div className="displayFlex">
-                <Label className="labelWidthForm" htmlFor='content'>Descripción</Label>
-                <Defaultvalue className="defaultValueWidthForm" >( actual : {activities.content} )</Defaultvalue>
-              </div>
-              <InputGroup>
-                <InputUser
-                  type="text"
-                  name="content"
-                  placeholder="Ingrese nueva descripción"
-                  value={values.content}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
-              </InputGroup>
-              </div>
-              {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
-            </div>
-            <br></br>
-            </div>
-            { errors.formOk === "f" && 
-              <MsjWrong> 
-              <span className="centerText">
-                <br /> Algun dato es incorrecto. 
-                <br/> Por favor complete el formulario correctamente
-              </span>        
-              </MsjWrong>
-            }
-           
-            <div>
-              <span>( todos los campos son obligatorios )</span>
-              <div className="centerText">
-                  <SendButton type="submit" className="m-1 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link to={"/ActivitiesAll"} className="m-1 mr-md-2 btn buttonBlue"  role="button" > Volver </Link>
+              <div className="buttonsResponsive">
+                <Link to={"/ActivitiesAll"} className="btn buttonBlue"  role="button" > Volver </Link>
+                <button type="submit" className="btn buttonBlue buttonGreen "> Guardar </button>
               </div> 
-            </div>
-            </div>
+            </div>   
           </form>
-      )}
-    </Formik>
-  </>
+          )}
+        </Formik>
+      </div>
+    </>
   );
-  
 };
 
 export default FormActivity;

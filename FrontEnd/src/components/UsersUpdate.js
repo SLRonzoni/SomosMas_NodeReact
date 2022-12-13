@@ -187,7 +187,6 @@ const MyProfileUpdate = ({match, history}) =>{
                             name="photo" 
                             id="photo"  
                             encType="multipart/form-data"
-                           
                             onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
                             onBlur={handleBlur}
                       />

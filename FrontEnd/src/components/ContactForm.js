@@ -9,7 +9,7 @@ import { Formik } from "formik";
 import * as msg from "./helpers/validationMessages";
 import * as regex from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
-import {TextArea,ErrorText,IconUser,InputUser,InputGroup,} from "./elements/ElementsFormStyles";
+import {TextArea,ErrorText,IconUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
 
 const ContactForm = (props) => {
@@ -149,7 +149,7 @@ const ContactForm = (props) => {
           <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
         </div>
 
-        <div className="containerRegisterContactForm">
+        <div className="containerContactForm">
         
         <Formik
           initialValues={initialValues}
@@ -159,13 +159,13 @@ const ContactForm = (props) => {
           {(
             { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( 
             
-            <form className='containerLoginForm containerContactForm' onSubmit={handleSubmit}>
-              <h5 className="centerText mb-5">Formulario de Contacto</h5>              
-              <div>                  
+            <form className='containerFormContact' onSubmit={handleSubmit}>
+              <h5 className="centerText mb-4">Formulario de Contacto</h5>              
+              <div className="divGroupContactForm ">                  
                 <div>
-                  <label className="labelWidthContactForm" htmlFor='name'>Nombre y Apellido</label>
+                  <label className="labelContactForm" htmlFor='name'>Nombre y Apellido</label>
                   <InputGroup>
-                    <InputUser  className="form-control"
+                    <input  className="form-control inputContactForm"
                       type='text'
                       name='name'
                       placeholder="Tu nombre y apellido"
@@ -181,11 +181,11 @@ const ContactForm = (props) => {
               </div>
               <br/>
 
-              <div>
+              <div className="divGroupContactForm">  
                 <div>
-                  <label className="labelWidthContactForm"htmlFor='phone'>Teléfono </label>
+                  <label className="labelContactForm"htmlFor='phone'>Teléfono </label>
                   <InputGroup >
-                    <InputUser className="form-control"
+                  <input  className="form-control inputContactForm"
                       type='text'
                       name='phone'
                       placeholder="Tu número de teléfono"
@@ -204,11 +204,11 @@ const ContactForm = (props) => {
               </div>
               <br/>
 
-              <div>
+              <div className="divGroupContactForm">  
                 <div>
-                  <label className="labelWidthContactForm"htmlFor='email'>E-mail  </label>
+                  <label className="labelContactForm"htmlFor='email'>E-mail  </label>
                   <InputGroup >
-                    <InputUser className="form-control"
+                  <input  className="form-control inputContactForm"
                       type='text'
                       name='email'
                       placeholder="Tu e-mail"
@@ -228,11 +228,11 @@ const ContactForm = (props) => {
               </div>
               <br/>
 
-              <div>
+              <div className="divGroupContactForm">  
                 <div> 
-                  <label className="labelWidthContactForm" htmlFor='message'>Mensaje </label>
+                  <label className="labelContactForm" htmlFor='message'>Mensaje </label>
                   <InputGroup >
-                    <TextArea className="form-control"
+                    <textarea className="tArea form-control"
                       type="text"
                       name='message'
                       placeholder=" Tu mensaje..."
@@ -251,7 +251,7 @@ const ContactForm = (props) => {
                 )}
               </div>
 
-              <div className="buttonsResponsive">
+              <div className="buttonsResponsive mt-4">
                 <Link to={"/"}  className='btn buttonBlue' role='button' > Volver </Link>
                 <button type='submit' className="btn buttonBlue buttonGreen"> Enviar</button>
               </div>

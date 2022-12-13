@@ -5,11 +5,15 @@ import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { SendButton, MsjWrong, ErrorText,Label, InputGroup, IconUser, InputUser} from './elements/ElementsFormStyles';
+import * as FaIcons from "react-icons/fa";
+import { ErrorText,InputGroup, IconUser, InputUser} from './elements/ElementsFormStyles';
 import { msgRequired, msgValidationActivitiesName, msgValidationCategoryDescription} from './helpers/validationMessages';
 import { regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
 
 function ActivitiesCreate(props) {
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
   
   const [ setActivities] = useState({
     name: "",
@@ -62,39 +66,39 @@ let validateInputs=(values) =>{
 
   if (!values.name) {
     errors.name=msgRequired
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   }
 
   if (!regexActivitiesName.test(values.name)) {
     errors.name=msgValidationActivitiesName
-    errors.icoNname= '❌'
+    errors.icoNname= X
     errors.formOk='f'
     return errors
   } else {
-    errors.icoNname= '✔️'
+    errors.icoNname= V
     errors.formOk='v'
   }
 
   if(!values.image) {
     errors.image=msgRequired
-    errors.icoNimage= '❌'
+    errors.icoNimage= X
     return errors
   }
 
   if (!values.content) {
     errors.content=msgRequired
-    errors.icoNcontent= '❌'
+    errors.icoNcontent= X
     return errors
   }
 
   if (!regexCategoryDescription.test(values.content)) {
     errors.content=msgValidationCategoryDescription
-    errors.icoNcontent= '❌'
+    errors.icoNcontent= X
     errors.formOk='f'
     return errors
   } else {
-    errors.icoNcontent= '✔️'
+    errors.icoNcontent= V
     errors.formOk='v'
   };
 }
@@ -102,38 +106,19 @@ let validateInputs=(values) =>{
 //FORM
 return (
   <>
+  <div className="containerFirst">
   <Formik
        initialValues={initialValues}           
        validate={validateInputs}
        onSubmit={(values)=>{ sendForm(values)}}
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
-       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-          <h3 className="centerText">Nueva actividad</h3>
-          <br></br>
-          <div className='centerText'>
+       <form  className="containerCreate" onSubmit={handleSubmit}>
+          <h3 className="mb-4">Nueva actividad</h3>
+          <div>
             <div>
-              <div className="displayFlex"> 
-                <Label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</Label>
-                <InputGroup>
-                  <InputUser
-                    type="text"
-                    name="name"
-                    placeholder="Ingrese nombre"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
-                </InputGroup>
-              </div>
-              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-            </div>
-            <br></br>
-            <div className='centerText'>
-            <div>
-              <div className="displayFlex">
-                <Label className="labelWidthForm" htmlFor='image'>Imágen</Label>
+              <div>
+                <label className="labelWidthForm" htmlFor='image'>Imágen</label>
                 <InputGroup >
                   <InputUser className="form-control"
                     type="file"
@@ -149,10 +134,29 @@ return (
             </div>
             <br></br>
             <div>
-              <div className="displayFlex">
-                <Label className="labelWidthForm" htmlFor='content'>Descripción</Label>
+              <div> 
+                <label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</label>
                 <InputGroup>
-                  <InputUser
+                  <InputUser className="form-control"
+                    type="text"
+                    name="name"
+                    placeholder="Ingrese nombre"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
+                </InputGroup>
+              </div>
+              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
+            </div>
+            <br></br>
+            <div>
+            <div>
+              <div>
+                <label className="labelWidthForm" htmlFor='content'>Descripción</label>
+                <InputGroup>
+                  <InputUser className="form-control"
                     type="text"
                     name="content"
                     placeholder="Ingrese descripción"
@@ -167,31 +171,17 @@ return (
             </div>
             <br></br>
             </div>
-
-          { errors.formOk === "f" && 
-            <MsjWrong> 
-            <span className="centerText">
-              <br /> Algun dato es incorrecto. 
-              <br/> Por favor complete el formulario correctamente
-            </span>        
-            </MsjWrong>
-          }
          </div>
           <div>
-            <div className="centerText">
-                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                <Link 
-                  to={"/ActivitiesAll"}
-                  className="m-3 mr-md-2 btn buttonBlue"
-                  role="button"
-                > Volver
-                </Link>
+            <div className="buttonsResponsive">
+              <Link to={"/ActivitiesAll"} className="btn buttonBlue"> Volver </Link>
+              <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
             </div> 
-          </div>
-          
+          </div> 
         </form>
     )}
   </Formik>
+  </div>
 </>
 );
 

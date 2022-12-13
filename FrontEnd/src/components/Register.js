@@ -169,6 +169,7 @@ const Register=(props)=> {
                 </div>
 
                 <div className="containerRegister">
+                    <div className="containerForm">
                     <Formik  
                         initialValues={initialValues}           
                         validate={validateInputs}
@@ -176,13 +177,13 @@ const Register=(props)=> {
                     > 
                     { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
                 
-                        <form className="containerForm" onSubmit={handleSubmit}>
-                            <h5 className="h5Form mb-4">Formulario de Registro</h5>
+                        <form onSubmit={handleSubmit}>
+                            <h5 className="h5Form">Formulario de Registro</h5>
                                 <div className="mb-3">
-                                    <div className="formGroup">   
+                                    <div className="formGroup MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="photo">Foto </label>
-                                        <InputGroup  >
-                                            <InputUser className="form-control pt-1"
+                                        <InputGroup>
+                                        <input
                                                 type="file" 
                                                 name="photo" 
                                                 id="photo"  
@@ -198,10 +199,10 @@ const Register=(props)=> {
                                 </div>
 
                                 <div className="mb-3">
-                                    <div className="formGroup">   
+                                    <div className="formGroup MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="email">Email</label>
                                         <InputGroup>
-                                            <InputUser className="form-control"
+                                            <input className="form-control inputRegisterForm"
                                                 type="email" 
                                                 name="email" 
                                                 id="email" 
@@ -218,10 +219,10 @@ const Register=(props)=> {
                                 </div>
                                     
                                 <div className="mb-3">
-                                    <div className="formGroup">   
+                                    <div className="formGroup MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="firstName">Nombre</label>
                                         <InputGroup >
-                                            <InputUser className="form-control"
+                                        <input className="form-control inputRegisterForm"
                                                 type="text" 
                                                 name="firstName" 
                                                 id="firstName"
@@ -238,10 +239,10 @@ const Register=(props)=> {
                                 </div>
 
                                 <div className="mb-3">
-                                    <div className="formGroup">   
+                                    <div className="formGroup MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="lastName">Apellido</label>
                                         <InputGroup>
-                                            <InputUser className="form-control"
+                                        <input className="form-control inputRegisterForm"
                                                 type="text" 
                                                 name="lastName" 
                                                 id="lastName" 
@@ -258,14 +259,14 @@ const Register=(props)=> {
                                 </div>
                                 
                                 <div className="mb-3">
-                                    <div className="formGroup withoutBorder withoutBg">   
+                                    <div className="formGroup withoutBorder withoutBg MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="currentPassword"> Password 
                                             <button className="withoutBorder withoutBg ms-3" type="button" onClick={switchShown}> 
                                                 {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
                                             </button> 
                                         </label> 
                                         <InputGroup>
-                                            <InputUser className="form-control"
+                                        <input className="form-control inputRegisterForm"
                                                 type={shown ? "text" : "password" }
                                                 name="currentPassword" 
                                                 id="currentPassword" 
@@ -282,10 +283,10 @@ const Register=(props)=> {
                                 </div>
 
                                 <div className="mb-3">
-                                    <div className="formGroup">   
+                                    <div className="formGroup MQgroupRegister">   
                                         <label className="labelRegister"  htmlFor="confirmPassword"> Repetir Password</label>  
                                         <InputGroup>
-                                            <InputUser className="form-control"
+                                        <input className="form-control inputRegisterForm"
                                             type={shown ? "text" : "password" }
                                             name="confirmPassword" 
                                             id="confirmPassword" 
@@ -303,16 +304,17 @@ const Register=(props)=> {
 
                                 <div>                              
                                     { (errors.formOk === "v" || !errors.formOk )&& 
-                                        <span className="buttonsResponsive">
+                                        <div className="buttonsResponsive">
                                             <Link to={"/"} className=" btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
                                             <button type="submit" className="btn buttonBlue buttonGreen">Guardar </button>
-                                        </span>
+                                        </div>
                                     }
                                 </div> 
                             </form>
                         )}
                     </Formik>
-                </div>        
+                </div> 
+                </div>       
             </div>    
         </>
     );

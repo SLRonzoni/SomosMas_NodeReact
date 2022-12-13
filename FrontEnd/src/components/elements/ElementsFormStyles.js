@@ -31,7 +31,7 @@ const Label = styled.label`
 
 const Defaultvalue = styled.label`
     display: block;
-    font-weight:600;
+    font-size:0.6rem;
     padding:0.5rem;
     min-height:3rem;
     cursor:pointer;
@@ -74,29 +74,7 @@ const InputUser = styled.input`
     border-radius:0.44rem;
     padding:0 2rem 0 0.62rem;
     transition:.3s ease all;
-    border:3px solid transparent;
-
-    &:focus {
-        border:0.12rem solid ${Colors.border};
-        outline:none;
-        box-shadow:0.12rem 0rem 1.2rem rgba(163,163,163,0.4);
-    }
-`;
-
-const TextArea = styled.textarea`
-    display:flex;
-    flex-direction:column;
-    position:relative;
-    width:25.2rem;
-    height:10rem;
-    line-height:1rem;
-    resize:none;
-    background:#fff;
-    color:rgb(26, 26, 26);
-    border-radius:0.44rem;
-    padding:0 2rem 0 0.62rem;
-    transition:.3s ease all;
-    border:3px solid transparent;
+    border:0.18rem solid transparent;
 
     &:focus {
         border:0.12rem solid ${Colors.border};
@@ -121,6 +99,28 @@ const InputUpdate = styled.input`
         border:0.18rem solid ${Colors.border};
         outline:none;
         box-shadow:0.18rem 0rem 1.87rem rgba(163,163,163,0.4);
+    }
+`;
+
+const TextArea = styled.textarea`
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    width:100%;
+    height:7.5rem;
+    line-height:1rem;
+    resize:none;
+    background:#fff;
+    color:rgb(26, 26, 26);
+    border-radius:0.44rem;
+    padding:0 2rem 0 0.62rem;
+    transition:.3s ease all;
+    border:3px solid transparent;
+
+    &:focus {
+        border:0.12rem solid ${Colors.border};
+        outline:none;
+        box-shadow:0.12rem 0rem 1.2rem rgba(163,163,163,0.4);
     }
 `;
 
@@ -194,7 +194,7 @@ const MsjWrong =styled.p`
     background-color:${Colors.fondoMsj}; 
 `;
 
-export {Form, Label, Defaultvalue, Colors , Input, InputUser,InputUpdate, Icon, IconUser, 
+export {Form, Label, Defaultvalue, Colors , Input, InputUser, InputUpdate, Icon, IconUser, 
         TextArea, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
 
 

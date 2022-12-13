@@ -130,8 +130,6 @@ const Login =()=>{
     return (
       <>
       <div className="containerFirst">
-        
-        {/* <div className="handsAndHeart"> */}
           <div className="containerImgHalfScreen "> 
             <img className="imgHalfScreen" src={imagen} alt="ManitosPintatdas"></img>
           </div>
@@ -139,7 +137,6 @@ const Login =()=>{
            <div className="heart">
             <p>Logueate y hacé una donación</p>
           </div> 
-        {/* </div> */}
         
         <div className="containerLogin">
           <div className="buttonLoginGoogle">  
@@ -153,7 +150,7 @@ const Login =()=>{
           > 
           { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {} 
       
-              <form className="containerForm" onSubmit={handleSubmit}>
+              <form className="containerFormLogin" onSubmit={handleSubmit}>
                   <h5 className="h5Form">Inicio de sesión</h5>
                   <div>
                       <div>   
@@ -206,22 +203,20 @@ const Login =()=>{
 
                   <div>                              
                     { (errors.formOk === "v" || !errors.formOk) && 
-                      <span className="buttonsResponsive">
+                      <div className="buttonsResponsive mt-3">
                         <Link to={"/"} className=" btn buttonBlue" role="button"> Volver </Link>
                         <button type="submit" className=" btn buttonBlue buttonGreen" onClick={beginSession} >Login </button> 
-                      </span>
+                      </div>
                     }
                   </div> 
+                  <div className="buttonsResponsive">
+                    <span className="MQnoTenesCuenta">No tenés cuenta ? 
+                      <Link to={"/auth/register"} className="p-1 ">registrate</Link>
+                    </span>
+                  </div>
                 </form>
                 )}
             </Formik>
-        
-              <div className="buttonsResponsive">
-                <span className="ms-5">No tenés cuenta ? 
-                  <Link to={"/auth/register"} className="p-1 ">registrate</Link>
-                </span>
-              </div>
-
         </div>
       </div>
       </>
