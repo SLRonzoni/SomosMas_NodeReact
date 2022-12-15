@@ -122,7 +122,7 @@ body{ /* ✅ */
 
 .containerCreate{/* ✅ */
     width: 50vw;
-    height: 70vh;
+    height: auto;
     margin: auto;
     padding:2rem;
     text-align: center;
@@ -131,7 +131,6 @@ body{ /* ✅ */
     border-radius: 12px;
     color:#0f0f0f;
 }
-
 
 .containerUpdate{/* ✅ */
     width: 80vw;
@@ -158,8 +157,8 @@ body{ /* ✅ */
     border-radius: 1rem;
 }
 
-.h6Update{
-    font-size:0.6rem;
+.h5Update{
+    font-size:0.8rem;
     margin: auto;
 }
 

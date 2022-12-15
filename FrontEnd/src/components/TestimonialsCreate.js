@@ -5,10 +5,15 @@ import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import {Link} from 'react-router-dom';
 import { Formik } from "formik";
+import * as FaIcons from "react-icons/fa";
 import * as msg from './helpers/validationMessages';
 import { ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
 
 const TestimonialsCreate=(props)=> {
+
+    const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+    const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
+    
 
     let user  = JSON.parse(sessionStorage.getItem('userInfo'));
 
@@ -66,39 +71,39 @@ const TestimonialsCreate=(props)=> {
 
         if (!values.name) {
             errors.name=msg.msgRequired
-            errors.icoNname= '❌'
+            errors.icoNname= X
             return errors
         };
 
         // if (!regex.test(values.name)) {
         //     errors.name=msg.msgValidationUserEmail
-        //     errors.icoNname= '❌'
+        //     errors.icoNname= X
         //     errors.formOk='f'
         //     return errors
         // } else {
-        //     errors.icoNemail= '✔️'
+        //     errors.icoNemail= V
         //     errors.formOk='v'
         // };
 
         if (!values.content) {
             errors.content=msg.msgRequired
-            errors.icoNcontent= '❌'
+            errors.icoNcontent= X
             return errors
         };
 
         // if (!regex.regexUsercontent.test(values.content)) {
         //     errors.content=msg.msgValidationUserFirstName
-        //     errors.icoNcontent= '❌'
+        //     errors.icoNcontent= X
         //     errors.formOk='f'
         //     return errors
         // } else {
-        //     errors.icoNcontent= '✔️'
+        //     errors.icoNcontent= V
         //     errors.formOk='v'
         // };
 
         if (!values.image) {
             errors.image=msg.msgRequired
-            errors.icoNimage= '❌'
+            errors.icoNimage= X
             return errors
         };
     }   
@@ -106,7 +111,7 @@ const TestimonialsCreate=(props)=> {
     //FORM
     return (
         <>
-            <div className="containerFirst">
+        <div className="containerFirst">
             { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar logueado"</h3>}
             { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1500 )}
             { user && 
@@ -132,7 +137,7 @@ const TestimonialsCreate=(props)=> {
                                     <div>   
                                         <Label htmlFor="image">Agregá una imágen para tu testimonio </Label>
                                         <InputGroup  >
-                                            <InputUser className="form-control"
+                                            <input
                                                     type="file" 
                                                     name="image" 
                                                     id="image"  

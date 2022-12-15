@@ -1,6 +1,6 @@
 
 //REGULAR EXPRESSIONS
-const regexActivitiesName=/^[a-zA-Z0-9_-\s]{6,16}$/ // Letras, numeros, guion y guion_bajo, entre 6 y 16 digitos
+const regexActivitiesName=/^[a-zA-Z0-9_-\s]{6,50}$/ // Letras, numeros, guion y guion_bajo, entre 6 y 50 digitos
 
 const regexUserfirstName=/^[a-zA-Z_-\s]{4,16}$/ // Letras, guion y guion_bajo, entre 4 y 16 digitos
 
@@ -14,7 +14,7 @@ const regexUserPhone=/^[0-9_-\s+]{0,14}$/ // entre 7 y 14 numeros.
 
 const regexCategoryName=/^[a-zA-ZÀ-ÿ\s]{4,50}$/ // Letras y espacios, pueden llevar acentos, hasta 50 digitos
 
-const regexCategoryDescription=/^[a-zA-Z0-9À-ÿ\s+]{0,200}$/ // Letras, numeros y espacios, pueden llevar acentos, hasta 200 digitos
+const regexCategoryDescription=/^[a-zA-Z0-9À-ÿ,-\s]{0,200}$/ // Letras, letras acentuadas, números, guión, coma y espacios, hasta 200 digitos
 
 const regexUrl=/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,40}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/
 

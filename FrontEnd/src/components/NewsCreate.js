@@ -3,14 +3,17 @@ import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
+import {InputUser, InputGroup,ErrorText,IconUser} from './elements/ElementsFormStyles';
+import * as FaIcons from "react-icons/fa";
 import { msgRequired, msgValidationCategoryName, msgValidationIsNumber} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryId } from "./helpers/RegExp";
 import "./styles/styles.css";
 import "./styles/news-comments.css";
 
 function NewsCreate(props) {
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
   
   const [news, setNews] = useState({
     name: "",
@@ -70,40 +73,40 @@ let validateInputs=(values) =>{
 
   if (!values.name) {
     errors.name=msgRequired
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   };
 
   if (!regexCategoryName.test(values.name)) {
     errors.name=msgValidationCategoryName
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   } else {
-    errors.icoNname= '✔️'
+    errors.icoNname= V
   };
 
   if(!values.image) {
     errors.image=msgRequired
-    errors.icoNimage= '❌'
+    errors.icoNimage= X
     return errors
   } else {
-    errors.icoNimage= '✔️'
+    errors.icoNimage= V
   };
 
   if (!values.content) {
     errors.content=msgRequired
-    errors.icoNcontent= '❌'
+    errors.icoNcontent= X
     return errors
   } else {
-    errors.icoNcontent= '✔️'
+    errors.icoNcontent= V
   };
 
   if(!regexCategoryId.test(values.categoryId)){
     errors.categoryId=msgValidationIsNumber
-    errors.icoNcategoryId= '❌'
+    errors.icoNcategoryId= X
     return errors
   } else {
-    errors.icoNcategoryId= '✔️'
+    errors.icoNcategoryId= V
   };
 
 
@@ -115,127 +118,114 @@ let validateInputs=(values) =>{
 }
 
 
-//FORM
 return (
   <>
+ <div className="containerFirst">
   <Formik
        initialValues={initialValues}           
        validate={validateInputs}
        onSubmit={(values)=>{ sendForm(values)}}
   >
   { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-       <form  className="containerUpdateCreate" onSubmit={handleSubmit}>
-          <h3 className="centerText">Nueva noticia</h3>
-          <div >
-            <div>
-              <div className="displayInLineFlex">
-                <InputForm
+       <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+          <h4 className="mb-4 flex-Center">Nueva noticia</h4>
+          <div>
+            <div className="w-75 m-auto mb-3">  
+              <InputGroup className="d-block">
+                <label htmlFor='image'>Imágen</label>
+                <input className=" pt-1 d-block"
+                  type="file"
+                  name="image"
+                  encType="multipart/form-data"
+                  onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                  onBlur={handleBlur}
+                />
+                {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+              </InputGroup>
+            </div>
+            {touched.image && errors.image && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
+          </div>
+
+          <div>
+            <div className="w-75 mb-3 m-auto"> 
+              <InputGroup className="d-block">
+                <label htmlFor='name'>Nombre y Apellido</label>
+                <InputUser className="form-control"
                   type="text"
                   name="name"
-                  label="Nombre : " 
-                  defaultValue=""
                   placeholder="Ingrese nombre"
                   value={values.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
-              </div>
-              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
+                {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                </InputGroup>
             </div>
-            <br></br>
-            <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="file"
-                  name="image"
-                  label="Imágen :"
-                  encType="multipart/form-data"
-                  defaultValue=''
-                  onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                  onBlur={handleBlur}
-                />
-                {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
-              </div>
-              {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
+            {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
+          </div>
+           
+          <div>
+            <div className="w-75 mb-3 m-auto"> 
+              <InputGroup className="d-block">
+                <label htmlFor='content'>Detalle :</label>
+                <InputUser className="form-control"
+                type="text"
+                name="content"
+                placeholder="Ingrese contenido"
+                value={values.content}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
+              </InputGroup>
             </div>
-            <br></br>
-            <div>
-              <div className="displayInLineFlex">
-                <InputForm
+            {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}
+          </div>
+            
+          <div>
+            <div className="w-75 mb-3 m-auto"> 
+              <InputGroup className="d-block">
+                <label htmlFor='categoryId'>Categoría :</label>
+                <InputUser className="form-control"
                   type="text"
-                  name="content"
-                  label="Descripción : "
-                  defaultValue=""
-                  placeholder="Ingrese contenido"
-                  value={values.content}
+                  name="categoryId"
+                  placeholder="Ingrese categoría"
+                  value={values.categoryId}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.content && errors.icoNcontent && <Icon>{errors.icoNcontent}</Icon>}
-              </div>
-              {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
+                {touched.categoryId && errors.icoNcategoryId && <IconUser className="mt-4">{errors.icoNcategoryId}</IconUser>}
+              </InputGroup>
             </div>
-            <br></br>
-              <div >
-                <div className="displayInLineFlex">
-                  <InputForm
-                    type="text"
-                    name="categoryId"
-                    label="Categoría : "
-                    defaultValue=""
-                    placeholder="Ingrese categoría"
-                    value={values.categoryId}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.categoryId && errors.icoNcategoryId && <Icon>{errors.icoNcategoryId}</Icon>}
-                </div>
-                {touched.categoryId && errors.categoryId  && <ErrorText> {errors.categoryId} </ErrorText>}
-              </div>
-              <div>
-                <div className="displayInLineFlex">
-                  <InputForm
-                    type="text"
-                    name="type"
-                    label="Tipo : "
-                    defaultValue=""
-                    placeholder="Ingrese tipo"
-                    value={values.type}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.type && errors.icoNtype && <Icon>{errors.icoNtype}</Icon>}
-                </div>
-                {touched.type && errors.type  && <ErrorText> {errors.type} </ErrorText>}
-              </div>
-            </div>
-            <br></br>
-          { errors.formOk === "f" && 
-            <MsjWrong> 
-            <span className="centerText">
-              <br /> Algun dato es incorrecto. 
-              <br/> Por favor complete el formulario correctamente
-            </span>        
-            </MsjWrong>
-          }
-         
-          <div>
-            <br></br>
-            <div className="centerText">
-                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                <Link 
-                  to={"/NewsAll"}
-                  className="m-3 mr-md-2 btn buttonBlue"
-                  role="button"
-                > Volver
-                </Link>
-            </div> 
+            {touched.categoryId && errors.categoryId  && <ErrorText className="errorTextUpdate"> {errors.categoryId} </ErrorText>}
           </div>
-          
+
+          <div>
+            <div className="w-75 mb-3 m-auto"> 
+              <InputGroup className="d-block">
+                <label htmlFor='typr'>Tipo : </label>
+                <InputUser className="form-control"
+                type="text"
+                name="type"
+                placeholder="Ingrese tipo"
+                value={values.type}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.type && errors.icoNtype && <IconUser className="mt-4">{errors.icoNtype}</IconUser>}
+              </InputGroup>
+            </div>
+            {touched.type && errors.type  && <ErrorText className="errorTextUpdate"> {errors.type} </ErrorText>}
+          </div>
+
+          <div className="buttonsResponsive"> 
+            <Link to={"/NewsAll"}className="btn buttonBlue"role="button"> Volver</Link>
+            <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
+          </div>           
         </form>
     )}
   </Formik>
+  </div>
 </>
 );
 

@@ -15,7 +15,7 @@ function ActivitiesCreate(props) {
   const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
   const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
   
-  const [ setActivities] = useState({
+  const [ activities,setActivities] = useState({
     name: "",
     content:"",
     image:""        
@@ -105,85 +105,79 @@ let validateInputs=(values) =>{
 
 //FORM
 return (
-  <>
-  <div className="containerFirst">
-  <Formik
-       initialValues={initialValues}           
-       validate={validateInputs}
-       onSubmit={(values)=>{ sendForm(values)}}
-  >
-  { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
-       <form  className="containerCreate" onSubmit={handleSubmit}>
-          <h3 className="mb-4">Nueva actividad</h3>
-          <div>
-            <div>
-              <div>
-                <label className="labelWidthForm" htmlFor='image'>Imágen</label>
-                <InputGroup >
-                  <InputUser className="form-control"
-                    type="file"
-                    name="image"
-                    encType="multipart/form-data"
-                    onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                    onBlur={handleBlur}
-                  />
-                  {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}
-                  </InputGroup>
-              </div>
-              {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
-            </div>
-            <br></br>
-            <div>
-              <div> 
-                <label className="labelWidthForm" htmlFor='name'>Nombre y Apellido</label>
-                <InputGroup>
-                  <InputUser className="form-control"
-                    type="text"
-                    name="name"
-                    placeholder="Ingrese nombre"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
-                </InputGroup>
-              </div>
-              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-            </div>
-            <br></br>
-            <div>
-            <div>
-              <div>
-                <label className="labelWidthForm" htmlFor='content'>Descripción</label>
-                <InputGroup>
-                  <InputUser className="form-control"
-                    type="text"
-                    name="content"
-                    placeholder="Ingrese descripción"
-                    value={values.content}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
-                  </InputGroup>
-              </div>
-              {touched.content && errors.content  && <ErrorText> {errors.content} </ErrorText>}
-            </div>
-            <br></br>
-            </div>
-         </div>
-          <div>
-            <div className="buttonsResponsive">
-              <Link to={"/ActivitiesAll"} className="btn buttonBlue"> Volver </Link>
-              <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-            </div> 
-          </div> 
-        </form>
-    )}
-  </Formik>
-  </div>
-</>
-);
+        <>
+          <div className="containerFirst">
+            <Formik
+                initialValues={initialValues}           
+                validate={validateInputs}
+                onSubmit={(values)=>{ sendForm(values)}}
+            >
+            { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+              <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+                <h4 className="mb-5 flex-Center">Nueva actividad</h4>
+                  <div>
+                    <div className="w-75 m-auto mb-3">  
+                      <InputGroup className="d-block">
+                        <label htmlFor='image'>Imágen</label>
+                        <input className=" pt-1 d-block"
+                          type="file"
+                          name="image"
+                          encType="multipart/form-data"
+                          onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                          onBlur={handleBlur}
+                        />
+                        {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+                        </InputGroup>
+                    </div>
+                    {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
+                  </div>
+                  <div>
+                    <div className="w-75 mb-3 m-auto"> 
+                      <InputGroup className="d-block">
+                        <label htmlFor='name'>Nombre y Apellido</label>
+                        <InputUser className="form-control"
+                          type="text"
+                          name="name"
+                          placeholder="Ingrese nombre"
+                          value={values.name}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                      </InputGroup>
+                    </div>
+                    {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
+                  </div>
+                  <div>
+                    <div className="w-75 m-auto mb-3">
+                      <InputGroup className="d-block">
+                        <label htmlFor='content'>Descripción</label>
+                        <InputUser className="form-control pt-1"
+                          type="text"
+                          name="content"
+                          required
+                          placeholder="Ingrese descripción"
+                          value={values.content}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
+                        </InputGroup>
+                    </div>
+                    {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}
+                  </div>
+                  
+                  <div className="buttonsResponsive">
+                    <Link to={"/ActivitiesAll"} className="btn buttonBlue"> Volver </Link>
+                    <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
+                  </div> 
+                
+                </form>
+              )}
+            </Formik>
+          </div>
+        </>
+     );
 
 }
 export default ActivitiesCreate;

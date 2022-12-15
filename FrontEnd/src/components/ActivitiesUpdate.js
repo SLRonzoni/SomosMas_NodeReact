@@ -7,7 +7,7 @@ import { Formik } from 'formik';
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import {ErrorText,IconUser, InputUser, InputGroup, Defaultvalue} from './elements/ElementsFormStyles';
-import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated, msgValidationCategoryDescription} from './helpers/validationMessages';
+import { msgValidationActivitiesName, msgValidationDuplicated, msgValidationCategoryDescription} from './helpers/validationMessages';
 import {regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp";
 
 
@@ -17,7 +17,6 @@ const FormActivity = ({match,history}) => {
 
   const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
   const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
-
 
   const [activities, setActivities] = useState({ 
           id:"", 
@@ -105,9 +104,7 @@ const FormActivity = ({match,history}) => {
                   icoNname:'', icoNimage:'', icoNcontent:'',formOk:''};  
 
     if (!values.name) {
-      errors.name=msgRequired
-      errors.icoNname= X
-      return errors
+      values.name=activities.name;
     }
 
     if (!regexActivitiesName.test(values.name)) {
@@ -132,17 +129,13 @@ const FormActivity = ({match,history}) => {
       errors.formOk='v'
     };
 
-    if(!values.image) {
-      errors.image=msgRequired
-      errors.icoNimage= X
-      return errors
-    }
+    if (!values.image) {
+      values.image=activities.image;
+    };
 
     if (!values.content) {
-      errors.content=msgRequired
-      errors.icoNcontent= X
-      return errors
-    }
+      values.content=activities.content
+    };
 
     if (!regexCategoryDescription.test(values.content)) {
       errors.content=msgValidationCategoryDescription
@@ -166,7 +159,7 @@ const FormActivity = ({match,history}) => {
         >
         { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => ( 
           <form  className="containerFormUpdate" onSubmit={handleSubmit}>
-            <h4 className="mb-4 m-auto">Nuevos valores</h4> 
+            <h4 className="mb-4 flex-Center m-auto">Nuevos valores</h4> 
               <div>
                 <div className="w-75 m-auto">           
                     <InputGroup className="d-block">
@@ -187,49 +180,49 @@ const FormActivity = ({match,history}) => {
                 {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
               </div>
               <div>
-                  <div  className="w-75 mb-2 m-auto">          
-                    <InputGroup className="d-block">
-                      <label  htmlFor='image'>Imágen</label>
-                      <InputUser className="form-control pt-1"
-                        type="file"
-                        name="image"
-                        required
-                        encType="multipart/form-data"
-                        onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                        onBlur={handleBlur}
-                      />
-                      {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
-                      <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={activities.image}  alt="categoryImage" />} </Defaultvalue>
-                    </InputGroup>
+                <div className="w-75 mb-3 m-auto">          
+                  <InputGroup className="d-block">
+                    <label  htmlFor='image'>Imágen</label>
+                    <input className=" pt-1 d-block"
+                      type="file"
+                      name="image"
+                      required
+                      encType="multipart/form-data"
+                      onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                      onBlur={handleBlur}
+                    />
+                    {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+                    <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={activities.image}  alt="categoryImage" />} </Defaultvalue>
+                  </InputGroup>
                 </div>
                 {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
               </div>
               <div>
-                  <div className="w-75 m-auto">          
-                    <InputGroup className="d-block">
-                      <label  htmlFor='content'>Descripción</label>
-                      <InputUser className="form-control pt-1"
-                        type="text"
-                        name="content"
-                        required
-                        placeholder="Ingrese nueva descripción"
-                        value={values.content}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                      />
-                      {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
-                      <Defaultvalue>actual : {activities.content} </Defaultvalue>
-                    </InputGroup>
-                  </div>
-                  {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}
+                <div className="w-75 m-auto">          
+                  <InputGroup className="d-block">
+                    <label  htmlFor='content'>Descripción</label>
+                    <InputUser className="form-control pt-1"
+                      type="text"
+                      name="content"
+                      required
+                      placeholder="Ingrese nueva descripción"
+                      value={values.content}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
+                    <Defaultvalue>actual : {activities.content} </Defaultvalue>
+                  </InputGroup>
+                </div>
+                {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}
               </div>  
-            <h6 className="h6Update mt-2">( todos los campos son obligatorios )</h6>
-            <div>
-              <div className="buttonsResponsive">
-                <Link to={"/ActivitiesAll"} className="btn buttonBlue"  role="button" > Volver </Link>
-                <button type="submit" className="btn buttonBlue buttonGreen "> Guardar </button>
-              </div> 
-            </div>   
+            <h5 className="h5Update mt-2">( todos los campos son obligatorios )</h5>
+           
+            <div className="buttonsResponsive">
+              <Link to={"/ActivitiesAll"} className="btn buttonBlue"  role="button" > Volver </Link>
+              <button type="submit" className="btn buttonBlue buttonGreen "> Guardar </button>
+            </div> 
+           
           </form>
           )}
         </Formik>

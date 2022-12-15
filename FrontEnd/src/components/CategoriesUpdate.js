@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 import "./styles/styles.css";
 import { Formik } from 'formik';
 import { Link } from "react-router-dom";
-import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
+import * as FaIcons from "react-icons/fa";
+import { ErrorText,IconUser, InputUser, InputGroup, Defaultvalue} from './elements/ElementsFormStyles';
 import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription, msgValidationDuplicated} from './helpers/validationMessages';
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import { formatDate } from "./helpers/FormatDate";
@@ -15,6 +15,9 @@ import DuplicatedName from "./helpers/DuplicatedName";
 const CategoriesUpdate = ({match,history}) => {
 
   const id  = match.params.id;
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
 
   const [categories, setCategories] = useState({ 
           id:"", 
@@ -93,7 +96,7 @@ const CategoriesUpdate = ({match,history}) => {
                 
     if (!values.name) {
       values.name=categories.name
-      errors.icoNname= '✔️'
+      errors.icoNname= V
     };
 
        
@@ -101,32 +104,32 @@ const CategoriesUpdate = ({match,history}) => {
     repeat(searchName, errors)
     if( (duplicated.respName===searchName) && !duplicated.respId  ) {  
       errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'         
+      errors.icoNname= X         
       return errors
     } else {
-      errors.icoNname= '✔️'
+      errors.icoNname= V
     };
 
     if (!regexCategoryName.test(values.name)) {
       errors.name=msgValidationCategoryName
-      errors.icoNname= '❌'
+      errors.icoNname= X
       return errors
     } else {
-      errors.icoNname= '✔️'
+      errors.icoNname= V
     };
   
 
     if (!values.description) {
       values.description=categories.description
-      errors.icoNdescription= '✔️'
+      errors.icoNdescription= V
     }; 
 
     if (!regexCategoryDescription.test(values.description)) {
       errors.description=msgValidationCategoryDescription
-      errors.icoNdescription= '❌'
+      errors.icoNdescription= X
        return errors
     } else {
-      errors.icoNdescription= '✔️'
+      errors.icoNdescription= V
     };
 
     if(!values.image) {
@@ -134,7 +137,7 @@ const CategoriesUpdate = ({match,history}) => {
       errors.icoNimage= '❌'
        return errors
     } else {
-      errors.icoNimage= '✔️'
+      errors.icoNimage= V
     };
 
     if(errors.name || errors.description || errors.image){
@@ -147,102 +150,88 @@ const CategoriesUpdate = ({match,history}) => {
   //FORM
   return (
     <>
-    <Formik
-         initialValues={initialValues}           
-         validate={validateInputs}
-         onSubmit={(values)=>{ sendForm(values)}}
-    >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
-         <form  className="containerUpdateCreate" onSubmit={handleSubmit}>
-            <h3 className="centerText">Nuevos valores ...</h3>
-            <br></br>
-            <div>
-              <div >
-                <div className="displayInLineFlex inputCreateWidth ">
-                  <InputForm
-                    type="text"
-                    name="name"
-                    label="Nombre actual : " 
-                    defaultValue={categories.name}
-                    placeholder="Ingrese nuevo nombre"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
-                </div>
-                {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-              </div>
-              <br></br>
-              <div>
-                <div className="displayInLineFlex inputCreateWidth">
-                  <InputForm
-                    type="file"
-                    name="image"
-                    label="Imágen :"
-                    encType="multipart/form-data"
-                    defaultValue={<img className="imageSmall" src={categories.image}  alt="categoryImage"/>}
-                    onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                    onBlur={handleBlur}
-                  />
-                  {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
-                </div>
-                {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
-              </div>
-              <br></br>
-              <div>
-                <div className="displayInLineFlex inputCreateWidth">
-                  <InputForm
-                    type="text"
-                    name="description"
-                    label="Descripción actual : "
-                    defaultValue={categories.description}
-                    placeholder="Ingrese nueva descripción"
-                    value={values.description}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.description && errors.icoNdescription && <Icon>{errors.icoNdescription}</Icon>}
-                </div>
-                {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
-              </div>
-              <br></br>
-              <div className="centerText displayFlex">
+     <div className="containerFirst">
+      <Formik
+          initialValues={initialValues}           
+          validate={validateInputs}
+          onSubmit={(values)=>{ sendForm(values)}}
+      >
+      { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+          <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+              <h4 className="mb-4 flex-Center">Nuevos valores</h4>
                 <div>
-                  <Label htmlFor="name">Creada  :</Label>
-                  <span className="center" >{formatDate(new Date(categories.createdAt))}</span>
+                  <div className="w-75 m-auto">           
+                    <InputGroup className="d-block">
+                      <label htmlFor='name'>Actividad</label>
+                      <InputUser className="form-control pt-1"
+                        type="text"
+                        name="name"
+                        placeholder="Ingrese nuevo nombre"
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                      <Defaultvalue> actual : {categories.name} </Defaultvalue>
+                    </InputGroup>
+                  </div>
+                  {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
+                </div> 
+                <div>
+                  <div className="w-75 mb-3 m-auto">           
+                    <InputGroup className="d-block">
+                      <label htmlFor='image'>Imágen</label>
+                      <input className="pt-1 d-block"
+                        type="file"
+                        name="image"
+                        encType="multipart/form-data"
+                        onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                        onBlur={handleBlur}
+                      />
+                      {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+                      <Defaultvalue> actual : {<img className="imageSmall" src={categories.image}  alt="categoryImage"/>} </Defaultvalue>
+                    </InputGroup>
+                  </div>
+                  {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
                 </div>
-                <div>   
-                  <Label htmlFor="name">Última modificación  :</Label>
-                  <span className="center" >{formatDate(new Date(categories.updatedAt))}</span>
+                <div>
+                <div className="w-75 m-auto">           
+                    <InputGroup className="d-block">
+                      <label htmlFor='description'>Descripción</label>
+                      <InputUser className="form-control pt-1"
+                        type="text"
+                        name="description"
+                        placeholder="Ingrese nueva descripción"
+                        value={values.description}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.description && errors.icoNdescription && <IconUser className="mt-4">{errors.icoNdescription}</IconUser>}
+                      <Defaultvalue> actual : {categories.description} </Defaultvalue>
+                    </InputGroup>
+                  </div>
+                  {touched.description && errors.description  && <ErrorText className="errorTextUpdate"> {errors.description} </ErrorText>}
                 </div>
-              </div>
-            </div>
-            { errors.formOk === "f" && 
-              <MsjWrong> 
-              <span className="centerText">
-                <br /> Algun dato es incorrecto. 
-                <br/> Por favor complete el formulario correctamente
-              </span>        
-              </MsjWrong>
-            }
-           
-            <div>
-              <br></br>
-              <div className="centerText">
-                  <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link 
-                    to={"/CategoriesAll"}
-                    className="m-3 mr-md-2 btn buttonBlue"
-                    role="button"
-                  > Volver
-                  </Link>
-              </div> 
-            </div>
+              
+                <div className="flex-Center">
+                  <div>
+                    <label htmlFor="name">Creada  : </label>
+                    <span>{formatDate(new Date(categories.createdAt))}</span>
+                  </div>
+                  <div className="ms-5">   
+                    <label htmlFor="name">Última modificación  :</label>
+                    <span>{formatDate(new Date(categories.updatedAt))}</span>
+                  </div>
+                </div>
             
-          </form>
-      )}
-    </Formik>
+              <div className="buttonsResponsive">
+                <Link to={"/CategoriesAll"}className="btn buttonBlue"role="button"> Volver</Link>
+                <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
+              </div> 
+            </form>
+        )}
+      </Formik>
+    </div>
   </>
   );
 };

@@ -53,15 +53,15 @@ const TestimonialsPublic =() =>{
             
             {testimonials && 
              <>
-                <div className='buttonTestimonials'>
-                    <Link to={'/TestimonialsCreate'} className=" btn btn-success" role="button" > Dar mi testimonio </Link> 
+                <div className='buttonTestimonials mb-5'>
+                    <Link to={'/TestimonialsCreate'} className=" btn buttonGreen" role="button" > Dar mi testimonio </Link> 
                 </div>
 
                 <div className="containerTestimonials">
                     {testimonials.map((oneResult) => {
                         return (
                             <div key={oneResult.id}  >
-                                <br/>
+                               
                                 <div className='cardTestimonialsAndComments '>
                                    
                                     <img className="imgTestimonialsAndComments" src={oneResult.image}alt="ImagenTestimonio"></img> 
@@ -69,8 +69,8 @@ const TestimonialsPublic =() =>{
                                     <div className='widthTestimonialsAndComments '>
                                         <h3 className='pTestimonialsPublic'>{oneResult.name} </h3>
                                         <div>
-                                            <p className='pTestimonialsPublic'> {oneResult.content}</p>  
-                                            <br/>
+                                            <p className='pTestimonialsPublic mb-5'> {oneResult.content}</p>  
+                                           
                                             <div className='userTestimonials'>
                                                 <div className='d-flex'>
                                                     <img className="imageUserTestimonials" src={oneResult.photo} alt="user"></img> 
