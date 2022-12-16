@@ -149,7 +149,13 @@
     .MQimageCharUser{
         display: none;
     }
+
     
+    .divColumnUpdate,
+    .MQdate{
+        display: block;
+        margin: auto;
+    }
 } 
 
 /* TestimonialCreate */

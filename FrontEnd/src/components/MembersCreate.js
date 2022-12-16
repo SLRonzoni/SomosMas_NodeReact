@@ -9,6 +9,7 @@ import { regexActivitiesName, regexCategoryDescription } from "./helpers/RegExp"
 import "./styles/styles.css";
 import './styles/members-organizations.css';
 import * as FaIcons from "react-icons/fa";
+import buttonsResponsive from "./buttonsResponsive";
 
 function MembersCreate(props) {
 
@@ -240,11 +241,7 @@ return (
               </div>
               {touched.linkedinUrl && errors.linkedinUrl  && <ErrorText className="errorTextUpdate"> {errors.linkedinUrl} </ErrorText>}
             </div>
-          
-            <div className="buttonsResponsive"> 
-              <Link to={"/MembersAll"} className="btn buttonBlue"role="button"> Volver </Link>
-              <button type="submit" className="btn buttonBlue buttonGreen "> Guardar </button>
-          </div> 
+            {buttonsResponsive("/MembersAll","Guardar" )}
         </form>
     )}
   </Formik>

@@ -120,7 +120,7 @@ const App = () => {
           <Route exact path='/news/update/:id' component={NewsUpdate}/>
 
           <Route path='/RolesAll' component={RolesAll}/>
-          <Route exact path='/roles' component={RolesCreate}/>
+          <Route exact path='/RolesCreate' component={RolesCreate}/>
           <Route exact path='/roles/update/:id' component={RolesUpdate}/>
 
           <Route path='/TestimonialsAll' component={TestimonialsAll}/>

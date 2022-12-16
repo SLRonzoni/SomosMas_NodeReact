@@ -3,7 +3,6 @@ import axiosClient from '../configuration/axiosClient';
 import './styles/styles.css';
 import './styles/users.css';
 import './styles/tableMediaScreen.css';
-import { Link } from "react-router-dom";
 import { Formik } from 'formik';
 import * as msg from './helpers/validationMessages';
 import * as regex  from "./helpers/RegExp";
@@ -13,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import {ErrorText,IconUser,InputUser, InputGroup} from './elements/ElementsFormStyles';
 import Swal from "sweetalert2";
+import buttonsResponsive from './buttonsResponsive';
 
 
 const MyProfileUpdate = ({match, history}) =>{
@@ -257,10 +257,7 @@ const MyProfileUpdate = ({match, history}) =>{
                 {touched.password && errors.password && <ErrorText className='errorText-myProfile-update'>{errors.password} </ErrorText> }
               </div>
 
-              <div className="buttonsResponsive">
-                <Link to={"/"}  className="btn buttonBlue" role="button" > Volver </Link>
-                <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button> 
-              </div>  
+              {buttonsResponsive("/","Guardar")}
          </div> 
     </form>
     )}

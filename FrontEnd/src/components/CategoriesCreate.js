@@ -9,6 +9,7 @@ import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription,
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import DuplicatedName from "./helpers/DuplicatedName";
 import "./styles/styles.css";
+import buttonsResponsive from "./buttonsResponsive";
 
 function CategoriesCreate(props) {
 
@@ -190,10 +191,7 @@ return (
                   {touched.description && errors.description  && <ErrorText className="errorTextUpdate"> {errors.description} </ErrorText>}
                 </div>
             
-              <div className="buttonsResponsive mt-5">
-                <Link to={"/CategoriesAll"}className="btn buttonBlue" role="button"> Volver</Link>
-                <button type="submit" className="btn buttonBlue buttonGreen "> Guardar </button>
-              </div> 
+              {buttonsResponsive("/CategoriesAll","Guardar")}
             </form>
         )}
       </Formik>

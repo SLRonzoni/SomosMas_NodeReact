@@ -3,13 +3,16 @@ import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import "./styles/styles.css";
 import { Formik } from 'formik';
-import { Link } from "react-router-dom";
-import { Label,SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
+import { ErrorText,IconUser, InputUser, InputGroup,Defaultvalue} from './elements/ElementsFormStyles';
 import { msgRequired, msgValidationDuplicated} from './helpers/validationMessages';
 import { formatDate} from './helpers/FormatDate';
+import buttonsResponsive from "./buttonsResponsive";
+import * as FaIcons from "react-icons/fa";
 
 const RolesUpdate = ({match,history}) => {
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
 
   const id  = match.params.id;
 
@@ -43,7 +46,7 @@ const RolesUpdate = ({match,history}) => {
   
     const updateRole = async () => {
       await axiosClient
-        .put(`/roles/update/${id}`,body)
+        .put(`/roles/${id}`,body)
         .then(response => {
           if (response.status===201) {
             setRoles(response.data);
@@ -97,10 +100,10 @@ const RolesUpdate = ({match,history}) => {
                 
                 if (!values.name) {
                   errors.name=msgRequired
-                  errors.icoNname= '❌'
+                  errors.icoNname= X
                   return errors
                 } else {
-                  errors.icoNname= '✔️'
+                  errors.icoNname= V
                 };
               
                 
@@ -108,19 +111,19 @@ const RolesUpdate = ({match,history}) => {
                 repeat(searchName, errors)
                 if(duplicated===searchName){
                   errors.name=msgValidationDuplicated
-                  errors.icoNname= '❌'         
+                  errors.icoNname= X         
                   return errors
                 } else {
-                  errors.icoNname= '✔️'
+                  errors.icoNname= V
                 };
               
               
                 if (!values.description) {
                   errors.description=msgRequired
-                  errors.icoNdescription= '❌'
+                  errors.icoNdescription= X
                   return errors
                 } else {
-                  errors.icoNdescription= '✔️'
+                  errors.icoNdescription= V
                 }; 
               
                 
@@ -130,89 +133,73 @@ const RolesUpdate = ({match,history}) => {
                   errors.formOk='v'
                 };
                  
-              }
+    }
 
-  //FORM
   return (
-    <>
-    <Formik
-         initialValues={initialValues}           
-         validate={validateInputs}
-         onSubmit={(values)=>{ sendForm(values)}}
-    >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-         <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-            <h3 className="centerText">Nuevos valores</h3>
-            <div>
-              <div>
-                <div className="displayInLineFlex">
-                  <InputForm
-                    type="text"
-                    name="name"
-                    label="Nombre actual : " 
-                    defaultValue={roles.name}
-                    placeholder="Ingrese nuevo nombre"
-                    value={values.name}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
-                </div>
-                {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-              </div>
-              <br></br>
-              <div>
-                <div className="displayInLineFlex">
-                  <InputForm
-                    type="text"
-                    name="description"
-                    label="Descripción actual : "
-                    defaultValue={roles.description}
-                    placeholder="Ingrese nueva descripción"
-                    value={values.description}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  {touched.description && errors.icoNdescription && <Icon>{errors.icoNdescription}</Icon>}
-                </div>
-                {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
-              </div>
-              <br></br>
-              <div className="centerText displayFlex">
-                <div>
-                  <Label htmlFor="name">Creada  :</Label>
-                  <span className="center" >{formatDate(new Date(roles.createdAt))}</span>
-                </div>
-                <div>   
-                  <Label htmlFor="name">Última modificación  :</Label>
-                  <span className="center" >{formatDate(new Date(roles.updatedAt))}</span>
-                </div>
-              </div>
+  <>
+    <div className="containerFirst">
+      <Formik
+        initialValues={initialValues}           
+        validate={validateInputs}
+        onSubmit={(values)=>{ sendForm(values)}}
+      >
+      { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+        <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+          <h4 className="mb-5 flex-Center">Nuevos valores para role</h4>
+          <div>
+            <div className="w-75 m-auto mb-3">  
+              <InputGroup className="d-block">
+                <label htmlFor='name'>Nombre y Apellido</label>
+                <InputUser className="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Ingrese nuevo nombre"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                <Defaultvalue>actual : {roles.name} </Defaultvalue>
+              </InputGroup >
             </div>
-            { errors.formOk === "f" && 
-              <MsjWrong> 
-              <span className="centerText">
-                <br /> Algun dato es incorrecto. 
-                <br/> Por favor complete el formulario correctamente
-              </span>        
-              </MsjWrong>
-            }
+            {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
+          </div>
            
-            <div>
-              <div className="centerText">
-                  <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                  <Link 
-                    to={"/RolesAll"}
-                    className="m-3 mr-md-2 btn buttonBlue"
-                    role="button"
-                  > Volver
-                  </Link>
-              </div> 
+          <div>
+          <div className="w-75 m-auto mb-3">  
+              <InputGroup className="d-block">
+                <label htmlFor='description'>Descripción :</label>
+                <InputUser className="form-control"
+                type="text"
+                name="description"
+                placeholder="Ingrese nueva descripción"
+                value={values.description}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.description && errors.icoNdescription && <IconUser className="mt-4">{errors.icoNdescription}</IconUser>}
+              <Defaultvalue>actual : {roles.description} </Defaultvalue>
+              </InputGroup >
             </div>
+            {touched.description && errors.description  && <ErrorText className="errorTextUpdate"> {errors.description} </ErrorText>}
+          </div>
+             
+          <div className="flex-Center">
+            <div className="d-flex">
+              <label htmlFor="name">Creada  :</label>
+              <span >{formatDate(new Date(roles.createdAt))}</span>
+            </div>
+            <div className="d-flex ms-4">   
+              <label htmlFor="name">Última modificación  :</label>
+              <span >{formatDate(new Date(roles.updatedAt))}</span>
+            </div>
+          </div>
             
-          </form>
+          {buttonsResponsive("/RolesAll", "Guardar")}
+        </form>
       )}
-    </Formik>
+      </Formik>
+    </div>
   </>
   );
 };

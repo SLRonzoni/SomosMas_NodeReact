@@ -15,7 +15,7 @@ const RolesAllLine = ({id, name, description, create,update,remove}) =>{
             <td>{formatDate(new Date(update))}</td>
             <td>   
                 <div className="flex-Center MQbuttons"> 
-                    <Link to={`/categories/update/${id}`}> 
+                    <Link to={`roles/update/${id}`}> 
                         <FaIcons.FaPencilAlt className='iconBlue'/> 
                     </Link>
                     <div className="button" onClick={()=>{remove(id)}}> 

@@ -10,6 +10,7 @@ import * as FaIcons from "react-icons/fa";
 import { msgValidationCategoryName, msgValidationIsNumber} from './helpers/validationMessages';
 import {regexCategoryName , regexCategoryId} from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
+import buttonsResponsive from "./buttonsResponsive";
 
 const FormNews = ({match,history}) => {
 
@@ -246,10 +247,7 @@ let validateInputs=(values) =>{
                 <span className="center" >{formatDate(new Date(news.updatedAt))}</span>
               </div>
             </div>
-            <div className="buttonsResponsive">
-              <Link to={"/NewsAll"}className="btn buttonBlue"role="button"> Volver</Link>
-              <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-            </div> 
+            {buttonsResponsive("/NewsAll","Guardar")}
           </form>
       )}
     </Formik>

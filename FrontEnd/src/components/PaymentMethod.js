@@ -59,7 +59,7 @@ paymentOption()
             <FaIcons.FaCreditCard className="icons"/> ( Mercado Pago en AR$ )
             </label>
           </div>
-        
+         
           <div className='buttonsResponsive '>
             <Link to={"/"} className=' btn buttonBlue' role='button' aria-pressed='true'> Volver </Link>
             <Link to={link} className='btn buttonBlue buttonGreen' role='button'aria-pressed='true'> Continuar</Link>

@@ -120,9 +120,8 @@
 }
 
 .h5Form{ /* ✅ */
-    padding-top:0.2rem;
+    text-align: center;
     margin:2.5rem auto;
-    width: 54%;
 }
 
 .containerRegister{ /* ✅ */

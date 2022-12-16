@@ -10,6 +10,7 @@ import { msgRequired,msgValidationCategoryName,msgValidationCategoryDescription,
 import { regexCategoryName, regexCategoryDescription } from "./helpers/RegExp";
 import { formatDate } from "./helpers/FormatDate";
 import DuplicatedName from "./helpers/DuplicatedName";
+import buttonsResponsive from "./buttonsResponsive";
 
 
 const CategoriesUpdate = ({match,history}) => {
@@ -224,10 +225,7 @@ const CategoriesUpdate = ({match,history}) => {
                   </div>
                 </div>
             
-              <div className="buttonsResponsive">
-                <Link to={"/CategoriesAll"}className="btn buttonBlue"role="button"> Volver</Link>
-                <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-              </div> 
+              {buttonsResponsive("/CategoriesAll","Guardar")}
             </form>
         )}
       </Formik>

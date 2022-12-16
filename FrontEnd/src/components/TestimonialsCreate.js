@@ -3,11 +3,11 @@ import "./styles/styles.css";
 import "./styles/testimonial.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
-import {Link} from 'react-router-dom';
 import { Formik } from "formik";
 import * as FaIcons from "react-icons/fa";
 import * as msg from './helpers/validationMessages';
 import { ErrorText,IconUser, Label, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import buttonsResponsive from "./buttonsResponsive";
 
 const TestimonialsCreate=(props)=> {
 
@@ -111,94 +111,85 @@ const TestimonialsCreate=(props)=> {
     //FORM
     return (
         <>
-        <div className="containerFirst">
-            { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar logueado"</h3>}
-            { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1500 )}
-            { user && 
-                <Formik  
-                        initialValues={initialValues}           
-                        validate={validateInputs}
-                        onSubmit={(values)=>{ sendForm(values)}}
-                > 
-                { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+            <div className="containerFirst">
+                { !user && <h3 className="h3CreateTestimonials">"Para dar testimonio, tenés que estar logueado"</h3>}
+                { !user && setTimeout( function() { window.location.href = "/TestimonialsPublic" }, 1500 )}
+                { user && 
+                    <Formik  
+                            initialValues={initialValues}           
+                            validate={validateInputs}
+                            onSubmit={(values)=>{ sendForm(values)}}
+                    > 
+                    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
             
                     <form className="containerTestimonialCreate" onSubmit={handleSubmit}>
                         <h5 className="centerText marginBottom05rem">Mi testimonio</h5>
                         <div>
-                            <div>
-                                <div className="ms-3">
-                                    <div className="d-flex">   
-                                        <img  className="imageUserTestimonials m-1" src={user.image} alt="usuario"></img>
-                                        <span className="ms-2 mt-2">{user.firstName}, {user.lastName} </span>                                                 
-                                    </div>
+                            <div className="ms-3">
+                                <div className="d-flex">   
+                                    <img  className="imageUserTestimonials m-1" src={user.image} alt="usuario"></img>
+                                    <span className="ms-2 mt-2">{user.firstName}, {user.lastName} </span>                                                 
                                 </div>
-
-                                <div className="ms-3">
-                                    <div>   
-                                        <Label htmlFor="image">Agregá una imágen para tu testimonio </Label>
-                                        <InputGroup  >
-                                            <input
-                                                    type="file" 
-                                                    name="image" 
-                                                    id="image"  
-                                                    encType="multipart/form-data"
-                                                    onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) } 
-                                                    onBlur={handleBlur}
-                                            />
-                                            {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}    
-                                        </InputGroup> 
-                                    </div> 
-                                    {touched.image && errors.image && <ErrorText>{errors.image} </ErrorText> }
-                                </div>
-
-                                <div className="ms-3">
-                                    <div>   
-                                        <Label  htmlFor="name">Título</Label>
-                                        <InputGroup>
-                                            <InputUser className="form-control "
-                                            type="text" 
-                                            name="name" 
-                                            id="name" 
-                                            placeholder="Ingresá un título para tu testimonio"
-                                            value={values.name}
-                                            onChange={handleChange} 
+                            </div>
+                            <div className="ms-3">
+                                <div>   
+                                    <Label htmlFor="image">Agregá una imágen para tu testimonio </Label>
+                                    <InputGroup  >
+                                        <input
+                                            type="file" 
+                                            name="image" 
+                                            id="image"  
+                                            encType="multipart/form-data"
+                                            onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) } 
                                             onBlur={handleBlur}
-                                            />
-                                            {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
-                                        </InputGroup>
-                                    </div> 
-                                    {touched.name && errors.name && <ErrorText className="errorsRegister">{errors.name} </ErrorText> }
+                                        />
+                                        {touched.image && errors.icoNimage && <IconUser>{errors.icoNimage}</IconUser>}    
+                                    </InputGroup> 
+                                </div> 
+                                {touched.image && errors.image && <ErrorText>{errors.image} </ErrorText> }
+                            </div>
+                            <div className="ms-3">
+                                <div>   
+                                    <Label  htmlFor="name">Título</Label>
+                                    <InputGroup>
+                                        <InputUser className="form-control "
+                                        type="text" 
+                                        name="name" 
+                                        id="name" 
+                                        placeholder="Ingresá un título para tu testimonio"
+                                        value={values.name}
+                                        onChange={handleChange} 
+                                        onBlur={handleBlur}
+                                        />
+                                        {touched.name && errors.icoNname && <IconUser>{errors.icoNname}</IconUser>}
+                                    </InputGroup>
+                                </div> 
+                                {touched.name && errors.name && <ErrorText className="errorsRegister">{errors.name} </ErrorText> }
+                            </div>
+                            <div className="ms-3">
+                                <div>   
+                                    <Label htmlFor="content">Detalle</Label>
+                                    <InputGroup >
+                                        <textarea className="textArea form-control borderRounded"
+                                            type='text'
+                                            rows='5'
+                                            cols='40'
+                                            name='content'
+                                            placeholder="  Tu testimonio..."
+                                            value={values.content}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                        />              
+                                        {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
+                                    </InputGroup> 
                                 </div>
-                                
-                                <div className="ms-3">
-                                    <div>   
-                                        <Label htmlFor="content">Detalle</Label>
-                                        <InputGroup >
-                                            <textarea className="textArea form-control borderRounded"
-                                                type='text'
-                                                rows='5'
-                                                cols='40'
-                                                name='content'
-                                                placeholder="  Tu testimonio..."
-                                                value={values.content}
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                            />              
-                                            {touched.content && errors.icoNcontent && <IconUser>{errors.icoNcontent}</IconUser>}
-                                        </InputGroup> 
-                                    </div>
-                                    {touched.content && errors.content && <ErrorText className="errorsRegister">{errors.content} </ErrorText> }
-                                </div>
-
-                                <div className="buttonsResponsive">
-                                    <Link to={"/TestimonialsPublic"} className=" btn buttonBlue" role="button"> Volver</Link>
-                                    <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-                                </div> </div> 
-                             
+                                {touched.content && errors.content && <ErrorText className="errorsRegister">{errors.content} </ErrorText> }
+                            </div>
+                            {buttonsResponsive("/TestimonialsPublic","Guardar")}
                         </div>
                     </form>
                 )}
-                </Formik>
+            </Formik>
             }
         </div>
     </>

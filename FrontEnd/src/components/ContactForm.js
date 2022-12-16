@@ -11,6 +11,7 @@ import * as regex from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
 import {TextArea,ErrorText,IconUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
+import buttonsResponsive from "./buttonsResponsive";
 
 const ContactForm = (props) => {
 
@@ -250,12 +251,7 @@ const ContactForm = (props) => {
                   <ErrorText>{errors.message} </ErrorText>
                 )}
               </div>
-
-              <div className="buttonsResponsive mt-4">
-                <Link to={"/"}  className='btn buttonBlue' role='button' > Volver </Link>
-                <button type='submit' className="btn buttonBlue buttonGreen"> Enviar</button>
-              </div>
-              
+              {buttonsResponsive("/","Enviar")}
             </form>
           )}
         </Formik>

@@ -10,6 +10,7 @@ import { ErrorText } from "./elements/ElementsFormStyles";
 import { msgRequired,msgValidationAmount } from "./helpers/validationMessages";
 import { regexAmount } from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
+import buttonsResponsive from "./buttonsResponsive";
 
 const CheckoutForm= (props) => {
   const stripe = useStripe();

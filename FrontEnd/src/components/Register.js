@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaIcons from "react-icons/fa";
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import imagen from "./images/manos_fondo-sinFondo.png";
+import buttonsResponsive from "./buttonsResponsive";
 
 const Register=(props)=> {
 
@@ -303,12 +304,7 @@ const Register=(props)=> {
                                 </div>
 
                                 <div>                              
-                                    { (errors.formOk === "v" || !errors.formOk )&& 
-                                        <div className="buttonsResponsive">
-                                            <Link to={"/"} className=" btn buttonBlue" role="button" aria-pressed="true"> Volver </Link>
-                                            <button type="submit" className="btn buttonBlue buttonGreen">Guardar </button>
-                                        </div>
-                                    }
+                                    { (errors.formOk === "v" || !errors.formOk ) && buttonsResponsive("/","Guardar") }
                                 </div> 
                             </form>
                         )}

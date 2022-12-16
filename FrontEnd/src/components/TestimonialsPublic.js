@@ -60,7 +60,7 @@ const TestimonialsPublic =() =>{
                 <div className="containerTestimonials">
                     {testimonials.map((oneResult) => {
                         return (
-                            <div key={oneResult.id}  >
+                            <div key={oneResult.id}>
                                
                                 <div className='cardTestimonialsAndComments '>
                                    

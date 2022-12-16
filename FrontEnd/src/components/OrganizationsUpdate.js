@@ -1,19 +1,23 @@
 import React, { useState,useEffect} from "react";
-import axiosClient from "../configuration/axiosClient";
-import Swal from "sweetalert2";
 import "./styles/styles.css";
 import './styles/members-organizations.css';
+import './styles/tableMediaScreen.css';
+import * as FaIcons from "react-icons/fa";
+import axiosClient from "../configuration/axiosClient";
+import Swal from "sweetalert2";
 import { Formik } from 'formik';
-import { Link } from "react-router-dom";
-import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import InputUpdateForm from "./elements/InputUpdate";
+import { ErrorText,IconUser, InputUser, InputGroup, Defaultvalue,TextArea} from './elements/ElementsFormStyles';
 import { msgRequired,msgValidationActivitiesName, msgValidationDuplicated} from './helpers/validationMessages';
 import {regexActivitiesName } from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
+import buttonsResponsive from "./buttonsResponsive";
 
 const OrganizationsUpdate = ({match,history}) => {
 
   const id  = match.params.id;
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
 
   const [organizations, setOrganizations] = useState({ 
           id:"", 
@@ -107,7 +111,6 @@ const OrganizationsUpdate = ({match,history}) => {
     }));
   }; 
 
-  
   //FORMIK INITIAL VALUES
   let initialValues={name:organizations.name,
                      address:organizations.address,
@@ -129,42 +132,42 @@ const OrganizationsUpdate = ({match,history}) => {
 
   if (!values.name) {
     errors.name=msgRequired
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   };
 
   if (!regexActivitiesName.test(values.name)) {
     errors.name=msgValidationActivitiesName
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   } else {
-    errors.icoNname= '✔️'
+    errors.icoNname= V
   };
 
   let searchName=values.name
     repeat(searchName, errors)
     if(duplicated===searchName){
       errors.name=msgValidationDuplicated
-      errors.icoNname= '❌'         
+      errors.icoNname= X         
       return errors
     } else {
-      errors.icoNname= '✔️'
+      errors.icoNname= V
     };
 
   if(!values.image) {
     errors.image=msgRequired
-    errors.icoNimage= '❌'
+    errors.icoNimage= X
     return errors
   } else {
-    errors.icoNimage= '✔️'
+    errors.icoNimage= V
   };
 
   if (!values.address) {
     errors.content=msgRequired
-    errors.icoNaddress= '❌'
+    errors.icoNaddress= X
     return errors
   } else {
-    errors.icoNaddress= '✔️'
+    errors.icoNaddress= V
   };
 
   if(errors.name || errors.image || errors.address){
@@ -174,235 +177,226 @@ const OrganizationsUpdate = ({match,history}) => {
   };
 } 
     
-  //FORM
-  return (
-    <>
-
+//FORM
+return (
+<>
+  <div className="containerFirst">
     <Formik
         initialValues={initialValues}           
         validate={validateInputs}
         onSubmit={(values)=>{ sendForm(values)}}
     >
-    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (    // props con destrunturing {}
-    <form  className="containerUpdateOrganizations containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-        <h3 className="centerText ">Nuevos datos</h3>
+    { ({values,handleBlur,handleSubmit,handleChange,touched,errors,setFieldValue}) => (
+    <form  className="containerUpdateBig" onSubmit={handleSubmit}>
+      <h4 className="m-2 flex-Center">Nuevos datos</h4>
+
+      <div className="divColumnUpdate">
+        <div>
+          <div>          
+            <InputGroup className="d-block">
+              <label  htmlFor='image'>Imágen</label>
+              <input className="d-block"
+                type="file"
+                name="image"
+                encType="multipart/form-data"
+                onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                onBlur={handleBlur}
+              />
+              {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+              <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={organizations.image}  alt="ImágenOrganización"/>} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
+        </div>  
 
         <div>
-           <br></br> 
-            <div className="displayInLineFlex">
-                <div>
-                    <div>
-                        <span className="colorTransparent ">...</span>
-                        <InputUpdateForm 
-                            type="text"
-                            name="name"
-                            label="Nombre actual : "
-                            defaultValue={organizations.name}
-                            placeholder="Ingrese nuevo nombre"
-                            value={values.name}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                       
-                        {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
-                    </div>
-                    {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-                </div>
-                <div className="inputUpdateWidth">
-                    <div className="displayFlex inputUpdateWidth marginLeft40px">
-                        <InputUpdateForm
-                            type="file"
-                            name="image"
-                            label="Imágen actual : "
-                            defaultValue= {<img className="imageSmall" src={organizations.image}  alt="OrganizationImage"/>}
-                            encType="multipart/form-data"
-                            onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                            onBlur={handleBlur}
-                        />
-                        {touched.image && errors.icoNimage && <Icon>{errors.icoNimage}</Icon>}
-                    </div>
-                    {touched.image && errors.image   && <ErrorText> {errors.image} </ErrorText>}
-                </div>  
+          <div className="me-4">            
+              <InputGroup className="d-block">
+                <label  htmlFor='name'>Nombre</label>
+                <InputUser className="form-control"
+                  type="text"
+                  name="name"
+                  placeholder="Ingrese nuevo nombre"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                <Defaultvalue>  actual : {organizations.name} </Defaultvalue>
+              </InputGroup>
             </div>
-            <br></br>  <br></br> 
+            {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText>}
+        </div>
+      </div>
 
-            <div className="displayInLineFlex ">        
-                <div>
-                    <div >
-                        <InputUpdateForm
-                            type="text"
-                            name="address"
-                            label="Dirección actual : "
-                            defaultValue={organizations.address}
-                            placeholder="Ingrese nueva dirección"
-                            value={values.address}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.address && errors.icoNaddress && <Icon>{errors.icoNaddress}</Icon>}
-                    </div>
-                    {touched.address && errors.address  && <ErrorText> {errors.address} </ErrorText>}
-                </div>
-                 <div className="inputUpdateWidth">
-                    <div className="displayFlex inputUpdateWidth marginLeft40px">
-                        <InputUpdateForm
-                            type="text"
-                            name="phone"
-                            label="Teléfono actual : "
-                            defaultValue={organizations.phone}
-                            placeholder="Ingrese nuevo teléfono"
-                            value={values.phone}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.phone && errors.icoNphone && <Icon>{errors.icoNphone}</Icon>}
-                    </div>
-                    {touched.phone && errors.phone  && <ErrorText> {errors.phone} </ErrorText>}
-                </div>
-                <div className="inputUpdateWidth">
-                    <div className="displayInLineFlex inputUpdateWidth marginLeft40px">
-                        <InputUpdateForm
-                            type="text"
-                            name="email"
-                            label="Email actual : "
-                            defaultValue={organizations.email}
-                            placeholder="Ingrese nuevo email"
-                            value={values.email}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.email && errors.icoNemail && <Icon>{errors.icoNemail}</Icon>}
-                    </div>
-                    {touched.email && errors.email  && <ErrorText> {errors.email} </ErrorText>}
-                </div>
+      <div className="divColumnUpdate">     
+        <div>
+          <div>             
+              <InputGroup className="d-block">
+                <label  htmlFor='address'>Calle, número, localidad</label>
+                <InputUser className="form-control pt-1"
+                  type="text"
+                  name="address"
+                  placeholder="Ingrese nueva dirección"
+                  value={values.address}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+                {touched.address && errors.icoNaddress && <IconUser className="mt-4">{errors.icoNaddress}</IconUser>}
+                <Defaultvalue>  actual : {organizations.address} </Defaultvalue>
+              </InputGroup>
             </div>
-            <br></br><br></br> 
-
-            <div className="displayInLineFlex "> 
-                <div>
-                    <div className="displayInLineFlex">
-                        <InputUpdateForm
-                            type="text"
-                            name="facebookUrl"
-                            label="Facebook actual : "
-                            defaultValue={organizations.facebookUrl}
-                            placeholder="Ingrese nuevo facebook"
-                            value={values.facebookUrl}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.facebookUrl && errors.icoNfacebookUrl && <Icon>{errors.icoNfacebookUrl}</Icon>}
-                    </div>
-                    {touched.facebookUrl && errors.facebookUrl  && <ErrorText> {errors.facebookUrl} </ErrorText>}
-                </div>
-                <div className="inputUpdateWidth">
-                    <div className="displayInLineFlex inputUpdateWidth marginLeft40px">
-                        <InputUpdateForm
-                            type="text"
-                            name="instagramUrl"
-                            label="Instagram actual : "
-                            defaultValue={organizations.instagramUrl}
-                            placeholder="Ingrese nuevo instagram"
-                            value={values.instagramUrl}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.instagramUrl && errors.icoNinstagramUrl && <Icon>{errors.icoNinstagramUrl}</Icon>}
-                    </div>
-                    {touched.instagramUrl && errors.instagramUrl  && <ErrorText> {errors.instagramUrl} </ErrorText>}
-                </div>            
-                <div className="inputUpdateWidth"> 
-                    <div className="displayInLineFlex inputUpdateWidth marginLeft40px">
-                        <InputUpdateForm
-                            type="text"
-                            name="linkedinUrl"
-                            label="Linkedin actual : "
-                            defaultValue={organizations.linkedinUrl}
-                            placeholder="Ingrese nuevo linkedin"
-                            value={values.linkedinUrl}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.linkedinUrl && errors.icoNlinkedinUrl && <Icon>{errors.icoNlinkedinUrl}</Icon>}
-                    </div>
-                    {touched.linkedinUrl && errors.linkedinUrl  && <ErrorText> {errors.linkedinUrl} </ErrorText>}
-                </div>
-            </div>
-            <br></br><br></br>
-            
-            <div className="displayInLineFlex">
-                <div>
-                    <div >
-                        <InputUpdateForm
-                            type="text"
-                            name="aboutUsText"
-                            label="Sobre nosotros actual : "
-                            defaultValue={organizations.aboutUsText}
-                            placeholder="Ingrese nuevo texto sobre nosotros"
-                            value={values.aboutUsText}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.aboutUsText && errors.icoNaboutUsText && <Icon>{errors.icoNaboutUsText}</Icon>}
-                    </div>
-                    {touched.aboutUsText && errors.aboutUsText  && <ErrorText> {errors.aboutUstext} </ErrorText>}
-                </div>
-            </div> 
-            <br></br><br></br>
-
-            <div className="displayInLineFlex">
-                <div>
-                    <div>
-                        <InputUpdateForm
-                            type="text"
-                            name="welcomeText"
-                            label="Bienvenida actual : "
-                            defaultValue={organizations.welcomeText}
-                            placeholder="Ingrese nuevo mensaje de bienvenida"
-                            value={values.welcomeText}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                        />
-                        {touched.welcomeText && errors.icoNwelcomeText && <Icon>{errors.icoNwelcomeText}</Icon>}
-                    </div>
-                    {touched.welcomeText && errors.welcomeText  && <ErrorText> {errors.welcomeText} </ErrorText>}
-                </div>
-            </div>
-            <br></br> <br></br>
-
-            <div className="displayFlex centerText ">
-                <span>Creada  : {formatDate(new Date(organizations.createdAt))}</span>
-                <span className="colorTransparent">.....................</span>
-                <span>Última modificación  : {formatDate(new Date(organizations.updatedAt))}</span>
-            </div>
-
-
+            {touched.address && errors.address  && <ErrorText className="errorTextUpdate"> {errors.address} </ErrorText>}
         </div>
 
-        { errors.formOk === "f" && 
-            <MsjWrong> 
-            <span className="centerText">
-            <br /> Algun dato es incorrecto. 
-            <br/> Por favor complete el formulario correctamente
-            </span>        
-            </MsjWrong>
-        }
+        <div>
+          <div className="ms-3">           
+              <InputGroup className="d-block">
+                <label  htmlFor='phone'>Teléfono</label>
+                <InputUser className="form-control pt-1"
+                      type="text"
+                      name="phone"
+                      placeholder="Ingrese nuevo teléfono"
+                      value={values.phone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                  />
+                  {touched.phone && errors.icoNphone && <IconUser className="mt-4">{errors.icoNphone}</IconUser>}
+                  <Defaultvalue>  actual : {organizations.phone} </Defaultvalue>
+                </InputGroup>
+              </div>
+              {touched.phone && errors.phone  && <ErrorText className="errorTextUpdate"> {errors.phone} </ErrorText>}
+        </div>
+
+        <div>
+          <div className="ms-3">              
+            <InputGroup className="d-block">
+              <label  htmlFor='email'>Email</label>
+              <InputUser className="form-control pt-1"
+                    type="text"
+                    name="email"
+                    placeholder="Ingrese nuevo email"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                />
+                {touched.email && errors.icoNemail && <IconUser className="mt-4">{errors.icoNemail}</IconUser>}
+                <Defaultvalue>  actual : {organizations.email} </Defaultvalue>
+              </InputGroup>
+          </div>
+          {touched.email && errors.email  && <ErrorText className="errorTextUpdate"> {errors.email} </ErrorText>}
+        </div>
+      </div> 
+
+      <div className="divColumnUpdate"> 
+        <div>
+          <div>              
+            <InputGroup className="d-block">
+              <label  htmlFor='facebookUrl'>Facebook</label>
+              <InputUser className="form-control pt-1"
+                type="text"
+                name="facebookUrl"
+                placeholder="Ingrese nuevo facebook"
+                value={values.facebookUrl}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.facebookUrl && errors.icoNfacebookUrl && <IconUser className="mt-4">{errors.icoNfacebookUrl}</IconUser>}
+              <Defaultvalue>  actual : {organizations.facebookUrl} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.facebookUrl && errors.facebookUrl  && <ErrorText className="errorTextUpdate"> {errors.facebookUrl} </ErrorText>}
+        </div>
+
+        <div>
+          <div className="ms-3">        
+            <InputGroup className="d-block">
+              <label  htmlFor='instagramUrl'>Instagram</label>
+              <InputUser className="form-control pt-1"
+                type="text"
+                name="instagramUrl"
+                placeholder="Ingrese nuevo instagram"
+                value={values.instagramUrl}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.instagramUrl && errors.icoNinstagramUrl && <IconUser className="mt-4">{errors.icoNinstagramUrl}</IconUser>}
+              <Defaultvalue>  actual : {organizations.instagramUrl} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.instagramUrl && errors.instagramUrl  && <ErrorText className="errorTextUpdate"> {errors.instagramUrl} </ErrorText>}
+        </div>   
+
+        <div>
+          <div className="ms-3">             
+            <InputGroup className="d-block">
+              <label  htmlFor='linkedinUrl'>LinkedIn</label>
+              <InputUser className="form-control pt-1"
+                type="text"
+                name="linkedinUrl"
+                placeholder="Ingrese nuevo linkedin"
+                value={values.linkedinUrl}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.linkedinUrl && errors.icoNlinkedinUrl && <IconUser className="mt-4">{errors.icoNlinkedinUrl}</IconUser>}
+              <Defaultvalue>  actual : {organizations.linkedinUrl} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.linkedinUrl && errors.linkedinUrl  && <ErrorText className="errorTextUpdate"> {errors.linkedinUrl} </ErrorText>}
+        </div>
+      </div>
+
+      <div className="divColumnUpdate">
+        <div>
+          <div className="m-1">            
+            <InputGroup className="d-block">
+              <label  htmlFor='aboutUsText'>Sobre nosotros</label>
+              <TextArea className="pt-1"
+                type="text"
+                name="aboutUsText"
+                placeholder="Ingrese nuevo texto sobre nosotros"
+                value={values.aboutUsText}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.aboutUsText && errors.icoNaboutUsText && <IconUser className="mt-4">{errors.icoNaboutUsText}</IconUser>}
+              <Defaultvalue>  actual : {organizations.aboutUsText} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.aboutUsText && errors.aboutUsText  && <ErrorText className="errorTextUpdate"> {errors.aboutUstext} </ErrorText>}
+        </div>
            
         <div>
-            <div className="centerText">
-                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                <Link 
-                to={"/OrganizationsAll"}
-                className="m-3 mr-md-2 btn buttonBlue"
-                role="button"
-                > Volver
-                </Link>
-            </div> 
+          <div className="m-1">             
+            <InputGroup className="d-block">
+              <label  htmlFor='welcomeText'>Mensaje de bienvenida</label>
+              <TextArea className="pt-1"
+                type="text"
+                name="welcomeText"
+                placeholder="Ingrese nuevo mensaje de bienvenida"
+                value={values.welcomeText}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {touched.welcomeText && errors.icoNwelcomeText && <IconUser className="mt-4">{errors.icoNwelcomeText}</IconUser>}
+              <Defaultvalue>  actual : {organizations.welcomeText} </Defaultvalue>
+            </InputGroup>
+          </div>
+          {touched.welcomeText && errors.welcomeText  && <ErrorText className="errorTextUpdate"> {errors.welcomeText} </ErrorText>}
         </div>
-       
+      </div> 
+
+      <div className="flex-Center MQdate">        
+        <div className="m-1">Creado :{formatDate(new Date(organizations.createdAt))}</div>
+        <div className="m-1">Modificado:{formatDate(new Date(organizations.updatedAt))}</div>
+      </div>  
+
+       {buttonsResponsive("/OrganizationsAll","Guardar")}
     </form>
       )}
     </Formik>
+    </div>
   </>
   );
 };

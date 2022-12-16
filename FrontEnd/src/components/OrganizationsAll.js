@@ -3,14 +3,13 @@ import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import './styles/members-organizations.css';
 import "./styles/tableMediaScreen.css";
+import * as FaIcons from 'react-icons/fa';
 import Swal from "sweetalert2";
 import { Link} from "react-router-dom";
 import LoadingBox from "./LoadingBox";
 import OrganizationsAllCard from "./OrganizationsAllCard";
 import {OrderNameAsc} from "./helpers/Order";
 import ViewAdministratorOptions from "./helpers/ViewAdministratorOptions";
-import * as FaIcons from 'react-icons/fa';
-
 
 const OrganizationsAll = (props) => { 
 
@@ -123,47 +122,43 @@ const OrganizationsAll = (props) => {
     );
   };
 
-
   return (
-    <>
-      <div className="containerFirst">
-
-        {!organizations &&  <LoadingBox/> }
-
-        {organizations && 
-          <>
-            <div className="containerMembersAllCard">
-              <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
-              <div className="divBtnDesplegableMembers">
-                <select
-                      type="text"
-                      name="name"
-                      onChange={changesId}
-                      className="selectBtnDesplegable"
-                >  
-                    {organizations.map(oneOrganization => (
-                      <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
-                        {oneOrganization.name}
-                      </option>
-                    )).sort(OrderNameAsc(organizations))}
-                      <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
-                </select>
-                  
-                <span className={ViewAdministratorOptions()} >  
-                  <Link to={'/OrganizationsCreate'} className="m-1">
-                    <FaIcons.FaPlusSquare className="iconBlue"/> 
-                  </Link>
-                </span> 
-              </div> 
-              <br/>
-            </div> 
-            <div>
-              {showOrganizations()}
-            </div>
-          </>
-        } 
-      </div>
-    </>
+  <>
+    <div className="containerFirst">
+      {!organizations &&  <LoadingBox/> }
+      {organizations && 
+      <>
+        <div className="containerMembersAllCard">
+          <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
+          <div className="divBtnDesplegableMembers">
+            <select
+              type="text"
+              name="name"
+              onChange={changesId}
+              className="selectBtnDesplegable"
+            >  
+            {organizations.map(oneOrganization => (
+              <option className="colorBlack" key={oneOrganization.name} value={oneOrganization.id}>
+                {oneOrganization.name}
+              </option>
+            )).sort(OrderNameAsc(organizations))}
+              <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
+            </select>      
+            <span className={ViewAdministratorOptions()} >  
+              <Link to={'/OrganizationsCreate'} className="m-1">
+                <FaIcons.FaPlusSquare className="iconBlue"/> 
+              </Link>
+            </span> 
+          </div> 
+          <br/>
+        </div> 
+        <div>
+          {showOrganizations()}
+        </div>
+      </>
+      } 
+    </div>
+  </>
   );
 };
 

@@ -103,8 +103,11 @@ body{ /* ✅ */
 }
 
 
-.displayInLineFlex{
-    display:inline-flex;
+.divColumnUpdate{/* ✅ */
+    display:flex;
+    justify-content: center;
+    margin:0.5rem;
+    padding:0.2rem;
 }
 
 .iconInsideInputDiv{ /* ✅ */
@@ -120,6 +123,14 @@ body{ /* ✅ */
     z-index: 1;
 }
 
+.iconShowPassInput{ /* ✅ */
+    position: absolute;
+    display: block;
+    bottom:0.5rem;
+    left: 85%;
+    z-index: 1;
+}
+
 .containerCreate{/* ✅ */
     width: 50vw;
     height: auto;
@@ -132,7 +143,7 @@ body{ /* ✅ */
     color:#0f0f0f;
 }
 
-.containerUpdate{/* ✅ */
+.containerUpdate{
     width: 80vw;
     height: auto;
     padding:2rem;
@@ -157,9 +168,26 @@ body{ /* ✅ */
     border-radius: 1rem;
 }
 
+.containerUpdateBig{ /* ✅ */
+    max-width: 95vw;
+    width: 80rem;
+    height: auto;
+    margin:4.5rem 2rem 2rem 2rem;
+    padding:2rem;
+    background-color: lightgray;
+    color:#0e0d0d;
+    border-radius: 1rem;
+
+    display:flex;
+    flex-direction: column; 
+    justify-content:baseline;
+}
+
 .h5Update{
     font-size:0.8rem;
     margin: auto;
+    /* text-align: center;
+    margin:2.5rem auto; */
 }
 
 .errorTextUpdate{
@@ -174,17 +202,6 @@ body{ /* ✅ */
     margin-left: 1rem;
     text-align: left;
 }
-
-.containerBorderWhiteBgGrey{
-    border:1px solid #fff;
-    background-color: lightgrey;
-    color:black;
-    /* box-shadow:1px 0px 5px 1px whitesmoke; */
-    font-size: 1em;
-    border-radius: 12px;
-    /* font-size: 17px !important; */
-    margin-top:1.4rem;
-} 
 
 .imageCharCard{
     display:flex;

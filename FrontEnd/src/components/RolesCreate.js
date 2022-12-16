@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import { Formik } from 'formik';
-import { SendButton, MsjWrong, ErrorText,Icon} from './elements/ElementsFormStyles';
-import  InputForm  from './elements/InputForm';
+import { ErrorText,IconUser,InputUser, InputGroup} from './elements/ElementsFormStyles';
 import { msgRequired,msgValidationDuplicated} from './helpers/validationMessages';
 import "./styles/styles.css";
+import * as FaIcons from "react-icons/fa";
+import buttonsResponsive from "./buttonsResponsive";
 
 function RoleCreate(props) {
+
+  const X=<FaIcons.FaTimes className="iconTimes"></FaIcons.FaTimes>;
+  const V=<FaIcons.FaCheck className="iconCheck"></FaIcons.FaCheck>;
   
   const [roles, setRoles] = useState({
     name: "",
     description:""        
   });
 
-  const [duplicated,setDuplicated]=useState({
-    name: ""      
-  });
+  const [duplicated,setDuplicated]=useState({name:""});
 
-  //SEND
+  
   const sendForm = (values) => {
     let body ={"name":values.name,"description":values.description};
 
@@ -49,62 +50,59 @@ function RoleCreate(props) {
     saveRoles();
   };
 
-//DUPLICATED NAME
-const repeat= (searchName,errors)=>{
-  if (errors.formOk !=='v'){
-    getRoleByName(searchName)
-  }
-};
-
-const getRoleByName = async (searchName) => {
-  await axiosClient.get(`/roles/byName/${searchName}`)
-  .then((response) => {
-    if(response.data[0]){
-      setDuplicated(response.data[0].name )
+  //DUPLICATED NAME
+  const repeat= (searchName,errors)=>{
+    if (errors.formOk !=='v'){
+      getRoleByName(searchName)
     }
-  })
-  .catch((error=>{
-    console.log(error);
-  }));
-}; 
+  };
+
+  const getRoleByName = async (searchName) => {
+    await axiosClient.get(`/roles/byName/${searchName}`)
+    .then((response) => {
+      if(response.data[0]){
+        setDuplicated(response.data[0].name )
+      }
+    })
+    .catch((error=>{
+      console.log(error);
+    }));
+  }; 
 
 
-//FORMIK INITIAL VALUES
-let initialValues={name:roles.name, description:roles.description}
+  //FORMIK INITIAL VALUES
+  let initialValues={name:roles.name, description:roles.description}
 
-//FORMIK VALIDATIONS 
-let validateInputs=(values) =>{   
+  //FORMIK VALIDATIONS 
+  let validateInputs=(values) =>{   
 
   let errors = {name: '', description:'',icoNname:'', icoNdescription:'',formOk:''};  
 
   if (!values.name) {
     errors.name=msgRequired
-    errors.icoNname= '❌'
+    errors.icoNname= X
     return errors
   } else {
-    errors.icoNname= '✔️'
+    errors.icoNname= V
   };
-
   
   let searchName=values.name
   repeat(searchName, errors)
   if(duplicated===searchName){
     errors.name=msgValidationDuplicated
-    errors.icoNname= '❌'         
+    errors.icoNname= X         
     return errors
   } else {
-    errors.icoNname= '✔️'
+    errors.icoNname= V
   };
-
 
   if (!values.description) {
     errors.description=msgRequired
-    errors.icoNdescription= '❌'
+    errors.icoNdescription= X
     return errors
   } else {
-    errors.icoNdescription= '✔️'
+    errors.icoNdescription= V
   }; 
-
   
   if(errors.name || errors.description ){
     errors.formOk='f'
@@ -114,84 +112,60 @@ let validateInputs=(values) =>{
    
 }
 
-//FORM
-return (
+  return (
   <>
-  <Formik
-       initialValues={initialValues}           
-       validate={validateInputs}
-       onSubmit={(values)=>{ sendForm(values)}}
-  >
-  { ({values,handleBlur,handleSubmit,handleChange,touched,errors}) => (    // props con destrunturing {}
-       <form  className="containerUpdateCreate containerBorderWhiteBgGrey" onSubmit={handleSubmit}>
-          <br></br>
-          <h3 className="centerText">Nuevo role</h3>
-          <br></br>
-          <div >
-
-            <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="text"
-                  name="name"
-                  label="Nombre : " 
-                  defaultValue=""
-                  placeholder="Ingrese nombre"
-                  value={values.name}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.name && errors.icoNname && <Icon>{errors.icoNname}</Icon>}
+    <div className="containerFirst">
+      <Formik
+          initialValues={initialValues}           
+          validate={validateInputs}
+          onSubmit={(values)=>{ sendForm(values)}}
+      >
+      { ({values,handleBlur,handleSubmit,handleChange,touched,errors}) => ( 
+          <form  className="containerFormUpdate" onSubmit={handleSubmit}>
+              <h4 className="mb-5 flex-Center">Nuevo role</h4> 
+              <div>
+                <div className="w-75 mb-3 m-auto"> 
+                  <InputGroup className="d-block">
+                    <label htmlFor='name'>Nombre :</label>
+                    <InputUser className="form-control"
+                      type="text"
+                      name="name"
+                      placeholder="Ingrese nombre"
+                      value={values.name}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
+                  </InputGroup>
+                </div>
+                {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
               </div>
-              {touched.name && errors.name && <ErrorText>{errors.name} </ErrorText> }
-            </div>
-            <br></br>
-            <div>
-              <div className="displayInLineFlex">
-                <InputForm
-                  type="text"
-                  name="description"
-                  label="Descripción : "
-                  defaultValue=""
-                  placeholder="Ingrese descripción"
-                  value={values.description}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                />
-                {touched.description && errors.icoNdescription && <Icon>{errors.icoNdescription}</Icon>}
+        
+              <div>
+                <div className="w-75 mb-3 m-auto"> 
+                  <InputGroup className="d-block">
+                    <label htmlFor='name'> Descripción  :</label>
+                    <InputUser className="form-control"
+                      type="text"
+                      name="description"
+                      placeholder="Ingrese descripción"
+                      value={values.description}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {touched.description && errors.icoNdescription && <IconUser className="mt-4">{errors.icoNdescription}</IconUser>}
+                  </InputGroup>
+                </div>
+                {touched.description && errors.description  && <ErrorText className="errorTextUpdate"> {errors.description} </ErrorText>}
               </div>
-              {touched.description && errors.description  && <ErrorText> {errors.description} </ErrorText>}
-            </div>
-            <br></br>
             
-          </div>
-          {/* { errors.formOk === "f" && 
-            <MsjWrong> 
-            <span className="centerText">
-              <br /> Algun dato es incorrecto. 
-              <br/> Por favor complete el formulario correctamente
-            </span>        
-            </MsjWrong>
-          } */}
-         
-          <div>
-            <br></br>
-            <div className="centerText">
-                <SendButton type="submit" className="m-2 btn btn-primary md-end "> Guardar </SendButton>
-                <Link 
-                  to={"/RolesAll"}
-                  className="m-3 mr-md-2 btn buttonBlue"
-                  role="button"
-                > Volver
-                </Link>
-            </div> 
-          </div>
-          
-        </form>
-    )}
-  </Formik>
-</>
-);
+            { buttonsResponsive("/RolesAll", "Guardar")}          
+      </form>
+      )}
+     </Formik>
+    </div>
+  </>
+  );
 
 }
 export default RoleCreate;

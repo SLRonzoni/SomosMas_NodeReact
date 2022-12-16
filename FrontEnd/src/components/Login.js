@@ -7,12 +7,13 @@ import Swal from "sweetalert2";
 import LoginGoogle from './LoginGoogle';
 import { Formik } from "formik";
 import * as msg  from './helpers/validationMessages';
-import * as regex from "./helpers/RegExp"
+import * as regex from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import imagen from "./images/manos_fondo-sinFondo.png";
 import {ErrorText,IconUser, Input, InputGroup} from './elements/ElementsFormStyles';
+import buttonsResponsive from "./buttonsResponsive";
 
 const Login =()=>{   
  
@@ -153,36 +154,30 @@ const Login =()=>{
               <form className="containerFormLogin" onSubmit={handleSubmit}>
                   <h5 className="h5Form">Inicio de sesión</h5>
                   <div>
-                      <div>   
-                        <label className="d-block ms-2" htmlFor="email">Email</label>
-                        <InputGroup className="iconInsideInputDiv">
-                          <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
-                          <Input className="ps-5 form-control"
-                            type="email" 
-                            name="email" 
-                            id="email"  
-                            value={values.email}
-                            placeholder="correo@correo.xxx.xx" 
-                            required
-                            uppercase="true"
-                            onChange={handleChange} 
-                            onBlur={handleBlur}
-                            />
-                          {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
-                        </InputGroup>
-                      </div> 
-                      {touched.email && errors.email && <ErrorText className="ms-2">{errors.email} </ErrorText> }
+                    <div>   
+                      <label className="d-block" htmlFor="email">Email</label>
+                      <InputGroup className="iconInsideInputDiv">
+                        <FaIcons.FaMailBulk className="iconInsideInputIcon"></FaIcons.FaMailBulk>
+                        <Input className="ps-5 form-control"
+                          type="email" 
+                          name="email" 
+                          id="email"  
+                          value={values.email}
+                          placeholder="correo@correo.xxx.xx" 
+                          required
+                          uppercase="true"
+                          onChange={handleChange} 
+                          onBlur={handleBlur}
+                          />
+                        {touched.email && errors.icoNemail && <IconUser>{errors.icoNemail}</IconUser>}
+                      </InputGroup>
+                    </div> 
+                    {touched.email && errors.email && <ErrorText className="ms-2">{errors.email} </ErrorText> }
                   </div>
-                  <br/>
-                  <div>
+                  
+                  <div className="mb-5 mt-5">
                     <div> 
-                      <div className="withoutBorder withoutBg">
-                        <label className="p-2" htmlFor="password">Password</label>
-                        {<button className="withoutBorder withoutBg ms-1" type="button" onClick={switchShown}> 
-                            {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
-                          </button>
-                        }  
-                      </div> 
+                      <label className="d-block" htmlFor="password">Password</label>
                       <InputGroup className="iconInsideInputDiv">
                         <FaIcons.FaKey className="iconInsideInputIcon"></FaIcons.FaKey>
                         <Input className="ps-5 form-control"
@@ -194,8 +189,12 @@ const Login =()=>{
                           required
                           onChange={handleChange} 
                           onBlur={handleBlur}
-                          />
+                         /> 
                         {touched.password && errors.icoNpassword && <IconUser>{errors.icoNpassword}</IconUser>}
+                        <button className="withoutBorder withoutBg" type="button" onClick={switchShown}> 
+                            {shown ? <FontAwesomeIcon className="iconShowPassInput" icon={faEye} /> 
+                            : <FontAwesomeIcon className="iconShowPassInput" icon={faEyeSlash} />} 
+                        </button>
                       </InputGroup>
                     </div> 
                     {touched.password && errors.password && <ErrorText className="ms-2">{errors.password} </ErrorText> }
@@ -203,10 +202,7 @@ const Login =()=>{
 
                   <div>                              
                     { (errors.formOk === "v" || !errors.formOk) && 
-                      <div className="buttonsResponsive mt-3">
-                        <Link to={"/"} className=" btn buttonBlue" role="button"> Volver </Link>
-                        <button type="submit" className=" btn buttonBlue buttonGreen" onClick={beginSession} >Login </button> 
-                      </div>
+                     buttonsResponsive("/", "Login", "begginSession")
                     }
                   </div> 
                   <div className="buttonsResponsive">

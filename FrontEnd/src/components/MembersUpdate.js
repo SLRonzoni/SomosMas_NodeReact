@@ -10,6 +10,7 @@ import { msgValidationCategoryName,msgValidationCategoryDescription,msgValidatio
 import { regexCategoryName, regexCategoryDescription, regexUrl} from "./helpers/RegExp";
 import { formatDate} from './helpers/FormatDate';
 import * as FaIcons from "react-icons/fa";
+import buttonsResponsive from "./buttonsResponsive";
 
 const MembersUpdate = ({match, history}) => {
 
@@ -317,11 +318,7 @@ return (
             </label>
           </div>
         </div>
-
-        <div className="buttonsResponsive">
-          <Link to={"/MembersAll"}className="btn buttonBlue"role="button"> Volver</Link>
-          <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-        </div>        
+        {buttonsResponsive("/MembersAll","Guardar")}   
       </form>
       )}
     </Formik>

@@ -9,6 +9,7 @@ import { msgRequired, msgValidationCategoryName, msgValidationIsNumber} from './
 import { regexCategoryName, regexCategoryId } from "./helpers/RegExp";
 import "./styles/styles.css";
 import "./styles/news-comments.css";
+import buttonsResponsive from "./buttonsResponsive";
 
 function NewsCreate(props) {
 
@@ -217,11 +218,7 @@ return (
             </div>
             {touched.type && errors.type  && <ErrorText className="errorTextUpdate"> {errors.type} </ErrorText>}
           </div>
-
-          <div className="buttonsResponsive"> 
-            <Link to={"/NewsAll"}className="btn buttonBlue"role="button"> Volver</Link>
-            <button type="submit" className="btn buttonBlue buttonGreen"> Guardar </button>
-          </div>           
+          {buttonsResponsive("/NewsAll","Guardar")}      
         </form>
     )}
   </Formik>
