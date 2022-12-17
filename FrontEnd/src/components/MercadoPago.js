@@ -9,16 +9,19 @@ const MercadoPago=()=> {
        
 
   return (
-    <div className="containerFirst">
-      <h1>Mercado Pago</h1>
-      
-      <h3 className="mt-4">
-         sitio en construcción
-      </h3>
+    <div className="containerFirst ">
+      <div className="d-block m-auto">
+        <h1>Mercado Pago</h1>
+        
+        <h3>
+          sitio en construcción
+        </h3>
 
-      <div>
-       {buttonsResponsive("/Home","Continuar")}
-       {/* <Link to={link} className='m-2 btn btn-success' role='button'aria-pressed='true'> Continúe</Link> */}
+        <div>
+        {buttonsResponsive("/PaymentMethod","Continuar")}
+        {/* <Link to={link} className='m-2 btn btn-success' role='button'aria-pressed='true'> Continúe</Link> */}
+        </div>
+      
       </div>
   </div>
   );

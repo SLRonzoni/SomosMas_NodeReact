@@ -190,28 +190,31 @@ return (
     <form  className="containerUpdateBig" onSubmit={handleSubmit}>
       <h4 className="m-2 flex-Center">Nuevos datos</h4>
 
+    <div className="divsUpdate">
       <div className="divColumnUpdate">
         <div>
           <div>          
-            <InputGroup className="d-block">
-              <label  htmlFor='image'>Imágen</label>
-              <input className="d-block"
-                type="file"
-                name="image"
-                encType="multipart/form-data"
-                onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
-                onBlur={handleBlur}
-              />
-              {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
-              <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={organizations.image}  alt="ImágenOrganización"/>} </Defaultvalue>
+            <InputGroup className="d-block mb-5">
+              <label  htmlFor='image'>Imágen actual</label>
+              <div className="MQinputWithImage">
+                <img className="imageSmallUpdateForm" src={organizations.image}  alt="ImágenOrganización"/>
+                <input className="ps-3"
+                  type="file"
+                  name="image"
+                  encType="multipart/form-data"
+                  onChange={ (e)=>setFieldValue('image',e.currentTarget.files[0]) }
+                  onBlur={handleBlur}
+                />
+                {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
+             </div>
             </InputGroup>
           </div>
           {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
         </div>  
 
         <div>
-          <div className="me-4">            
-              <InputGroup className="d-block">
+          <div>            
+              <InputGroup className="d-block mb-1">
                 <label  htmlFor='name'>Nombre</label>
                 <InputUser className="form-control"
                   type="text"
@@ -227,14 +230,12 @@ return (
             </div>
             {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText>}
         </div>
-      </div>
-
-      <div className="divColumnUpdate">     
+      
         <div>
           <div>             
-              <InputGroup className="d-block">
+              <InputGroup className="d-block mb-1">
                 <label  htmlFor='address'>Calle, número, localidad</label>
-                <InputUser className="form-control pt-1"
+                <InputUser className="form-control"
                   type="text"
                   name="address"
                   placeholder="Ingrese nueva dirección"
@@ -250,10 +251,10 @@ return (
         </div>
 
         <div>
-          <div className="ms-3">           
-              <InputGroup className="d-block">
+          <div>           
+              <InputGroup className="d-block mb-1">
                 <label  htmlFor='phone'>Teléfono</label>
-                <InputUser className="form-control pt-1"
+                <InputUser className="form-control"
                       type="text"
                       name="phone"
                       placeholder="Ingrese nuevo teléfono"
@@ -269,10 +270,10 @@ return (
         </div>
 
         <div>
-          <div className="ms-3">              
+          <div>              
             <InputGroup className="d-block">
               <label  htmlFor='email'>Email</label>
-              <InputUser className="form-control pt-1"
+              <InputUser className="form-control"
                     type="text"
                     name="email"
                     placeholder="Ingrese nuevo email"
@@ -286,14 +287,12 @@ return (
           </div>
           {touched.email && errors.email  && <ErrorText className="errorTextUpdate"> {errors.email} </ErrorText>}
         </div>
-      </div> 
 
-      <div className="divColumnUpdate"> 
         <div>
           <div>              
-            <InputGroup className="d-block">
+            <InputGroup className="d-block mb-1">
               <label  htmlFor='facebookUrl'>Facebook</label>
-              <InputUser className="form-control pt-1"
+              <InputUser className="form-control"
                 type="text"
                 name="facebookUrl"
                 placeholder="Ingrese nuevo facebook"
@@ -307,12 +306,14 @@ return (
           </div>
           {touched.facebookUrl && errors.facebookUrl  && <ErrorText className="errorTextUpdate"> {errors.facebookUrl} </ErrorText>}
         </div>
+      </div> 
 
+      <div className="divColumnUpdate"> 
         <div>
-          <div className="ms-3">        
+          <div>        
             <InputGroup className="d-block">
               <label  htmlFor='instagramUrl'>Instagram</label>
-              <InputUser className="form-control pt-1"
+              <InputUser className="form-control"
                 type="text"
                 name="instagramUrl"
                 placeholder="Ingrese nuevo instagram"
@@ -328,10 +329,10 @@ return (
         </div>   
 
         <div>
-          <div className="ms-3">             
+          <div>             
             <InputGroup className="d-block">
               <label  htmlFor='linkedinUrl'>LinkedIn</label>
-              <InputUser className="form-control pt-1"
+              <InputUser className="form-control"
                 type="text"
                 name="linkedinUrl"
                 placeholder="Ingrese nuevo linkedin"
@@ -345,14 +346,12 @@ return (
           </div>
           {touched.linkedinUrl && errors.linkedinUrl  && <ErrorText className="errorTextUpdate"> {errors.linkedinUrl} </ErrorText>}
         </div>
-      </div>
-
-      <div className="divColumnUpdate">
+      
         <div>
-          <div className="m-1">            
+          <div>            
             <InputGroup className="d-block">
               <label  htmlFor='aboutUsText'>Sobre nosotros</label>
-              <TextArea className="pt-1"
+              <TextArea className="updateTextArea pt-1 form-control"
                 type="text"
                 name="aboutUsText"
                 placeholder="Ingrese nuevo texto sobre nosotros"
@@ -366,12 +365,12 @@ return (
           </div>
           {touched.aboutUsText && errors.aboutUsText  && <ErrorText className="errorTextUpdate"> {errors.aboutUstext} </ErrorText>}
         </div>
-           
+
         <div>
-          <div className="m-1">             
+          <div>            
             <InputGroup className="d-block">
               <label  htmlFor='welcomeText'>Mensaje de bienvenida</label>
-              <TextArea className="pt-1"
+              <TextArea className="updateTextArea pt-1 form-control"
                 type="text"
                 name="welcomeText"
                 placeholder="Ingrese nuevo mensaje de bienvenida"
@@ -383,13 +382,14 @@ return (
               <Defaultvalue>  actual : {organizations.welcomeText} </Defaultvalue>
             </InputGroup>
           </div>
-          {touched.welcomeText && errors.welcomeText  && <ErrorText className="errorTextUpdate"> {errors.welcomeText} </ErrorText>}
+          {touched.welcomeText && errors.welcomeText  && <ErrorText className="errorTextUpdate"> {errors.welcometext} </ErrorText>}
         </div>
       </div> 
-
+    </div> 
+     
       <div className="flex-Center MQdate">        
-        <div className="m-1">Creado :{formatDate(new Date(organizations.createdAt))}</div>
-        <div className="m-1">Modificado:{formatDate(new Date(organizations.updatedAt))}</div>
+        <div className="ms-5"> Creado :{formatDate(new Date(organizations.createdAt))}</div>
+        <div className="ms-5">Modificado:{formatDate(new Date(organizations.updatedAt))}</div>
       </div>  
 
        {buttonsResponsive("/OrganizationsAll","Guardar")}

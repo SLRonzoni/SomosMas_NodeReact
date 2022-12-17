@@ -131,17 +131,30 @@
 /* Contact, Register, DonationsList, CreateForm*/
 @media only screen  and (max-width:1024px) {
     .MQselectButtonsNews,
+    .MQinputWithImage,
+    .containerUpdateBig,
     .MQselectButtonsDonations{
         display: block;
     }
-    
+   
     .MQuserIdDonations,
     .MQuserNameDonations{
         display: none;
     }
 }
 
-/* NewsList */
+/* UpdateForm */
+@media only screen  and (max-width:980px) {
+    .containerUpdateBig,
+    .divsUpdate{
+        display: block;
+        margin: auto;
+        width: 200%;
+        margin:4.5rem 2% 2% 2%;
+    }
+}
+
+/* NewsList, UpdateForm, CreateForm */
 @media only screen  and (max-width:898px) { /* ✅ */
     .MQupdatedTestim,
     .MQimageCharTestim,
@@ -149,9 +162,7 @@
     .MQimageCharUser{
         display: none;
     }
-
     
-    .divColumnUpdate,
     .MQdate{
         display: block;
         margin: auto;
@@ -175,7 +186,7 @@
 } 
 
 
-/* Lists */
+/* Lists, ContactForm */
 @media only screen and (max-width: 740px) {
     .MQimageChar,
     .MQuserPhone,
@@ -207,7 +218,7 @@
     }
 }
 
-/* Lists */
+/* Lists, LoginForm */
 @media only screen and (max-width: 580px) { 
     .MQupdated,
     .MQcategNews,
@@ -240,7 +251,7 @@
     
 }
 
-/* Lists */
+/* Lists, UpdateForm */
 @media only screen and (max-width: 470px) {
     .MQcontent,
     .MQuser,
@@ -261,9 +272,16 @@
         display: block
     }
 
+    .divsUpdate{
+        width: 180%;
+    }
+    .containerUpdateBig{
+        width: 90%;
+    }
+
 }
 
-/* Lists */
+/* Lists, Navbarf, Register, LoginForm */
 @media only screen and (max-width: 391px) {
     .MQuserEmailDonations,
     .MQcreatedTestim,

@@ -5,7 +5,7 @@ import * as FaIcons from "react-icons/fa";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
 import { Formik } from 'formik';
-import { ErrorText, InputUser, IconUser, Defaultvalue, InputGroup} from './elements/ElementsFormStyles';
+import { ErrorText, InputUser, IconUser, InputGroup} from './elements/ElementsFormStyles';
 import { msgRequired, msgValidationActivitiesName} from './helpers/validationMessages';
 import { regexActivitiesName } from "./helpers/RegExp";
 import buttonsResponsive from "./buttonsResponsive";
@@ -127,14 +127,13 @@ function OrganizationsCreate(props) {
                   onBlur={handleBlur}
                 />
                 {touched.image && errors.icoNimage && <IconUser className="mt-4">{errors.icoNimage}</IconUser>}
-                <Defaultvalue>  actual : {<img className="imageSmallUpdateForm" src={organizations.image}  alt="ImágenOrganización"/>} </Defaultvalue>
               </InputGroup>
             </div>
             {touched.image && errors.image   && <ErrorText className="errorTextUpdate"> {errors.image} </ErrorText>}
           </div>
 
           <div>
-            <div className="w-75 m-auto">           
+            <div className="w-75 m-auto mb-4">           
               <InputGroup className="d-block">
                 <label htmlFor='name'>Organización</label>
                 <InputUser className="form-control pt-1"
@@ -146,13 +145,12 @@ function OrganizationsCreate(props) {
                   onBlur={handleBlur}
                 />
                 {touched.name && errors.icoNname && <IconUser className="mt-4">{errors.icoNname}</IconUser>}
-                <Defaultvalue> actual : {organizations.name} </Defaultvalue>
             </InputGroup>
             </div>
             {touched.name && errors.name && <ErrorText className="errorTextUpdate">{errors.name} </ErrorText> }
           </div>
           <div>
-            <div className="w-75 m-auto">          
+            <div className="w-75 m-auto mb-4">          
               <InputGroup className="d-block">
                 <label  htmlFor='content'>Descripción</label>
                 <InputUser className="form-control pt-1"
@@ -164,7 +162,6 @@ function OrganizationsCreate(props) {
                   onBlur={handleBlur}
                 />
                 {touched.content && errors.icoNcontent && <IconUser className="mt-4">{errors.icoNcontent}</IconUser>}
-                <Defaultvalue> actual : {organizations.content} </Defaultvalue>
               </InputGroup>
             </div>
             {touched.content && errors.content  && <ErrorText className="errorTextUpdate"> {errors.content} </ErrorText>}

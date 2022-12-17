@@ -31,7 +31,8 @@ const Label = styled.label`
 
 const Defaultvalue = styled.label`
     display: block;
-    font-size:0.6rem;
+    font-size:0.75rem;
+    // font-size:0.6rem;
     padding:0.5rem;
     min-height:3rem;
     cursor:pointer;
@@ -106,8 +107,8 @@ const TextArea = styled.textarea`
     display:flex;
     flex-direction:column;
     position:relative;
-    width:100%;
-    height:7.5rem;
+    width:25.2rem;
+    height:2rem;
     line-height:1rem;
     resize:none;
     background:#fff;
@@ -115,7 +116,7 @@ const TextArea = styled.textarea`
     border-radius:0.44rem;
     padding:0 2rem 0 0.62rem;
     transition:.3s ease all;
-    border:3px solid transparent;
+    border:0.18rem solid transparent;
 
     &:focus {
         border:0.12rem solid ${Colors.border};
@@ -169,33 +170,8 @@ const ErrorText = styled.p`
     color:${Colors.error};
 ;`
 
-
-const SendButton = styled.button`
-    width:20%;
-    height:1.87rem;
-    line-height:1.87rem;
-    background:#198754;
-    color:#fff;
-    font-weight:bold;
-    border-radius:0.19rem;
-    cursor:pointer;
-    border-radius:0.44rem;
-    padding:0.07rem;
-
-    &:focus {
-       background-color: #249924;
-    }
-`;
-
-const MsjWrong =styled.p`
-    font-size:0.94rem;
-    padding:0.31rem;
-    color:${Colors.error};
-    background-color:${Colors.fondoMsj}; 
-`;
-
 export {Form, Label, Defaultvalue, Colors , Input, InputUser, InputUpdate, Icon, IconUser, 
-        TextArea, IconUpdate, InputGroup, ErrorText, SendButton, MsjWrong};
+        TextArea, IconUpdate, InputGroup, ErrorText};
 
 
   

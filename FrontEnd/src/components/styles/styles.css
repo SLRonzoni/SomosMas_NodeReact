@@ -102,14 +102,6 @@ body{ /* ✅ */
     color:rgb(45, 218, 45);
 }
 
-
-.divColumnUpdate{/* ✅ */
-    display:flex;
-    justify-content: center;
-    margin:0.5rem;
-    padding:0.2rem;
-}
-
 .iconInsideInputDiv{ /* ✅ */
     max-width: 30rem;
     position: relative;
@@ -169,18 +161,12 @@ body{ /* ✅ */
 }
 
 .containerUpdateBig{ /* ✅ */
-    max-width: 95vw;
-    width: 80rem;
+    width: 62rem;
     height: auto;
-    margin:4.5rem 2rem 2rem 2rem;
-    padding:2rem;
+    margin:4.5rem 0rem 0rem 0rem;
     background-color: lightgray;
     color:#0e0d0d;
     border-radius: 1rem;
-
-    display:flex;
-    flex-direction: column; 
-    justify-content:baseline;
 }
 
 .h5Update{
@@ -190,6 +176,26 @@ body{ /* ✅ */
     margin:2.5rem auto; */
 }
 
+.divsUpdate{
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.divColumnUpdate{/* ✅ */
+    display: block;
+    width: 44%;
+    padding:1rem;
+    background-color: rgb(197, 195, 195);
+    margin: 0 1rem 0 2rem;
+}
+
+.updateTextArea{
+    
+   
+    resize: both;
+    
+}
 .errorTextUpdate{
     margin-left:4rem !important;
     margin-top:-1rem !important;
