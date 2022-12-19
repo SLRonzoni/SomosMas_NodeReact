@@ -3,11 +3,10 @@ import "./styles/styles.css";
 import "./styles/login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
-import {Link} from 'react-router-dom';
 import { Formik } from "formik";
 import * as msg  from './helpers/validationMessages';
 import * as regex from "./helpers/RegExp";
-import { ErrorText,IconUser, InputUser, InputGroup} from './elements/ElementsFormStyles';
+import { ErrorText,IconUser, InputGroup} from './elements/ElementsFormStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as FaIcons from "react-icons/fa";
 import {faEye,faEyeSlash} from '@fortawesome/free-solid-svg-icons';
@@ -188,7 +187,6 @@ const Register=(props)=> {
                                                 type="file" 
                                                 name="photo" 
                                                 id="photo"  
-                                                required
                                                 encType="multipart/form-data"
                                                 onChange={ (e)=>setFieldValue('photo',e.currentTarget.files[0]) } 
                                                 onBlur={handleBlur}

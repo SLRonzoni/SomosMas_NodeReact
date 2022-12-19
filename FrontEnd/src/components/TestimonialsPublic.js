@@ -48,9 +48,7 @@ const TestimonialsPublic =() =>{
     return(
         <>
             <div className='containerFirst'>
-            
             {!testimonials &&  <LoadingBox/> }
-            
             {testimonials && 
              <>
                 <div className='buttonTestimonials mb-5'>

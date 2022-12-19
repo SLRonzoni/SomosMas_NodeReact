@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
 import './styles/members-organizations.css';
+import "./styles/table.css";
 import "./styles/tableMediaScreen.css";
 import * as FaIcons from 'react-icons/fa';
 import Swal from "sweetalert2";
@@ -98,7 +99,7 @@ const OrganizationsAll = (props) => {
 
    const showOrganizations = () => {
     return (
-      <div className="containerFirst">
+      <div>
         {organizations.map((oneOrganization) => (
           <OrganizationsAllCard
             key={oneOrganization.id}
@@ -130,7 +131,7 @@ const OrganizationsAll = (props) => {
       <>
         <div className="containerMembersAllCard">
           <h3 className="containerTitle">Organizaciones que nos acompañan</h3>
-          <div className="divBtnDesplegableMembers">
+          <div className="divBtnDesplegableMembers mb-2">
             <select
               type="text"
               name="name"
@@ -143,16 +144,16 @@ const OrganizationsAll = (props) => {
               </option>
             )).sort(OrderNameAsc(organizations))}
               <option className="colorBlack"  key={organizations.name} value={"todas"}>Mostrar todas las organizaciones</option>
-            </select>      
-            <span className={ViewAdministratorOptions()} >  
-              <Link to={'/OrganizationsCreate'} className="m-1">
-                <FaIcons.FaPlusSquare className="iconBlue"/> 
-              </Link>
-            </span> 
+            </select> 
+             
+              <div className={ViewAdministratorOptions()}>
+                <Link to={'/OrganizationsCreate'} >
+                  <FaIcons.FaPlusSquare className="iconBlue m-1 ms-4" /> 
+                </Link>
+              </div> 
           </div> 
-          <br/>
         </div> 
-        <div>
+        <div className="containerCards">
           {showOrganizations()}
         </div>
       </>

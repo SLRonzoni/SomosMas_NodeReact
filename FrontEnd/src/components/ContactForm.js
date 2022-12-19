@@ -4,12 +4,11 @@ import "./styles/contactForm.css";
 import "./styles/login-register-home.css";
 import axiosClient from "../configuration/axiosClient";
 import Swal from "sweetalert2";
-import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import * as msg from "./helpers/validationMessages";
 import * as regex from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
-import {TextArea,ErrorText,IconUser,InputGroup,} from "./elements/ElementsFormStyles";
+import {ErrorText,IconUser,InputGroup,} from "./elements/ElementsFormStyles";
 import imagen from "./images/manos_fondo-sinFondo.png";
 import buttonsResponsive from "./buttonsResponsive";
 
@@ -28,9 +27,8 @@ const ContactForm = (props) => {
     const sendMessage = async () => {
       await axiosClient.post("/messages", body)
         .then((resp) => {
-          console.log(resp)
           if (resp.status !== 201) {
-           console.log('error al crear mensaje ')
+           console.log('error al crear mensaje')
           }        
         })
         .catch((error) => {
@@ -40,7 +38,6 @@ const ContactForm = (props) => {
 
       await axiosClient.post("/contacts", body)
         .then((response) => {
-          console.log(response)
           if (response.status === 201) {
             Swal.fire({
               icon: "success",
@@ -92,6 +89,7 @@ const ContactForm = (props) => {
       errors.icoNname = X;
       return errors;
     }
+    
 
     if (!regex.regexUserfirstName.test(values.name)) {
       errors.name = msg.msgValidationUserFirstName;
@@ -151,111 +149,107 @@ const ContactForm = (props) => {
         </div>
 
         <div className="containerContactForm">
-        
-        <Formik
-          initialValues={initialValues}
-          validate={validateInputs}
-          onSubmit={(values) => { sendForm(values) }}
-        >
-          {(
-            { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( 
-            
-            <form className='containerFormContact' onSubmit={handleSubmit}>
-              <h5 className="centerText mb-4">Formulario de Contacto</h5>              
-              <div className="divGroupContactForm ">                  
-                <div>
-                  <label className="labelContactForm" htmlFor='name'>Nombre y Apellido</label>
-                  <InputGroup>
+          <Formik
+            initialValues={initialValues}
+            validate={validateInputs}
+            onSubmit={(values) => { sendForm(values) }}
+          >
+            {(
+              { values, handleBlur, handleSubmit, handleChange, touched, errors }) => ( 
+              
+              <form className='containerFormContact' onSubmit={handleSubmit}>
+                <h5 className="centerText mb-4">Formulario de Contacto</h5>              
+                <div className="divGroupContactForm ">                  
+                  <div>
+                    <label className="labelContactForm" htmlFor='name'>Nombre y Apellido</label>
+                    <InputGroup>
+                      <input  className="form-control inputContactForm"
+                        type='text'
+                        name='name'
+                        placeholder="Tu nombre y apellido"
+                        required
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.name && errors.icoNname && (<IconUser>{errors.icoNname}</IconUser>)}
+                    </InputGroup>
+                  </div>
+                  {touched.name && errors.name && (<ErrorText>{errors.name} </ErrorText>)}
+                </div>
+
+                <div className="divGroupContactForm">  
+                  <div>
+                    <label className="labelContactForm"htmlFor='phone'>Teléfono </label>
+                    <InputGroup >
                     <input  className="form-control inputContactForm"
-                      type='text'
-                      name='name'
-                      placeholder="Tu nombre y apellido"
-                      required
-                      value={values.name}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.name && errors.icoNname && (<IconUser>{errors.icoNname}</IconUser>)}
-                  </InputGroup>
+                        type='text'
+                        name='phone'
+                        placeholder="Tu número de teléfono"
+                        value={values.phone}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.phone && errors.icoNphone && (
+                        <IconUser>{errors.icoNphone}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.phone && errors.phone && (
+                    <ErrorText>{errors.phone} </ErrorText>
+                  )}
                 </div>
-                {touched.name && errors.name && (<ErrorText>{errors.name} </ErrorText>)}
-              </div>
-              <br/>
-
-              <div className="divGroupContactForm">  
-                <div>
-                  <label className="labelContactForm"htmlFor='phone'>Teléfono </label>
-                  <InputGroup >
-                  <input  className="form-control inputContactForm"
-                      type='text'
-                      name='phone'
-                      placeholder="Tu número de teléfono"
-                      value={values.phone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.phone && errors.icoNphone && (
-                      <IconUser>{errors.icoNphone}</IconUser>
-                    )}
-                  </InputGroup>
+              
+                <div className="divGroupContactForm">  
+                  <div>
+                    <label className="labelContactForm"htmlFor='email'>E-mail  </label>
+                    <InputGroup >
+                    <input  className="form-control inputContactForm"
+                        type='text'
+                        name='email'
+                        placeholder="Tu e-mail"
+                        required
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.email && errors.icoNemail && (
+                        <IconUser>{errors.icoNemail}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.email && errors.email && (
+                    <ErrorText>{errors.email} </ErrorText>
+                  )}
                 </div>
-                {touched.phone && errors.phone && (
-                  <ErrorText>{errors.phone} </ErrorText>
-                )}
-              </div>
-              <br/>
-
-              <div className="divGroupContactForm">  
-                <div>
-                  <label className="labelContactForm"htmlFor='email'>E-mail  </label>
-                  <InputGroup >
-                  <input  className="form-control inputContactForm"
-                      type='text'
-                      name='email'
-                      placeholder="Tu e-mail"
-                      required
-                      value={values.email}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.email && errors.icoNemail && (
-                      <IconUser>{errors.icoNemail}</IconUser>
-                    )}
-                  </InputGroup>
+            
+                <div className="divGroupContactForm">  
+                  <div> 
+                    <label className="labelContactForm" htmlFor='message'>Mensaje </label>
+                    <InputGroup >
+                      <textarea className="tArea form-control"
+                        type="text"
+                        name='message'
+                        placeholder=" Tu mensaje..."
+                        required
+                        value={values.message}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                      />
+                      {touched.message && errors.icoNmessage && (
+                        <IconUser>{errors.icoNmessage}</IconUser>
+                      )}
+                    </InputGroup>
+                  </div>
+                  {touched.message && errors.message && (
+                    <ErrorText>{errors.message} </ErrorText>
+                  )}
                 </div>
-                {touched.email && errors.email && (
-                  <ErrorText>{errors.email} </ErrorText>
-                )}
-              </div>
-              <br/>
-
-              <div className="divGroupContactForm">  
-                <div> 
-                  <label className="labelContactForm" htmlFor='message'>Mensaje </label>
-                  <InputGroup >
-                    <textarea className="tArea form-control"
-                      type="text"
-                      name='message'
-                      placeholder=" Tu mensaje..."
-                      required
-                      value={values.message}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                    {touched.message && errors.icoNmessage && (
-                      <IconUser>{errors.icoNmessage}</IconUser>
-                    )}
-                  </InputGroup>
-                </div>
-                {touched.message && errors.message && (
-                  <ErrorText>{errors.message} </ErrorText>
-                )}
-              </div>
-              {buttonsResponsive("/","Enviar")}
-            </form>
-          )}
-        </Formik>
-      </div>
+                {buttonsResponsive("/","Enviar")}
+              </form>
+            )}
+          </Formik>
+        </div>
       </div>
     </>
   );

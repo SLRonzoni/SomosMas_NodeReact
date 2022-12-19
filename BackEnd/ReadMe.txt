@@ -24,6 +24,7 @@ Modificaciones al proyecto original ( back end ):
   * CATEGORIES, se sgregó el servicio GETONECATEGORYPUBLIC
   * CONTACT, se cambió nombre de la variable que guarda el modelo de contacts 
   * CONTACT, se eliminó campo message 
+  * CONTACT, se cambió servicio create para el caso de contactos con = email
   * MEMBERS, se cambio nombre de inputs , de data a inputVars, y se adaptó servicio para manejar imagenes ,en create y update
   * MESSAGES , se crearon servicios
   * NEWS, se modificó condicion en linea 19

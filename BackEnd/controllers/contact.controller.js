@@ -5,16 +5,24 @@ const { getModelById, updateModel, deleteModel} = require('./base.controller')
 
 const createContact = async (req, res) => {
     try {
-        const { name, phone, email, message } = req.body
+        const { name, phone, email } = req.body
 
-        const contact = await ModelContacts.create({
-                    name: name,
-                    phone: phone,
-                    email: email
-        })
-
-        const emailSend = await emailContact(contact)
-        res.status(201).json({ contact, emailSend })
+        const findExistsEmail= await ModelContacts.findAll({where: {email:email}})
+    
+        if(findExistsEmail && !findExistsEmail[0]){
+           
+            const contact = await ModelContacts.create({
+                        name: name,
+                        phone: phone,
+                        email: email
+            })
+           
+            const emailSend = await emailContact(contact)
+            res.status(201).json({ contact, emailSend })
+         } else{            
+            const emailSend = await emailContact(findExistsEmail[0])
+            res.status(201).json({findExistsEmail,emailSend})
+        }
 
     } catch (error) {
         res.status(500).json({ error })
@@ -22,7 +30,6 @@ const createContact = async (req, res) => {
 }
 
 const getAllContacts = async (req, res) => {
-
     try {
         const contacts = await ModelContacts.findAll()
         res.status(200).json({ contacts })

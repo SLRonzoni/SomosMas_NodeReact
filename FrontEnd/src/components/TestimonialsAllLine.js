@@ -7,7 +7,7 @@ import * as FaIcons from 'react-icons/fa';
 const TestimonialsAllLine = ({id, name, image, content, userId,  create,update,remove}) =>{
   
     return (
-        <tr >
+        <tr>
             <td>{id}</td>
             <td className="imageChar centerText MQimageCharTestim"><img src={image}  alt="testimonialImage"></img> </td>
             <td className='MQtestim'>{name}</td>
