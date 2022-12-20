@@ -251,7 +251,7 @@
     
 }
 
-/* Lists, UpdateForm */
+/* Lists, UpdateForm , Cards*/
 @media only screen and (max-width: 470px) {
     .MQcontent,
     .MQuser,
@@ -259,17 +259,38 @@
     .MQcreated{
         display:none;
     }
-
+    
     .MQselectButtons{
         display: block;  
     }
 
     .tableTotal{
         padding:1rem;
-    } 
+    }
 
+    .card{
+        font-size: 0.8rem;
+        margin:2rem;
+        width: 90%;  
+    }
+
+    .card .card_info{
+        padding:0.5rem;
+        width: 123%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .MQseeMore{
+        margin:auto;
+    }
+
+    .card .card_publication {      
+       position:absolute;
+    }
+    
     .MQgroupRegister{
-        display: block
+        display: block;
     }
 
     .divsUpdate{
@@ -281,7 +302,7 @@
 
 }
 
-/* Lists, Navbarf, Register, LoginForm */
+/* Lists, Navbarf, Register, LoginForm , Cards*/
 @media only screen and (max-width: 391px) {
     .MQuserEmailDonations,
     .MQcreatedTestim,
@@ -319,4 +340,22 @@
         width: 10rem;
         margin-left: -4rem;
     }
+
+    .card{
+        text-align: center;
+        width: 75%;  
+    }
+
+    .card .card_info{
+        margin-left: -0.2rem;
+        padding:0.5rem;
+        width: 75%;
+    }
+
+    .MQcardFontSize{
+         font-size: 1rem!important;
+         display: flex;
+         justify-content: center;
+    }
+
 }

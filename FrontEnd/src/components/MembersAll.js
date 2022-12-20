@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import './styles/styles.css';
+import './styles/cards.css';
 import './styles/members-organizations.css';
 import MembersAllCard from './MembersAllCard';
 import Swal from "sweetalert2";
@@ -123,15 +124,13 @@ const MembersAll = (props) => {
 
   return (
     <>
-      <div>  
-        
+      <div className="containerFirst">  
         {!members &&  <LoadingBox/> }
-
         {members && 
           <> 
             <div className="membersHeader">  
               <h2 className="membersTitle">Colaboradores</h2>       
-              <div className="divBtnDesplegableMembers " >
+              <div className="divBtnDesplegableMembers">
                   <select
                     type="text"
                     name="name"
@@ -147,19 +146,16 @@ const MembersAll = (props) => {
                   </select>
                     
                   <span className={ViewAdministratorOptions()} >  
-                    <Link to={'/MembersCreate'} className="ms-2">
-                      <FaIcons.FaPlusSquare className="iconBlue"/> 
+                    <Link to={'/MembersCreate'} className="ms-2 ">
+                      <FaIcons.FaPlusSquare className="iconBlue m-1 ms-4"/> 
                     </Link>
                   </span> 
               </div>
-              <br/>
+            
+              <div> 
+                {showMembers()}
+              </div>    
             </div>  
-          
-
-            <div className="containerFirst">
-              {showMembers()}
-            </div>    
-           
           </>
         } 
       </div>

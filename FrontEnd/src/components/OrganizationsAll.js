@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import axiosClient from "../configuration/axiosClient";
 import "./styles/styles.css";
+import "./styles/cards.css";
 import './styles/members-organizations.css';
 import "./styles/table.css";
 import "./styles/tableMediaScreen.css";
@@ -153,7 +154,8 @@ const OrganizationsAll = (props) => {
               </div> 
           </div> 
         </div> 
-        <div className="containerCards">
+
+        <div className='cards'> 
           {showOrganizations()}
         </div>
       </>
