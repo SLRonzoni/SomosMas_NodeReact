@@ -11,7 +11,7 @@ import { msgRequired,msgValidationAmount } from "./helpers/validationMessages";
 import { regexAmount } from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
 
-const CheckoutForm= (props) => {
+const CheckoutForm = (props) => {
   const stripe = useStripe();
   const elements = useElements();
   const history=useHistory();
@@ -141,7 +141,6 @@ const CheckoutForm= (props) => {
               <input className="input"
                 name="amount"
                 type="number"
-                label="Importe : U$S"
                 placeholder="ingrese importe"
                 value={values.amount}
                 onChange={handleChange}

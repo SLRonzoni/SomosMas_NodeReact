@@ -2,9 +2,13 @@ const ModelDonations= require('../models').Donations;
 const ModelHelper=require('../helpers/modelHelper');
 const baseController = require("./base.controller");
 const {Op}=require('sequelize');
-const Stripe=require('stripe');
 
+const Stripe=require('stripe');
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+const mercadopago = require('mercadopago');
+mercadopago.configurations.setAccessToken(process.env.MERCADO_PAGO_ACCESS_TOKEN)
+
 
 const getAllDonations= async (req, res) => {
   try{
@@ -96,79 +100,57 @@ const deleteDonation=async (req,res)=>{
   }
 };
    
-  // Stripe
-  const paymentsStripe=async (req, res) => {
-    const { id, data } = req.body;
-    try{      
-      //Create a PaymentIntent with the order amount and currency
-      const payment = await stripe.paymentIntents.create({
-        amount:req.body.data.amount,
-        currency: "usd",
-        description:"donation Stripe",
-        payment_method:id,
-        confirm:true
-      });
-      res.status(200).json({message: "Pago exitoso", 
-                            clientSecret: payment });     
-      //Guardar los datos en mi bd
-      createDonation(data)
+// Stripe - Hacer un pago con tarjeta de crédito
+const paymentsStripe=async (req, res) => {
+  const { id, data } = req.body;
+  try{      
+    //Create a PaymentIntent with the order amount and currency
+    const payment = await stripe.paymentIntents.create({
+      amount:req.body.data.amount,
+      currency: "usd",
+      description:"donation Stripe",
+      payment_method:id,
+      confirm:true
+    });
+    res.status(200).json({message: "Pago exitoso", 
+                          clientSecret: payment });     
+    //Guardar los datos en mi bd
+    createDonation(data)
   } catch(error) {
       console.log(error.raw.message)
       res.status(500).json(error.raw.message)
   }
-  };
+};
 
-   // Mercado Pago
-   const paymentsMePa=async (req, res) => {
-    try{
-     
-      
-
-      //createDonation()
-
+// Mercado Pago - Lista de metodos de pago
+const listPaymentMethodsMercadoPago= async (req,res)=> {
+  try {
+    let response=await mercadopago.payment_methods.listAll();
+    let payment_methods=response.body;
+    res.status(200).json(payment_methods)
   } catch(error) {
-      console.log(error)
-      // res.status(500).json(error)
+    res.status(500).json(error)
   }
+}
 
-  };
 
-     
-  //     async confirm(data,signature){
-  //         let event;
-  //         try {
-  //             event=stripe.webhooks.constructEvent(data,signature,endpointSecret)
-              
-  //         } catch (err) {
-  //             return{sucess:false,message:`Webhook Error : ${err.message}`}
-  //         }
-      
+// Mercado Pago - Hacer un pago con ticket ( tipo pagofacil )
+const singleMercadoPago=async (req, res) => {
+  try{      
+    const data= await mercadopago.payment.create({
+      transaction_amount: req.body.transaction_amount,
+      description: 'donation',
+      payment_method_id:req.body.payment_method_id,
+      payer: {
+        email:req.body.payer.email
+      }
+    })
+    res.status(200).json(data.body.transaction_details.external_resource_url)
+  } catch(error) {
+    res.status(500).json(error)
+  }
+};
   
-  //         switch (event.type) {
-  //             case 'payment_intent.succeeded':
-  //                 const paymentIntent = event.data.object;
-  //                 console.log(paymentIntent)
-  //                 // Then define and call a function to handle the event payment_intent.succeeded
-  //             break;
-  //             // ... handle other event types
-  //             default:
-  //                 console.log(`Unhandled event type ${event.type}`);
-  //         }
-  //         return {
-  //             success:true,
-  //             message:'OK'
-  //         }
-  //       }
-
-
-// const paymentsServ=new PaymentsService()
-// const clientSecret= paymentsServ.createIntent(total)
-// return {
-//   success:true,
-//   clientSecret
-// }
-
-
 
 module.exports = {getAllDonations,
                   getAllDonationsByPayForm,
@@ -177,5 +159,6 @@ module.exports = {getAllDonations,
                   getDonationId,
                   createDonation,
                   paymentsStripe,
-                  paymentsMePa,
+                  singleMercadoPago,
+                  listPaymentMethodsMercadoPago,
                   deleteDonation};

@@ -47,6 +47,9 @@ const getModel = (id, url) => {
     case 'users': 
       model = models.User.findByPk(id);
     break;
+    case 'donations': 
+      model = models.Donations.findByPk(id);
+    break;
     default: 
       model = null;
     break;

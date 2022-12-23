@@ -1,0 +1,33 @@
+#form-checkout {
+  display: flex;
+  background-color: rgb(118, 118, 118);
+  color:rgb(32, 10, 67);
+  border-radius: 0.5rem;
+  flex-direction: column;
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.container {
+  height: 18px;
+  display: inline-block;
+  border: 1px solid rgb(118, 118, 118);
+  border-radius: 2px;
+  padding: 1px 2px;
+}
+
+#button{
+  background-color: chartreuse;
+  margin-left:65%;
+  width: 10rem;
+  border-radius: 0.5rem;
+}
+
+input{
+  width: 20rem;
+}
+
+label{
+  width: 10rem;
+}

@@ -115,7 +115,6 @@ export default function Sidebar () {
               )}               
               {userInfo && userInfo.roleId===1 && ( 
                 <NavDropdown title="Secciones" id="basic-nav-dropdown" className="ms-2" >  
-                  <NavDropdown.Item href="/About" onClick={showNavbar}>Acerca de nosotros</NavDropdown.Item>
                   <NavDropdown.Item href="/ActivitiesAll" onClick={showNavbar}>Actividades</NavDropdown.Item>
                   <NavDropdown.Item href="/CategoriesAll" onClick={showNavbar}>Categorias</NavDropdown.Item>
                   <NavDropdown.Item href="/CommentsAll" onClick={showNavbar}>Comentarios</NavDropdown.Item>
@@ -127,7 +126,8 @@ export default function Sidebar () {
                   <NavDropdown.Item href="/OrganizationsAll" onClick={showNavbar}>Organizaciones</NavDropdown.Item>
                   <NavDropdown.Item href="/RolesAll" onClick={showNavbar}>Roles</NavDropdown.Item>
                   <NavDropdown.Item href="/TestimonialsAll" onClick={showNavbar}>Testimonios</NavDropdown.Item>
-                  <NavDropdown.Item href="/UsersAll" onClick={showNavbar}>Usuarios</NavDropdown.Item>             
+                  <NavDropdown.Item href="/UsersAll" onClick={showNavbar}>Usuarios</NavDropdown.Item>
+                  <NavDropdown.Item href={`/users/${userInfo.id}`}>Mi perfil</NavDropdown.Item>             
                 </NavDropdown>
               )} 
             </Navbar.Brand>    

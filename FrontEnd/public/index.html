@@ -16,7 +16,7 @@
     <title>Somos Mas ong</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- <noscript>You need to enable JavaScript to run this app.</noscript> -->
     <div id="root"></div>
 
     <link rel="stylesheet" href="app.css" />
@@ -51,5 +51,9 @@
     <!-- <script src="https://js.stripe.com/v3/"></script>
     <script> src="./payment.js"</script> -->
 
+    <!-- MERCADO PAGO  -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script> const mp = new MercadoPago(process.env.REACT_APP_MERCADOPAGO_PUBLIC_KEY);</script>
+   
   </body>
 </html>

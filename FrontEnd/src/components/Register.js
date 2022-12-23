@@ -20,7 +20,9 @@ const Register=(props)=> {
 
     //SHOW PASSWORD
     const [shown, setShown] = React.useState(false);
-    const switchShown = () => setShown(!shown);
+    const [shownConfirm, setShownConfirm] = React.useState(false);
+    const switchShown = () => setShown(!shown) ;
+    const switchShownConfirm = () => setShownConfirm(!shownConfirm) ;
 
     //SEND
     const sendForm = (values) => {
@@ -259,11 +261,7 @@ const Register=(props)=> {
                                 
                                 <div className="mb-3">
                                     <div className="formGroup withoutBorder withoutBg MQgroupRegister">   
-                                        <label className="labelRegister"  htmlFor="currentPassword"> Password 
-                                            <button className="withoutBorder withoutBg ms-3" type="button" onClick={switchShown}> 
-                                                {shown ? <FontAwesomeIcon icon={faEye} /> : <FontAwesomeIcon icon={faEyeSlash} />} 
-                                            </button> 
-                                        </label> 
+                                        <label className="labelRegister"  htmlFor="currentPassword"> Password </label> 
                                         <InputGroup>
                                         <input className="form-control inputRegisterForm"
                                                 type={shown ? "text" : "password" }
@@ -276,6 +274,10 @@ const Register=(props)=> {
                                                 onBlur={handleBlur}
                                             />
                                             {touched.currentPassword && errors.icoNcurrentPassword && <IconUser>{errors.icoNcurrentPassword}</IconUser>}   
+                                            <button className="withoutBorder withoutBg" type="button" onClick={switchShown}> 
+                                                {shown ? <FontAwesomeIcon className="iconShowPassInput ms-3"  icon={faEye} /> 
+                                                : <FontAwesomeIcon className="iconShowPassInput ms-3" icon={faEyeSlash} />} 
+                                            </button> 
                                         </InputGroup>
                                     </div> 
                                     {touched.currentPassword && errors.currentPassword && <ErrorText>{errors.currentPassword} </ErrorText> }
@@ -286,16 +288,20 @@ const Register=(props)=> {
                                         <label className="labelRegister"  htmlFor="confirmPassword"> Repetir Password</label>  
                                         <InputGroup>
                                         <input className="form-control inputRegisterForm"
-                                            type={shown ? "text" : "password" }
+                                            type={shownConfirm ? "text" : "password" }
                                             name="confirmPassword" 
                                             id="confirmPassword" 
                                             required 
-                                            placeholder="misma password"
+                                            placeholder="repite password"
                                             value={values.confirmPassword}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             />
-                                        {touched.confirmPassword && errors.icoNconfirmPassword && <IconUser>{errors.icoNconfirmPassword}</IconUser>}   
+                                           {touched.confirmPassword && errors.icoNconfirmPassword && <IconUser>{errors.icoNconfirmPassword}</IconUser>}   
+                                           <button className="withoutBorder withoutBg" type="button" onClick={switchShownConfirm}> 
+                                                {shownConfirm ? <FontAwesomeIcon  className="iconShowPassInput ms-3" icon={faEye} /> 
+                                                : <FontAwesomeIcon className="iconShowPassInput ms-3" icon={faEyeSlash} />} 
+                                            </button> 
                                         </InputGroup>
                                     </div> 
                                     {touched.confirmPassword && errors.confirmPassword && <ErrorText>{errors.confirmPassword} </ErrorText> }

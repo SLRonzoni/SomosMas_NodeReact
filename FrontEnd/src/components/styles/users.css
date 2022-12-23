@@ -4,8 +4,8 @@
     flex-direction: column; 
     position: relative;
     justify-content: center;
-    margin:4.5rem 0rem 1rem 0rem;
-    padding:1rem;
+    margin:4.5rem 0 0 1rem ;
+    padding:0.8rem;
     background-color: lightgrey;
     color:#0e0d0d;
     border-radius: 1rem;

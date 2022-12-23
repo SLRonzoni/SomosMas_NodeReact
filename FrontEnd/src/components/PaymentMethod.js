@@ -31,8 +31,8 @@ paymentOption()
       { !user && setTimeout( function() { window.location.href = "/auth/login" }, 1500 )}
       { user && 
       <div className='containerPayment'>      
-        <h1 className='centerText colorBlack'>Métodos de donación</h1>
-        <br></br>
+        <h1>Métodos de Donación</h1>
+      
         <form className="formPaymentMethod mt-2">
           <div className='mb-3 mt-4'>
             <input 
@@ -42,21 +42,47 @@ paymentOption()
               checked={selectRadio==="stripe"?true:false}
               onChange={changeSelectRadio}
             /> 
-            <label className="marginLeft10px">
-              <FaIcons.FaCcStripe className="icons"/> ( U$S )
+            <label>
+              <FaIcons.FaCcStripe className="icons"/> ( Stripe - Tarjeta de Crédito en U$S )
+            </label>
+          </div>
+
+          <div className='mb-3 mt-4'>
+            <input 
+              type="radio"
+              id='mpCreditDebitCard'
+              value='mpCreditDebitCard'
+              checked={selectRadio==="mpCreditDebitCard"?true:false}
+              onChange={changeSelectRadio}
+            /> 
+            <label>
+              <FaIcons.FaCcVisa className="icons"/> ( Mercado Pago - Tarjeta de Crédito/Débito en AR$ )
             </label>
           </div>
 
           <div className='mb-3 mt-3'>
             <input 
               type="radio"
-              id='mercadoPago'
-              value='mercadoPago'
-              checked={selectRadio==="mercadoPago"?true:false}
+              id='mpRapipago'
+              value='mpRapipago'
+              checked={selectRadio==="mpRapipago"?true:false}
               onChange={changeSelectRadio}
             /> 
-            <label className="marginLeft10px">
-            <FaIcons.FaCreditCard className="icons"/> ( Mercado Pago en AR$ )
+            <label>
+            <FaIcons.FaMoneyCheckAlt className="icons"/> ( Mercado Pago - Rapipago en AR$ )
+            </label>
+          </div>
+
+          <div className='mb-3 mt-3'>
+            <input 
+              type="radio"
+              id='mpPagofacil'
+              value='mpPagofacil'
+              checked={selectRadio==="mpPagofacil"?true:false}
+              onChange={changeSelectRadio}
+            /> 
+            <label>
+            <FaIcons.FaMoneyCheckAlt className="icons"/> ( Mercado Pago - Pagofácil en AR$ )
             </label>
           </div>
          

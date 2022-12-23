@@ -93,14 +93,14 @@ body{ /* ✅ */
 .withoutBg{ /* ✅ */
     background-color: transparent;
 }
-/* 
-.iconTimes{ 
+
+.iconTimes{/* ✅ */ 
     color:rgb(247, 8, 8);
 }
 
 .iconCheck{ 
     color:rgb(45, 218, 45);
-} */
+}
 
 .iconInsideInputDiv{ /* ✅ */
     max-width: 30rem;

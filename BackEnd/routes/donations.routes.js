@@ -3,7 +3,7 @@ var router = express.Router();
 
 const {getAllDonations, createDonation, getDonationId, getAllDonationsByPayForm,
       getAllDonationsByEmail,getAllDonationsByCreate, deleteDonation, paymentsStripe, 
-      paymentsMePa}= require('../controllers/donations.controllers');
+      singleMercadoPago,listPaymentMethodsMercadoPago}= require('../controllers/donations.controllers');
 
 const { authenticatedUser, verifyIsAdmin, idExists} = require('../middlewares');
 
@@ -18,8 +18,9 @@ router.get('/byDate/:create',verifyIsAdmin, authenticatedUser, getAllDonationsBy
 
 router.post('/createDonation',createDonation)
 
-router.post('/paymentsStripe',paymentsStripe)
-router.post('/paymentsMePa',paymentsMePa)
+router.post('/paymentsStripe', authenticatedUser,paymentsStripe)
+router.post('/singleMercadoPago', authenticatedUser,singleMercadoPago)
+router.post('/listPaymentMethodsMercadoPago',listPaymentMethodsMercadoPago)
 
 router.delete('/:id', verifyIsAdmin,authenticatedUser, deleteDonation)
 
