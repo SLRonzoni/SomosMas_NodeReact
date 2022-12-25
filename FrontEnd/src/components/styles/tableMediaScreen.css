@@ -31,6 +31,13 @@
     .containerFormContact{
         height: 100vh;
     }
+
+    div .containerPayment,
+    .formPaymentMethod{
+        max-width: 45vw;
+        height: 90%;
+        width: 50;
+    }
 }
 
 /* Home , Navbar, Register, Contact, Login, DonationsList*/
@@ -126,6 +133,13 @@
         width: 100%;
         font-size: 0.65rem;
     } 
+
+    div .containerPayment,
+    .formPaymentMethod{
+        max-width: 80vw;
+        height: 90%;
+        width: 50;
+    }
 } 
 
 /* Contact, Register, DonationsList, CreateForm*/
@@ -141,6 +155,7 @@
     .MQuserNameDonations{
         display: none;
     }
+
 }
 
 /* UpdateForm */
@@ -152,6 +167,15 @@
         width: 200%;
         margin:4.5rem 2% 2% 2%;
     }
+
+    .imgStripe{
+        width: 30%;
+    }
+
+    .formStripe {
+        width: 85%;
+    }
+
 }
 
 /* NewsList, UpdateForm, CreateForm */
@@ -167,6 +191,7 @@
         display: block;
         margin: auto;
     }
+
 } 
 
 /* TestimonialCreate */
@@ -176,6 +201,7 @@
         margin: auto;
     }
   
+    .formUserData .formStripeUser,
     .MQbuttons{
         display: block;
     }
@@ -183,6 +209,7 @@
     .MQcreatedUser{
         display: none;
     }
+
 } 
 
 
@@ -209,6 +236,7 @@
     .tArea{
         display: block;
     }
+
 }
 
 /* Lists */
@@ -218,7 +246,7 @@
     }
 }
 
-/* Lists, LoginForm */
+/* Lists, LoginForm, PaymentMethods */
 @media only screen and (max-width: 580px) { 
     .MQupdated,
     .MQcategNews,
@@ -249,9 +277,13 @@
         padding-top:3rem;
     }
     
+    .MQpaymentInputs{
+        font-size: 80%;
+    }
+
 }
 
-/* Lists, UpdateForm , Cards*/
+/* Lists, UpdateForm , Cards, PaymentMethods*/
 @media only screen and (max-width: 470px) {
     .MQcontent,
     .MQuser,
@@ -296,10 +328,19 @@
     .divsUpdate{
         width: 180%;
     }
+
     .containerUpdateBig{
         width: 90%;
     }
 
+    .formPaymentType h5{
+        font-size: 84%;
+        padding:0.1rem;
+        background-color: #422472;
+        color:#fff;
+        text-align: center;
+    }
+   
 }
 
 /* Lists, Navbarf, Register, LoginForm , Cards*/
@@ -310,7 +351,8 @@
     .MQuserNameMessages{
         display:none;
     }
- 
+    
+      
     .divGroupContactForm{
         width: 115%;
     }
@@ -353,9 +395,9 @@
     }
 
     .MQcardFontSize{
-         font-size: 1rem!important;
-         display: flex;
-         justify-content: center;
+        font-size: 1rem!important;
+        display: flex;
+        justify-content: center;
     }
 
 }

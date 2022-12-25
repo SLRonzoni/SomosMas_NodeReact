@@ -11,7 +11,7 @@ import { msgRequired,msgValidationAmount } from "./helpers/validationMessages";
 import { regexAmount } from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
 
-const CheckoutForm = (props) => {
+const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
   const history=useHistory();
@@ -21,6 +21,8 @@ const CheckoutForm = (props) => {
   
   let initialValues = { amount: "", message: "" };
   let photo;
+  let payMethod="Stripe"
+  let money="U$S"
 
   if (user && user.image!==""? photo=user.image : photo=<FaIcons.FaUser/>);
   if (!user ? user="": user);
@@ -40,11 +42,10 @@ const CheckoutForm = (props) => {
                 "userPhone": "",
                 "userEmail": user.email,
                 "amount":(values.amount*100),
-                "payForm":"Stripe",
+                "payForm":payMethod,
                 "message": values.message
               };
     setIsLoading(true);
-    
 
     const {error,paymentMethod}=await stripe.createPaymentMethod({
       type:'card',
@@ -107,11 +108,8 @@ const CheckoutForm = (props) => {
 
   return (
     <>
-    <div className="containerStripe">
-      <br/>
-      {!user && <h3 className="centerText">"Para hacer una donación, tenés que estar registrado"</h3>} 
-      {/* {!user && history.push("/PaymentMethod" )} */}
-            
+    <div className="containerStripe mb-3">
+      {!user && <h3 className="centerText">"Para hacer una donación, tenés que estar registrado"</h3>}    
       { user &&
       <Formik
         initialValues={initialValues}
@@ -121,57 +119,58 @@ const CheckoutForm = (props) => {
       {(
         { values, handleSubmit, handleChange, handleBlur, touched, errors }) => (
       
-      <form onSubmit={handleSubmit} className="formCard formStripe">
-        <div className="formUserData" >          
+      <form onSubmit={handleSubmit} className="formStripe">
+       <div className="formUserData" >          
           <img className="imgStripe" src={photo} alt="user"></img>
-          <div className="d-flex">
+          <div className="formStripeUser">
             <p> Nombre   : {user.firstName}</p>
             <p> Apellido : {user.lastName} </p>
           </div>
-          <div className="d-flex">
+          <div className="formStripeUser">
           <p> Email: {user.email}</p>
           <p> Teléfono : {user.phone}</p>
           </div>
         </div>
 
-        <br/>
-        <div className="form-group">
-          <div className="d-flex centerText" >
-              <span>Medio de pago : Stripe , Moneda : U$S</span>
-              <input className="input"
-                name="amount"
-                type="number"
-                placeholder="ingrese importe"
-                value={values.amount}
-                onChange={handleChange}
-                onBlur={handleBlur}
-              /> 
+        <div className="formUserData">  
+          <div>
+            <label> Mensaje </label>
+            <textarea className="form-control"
+              type='text'
+              rows='2'
+              cols='52'
+              name='message'
+              placeholder="Tu mensaje..."
+              value={values.message}        
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
           </div>
-          {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
         </div>
 
-        <div className="form-group">
-          <br/>
-          <CardElement className="form-control" />
-          <br/>
+        <div className="formUserData">  
+          <div className="form-group">
+            <div className="formStripeUser" >
+                <span>Medio de pago : {payMethod} en {money}</span>
+                <input className="input form-control"
+                  name="amount"
+                  type="number"
+                  placeholder="ingrese importe"
+                  value={values.amount}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                /> 
+            </div>
+            {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
+          </div>
         </div>
-        
-        <div>
-          <label className="ms-3"> Mensaje </label>
-          <textarea className="textArea form-control borderRounded"
-            type='text'
-            rows='3'
-            cols='45'
-            name='message'
-            placeholder=" Tu mensaje..."
-            value={values.message}        
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+
+        <div className="formUserData"> 
+          <CardElement className="form-control cardElement" />
         </div>
 
         <div className="buttonsResponsive">
-          <Link to={"/"}  className='btn buttonBlue' role='button' > Volver </Link>
+          <Link to={"/PaymentMethod"}  className='btn buttonBlue' role='button' > Volver </Link>
           <button disabled={isLoading || !stripe || !elements} id="submit" type="submit" className="btn buttonBlue buttonGreen">        
             <span id="button-text ">
               {isLoading ? <div className="spinner" id="spinner"></div> : "Donar"}

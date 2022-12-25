@@ -1,52 +1,53 @@
   .containerStripe {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    display: block;
+    font-size: 1rem;
     height: 100vh;
-    width: 100vw;
-    padding-top: 3rem;
+    max-width: 100vw;
+    width: 100%;
+    padding-top: 4.5rem;
     background-color:rgb(32, 10, 67);
     color:#fff;
   } 
   
   .formStripe {
-    width: 30vw;
-    min-width: 550px;
-    align-self: center;
-    justify-content: center;
-    background-color:lightgray;
-    box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
-      0px 2px 5px 0px rgba(12, 12, 12, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
-    border-radius: 7px;
-    padding: 1rem;
-    color:#0c0c0c;
-  }
-
-  .formCard{
+    width: 45%;
     margin: auto;
-    margin-top:1rem;
-    border-radius:1rem;
-    padding:1rem;
+    padding: 1rem;
+    background-color:lightgray;
+    color:#0c0c0c;
+    box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
+                0px 2px 5px 0px rgba(12, 12, 12, 0.999), 
+                0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
+    border-radius: 0.5rem;  
   }
 
-  .formUserData{
+  .formUserData {
     margin:auto;
-    width: 28vw;
-    min-width: 500px;
+    margin-bottom:1rem;
+    padding: 0.5rem;
     background-color:lightgrey;
     color:#0c0c0c;
     box-shadow: 0px 0px 0px 0.5px rgb(250, 250, 251),
-      0px 2px 5px 0px rgba(230, 230, 238, 0.999), 0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
-      border-radius: 7px 7px 0px 0px;
-    padding: 15px;
+                0px 2px 5px 0px rgba(230, 230, 238, 0.999), 
+                0px 1px 1.5px 0px rgba(243, 238, 238, 0.07);
+    border-radius: 7px;
+  }
+
+  .formStripeUser{
+    display: flex;
   }
 
   .formUserData p{
     width: 80%;
     height: 50%;
   }
-    
+
+  .cardElement{
+    background-color:#ffffff;
+    height: 3rem;
+    padding-top:1rem;
+  }
+
+/*     
   #payment-message {
     color: rgb(105, 115, 134);
     font-size: 16px;
@@ -76,13 +77,13 @@
   
   .buttonStripe:hover {
     filter: contrast(115%);
-  }
-  
+  } */
+/*   
   .buttonStripe:disabled {
     opacity: 0.5;
     cursor: default;
   }
-  
+   */
   .spinner,
   .spinner:before,
   .spinner:after {
@@ -95,8 +96,8 @@
     text-indent: -99999px;
     margin: 0px auto;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 1.2rem;
+    height:1.2rem;
     box-shadow: inset 0 0 0 2px;
     -webkit-transform: translateZ(0);
     -ms-transform: translateZ(0);
@@ -156,12 +157,12 @@
   .stripe{
     width: 30%;
     border:1px solid #687ea3;
-    padding:15px;
-    border-radius: 10px;
+    padding:1rem;
+    border-radius: 0.5rem;
 }
 
   .imgStripe{
-    width: 4vw;  
+    width: 4rem;  
     border-radius: 50%;
     margin-left: 85%;
   }
@@ -172,5 +173,5 @@
     height: 95%;
     line-height: 90%;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 0.5rem;
   } 

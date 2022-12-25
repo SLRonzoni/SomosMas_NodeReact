@@ -1,9 +1,11 @@
-import React,{useEffect,useState} from 'react';
+import React,{useEffect,useState,} from 'react';
+import { Link, useHistory} from "react-router-dom";
 import "./styles/mercadoPago.css";
 import "./styles/stripe.css";
 import * as FaIcons from "react-icons/fa";
 
-const MercadoPago = () => {
+const MercadoPago = (props) => {
+  let history=useHistory();
 
   let initialValues = { amount: "", message: "" };
   let photo;
@@ -17,13 +19,15 @@ const MercadoPago = () => {
    const userData=sessionStorage.getItem("userInfo")
     setUser(JSON.parse(userData));
   }, [])
+
+
   
   return(
     <>  
       <div className="containerStripe pt-5">
       <br/>
       {!user && <h3 className="centerText">"Para hacer una donación, tenés que estar registrado"</h3>} 
-      {/* {!user && history.push("/PaymentMethod" )} */}
+      {!user && history.push("/PaymentMethod" )}
             
       { user &&
         <form id="form-checkout" action="/process_payment" method="post">

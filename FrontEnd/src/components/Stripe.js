@@ -8,9 +8,6 @@ import "./styles/styles.css";
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const Stripe= ()=> {
-
-  //obtener datos del usuario en sesión
-  // const userData=sessionStorage.getItem("userInfo")
    
   sessionStorage.removeItem('paymentMethod');      
 

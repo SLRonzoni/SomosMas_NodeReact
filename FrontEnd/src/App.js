@@ -7,6 +7,8 @@ import Login from './components/Login';
 import LoginGoogle from './components/LoginGoogle';
 
 import MercadoPago from "./components/MercadoPago";
+import MercadoPagoCard from "./components/MercadoPagoCard";
+import MercadoPagoTicket from "./components/MercadoPagoTicket";
 import Stripe from "./components/Stripe";
 
 import Home from './components/Home';
@@ -90,6 +92,8 @@ const App = () => {
           <Route path='/TestimonialsPublic' component={TestimonialsPublic}/>
           <Route path='/Stripe' component={Stripe}/>
           <Route path='/MercadoPago' component={MercadoPago}/>
+          <Route path='/MercadoPagoCard' component={MercadoPagoCard}/>
+          <Route path='/MercadoPagoTicket' component={MercadoPagoTicket}/>
                   
           {/* ADMIN */}
           <Route path='/ActivitiesAll' component={ActivitiesAll}/>
