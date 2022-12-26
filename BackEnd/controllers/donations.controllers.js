@@ -136,6 +136,8 @@ const listPaymentMethodsMercadoPago= async (req,res)=> {
 
 // Mercado Pago - Hacer un pago con ticket ( tipo pagofacil )
 const singleMercadoPago=async (req, res) => {
+                                                              console.log(req.body)
+
   try{      
     const data= await mercadopago.payment.create({
       transaction_amount: req.body.transaction_amount,
@@ -146,6 +148,8 @@ const singleMercadoPago=async (req, res) => {
       }
     })
     res.status(200).json(data.body.transaction_details.external_resource_url)
+    //Guardar los datos en mi bd
+    createDonation(data)
   } catch(error) {
     res.status(500).json(error)
   }

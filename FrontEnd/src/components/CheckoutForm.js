@@ -21,8 +21,6 @@ const CheckoutForm = () => {
   
   let initialValues = { amount: "", message: "" };
   let photo;
-  let payMethod="Stripe"
-  let money="U$S"
 
   if (user && user.image!==""? photo=user.image : photo=<FaIcons.FaUser/>);
   if (!user ? user="": user);
@@ -42,7 +40,7 @@ const CheckoutForm = () => {
                 "userPhone": "",
                 "userEmail": user.email,
                 "amount":(values.amount*100),
-                "payForm":payMethod,
+                "payForm":`${sessionStorage.getItem("payMethod")} U$S`,
                 "message": values.message
               };
     setIsLoading(true);
@@ -150,16 +148,16 @@ const CheckoutForm = () => {
 
         <div className="formUserData">  
           <div className="form-group">
-            <div className="formStripeUser" >
-                <span>Medio de pago : {payMethod} en {money}</span>
-                <input className="input form-control"
-                  name="amount"
-                  type="number"
-                  placeholder="ingrese importe"
-                  value={values.amount}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                /> 
+            <div>
+              <p className="methodText">{sessionStorage.getItem("payMethod")} ( U$S )</p>
+              <input className="form-control"
+                name="amount"
+                type="number"
+                placeholder="ingrese importe"
+                value={values.amount}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              /> 
             </div>
             {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
           </div>
@@ -172,9 +170,9 @@ const CheckoutForm = () => {
         <div className="buttonsResponsive">
           <Link to={"/PaymentMethod"}  className='btn buttonBlue' role='button' > Volver </Link>
           <button disabled={isLoading || !stripe || !elements} id="submit" type="submit" className="btn buttonBlue buttonGreen">        
-            <span id="button-text ">
+            <p id="button-text ">
               {isLoading ? <div className="spinner" id="spinner"></div> : "Donar"}
-            </span>
+            </p>
           </button>
         </div>
       </form>

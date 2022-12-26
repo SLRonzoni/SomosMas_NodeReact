@@ -31,3 +31,28 @@ input{
 label{
   width: 10rem;
 }
+
+span{
+  color:rgb(24, 86, 156);
+}
+
+.logoMP{
+  width:5rem;
+  padding:0.3rem;
+  border-radius:1rem;
+}
+
+.dataUser{
+  width: 45%;
+  height: 35rem;
+  margin: auto;
+  padding:4rem;
+  border-radius: 0.5rem;
+  background-color:lightgray;
+  color:#0c0c0c;
+}
+
+.methodText{
+  font-style: italic;
+  text-transform: capitalize;
+}
