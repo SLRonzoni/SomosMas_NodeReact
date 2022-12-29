@@ -31,27 +31,22 @@ const MercadoPagoTicket = () => {
     let data = {
                 "payer":{"email":user.email},
                 "transaction_amount":values.amount,
-                "description":"donacion",
-                "payment_method_id":sessionStorage.getItem("payMethod")
-    };
-
-                                                                            //REVISAR ESTE OBJETO PARA CREAR DONACION EN MI BD
-    let dataBD={
+                "description":"donacion mercadopago",
+                "payment_method_id":sessionStorage.getItem("payMethod"),
                 "userId": user.id,
                 "userName": user.firstName || "",
                 "userLastName": user.lastName,
                 "userPhone": "",
                 "userEmail": user.email,
-                "payForm":`MP AR$ ${sessionStorage.getItem("payMethod")}`,
+                "payForm":`merc_pag AR$ ${sessionStorage.getItem("payMethod")}`,
                 "amount":values.amount,
                 "message": values.message || ""
               };
-   
 
     setIsLoading(true);
     
     try {
-      const donation=await axiosClient.post("/donations/singleMercadoPago",data) 
+      const donation=await axiosClient.post("/donations/payWithTicketMercadoPago",data) 
     
       if(donation.status===200){
         Swal.fire({
@@ -122,14 +117,30 @@ const MercadoPagoTicket = () => {
             </div>
           </div> 
 
-          <div className="formUserData d-flex">  
-            <p>Mercado Pago ( AR$ )</p>
-            <p className="methodText">{sessionStorage.getItem('payMethod')}</p>
-          </div> 
+          <div className="formUserData">  
+            <div>
+              <label> Mensaje </label>
+              <textarea className="form-control"
+                type='text'
+                rows='2'
+                cols='52'
+                name='message'
+                placeholder="Tu mensaje..."
+                value={values.message}        
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+          </div>         
           
           <div className="formUserData">  
             <div className="form-group">
-              <div>     
+              <div> 
+                 <div className=" d-flex">  
+                  <p>Mercado Pago ( AR$ )</p>
+                  <p className="methodText">{sessionStorage.getItem('payMethod')}</p>
+                </div> 
+                    
                 <input className="form-control ms-1"
                   name="amount"
                   type="number"
@@ -143,14 +154,18 @@ const MercadoPagoTicket = () => {
             </div>
           </div> 
 
-          <span >Al continuar, te vamos a re-dirigir al sitio de 
+          <span className="flex-Center" >Al continuar, te vamos a re-dirigir al sitio de 
             <img className="logoMP"src="https://www.boutiqueautomovil.com.ar/wp-content/uploads/2019/05/logo-mercadopago.png"></img>
             para obtener tu ticket
           </span>
 
           <div className="buttonsResponsive">
             <Link to={"/PaymentMethod"}  className='btn buttonBlue' role='button' > Volver </Link>   
-            <button  id="submit" type="submit" className="btn buttonBlue buttonGreen"> Continuar</button>
+            <button disabled={isLoading} id="submit" type="submit" className="btn buttonBlue buttonGreen">        
+            <p id="button-text ">
+              {isLoading ? <div className="spinner" id="spinner"></div> : "Continuar"}
+            </p>
+          </button>
           </div>
             
         </form> 

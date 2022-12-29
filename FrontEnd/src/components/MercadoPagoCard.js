@@ -9,13 +9,31 @@ import { ErrorText } from "./elements/ElementsFormStyles";
 import { msgRequired,msgValidationAmount } from "./helpers/validationMessages";
 import { regexAmount } from "./helpers/RegExp";
 import * as FaIcons from "react-icons/fa";
+import Card from "react-credit-cards";
+import "react-credit-cards/es/styles-compiled.css";
+import useMercadoPago from "./hooks/useMercadoPago";
+
+
 
 const MercadoPagoCard = () => {
 
+ const INITIAL_STATE = {
+    cvc: "",
+    cardExpirationMonth: "",
+    cardExpirationYear: "",
+    focus: "cardNumber",
+    cardholderName: "",
+    cardNumber: "",
+    issuer: "",
+};
+const [state, setState] = useState(INITIAL_STATE);
+    const resultPayment = useMercadoPago();
+
+
   let [user, setUser] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  let initialValues = { amount: "", message: ""};
-  let photo;
+  let initialValues = { amount: "", typedoc:"", numdoc:"",message: ""};
+  let photo, filterBy;
   const [ticket, setTicket] = useState("");
 
   if (user && user.image!==""? photo=user.image : photo=<FaIcons.FaUser/>);
@@ -26,6 +44,22 @@ const MercadoPagoCard = () => {
     const userData=sessionStorage.getItem("userInfo")
     setUser(JSON.parse(userData));
    }, [])
+
+  const changesId=(e)=>{
+    filterBy=e.target.value;
+  }
+
+  const handleInputChange=(e)=>{
+    setState({
+        ...state,
+        [e.target.dataset.name || e.target.name]: e.target.value,
+    });
+  } 
+
+
+  const handleInputFocus = (e) => {
+    setState({ ...state, focus: e.target.dataset.name || e.target.name });
+  };
   
   //enviar formulario
   const sendForm = async (values) => {
@@ -33,23 +67,32 @@ const MercadoPagoCard = () => {
                 "payer":{"email":user.email},
                 "transaction_amount":values.amount,
                 "description":"donacion",
-                "payment_method_id":"rapipago"
+                "payment_method_id":sessionStorage.getItem("payMethod"),
+                "userId": user.id,
+                "userName": user.firstName || "",
+                "userTypedoc":user.typedoc,
+                "userNumdoc":user.numdoc,
+                "userLastName": user.lastName,
+                "userPhone": "",
+                "userEmail": user.email,
+                "payForm":`merc_pag AR$ ${sessionStorage.getItem("payMethod")}`,
+                "amount":values.amount,
+                "message": values.message,
+                "cardholderEmail":state.cardholderEmail,
+                "cardholderName":state.cardholderName,
+                "cvc":state.cvc,
+                "cardNumber":state.cardNumber,
+                "cardExpirationMonth":state.cardExpirationMonth,
+                "cardExpirationYear":state.cardExpirationYear,
+                "identificationType":user.typedoc,
+                "identificationNumber":user.Numdoc,
+                "issuer":state.issuer,
+                "installments":""
               };
-
-    let dataBD = {
-      "userId": user.id,
-      "userName": user.firstName || "",
-      "userLastName": user.lastName,
-      "userPhone": "",
-      "userEmail": user.email,
-      // "payForm":`MP AR$ ${sessionStorage.getItem("payMethod")}`,
-      "amount":values.amount,
-      "message": values.message
-    };
     setIsLoading(true);
       
     try {
-      const donation=await axiosClient.post("/donations/singleMercadoPago",data ) 
+      const donation=await axiosClient.post("/donations/payWithCardMercadoPago",data ) 
     
       if(donation.status===200){
         Swal.fire({
@@ -75,15 +118,12 @@ const MercadoPagoCard = () => {
   };
 
 
-  const redirectToMP= () => {
-    <Link to={ticket}> </Link> 
-  }
-
-
   //FORMIK VALIDATIONS
   let validateInputs = (values) => {
     let errors = {
       amount:"",
+      typedoc:"",
+      numdoc:"",
       formOk: "",
     };
 
@@ -100,72 +140,200 @@ const MercadoPagoCard = () => {
       errors.formOk = "v";
     }
   }
-  return (
+  return ( 
     <>
-    <div className="containerStripe">         
+    <div className="containerStripe">
       { user &&
         <Formik
               initialValues={initialValues}
               validate={validateInputs}
               onSubmit={(values) => { sendForm(values) }}
-        >
+        > 
         {
           ({ values, handleSubmit, handleChange, handleBlur, touched, errors}) => (
         
-        <form onSubmit={handleSubmit} className="dataUser">
-          <div className="formUserData" >          
-            <img className="imgStripe" src={photo} alt="user"></img>
-            <div className="formStripeUser">
-              <p> Nombre   : {user.firstName}</p>
-              <p> Apellido : {user.lastName} </p>
-            </div>
-            <div className="formStripeUser">
-              <p>Tipo de documento: {user.phone}</p>
-              <p>número de documento : {user.phone}</p>
-            </div>
-            <div className="formStripeUser">
-              <p> Email: {user.email}</p>
-              <p> Teléfono : {user.phone}</p>
-            </div>
-          </div> 
+        <form onSubmit={handleSubmit}  id="form-checkout">
+        <div className="d-flex">
+        <div>
+          <div className="formUserMP ">  
+            <div className="formStripeUser d-block">
+              <div> 
 
-          <div className="formUserData d-flex">  
-            <p>Mercado Pago ( AR$ )</p>
-            <p className="methodText">{sessionStorage.getItem('payMethod')}</p>
-          </div> 
-          
-          <div className="formUserData">  
-              <div className="form-group">
-                <div>     
-                  <input className="form-control ms-1"
-                    name="amount"
-                    type="number"
-                    placeholder="ingrese importe"
-                    value={values.amount}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  /> 
+                <div className="d-flex">
+                  <img className="imgMP" src={photo} alt="user"></img>
+                  <input className="form-control name"
+                      id="form-checkout__cardholderName" 
+                      type="text"
+                      name="cardholderName"
+                      onChange={handleInputChange}
+                      onFocus={handleInputFocus}
+                  />
                 </div>
-                {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
+
+                <div className="d-flex mb-2"> 
+                  <div className="d-block"> 
+                    <label>E-mail</label> 
+                    <input className="form-control email"
+                      type="email"
+                      placeholder={user.email}
+                      name="cardholderEmail"
+                      id="form-checkout__cardholderEmail"
+                      onFocus={handleInputFocus}
+                    />
+                  </div>
+                  <div className="d-block ms-5"> 
+                    <label>Teléfono</label>
+                    <p className="form-control email">{user.phone}</p>
+                  </div>  
+                </div> 
+
+              </div> 
+              <label>Documento</label> 
+              <div className="d-flex"> 
+                
+                <div>              
+                  <select id="form-checkout__identificationType"
+                    className="selectBtnDesplegable selectMP form-select"
+                    type="text"
+                    name="name"
+                     onChange={changesId}
+                  >  
+                  <option value={"DNI"}>D.N.I.</option>
+                  <option value={"LE"}>L.E.</option>
+                  <option value={"CI"}>C.I.</option>
+                  <option value={"PAS"}>Pasaporte</option>
+                  </select> 
+                </div>
+                <div>
+                  <div>
+                    <input className="form-control inputSelectMP"
+                      name="numdoc"
+                      type="text"
+                      id="form-checkout__identificationNumber" 
+                      placeholder="nro de documento"
+                      value={values.numdoc}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    /> 
+                  </div>
+                  {touched.numdoc && errors.numdoc && (<ErrorText>{errors.numdoc} </ErrorText>)}
+                </div>
               </div>
+            </div>               
           </div> 
 
-    <span >Al continuar, te vamos a re-dirigir al sitio de 
-      <img className="logoMP"src="https://www.boutiqueautomovil.com.ar/wp-content/uploads/2019/05/logo-mercadopago.png"></img>
-    </span>
+          <div className="formUserMP">  
+            <div>
+              <label> Mensaje </label>
+              <textarea className="form-control"
+                type='text'
+                rows='2'
+                cols='52'
+                name='message'
+                placeholder="tu mensaje..."
+                value={values.message}        
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+          </div>  
 
-    <div className="buttonsResponsive mt-5">
-      <Link to={"/PaymentMethod"}  className='btn buttonBlue' role='button' > Volver </Link>
-      <button   id="submit" type="submit" className="btn buttonBlue buttonGreen">Continuar      
-      </button>
+          <div className="formUserMP">  
+            <div className="form-group">
+              <div>  
+                <div className="d-flex">  
+                  <p>Mercado Pago ( AR$ )</p>
+                  <p className="methodText">{sessionStorage.getItem('payMethod')}</p>
+                </div> 
 
-    </div>
-    </form> 
-        )}
+                <input className="form-control ms-1"
+                  name="amount"
+                  type="number"
+                  placeholder="ingresá el importe"
+                  value={values.amount}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                /> 
+              </div>
+              {touched.amount && errors.amount && (<ErrorText>{errors.amount} </ErrorText>)}
+            </div>
+          </div> 
+        </div> 
+
+        <div className="formCard">
+          <Card className="formUserMP"
+            cvc={state.cvc}
+            expiry={state.cardExpirationMonth + state.cardExpirationYear}
+            name={state.cardholderName}   
+            number={state.cardNumber}
+            focused={state.focus}
+            brand={state.issuer}
+          />  
+       
+          <div className="formUserMP mt-4">   
+            <input className="form-control"
+              type="text"
+              name="cardNumber"
+              id="form-checkout__cardNumber"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />               
+            <input className="form-control"
+              type="text"
+              name="cardExpirationMonth"
+              id="form-checkout__cardExpirationMonth"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            <input className="form-control"
+              type="text"
+              name="cardExpirationYear"
+              id="form-checkout__cardExpirationYear"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            <input className="form-control"
+              type="text"
+              name="cvc"
+              id="form-checkout__securityCode"
+              onChange={handleInputChange}
+              onFocus={handleInputFocus}
+            />
+            
+            <select   className="form-control"
+              id="form-checkout__issuer" 
+              name="issuer"
+              on="true" >
+            </select>
+
+            <select  className="form-control"
+              id="form-checkout__installments"
+              name="installments">
+            </select>   
+             
+          </div> 
+      
+          {/* <span className="flex-Center" >Al continuar, te vamos a re-dirigir al sitio de 
+          <img className="logoMP"src="https://www.boutiqueautomovil.com.ar/wp-content/uploads/2019/05/logo-mercadopago.png"></img>
+          </span> */}
+
+          <div className="buttonsResponsive mt-1">
+            <Link to={"/PaymentMethod"}  className='btn buttonBlue' role='button' > Volver </Link>
+            <button   id="form-checkout__submit" type="submit" className="btn buttonBlue buttonGreen">Pagar </button>
+           {/* <progress value="0" className="progress-bar">Cargando...</progress> */}
+          </div>
+        </div>
+      </div>
+      </form> 
+      )}
         
-        </Formik>
+      </Formik>
       }
-
+      
+      <div>   
+        {resultPayment && <p>{JSON.stringify(resultPayment)}</p>}
+      </div>
+      
     </div>
    
    </>

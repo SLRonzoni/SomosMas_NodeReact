@@ -134,25 +134,46 @@ const listPaymentMethodsMercadoPago= async (req,res)=> {
 }
 
 
-// Mercado Pago - Hacer un pago con ticket ( tipo pagofacil )
-const singleMercadoPago=async (req, res) => {
-                                                              console.log(req.body)
-
+// Mercado Pago - Pagos con ticket ( pagofacil y rapipago )
+const payWithTicketMercadoPago=async (req, res) => {
   try{      
     const data= await mercadopago.payment.create({
       transaction_amount: req.body.transaction_amount,
-      description: 'donation',
+      description: 'donation mercadopago',
       payment_method_id:req.body.payment_method_id,
       payer: {
         email:req.body.payer.email
       }
     })
     res.status(200).json(data.body.transaction_details.external_resource_url)
-    //Guardar los datos en mi bd
-    createDonation(data)
+    createDonation(req.body)
   } catch(error) {
     res.status(500).json(error)
   }
+};
+
+// Mercado Pago - Pagos con tarjeta ( credito y debito )
+const payWithCardMercadoPago=async (req, res) => {
+  try{     
+     const datos=await mercadopago.payment.save(
+      req.body.transaction_amount,
+      req.body.cardholderName,
+      req.body.cvc,
+      req.body.cardNumber,
+      req.body.cardExpirationMonth,
+      req.body.cardExpirationYea,
+      req.body.issuer,
+      req.body.installments
+      )
+      console.log(datos)
+    .then(function(response) {
+       console.log('respuesta',response)
+      const { status, status_detail, id } = response.body;
+      res.status(response.status).json({ status, status_detail, id });
+    })
+  } catch(error) {
+    res.status(500).json(error)
+  };
 };
   
 
@@ -163,6 +184,7 @@ module.exports = {getAllDonations,
                   getDonationId,
                   createDonation,
                   paymentsStripe,
-                  singleMercadoPago,
+                  payWithTicketMercadoPago,
+                  payWithCardMercadoPago,
                   listPaymentMethodsMercadoPago,
                   deleteDonation};
